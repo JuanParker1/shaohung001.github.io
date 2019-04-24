@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="首先理解了安装，作者推荐动态库安装，好处就是特么的，你看到的source都是输入源，filters都是滤镜过程，output就是出口啦 GPUImageMovie能接受1）asset、2）AVPlayItem、3）URL路径，，，如果你有特殊要求，可以使用GPUImageMovieComposition这个类，允许你输入AVFoundation的多音频输入、画质动作、剪切之后的AVMutable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用GPUImage一些坑">
+<meta property="og:url" content="https://shaohung001.github.io/2017/01/10/使用GPUImage一些坑/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="首先理解了安装，作者推荐动态库安装，好处就是特么的，你看到的source都是输入源，filters都是滤镜过程，output就是出口啦 GPUImageMovie能接受1）asset、2）AVPlayItem、3）URL路径，，，如果你有特殊要求，可以使用GPUImageMovieComposition这个类，允许你输入AVFoundation的多音频输入、画质动作、剪切之后的AVMutable">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3767775-79332ec074f7938e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-01-10T01:54:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用GPUImage一些坑">
+<meta name="twitter:description" content="首先理解了安装，作者推荐动态库安装，好处就是特么的，你看到的source都是输入源，filters都是滤镜过程，output就是出口啦 GPUImageMovie能接受1）asset、2）AVPlayItem、3）URL路径，，，如果你有特殊要求，可以使用GPUImageMovieComposition这个类，允许你输入AVFoundation的多音频输入、画质动作、剪切之后的AVMutable">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3767775-79332ec074f7938e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://shaohung001.github.io/2017/01/10/使用GPUImage一些坑/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用GPUImage一些坑 | aKer</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">aKer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/10/使用GPUImage一些坑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aKer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aKer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用GPUImage一些坑
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-01-10 09:50:38 / Modified: 09:54:08" itemprop="dateCreated datePublished" datetime="2017-01-10T09:50:38+08:00">2017-01-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li>首先理解了安装，作者推荐动态库安装，好处就是特么的，你看到的source都是输入源，filters都是滤镜过程，output就是出口啦</li>
+<li>GPUImageMovie能接受<br>1）asset、2）AVPlayItem、3）URL路径，，，如果你有特殊要求，可以使用GPUImageMovieComposition这个类，允许你输入AVFoundation的多音频输入、画质动作、剪切之后的AVMutableComposition，我就用的这个</li>
+<li>GPUImageMovie没有音频播放，美拍不知道怎么整的，估计我觉得就是使用另外一些人提供的思路，对源码侵入加入播放器<br>可以参考这个：1）：<a href="http://blog.csdn.net/personsky/article/details/52992919" target="_blank" rel="noopener">http://blog.csdn.net/personsky/article/details/52992919</a><br>2）：<a href="https://gist.github.com/anonymous/5112961" target="_blank" rel="noopener">https://gist.github.com/anonymous/5112961</a><br>毕竟音频播放就是个形式，，要不然你有没有美拍的源码，对了美拍还真就是用GPUImage，用的真是6啊，，偶像<br>3)：如果你没有用AVMutableComposition修改视频orientation，其滤镜里面也有能修改方向的方法setInputRotation<br>用法如：[sepiaFilter setInputRotation:kGPUImageRotateRight atIndex:0];</li>
+<li>检查滤镜过程使用：filter setFrameProcessingCompletionBlock:^(GPUImageOutput *output,CMTime frameTime)<br>比如你可以在GPUImageElement里面修改这个</li>
+<li>注意检查输入滤镜的pipeline过程有没有问题<br><a href="http://blog.csdn.net/u1031/article/details/48712163" target="_blank" rel="noopener">http://blog.csdn.net/u1031/article/details/48712163</a><br>这个大哥的几张图挺好的，看了之后对addTarget有更多的理解</li>
+<li>多视频输入我这还好，没有什么问题，多语音的话，你就考虑使用GPUImageMovieComposition的audiomix，但是没法控制播放了似乎，</li>
+<li>NSString*pathToMovie = [self movieSavedPath];<br>unlink([pathToMovieUTF8String]);// If a file already exists, AVAssetWriter won’t let you record new frames, so delete the old movie<br>可以使用快捷unlink视频，我特么不知道，仍然在使用filemanager，low逼格</li>
+<li>附一个滤镜表在我国—&gt;China🇨🇳境内的名字翻译地址<br><a href="http://blog.csdn.net/qq_27074387/article/details/52221938" target="_blank" rel="noopener">http://blog.csdn.net/qq_27074387/article/details/52221938</a></li>
+<li>在多视频输入里面，将self.movieFile.playAtActualSpeed=YES;<br>playAtActualSpeed都写上，如果视频不同步，有一个先完成了，则会有可能10s视频变成了4s，有时前一段视频播放正常，后一段就视频画面不动了。</li>
+<li>forceProcessingAtSize：CGSize<br>给其定义大小</li>
+<li>GPUImage  pipeline<br>1）、创建图片处理类GPUImagePicture把图片传进去stillImage<br>GPUImagePicture <em>staticPicture = [[GPUImagePicture alloc] initWithImage:stillImage smoothlyScaleOutput:YES];<br>2）、把多个滤镜对象放到数组中<br>NSMutableArray </em>arrayTemp=[NSMutableArray array];<br>[arrayTempaddObject:RGBFilter];<br>3）、创建GPUImageFilterPipeline对象 初始化使用<br>initWithOrderedFilters:(NSArray<em>) filters input:(GPUImageOutput</em>)input output:(id )output;<br>这个方法；这个方法需要三个参数：<br>filters：多个滤镜的数组<br>input：被渲染的图片（步骤1 的staticPicture 对象）<br>output：渲染后的图片的容器（类型是view）<br>GPUImageFilterPipeline <em> filterPipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:arrayTempinput:staticPictureoutput:output];<br>4）、渲染图片 使用processImage（此方法是GPUImagePicture类下的）和useNextFrameForImageCapture(此方法是GPUImageOutput下也就是单个滤镜)；<br>[staticPicture processImage];<br>[filteruseNextFrameForImageCapture];//这个filter 可以是RGBFiltertoonFilter等<br>5）、获取图片 使用currentFilteredFrame（此方法是GPUImageFilterPipeline类下的）；<br>UIImage </em>img = [pipeline currentFilteredFrame];<br>6）、对于使用GPUImageUIElement没有给contentView设置rect则会出现：<br>: CGContextTranslateCTM: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.<br>*** Assertion failure in -[GPUImageFramebuffer generateFramebuffer], address/Submodules/framework/Source/GPUImageFramebuffer.m:156<br>同时breakpoint跳到<br><img src="http://upload-images.jianshu.io/upload_images/3767775-79332ec074f7938e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="breakpoint"></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/10/debug断点不进去且无效/" rel="next" title="debug断点不进去且无效">
+                <i class="fa fa-chevron-left"></i> debug断点不进去且无效
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/10/xcode碰到-lcrt1-3-1-o/" rel="prev" title="xcode碰到-lcrt1.3.1.o">
+                xcode碰到-lcrt1.3.1.o <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">aKer</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aKer</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

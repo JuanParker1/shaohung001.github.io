@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="购买了一个服务器，折腾了一天给相关环境整理了下。123OS: centos 6 x86_64 # docker 一定要64位服务器采用docker + koa + mongodb前端采用Next.js + mobx + antd 组合 服务器配置由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。 环境要求：python2.7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-12-24lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2018/12/24/2018-12-24lesson/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="购买了一个服务器，折腾了一天给相关环境整理了下。123OS: centos 6 x86_64 # docker 一定要64位服务器采用docker + koa + mongodb前端采用Next.js + mobx + antd 组合 服务器配置由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。 环境要求：python2.7">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-09T21:13:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-12-24lesson">
+<meta name="twitter:description" content="购买了一个服务器，折腾了一天给相关环境整理了下。123OS: centos 6 x86_64 # docker 一定要64位服务器采用docker + koa + mongodb前端采用Next.js + mobx + antd 组合 服务器配置由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。 环境要求：python2.7">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://shaohung001.github.io/2018/12/24/2018-12-24lesson/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2018-12-24lesson | aKer</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">aKer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2018/12/24/2018-12-24lesson/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aKer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aKer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018-12-24lesson
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-24 20:59:02" itemprop="dateCreated datePublished" datetime="2018-12-24T20:59:02+08:00">2018-12-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-10 05:13:02" itemprop="dateModified" datetime="2019-01-10T05:13:02+08:00">2019-01-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="购买了一个服务器，折腾了一天给相关环境整理了下。"><a href="#购买了一个服务器，折腾了一天给相关环境整理了下。" class="headerlink" title="购买了一个服务器，折腾了一天给相关环境整理了下。"></a>购买了一个服务器，折腾了一天给相关环境整理了下。</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OS: centos 6 x86_64 # docker 一定要64位</span><br><span class="line">服务器采用docker + koa + mongodb</span><br><span class="line">前端采用Next.js + mobx + antd 组合</span><br></pre></td></tr></table></figure>
+<h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。</p>
+<p>环境要求：python2.7.12;.yml file version为1</p>
+<p><a href="CentOS6.x 安装 Docker 和 Docker Compose">参考博文</a></p>
+<p>服务器Dockerfile:</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /server</span><br><span class="line"><span class="keyword">RUN</span> npm install</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9527</span></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mongo:</span><br><span class="line">  image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">  volumes:</span><br><span class="line">    - ./data:/data/db</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;27017:27017&quot;</span><br><span class="line">web:</span><br><span class="line">  build: .</span><br><span class="line">  command: npm start</span><br><span class="line">  volumes:</span><br><span class="line">    - ./dist:/server/dist</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;9527:9527&quot; #我就想用这个端口</span><br><span class="line">  links:</span><br><span class="line">    - mongo</span><br></pre></td></tr></table></figure>
+<p>package.json/script:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "watch": "tsc -w -p ./src",</span><br><span class="line">    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/www.js",</span><br><span class="line">    "docker-debug": "docker-compose up",</span><br><span class="line">    "start": "node ./dist/www.js",</span><br><span class="line">    "mocha-test": "mocha -t 8000 --recursive "</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行docker 出现<code>iptables failed - No chain/target/match by that name</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -N DOCKER</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
+<ul>
+<li>mongodb 总是连不上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1. docker-compose.yml 的links 不能缺少</span><br><span class="line">2. mongoose.connect(db_url) 的db_url 确认是docker-compose 的image 名。如我的&quot;mongo&quot;</span><br><span class="line">3. 失败重连</span><br><span class="line">const connectWithRetry = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;MongoDB connection with retry&quot;);</span><br><span class="line">    mongoose.connect(db_url, options).then(() =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB is connected&quot;);</span><br><span class="line">    &#125;).catch(err =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB connection unsuccessful, retry after 5 seconds.&quot;);</span><br><span class="line">        setTimeout(() =&gt; connectWithRetry(), 5000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>服务器在vscode debug</li>
+</ul>
+<p>参考vscode 原文<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">我是原文</a></p>
+<h1 id="Nextjs-配置"><a href="#Nextjs-配置" class="headerlink" title="Nextjs 配置"></a>Nextjs 配置</h1><p>接下来是nextjs 推送记录</p>
+<ol>
+<li>nextjs 编译环境有要求：RAM 1G</li>
+</ol>
+<p>我服务器就1G，不然编译的时候会报”code 137”,提示内存不足，同时导致服务器mongodb 一直弹提示<code>centos mongodb [ftdc] serverStatus was very slow: { after basic: 163, after asserts:</code>。</p>
+<p>解决办法是采用开发机器<code>yarn build</code> 后，将<strong>.next</strong> 文件夹git commit ，然后同步过来。</p>
+<ol start="2">
+<li>nextjs 使用pm2 start:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#https://github.com/zeit/next.js/issues/109</span><br><span class="line"># for development</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- run dev</span><br><span class="line"></span><br><span class="line"># for production</span><br><span class="line">npm run build</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- start</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>nextjs 需要在域名根目录运行， 否则出现static 静态路由找不到。其他route 也会找不到的情况。</li>
+</ol>
+<p>nginx 配置如:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> www.lsgood.top lsgood.top;</span><br><span class="line">    <span class="attribute">root</span> /var/www;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    <span class="attribute">location</span> ~^/facicon\.ico$ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:9005;</span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">'upgrade'</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_cache_bypass</span> <span class="variable">$http_upgrade</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> /japeneeza/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9527/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>nextjs 没有storage；同时 server side 获取不到cookie</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yarn add js-cookie cookieParser</span><br><span class="line"></span><br><span class="line">cookie <span class="keyword">set</span> <span class="keyword">get</span> cookie (自行参考cookie 保存token)</span><br><span class="line">eg: jsCookie.<span class="keyword">set</span>("token", $&#123;token&#125;)</span><br><span class="line"></span><br><span class="line">server.js(express)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">"cookieParser"</span>)</span><br><span class="line">server.use(cookieParser())</span><br><span class="line"></span><br><span class="line">然后在pages 里的pageClass.getInitialProps = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">&#123;ctx&#125;</span>) =&gt; </span>&#123;</span><br><span class="line">    cosnt &#123; req &#125; = ctx;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"token:"</span>, req.cookies.token)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="让你知道技术的力量"><a href="#让你知道技术的力量" class="headerlink" title="让你知道技术的力量"></a>让你知道技术的力量</h1><p>A: 什么？不相信我的能力？<br>A(咆哮): 我要让你们知道 the ability of super technology!!!</p>
+<p>门外, 砰砰砰: 开门，查水表.</p>
+<p>A: 大家快点收拾东西，藏起来，丢到窗外，快点快点。。。</p>
+<p><a href="本来想做一个视频网站，想想还要各种“证”，到时先做小的视频网站，，然后转成会员卖套图吧。国内什么都做不了，什么都不能做，国家要各种屁民听话。我觉得公务员们不认为自己是中国人，他们认为自己是体制人，是平民的上司。他们凭什么呀？都是我们纳税人养着的服务人员，怎么就有这么多的特权？纳税的意义在哪里？好好活着吧。"></a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/09/2018-12-9lesson/" rel="next" title="2018-12-9lesson">
+                <i class="fa fa-chevron-left"></i> 2018-12-9lesson
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/01/2018-12-31lesson/" rel="prev" title="2018-12-31lesson">
+                2018-12-31lesson <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">aKer</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#购买了一个服务器，折腾了一天给相关环境整理了下。"><span class="nav-number">1.</span> <span class="nav-text">购买了一个服务器，折腾了一天给相关环境整理了下。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器配置"><span class="nav-number">2.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nextjs-配置"><span class="nav-number">3.</span> <span class="nav-text">Nextjs 配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让你知道技术的力量"><span class="nav-number">4.</span> <span class="nav-text">让你知道技术的力量</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aKer</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

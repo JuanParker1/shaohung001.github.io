@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="安装黑苹果制作黑苹果至关重要的一步：选对硬件示例操作硬件：  cpu: i7 8700k (不要用AMD，不好装) \motherboard: Gigabyte Z370HD3P (推荐) \显卡: 独显 GTX 1050ti (推荐Rx560，拆机显卡不贵，不知道链接问本人)  好了，如果你是这硬件，你就完成80%了，否则移步tonymacx86找找对应硬件的配置等。安装步骤都是一样，配置和驱动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-3-25lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2019/04/25/2019-3-25lesson/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="安装黑苹果制作黑苹果至关重要的一步：选对硬件示例操作硬件：  cpu: i7 8700k (不要用AMD，不好装) \motherboard: Gigabyte Z370HD3P (推荐) \显卡: 独显 GTX 1050ti (推荐Rx560，拆机显卡不贵，不知道链接问本人)  好了，如果你是这硬件，你就完成80%了，否则移步tonymacx86找找对应硬件的配置等。安装步骤都是一样，配置和驱动">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-24T23:41:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-3-25lesson">
+<meta name="twitter:description" content="安装黑苹果制作黑苹果至关重要的一步：选对硬件示例操作硬件：  cpu: i7 8700k (不要用AMD，不好装) \motherboard: Gigabyte Z370HD3P (推荐) \显卡: 独显 GTX 1050ti (推荐Rx560，拆机显卡不贵，不知道链接问本人)  好了，如果你是这硬件，你就完成80%了，否则移步tonymacx86找找对应硬件的配置等。安装步骤都是一样，配置和驱动">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://shaohung001.github.io/2019/04/25/2019-3-25lesson/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2019-3-25lesson | aKer</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">aKer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2019/04/25/2019-3-25lesson/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aKer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aKer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2019-3-25lesson
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-25 07:41:43 / Modified: 07:41:54" itemprop="dateCreated datePublished" datetime="2019-04-25T07:41:43+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装黑苹果"><a href="#安装黑苹果" class="headerlink" title="安装黑苹果"></a>安装黑苹果</h1><h3 id="制作黑苹果至关重要的一步：选对硬件"><a href="#制作黑苹果至关重要的一步：选对硬件" class="headerlink" title="制作黑苹果至关重要的一步：选对硬件"></a>制作黑苹果至关重要的一步：选对硬件</h3><p>示例操作硬件：</p>
+<blockquote>
+<p>cpu: i7 8700k (不要用AMD，不好装) \<br>motherboard: Gigabyte Z370HD3P (推荐) \<br>显卡: 独显 GTX 1050ti (推荐Rx560，拆机显卡不贵，不知道链接问本人)</p>
+</blockquote>
+<p>好了，如果你是这硬件，你就完成80%了，否则移步<a href="https://www.tonymacx86.com/" target="_blank" rel="noopener">tonymacx86</a>找找对应硬件的配置等。安装步骤都是一样，配置和驱动不同而已。</p>
+<h3 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h3><ol>
+<li>苹果官网下的一个.dmg 系统文件。(比如high sierra 10.13.6)</li>
+<li>一个16G左右U盘(系统盘大约6G 左右)</li>
+<li><a href="https://sourceforge.net/projects/cloverefiboot/" target="_blank" rel="noopener">Clover EFI bootloader 下载地址</a></li>
+<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/" target="_blank" rel="noopener">Clover configuration 下载地址</a></li>
+</ol>
+<p>本教程默认使用Mac 环境下操作，制作U盘；Windows 操作google之，步骤类似。<br>本教程为纯净版Vanilla 方法(大神取得名字)至简安装方案.</p>
+<h3 id="生成U盘启动器"><a href="#生成U盘启动器" class="headerlink" title="生成U盘启动器"></a>生成U盘启动器</h3><h4 id="下载对应系统"><a href="#下载对应系统" class="headerlink" title="下载对应系统"></a>下载对应系统</h4><p><a href="https://pan.baidu.com/s/1Ujfi8X6hBDuQVlSWuulNbw" target="_blank" rel="noopener">百毒云 10.13.6 下载地址</a>(下载慢找我，不要花钱买百毒云会员)</p>
+<p>双击系统.dmg 文件，安装成为app，移到/finder/Applications</p>
+<h4 id="制作U盘启动器-白苹果U盘启动器"><a href="#制作U盘启动器-白苹果U盘启动器" class="headerlink" title="制作U盘启动器(白苹果U盘启动器)"></a>制作U盘启动器(白苹果U盘启动器)</h4><p>打开-Mac磁盘工具，点击顶部<strong>显示所有设备</strong>，找到你的U盘，点击<strong>抹掉</strong></p>
+<ol>
+<li>U盘取名macinstaller</li>
+<li>格式为Mac OS Extended(Journaled) -&gt; Mac OS 拓展(日志式)</li>
+<li>方案: GUID分区图</li>
+</ol>
+<p>完成后退出</p>
+<p>打开terminal</p>
+<blockquote>
+<p>sudo ${系统.app 拖到此处}/Contents/Resources/createinstallmedia –volume /Volumes/macinstaller</p>
+</blockquote>
+<p>前面是系统盘制作路径，后面volume 空间是抹掉取名为macinstaller 的U盘路径</p>
+<p>然后就是开始加载，时间比较久，直到出现<code>Install media now available at &quot;/Volumes/Install macOS high sierra&quot;</code></p>
+<h4 id="黑苹果引导Clover"><a href="#黑苹果引导Clover" class="headerlink" title="黑苹果引导Clover"></a>黑苹果引导Clover</h4><p>之前制作白苹果步骤完成。下面使用Clover 转黑苹果</p>
+<p><a href="https://sourceforge.net/projects/cloverefiboot/" target="_blank" rel="noopener">Clover EFI bootloader 下载地址</a></p>
+<p>点击下载的Clover</p>
+<ol>
+<li>介绍 - 继续</li>
+<li>请先阅读 - 继续</li>
+<li>目的宗卷 - 更改安装位置：选择我们的白苹果U盘</li>
+<li>安装类型 - 安装</li>
+<li>安装 - 选择(仅安装UEFI 开机版本、安装Clover 到EFI 系统区)(UEFI Drivers 下拉仅选择VBoxHfs-64、ApfsMemoryFix-64、AptioMemoryFix-64) ,其他都不选；然后点击安装</li>
+<li>安装完成关闭</li>
+</ol>
+<h4 id="config-plist"><a href="#config-plist" class="headerlink" title="config.plist"></a>config.plist</h4><p><a href="https://mackie100projects.altervista.org/download-clover-configurator/" target="_blank" rel="noopener">Clover configuration 下载地址</a></p>
+<ol>
+<li>Mount EFI - Efi Partitions - U盘分区 - 点击Mount Partition 并输入电脑密码</li>
+<li>Mount EFI - Efi Partitions - U盘分区 - 点击Open Partition 打开文件夹</li>
+<li>EFI - CLOVER - config.plist 使用Clover configuration 打开</li>
+<li>Kexts Installer - OS Version下拉选择Other</li>
+<li>Kexts Installer - 选择Lilu、WhateverGreen、FakeSMC 点击下载</li>
+<li>步骤【5】下载完弹出框，选中全部的5个传感器全部install</li>
+<li><a href="https://github.com/corpnewt/Hackintosh-Guide/blob/master/Configs/CoffeeLake/config.plist" target="_blank" rel="noopener">新的config.plist</a>替换现在U盘Mount的EFI - CLOVER - config.plist</li>
+<li>clover configuration 打开U盘的Mount的EFI</li>
+<li>SMBIOS 选择iMac17.1</li>
+</ol>
+<p>U盘启动器至此全部完成</p>
+<h3 id="安装黑苹果-1"><a href="#安装黑苹果-1" class="headerlink" title="安装黑苹果"></a>安装黑苹果</h3><h4 id="BIOS设置"><a href="#BIOS设置" class="headerlink" title="BIOS设置"></a>BIOS设置</h4><blockquote>
+<p>Intel Virtualization Technology: Enabled (docker 要用) \<br>Vt-d:disable<br>XHCI Handoff: enabled (不然USB 等设备没法识别) \<br>Fast Boot: Disabled \<br>Secure Boot/OS Type: Other OS (有就选) \<br>SATA to AHCI \<br>Boot 启动使用U盘 Partition</p>
+</blockquote>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><ol>
+<li>在Clover 引导界面选择名为<code>Boot macOS Install from macOS high sierra</code>(默认第一个)</li>
+<li>安装进入verbose 啰嗦模式</li>
+<li>会自动重启几次</li>
+<li>之后进入macOS Utilities(macOS 使用工具)</li>
+<li>使用磁盘工具抹掉磁盘</li>
+<li>点击顶部<strong>显示所有设备</strong>，找到你要安装硬盘，点击抹掉：名字取macos；类型：【1】 U盘取名macinstaller【2】 格式为Mac OS Extended(Journaled) -&gt; Mac OS 拓展(日志式)【3】 方案: GUID分区图</li>
+<li>回到macOS Utilities 界面，选择Install macOS</li>
+<li>【确定】【确定】之后，选择你要安装的安装盘macos</li>
+<li>安装过程会重启几次，确保从硬盘启动而不是U盘启动(默认帮你选好了，确定下即可)</li>
+</ol>
+<h4 id="选择国家界面"><a href="#选择国家界面" class="headerlink" title="选择国家界面"></a>选择国家界面</h4><p>选中国</p>
+<p>然后一直点下一步，能跳过则跳过。之后再设置。</p>
+<p>创建电脑账户(这个名字一定要取好，之后不好改；有mac 系统的大bug)</p>
+<h4 id="替换U盘启动EFI-至硬盘启动EFI"><a href="#替换U盘启动EFI-至硬盘启动EFI" class="headerlink" title="替换U盘启动EFI 至硬盘启动EFI"></a>替换U盘启动EFI 至硬盘启动EFI</h4><ol>
+<li>clover configuration - Mount EFI - 挂载Mount U盘、macOS 的EFI分区</li>
+<li>将U盘的EFI 整个替换硬盘的EFI文件夹</li>
+</ol>
+<h4 id="拔出U盘-重启启动"><a href="#拔出U盘-重启启动" class="headerlink" title="拔出U盘 重启启动"></a>拔出U盘 重启启动</h4><p>Boot 使用硬盘的Partition 启动</p>
+<h3 id="查找驱动"><a href="#查找驱动" class="headerlink" title="查找驱动"></a>查找驱动</h3><p>黑苹果难就难在找驱动，通过查找通用驱动为例。</p>
+<blockquote>
+<p>屏幕左上角🍎 - 关于本机 - 系统报告 查看确实的驱动 \<br>比如缺失以太网卡、音频 \<br>去主板官网确认网卡声卡的型号 \<br>比如Gigabyte z370 HD3P - 产品规格 - 音效 - <strong>内建Realtek@ ALC1220</strong> 那么下载<a href="https://github.com/acidanthera/AppleALC/releases" target="_blank" rel="noopener">AppleALC</a> \<br><a href="https://bitbucket.org/RehabMan/os-x-intel-network/src" target="_blank" rel="noopener">网卡驱动</a></p>
+</blockquote>
+<p>NVIDIA webDriver驱动可以直接安装对应驱动：<a href="https://www.tonymacx86.com/threads/nvidia-releases-alternate-graphics-drivers-for-macos-high-sierra-10-13-6-387-10-10-10-40.255913/" target="_blank" rel="noopener">NVIDIA webDriver</a></p>
+<p>如果是集成显卡UHD Graphics 630：</p>
+<ol>
+<li>clover configuration打开硬盘EFI - CLOVER - config.plist</li>
+<li>Devices &gt; FakeID &gt; IntelGFX = 0x59128086</li>
+<li>Graphics &gt; ig-platform-id = 0x59120000</li>
+<li>Graphics &gt; 打钩Inject Intel(似乎有点重要,否则还是会闪,显卡7M)</li>
+<li>SMBIOS &gt; Select iMac17.1</li>
+</ol>
+<p>有双屏幕需求的，DVI + HDMI 插上没反应的可以试试：</p>
+<ol>
+<li>Clover configuration - Graphics - NVCap: 04000000 00000100 0E000000 00000007 00000000</li>
+<li>Video Ports: 2</li>
+</ol>
+<p>关闭啰嗦模式：</p>
+<ol>
+<li>Boot - Arguments 删除<strong>-v</strong></li>
+</ol>
+<h4 id="驱动安装方法"><a href="#驱动安装方法" class="headerlink" title="驱动安装方法"></a>驱动安装方法</h4><p>把下载下来的.kext 驱动放到硬盘的EFI - CLOVER - kexts - Other 下，重启即可生效。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/55256660" target="_blank" rel="noopener">黑苹果麦金塔</a></p>
+<p><a href="https://www.tonymacx86.com" target="_blank" rel="noopener">tonymacx86</a></p>
+<p><a href="https://blog.daliansky.net/macOS-High-Sierra-10.13.6-17G65-Release-Version-with-Clover-4596-original-mirror.html" target="_blank" rel="noopener">windows 制作mac参考</a></p>
+<p><a href="https://www.tonymacx86.com/threads/success-8700k-gigabyte-z370-hd3p-uhd-graphics-630-macos-high-sierra-mojave.239402/" target="_blank" rel="noopener">tonymacx86 - i7 8700k</a></p>
+<p><a href="https://www.tonymacx86.com/threads/nvidia-releases-alternate-graphics-drivers-for-macos-high-sierra-10-13-6-387-10-10-10-40.255913/" target="_blank" rel="noopener">tonymacx86 - Nvidia webDriver</a></p>
+<p><a href="https://github.com/enify/blog/issues/2" target="_blank" rel="noopener">windows 制作mac参考2</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/2019-4-22lesson/" rel="next" title="2019-4-22lesson">
+                <i class="fa fa-chevron-left"></i> 2019-4-22lesson
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">aKer</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装黑苹果"><span class="nav-number">1.</span> <span class="nav-text">安装黑苹果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作黑苹果至关重要的一步：选对硬件"><span class="nav-number">1.0.1.</span> <span class="nav-text">制作黑苹果至关重要的一步：选对硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备材料"><span class="nav-number">1.0.2.</span> <span class="nav-text">准备材料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成U盘启动器"><span class="nav-number">1.0.3.</span> <span class="nav-text">生成U盘启动器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载对应系统"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">下载对应系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制作U盘启动器-白苹果U盘启动器"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">制作U盘启动器(白苹果U盘启动器)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#黑苹果引导Clover"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">黑苹果引导Clover</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config-plist"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">config.plist</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装黑苹果-1"><span class="nav-number">1.0.4.</span> <span class="nav-text">安装黑苹果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BIOS设置"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">BIOS设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装过程"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">安装过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择国家界面"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">选择国家界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换U盘启动EFI-至硬盘启动EFI"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">替换U盘启动EFI 至硬盘启动EFI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拔出U盘-重启启动"><span class="nav-number">1.0.4.5.</span> <span class="nav-text">拔出U盘 重启启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找驱动"><span class="nav-number">1.0.5.</span> <span class="nav-text">查找驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#驱动安装方法"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">驱动安装方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.1.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aKer</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
