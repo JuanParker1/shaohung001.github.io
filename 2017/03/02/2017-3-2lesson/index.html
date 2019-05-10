@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="记录这几天的发现或者想到了的东西，哈哈 关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”];  缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache collection需要使用self.collectionNode performBatch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017&#x2F;3&#x2F;2lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2017/03/02/2017-3-2lesson/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="记录这几天的发现或者想到了的东西，哈哈 关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”];  缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache collection需要使用self.collectionNode performBatch">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-03-02T14:14:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2017&#x2F;3&#x2F;2lesson">
+<meta name="twitter:description" content="记录这几天的发现或者想到了的东西，哈哈 关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”];  缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache collection需要使用self.collectionNode performBatch">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://shaohung001.github.io/2017/03/02/2017-3-2lesson/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2017/3/2lesson | aKer</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">aKer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/03/02/2017-3-2lesson/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aKer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aKer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2017/3/2lesson
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-03-02 22:14:16 / Modified: 22:14:46" itemprop="dateCreated datePublished" datetime="2017-03-02T22:14:16+08:00">2017-03-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="记录这几天的发现或者想到了的东西，哈哈"><a href="#记录这几天的发现或者想到了的东西，哈哈" class="headerlink" title="记录这几天的发现或者想到了的东西，哈哈"></a>记录这几天的发现或者想到了的东西，哈哈</h3><ul>
+<li>关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”]; </li>
+<li>缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache</li>
+<li>collection需要使用<code>self.collectionNode performBatchUpdates:^</code></li>
+<li>如果<code>-(BOOL)shouldBatchFetchForCollectionNode:(ASCollectionNode *)collectionNode</code>为YES，但是不再获取数据，那么就是你没有给上次Batch确认completeBatch</li>
+<li>这里处理了一次collectionNode的获取数据和返回数据的完整逻辑，可以参照，实战demo</li>
+<li>Theme能力由发通知会更好，毕竟如果有缓存，单元格没法刷新，还是需要发通知更改背景颜色、某些图片等，可以一步步更改</li>
+<li>主流方向可以往可爱等线路发展</li>
+<li>小玩意之类往往能点亮用户好奇心，比如“粉粉日记”的首页台灯、不同时间的首页动物、不同时段，该动物、背景会替换，让动物动起来等；每晚开放的树洞功能等</li>
+<li>会员能力很重要，要让他们感到与众不同，代价每次都是一点点就很正确</li>
+<li>首页采用多屏处理，展示不同格局东西。</li>
+<li>首页是很能体现APP动机的地方。如果是微博类，首页就是Feed分类；如果是淘宝类，首页就是商品分类；如果是QQ、微信，首页就是你的聊天列表类；如果是游戏、地图等，首页就是你该展示的地方；“粉粉”这里首页就是展示萌创意、手账的地方，那么他走的主路线就该是这方面功能。</li>
+<li>APP功能太全有时候会成为累赘，可以参考“花瓣”、“Facebook”的分离法，将不同业务分出去，将主功能留下。比如“Facebook”的Message功能就会让你跳出去到另一个App。</li>
+<li>粒度这个东西有时候要考虑清楚，有时候深一点使用组件化，有时候直接写有他的好处</li>
+<li>说一个今天遇到的缓存能力ASDK，当我刷新，我将dataSource的数据都删光了，然后没写好，没有reloadData全部，而是insert数据到当前单元格，下面数据仍然在，ASDK的缓存能力确实太厉害了，然而反观“粉粉”里面的缓存，其实他做的就是将基本数据缓存起来，等还要再cellForItemAtIndexPath的时候，他还是会更新当前的单元格。所以严格意义上说，“粉粉”里面之前的缓存方案，仅是对数据的再次缓存得到快速获取，而不是前缘科技里面的Feed页面写法。</li>
+<li>从前一个公司到现在的粉粉日记领悟到一个思想：前一个公司很在意功能上的全，比如我们要有自己的图片选取工具、纯文字发布能力的特立独行、视频这块大块头的实现类似“美拍”的全逻辑。由于人员的不够，我在竭尽全力下初窥视频骨架，但是公司在一次次的冲击市场下都没有反响中放弃了。其中原因是大骨头很难啃，其他东西没抓住，人员配置不够；粉粉公司反其道，一步一步走，走的路也更早，探索出了抓住青少年人群的美少女“萌”。粉粉到现在才开始有了拍摄视频的能力，而且仅仅只有拍摄这一步，目前还是内测；粉粉每走一步都测试、保证再保证没有问题才将功能加上去。粉粉的选取图片能力还有滤镜能力，目前走到了这么一个地步：使用其他公司的SDK：在功能左下角还有某某SDK的字样。里面框架也是挺卡的，我拿了个iPod5的测试机，FPS有时直接到0了，有些页面写的，连复用都没有；比如图片这块，我们使用qiniu作为图片保存地址，他们使用的UPYun是腾讯的，目前还属于内测阶段，而且他们居然没有看文档，不知道可以图片地址后面拼接image的后缀，让服务器帮忙更改图片属性功能。可以这么说，内容、市场、人员、测试、流程，粉粉都比“呱拍”走的很远，但是一些功能上的，确实“呱拍”使用的前缘功能，要比粉粉走太远：当我已经要试试FaceDetect功能的时候，粉粉才在有拍摄功能。。。</li>
+<li>最近练手了一个自定义CollectionLayout，联系之前看的OpenGL ES 的皮毛，类比到ASDK和autoLayout中布局说明，终于理解了一个原理：程序是死的，目前我接触到的都是死的，他需要人说明，包括每个pixel需要展示什么颜色定义，需要opacity多少，每个点需要人告诉程序。比如手机、电脑在某一快需要展示蓝色，布局定义等都会转化为绝对坐标，绝对坐标再转化为在底层GPU需要的布局信息，GPU在将每一层需要的颜色重叠起来，看需要输出到屏幕的是什么，才最终呈现出来</li>
+<li>如果要判别一个公司的团队实力，可以在看市场竞争能力，我想到作为在iOS技能求职者一个新方法：下一个该公司的APP—&gt;使用iPhone4s看其表现能力，iPhone6不能作为功能测试机，不过可以作为布局测试机！！！</li>
+<li>今天改了下host，进入公司的FTP服务器，改host需要vim的权限，于是我使用sudo vim +“对应文件夹Path” 写完后按左上角esc键盘按键，然后输入<em>:wq</em>意思是write and quit</li>
+<li>今天下午搞了下git branch，之前使用都是小心翼翼，不太懂整，他们搞过来搞过去，嗯哼，还不太给力ing</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/2017-2-20lesson/" rel="next" title="2017/2/20lesson">
+                <i class="fa fa-chevron-left"></i> 2017/2/20lesson
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/02/2017-3-2lxlesson/" rel="prev" title="2017/3/2lxlesson">
+                2017/3/2lxlesson <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">aKer</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">115</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录这几天的发现或者想到了的东西，哈哈"><span class="nav-number">1.</span> <span class="nav-text">记录这几天的发现或者想到了的东西，哈哈</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aKer</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
