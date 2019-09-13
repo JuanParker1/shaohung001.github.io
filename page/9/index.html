@@ -286,6 +286,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/09/RAC循环引用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aKer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aKer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/09/RAC循环引用/" class="post-title-link" itemprop="url">RAC循环引用</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-01-09 09:35:39 / Modified: 01:38:10" itemprop="dateCreated datePublished" datetime="2017-01-09T09:35:39+00:00">2017-01-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>发表于(2016-09-27 16:35:49)</p>
+<p>最近项目到某个节点，我在解决一些问题的时候，记录一下：</p>
+<ol>
+<li>RAC 在引用的时候会忽略一点，如<br><code>@weakify(self);
+@weakify(cell);
+[[[cell.clearButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(UIButton *x) {
+if ([self_weak_.selectedNumArray containsObject:asset]) {
+[self_weak_.selectedNumArray removeObject:asset];
+cell_weak_.numButton.selected = NO;
+[self_weak_.collectionView reloadData];
+}else{
+if (self_weak_.addMorePicture) {
+if (self_weak_.selectedNumArray.count==self_weak_.maxPictureCanAdd) {
+LxDBAnyVar(self_weak_.selectedNumArray);
+LxDBAnyVar(self_weak_.maxPictureCanAdd);
+[SHUIHelper showAlertMessage:[NSString stringWithFormat:@&quot;您最多可添加%ld张哦&quot;,self_weak_.maxPictureCanAdd]];
+}else{
+[self_weak_.selectedNumArray addObject:asset];
+cell_weak_.numButton.selected = YES;
+[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
+}
+}else{
+if (self_weak_.selectedNumArray.count==6) {
+[SHUIHelper showAlertMessage:@&quot;选取最多6张&quot;];
+}else{
+[self_weak_.selectedNumArray addObject:asset];
+cell_weak_.numButton.selected = YES;
+[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
+}
+}
+}
+cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
+}];</code><br>上面这里的cell，自己对自己进行了循环引用，原因就是：这一段如果写在该Cell class里面，那么block里面的cell，其实在自身类里面也叫self，于是也需要进行weak处理。<br>这里会出现这样的错误，就是因为写得太快了，然后有时候会想不出来，可以慢慢思考。</li>
+<li>Realm 的RLMArray 如果添加某一个元素，但其已经存在数据库中，那么做法是先使用<code>[RLMObject objectForPrimaryKey：@“keyID”]</code>找出该元素添加进去，即可<blockquote>
+<p>Just want to add a comment for future users of Realm. I think TiM means[ objectForPrimaryKey:…]. I literally typed [RLMObject objectForPrimaryKey:…] and got a crash about “RLMObject” is not persisted in Realm database</p>
+</blockquote>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/09/MleaksFinder手动导入framework/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -331,7 +511,7 @@
                 
               
 
-              <time title="Created: 2017-01-09 09:23:27 / Modified: 09:34:44" itemprop="dateCreated datePublished" datetime="2017-01-09T09:23:27+08:00">2017-01-09</time>
+              <time title="Created: 2017-01-09 09:23:27 / Modified: 01:34:44" itemprop="dateCreated datePublished" datetime="2017-01-09T09:23:27+00:00">2017-01-09</time>
             
 
             
@@ -502,7 +682,7 @@
                 
               
 
-              <time title="Created: 2017-01-09 09:19:16 / Modified: 09:20:42" itemprop="dateCreated datePublished" datetime="2017-01-09T09:19:16+08:00">2017-01-09</time>
+              <time title="Created: 2017-01-09 09:19:16 / Modified: 01:20:42" itemprop="dateCreated datePublished" datetime="2017-01-09T09:19:16+00:00">2017-01-09</time>
             
 
             
@@ -646,7 +826,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 23:08:27 / Modified: 23:09:32" itemprop="dateCreated datePublished" datetime="2017-01-08T23:08:27+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 23:08:27 / Modified: 15:09:32" itemprop="dateCreated datePublished" datetime="2017-01-08T23:08:27+00:00">2017-01-08</time>
             
 
             
@@ -790,7 +970,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 23:07:34 / Modified: 23:08:00" itemprop="dateCreated datePublished" datetime="2017-01-08T23:07:34+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 23:07:34 / Modified: 15:08:00" itemprop="dateCreated datePublished" datetime="2017-01-08T23:07:34+00:00">2017-01-08</time>
             
 
             
@@ -936,7 +1116,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 23:06:40 / Modified: 23:06:58" itemprop="dateCreated datePublished" datetime="2017-01-08T23:06:40+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 23:06:40 / Modified: 15:06:58" itemprop="dateCreated datePublished" datetime="2017-01-08T23:06:40+00:00">2017-01-08</time>
             
 
             
@@ -1080,7 +1260,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 23:05:40 / Modified: 23:06:02" itemprop="dateCreated datePublished" datetime="2017-01-08T23:05:40+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 23:05:40 / Modified: 15:06:02" itemprop="dateCreated datePublished" datetime="2017-01-08T23:05:40+00:00">2017-01-08</time>
             
 
             
@@ -1224,7 +1404,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 23:04:51 / Modified: 23:05:12" itemprop="dateCreated datePublished" datetime="2017-01-08T23:04:51+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 23:04:51 / Modified: 15:05:12" itemprop="dateCreated datePublished" datetime="2017-01-08T23:04:51+00:00">2017-01-08</time>
             
 
             
@@ -1368,7 +1548,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 23:00:58 / Modified: 23:03:26" itemprop="dateCreated datePublished" datetime="2017-01-08T23:00:58+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 23:00:58 / Modified: 15:03:26" itemprop="dateCreated datePublished" datetime="2017-01-08T23:00:58+00:00">2017-01-08</time>
             
 
             
@@ -1512,7 +1692,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:57:57 / Modified: 22:59:58" itemprop="dateCreated datePublished" datetime="2017-01-08T22:57:57+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:57:57 / Modified: 14:59:58" itemprop="dateCreated datePublished" datetime="2017-01-08T22:57:57+00:00">2017-01-08</time>
             
 
             
@@ -1612,156 +1792,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/08/swift的xib在模拟器显示正常，真机不显示/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aKer">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="aKer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/" class="post-title-link" itemprop="url">swift的xib在模拟器显示正常，真机不显示</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-01-08 22:57:11 / Modified: 22:57:44" itemprop="dateCreated datePublished" datetime="2017-01-08T22:57:11+08:00">2017-01-08</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>发表于(2016-06-13 11:34:52)</p>
-<p>这个完美解决了swift会不加载xib的问题~~xib都OK，模拟器可以显示，但是真机却没有显示的解决方案，原因就是swift不默认加载xib，强制让他加上就好了<br><a href="http://my.oschina.net/227/blog/470553" target="_blank" rel="noopener">http://my.oschina.net/227/blog/470553</a><br>这个是转帖嘿嘿，谢谢大哥啦</p>
-<p>import UIKit<br>class FormController: UIViewController {</p>
-<p>override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {<br>super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)<br>//println(nibName);    }<br>convenience init() {<br>var nibNameOrNil = String?(“FormController”)</p>
-<p>//        //考虑到xib文件可能不存在或被删，故加入判断//        if NSBundle.mainBundle().pathForResource(nibNameOrNil, ofType: “xib”) == nil{   nibNameOrNil = nil}<br>self.init(nibName: nibNameOrNil, bundle: nil)<br>}<br>required init(coder aDecoder: NSCoder) {<br>fatalError(“init(coder:) has not been implemented”)<br>}</p>
-<p>override func viewDidLoad() {</p>
-<p>}<br>override func didReceiveMemoryWarning() {<br>super.didReceiveMemoryWarning()<br>// Dispose of any resources that can be recreated.    }</p>
-<p>}</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1808,7 +1838,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">115</span>
+                    <span class="site-state-item-count">116</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

@@ -286,6 +286,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/08/swift的xib在模拟器显示正常，真机不显示/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aKer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="aKer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/" class="post-title-link" itemprop="url">swift的xib在模拟器显示正常，真机不显示</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-01-08 22:57:11 / Modified: 14:57:44" itemprop="dateCreated datePublished" datetime="2017-01-08T22:57:11+00:00">2017-01-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>发表于(2016-06-13 11:34:52)</p>
+<p>这个完美解决了swift会不加载xib的问题~~xib都OK，模拟器可以显示，但是真机却没有显示的解决方案，原因就是swift不默认加载xib，强制让他加上就好了<br><a href="http://my.oschina.net/227/blog/470553" target="_blank" rel="noopener">http://my.oschina.net/227/blog/470553</a><br>这个是转帖嘿嘿，谢谢大哥啦</p>
+<p>import UIKit<br>class FormController: UIViewController {</p>
+<p>override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {<br>super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)<br>//println(nibName);    }<br>convenience init() {<br>var nibNameOrNil = String?(“FormController”)</p>
+<p>//        //考虑到xib文件可能不存在或被删，故加入判断//        if NSBundle.mainBundle().pathForResource(nibNameOrNil, ofType: “xib”) == nil{   nibNameOrNil = nil}<br>self.init(nibName: nibNameOrNil, bundle: nil)<br>}<br>required init(coder aDecoder: NSCoder) {<br>fatalError(“init(coder:) has not been implemented”)<br>}</p>
+<p>override func viewDidLoad() {</p>
+<p>}<br>override func didReceiveMemoryWarning() {<br>super.didReceiveMemoryWarning()<br>// Dispose of any resources that can be recreated.    }</p>
+<p>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/08/collectionView的minimumLineSpacing内部空隙默认不为空/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -331,7 +481,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:56:05 / Modified: 22:56:26" itemprop="dateCreated datePublished" datetime="2017-01-08T22:56:05+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:56:05 / Modified: 14:56:26" itemprop="dateCreated datePublished" datetime="2017-01-08T22:56:05+00:00">2017-01-08</time>
             
 
             
@@ -475,7 +625,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:54:30 / Modified: 22:55:18" itemprop="dateCreated datePublished" datetime="2017-01-08T22:54:30+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:54:30 / Modified: 14:55:18" itemprop="dateCreated datePublished" datetime="2017-01-08T22:54:30+00:00">2017-01-08</time>
             
 
             
@@ -619,7 +769,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:52:40 / Modified: 22:53:34" itemprop="dateCreated datePublished" datetime="2017-01-08T22:52:40+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:52:40 / Modified: 14:53:34" itemprop="dateCreated datePublished" datetime="2017-01-08T22:52:40+00:00">2017-01-08</time>
             
 
             
@@ -770,7 +920,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:51:30 / Modified: 22:52:16" itemprop="dateCreated datePublished" datetime="2017-01-08T22:51:30+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:51:30 / Modified: 14:52:16" itemprop="dateCreated datePublished" datetime="2017-01-08T22:51:30+00:00">2017-01-08</time>
             
 
             
@@ -921,7 +1071,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:50:26 / Modified: 22:51:04" itemprop="dateCreated datePublished" datetime="2017-01-08T22:50:26+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:50:26 / Modified: 14:51:04" itemprop="dateCreated datePublished" datetime="2017-01-08T22:50:26+00:00">2017-01-08</time>
             
 
             
@@ -1069,7 +1219,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:49:16 / Modified: 22:49:44" itemprop="dateCreated datePublished" datetime="2017-01-08T22:49:16+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:49:16 / Modified: 14:49:44" itemprop="dateCreated datePublished" datetime="2017-01-08T22:49:16+00:00">2017-01-08</time>
             
 
             
@@ -1212,7 +1362,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:45:27 / Modified: 22:48:56" itemprop="dateCreated datePublished" datetime="2017-01-08T22:45:27+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:45:27 / Modified: 14:48:56" itemprop="dateCreated datePublished" datetime="2017-01-08T22:45:27+00:00">2017-01-08</time>
             
 
             
@@ -1355,7 +1505,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:43:18 / Modified: 22:44:06" itemprop="dateCreated datePublished" datetime="2017-01-08T22:43:18+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:43:18 / Modified: 14:44:06" itemprop="dateCreated datePublished" datetime="2017-01-08T22:43:18+00:00">2017-01-08</time>
             
 
             
@@ -1500,7 +1650,7 @@
                 
               
 
-              <time title="Created: 2017-01-08 22:40:54" itemprop="dateCreated datePublished" datetime="2017-01-08T22:40:54+08:00">2017-01-08</time>
+              <time title="Created: 2017-01-08 22:40:54" itemprop="dateCreated datePublished" datetime="2017-01-08T22:40:54+00:00">2017-01-08</time>
             
 
             
@@ -1517,7 +1667,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2017-02-04 13:34:16" itemprop="dateModified" datetime="2017-02-04T13:34:16+08:00">2017-02-04</time>
+                <time title="Modified: 2017-02-04 05:34:16" itemprop="dateModified" datetime="2017-02-04T05:34:16+00:00">2017-02-04</time>
               
             
           </span>
@@ -1561,155 +1711,6 @@
 <li>在Cydia下iFile，这个好东西我就不说了，越狱了第一个就想用的东西。按照上面教程走。<br>我这里遇到的问题是，那个什么iFunBox或者iTools都没法打开Mobile的目录，但是他们能打开Media的文件夹，直接把libReveal.dylib放到那边,目录为：上面文章提供的地址</li>
 <li>将文件存放的地址为/Library/MobileSubstrate/DynamicLibraries目录下</li>
 </ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shaohung001.github.io/2017/01/08/解决Xcode断点调试值都为nil的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aKer">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="aKer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/08/解决Xcode断点调试值都为nil的问题/" class="post-title-link" itemprop="url">解决Xcode断点调试值都为nil的问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-01-08 22:39:41 / Modified: 22:40:16" itemprop="dateCreated datePublished" datetime="2017-01-08T22:39:41+08:00">2017-01-08</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>发表于(2016-02-25 14:04:24)</p>
-<p>解决Xcode断点调试值都为nil的问题   </p>
-<p>在Build Settings中 Optimization Level 设置成 None</p>
-<p><a href="http://www.cocoachina.com/bbs/read.php?tid=229014" target="_blank" rel="noopener">http://www.cocoachina.com/bbs/read.php?tid=229014</a></p>
-<p>我从这里抄来的，没有debug功能，叫什么开发，开你妹的开。。。。。。</p>
-<p>最近学习react-native，没有买书籍，没办法，只能一点点学，写一点，在google断点调试一点，就只有这样。用debug方式一点点走程序，这是最好的方法，知道了程序的走向，就知道怎么回事了。</p>
-<p>debug是学习之路，望多打断点哟。</p>
 
           
         
@@ -1797,7 +1798,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">115</span>
+                    <span class="site-state-item-count">116</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
