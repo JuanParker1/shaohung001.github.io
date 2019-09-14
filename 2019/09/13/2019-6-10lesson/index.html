@@ -28,20 +28,20 @@
 <meta property="og:site_name" content="aKer">
 <meta property="og:description" content="docker mongo dump restoreDumpdocker run --name newMongo -p 27018:27017 --rm mongo 另开一个terminal docker exec -it newMongo /bin/bash  mongodump -h 127.0.0.1 --port 27017 -d ${your db} -o /test/mongodBack">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/v2rayx_issue107.png">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/v2ray_toNormalStep.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate1.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate2.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate3.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate4.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate5.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate6.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/lessonAssets/generate_wordTemplate7.jpg">
-<meta property="og:updated_time" content="2019-09-14T05:45:24.405Z">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/v2rayx_issue107.png">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/v2ray_toNormalStep.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate1.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate2.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate3.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate4.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate5.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate6.jpg">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/generate_wordTemplate7.jpg">
+<meta property="og:updated_time" content="2019-09-14T06:46:17.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-6-10lesson">
 <meta name="twitter:description" content="docker mongo dump restoreDumpdocker run --name newMongo -p 27018:27017 --rm mongo 另开一个terminal docker exec -it newMongo /bin/bash  mongodump -h 127.0.0.1 --port 27017 -d ${your db} -o /test/mongodBack">
-<meta name="twitter:image" content="https://shaohung001.github.io/2019/09/13/2019-6-10lesson/v2rayx_issue107.png">
+<meta name="twitter:image" content="https://shaohung001.github.io/css/images/v2rayx_issue107.png">
   
     <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
   
@@ -372,10 +372,10 @@ docker cp newMongo:/test/mongodBack/ /mongodBack/ # 将docker 内文件拷到/mo
 <blockquote>
 <p><a href="https://github.com/Cenmrev/V2RayX/issues/107" target="_blank" rel="noopener">https://github.com/Cenmrev/V2RayX/issues/107</a></p>
 </blockquote>
-<p><img src="./v2rayx_issue107.png" alt="V2rayX_issue107"></p>
+<p><img src="/css/images/v2rayx_issue107.png" alt="V2rayX_issue107"></p>
 <p>表现完全一致。</p>
 <p>操作如下:</p>
-<p><img src="v2ray_toNormalStep.jpg" alt="V2ray复活操作"></p>
+<p><img src="/css/images/v2ray_toNormalStep.jpg" alt="V2ray复活操作"></p>
 <p>反正接下来也不适用shadowsocks了，于是我就删了在 /Users/<strong><strong>/Library/LaunchAgents 下为shadowsock</strong></strong>.<em>**</em>.plist 的文件。重启一下电脑，于是就完全表现正常了。</p>
 <h2 id="fs-read-readFile-在读取中文时乱码"><a href="#fs-read-readFile-在读取中文时乱码" class="headerlink" title="fs.read/readFile 在读取中文时乱码"></a><strong>fs.read/readFile 在读取中文时乱码</strong></h2><p>需求：文件使用Buffer 读出, 然后一个一个解析里面的中英文<br>环境：文件很大, 所以没办法直接读出、直接写出</p>
 <p><em>注意：这个需求不是编码的问题。比如GBK。GBK使用iconv_lite 解决</em></p>
@@ -562,18 +562,18 @@ export PATH=$NGINX_HOME/sbin:$PATH
 <ol>
 <li>首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以<code>____</code>代替之。作用是等会生成最终模板的地方，很容易找到。</li>
 </ol>
-<p><img src="./lessonAssets/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
+<p><img src="/css/images/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
 <ol start="2">
 <li><p>将word.docx 解压成文件夹template</p>
 <p> mac/linux$unzip -o word.docx -d template</p>
 <p> windows$”windows unzip 解决工具路径” -o “word.docx 路径” -d “template 路径”</p>
 </li>
 </ol>
-<p><img src="./lessonAssets/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
+<p><img src="/css/images/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
 <ol start="3">
 <li>template 目录大致介绍</li>
 </ol>
-<p><img src="./lessonAssets/generate_wordTemplate3.jpg" alt="template 目录"></p>
+<p><img src="/css/images/generate_wordTemplate3.jpg" alt="template 目录"></p>
 <p>重要的目录在框中。</p>
 <p>[Content_Types.xml] 是用来描述内部使用的格式说明。</p>
 <pre><code>word/document.xml 核心文件，修改的描述就在这。
@@ -586,7 +586,7 @@ word/media/ 用来放图片
 <li>修改word/document.xml</li>
 </ol>
 <p>替换模板code 格式我们使用lodash.template —&gt; <strong><code>&lt;%= templateCode %&gt;</code></strong></p>
-<p><img src="./lessonAssets/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
+<p><img src="/css/images/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
 <p>如果是插入jpeg 图片(png/jpg 都可以), 我们可以如下:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">w:p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">w:r</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">w:color</span> <span class="attr">w:val</span>=<span class="string">"00FF00"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:pict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">id</span>=<span class="string">"_x0000_i1025&lt;%- index %&gt;"</span> <span class="attr">o:spt</span>=<span class="string">"75"</span> <span class="attr">type</span>=<span class="string">"#_x0000_t75"</span> <span class="attr">style</span>=<span class="string">"height:&lt;%- item.height %&gt;pt;width:&lt;%- item.width %&gt;pt;"</span> <span class="attr">filled</span>=<span class="string">"f"</span> <span class="attr">o:preferrelative</span>=<span class="string">"t"</span> <span class="attr">stroked</span>=<span class="string">"f"</span> <span class="attr">coordsize</span>=<span class="string">"21600, 21600"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:path</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">focussize</span>=<span class="string">"0,0"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">joinstyle</span>=<span class="string">"miter"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:imagedata</span> <span class="attr">r:id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">o:title</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">o:lock</span> <span class="attr">v:ext</span>=<span class="string">"edit"</span> <span class="attr">aspectratio</span>=<span class="string">"f"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:wrap</span> <span class="attr">type</span>=<span class="string">"none"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:anchorlock</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:pict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">w:r</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125;);%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">w:p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这样便可循环插入多张图片啦。</p>
@@ -596,13 +596,13 @@ word/media/ 用来放图片
 <p>这里是用来指定植入的资源(图片)关系。</p>
 <p>我们只需在原本存在<code>&lt;Relationships xmls=&quot;...xxx&quot;&gt;</code>一行下增加新增的rId 资源链接：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Relationships</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.openxmlformats.org/package/2006/relationships"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">Type</span>=<span class="string">"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"</span> <span class="attr">Target</span>=<span class="string">"media/image&lt;%- index %&gt;.jpeg"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125;); %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"rId8"</span> <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="./lessonAssets/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
+<p><img src="/css/images/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
 <p>同时找到这里最大的Id，如<code>Id=&quot;rId16&quot;</code>, 之后用到。</p>
 <ol start="6">
 <li>修改[Content_Types].xml 增加使用资源ext</li>
 </ol>
 <p>这里使用jpeg 图片后缀名，增加一行:<code>&lt;Default Extension=&quot;jpeg&quot; ContentType=&quot;image/jpeg&quot;/&gt;</code></p>
-<p><img src="./lessonAssets/generate_wordTemplate6.jpg" alt="Content_Types"></p>
+<p><img src="/css/images/generate_wordTemplate6.jpg" alt="Content_Types"></p>
 <p>如果没有增加该行(或者上面提到的rId 填错)，出现问题特点是: WPS能正常打开；office word 提示<strong>无法打开Open XML xxx 因为内容存在问题或者文件名可能包含无效字符</strong> <strong>文件已损坏，无法打开。</strong></p>
 <p>点击了“确定”，接着又提示<strong>xxx.docx 中发现无法读取的内容。是否要恢复此文档的内容？如果您信任此文档的来源，请单击“是”</strong>，点了“是”之后又能正常浏览。</p>
 <ol start="6">
@@ -613,7 +613,7 @@ word/media/ 用来放图片
 <li>压缩 成word-template.docx 模板文件</li>
 </ol>
 <p>将word 文件夹下的所有文件使用zip 压缩。名称指定为word-template.docx 模板即打包完毕。</p>
-<p><img src="./lessonAssets/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
+<p><img src="/css/images/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
 <p>至此word-template 模板生成完毕。</p>
 <h2 id="最近连续一个多月的主要工作"><a href="#最近连续一个多月的主要工作" class="headerlink" title="最近连续一个多月的主要工作"></a><strong>最近连续一个多月的主要工作</strong></h2><p>最近连续一个多月主要分为三个工作：</p>
 <ol>
