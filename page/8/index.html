@@ -165,6 +165,59 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-一些查询很久才得出的答案或者尝试很久得到的答案" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/10/一些查询很久才得出的答案或者尝试很久得到的答案/">一些查询很久才得出的答案或者尝试很久得到的答案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/10/一些查询很久才得出的答案或者尝试很久得到的答案/" class="article-date">
+	  <time datetime="2017-01-10T01:31:14.000Z" itemprop="datePublished">January 10, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2 months ago)</p>
+<p><a href="https://github.com/shaohung001/One-person-project" target="_blank" rel="noopener">地址</a></p>
+<p>一些查询很久才得出的答案或者尝试很久得到的答案，类目主要用在chat、social、video、multi pic、watermark、filter、audio、Parse（FB）、个人无后台开发</p>
+<p>1：由于用到贴图，网上寻觅不得，只说 UIGraphicsBeginImageContext(&lt;#CGSize size#&gt;)-&gt;换成UIGraphicsBeginImageContextWithOptions(&lt;#CGSize size#&gt;,&lt;#Bool opaque#&gt;,&lt;#CGFloat scale#&gt;) 上面这句话是重点 scale是缩放因子，使用[UIScreen mainScreen].scale即可； 中间的opaque是识别里面有没有alpha通道，如果有通道则填入NO，相反的哦； size则为你的图片的大小，比如上面一张大图，下面一张watermark，这size为大图的大小，毕竟大图在下面，第一个放入的； 这样子图片就会变为高清！！！没错，如果还没有变为高清，是有另一个原因的，那就是你的贴图不是@2x或者@3x的倍率，将其放入图片文件夹或者source，加入后缀，一定使用@3x，@2x也不怎么清晰！！！ 最后一步才是本文重点，网上没人说，自己尝试出来的</p>
+<p>这一段是苹果私密api，用来找出Reveal的各个APP的bundleID，挺好用的</p>
+<p><code>Class LSApplicationWorkspace_class = objc_getClass(&quot;LSApplicationWorkspace&quot;);
+    NSObject* workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+    NSArray *array = [workspace performSelector:@selector(allApplications)];
+    id a = array[0];
+    NSLog(@&quot;apps: %@&quot;, [workspace performSelector:@selector(allApplications)]);</code></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-iOS导航栏颜色和给的颜色不一样" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -600,56 +653,11 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
     
 
   
-    <article id="post-16-11-18办理暂住证-过程-上海" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/16-11-18办理暂住证-过程-上海/">16-11-18办理暂住证_过程_上海</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/16-11-18办理暂住证-过程-上海/" class="article-date">
-	  <time datetime="2017-01-09T01:47:46.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-11-18 15:11:27)</p>
-<p>昨天去搞暂住证，我这里记录下过程，可以参考参考，毕竟这么累比的，当做吐槽加有意义的参考文案吧。<br>首先办理证件必须是周一至周五。当天还上班，中午特地骑到（闸北区工作的话，社保中心在沪太路延长中路附近）电动车去把超过6个月的社保单打印出来了。大概1点半，出发去问门卫处（小区在合阳小区），门卫告诉我去小区的居委会（合阳小区内的居委会，问一下就到了）；到了居委会，居委会说，我们这里办不了，这里一个工作人员也在附近的公安局（其实就在附近，很近，一定一定要保证电动车满电，说不定有其他用处）；好吧，我屁颠屁颠骑电动车到公安局（宜川路/白水路的公安局），取个号，到我了，该处为40多号，说往前走几步到51号左转，2点开始办公；我又屁颠屁颠去跑过去，似乎是户籍管理什么的办事处；好，进去，几个大叔在聊天，我点头弯腰说来办理暂住证，租赁客户，最里面的大叔说租赁的话，比较麻烦，这里办理不了，要前往这个地方（这里说几点，如果房子是你的，办就很快，还有就是前往你的亲戚的城市，办理亲属证明，也会非常快，我这属于最麻烦的，需要一堆的手续和文件，后面会一一道来）黄陵路/宜君路的街道事务中心；我赶紧出来，车子快没电了，赶紧去充电；这时，之前我打电话把房东喊过来（幸好遇到好房东的情况：我打电话让房东到公安局了，女房东到了公安局了，我又跑出来充电），说前往街道事务中心，于是她又开车前往街道事务中心；我先到地点，前台服务是一个胖大哥，问了是办暂住证，直接给我一个“综合服务”的号，我进去，问我需要的材料都对吗（我这里有我的身份证、工作合同、租赁合同原件、社保单（街道事务中心有机子可以取社保单）），然后等待房东来（记得，办这事，一定一定要房东来，房东那边需要准备的材料等会说明）；过没一会，房东来了，然后出示了有房产原件、身份证；然后说去12号台先填写申请，于是我们又跑过去12号，我这里需要准备的材料：有多少个人入住，我和我老婆的身份证+正反复印件、结婚证+复印件、工作合同的第二页和最后一页复印件、社保单、租赁合同+复印件、填写申请表如实填写，房东那边需要准备的材料：房东房产原件+房产原件复印件、房东身份证+复印件（如果房产有多人，必须有一个到场，没到场的需要填写委托书的文件，委托书文件格式，12号窗工作人员会给，你就到旁边写，内容有姓名、身份证，房产证有多少个人就写多少委托，签名写房东名字就可）。反正就是复印复印复印（期间我没带老婆的身份证、结婚证等，骑电动车回去，半路没电，用脚腾回去的，到家赶紧冲出来打车，到了目的地给钱，给他一张50块，司机说换一张，我说怎么了，他说这张是假的，我一看，我去，真是，我好久之前换的，之后一直手机支付没看那张50，后来用微信支付，接着去打印，特么零钱也用完了，那个大叔不肯给打印，真是没帮助的精神，不过是我，我可能也会有类似的作为就赶紧跑好远去取钱，还挺蛋疼的这次）。12号窗口办理，办理这个，如果多少个人写进去了，之后想更改就不能的了，所以确定好要写进去的人数和需要准备好的文件材料；12号窗口办理完会给你一张“信息填入”完的单子（这时房东的帮助已经完了，接下来就是自己的事情了），然后我们去“综合服务”窗口；我这里还需要提供租赁合同复印件、身份证复印件、社保单、“信息填入”文件的复印件，工作人员会给每一个敲一个章，我一一填入我的名字和时间（时间关系不大，如是说），老婆的部分由于本人未到场，必须她到场，不然办不了；这里说一下，这一办理过程是需要24小时生效时间，就是那张“信息填入”文件生效时间是在24小时之后，而且其左下角有个时间终止日期，超过也不能办，办理入住人必须都在场；诺，我又拿着我的文件屁颠屁颠回来了；<br>当时周四，我还是下周一带老婆一起过来好了。到时整好之后给大家一张截图，如若失败，没办法了，花钱办了，，文章里面需要的文件都写好了，也写好了过程步骤，幸好我的是有个好房东啊，，中间等了我接近50分钟，，我的天，，非常非常感谢房东，不管办不办的下来，好房东，，谢谢你，估计你看不见，不过我由衷感谢，，，<br>前两天11月22号，我拎着老婆孩子还去那个街道办事处。直接去“综合服务”办事点，把身份证+复印件、“信息填入”+复印件、社保单、合同原件+第二页和第四页的复印件准备好。他那边输入一些数据后知道我们第一次办，带我们到旁边拍了个照片，深色领子好。（中间原因一些原委，老婆合同原件没带，而且其复印件有文字涂改，需要在上面盖章，来来回回，而且那天下雨，车子堵得呀，花的钱又多-&gt;出租车，4点半街道办事处下班差点赶不及，直接下车跑了3个街道，气都快喘不过来了。）最后改签字的都签好，工作人员给了一张单子，说一个月后来这里领取办卡，也就是说，全部办好了，要办卡。出来办事，，真不是一般的累，来来回回整，而且需要的文件、流程都不熟悉，其中知道门道的，都是可以从中捞水了。一个月后去领卡了。另外，我问了，这不是暂住证，这是居住证，一年的居住证，嗷嗷嗷嗷。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/7/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/7/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/">Next</a>
   </nav>
 
 </section>
@@ -773,6 +781,18 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/03/11/2020-3-11lesson/">2020-3-11lesson</a></h6>
+              <span>March 11, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/03/10/2020-3-10lesson/">2020-3-10lesson</a></h6>
               <span>March 10, 2020</span>
             </div>
@@ -827,18 +847,6 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/05/10/2019-5-10lesson/">2019-5-10lesson</a></h6>
-              <span>May 10, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -851,7 +859,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年-小说/">2020过年 小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年-小说/">2020过年 小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme-v2ray-nginx/">acme v2ray nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -861,7 +869,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年-小说/" style="font-size: 10px;">2020过年 小说</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a>
+      <a href="/tags/2020过年-小说/" style="font-size: 10px;">2020过年 小说</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme-v2ray-nginx/" style="font-size: 10px;">acme v2ray nginx</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a>
     </div>
   </div>
 
@@ -871,7 +879,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
