@@ -165,6 +165,110 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-谈谈对swift的看法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/08/谈谈对swift的看法/">谈谈对swift的看法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/08/谈谈对swift的看法/" class="article-date">
+	  <time datetime="2017-01-08T14:52:40.000Z" itemprop="datePublished">January 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-05-29 22:24:22)</p>
+<p>swift出来挺久的了，我一直在升级OC的技能，基本基础都OK。<br>最近要开始一个新的项目，我就在思考，如果不写swift会带来的后果，这是考量我该不该使用新的语言，毕竟我之前从来没看。</p>
+<ol>
+<li>我感觉，预计今年十月份开始，swift将会大行其道。你不会可能都说不过去了，毕竟就如一些技能“ASI”的过气、“MRC”也过气等等；这都是知名的，都是我之前的时代，我也在改变，那就毋庸置疑了，应该改变。</li>
+<li>我个人觉得，目前程序员不就是一直在学新的东西么，不就是一个语言么，没啥难度，用法不会，查不查就可以，毕竟和OC很相近的。</li>
+<li>之前我用的库也都能用，而且swift语言其实是基于OC的库，OC多稳定，swift只是一个编译程序的过程用的工具</li>
+<li>我当时花了两天，边打游戏边看github一个“30天30 swift demo”，基本也能掌握。</li>
+<li>怕个鸟，就是从ReactiveCocoa转到RxSwift比较麻烦<br>这里贴一个大哥的“简书”地址—-&gt;<a href="http://www.jianshu.com/p/7e286fbbc3d7，我当时学ReactiveCocoa的时候，其实也是比较值的变化，慢慢学，看了一会其实跟OC的响应式编程相近。项目中用到，多用几次就会了。" target="_blank" rel="noopener">http://www.jianshu.com/p/7e286fbbc3d7，我当时学ReactiveCocoa的时候，其实也是比较值的变化，慢慢学，看了一会其实跟OC的响应式编程相近。项目中用到，多用几次就会了。</a><br>其实后期我越来越感觉到，其实语言这东西，就是一个工具，就是一个工具，你写的东西，在相应的编译器才识别，也就是一个描述性文档，想要学的深，只能慢慢来，现在的范围广这一步我走的还行，多用多接触一些东西，慢慢的也要试试走更底层一些东西啦，，人生不停下就好，，，我还想当管理，我还想多学点，我还想户外运动，我还想业余活动，，，你慢慢想吧，，，，，，，，，</li>
+</ol>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-IOS图片加水印或文字" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/08/IOS图片加水印或文字/">IOS图片加水印或文字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/08/IOS图片加水印或文字/" class="article-date">
+	  <time datetime="2017-01-08T14:51:30.000Z" itemprop="datePublished">January 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-04-30 23:40:20)</p>
+<p><a href="http://blog.sina.com.cn/s/blog_70854cfb0101d2dr.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_70854cfb0101d2dr.html</a><br>转载自这里，最近有做类似图片、视频的进阶，所以查阅了下博客，谢谢博主的分享啦</p>
+<p>1.加文字</p>
+<p>-(UIImage <em>)addText:(UIImage </em>)img text:(NSString <em>)text1<br>{<br>//get image width and height<br>int w = img.size.width;<br>int h = img.size.height;<br>CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();<br>//create a graphic context with CGBitmapContextCreate<br>CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 </em> w, colorSpace, kCGImageAlphaPremultipliedFirst);<br>CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);<br>CGContextSetRGBFillColor(context, 0.0, 1.0, 1.0, 1);<br>char<em> text = (char </em>)[text1 cStringUsingEncoding:NSASCIIStringEncoding];<br>CGContextSelectFont(context, “Georgia”, 30, kCGEncodingMacRoman);<br>CGContextSetTextDrawingMode(context, kCGTextFill);<br>CGContextSetRGBFillColor(context, 255, 0, 0, 1);<br>CGContextShowTextAtPoint(context, w/2-strlen(text)*5, h/2, text, strlen(text));<br>//Create image ref from the context<br>CGImageRef imageMasked = CGBitmapContextCreateImage(context);<br>CGContextRelease(context);<br>CGColorSpaceRelease(colorSpace);<br>return [UIImage imageWithCGImage:imageMasked];<br>}</p>
+<p>2.加图片<br>-(UIImage <em>)addImageLogo:(UIImage </em>)img text:(UIImage <em>)logo<br>{<br>//get image width and height<br>int w = img.size.width;<br>int h = img.size.height;<br>int logoWidth = logo.size.width;<br>int logoHeight = logo.size.height;<br>CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();<br>//create a graphic context with CGBitmapContextCreate<br>CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 </em> w, colorSpace, kCGImageAlphaPremultipliedFirst);<br>CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);<br>CGContextDrawImage(context, CGRectMake(w-logoWidth, 0, logoWidth, logoHeight), [logo CGImage]);<br>CGImageRef imageMasked = CGBitmapContextCreateImage(context);<br>CGContextRelease(context);<br>CGColorSpaceRelease(colorSpace);<br>return [UIImage imageWithCGImage:imageMasked];<br>//  CGContextDrawImage(contextRef, CGRectMake(100, 50, 200, 80), [smallImg CGImage]);<br>}</p>
+<p>3.加半透明的水印</p>
+<ul>
+<li>(UIImage <em>)addImage:(UIImage </em>)useImage addImage1:(UIImage <em>)addImage1<br>{<br>UIGraphicsBeginImageContext(useImage.size);<br>[useImage drawInRect:CGRectMake(0, 0, useImage.size.width, useImage.size.height)];<br>[addImage1 drawInRect:CGRectMake(0, useImage.size.height-addImage1.size.height, addImage1.size.width, addImage1.size.height)];<br>UIImage </em>resultingImage = UIGraphicsGetImageFromCurrentImageContext();<br>UIGraphicsEndImageContext();<br>return resultingImage;<br>}</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-iOS单元格分割线" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -544,109 +648,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-React-native自学之路" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/React-native自学之路/">React-native自学之路</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/React-native自学之路/" class="article-date">
-	  <time datetime="2017-01-08T14:31:17.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-01-26 12:12:40)<br>首先先去React-native官网看看。网上一堆的文章；这里推荐两篇文章1：<a href="https://github.com/ele828/react-native-guide；https://github.com/vczero/react-native-lesson大爱第二个，宇宙无敌超级详细；谢谢作者。" target="_blank" rel="noopener">https://github.com/ele828/react-native-guide；https://github.com/vczero/react-native-lesson大爱第二个，宇宙无敌超级详细；谢谢作者。</a><br>接下来说几点我觉得我踩得坑：<br>1、react-native的Exmaple里面的运行不了，他的URL错了，用下面的注释掉的那个，多试几次就可以了。<br>2：忍住性子把第二个大神给的demo全部写几遍，，当然，我现在才写到第二个，共勉励之啦。<br>3、不要用atom，特别不要用atom的那个FaceBook的那个插件，卡成娘了。我现在用sublime，老是弹出来让我去purchase，特么没钱。他喵的。<br>4、sublime没有提示，去这个网址<a href="https://packagecontrol.io/installation#st2，官网里下package" target="_blank" rel="noopener">https://packagecontrol.io/installation#st2，官网里下package</a> control</p>
-<p>安装插件：<br>使用Package Control组件安装,先安装此组件<br>按Ctrl+`调出console，粘贴以下代码到底部命令行并回车：<br>import urllib.request,os,hashlib; h = ‘eb2297e1a458f27d836c04bb0cbaf282’ +<br>‘d0e7a3098092775ccb37ca9d6b2e4b7d’; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path();<br>urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( ‘<a href="http://packagecontrol.io/&#39;" target="_blank" rel="noopener">http://packagecontrol.io/&#39;</a> + pf.replace(‘ ‘, ‘ ‘)).read(); dh =<br>hashlib.sha256(by).hexdigest(); print(‘Error validating download (got %s instead of %s), please try manual install’ % (dh, h)) if dh != h else open(os.path.join( ipp, pf), ‘wb’ ).write(by)<br>重启Sublime Text 3，如果在Perferences-&gt;package settings中看到package control这一项，则安装成功。<br>用Package Control安装插件的方法<br>按下Ctrl+Shift+P调出命令面板，输入install 调出 Install Package 选项并回车，然后在列表中选中要安装的插件。</p>
-<p>5、重点说下，snippet是代码片段，就是提示你用的，一步一步试试。不要放弃，走多了的，我相信花时间投资React-native肯定会有回报的。未来肯定很明亮。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-iOSpop返回手势向右滑动" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/iOSpop返回手势向右滑动/">iOSpop返回手势向右滑动</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/iOSpop返回手势向右滑动/" class="article-date">
-	  <time datetime="2017-01-08T14:27:00.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>根据这篇文章<a href="http://www.jianshu.com/p/349636eb3fca" target="_blank" rel="noopener">http://www.jianshu.com/p/349636eb3fca</a> 这是一篇简书的技术文章和一篇优化的文章：<a href="http://blog.csdn.net/chenyong05314/article/details/40344763。" target="_blank" rel="noopener">http://blog.csdn.net/chenyong05314/article/details/40344763。</a><br>读懂几个信息：</p>
-<ol>
-<li>如果你重新定义返回按钮，这个按钮变为自定义的leftBarButtonItem的时候，iOS7之后的pop手势交互就失效。</li>
-<li>如果需要重新启用，你可以用自定义的导航栏，更改两个东西或者新添几个地方：<br>1）：<code>@interface CBNavigationController : UINavigationController &lt;UINavigationControllerDelegate,
-UIGestureRecognizerDelegate&gt;</code><br>在类别中声明需要接收两个协议<br>2）：<br>`-(void)viewDidLoad<br>{<br> __weak CBNavigationController *weakSelf = self;<br> if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)])<br> {<pre><code>self.interactivePopGestureRecognizer.delegate = weakSelf;
-self.delegate = weakSelf;
-</code></pre> }<br>}<code>然后还有两个协议：
-3）：</code>-(void)pushViewController:(UIViewController <em>)viewController animated:(BOOL)animated{<br> if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {<br> self.interactivePopGestureRecognizer.enabled = NO;<br> }<br> [super pushViewController:viewController animated:animated];<br>}<code></code>-(void)navigationController:(UINavigationController </em>)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{<br> if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {<pre><code>if ([navigationController.viewControllers count]==1) {
-    navigationController.interactivePopGestureRecognizer.enabled = NO;
-}else{
-    navigationController.interactivePopGestureRecognizer.enabled = YES;
-}
-</code></pre> }<br>}`<br>这样你就可以愉快的使用返回手势啦</li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -775,6 +776,30 @@ self.delegate = weakSelf;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a></h6>
+              <span>March 20, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-12lesson/">2020-3-12lesson</a></h6>
+              <span>March 20, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/03/11/2020-3-11lesson/">2020-3-11lesson</a></h6>
               <span>March 11, 2020</span>
             </div>
@@ -817,30 +842,6 @@ self.delegate = weakSelf;
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/12/26/2019-12-26lesson/">2019-12-26lesson.md</a></h6>
-              <span>December 26, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/09/13/2019-6-10lesson/">2019-6-10lesson</a></h6>
-              <span>September 13, 2019</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -853,7 +854,7 @@ self.delegate = weakSelf;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年-小说/">2020过年 小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme-v2ray-nginx/">acme v2ray nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年-小说/">2020过年 小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750-hackintoshell/">GTX750 hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme-v2ray-nginx/">acme v2ray nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -863,7 +864,7 @@ self.delegate = weakSelf;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年-小说/" style="font-size: 10px;">2020过年 小说</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme-v2ray-nginx/" style="font-size: 10px;">acme v2ray nginx</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a>
+      <a href="/tags/2020过年-小说/" style="font-size: 10px;">2020过年 小说</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750-hackintoshell/" style="font-size: 10px;">GTX750 hackintoshell</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme-v2ray-nginx/" style="font-size: 10px;">acme v2ray nginx</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a>
     </div>
   </div>
 
@@ -873,7 +874,7 @@ self.delegate = weakSelf;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
