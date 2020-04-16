@@ -165,6 +165,123 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-MleaksFinder手动导入framework" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/MleaksFinder手动导入framework/">MleaksFinder手动导入framework</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/MleaksFinder手动导入framework/" class="article-date">
+	  <time datetime="2017-01-09T01:23:27.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-09-19 18:24:20)<br>由于前段时间cocoapods有个issue，导致我的第三方工程都得手动导入，今天抽出时间把MleaksFinder这款很好的监测内存泄漏的工具用手动导入方式写出来。</p>
+<ul>
+<li><p>先去下两个zip：</p>
+<ul>
+<li><a href="https://github.com/Zepo/MLeaksFinder" target="_blank" rel="noopener">https://github.com/Zepo/MLeaksFinder</a></li>
+<li><a href="https://github.com/facebook/FBRetainCycleDetector" target="_blank" rel="noopener">https://github.com/facebook/FBRetainCycleDetector</a></li>
+</ul>
+</li>
+<li><p>直接将</p>
+<ul>
+<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74Yms7wiQd8&amp;690" alt="导入工程，记得点选1、2、4选项" title="导入工程，记得点选1、2、4选项"></li>
+<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74YmyHZy038&amp;690" alt="导入工程，记得点选1、2、4选项" title="导入工程，记得点选1、2、4选项"></li>
+</ul>
+</li>
+<li>将下载下来的FBRetainCycleDetector-master直接复制到根目录文件<ul>
+<li><img src="http://s3.sinaimg.cn/mw690/003479W3zy74YmO5Xpg42&amp;690" alt="将下载下来的FBRetainCycleDetector-master直接复制到根目录文件" title="将下载下来的FBRetainCycleDetector-master直接复制到根目录文件"></li>
+</ul>
+</li>
+<li>如图操作：<ul>
+<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74YoNFBAk28&amp;690" alt="第四步如图操作"></li>
+<li>同时将FBRetainCycleDetector.xcodeproj-》Targets-》Deployment Info的Deployment Target 改为手机适用的，不然会运行起来说target版本不对</li>
+</ul>
+</li>
+<li>加入framework<ul>
+<li><img src="http://s1.sinaimg.cn/mw690/003479W3zy74YnTj7gI20&amp;690" alt="加入framework"></li>
+</ul>
+</li>
+<li><em>至此，不需要添加代码，你就可以使用啦。我先记录，慢慢来开发他的使用啦</em></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-RN了SecRandomCopyBytes-ignoring-return-value" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/">RN了SecRandomCopyBytes_ignoring_return_value</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/" class="article-date">
+	  <time datetime="2017-01-09T01:19:16.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-09-19 10:16:43)</p>
+<p>大早上的起来，在XCode8，iOS10环境中，就看见RN编译不起来，报SecRandomCopyBytes ignoring return value这样的错。在RCTWebSocket 的SecRandomCopyBytes函数编译不过去，有3种方法，自行实测一种，很方便的一种（1）<br>1：<a href="https://github.com/facebook/react-native/issues/8584中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8584中</a><br><img src="http://s3.sinaimg.cn/mw690/003479W3zy74Zv5sPiG22&amp;690" alt="图片1"><br>双击Library里面的RCTWebSocket进入上图界面，将“3”中的两个删除即可<br>2、3：<a href="https://github.com/facebook/react-native/issues/8108中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8108中</a><br>mskalra所述和antoor所述，针对不同问题的解决方案</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-展示大图出现卡顿" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -552,96 +669,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-collectionView的minimumLineSpacing内部空隙默认不为空" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/collectionView的minimumLineSpacing内部空隙默认不为空/">collectionView的minimumLineSpacing内部空隙默认不为空</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/collectionView的minimumLineSpacing内部空隙默认不为空/" class="article-date">
-	  <time datetime="2017-01-08T14:56:05.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-06-06 17:29:45)</p>
-<p>我这里有个需求，用了collectionView做，中间是没有空隙的，但是实际上，没有设置minimumLineSpacing的时候，老是有空隙，后台我直接设置collectionView.minimumLineSpacing = 0的时候才完成。把坑位留下，下次不犯了，哈哈</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-xcode一直不会更新的新下载的证书" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/xcode一直不会更新的新下载的证书/">xcode一直不会更新的新下载的证书</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/xcode一直不会更新的新下载的证书/" class="article-date">
-	  <time datetime="2017-01-08T14:54:30.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-06-02 10:12:04)</p>
-<p>个人觉得这个是帮了个大忙，xcode一直不会更新的新下载的证书，好烦，很久以前就一直有的问题。明明我刚下好的certificate，就是不出现，说没有这个。我说下我的步骤：1，在project，是的，如果你用workspace，还是要右键project“显示包文件”；2，找到图中所说的project.pbxproj文件，编辑器打开；3：将所有“PROVISIONING_PROFILE”的一整行删除，不放心的话，你可以提前先拷贝一份你的绿色的project文件，安全是吧。然后重开xcode，这简直帮了我大忙。<br><img src="http://s10.sinaimg.cn/mw690/003479W3gy729X8HJfX99&amp;690" alt="图片1"></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -770,6 +797,30 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a></h6>
+              <span>April 16, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a></h6>
+              <span>April 16, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a></h6>
               <span>March 20, 2020</span>
             </div>
@@ -812,30 +863,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/02/2020-3-2lesson/">2020-3-2lesson</a></h6>
-              <span>March 2, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/01/03/2020-1-3lesson/">2020-1-2lesson</a></h6>
-              <span>January 3, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -868,7 +895,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

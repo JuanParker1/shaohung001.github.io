@@ -13,28 +13,27 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>2020-3-20lesson | aKer</title>
+  <title>2020-4-13lesson | aKer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="goland mod 爆红">
   
   
     <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
   
   
   
-  <meta name="description" content="gorm 参考使用https://segmentfault.com/a/1190000013216540 启动mysql docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7 如果Sequel Pro 连接报错Authentication plugin &amp;#39;caching_sha2_passw">
-<meta name="keywords" content="goland mod 爆红">
+  <meta name="description" content="vue cli 3.0package.json 中的script:dev 命令: vue-cli-service serve 其实类似于npx vue-cli-service serve === node ./node_modules/.bin/vue-cli-service serve unzip.exe 在某一客户机报错程序里使用到zip.exe unzip.exe bin 程序，正常使用很久">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020-3-20lesson">
-<meta property="og:url" content="https://shaohung001.github.io/2020/03/20/2020-3-20lesson/index.html">
+<meta property="og:title" content="2020-4-13lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2020/04/16/2020-4-13lesson/index.html">
 <meta property="og:site_name" content="aKer">
-<meta property="og:description" content="gorm 参考使用https://segmentfault.com/a/1190000013216540 启动mysql docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7 如果Sequel Pro 连接报错Authentication plugin &amp;#39;caching_sha2_passw">
+<meta property="og:description" content="vue cli 3.0package.json 中的script:dev 命令: vue-cli-service serve 其实类似于npx vue-cli-service serve === node ./node_modules/.bin/vue-cli-service serve unzip.exe 在某一客户机报错程序里使用到zip.exe unzip.exe bin 程序，正常使用很久">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-23T03:37:01.571Z">
+<meta property="og:image" content="https://shaohung001.github.io/css/images/unzipexeerror.jpg">
+<meta property="og:updated_time" content="2020-04-16T12:42:08.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020-3-20lesson">
-<meta name="twitter:description" content="gorm 参考使用https://segmentfault.com/a/1190000013216540 启动mysql docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7 如果Sequel Pro 连接报错Authentication plugin &amp;#39;caching_sha2_passw">
+<meta name="twitter:title" content="2020-4-13lesson">
+<meta name="twitter:description" content="vue cli 3.0package.json 中的script:dev 命令: vue-cli-service serve 其实类似于npx vue-cli-service serve === node ./node_modules/.bin/vue-cli-service serve unzip.exe 在某一客户机报错程序里使用到zip.exe unzip.exe bin 程序，正常使用很久">
+<meta name="twitter:image" content="https://shaohung001.github.io/css/images/unzipexeerror.jpg">
   
     <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
   
@@ -170,7 +169,7 @@ var themeMenus = {};
 
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-2020-3-20lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-2020-4-13lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -178,7 +177,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      2020-3-20lesson
+      2020-4-13lesson
     </h1>
   
 
@@ -186,8 +185,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2020/03/20/2020-3-20lesson/" class="article-date">
-	  <time datetime="2020-03-20T07:00:34.000Z" itemprop="datePublished">March 20, 2020</time>
+	Posted on <a href="/2020/04/16/2020-4-13lesson/" class="article-date">
+	  <time datetime="2020-04-16T12:37:06.000Z" itemprop="datePublished">April 16, 2020</time>
 	</a>
 
       
@@ -198,38 +197,22 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="gorm-参考使用"><a href="#gorm-参考使用" class="headerlink" title="gorm 参考使用"></a>gorm 参考使用</h3><p><a href="https://segmentfault.com/a/1190000013216540" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013216540</a></p>
-<p>启动mysql</p>
-<p><code>docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7</code></p>
-<p>如果Sequel Pro 连接报错<code>Authentication plugin &#39;caching_sha2_password&#39; cannot be loaded: dlopen(/usr/local/lib/plugin/caching_sha2_password.so, 2): image not found</code>, 则</p>
-<p><code>docker exec -it mysql bash</code></p>
-<p><code>$mysql -uroot -p</code></p>
-<p><code>$ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;</code></p>
-<h3 id="goland-无法解析go-mod-的包"><a href="#goland-无法解析go-mod-的包" class="headerlink" title="goland 无法解析go.mod 的包"></a>goland 无法解析go.mod 的包</h3><p>开始建立一个go 项目， 使用go mod。一直都是OK的。然而在另一个机子导入、或者本机挪了个位置，就出现goland 无法识别第三方包的情况。</p>
-<p>当前goland 第三方包或者go mod init xxx，使用 xxx/config 之类的也都全部无法识别。</p>
-<p>找了半天看到<a href="https://learnku.com/go/t/35849" target="_blank" rel="noopener">帖子</a>中跟我描述一致，最后一个回复中，给出另一个链接<a href="https://segmentfault.com/q/1010000020603338/" target="_blank" rel="noopener">segmentfault</a><br>提到、而且截图和我情况一致。</p>
-<p>下面回复点醒了我:</p>
-<blockquote>
-<p>如果是导入已有项目，记得启用下 Go Module，进入 Preference -&gt; Go -&gt; Go Modules，启用下就好。</p>
-</blockquote>
-<p>也就是说，导入、或者挪了位置，要启用。</p>
-<p>可是当前我的已经启用了呀Go - Go Modules(vgo) - Enable Go Modules (vgo)integration</p>
-<p>这个checkbox 本来就是加载的。</p>
-<p>此时我关闭他，然后apply; 再然后checkbox 打开他，再apply，这时就全部正常了。</p>
-<blockquote>
-<p>家里的mac 又出现这种情况。解决方法是:</p>
-<p>删除本地的.idea 文件夹; File-invalidate caches and restart; 然后重启电脑; 然后vgo 关闭再打开;</p>
-<p>基本OK了吧。记得查看下GOPATH 设置</p>
-</blockquote>
+        <h1 id="vue-cli-3-0"><a href="#vue-cli-3-0" class="headerlink" title="vue cli 3.0"></a>vue cli 3.0</h1><p>package.json 中的script:dev 命令: vue-cli-service serve 其实类似于<code>npx vue-cli-service serve</code> === <code>node ./node_modules/.bin/vue-cli-service serve</code></p>
+<h1 id="unzip-exe-在某一客户机报错"><a href="#unzip-exe-在某一客户机报错" class="headerlink" title="unzip.exe 在某一客户机报错"></a>unzip.exe 在某一客户机报错</h1><p>程序里使用到zip.exe unzip.exe bin 程序，正常使用很久了。</p>
+<p>然而今天出现<code>Archive: xxx error: zipfile probably corrupt (segmentation violation)</code></p>
+<p>关于windows 使用unzip.exe bin 程序，当前版本: UnZip 5.52 of 28 February 2005, by Info-ZIP.  Maintained by C. Spieler.</p>
+<p>从搜索列表中, 发现很多都指向网址: <a href="ftp://ftp.info-zip.org/pub/infozip/win32/" target="_blank" rel="noopener">ftp://ftp.info-zip.org/pub/infozip/win32/</a></p>
+<p>从里面可以直接下到5.52 bin 执行文件(其和当前程序使用版本相同，于是继续找).</p>
+<p>继续找到下载: <a href="https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe" target="_blank" rel="noopener">https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe</a> 下载下来是个安装程序。</p>
+<p>安装到windows 上后，找到:</p>
+<p><img src="/css/images/unzipexeerror.jpg" alt="/bin/unzip.exe"></p>
+<p>直接替换，当前确实解决该问题。</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a></li></ul>
-
       
         <div id="donation_div"></div>
 
@@ -279,19 +262,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2020/04/16/2020-4-13lesson/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/16/2020-4-16lesson/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          2020-4-13lesson
+          2020-4-16lesson
         
       </div>
     </a>
   
   
-    <a href="/2020/03/20/2020-3-12lesson/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/03/20/2020-3-20lesson/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2020-3-12lesson</div>
+      <div class="article-nav-title">2020-3-20lesson</div>
     </a>
   
 </nav>
@@ -305,7 +288,7 @@ var a = new Donate({
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gorm-参考使用"><span class="nav-number">1.</span> <span class="nav-text">gorm 参考使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goland-无法解析go-mod-的包"><span class="nav-number">2.</span> <span class="nav-text">goland 无法解析go.mod 的包</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-cli-3-0"><span class="nav-number">1.</span> <span class="nav-text">vue cli 3.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unzip-exe-在某一客户机报错"><span class="nav-number">2.</span> <span class="nav-text">unzip.exe 在某一客户机报错</span></a></li></ol>
     
     </div>
   </aside>

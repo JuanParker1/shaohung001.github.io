@@ -165,6 +165,122 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2017-2-14lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/14/2017-2-14lesson/">2017/2/14lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/14/2017-2-14lesson/" class="article-date">
+	  <time datetime="2017-02-14T07:20:34.000Z" itemprop="datePublished">February 14, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这几天正好离职，离职对于我来说更大的是机遇，更好的确定自己的方向。<br>以前的知识都是积累，就如学校里面学习，你要学线代、微积分、几何、数据结构等等，你还要有专项的如Visual-C、汇编、jave等等工作中可能会用到的语种。但是最后你要确定好自己的方向。<br>你不可能什么都学会，不同的人创建的语法都有自己的特点，什么都学，什么都是皮毛，这是我的观点，没办法，中国人，除了工作，你还要生活啊。。。<br>找工作对我来说，最大的挑战就是-&gt;<code>晕车挑战</code>，有几回头确实很晕，但都还能忍。<br>离职能让你重新审视这个行业,同时去面试的偏重自己的热爱方向，面试的时候比如今天碰到比我厉害，走的比我远的大哥，我不多问几个问题，我不就白去了。所以也可以刚好审视自己以前的研究成果的熟悉度和错误地方。<br>先说前两天去面试的一家：<br>某个资产行业公司，他想做一个类<code>K线PK</code>的即时对战app，团队还没有组件。我这里给他主推一些方案。你需要即时对战，那么对信息的更改，便需要很高，于是推荐<code>Parse</code>服务器、<code>Firebase</code>、<code>自己花钱雇人搭建服务器</code>.K线原型的话，UIKit也能实现，我这方面可以私下花个时间学习写一个，毕竟没搞过，私下自己搞搞也是有点意思。之后可能我自己就会去实现一个可以对战的小游戏，个人兴趣爱好，决心继续发展就不能浪费时间。<br>这个老板比较对生意上在意，我去的时候问的一直都是觉得以前的工作做到位，却前景不看好，我觉得这个大哥估计数学方面或者金融方面浸淫很深，我缺少的就是这方面知识和操作。我从小就没被往这方面培养，肯定不行，算了，人各有道，有机会再说往上爬的事，哈哈。</p>
+<hr>
+<p>昨天去面试的一家是一个做共享自行车🚲类的，一样，和前两天的要做1个小时车过去，我小脑袋晕车晕呀晕呀，摇呀摇呀，回来的时候都是浑浑噩噩的。<br>去到那里，里面感觉还有一点点油漆未干那种味道，办公地点很大，人10来个。反正我来就是来玩的，我哪可能干这行。<br>跟里面大哥聊了会，说了我能带来什么技术，我知道他做后台，我说的很多他也都不懂，他说的一些跟蓝牙某些技术，我1年前搞过BlueTooth这块的peerTalk，继续研究也没啥，看看资料一个个攻克也有可能搞得好，但是现在<strong>ofo</strong>、<strong>摩拜</strong>、<strong>小鸣</strong>等占据了很大市场，算了，我直接说<code>我可能不太适合，我对音视频这块比较热衷，浪费您的时间，打扰了</code>，双方都很客气，知道都不适合，只能算打扰。</p>
+<hr>
+<p>今天去面试的一家叫初生科技的一家公司，他的产品<code>热拉</code>在春节的时候跻身免费榜前十，做的是挺不错的。我有点心动，心动的不是其除去功能的其他原因。我想更了解音视频这块，他们是做的比较好的了。首先我先自我介绍，这东西说来说去就说到我们最近做的<code>呱拍</code>APP，里面使用的技术点、里面负责模块等。<br>大哥对细节比较在意，细节是能体现很多方面的能力。我觉得做东西，就要把他当情人，每天都是热爱，每天都是把情人打扮的更美。<br>这里我们沟通了很多，我记录几天我以前做APP的时候想到不敢确定的一些事情。</p>
+<ul>
+<li>我查阅一些资料，觉得我多个页面都是用到了GPUImage，也就是说context对很多页面都有一些buffer没有清除，他的建议的是在关键页面使用GPUImage，我的拍摄页面需要改掉，单纯给需要添加filter或者MV页面使用GPUImage。</li>
+<li>MV效果中，他的一个说法让我解开MV的真正面纱，使用playItem，先让movieFile process，然后在相应时间play或者seekToTime，跟我想的一模一样。</li>
+<li>关于切换滤镜可能会卡顿，这点和我想的一样，不是那些问题，估计是其他一些什么东西的原因吧，切换某一些filter的时候会有那么点卡顿。</li>
+<li>效果滤镜里边，他说其中有一些可以实现比如detect事件，这个我知道有，不太会用；有一些是效果滤镜，比如画面移动、波纹滤镜等，这个我当时还真没找到。这个就是我比较差的一个地方了，网上资料甚少啊，我当时也没时间处理，光找demo就能花去很多时间。</li>
+<li>关于询问音频打包问题，最终我的操作原来是对的，他们的操作是GPUImage 处理出来视频，然后使用AVFoundation再处理出来视频。没办法，视频、音频只能两个地方分别打包，毕竟GPUImage干的事就是处理AVMediaType的事情。</li>
+<li>我也提出一些观点，在处理每一帧出来的framebuffer中，可以使用CIDetector或者OpenCV的观测点。OpenCV确实没接触，我需要去搞搞的事情啊。</li>
+<li>在学习方向，他给的说3个建议</li>
+</ul>
+<ul>
+<li>第一，demo使用到场景中。这个当然了，硬着头皮上！！！</li>
+<li>第二，做压力测试。比如他提到聊天方面，在一万条数据面前，保存和未保存，读写保护等的情况。我之前没这么做过，这个倒是我真正要学习的，这个或许是我要进入的下一个阶段。其实就是某些场景，耐不耐用的体现。不再是小打小闹啦</li>
+<li>第三，将做出来的东西在github开源，接受大家的考验。这点我赞同，，，，，，一半，哈哈，，，这个是在第二个建议之后的事啦。我现在也有将写出来的项目拿出来，不过都是我的一些测试类的，等到第二个建议实现，才会到达第三个层面吧</li>
+</ul>
+<hr>
+<p>总的来说，离职是件好事，趁着这个时间，好好沉淀，好好实现之前一直想自己做的东西，努力花时间，不要再颓废，每天定时定量完成！！！</p>
+<hr>
+<p>因为离职，有些东西要去规划，要学的可能更知道哪个方向，这里确定好最近要学的东西吧。</p>
+<ul>
+<li>APP中，使用IGListKit进行归类Setting_Module</li>
+<li>使用FxForms填写个人信息表单。</li>
+<li>LiveQuary</li>
+<li>在ASTextNode使用NSAttachment</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2017-2-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/13/2017-2-13lesson/">2017/2/13lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/13/2017-2-13lesson/" class="article-date">
+	  <time datetime="2017-02-13T08:58:42.000Z" itemprop="datePublished">February 13, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>练习了一个UI试图，嘿嘿，挺好玩的。<a href="http://www.jianshu.com/p/a7f5cab17395" target="_blank" rel="noopener">http://www.jianshu.com/p/a7f5cab17395</a><br>大概长这样<img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/03/runfinal.gif" alt><br>有兴趣的可以去试试，有时间我看能不能改成代码形式，嘿嘿。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2017-2-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -605,102 +721,6 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
     
 
   
-    <article id="post-读文章微信导航栏实现写了demo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/23/读文章微信导航栏实现写了demo/">读文章微信导航栏实现写了demo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/23/读文章微信导航栏实现写了demo/" class="article-date">
-	  <time datetime="2017-01-23T08:39:50.000Z" itemprop="datePublished">January 23, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看了这位大哥<a href="http://www.jobbole.com/members/3170539585/的文章，关于微信导航栏的实现。" target="_blank" rel="noopener">http://www.jobbole.com/members/3170539585/的文章，关于微信导航栏的实现。</a><br>由于他没有给出代码实现，当时我没有设置barstyle，导致不好看，哈哈。<br>这里给出完整代码<br>`#import “SHNavigationVC.h”</p>
-<p>#import “UIColor+expanded.h”<br>@interface SHNavigationVC ()<br>@property (nonatomic, strong) UIView *blurBackView;<br>@end<br>@implementation SHNavigationVC</p>
-<ul>
-<li>(void)viewDidLoad {<br>[super viewDidLoad];<br>// Do any additional setup after loading the view.<br>UINavigationBar <em>navBar = self.navigationBar;<br>[navBar insertSubview:self.blurBackView atIndex:0];<br>}<br>-(UIView </em>)blurBackView{<br>if (!_blurBackView) {<br>_blurBackView = [UIView new];<br>_blurBackView.frame = CGRectMake(0, -20, KScreenSize.width, 64);<br>CAGradientLayer *gradientLayer = [[CAGradientLayer alloc]init];<br>gradientLayer.frame = CGRectMake(0, 0, KScreenSize.width, 64);<br>gradientLayer.colors = @[(<strong>bridge id)[UIColor colorWithHexString:@”0x040012” andAlpha:0.76].CGColor,(</strong>bridge id)[UIColor colorWithHexString:@”0x040012” andAlpha:0.28].CGColor];<br>gradientLayer.startPoint = CGPointMake(0, 0);<br>gradientLayer.endPoint = CGPointMake(0, 1.0);<br>[_blurBackView.layer addSublayer:gradientLayer];<br>_blurBackView.userInteractionEnabled = NO;<br>_blurBackView.alpha = 0.5;<br>}<br>return _blurBackView;<br>}`</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-动画显示和隐藏Tabbar和NaviBar" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/19/动画显示和隐藏Tabbar和NaviBar/">动画显示和隐藏Tabbar和NaviBar</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/19/动画显示和隐藏Tabbar和NaviBar/" class="article-date">
-	  <time datetime="2017-01-19T06:55:07.000Z" itemprop="datePublished">January 19, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>‘//隐藏标签栏</p>
-<ul>
-<li>(void)hiddenTheTabBar<br>{<br>if (![[NSUserDefaults standardUserDefaults] boolForKey:@”isHiddenTabBar”]) {<br>for (UIView *v in [self.view subviews]) {<br>if ([v isKindOfClass:[UITabBar class]]) {<br>[UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.origin.y += 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>} else {<br>[UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.size.height += 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>}<br>}<br>[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@”isHiddenTabBar”];<br>}<br>}<br>//显示标签栏</li>
-<li>(void)showTheTabBar<br>{<br>if ([[NSUserDefaults standardUserDefaults] boolForKey:@”isHiddenTabBar”]) {<br>for (UIView *v in [self.view subviews]) {<br>if ([v isKindOfClass:[UITabBar class]]) {<br>[UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.origin.y -= 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>} else {<br>[UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.size.height -= 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>}<br>}<br>[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@”isHiddenTabBar”];<br>}<br>}<br>‘<br>思路就是这样，别人那边看到的，就是找出来，然后拿着这玩意做动效，存着吧</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -829,6 +849,30 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a></h6>
+              <span>April 16, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a></h6>
+              <span>April 16, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a></h6>
               <span>March 20, 2020</span>
             </div>
@@ -871,30 +915,6 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/02/2020-3-2lesson/">2020-3-2lesson</a></h6>
-              <span>March 2, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/01/03/2020-1-3lesson/">2020-1-2lesson</a></h6>
-              <span>January 3, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -927,7 +947,7 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

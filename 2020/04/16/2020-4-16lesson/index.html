@@ -13,28 +13,25 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>2020-3-20lesson | aKer</title>
+  <title>2020-4-16lesson | aKer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="goland mod 爆红">
   
   
     <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
   
   
   
-  <meta name="description" content="gorm 参考使用https://segmentfault.com/a/1190000013216540 启动mysql docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7 如果Sequel Pro 连接报错Authentication plugin &amp;#39;caching_sha2_passw">
-<meta name="keywords" content="goland mod 爆红">
+  <meta name="description" content="It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes. I dreamed of age grow up , and I worried about that ! I never ever">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020-3-20lesson">
-<meta property="og:url" content="https://shaohung001.github.io/2020/03/20/2020-3-20lesson/index.html">
+<meta property="og:title" content="2020-4-16lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2020/04/16/2020-4-16lesson/index.html">
 <meta property="og:site_name" content="aKer">
-<meta property="og:description" content="gorm 参考使用https://segmentfault.com/a/1190000013216540 启动mysql docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7 如果Sequel Pro 连接报错Authentication plugin &amp;#39;caching_sha2_passw">
+<meta property="og:description" content="It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes. I dreamed of age grow up , and I worried about that ! I never ever">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-23T03:37:01.571Z">
+<meta property="og:updated_time" content="2020-04-16T12:42:20.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020-3-20lesson">
-<meta name="twitter:description" content="gorm 参考使用https://segmentfault.com/a/1190000013216540 启动mysql docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7 如果Sequel Pro 连接报错Authentication plugin &amp;#39;caching_sha2_passw">
+<meta name="twitter:title" content="2020-4-16lesson">
+<meta name="twitter:description" content="It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes. I dreamed of age grow up , and I worried about that ! I never ever">
   
     <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
   
@@ -170,7 +167,7 @@ var themeMenus = {};
 
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-2020-3-20lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-2020-4-16lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -178,7 +175,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      2020-3-20lesson
+      2020-4-16lesson
     </h1>
   
 
@@ -186,8 +183,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2020/03/20/2020-3-20lesson/" class="article-date">
-	  <time datetime="2020-03-20T07:00:34.000Z" itemprop="datePublished">March 20, 2020</time>
+	Posted on <a href="/2020/04/16/2020-4-16lesson/" class="article-date">
+	  <time datetime="2020-04-16T12:38:16.000Z" itemprop="datePublished">April 16, 2020</time>
 	</a>
 
       
@@ -198,38 +195,31 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="gorm-参考使用"><a href="#gorm-参考使用" class="headerlink" title="gorm 参考使用"></a>gorm 参考使用</h3><p><a href="https://segmentfault.com/a/1190000013216540" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013216540</a></p>
-<p>启动mysql</p>
-<p><code>docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7</code></p>
-<p>如果Sequel Pro 连接报错<code>Authentication plugin &#39;caching_sha2_password&#39; cannot be loaded: dlopen(/usr/local/lib/plugin/caching_sha2_password.so, 2): image not found</code>, 则</p>
-<p><code>docker exec -it mysql bash</code></p>
-<p><code>$mysql -uroot -p</code></p>
-<p><code>$ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;</code></p>
-<h3 id="goland-无法解析go-mod-的包"><a href="#goland-无法解析go-mod-的包" class="headerlink" title="goland 无法解析go.mod 的包"></a>goland 无法解析go.mod 的包</h3><p>开始建立一个go 项目， 使用go mod。一直都是OK的。然而在另一个机子导入、或者本机挪了个位置，就出现goland 无法识别第三方包的情况。</p>
-<p>当前goland 第三方包或者go mod init xxx，使用 xxx/config 之类的也都全部无法识别。</p>
-<p>找了半天看到<a href="https://learnku.com/go/t/35849" target="_blank" rel="noopener">帖子</a>中跟我描述一致，最后一个回复中，给出另一个链接<a href="https://segmentfault.com/q/1010000020603338/" target="_blank" rel="noopener">segmentfault</a><br>提到、而且截图和我情况一致。</p>
-<p>下面回复点醒了我:</p>
-<blockquote>
-<p>如果是导入已有项目，记得启用下 Go Module，进入 Preference -&gt; Go -&gt; Go Modules，启用下就好。</p>
-</blockquote>
-<p>也就是说，导入、或者挪了位置，要启用。</p>
-<p>可是当前我的已经启用了呀Go - Go Modules(vgo) - Enable Go Modules (vgo)integration</p>
-<p>这个checkbox 本来就是加载的。</p>
-<p>此时我关闭他，然后apply; 再然后checkbox 打开他，再apply，这时就全部正常了。</p>
-<blockquote>
-<p>家里的mac 又出现这种情况。解决方法是:</p>
-<p>删除本地的.idea 文件夹; File-invalidate caches and restart; 然后重启电脑; 然后vgo 关闭再打开;</p>
-<p>基本OK了吧。记得查看下GOPATH 设置</p>
-</blockquote>
+        <p>It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes.</p>
+<p>I dreamed of age grow up , and I worried about that !</p>
+<p>I never ever thinking about the troublesome before this period !</p>
+<p>Last five year, I fight for gain more power from technology , dreaming of arriving  to the top, money or any other comes to me.</p>
+<p>But, I didn’t had a rest last five year, nothing got but age and bit of knowledge of IT.</p>
+<p>It really  disappointed !</p>
+<p>I made a determination last  year , skills which  I  handled is much enough to made something I  ever determined to do.</p>
+<p>Last two months, I made out a website “阿黄小说”, reading novel site. Attending to try a test of earning money or even little acknowledge of setting up  a big site , but I lost my mind again.</p>
+<p>I made a discussion  with little shuai, I talked about my confuse of my career. Company didn’t raise salary since I entered last year.</p>
+<p>Am I not worth of raising by my work ? I had grow much more I had done . I continue of leaning deeply of my work , or I have a test to make some games ?</p>
+<p>I survey the game area no long ago, situation is serious recently , new come will very difficult to make effort .</p>
+<p>During discussion , I realized that the company I stay , I always treat myself a passenger . I join the car, car drive me some years distance , I get off when Company contract arrived.</p>
+<p>I never become a partner with any organization before . Am I make mistake ?</p>
+<p>I realized that I made a wrong plan all life before . Money I  lack of it , because  I will buy a house the close two year , but after that ? I employed by some one else again ? Not my career grow , but only stare at the salary I should get just now ?</p>
+<p>I made a determination of a more energy pay for myself career. Have a try to something different from before .</p>
+<p>Another plan is to have a plan of learning deep in my IT field , and if possible to examine some useful  certificates !!! It’s never too late to do your decision !</p>
+<p>When learning deep arrived some stage , I will have a try to make some games 😁…</p>
+<p>Finally , I remember  my fate again , I know where to go , and I will not confuse again .</p>
+<p>I am always young !!! My heart  will goes on !</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a></li></ul>
-
       
         <div id="donation_div"></div>
 
@@ -279,19 +269,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2020/04/16/2020-4-13lesson/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2020-4-13lesson
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/20/2020-3-12lesson/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/16/2020-4-13lesson/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2020-3-12lesson</div>
+      <div class="article-nav-title">2020-4-13lesson</div>
     </a>
   
 </nav>
@@ -305,7 +286,7 @@ var a = new Donate({
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gorm-参考使用"><span class="nav-number">1.</span> <span class="nav-text">gorm 参考使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goland-无法解析go-mod-的包"><span class="nav-number">2.</span> <span class="nav-text">goland 无法解析go.mod 的包</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>

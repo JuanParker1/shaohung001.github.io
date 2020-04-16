@@ -165,6 +165,133 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2018-12-1lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/01/2018-12-1lesson/">2018-12-1lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/01/2018-12-1lesson/" class="article-date">
+	  <time datetime="2018-12-01T08:03:10.000Z" itemprop="datePublished">December 1, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最近继续服务修行"><a href="#最近继续服务修行" class="headerlink" title="最近继续服务修行"></a>最近继续服务修行</h1><h2 id="打造docker-容器守护"><a href="#打造docker-容器守护" class="headerlink" title="打造docker 容器守护"></a>打造docker 容器守护</h2><p>采用docker-compose 多重容器聚合，一键配置。<br>一开始配置上出问题，mongodb连接不上。<br>当前成功配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">mongo:</span><br><span class="line">image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">volumes:</span><br><span class="line">- ./data:/data/db</span><br><span class="line">ports:</span><br><span class="line">- &quot;27017:27017&quot;</span><br><span class="line">redis:</span><br><span class="line">image: &quot;redis:alpine&quot;</span><br><span class="line">web:</span><br><span class="line">build: .</span><br><span class="line">image: nodejap</span><br><span class="line">command: npm run debug</span><br><span class="line">volumes:</span><br><span class="line">- ./dist:/server/dist</span><br><span class="line">ports:</span><br><span class="line">- &quot;3000:9527&quot;</span><br><span class="line">- &quot;9222:9222&quot;</span><br><span class="line">links:</span><br><span class="line">- mongo</span><br><span class="line">depends_on:</span><br><span class="line">- mongo</span><br></pre></td></tr></table></figure>
+<p>mongo先启动，然后到了web 启动的时候，配置启动采用<a href="https://github.com/docker/hub-feedback/issues/1255" target="_blank" rel="noopener">github issue</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">autoIndex: <span class="literal">true</span>,</span><br><span class="line">reconnectTries: <span class="number">30</span>,</span><br><span class="line">reconnectInterval: <span class="number">500</span>,</span><br><span class="line">poolSize: <span class="number">10</span>,</span><br><span class="line">bufferMaxEntries: <span class="number">0</span>,</span><br><span class="line">useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> connectWithRetry = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB connection with retry"</span>);</span><br><span class="line">mongoose.connect(db_url, options).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB is connected"</span>);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB connection unsuccessful, retry after 5 seconds."</span>);</span><br><span class="line">setTimeout(connectWithRetry, <span class="number">5000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
+<p>这时，每次启动最后一行就都是<code>web_1_9cf04d6b74a9 | MongoDB is connected</code></p>
+<p>接下来顺顺利利的写不久，遇到两个问题：</p>
+<p>首先得知Schema 有<code>_id</code> 和<code>id</code>区分。</p>
+<p><code>_id</code> 是为了分布式而取的对象，根据时间戳生成，当然就具有createdAt 的能力。</p>
+<p><code>id</code> 是字符串，唯一字符串。</p>
+<p>再者遇到unique 对象可以重复创建相同键：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/Automattic/mongoose/issues/7194</span><br><span class="line"></span><br><span class="line">mongoose.set(&quot;debug&quot;, true);</span><br><span class="line">mongoose.set(&apos;useNewUrlParser&apos;, true);</span><br><span class="line">mongoose.set(&apos;useFindAndModify&apos;, false);</span><br><span class="line">mongoose.set(&apos;useCreateIndex&apos;, true);</span><br></pre></td></tr></table></figure>
+<p>原因是mongodb 升级上来，这篇必看的，被我这半路出家的终于花了<em>周六</em>一天才解决掉。</p>
+<h2 id="使用vscode-配合docker-compose-yml-debug"><a href="#使用vscode-配合docker-compose-yml-debug" class="headerlink" title="使用vscode 配合docker-compose.yml debug"></a>使用vscode 配合docker-compose.yml debug</h2><p>参考这篇<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">vscode 官方原文</a></p>
+<p>使用起来太爽了。</p>
+<h2 id="再分享我的Dockerfile-的长相"><a href="#再分享我的Dockerfile-的长相" class="headerlink" title="再分享我的Dockerfile 的长相"></a>再分享我的Dockerfile 的长相</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM node:<span class="number">8.12</span><span class="number">.0</span>-alpine</span><br><span class="line"></span><br><span class="line">WORKDIR /server</span><br><span class="line"></span><br><span class="line">COPY . /server</span><br><span class="line">RUN npm install</span><br><span class="line"></span><br><span class="line">EXPOSE <span class="number">9527</span></span><br><span class="line">CMD [<span class="string">"yarn"</span>, <span class="string">"debug"</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2018-11-14lesson"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/11/14/2018-11-14lesson/">2018-11-14lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/11/14/2018-11-14lesson/" class="article-date">
+	  <time datetime="2018-11-14T13:52:44.000Z" itemprop="datePublished">November 14, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><p>create-react-app</p>
+<p>功能有：<br>···</p>
+<h2 id="axios-网络获取数据"><a href="#axios-网络获取数据" class="headerlink" title="axios 网络获取数据"></a>axios 网络获取数据</h2><h2 id="rem-手机距离适配，同时添加less-loader"><a href="#rem-手机距离适配，同时添加less-loader" class="headerlink" title="rem 手机距离适配，同时添加less-loader"></a>rem 手机距离适配，同时添加less-loader</h2><p>yarn add less less-loader<br>yarn add autoprefixer</p>
+<p>在/public/index.html <head><meta name="generator" content="Hexo 3.8.0"></head> 中间插入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;!<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params">a</span>)</span>&#123;<span class="keyword">if</span>(i[a])<span class="keyword">return</span> i[a].exports;<span class="keyword">var</span> n=i[a]=&#123;<span class="attr">exports</span>:&#123;&#125;,<span class="attr">id</span>:a,<span class="attr">loaded</span>:!<span class="number">1</span>&#125;;<span class="keyword">return</span> e[a].call(n.exports,n,n.exports,t),n.loaded=!<span class="number">0</span>,n.exports&#125;<span class="keyword">var</span> i=&#123;&#125;;<span class="keyword">return</span> t.m=e,t.c=i,t.p=<span class="string">""</span>,t(<span class="number">0</span>)&#125;([<span class="function"><span class="keyword">function</span>(<span class="params">e,t</span>)</span>&#123;<span class="string">"use strict"</span>;<span class="built_in">Object</span>.defineProperty(t,<span class="string">"__esModule"</span>,&#123;<span class="attr">value</span>:!<span class="number">0</span>&#125;);<span class="keyword">var</span> i=<span class="built_in">window</span>;t[<span class="string">"default"</span>]=i.flex=<span class="function"><span class="keyword">function</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a=e||<span class="number">100</span>,n=t||<span class="number">1</span>,r=i.document,o=navigator.userAgent,d=o.match(<span class="regexp">/Android[\S\s]+AppleWebkit\/(\d&#123;3&#125;)/i</span>),l=o.match(<span class="regexp">/U3\/((\d+|\.)&#123;5,&#125;)/i</span>),c=l&amp;&amp;<span class="built_in">parseInt</span>(l[<span class="number">1</span>].split(<span class="string">"."</span>).join(<span class="string">""</span>),<span class="number">10</span>)&gt;=<span class="number">80</span>,p=navigator.appVersion.match(<span class="regexp">/(iphone|ipad|ipod)/gi</span>),s=i.devicePixelRatio||<span class="number">1</span>;p||d&amp;&amp;d[<span class="number">1</span>]&gt;<span class="number">534</span>||c||(s=<span class="number">1</span>);<span class="keyword">var</span> u=<span class="number">1</span>/s,m=r.querySelector(<span class="string">'meta[name="viewport"]'</span>);m||(m=r.createElement(<span class="string">"meta"</span>),m.setAttribute(<span class="string">"name"</span>,<span class="string">"viewport"</span>),r.head.appendChild(m)),m.setAttribute(<span class="string">"content"</span>,<span class="string">"width=device-width,user-scalable=no,initial-scale="</span>+u+<span class="string">",maximum-scale="</span>+u+<span class="string">",minimum-scale="</span>+u),r.documentElement.style.fontSize=a/<span class="number">2</span>*s*n+<span class="string">"px"</span>&#125;,e.exports=t[<span class="string">"default"</span>]&#125;]);</span><br><span class="line">      flex(<span class="number">100</span>, <span class="number">1</span>);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后在/config/webpack.config.dev.js 增加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pxtorem = <span class="built_in">require</span>(<span class="string">'postcss-pxtorem'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [&#123;</span><br><span class="line">                oneOf: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        test: <span class="regexp">/\.(svg)$/i</span>,</span><br><span class="line">                        loader: <span class="string">'svg-sprite-loader'</span>,</span><br><span class="line">                        include: [</span><br><span class="line">                        <span class="built_in">require</span>.resolve(<span class="string">'antd-mobile'</span>).replace(<span class="regexp">/warn\.js$/</span>, <span class="string">''</span>), <span class="comment">// 1. svg files of antd-mobile</span></span><br><span class="line">                        path.resolve(__dirname, <span class="string">'../src/icons'</span>), <span class="comment">// folder of svg files in your project</span></span><br><span class="line">                        ]</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        test: <span class="regexp">/\.less$/</span>,</span><br><span class="line">                        use: [</span><br><span class="line">                        <span class="built_in">require</span>.resolve(<span class="string">'style-loader'</span>),</span><br><span class="line">                        <span class="built_in">require</span>.resolve(<span class="string">'css-loader'</span>),</span><br><span class="line">                        &#123;</span><br><span class="line">                            loader: <span class="built_in">require</span>.resolve(<span class="string">'postcss-loader'</span>),</span><br><span class="line">                            options: &#123;</span><br><span class="line">                            ident: <span class="string">'postcss'</span>, <span class="comment">// https://webpack.js.org/guides/migrating/#complex-options</span></span><br><span class="line">                            plugins: <span class="function"><span class="params">()</span> =&gt;</span> [</span><br><span class="line">                                autoprefixer(&#123;</span><br><span class="line">                                browsers: [<span class="string">'last 2 versions'</span>, <span class="string">'Firefox ESR'</span>, <span class="string">'&gt; 1%'</span>, <span class="string">'ie &gt;= 8'</span>, <span class="string">'iOS &gt;= 8'</span>, <span class="string">'Android &gt;= 4'</span>],</span><br><span class="line">                                &#125;),</span><br><span class="line">                                pxtorem(&#123; <span class="attr">rootValue</span>: <span class="number">100</span>, <span class="attr">propWhiteList</span>: [] &#125;)</span><br><span class="line">                            ],</span><br><span class="line">                            &#125;,</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            loader: <span class="built_in">require</span>.resolve(<span class="string">'less-loader'</span>),</span><br><span class="line">                            options: &#123;</span><br><span class="line">                            modifyVars: &#123; <span class="string">"@primary-color"</span>: <span class="string">"#1DA57A"</span> &#125;,</span><br><span class="line">                            &#125;,</span><br><span class="line">                        &#125;],</span><br><span class="line">                    &#125;]</span><br><span class="line">            &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="yarn-run-eject-和-antd加入"><a href="#yarn-run-eject-和-antd加入" class="headerlink" title="yarn run eject 和 antd加入"></a>yarn run eject 和 antd加入</h2><p>由于需要使用mobx 的”@” decorator 功能。yarn run eject 解开webpack 之后<br><code>yarn add babel-plugin-transform-decorators-legacy --dev</code>,<br>同时/package.json 加上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">"babel": &#123;</span><br><span class="line">    "plugins": [</span><br><span class="line">        "transform-decorators-legacy",</span><br><span class="line">        [</span><br><span class="line">            <span class="string">"import"</span>, &#123; <span class="attr">"libraryName"</span>: <span class="string">"antd-mobile"</span>, <span class="attr">"style"</span>: <span class="string">"css"</span>&#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时为了打包yarn build 项目路由能找到静态文件,在/package.json <code>&quot;homepage&quot;: &quot;.&quot;</code>. <strong>重要</strong></p>
+<h2 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/src</span><br><span class="line">    /axios</span><br><span class="line">    /components</span><br><span class="line">    /constants</span><br><span class="line">    /icons</span><br><span class="line">    /pages//各个页面的page</span><br><span class="line">    /router/index//路由中心</span><br><span class="line">    /routes//各级路由和总根路由</span><br><span class="line">    /store//各个store和index store</span><br><span class="line">    /utils</span><br><span class="line">    index.js</span><br><span class="line">    index.css</span><br><span class="line">package.json</span><br></pre></td></tr></table></figure>
+<h2 id="解决编译后某个bug"><a href="#解决编译后某个bug" class="headerlink" title="解决编译后某个bug"></a>解决编译后某个bug</h2><p>/public/index.html <head><meta name="generator" content="Hexo 3.8.0"></head> 中间加上:<br><code>&lt;script type=&quot;text/babel&quot; src=&quot;./lander.js&quot;&gt;&lt;/script&gt;</code></p>
+<h2 id="build"><a href="#build" class="headerlink" title="build"></a>build</h2><p>build 的语法同样很重要，否则出现Nginx 配置路由，启动build 后的项目变成阅览文件目录:<br><code>$ PUBLIC_URL=http://lsgood.top yarn build</code></p>
+<p>原由是/public/index.html 的link 写到：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"%PUBLIC_URL%/manifest.json"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">href</span>=<span class="string">"%PUBLIC_URL%/favicon.ico"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意PUBLIC_URL(当时不知道解决方案，花了三天，愁的都长痘痘了).</p>
+<h2 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        server_name www.lsgood.top lsgood.top;</span><br><span class="line"></span><br><span class="line">        root /var/www;</span><br><span class="line">        index index.html index.htm;      </span><br><span class="line">        # Any route that doesn&apos;t have a file extension (e.g. /devices)</span><br><span class="line">        location ~ ^/favicon\.ico$ &#123;</span><br><span class="line">            root /var/www;</span><br><span class="line">        &#125;</span><br><span class="line">        location / &#123;</span><br><span class="line">            try_files $uri $uri/ /index.html;</span><br><span class="line">            index index.html;</span><br><span class="line">            proxy_set_header   Host             $host;</span><br><span class="line">            proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_set_header   X-Forwarded-Proto  $scheme;</span><br><span class="line">        &#125;</span><br><span class="line">        location @fallback &#123;</span><br><span class="line">            rewrite ^.*$ /index.html break;</span><br><span class="line">        &#125;</span><br><span class="line">        location /girlS/ &#123;</span><br><span class="line">            proxy_pass http://127.0.0.1:8000/girl.v1/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /popcircle/ &#123;</span><br><span class="line">            root /root/Work/game/;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这样多个路由就能看到不同点了</p>
+<h2 id="Mobx-在上面的使用"><a href="#Mobx-在上面的使用" class="headerlink" title="Mobx 在上面的使用"></a>Mobx 在上面的使用</h2><p>/src/store/下存储着各个store 具体事务，index 是其中的集合体。</p>
+<p>/src/index.js 下导入“mobx-react” 的Provider，引入了所有的store。</p>
+<p>这样在使用时，如/store:topics.js, /pages:Default.js inject关联store:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@inject(<span class="function">(<span class="params">&#123;topics, status&#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">    data: topics.data</span><br><span class="line">&#125;))</span><br><span class="line">@observer <span class="class"><span class="keyword">class</span> <span class="title">DefaultClass</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    ...this.props.data<span class="comment">//就拿出来了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>store.js 里面一般会有4个方法:{ observable, action, useStrict }<br>action 的作用是，强制用户在该方法下更改被observable 的属性, 用法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@observable data;</span><br><span class="line">@action.bound updateData(val) &#123;</span><br><span class="line">    <span class="keyword">this</span>.data = val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时,action.bound 可以正确获得this 指针.</p>
+<p>最后export 这个单例对象:<code>export default new Store();</code>，放到/src/store/index.js 的<code>export default {store}</code>下,完成合并store，以便所有节点都可以inject.<br>···</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2018-11-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -963,168 +1090,6 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
     
 
   
-    <article id="post-2018-6-28lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/07/21/2018-6-28lesson/">2018/6/28lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/07/21/2018-6-28lesson/" class="article-date">
-	  <time datetime="2018-07-21T01:28:37.000Z" itemprop="datePublished">July 21, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-6-28"><a href="#2018-6-28" class="headerlink" title="2018/6/28"></a>2018/6/28</h3><p>记录一下这几天的事<br>之前从粉粉离职，原因有很多很多方面导致我在这大热天毅然决然的选择离开.</p>
-<ol>
-<li>工资从未提升，哪怕变动或者变少都行，表示公司有一定考核.<br>2.周末采取单双休，双休的时候感觉太幸福了；单休的时候，周日等于没有休息，等于连上12天班。饥饿策略。</li>
-<li>项目采用快速迭代策略，2周一版本，代码质量要管控、逻辑要管控、需求没有明确特别是需求不明确，做到一定才发现有些有冲突，或者有些和另外东西结合了，或者导致另外东西也要变动，然而时间也是被一并算进迭代版本里面。正如最后要走时，旭哥和我开玩笑的说‘在外面公司好点，因为他们不懂代码，粉粉技术懂，所以就会很紧，以后你就会舒服啦’。是的，他们懂代码他们也为我尽量宽松了些，但是细节可能在做到的时候才会碰到。</li>
-<li>公司感受不到我的存在位置，我就是个码农？这不是我想要的。</li>
-</ol>
-<p>进粉粉目的如同我刚上大学就知道自己绝不会考研一样：‘我是来学技术的’。学完如果公司还有我存在的意义，那么我会选择留下来，以上总总都没有。</p>
-<p>后来和根根（前粉粉安卓组成员）聊天时，他说的也正是我明了的：<strong>粉粉 是不是觉得 举步维艰</strong> 、<strong>陷入泥潭一样？</strong></p>
-<p>所以我预算的最好的时间就是学完，前端学完，后端学完，溜了溜了。<br>期间面试了有十数家公司。</p>
-<p>有+我才3个开发的公司，产品基本等于设想的。</p>
-<p>有要做区块链 的公司（好多家都想蹭这个热度）</p>
-<p>有做广告SDK 的（当时去到该处，我先看他们代码，告诉他们这要做什么，对我来说有什么理解、难处等等）</p>
-<p>有做心理学社交的，我当时先让他电话面试，别他们觉得不合适，我就可以不用过去了</p>
-<p>也有做公司产品+外包的</p>
-<p>我拒绝了几个（3、4个，六月份找工作确实不好找）</p>
-<p>我被拒绝了2次一个做医疗社交的，看他开价12 - 19，，又看到他们内部技术，我的天，那就意思意思17左吧，，真没漫天要价。一个做看小说的，似乎有个产品叫“漫画”似乎要很牛逼的，，我特么不写着我自己期望的嘛，你特么喊我过来，问的问题我以为什么鬼。搞得很牛逼的样子，反正不用理这个。继续自己的学习发展，确实很都比的人）</p>
-<p>得到4、5个offer。最后来到一个也是做社交的小公司。正好可以把从粉粉学到的运用上去。</p>
-<p>老实说，当时看到他们的代码，有种熟悉又不熟悉的味道。代码规范、格式，这里不存在的。创建者是个php 的小哥（即将离开），能力不咋滴（产品逻辑、规范、Wiki、流程都不知道）还拽的250似得。我也懒得和这种性格有缺陷的人多聊一会，问documents 有没有？不存在的，全部是3、4年前写的种使用字典；服务端也别想有documents。反正一团糟。哈哈。反正所有东西都是3、4年前那一套。</p>
-<p>那我就慢慢来好了，我不急，急不来，自己好好规划规划就可以了。</p>
-<p>来到这个公司，有几个特点。</p>
-<p>优点：公司有自己目前主营业务。新来了个小哥php 、规范等和自己有共同语言，产品负责人和c 哥很像。多年产品人，设计，游戏设计。新来的那个小哥也做白鹭游戏，这个是我想要的。之后可能也会分配做些游戏。老板似乎是宁波人，公司方面也有和宁波政府合作。这个和我也有点想去宁波发展发展有点好处。额，还可以还可以。</p>
-<p>缺点：确实没有粉粉明面上的热闹，进来之后感觉我有点无足轻重。技术垃圾到极点（目前都走光了，剩下产品大哥-长得有点像‘无所谓’的杨坤，和php 小哥）。老板性格、说话有点像干辉，哈哈。老板一点都不懂技术，但是比较会被技术说的云里雾里，然后似懂非懂。老板管理上不咋滴的。</p>
-<p>好吧，吐槽吐槽就到这里了。不多说，溜了溜了。</p>
-<h3 id="UICollectionView-addSubviews-UIView-内部有autolayout-CollectionView-视觉出bug"><a href="#UICollectionView-addSubviews-UIView-内部有autolayout-CollectionView-视觉出bug" class="headerlink" title="UICollectionView addSubviews UIView 内部有autolayout CollectionView 视觉出bug"></a>UICollectionView addSubviews UIView 内部有autolayout CollectionView 视觉出bug</h3><p>错误确定为：<br>CollectionView addSubviews 里面不能存在内部有约束的UIView。<br>否则其直接导致CollectionView 内部结构、内部约束直接紊乱。<br>其上的新增detailInfoview 有两种方法可以处理<br>1：如同当前新建view 处理，内部全部为frame 布局。目前来看似乎还不错<br>2：在CollectionViewLayout 上多流出来一个layoutAttributes，给第一个，然后frame 由代理DataSource 从controller 得到。这样等于得到一个特定cell</p>
-<h3 id="Xcode-插件还能用"><a href="#Xcode-插件还能用" class="headerlink" title="Xcode 插件还能用"></a>Xcode 插件还能用</h3><p>curl -fsSL <a href="https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh" target="_blank" rel="noopener">https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh</a> | sh<br>但是提示 <strong>xcrun: error: unable to find utility “xcodebuild”, not a developer tool or in PATH</strong></p>
-<p><a href="https://www.jianshu.com/p/ff1d99fe1d17" target="_blank" rel="noopener">https://www.jianshu.com/p/ff1d99fe1d17</a></p>
-<p>opened Xcode.<br>Preferences<br>Locations<br>Selected the Command Lin Tools: (选择xcode版本)</p>
-<p>-&gt; <strong>Alcatraz successfully installed!!1!🍻  Please restart your Xcode (9.4).</strong></p>
-<p>然后解决Xcode 8 之后不能使用Alcatraz</p>
-<p><a href="https://www.jianshu.com/p/0b541f145a1a" target="_blank" rel="noopener">https://www.jianshu.com/p/0b541f145a1a</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install update_xcode_plugins</span><br><span class="line">$ update_xcode_plugins</span><br><span class="line">$ update_xcode_plugins --unsign</span><br></pre></td></tr></table></figure>
-<p><strong>Choose which Xcode you would like to unsign (use arrows): Xcode (9.1) [Signed]: /Applications/Xcode.app</strong><br><code>$ Y</code></p>
-<p>似乎出现了Xcode 关闭之后，再打开，PackageManager 不见了。<br>解决请参考：</p>
-<p><a href="https://www.jianshu.com/p/a9448154c09e" target="_blank" rel="noopener">https://www.jianshu.com/p/a9448154c09e</a></p>
-<p>之后确实都出来了，不知是否这个原因</p>
-<h3 id="iOS-转场动画"><a href="#iOS-转场动画" class="headerlink" title="iOS 转场动画"></a>iOS 转场动画</h3><p>很久没有做转场动画了。这里把遇到的坑填一填。</p>
-<h3 id="如果程序中改变了某个空间的transform-不要使用frame；视觉bug-是其会变成CGRectZero"><a href="#如果程序中改变了某个空间的transform-不要使用frame；视觉bug-是其会变成CGRectZero" class="headerlink" title="如果程序中改变了某个空间的transform 不要使用frame；视觉bug 是其会变成CGRectZero"></a>如果程序中改变了某个空间的transform 不要使用frame；视觉bug 是其会变成CGRectZero</h3><p><a href="https://www.jianshu.com/p/9dfd337e8266" target="_blank" rel="noopener">https://www.jianshu.com/p/9dfd337e8266</a><br>应该使用bounds+center</p>
-<h3 id="iOS-某个VC-rotation-还有statusBar-状态"><a href="#iOS-某个VC-rotation-还有statusBar-状态" class="headerlink" title="iOS 某个VC rotation 还有statusBar 状态"></a>iOS 某个VC rotation 还有statusBar 状态</h3><p>//<a href="http://www.jianshu.com/p/4196d7cf95f4" target="_blank" rel="noopener">http://www.jianshu.com/p/4196d7cf95f4</a><br>BaseNavigationViewController:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*顶部状态栏 接下来会调用该viewController 的</span><br><span class="line">- (BOOL)prefersStatusBarHidden &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">- (UIStatusBarStyle)preferredStatusBarStyle &#123;</span><br><span class="line">    return UIStatusBarStyleLightContent;</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">-(UIViewController *)childViewControllerForStatusBarStyle&#123;</span><br><span class="line">    return self.topViewController;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>程序默认为<strong>UIInterfaceOrientationMaskPortrait</strong><br>那么在BaseNavigationViewControlelr<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-(UIInterfaceOrientationMask)supportedInterfaceOrientations&#123;</span><br><span class="line">    return UIInterfaceOrientationMaskPortrait;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在需要的ViewController加入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)shouldAutorotate &#123;</span><br><span class="line">    return !self.isLocked;</span><br><span class="line">&#125;</span><br><span class="line">//这个比较重要。这里告诉了system 当前到底支持哪些种旋转方式</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations &#123;</span><br><span class="line">    if (self.isLocked) &#123;</span><br><span class="line">        return UIInterfaceOrientationMaskPortrait;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return UIInterfaceOrientationMaskPortrait|</span><br><span class="line">            UIInterfaceOrientationMaskLandscapeLeft|</span><br><span class="line">            UIInterfaceOrientationMaskLandscapeRight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation</span><br><span class="line">&#123;</span><br><span class="line">    if (self.isLocked) &#123;</span><br><span class="line">        return toInterfaceOrientation = UIInterfaceOrientationPortrait;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上即可在相关view 里面控制rotate。</p>
-<h3 id="最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了"><a href="#最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了" class="headerlink" title="最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了"></a>最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了</h3><p>2018/7/9<br>她说看太多不想看了。那我们来预测一下接下来她会怎么做，然后每天记录她当天的态度。</p>
-<p>什么是新的轮回？那就是，难受，不看电视剧，所以连同什么综艺节目（跑男、唱歌的、宝宝剧场）都不会看。当然，对于黄妈肯定是一开始很义正言辞的。<br>于是最近的3天到5天（最长5天，不可能超过5天，这也要考虑进去周末休息日）她一天比一天难受。很想看，但是又还记得刚说过的话。<br>下一个阶段是工作回来太累了，回到家不知道干什么，毕竟工作属于需要静下心来的；于是她就花点时间做菜，做好吃的。这阶段属于过渡期，这几天饭菜之类的都会可口一些吧。<br>当然过渡期不能称为阶段，因为这很短，大约2天~3天。期间还会有不应期，菜饭做好吃好，不想写东西，又睡不着，此时还不能看任何视频，这就难受了。于是就趴在床上看淘宝。<br>腐女嘛，不是看视频就是看淘宝，看淘宝还不买的那种，因为她知道她没钱。我要是店主，我肯定不开淘宝店了。页面统计数据挺好看的，就是没人买-&gt;都是她这种小妮子光看不买系列。<br>下一个阶段就是有些忘记之前说过的话啦，没全忘记那种。在一起吃饭时，她会嘿嘿嘿的偷笑，拿出iPad，怼到我面前，就像是我们一起看，看综艺节目（当前还不敢看电视剧的）。看着看着，然后又趴到床上看淘宝。<br>接下来的2~3天左右就会发现她捧着iPad在床上看看综艺节目演变成偷偷看韩剧，这时回头看她，她是带着耳机的，时不时偷笑；说她的时候，她就会不好意思，然后又继续看，有时也会放下。此时她的睡眠也不会熬夜。<br>其实这阶段还属于偷偷看。不敢光明正大看，也不能不看，估计不看的话，会，会，会坏掉的。<br>再接下来，有两个阶段，可以合并为一个。<br>先是吃饭的时候看韩剧，一起看一起看（说实话，那些逗逼韩剧那么多人看，我都想转行拍片了，没技术没含量没思想）。然后就是，自己一个人在后面，边吃零食、边看电视剧啦。<br>快乐的一个人看电视剧，手边总有吃的。因为没有吃的，她会把吃的扒拉过来放在身边，没吃嗑一点。</p>
-<p>实际：<br>第1~3天（7月9号为第1天）：<br>第1天：<br>第1天晚上回去，一菜一汤。然后屁颠屁颠坐下来看看weex。由于立马不看电视剧，接口看了下QQ，点开了QQ空间，里面看了好一会视频。看到我喝酒，怕被我打，赶紧不看了。<br>接着又看了会weex，手机上开发者页面，这么小屏幕，肯定看不下去，于是东搞搞西搞搞，这晚就过去了。<br>比较关键的是，她自己不能看视频，还不让我打游戏，，，这神逻辑。我又没说我不打游戏。我打游戏休闲娱乐，她居然也不让我看。哈哈。<br>第2天：<br>第2天晚上回去，进门就看到她开始看综艺节目啦。看来之前多次轮循，现在比较明目张胆了。我一说之后，马上收起来，屁颠屁颠去拿饭吃了。<br>今天晚上她身体不舒服，搞七搞八，视频又不能看，于是吃完饭差不多9点多了，就自己睡着了。<br>第3天：<br>第3天晚上回去，你懂得，饭也没煮，一开门就看到她在那看电视剧了。<br>嘿，这个转换的快啊。她赶紧收起来，然后不好意思屁颠屁颠去给我热粥。我吃饭时，让她做code review。那个脾气倔的，嘴巴都嘟起来，一直抠脚。我的天，不过是聊聊天而已，说实话，心里有点晦气-&gt;什么鬼。<br>然后她跑上床，又开始看起来了。我说了三次她才停下来，厉害厉害。</p>
-<p>第3天之后我就不必再写了，这人没救了。丢阿黄一个人在家，自己整天整夜看电视剧，沉迷的很。<br>最近工作也是不顺，整天还这么沉迷，“还一点点没看完，就快看完了”。<br>整天说，不准再打这么多游戏了；多写东西，别老打游戏；还撇着嘴，埋怨我整天打游戏。<br>我的天，我都很少打游戏好吧。<br>我打游戏有准则，她看视频都是没有限度的。她视电视剧犹如猛兽，所以老是说不看了，然而还是沉迷不止。<br>我觉得游戏是休闲，是比赛，我不觉得打游戏如何堕落。<br>她这简直是找抽。</p>
-<h3 id="申明init-入口"><a href="#申明init-入口" class="headerlink" title="申明init 入口"></a>申明init 入口</h3><p>申明initWithURL:(id)xx 入口有两种方法。<br>1: initWithURL:(id)xx NS_DESIGNATED_INITIALIZER;使用宏提示其为为设计入口。<br>这时会出现：<br><!--https://blog.csdn.net/zcube/article/details/51657417--><br>如果用了NS_DESIGNATED_INITIALIZER，那么警告中出现init还是initWithNibName或是其它，取决于你的继承的父类类型：</p>
-<p>UIViewController</p>
-<p>Method override for the designated initializer of the superclass ‘-initWithNibName:bundle:’ not found<br>Method override for the designated initializer of the superclass ‘-initWithCoder:’ not found<br>UIView</p>
-<p>Method override for the designated initializer of the superclass ‘-initWithFrame:’ not found<br>Method override for the designated initializer of the superclass ‘-initWithCoder:’ not found<br>NSObject</p>
-<p>Method override for the designated initializer of the superclass ‘-init’ not found</p>
-<p>那么就实现比如UIView 的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (instanceType)initWithFrame:(CGRect)frame &#123;return [self initWithURL:nil];&#125;</span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)aDecoder &#123;return [self initWithURL:nil];&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2: 把其他的入口设置为NS_UNAVAILABLE</p>
-<h3 id="这几天上传两个APP-收到2-1-拒绝大礼包"><a href="#这几天上传两个APP-收到2-1-拒绝大礼包" class="headerlink" title="这几天上传两个APP 收到2.1 拒绝大礼包"></a>这几天上传两个APP 收到2.1 拒绝大礼包</h3><ol>
-<li>首先是我写的一个房产计算器的项目。<br>一开始是因为在标题里面有<strong>免费</strong>的字样，去掉之后就出来2.1 大礼包了。<br>2.1 礼包说我这可能有隐藏功能、有贷款方面东西。</li>
-</ol>
-<p>我回复邮件说，我这绝对没有隐藏功能，也没有贷款方面的东西。因为觉得世面上的不好用、广告太多等，所以做了个这个功能。这个功能也是自主研发的，不是市面上的抄袭品。</p>
-<ol start="2">
-<li>还有一个涂色的项目。<br>上来直接就是2.1 大礼包。<br>我猜测原因是我展示页面出现<strong>免费</strong>字样，引导了用户。还有就是可能有隐藏功能。</li>
-</ol>
-<p>目前这两个项目我都做了广告，所以也不具备广告功能。我回复涂色项目的，我们没有隐藏功能，免费是因为素材时设计师们的心血，但是为了分享这份灵感，所以使用免费，但是绝没有付费，更不用说，除苹果外的第三方付费了。<br>免费同时也因为市面上其他APP 都是要付费的，我们就专打免费策略。最后，我们删除了展示页面的那张带有<strong>免费</strong>字样的图片。 </p>
-<p>最后再说一句：如果是原数据被拒绝，同时你认为不必要上传新的二进制，你就直接回复该邮件。<br>然后静静等待，不需要点击#提交以供审核#。如果点了，那么相当于重新审核，可能会等待7~8天。<br>相关帖子：<a href="http://www.cocoachina.com/bbs/read.php?tid-298671-page-1.html" target="_blank" rel="noopener">http://www.cocoachina.com/bbs/read.php?tid-298671-page-1.html</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-5-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/20/2018-5-9lesson/">2018-5-9lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/20/2018-5-9lesson/" class="article-date">
-	  <time datetime="2018-05-20T03:25:52.000Z" itemprop="datePublished">May 20, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018/04/23</p>
-<h3 id="Clang-Attributes-黑魔法小记"><a href="#Clang-Attributes-黑魔法小记" class="headerlink" title="Clang Attributes 黑魔法小记"></a>Clang Attributes 黑魔法小记</h3><p><a href="http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super" target="_blank" rel="noopener">http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super</a></p>
-<p>objc_subclassing_restricted</p>
-<p>objc_requires_super</p>
-<p>objc_boxable</p>
-<p>constructor/desctructor</p>
-<p>objc_runtime_name</p>
-<h3 id="Mac-启动服务配置"><a href="#Mac-启动服务配置" class="headerlink" title="Mac 启动服务配置"></a>Mac 启动服务配置</h3><p>redis<br>start: redis-server /usr/local/etc/redis.conf<br>stop:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps axu|grep redis  ## 查找redis-server的PID</span><br><span class="line">kill -9 PID</span><br></pre></td></tr></table></figure>
-<p>mysql<br>start<br>mysql-server start</p>
-<h3 id="2018-05-07交涉"><a href="#2018-05-07交涉" class="headerlink" title="2018/05/07交涉"></a>2018/05/07交涉</h3><p>2017年2月来到粉粉，一开始一直学习进阶姿态。当时c哥来了不久，要成立一个海外团队。当时的人选是LPD(我猜的，毕竟我刚来不太久5月，而LPD 刚好在那个时候选择了回家发展)，后来大师、我、c哥去小会议室说明了计划，任务。<br>我在6、7月份的时候开始和c哥合作，为了合作更愉快，c哥甚至于搬到我位置边。那个时候我只想着更好的处理，学习，进阶，发展。是的，那个时候和他合作的一款绘图，简直让我开心不已，我和他不断交谈，不断完善。后来正要开始一款记账软件的时候，老板也已经没有耐心：没有产品思维，没有变现途径，当断则断的砍掉了该业务。当时我iOS、一个安卓、一个实习编辑(他的口头禅：原来是你小子，把皇君给我的好吃都给吃了回扣了)、c哥就此分开。实习编辑直接辞职；c哥也还想挽回一些结果，但还是回天乏力，于是也选择了离开；我和安卓又回到了之前的岗位了(好奇，我们居然不开掉了？虽然工资一年来没有变化，但是实力绝对学够了，幸好当时没离开，学到就是值);<br>c哥离开前给了我份设计稿，一种MetaBall 的设计记账软件。当时我花了九牛二虎之力，万分努力打磨出来。核心物件出来了，我们又继续打磨产品，打磨整个工程。一开始上线是在c哥账号，叫”Drop”， 后改名叫”小池记账”，再后来改名叫”小泉记账”；<br>真正的问题开始在2018年1月左右。<br>c哥打算喊我去他们公司开发。我心里思考是，如果我去了，按照c哥性格，我估计工资高不到哪去，肯定说什么创业啦，不要在意这么多啦，好好完成功能等等等；学的东西肯定也是不够的。<br>于是c哥说，能把源码给到他们。他的承诺是3个月10w 量，给我3w(我和他一人一半，算是6w)；我不看重这个，这个不是买断，也不是完全合作，我源码一给，相当于我没有任何有利地位了。最终做法：我同意3个月给他尝试，源码给他(核心效果代码做静态库处理，就这他还想要源码，说他们员工很轴，估计当时他就像独吞全部成果吧)，2500给我(相当于5000两人，我做事公平)；<br>我们当时有一款矢量图软件，我有“商店”，但是素材商品快速制作在于c哥手，直到2018年5月终于得到该技术，也就是2018年5月5日周六我前往他们公司，然后c哥终于回忆起来制作历程交付与我(其实教程我之前有一份不完整的，要提交给公司的，但是谁也看不懂，做不出来)。同时作为回馈，我给他们公司员工做一下技术指导，指导过程发现，他们公司的其他好几款其他APP，比如“Uki”，还有其他APP的核心代码都从我那份拷贝得来。这是技术流失。<br>然后如标题，2018年5月7号周一，我与c哥交涉“drop”下一步合作事宜，这天离当时已经有4月多之久(当时的考虑就是还没得到制作画画素材技术，不谈论该话题)；<br>当时我问这个话题的时候，他以为我要3w 的承诺；我说我知道没有10w 的量，但是3个月已过，接下来怎么继续合作；他还说接下来10w 日货，还是承诺2w；兄得，如果把所以权，都给你，就跟我没什么事一样了，拿到我所有源码就这么为所欲为么？那要这么说，我来替你运营，日活10个人，我给你1千万；那些没有意义的承诺。<br>我的字典里一直有句话：</p>
-<blockquote>
-<p>不要跟比自己境况差的人，讨价还价<br>更不要跟比自己有钱的人，抢着买单</p>
-</blockquote>
-<p>能让则让，小弟这么拼命给你干活，你就拿到我源码就“你要介意的话，我们下一版代码会重新写”；我的意思很简单，商业利益失败，朋友还要交的，c哥接下来一句“包括涂色的布局ui也不要用我的设计，既然在意就说清楚，大家都有知识产权对吧”，直接挑明了朋友都没得做。那算了，说明我的意义就这么大，就是那个有静态库的源码的价值。<br>行行行，你是项目负责人，全是你的成就。我啥都没有起到作用，毕竟代码书写被你改了嘛。<br>后来的几天，我全力工作，优化那个涂色项目。接下来其实我完全可以就这么卖了“drop”源码，或者开源了，反正对我意义不大，我的能力不是只有drop。得了芝麻“有静态库的源码”丢了西瓜。<br>之前这么崇拜你的我，也算清醒。我觉得我不太吃亏。对我来说，重要的是涂色项目，一个完整生态，商品和商店，而且可以量产。<br>其实回顾来说，我觉得做人真不必如此，你的钱是我10倍多，我连午饭都要去很远很远的食堂，晚饭省钱饿着回家吃的我，都不舍得花钱，有孩子要养，最近又有买房需求，再说，涂色素材技术本应回交公司，我当时还特意解决了c哥公司很多重大崩溃技术，我觉得您真不必如此。<br>最后一次尊重。您高升就好。“drop”我会留下自己开发，不然对你们公司肯定是致命的，毕竟全公司都花时间搞那个了，我公开出去，或者自己搞个差不多的，我的功能肯定比你多，开发比你快、稳定，然后就跟着你的ISO，蹭你们热量，你们会白做的！<br>接下来我继续加油，避开他以前的设计范畴，一些以前我也参与的设计我就不必客气，这不全是你的功劳，不全是你的成就。都是一起探讨出来的，当时我的努力，我身后要保护的人，都提醒我，该客气时客气，该凶时就该认真对待了！<br>之前去他们公司，看他们的代码，确实，一个成功的产品，开发的人还是很重要的。代码规范，模块划分。我猜想，c哥现在公司应该开不久，或者说开不大。<br>前几天开了些文章，他国对中国封锁核弹、氢弹技术，中国克服困难做出来了；他国对中国封锁航天技术，中国又突出重围。我想我也正需要这股拼劲。这几天硬着头皮，老婆小小的学了把一个方便设计的软件，我自己搞了搞ps，把开源的声音、字体、图片等都找全；<br>给自己软件做东西，你会发现，你总是这个做简单点，那个可以省略就省略吧。于是做的总是自己都不满意。回头想想，你给公司做的时候你会这样么？你肯定是硬着头皮也要搞出来，能搞出来的就搞得更好那种。<br>你要的是，把做公司的那种态度用到写自己的上面，同时，规划好时间，集中精力攻破难关。<br>这次学到的东西也很多很多，同时也警醒自己，有些事情一定要思考思考在思考，一定不能出大错。这次错误，算是损失，但是很能忍。<br>毕竟也学了那么多，同时还长进了这么多。<br>应该应该的，小弟就该吃糠，小弟家人就是垃圾，不应该有这么多思想，不应该要求这么多。<br>timestamp: 2018/5/9 田小新</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1253,6 +1218,30 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a></h6>
+              <span>April 16, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a></h6>
+              <span>April 16, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a></h6>
               <span>March 20, 2020</span>
             </div>
@@ -1295,30 +1284,6 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/02/2020-3-2lesson/">2020-3-2lesson</a></h6>
-              <span>March 2, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/01/03/2020-1-3lesson/">2020-1-2lesson</a></h6>
-              <span>January 3, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1351,7 +1316,7 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
