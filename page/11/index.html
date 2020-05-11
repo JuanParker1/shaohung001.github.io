@@ -165,6 +165,67 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-昨天尝试了rsa加密的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/08/昨天尝试了rsa加密的问题/">昨天尝试了rsa加密的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/08/昨天尝试了rsa加密的问题/" class="article-date">
+	  <time datetime="2017-01-08T14:57:57.000Z" itemprop="datePublished">January 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-06-16 11:59:05)</p>
+<p>这几天的问题出现在，当时后台的底层构架他们没法改，在请求头将sign给服务器的同时，在parameter传送过程也需要将sign（数据库钥匙）以及用户账号密码等也在此中。这时出现的一个问题，在charles截取数据，sign、密码等都是明文，这是很恐怖的：服务器钥匙串、密码等都是暴露在人前。你说你去银行，这时你的账号、密码以及银行最重要的钥匙只要有点经验的人都能获取得到，谁还敢将钱放在银行。<br>这时前段将密码过滤多少次都没用，唯一的就是服务器和前段进行密码加密才可解决（服务器那边说没办法，只能这么处理，目前没去更改https，也没法将密码、sign值等放入header中），ok，下面是我们的处理。<br>可以参考这篇文章：<a href="http://www.tuicool.com/articles/bAN7BrR" target="_blank" rel="noopener">http://www.tuicool.com/articles/bAN7BrR</a></p>
+<p>#!/usr/bin/env bash echo “Generating RSA key pair …” echo “1024 RSA key: private_key.pem” openssl genrsa -out private_key.pem 1024 echo “create certification require file: rsaCertReq.csr” openssl req -new -key private_key.pem -out rsaCertReq.csr echo “create certification using x509: rsaCert.crt” openssl x509 -req -days 3650 -in rsaCertReq.csr -signkey private_key.pem -out rsaCert.crt echo “create public_key.der For IOS” openssl x509 -outform der -in rsaCert.crt -out public_key.der echo “create private_key.p12 For IOS. Please remember your password. The password will be used in iOS.” openssl pkcs12 -export -out private_key.p12 -inkey private_key.pem -in rsaCert.crt echo “create rsa_public_key.pem For Java” openssl rsa -in private_key.pem -out rsa_public_key.pem -pubout echo “create pkcs8_private_key.pem For Java” openssl pkcs8 -topk8 -in private_key.pem -out pkcs8_private_key.pem -nocrypt echo “finished.”</p>
+<p>上面的为分开处理，一条一条的哟，有需要填入比如密码、公司信息、province一堆信息，记得信息记录下来哦。</p>
+<p>Tips:</p>
+<ul>
+<li>在创建证书的时候, terminal会提示输入证书信息. 根据wizard输入对应信息就OK. </li>
+<li>在创建p12密匙时, 会提示输入密码, 此时的密码必须记住, 之后会用到.</li>
+<li>如果上面指令有问题,请参考最新的openssl官方文档, 以官方的为准. 之前在网上搜索指令, 被坑了一圈之后, 还是会到啃官方文档上. 每条指令文档在最后都会有几个sample,参考sample即可.</li>
+</ul>
+<p>里面有个RSAEncryptor,自己去github上下载。base64在NSData里边，从iOS 7.0开始自动支持</p>
+<p>加密</p>
+<p><code>RSAEncryptor *rsa = [[RSAEncryptor alloc] init]; NSLog(@&quot;encryptor using rsa&quot;); NSString *publicKeyPath = [[NSBundle mainBundle] pathForResource:@&quot;public_key&quot; ofType:@&quot;der&quot;]; NSLog(@&quot;public key: %@&quot;, publicKeyPath); [rsa loadPublicKeyFromFile:publicKeyPath]; NSString *securityText = @&quot;hello ~&quot;; NSString *encryptedString = [rsa rsaEncryptString:securityText]; NSLog(@&quot;encrypted data: %@&quot;, encryptedString);</code></p>
+<p><strong>[rsa rsaEncryptString:securityText]</strong>会返回decrypted base64编码的字符串:</p>
+<p>console out 写道<br>encrypted data: I1Mnu33cU7QcgaC9uo2bxV0vyfJSqAwyC3DZ+p8jm0G2EmcClarrR5R2xLDdXqvtKj+UJbES7TT+AgkK1NDoQvOJBY+jkmrpAchmRbV2jvi3cEZYQG955jrdSAu21NzQe8xWtEc3YzP+TACPdP4B3Cyy0u8N2RcSFWyxu0YKPXE=</p>
+<p>解密:<br><code>NSLog(@&quot;decryptor using rsa&quot;); [rsa loadPrivateKeyFromFile:[[NSBundle mainBundle] pathForResource:@&quot;private_key&quot; ofType:@&quot;p12&quot;] password:@&quot;123456&quot;]; NSString *decryptedString = [rsa rsaDecryptString:encryptedString]; NSLog(@&quot;decrypted data: %@&quot;, decryptedString);</code></p>
+<p>服务器那边就让他们服务器去弄，这就是我们前段需要处理的地方</p>
+<p>上边整理下来的文件有7个   .gem .der p12等等</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-swift的xib在模拟器显示正常，真机不显示" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -593,57 +654,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-利用Reveal看任何APP，亲测有用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/利用Reveal看任何APP，亲测有用/">利用Reveal看任何APP，亲测有用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/利用Reveal看任何APP，亲测有用/" class="article-date">
-	  <time datetime="2017-01-08T14:40:54.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-03-08 11:48:18)</p>
-<p><a href="http://www.ianisme.com/ios/1887.html我是按着这个网址的教程，" target="_blank" rel="noopener">http://www.ianisme.com/ios/1887.html我是按着这个网址的教程，</a><br>有几个麻烦的，</p>
-<ol>
-<li>Reavel包括内破解方法，链接地址<a href="http://7xjcms.com1.z0.glb.clouddn.com/Reveal.zip" target="_blank" rel="noopener">Reveal</a></li>
-<li>破解可以用pp越狱助手，下一堆鬼东西，至少你也得懂越狱吧，哈哈。</li>
-<li>在Cydia下iFile，这个好东西我就不说了，越狱了第一个就想用的东西。按照上面教程走。<br>我这里遇到的问题是，那个什么iFunBox或者iTools都没法打开Mobile的目录，但是他们能打开Media的文件夹，直接把libReveal.dylib放到那边,目录为：上面文章提供的地址</li>
-<li>将文件存放的地址为/Library/MobileSubstrate/DynamicLibraries目录下</li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -772,6 +782,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
+              <span>May 11, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a></h6>
               <span>May 11, 2020</span>
             </div>
@@ -826,18 +848,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/11/2020-3-11lesson/">2020-3-11lesson</a></h6>
-              <span>March 11, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -870,7 +880,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
