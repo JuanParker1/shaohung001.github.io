@@ -31,7 +31,7 @@
 <meta property="og:site_name" content="aKer">
 <meta property="og:description" content="最近v2ray 突然发现连不上突然发现连不上v2ray，正巧是丫头面试时间，可能要用到，赶紧找时间修下。 这几天又正巧给丫头买了个显卡，GTX750，老是无法识别该显卡，新下的NVIDIA web driver 不小心点了上面个按钮，得,系统进不去了。 想了下，给他系统全部重装好了，半夜搞到凌晨40分，好累，还没好。第二天起床赶紧搞起来。重新装了后，又不小心点了web driver 上面那个按钮，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-11T08:56:01.561Z">
+<meta property="og:updated_time" content="2020-04-21T08:52:22.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020-3-11lesson">
 <meta name="twitter:description" content="最近v2ray 突然发现连不上突然发现连不上v2ray，正巧是丫头面试时间，可能要用到，赶紧找时间修下。 这几天又正巧给丫头买了个显卡，GTX750，老是无法识别该显卡，新下的NVIDIA web driver 不小心点了上面个按钮，得,系统进不去了。 想了下，给他系统全部重装好了，半夜搞到凌晨40分，好累，还没好。第二天起床赶紧搞起来。重新装了后，又不小心点了web driver 上面那个按钮，">
@@ -211,7 +211,7 @@ var themeMenus = {};
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name wpn.domain.com;</span><br><span class="line">  root /home/wwwroot/sCalc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>为了保证acme 能连接到该处得到认证的文件。</p>
 <p>然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d wpn.domain.com -w /home/wwwroot/sCal</span><br><span class="line"></span><br><span class="line">cd ~/.acme.sh/</span><br><span class="line"></span><br><span class="line">mkdir -p /sslCert</span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullchain-file /sslCert/v2ray.crt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d wpn.domain.com -w /home/wwwroot/sCalc</span><br><span class="line"></span><br><span class="line">cd ~/.acme.sh/</span><br><span class="line"></span><br><span class="line">mkdir -p /sslCert</span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullchain-file /sslCert/v2ray.crt</span><br></pre></td></tr></table></figure>
 <p>以上得到key 和crt 文件，在/sslCert 目录下。</p>
 <p><code>mv /sslCert/* /etc/v2ray/</code> 将2个文件放到v2ray 目录下，然后重启nginx 即可。</p>
 

@@ -165,6 +165,90 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-RAC循环引用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/RAC循环引用/">RAC循环引用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/RAC循环引用/" class="article-date">
+	  <time datetime="2017-01-09T01:35:39.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-09-27 16:35:49)</p>
+<p>最近项目到某个节点，我在解决一些问题的时候，记录一下：</p>
+<ol>
+<li>RAC 在引用的时候会忽略一点，如<br><code>@weakify(self);
+@weakify(cell);
+[[[cell.clearButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(UIButton *x) {
+if ([self_weak_.selectedNumArray containsObject:asset]) {
+[self_weak_.selectedNumArray removeObject:asset];
+cell_weak_.numButton.selected = NO;
+[self_weak_.collectionView reloadData];
+}else{
+if (self_weak_.addMorePicture) {
+if (self_weak_.selectedNumArray.count==self_weak_.maxPictureCanAdd) {
+LxDBAnyVar(self_weak_.selectedNumArray);
+LxDBAnyVar(self_weak_.maxPictureCanAdd);
+[SHUIHelper showAlertMessage:[NSString stringWithFormat:@&quot;您最多可添加%ld张哦&quot;,self_weak_.maxPictureCanAdd]];
+}else{
+[self_weak_.selectedNumArray addObject:asset];
+cell_weak_.numButton.selected = YES;
+[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
+}
+}else{
+if (self_weak_.selectedNumArray.count==6) {
+[SHUIHelper showAlertMessage:@&quot;选取最多6张&quot;];
+}else{
+[self_weak_.selectedNumArray addObject:asset];
+cell_weak_.numButton.selected = YES;
+[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
+}
+}
+}
+cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
+}];</code><br>上面这里的cell，自己对自己进行了循环引用，原因就是：这一段如果写在该Cell class里面，那么block里面的cell，其实在自身类里面也叫self，于是也需要进行weak处理。<br>这里会出现这样的错误，就是因为写得太快了，然后有时候会想不出来，可以慢慢思考。</li>
+<li>Realm 的RLMArray 如果添加某一个元素，但其已经存在数据库中，那么做法是先使用<code>[RLMObject objectForPrimaryKey：@“keyID”]</code>找出该元素添加进去，即可<blockquote>
+<p>Just want to add a comment for future users of Realm. I think TiM means[ objectForPrimaryKey:…]. I literally typed [RLMObject objectForPrimaryKey:…] and got a crash about “RLMObject” is not persisted in Realm database</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-MleaksFinder手动导入framework" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -618,57 +702,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-swift的xib在模拟器显示正常，真机不显示" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/">swift的xib在模拟器显示正常，真机不显示</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/" class="article-date">
-	  <time datetime="2017-01-08T14:57:11.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-06-13 11:34:52)</p>
-<p>这个完美解决了swift会不加载xib的问题~~xib都OK，模拟器可以显示，但是真机却没有显示的解决方案，原因就是swift不默认加载xib，强制让他加上就好了<br><a href="http://my.oschina.net/227/blog/470553" target="_blank" rel="noopener">http://my.oschina.net/227/blog/470553</a><br>这个是转帖嘿嘿，谢谢大哥啦</p>
-<p>import UIKit<br>class FormController: UIViewController {</p>
-<p>override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {<br>super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)<br>//println(nibName);    }<br>convenience init() {<br>var nibNameOrNil = String?(“FormController”)</p>
-<p>//        //考虑到xib文件可能不存在或被删，故加入判断//        if NSBundle.mainBundle().pathForResource(nibNameOrNil, ofType: “xib”) == nil{   nibNameOrNil = nil}<br>self.init(nibName: nibNameOrNil, bundle: nil)<br>}<br>required init(coder aDecoder: NSCoder) {<br>fatalError(“init(coder:) has not been implemented”)<br>}</p>
-<p>override func viewDidLoad() {</p>
-<p>}<br>override func didReceiveMemoryWarning() {<br>super.didReceiveMemoryWarning()<br>// Dispose of any resources that can be recreated.    }</p>
-<p>}</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -797,6 +830,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a></h6>
+              <span>May 11, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a></h6>
               <span>April 16, 2020</span>
             </div>
@@ -851,18 +896,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/10/2020-3-10lesson/">2020-3-10lesson</a></h6>
-              <span>March 10, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -895,7 +928,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

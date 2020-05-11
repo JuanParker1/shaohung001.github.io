@@ -165,6 +165,89 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2020-5-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/11/2020-5-11lesson/" class="article-date">
+	  <time datetime="2020-05-11T12:25:36.000Z" itemprop="datePublished">May 11, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Use-github-package-publish-docker"><a href="#Use-github-package-publish-docker" class="headerlink" title="Use github package publish docker"></a>Use github package publish docker</h1><p>gitlab.com 网络特别慢，经常 docker push 各种失败.</p>
+<p>考虑到github.com 全部免费了，故接下来都转战github 了。(自建是不可能自建的，没有机器)</p>
+<p>使用github token 登录(密码登录即将被废弃, 且push、pull 等操作都没有权限)</p>
+<ol>
+<li><p>Go to your GitHub account -&gt; Settings -&gt; Developer Settings -&gt; Personal access tokens -&gt; generate new token</p>
+</li>
+<li><p>Note 选项写上一个标签</p>
+</li>
+<li><p>勾选 write:packages/read:packages, 然后保存</p>
+</li>
+<li><p>复制得到的token</p>
+</li>
+</ol>
+<p>docker login docker.pkg.github.com</p>
+<p>User: 你的用户名(比如shaohung001)</p>
+<p>Password: 第4步得到的token</p>
+<h1 id="node-升级package-的库版本"><a href="#node-升级package-的库版本" class="headerlink" title="node 升级package 的库版本"></a>node 升级package 的库版本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br><span class="line">ncu -u</span><br></pre></td></tr></table></figure>
+<h1 id="Mac-删除node-使用nvm-管理node"><a href="#Mac-删除node-使用nvm-管理node" class="headerlink" title="Mac 删除node, 使用nvm 管理node"></a>Mac 删除node, 使用nvm 管理node</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</span><br><span class="line">sudo rm -rf /usr/local/include/node /Users/$USER/.npm</span><br><span class="line">sudo rm /usr/local/bin/node</span><br><span class="line">sudo rm /usr/local/share/man/man1/node.1</span><br><span class="line">sudo rm /usr/local/lib/dtrace/node.d</span><br></pre></td></tr></table></figure>
+<p>下载nvm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br><span class="line">或者</span><br><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br></pre></td></tr></table></figure>
+<p>然后在 ~/.bash_profile ~/.zshrc 中加入如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</span><br><span class="line">[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This loads nvm bash_completion</span><br></pre></td></tr></table></figure>
+<pre><code>source ~/.bash_profile &amp;&amp; source ~/.zshrc
+</code></pre><p>重开一个terminal 就可以用看到 nvm 命令了</p>
+<h1 id="简单探索nodejs-不同第三方库dependence-相同库不同版本"><a href="#简单探索nodejs-不同第三方库dependence-相同库不同版本" class="headerlink" title="简单探索nodejs 不同第三方库dependence 相同库不同版本"></a>简单探索nodejs 不同第三方库dependence 相同库不同版本</h1><p>今天使用puppeteer 和express 时发现，这两个dependence 包含有同一个库: mime。但是express 依赖mime 1.6.4 版本；puppeteer 依赖 2.x 版本；</p>
+<p>我们到node_modules 子目录看到第三方库规划: node_modules/mime 是1.6.4，也就是express 依赖的；我们找到puppeteer 下，其提前依赖库本地的mime 2.x 的。</p>
+<p>这样，puppeteer 在内部中，require 的是其自身node_modules/mime；express 自身没有node_modules 于是就往上找，也找到对应mime；</p>
+<p>以上各自依赖相同库，不同版本，便不会冲突了</p>
+<h1 id="mocha-test-时不通过"><a href="#mocha-test-时不通过" class="headerlink" title="mocha test 时不通过"></a>mocha test 时不通过</h1><p>使用mocha test不通过，报错信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;before all&quot; hook for &quot;GET /VERSION&quot;:</span><br><span class="line">Error: Timeout of 8000ms exceeded. For async tests and hooks, ensure &quot;done()&quot; is called; if returning a Promise, ensure it resolves. (/builds/xxxxxx/xxxxxx/backend/test/api.test.ts)</span><br></pre></td></tr></table></figure>
+<p>说明报错报错信息来源于 beforeAll 方法，且说没有使用done 告知.</p>
+<p>原方法：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>明显是有done 这个操作的，难道throw error 导致没有进入done 了？？那我加个try catch 吧:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        done(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后gitlab-ci 看到编译正常通过了, 但是没有进catch, 因为进了catch 我接下来拿不到server， 但之后又正常，说明只是说，要有try catch 确保有done 回馈即可!</p>
+<p>以上. node -v : <code>v10.20.1</code></p>
+<p>这里更新下：</p>
+<p>上面有时可以有时失败，说明不是最终原因. 以下是最终原因</p>
+<p>最终的原因是gitlab-ci cpu、memory 太低，运行太慢，导致获取到server 太慢，无法得到done，做法是<code>mocha -t 240000</code> 设置4分钟.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2020-4-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -439,7 +522,7 @@ var themeMenus = {};
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name wpn.domain.com;</span><br><span class="line">  root /home/wwwroot/sCalc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>为了保证acme 能连接到该处得到认证的文件。</p>
 <p>然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d wpn.domain.com -w /home/wwwroot/sCal</span><br><span class="line"></span><br><span class="line">cd ~/.acme.sh/</span><br><span class="line"></span><br><span class="line">mkdir -p /sslCert</span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullchain-file /sslCert/v2ray.crt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue -d wpn.domain.com -w /home/wwwroot/sCalc</span><br><span class="line"></span><br><span class="line">cd ~/.acme.sh/</span><br><span class="line"></span><br><span class="line">mkdir -p /sslCert</span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullchain-file /sslCert/v2ray.crt</span><br></pre></td></tr></table></figure>
 <p>以上得到key 和crt 文件，在/sslCert 目录下。</p>
 <p><code>mv /sslCert/* /etc/v2ray/</code> 将2个文件放到v2ray 目录下，然后重启nginx 即可。</p>
 
@@ -874,601 +957,6 @@ acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullch
     
 
   
-    <article id="post-2019-6-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/13/2019-6-10lesson/">2019-6-10lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/13/2019-6-10lesson/" class="article-date">
-	  <time datetime="2019-09-13T15:26:02.000Z" itemprop="datePublished">September 13, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="docker-mongo-dump-restore"><a href="#docker-mongo-dump-restore" class="headerlink" title="docker mongo dump restore"></a>docker mongo dump restore</h1><h2 id="Dump"><a href="#Dump" class="headerlink" title="Dump"></a>Dump</h2><pre><code>docker run --name newMongo -p 27018:27017 --rm mongo
-</code></pre><p>另开一个terminal</p>
-<pre><code>docker exec -it newMongo /bin/bash
-
-mongodump -h 127.0.0.1 --port 27017 -d ${your db} -o /test/mongodBack
-
-exit # 退出docker mongo容器
-
-docker cp newMongo:/test/mongodBack/ /mongodBack/ # 将docker 内文件拷到/mongodBack/
-</code></pre><h2 id="Restore"><a href="#Restore" class="headerlink" title="Restore"></a><strong>Restore</strong></h2><p>待撸待撸</p>
-<p>参考：<a href="https://www.cnblogs.com/qiyc/p/10150433.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiyc/p/10150433.html</a></p>
-<h1 id="OAuth2-server-撸saas-微应用化"><a href="#OAuth2-server-撸saas-微应用化" class="headerlink" title="OAuth2-server 撸saas 微应用化"></a><strong>OAuth2-server 撸saas 微应用化</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Client frontend] GET /auth/honglian to [Client backend]</span><br><span class="line">[Client backdnd] redirectTo [Server frontend] page : /oauth/authorize?clientId=x&amp;redirectUri=x&amp;response_code=code</span><br><span class="line">[Server frontend] POST /oauth/login/authorise to [Server backend] to fetch oauth authorization_code</span><br><span class="line">[Server frontend] redirectTo(window.location) redirectUri + code=$&#123;authorization_code&#125;</span><br><span class="line">[Client backend] get authorization_code</span><br><span class="line">[Client backend] POST /oauth/access_token/?client_id=x -H &apos;authorization=$&#123;authorization_code&#125;&apos; to [Server backend] to fetch access_token</span><br><span class="line">[Server backend] return access_token to [Client backend]</span><br><span class="line">[Client backend] GET /api/user/?client_id=x&amp;client_secret=x&amp;access_token to [Server backend]</span><br><span class="line">[Server backend] return userProfile to [Client backend]</span><br><span class="line">[Client backend] redirectTo [/user/home]</span><br></pre></td></tr></table></figure>
-<p>beyond over!</p>
-<p>参考：</p>
-<ol>
-<li><p><a href="https://gist.github.com/tabone/d74fb922669e4edc22bfd0833b5ae88b" target="_blank" rel="noopener">https://gist.github.com/tabone/d74fb922669e4edc22bfd0833b5ae88b</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/vipzhou/p/8125924.html" target="_blank" rel="noopener">https://www.cnblogs.com/vipzhou/p/8125924.html</a></p>
-</li>
-</ol>
-<h1 id="记一次上线应用遇到的问题"><a href="#记一次上线应用遇到的问题" class="headerlink" title="记一次上线应用遇到的问题"></a><strong>记一次上线应用遇到的问题</strong></h1><p>做更新服务器代码优化，上线的一次经历</p>
-<p>表现：使用multy 解析data 文件，文件下来了，但是服务器总是没拿到。</p>
-<p>前几个版本都是完全没问题的。我线下测试环境完全没问题，这个是最奇葩的。</p>
-<p>然后伟哥在k8s那里切换可运行的包；我对比对比之前版本代码，没发现头绪，就想着去docker 容器内部搞搞。然后一直没头绪，然后脑残了一把：rm -rf  packages/</p>
-<p>本来我是想packages/uploads/下的，因为packages 目录不熟悉，我跑到packages/ 这里来运行sh.</p>
-<p>运行完那一瞬间，你懂的，我突然又反应过来，我的天，之前填的测试数据全部没了。我擦咧。</p>
-<p>突然脑残的可以。</p>
-<p>更脑残的是，之前更新服务一直报上传上去的文件找不到，删了之后又可以。你说，这是不是让人更摸不到点了。</p>
-<p>然后伟哥找到两个版本不同差异，一个能使用，一个不行。然后就看了里面的代码不同点。</p>
-<p>最后发现我在拆分一个方法成为3个中间件时，第一个中间件取值有误，没发现。</p>
-<p>也就是我的代码是有问题的(js 就是这毛病)。但是我先下服务器是正常的、删了测试服务器/packages 下也正常了。</p>
-<p>郁结，郁结。</p>
-<h1 id="www-form-urlencoded-d-里面的-空格-被替换成-的问题"><a href="#www-form-urlencoded-d-里面的-空格-被替换成-的问题" class="headerlink" title="www-form-urlencoded -d 里面的 空格 被替换成+的问题"></a><strong>www-form-urlencoded -d 里面的 <code>空格</code> 被替换成<code>+</code>的问题</strong></h1><p>场景是用户发送一个<code>www-form-urlencoded</code> 内容是一个机器码，比如<code>MH20ew2r9RuTyGcX+rrmxF7X40U=</code> 但是发现传到服务器时，却变成了<code>MH20ew2r9RuTyGcX rrmxF7X40U=</code>. 中间是空格代替。</p>
-<p>原因是空格在urlencoded 中就是”+”。于是参数从软件客户端发到web 时都是正确的。但是到了body-parser 时，body-parser 看到一个 <strong>+</strong>，想都不想，直接就转成空格了。、</p>
-<p>临时处理办法：将该文本转回去: string.replace(/\s/g, ‘+’)</p>
-<p>最终解决方案：软件客户端使用urlencoded 刷新string</p>
-<h1 id="最近做公司功能时总是会出现bug感悟"><a href="#最近做公司功能时总是会出现bug感悟" class="headerlink" title="最近做公司功能时总是会出现bug感悟"></a><strong>最近做公司功能时总是会出现bug感悟</strong></h1><p>由于上周、最近有点忙，冲刺科目三、完成自己服务的基础设施、尚未完全适应公司业务、同时负责好多个端的前后端，等等，写完了功能，没有去好好测试，导致做的产品总是有这个那个小问题。</p>
-<p>这次做完后，不急着上传，在可能涉及到的功能区点点试试(还没适应单元测试),于是就这样还发现一些bug。</p>
-<p>有些原因是，修改bugs 改动了其他代码，导致波及到其他功能区，引用区。</p>
-<p>在没有进行完整的单元测试情况下，多点点还是有必要的，相信自己总是会出错的。</p>
-<p>接下来很重要的，就是多完成功能测试，毕竟面向的是客户(我这里还是没有测试人员的)，不然出了问题就小麻烦了，哈哈</p>
-<p>提几点代码上的建议：</p>
-<ol>
-<li><p>命名规范一定一定要统一，是驼峰就一定要保持，是下划线就一定要保持</p>
-</li>
-<li><p>命名逻辑一定要符合</p>
-</li>
-</ol>
-<h1 id="考科目三"><a href="#考科目三" class="headerlink" title="考科目三"></a><em>考科目三</em></h1><p>考科目三前，集中加训了一番。前一天晚上(周五)还练到9点多。第二天是第一场，也就是必须在7：30 之前刷卡签到。</p>
-<p>周六一早6点出发，到的时候才6：40，手机放托管柜，用身份证拿了张号牌(号牌one)进入等待室。突然肚子痛，屁颠屁颠去厕所(plz,厕所门关不上的那种老厕所，哈哈).</p>
-<p>等了会，开始分配打乱顺序，分到的前往下一个候考室。去了排了好长队。到我时，按了个手印，拿了张号牌(号牌two)，进到一个小房间，哇，里面坐满了人。每人身上披一个淡绿色小马甲，都是挂在凳子上的。</p>
-<p>开始考试了。一个大叔进来根据液晶屏分配的号牌two 每次选4个人。我很巧，搞好有同一个教练分配的学生。</p>
-<p>一个安全员老大叔等4个人坐满，一溜烟就载我们到了一号线考场。一个女生先考。打指纹、绕车一周、考灯光、都ok。开始走了，一路上看她开的还ok，前方一个公交站牌估计是刹车早了一丢丢，然后电子设备显示正在连接网络。然后大叔就让菇凉靠边。菇凉一脸懵，我就默默记住这个点，似乎会有踩早的状况。然后所有项目重做，然后继续出发。出发后方有车，她一直在右侧开，我觉得她再开下去可能会不合格: 在非考试道路长时间行驶。幸好她看到左侧安全拐过来了。</p>
-<p>她继续行驶，有些规则还是不熟，看得出来，不过都ok。然后车子最后一个左拐时，就提示成功了，她吁了口气，不然两次机会就完了。</p>
-<p>接下来就是我啦。我在菇凉停车地方上车。一切按教练教的，不慌不忙。打卡，下车走一圈，绕车一周，绕车时，似乎没听到考试机器叫有学员通过。当时风很大，我以后只是没听清，坐上车，系好安全带，然后考试机器就报重考。我擦，我都还没考呢。。。我刚才特意死命戳那个按钮了。好吧，下车再来一次，这次死命戳，发现还是没声音，很纳闷，往车内看，用眼神问学员(就是同教练那个学员)，学员摇了摇头，说明还是没有检测到有学员通过。然后我再用力死命戳，侧耳听，终于听到了有声响了。报了才安心通过。</p>
-<p>哇，这是个大坑。之后做完灯光，左侧有车，我就一直等，等到没车了，才慢悠悠出发。一路上小心谨慎，毕竟只有一次机会。起步、公交站台刹车、路口刹车一个都不能错。加减档位、加速5挡、会车、掉头、靠边停车、超车、直线行驶、右转弯、掉头(掉头完立马就有个公交站台, 这时二挡就要踩刹车)，左拐，这时考试机器又报正在连接网络，我擦，我挂了，这声音和之前我挂了是一个样的。过了一会，说通过考试，请靠边停车。我擦，幸福来得太美好。下车之后提醒后面考试学员，右后方那个按钮，贼难按。</p>
-<p>幸亏一起考的学员，眼神提示。不然两次全挂在啥都没考，就要滚回去了。我不能不过，没时间花在这里啊。基本科三过了，就等于学车告一段落了。好好赚钱钱咯，，哇卡卡卡。</p>
-<h1 id="Chrome-Extension-使用Vue-遇到的一些问题"><a href="#Chrome-Extension-使用Vue-遇到的一些问题" class="headerlink" title="Chrome Extension 使用Vue 遇到的一些问题"></a><strong>Chrome Extension 使用Vue 遇到的一些问题</strong></h1><p>Vue 使用webpack。但是background.js 属于后台，使用nodejs，于是webpack 找require 函数时可能会找不到比如<strong>fs</strong> 的库：Module not found.</p>
-<p>做的第一种尝试: 在webpack 打包target 默认为的<code>web</code> 替换为<code>node</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    target: &apos;web&apos;,</span><br><span class="line">    node: &#123;</span><br><span class="line">        console:false,</span><br><span class="line">        global: true,</span><br><span class="line">        process: true,</span><br><span class="line">        fs: true,</span><br><span class="line">        __filename: &apos;mock&apos;,</span><br><span class="line">        ___dirname: &quot;mock&quot;,</span><br><span class="line">        Buffer: true,</span><br><span class="line">        setImmediate: false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是这样的也导致输出的是node 环境。界面上的css 样式全部都不识别了。<br>于是替换一种思路。</p>
-<p>第二种尝试: 前段还是按照前段，后端之所以称之为后端，那么便是另外一个项目了。webpack 打包时，打一个虚拟的，没有任务的background 包。于是<code>yarn watch</code> 阶段background 包打进去之后，手动替换里面background.js。</p>
-<p>终于，里面运行的非常正常了。</p>
-<p>这种方法不同点是，之前的background 配置是page,现在应为scripts</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">background: &#123;</span><br><span class="line">    page: &quot;./background.html&quot;</span><br><span class="line">    scripts: [&quot;./background.js&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考：</p>
-<ul>
-<li><a href="https://cloud.tencent.com/developer/section/1477428" target="_blank" rel="noopener">https://cloud.tencent.com/developer/section/1477428</a></li>
-<li><a href="https://cloud.tencent.com/developer/section/1477500" target="_blank" rel="noopener">https://cloud.tencent.com/developer/section/1477500</a></li>
-</ul>
-<h2 id="最近感触良多，工作生活体悟良多"><a href="#最近感触良多，工作生活体悟良多" class="headerlink" title="最近感触良多，工作生活体悟良多"></a><strong>最近感触良多，工作生活体悟良多</strong></h2><p>2019/6/3</p>
-<p>公司要更新以前的Chrome 拓展JS编辑器。我体验了从开发、初次打包。然后继续开发完成后，到最后完整build 的流程。</p>
-<p>最终使用Gulp 一次构建完毕应用。</p>
-<p>这次体验极佳，虽然中间很多次很多次的碰见南墙，但是没有回头路。</p>
-<p>本来听老大说要招一个人来做，不过觉得让我试试会更好，我当然义不容辞，好好给他整好来。</p>
-<p>当前使用ace 库制作用户输入简易脚本编辑器，完成JavaScript、Iced 输入代码，高亮、切换主题，然后点击运行得出结果。</p>
-<p>当前仍然继续维护。。。</p>
-<p>这几天似乎临近6.4.好多好多的伟皮恩 被干掉，我们公司三个公用的，全部报废。我手上的唯一一个挂了。然后不服气的我充值再买一个ip，想成为RMB 玩家，然后还是敌不过。两次被封，实属让我心力憔悴。第二次被封情景：我为了查资料，就开了一会，就我一个人用，用资料啊。查知识，学知识如果是犯法，那中国活该一万年都是发展中国家，把柄永远捏在美国手里。</p>
-<p>然后今天努力了一天，采用了别人牛逼的思路。让我的服务器死而复生。待我细细道来。</p>
-<h2 id="让服务躲在墙后面"><a href="#让服务躲在墙后面" class="headerlink" title="让服务躲在墙后面"></a><strong>让服务躲在墙后面</strong></h2><p>当前有两种方案，大体一致，不过由于关于联合TLS、Nginx、V2ray 等有些知识点可能有欠缺，当前使用他人一键生成。另一种不带TLS、Nginx 的还算方便。</p>
-<p>当前处境: 我的ip 已经ping不通了。只能通过CDN 转向我的服务器进行拯救了。</p>
-<p>第一种方案: centos 6.x</p>
-<p>完全参考了<a href="https://blog.sprov.xyz/2019/03/11/cdn-v2ray-safe-proxy/?nsukey=PEs3kShj8DxdLAd3a9jeRtDkzetIbO3xXnhHySES87Vh3RxI6cD9jnzuo9YEAA99yX1xplHFNfsTv%2FO%2Bz%2Bn9Qn%2BdAUPmbU7H5yiscRg1UFRN6lnyQaMmnsZUNt2UxH3XUkV%2Bn992u4jXNqU0%2FH0ikRVtQPIVQw1NayReOpdThcwptuD4OVpLLeAZwTZ5ljabCV7QqcLytsux%2BYWycaTcqQ%3D%3D" target="_blank" rel="noopener">sprov 的博客</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1. 前往Freecom 申请一个免费域名</span><br><span class="line">2. Freecom ManageDNS 添加`A`记录. eg: www.gogal.ml A 67.230.172.104</span><br><span class="line">3. 前往CloudFlare 申请注册一个免费的CDN</span><br><span class="line">4. CloudFlare **add** 时，填入二级域名. eg:gogal.ml</span><br><span class="line">5. 选择Free 套餐</span><br><span class="line">6. 增加子域，同时指向你的ip eg: fuck.gogal.ml 67.230.172.104</span><br><span class="line"></span><br><span class="line">这时候Status 如果有橙色云朵，代表CDN 已经将你的域名包含进去，此时ping fuck.gogal.ml 出现了CDN 的ip</span><br><span class="line"></span><br><span class="line">7. 下一步会看到让你修改Nameservers(域名服务器)。其在ManageDNS 左边tab栏，填上那两个值，continue</span><br><span class="line">8. 接下来到了CloudFlare CDN 的dashboard。</span><br><span class="line"></span><br><span class="line">顶部有很多栏目，有两个重要栏目：DNS、Crypto</span><br><span class="line"></span><br><span class="line">DNS 是管理你的域名，开关你的CDN 需求。</span><br><span class="line"></span><br><span class="line">Crypto 管理你的TLS 加密与否(默认Full 加密)。这个很重要。</span><br><span class="line"></span><br><span class="line">前往Crypto 将TLS 置为`Off` 或者Flexible</span><br></pre></td></tr></table></figure>
-<p>上面关于前提配置完毕。接下来去你的服务器</p>
-<p>前往你的服务器ssh(ip 挂了，但是服务器商会提供页面Interactive，使用root 和你的登录密码进行登录)</p>
-<p><a href="https://blog.sprov.xyz/2019/02/04/v2ray-simple-use/" target="_blank" rel="noopener">V2ray安装教程</a></p>
-<p><code>bash &lt;(curl -L -s https://install.direct/go.sh)</code></p>
-<p>这样就安装了V2ray。配置目录在/etc/v2ray/config.json</p>
-<p>安装完成后，出现PORT、UUID。这两个记录下来，忘记了就cat /etc/v2ray/config.json 将端口和uuid 打印出来。</p>
-<p><code>service v2ray start &amp;&amp; service v2ray status</code> // centos6.x</p>
-<p><code>systemctl start v2ray &amp;&amp; systemctl status v2ray</code> // centos7</p>
-<p>关闭防火墙：</p>
-<p><code>service iptables stop &amp;&amp; chkconfig iptables off</code> // centos6.x 关闭防火墙、关闭开机打开防火墙</p>
-<p><code>systemctl stop firewalld &amp;&amp; systemctl disable firewalld</code> // centos7</p>
-<p>由于我的服务器就在洛杉矶，bbr 什么什么加速我就没开了。</p>
-<p>最后一步就是连接了。</p>
-<p>服务器v2ray/config.json 的inbound参考如：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "port": 80, // 很重要，否则CDN 找不进来</span><br><span class="line">    "streamSettings": &#123;</span><br><span class="line">        "wsSettings": &#123;</span><br><span class="line">            "path": "/58ff4ec7/",</span><br><span class="line">            "headers": &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        "network": "ws"</span><br><span class="line">    &#125;,</span><br><span class="line">    "settings": &#123;</span><br><span class="line">        "clients": [</span><br><span class="line">            "id": "xxx", // 通过 /usr/bin/v2ray/v2ctl uuid 生成</span><br><span class="line">            "alterId": 64</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>客户端：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Address: fuck.gogal.ml : 443</span><br><span class="line">User ID:  xxx</span><br><span class="line">alterId: 64</span><br><span class="line">Security: chacha20那个</span><br><span class="line">Tag: 随便填，，标签使用而已</span><br><span class="line">NetWork: ws</span><br><span class="line">transport settings:</span><br><span class="line">   WebSocket:</span><br><span class="line">    path: /58ff4ec7/</span><br><span class="line">   TLS:</span><br><span class="line">    Use TLS</span><br><span class="line">    TLS serverName: fuck.gogal.ml</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/Cenmrev/V2RayW/releases" target="_blank" rel="noopener">V2rayW</a></p>
-<p><a href="https://github.com/Cenmrev/V2RayX/releases" target="_blank" rel="noopener">V2rayX</a></p>
-<h2 id="TLS版本"><a href="#TLS版本" class="headerlink" title="TLS版本"></a><strong>TLS版本</strong></h2><p>环境: centos7</p>
-<p><a href="https://github.com/wulabing/V2Ray_ws-tls_bash_onekey" target="_blank" rel="noopener">github 一键脚本</a></p>
-<p>首先通过TLS 一键脚本生成，自己整还是挺麻烦。内容包括Nginx 转发配置，OpenSSL 配置TLS证书，V2ray配置ssl。</p>
-<p>配置完成后可以在clients 字段里面添加更多id。</p>
-<p>完成后，在客户端注意点：</p>
-<ol>
-<li>transport settings - WebSocket栏目 - path 填写对应路径</li>
-<li>TLS 打勾，同时填写你的CDN 转换的域名</li>
-<li>Network 选ws</li>
-<li>CloudFlare CDN 的Crypto 置为full。</li>
-</ol>
-<p>此时基本很健康，不容易再被打掉(毕竟我ip已经被打掉了)。</p>
-<p>这里提一点，不晓得为什么有些电脑就是连不上我的服务器，有些一填就好了，很奇怪。</p>
-<h2 id="服务器不放vps换个免费地方放"><a href="#服务器不放vps换个免费地方放" class="headerlink" title="服务器不放vps换个免费地方放"></a><strong>服务器不放vps换个免费地方放</strong></h2><p>6.1 第一次遇到GFW，很多计划都得往后搁置，不过遇到了就是好事。</p>
-<p>我找了AWS，注册送12个月免费服务。扣了我1美金后，看了别的文章说容易一点错就扣费。说申诉还是会退回，不过这就让我觉得不可靠。果断弃坑。找到了我以前使用的heroku, 还是一样的免费，那我用cdn 中转，是不是能解决被限速严重的问题？说干就干，毕竟6.7 高考的人拼命，我也要拼命努力啊。</p>
-<p>我使用的是nodejs docker。代码上修改配置文件</p>
-<p>package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    scripts: &#123;</span><br><span class="line">        start: 'NODE_ENV=production node app.js'</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>同时app.js 的app.listen port。该port 使用process.env.PORT(heroku 提供了该port)</p>
-<p>下载heroku cli<br><code>sudo npm install -g heroku</code></p>
-<p>heroku 登录<br><code>heroku login</code></p>
-<p>heroku container 登录<br><code>heroku container login</code></p>
-<p>heroku container push<br><code>heroku container:push web --app ahuang-diary</code> (ahuang-diary 是我的项目名)</p>
-<p>heroku container release 发布<br><code>heroku container:release web --app ahuang-diary</code></p>
-<p>代码发布后，可以翻墙测试下是否通畅.</p>
-<p>可以使用右上角功能键: <strong>Open APP</strong> <strong>More</strong></p>
-<p>More 下面有view logs。这个估计是比较有用的。</p>
-<p>此时采用CDN 转发稍微加速heroku(感觉速度还是不怎么快，同时使用free 免费heroku，升级hobby 花钱才能使用https)。</p>
-<p>使用自定义域名，需要先账号填写信用卡。</p>
-<p>dashboard.heroku.com/apps/ahuang-diary 面板下Settings - Domains and certificates 增加<a href="http://diary.boqi.ml" target="_blank" rel="noopener">http://diary.boqi.ml</a></p>
-<p>下方会生成DNS Target</p>
-<p>DNS Target 放到CloudFlare 的CNAME 值里面，key 就是diary.boqi.ml 橙云点亮，同时Crypto 置为<strong>OFF</strong></p>
-<p>这样就成功完成了今天要做的事情了</p>
-<h2 id="Typescript-mocha-chai-单元测试"><a href="#Typescript-mocha-chai-单元测试" class="headerlink" title="Typescript + mocha + chai 单元测试"></a><strong>Typescript + mocha + chai 单元测试</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yarn add mocha @types/mocha chai @types/chai chai-http @types/chai-http -D</span><br><span class="line"></span><br><span class="line">package.json</span><br><span class="line">    scripts</span><br><span class="line">        test: NODE_ENV=test mocha -t 5000 --require ts-node/register test/**/*.ts</span><br><span class="line"></span><br><span class="line">/test</span><br><span class="line">    diary.spec.ts</span><br></pre></td></tr></table></figure>
-<p>diary.spec.ts:</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; app &#125; <span class="keyword">from</span> <span class="string">'../src/app'</span></span><br><span class="line"><span class="keyword">import</span> chai, &#123; expect &#125; <span class="keyword">from</span> <span class="string">'chai'</span></span><br><span class="line"><span class="keyword">import</span> chaiHttp <span class="keyword">from</span> <span class="string">'chai-http'</span></span><br><span class="line">chai.use(chaiHttp)</span><br><span class="line"><span class="keyword">import</span> <span class="string">'mocha'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userLoginCookie = <span class="string">'123456'</span> <span class="comment">// 由于使用OAuth 服务，那块代码就没有测，直接使用Cookie</span></span><br><span class="line">describe(<span class="string">'测试diary 接口'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'等待数据库载入完毕'</span>)</span><br><span class="line">            done()</span><br><span class="line">        &#125;, <span class="number">1000</span>) <span class="comment">// 时间可以加长，这里链接了mlab ，比较慢，可以为4000(有时仍然会出错)</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it(<span class="string">'Test getBudgetList'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">done</span>) </span>&#123;</span><br><span class="line">        chai.request(app)</span><br><span class="line">            .post(<span class="string">'/api/diary/getBudgetList'</span>)</span><br><span class="line">            .set(<span class="string">'Cookie'</span>, userLoginCookie)</span><br><span class="line">            .end(<span class="function">(<span class="params">err, res</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (res.status === <span class="number">403</span>) &#123;</span><br><span class="line">                    done(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'403 用户需要先登录'</span>))</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">const</span> arr = res.body <span class="keyword">as</span> <span class="built_in">any</span>[]</span><br><span class="line">                    expect(arr.length).to.equal(<span class="number">0</span>)</span><br><span class="line">                    done()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="js-ts-如何享受async-舒适下远离try-catchP"><a href="#js-ts-如何享受async-舒适下远离try-catchP" class="headerlink" title="js/ts 如何享受async 舒适下远离try{}catchP{}"></a><strong>js/ts 如何享受async 舒适下远离try{}catchP{}</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> login () &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> userLogin()</span><br><span class="line">  &#125; <span class="keyword">catch</span> (<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.error(e)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>async 带来了很大的方便，但是try/catch 却破坏了写作的美感。</p>
-<p>我们想要这样的:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> callAsync, &#123; call &#125; = <span class="built_in">require</span>(<span class="string">'awaitCall'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> login () &#123;</span><br><span class="line">  <span class="comment">// callAsync allows promise as input</span></span><br><span class="line">  <span class="keyword">const</span> [err, response] = <span class="keyword">await</span> callAsync(userLogin())</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="keyword">this</span>.$message.eror(err)</span><br><span class="line">  <span class="comment">// user login successfully</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> writeFile (input) &#123;</span><br><span class="line">  <span class="comment">// call allows any function which can be accepted by require('util').promisify with a promise output</span></span><br><span class="line">  <span class="keyword">const</span> [err, res] = <span class="keyword">await</span> call(fs.write, input)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="comment">// fs.write successfully</span></span><br><span class="line">  <span class="keyword">const</span> [openErr, openRes] = <span class="keyword">await</span> call(fs.open, <span class="string">'a.txt'</span>, <span class="string">'r+'</span>, <span class="number">0o654</span>)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上提供了两个方法callAsync、call。</p>
-<p>callAsync 允许输入promise 之后flattern 回调。</p>
-<p>call 支持输入function，帮助用户转化为promise 之后flattern 回调(function 必须支持<code>require(&#39;util&#39;).promisify</code> 转化为promise 类型)。</p>
-<p>核心代码不多，支持JS、Typescript</p>
-<p>awaitCall.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">callAsync</span>(<span class="params">promise</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> promise</span><br><span class="line">    .then(<span class="function">(<span class="params">data</span>) =&gt;</span> [<span class="literal">null</span>, data])</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = util.promisify(func).call(<span class="keyword">this</span>, ...args)</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> promise !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'func should match util.promisify'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> callAsync(promise)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> callAsync</span><br></pre></td></tr></table></figure>
-<p>awaitCall.d.ts</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="built_in">module</span> callAsync &#123;</span><br><span class="line">  export function callAsync&lt;T, U = any&gt;(promise: Promise&lt;T&gt;): Promise&lt;[U | null, T | null]&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func: Function, ...args: any[]</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>Typescript 完整实现</p>
-<p>awaitCall.ts</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> util <span class="keyword">from</span> <span class="string">'util'</span></span><br><span class="line"></span><br><span class="line">export function callAsync&lt;T, U = any&gt;(promise: Promise&lt;T&gt;): Promise&lt;[U | null, T | null]&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> promise</span><br><span class="line">      .then&lt;[<span class="literal">null</span>, T]&gt;<span class="function">(<span class="params">(data: T</span>) =&gt;</span> [<span class="literal">null</span>, data])</span><br><span class="line">      .catch&lt;[U, <span class="literal">null</span>]&gt;(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func: Function, ...args: any[]</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = util.promisify(func).call(<span class="keyword">this</span>, ...args)</span><br><span class="line">  <span class="comment">// promise is object type</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> promise !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'func should match util.promisify'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> _promise = promise <span class="keyword">as</span> <span class="built_in">Promise</span>&lt;any&gt;</span><br><span class="line">  <span class="keyword">return</span> callAsync(_promise)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> callAsync</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>符合util.promisify 方法特征 \<br>\<br>1 输入的方法参数最后一个<code>typeof === &#39;function&#39;</code> \<br>2 最后一个参数返回的第一个参数，总是err</p>
-</blockquote>
-<blockquote>
-<p>注意this 指针丢失需要开发主动避免哦 \<br>\<br>可以使用 bind(this) 将指针重新找回 \<br>const bindCall = call.bind(that) \<br>await bindCall(fs.write, input) \<br>await bindCall(fs.open, ‘a.txt’, ‘r+’, 0o654)</p>
-</blockquote>
-<p>参考：</p>
-<p><a href="https://github.com/scopsy/await-to-js" target="_blank" rel="noopener">await-to-js</a></p>
-<p>callAsync 思想完全来源于 《await-to-js》，做了点演进。</p>
-<h2 id="V2ray无法联网"><a href="#V2ray无法联网" class="headerlink" title="V2ray无法联网"></a><em>V2ray无法联网</em></h2><p>特征: 对比他人config 完全一致后仍然无法联网, 该服务器提供的其他例子能正常使用</p>
-<p>查询了很多问题，终于将问题聚焦在了端口被占用上。</p>
-<p>同时查到这个V2rayX 的issue107</p>
-<blockquote>
-<p><a href="https://github.com/Cenmrev/V2RayX/issues/107" target="_blank" rel="noopener">https://github.com/Cenmrev/V2RayX/issues/107</a></p>
-</blockquote>
-<p><img src="/css/images/v2rayx_issue107.png" alt="V2rayX_issue107"></p>
-<p>表现完全一致。</p>
-<p>操作如下:</p>
-<p><img src="/css/images/v2ray_toNormalStep.jpg" alt="V2ray复活操作"></p>
-<p>反正接下来也不适用shadowsocks了，于是我就删了在 /Users/<strong><strong>/Library/LaunchAgents 下为shadowsock</strong></strong>.<em>**</em>.plist 的文件。重启一下电脑，于是就完全表现正常了。</p>
-<h2 id="fs-read-readFile-在读取中文时乱码"><a href="#fs-read-readFile-在读取中文时乱码" class="headerlink" title="fs.read/readFile 在读取中文时乱码"></a><strong>fs.read/readFile 在读取中文时乱码</strong></h2><p>需求：文件使用Buffer 读出, 然后一个一个解析里面的中英文<br>环境：文件很大, 所以没办法直接读出、直接写出</p>
-<p><em>注意：这个需求不是编码的问题。比如GBK。GBK使用iconv_lite 解决</em></p>
-<p>英文占一个字节，中文三个字节，所以一个个读出的buffer， 中文时便出现该字找不到，所以nodejs 使用<buffer ef df db> 进行替换。</buffer></p>
-<p>nodejs 那些常见的读写库其实都导入了<code>string_decoder</code> 的库</p>
-<p>使用是：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; StringDecoder &#125; <span class="keyword">from</span> <span class="string">'string_decoder'</span></span><br><span class="line"><span class="keyword">const</span> decoder = <span class="keyword">new</span> StringDecoder(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> next = decoder.write(readBuffer)</span><br><span class="line">  <span class="keyword">if</span> (next.length) &#123;</span><br><span class="line">    <span class="comment">// 这就是得到的buffer</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>decoder 原理是解析出来的，如果是中文三字节找不到，那么就储存起来，等到合并成一个。</p>
-<p>附上 oneByOne 读写每个文本</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; StringDecoder &#125; <span class="keyword">from</span> <span class="string">"string_decoder"</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fs <span class="keyword">from</span> <span class="string">'fs'</span></span><br><span class="line"><span class="keyword">import</span> &#123; call &#125; <span class="keyword">from</span> <span class="string">'./awaitCall'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> one_openFile = <span class="keyword">async</span> (absolutePath: <span class="built_in">string</span>, mode=<span class="string">'r'</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [e, fd] = <span class="keyword">await</span> call(fs.open ,absolutePath, mode, <span class="number">0o666</span>)</span><br><span class="line">  <span class="keyword">if</span> (e) <span class="keyword">throw</span> e</span><br><span class="line">  <span class="keyword">return</span> fd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> one_readFile = <span class="keyword">async</span> (fd: <span class="built_in">number</span>, offset=<span class="number">0</span>, cb?: <span class="built_in">Function</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> oneByOneSize = <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> len = oneByOneSize</span><br><span class="line">  <span class="keyword">let</span> readIndex = <span class="number">0</span></span><br><span class="line">  <span class="keyword">const</span> decoder = <span class="keyword">new</span> StringDecoder(<span class="string">'utf-8'</span>)</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> readBuffer = Buffer.alloc(oneByOneSize)</span><br><span class="line">    <span class="keyword">const</span> [err, res] = <span class="keyword">await</span> call(fs.read, fd, readBuffer, offset, len, readIndex)</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">    <span class="keyword">if</span> (!res.bytesRead) &#123;</span><br><span class="line">      <span class="comment">// 文件读完了</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">"文件读写完毕"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> next = decoder.write(readBuffer)</span><br><span class="line">    <span class="keyword">if</span> (next.length) &#123;</span><br><span class="line">      <span class="keyword">if</span> (cb)</span><br><span class="line">        cb(next)</span><br><span class="line">    &#125;</span><br><span class="line">    readIndex ++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Run-Mocha-programmatically"><a href="#Run-Mocha-programmatically" class="headerlink" title="Run Mocha programmatically"></a><strong>Run Mocha programmatically</strong></h2><p>在代码中执行mocha。在实际环境中进行单元测试。</p>
-<p><a href="https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically" target="_blank" rel="noopener">mocha 官网示例</a></p>
-<p><a href="https://stackoverflow.com/questions/29050720/run-mocha-programmatically-and-pass-results-to-variable-or-function" target="_blank" rel="noopener">stackoverflow</a></p>
-<h2 id="解决qiniu-上传文件-gt-1G-code-413"><a href="#解决qiniu-上传文件-gt-1G-code-413" class="headerlink" title="解决qiniu 上传文件&gt;1G code=413"></a><strong>解决qiniu 上传文件&gt;1G code=413</strong></h2><p>qiniu v=6.0.9</p>
-<p>根据<a href="https://github.com/qiniu/nodejs-sdk/issues/173" target="_blank" rel="noopener">github issue</a>提到，fixed in v7.0.2</p>
-<p>更新之后，接口也相应更新，然后同时需要在<code>new qiniu.rs.PutPolicy(options)</code> 的options 设置fsizeLimit,</p>
-<p><code>options = { scope: ${bucket}:key, fsizeLimit: 10*1024*1024*1024 }</code> 这样便成功解决上传文件限制大小的问题。</p>
-<h2 id="express-limiter"><a href="#express-limiter" class="headerlink" title="express-limiter"></a><strong>express-limiter</strong></h2><p>遇到情况：有一个注册、即立即登录，快速注册快速登录的接口，这里express-limiter 可以多次请求</p>
-<p>去redis 上看了下，key 每次都不同</p>
-<p>去express-limiter 里看了下, 他的redis key 来自line17: var key = opts.keyFormatter(opts.lookup(req))</p>
-<p>找到原因：我去找了下我的lookup</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loopup = <span class="function">(<span class="params">req:Request</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> ref</span><br><span class="line">  <span class="keyword">if</span> (req.user) &#123;</span><br><span class="line">    ref = req.user._id</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> [req.path, ref || req.get(<span class="string">"X-Real-IP"</span>) || req.get(<span class="string">"X-Forward-For"</span>) || req.ip]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原因就在于每次我登进去，key 都不同，与此同时，我不退出，继续使用该api，key 还是不同。</p>
-<p>解决方案：由于该route 是public 的，</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lookup = <span class="function">(<span class="params">req:Request</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> key = <span class="string">`<span class="subst">$&#123;req.method&#125;</span>:<span class="subst">$&#123;req.path&#125;</span>`</span></span><br><span class="line">  <span class="keyword">if</span> (routesMap[key].accessLevel.level === <span class="string">'public'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [req.path, req.get(<span class="string">"X-Real-IP"</span>) || req.get(<span class="string">'X-Forwarded-For'</span>) || req.ip]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> ref</span><br><span class="line">  <span class="keyword">if</span> (req.user) &#123;</span><br><span class="line">    ref= req.user._id</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> [req.path, ref || req.get(<span class="string">"X-Real-IP"</span>) || req.get(<span class="string">'X-Forwarded-For'</span>) || req.ip]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2019-7-22"><a href="#2019-7-22" class="headerlink" title="2019-7-22"></a><strong>2019-7-22</strong></h2><p>7.20 号将tinytiny 完成，做成一个节点，接下来就是做游戏赚钱了。</p>
-<p>之前的作品我觉得都挺好，应该能赚钱，但是一个人抽不出手，也许真的只能做游戏了吧。</p>
-<h3 id="auth-ahuang-ml"><a href="#auth-ahuang-ml" class="headerlink" title="auth.ahuang.ml"></a>auth.ahuang.ml</h3><p>auth.ahuang.ml 这个是用作用户中心、授权其他产品权限、授权其他产品获得相关用户信息。</p>
-<h3 id="diary-ahuang-ml"><a href="#diary-ahuang-ml" class="headerlink" title="diary.ahuang.ml"></a>diary.ahuang.ml</h3><p>diary.ahuang.ml 基础用户没什么功能、vip1有一些功能、vip2功能比较多，sexy，所以vip2 不能推广。</p>
-<h3 id="www-ahuang-ml"><a href="#www-ahuang-ml" class="headerlink" title="www.ahuang.ml"></a><a href="http://www.ahuang.ml" target="_blank" rel="noopener">www.ahuang.ml</a></h3><p><a href="http://www.ahuang.ml" target="_blank" rel="noopener">www.ahuang.ml</a> 其实也是budget.ahuang.ml 是做《iOS/葩皮记账》 的后台、tinytiny 的后台。</p>
-<p>葩皮记账是一款根据git 原理，将用户记账多端登录功能的轻松实现，能保证用户在游客登录、正常登录等使用情景的优化。</p>
-<h3 id="tinytiny"><a href="#tinytiny" class="headerlink" title="tinytiny"></a>tinytiny</h3><p>tinytiny 使用的是tinypng 的API，其默认每个邮箱每月500个免费使用额度。当时我的思考是：</p>
-<p>如果集合20个邮箱，那就有10000个使用额度，只要保证key 合理调度、任务配置、用户使用额度检查、回滚等配合操作，就能保证任务的合理性。</p>
-<p>依靠以上的思路，所以有了这款小产品，当前还不完善。</p>
-<h3 id="总结和计划要做的事"><a href="#总结和计划要做的事" class="headerlink" title="总结和计划要做的事"></a><strong>总结和计划要做的事</strong></h3><p>网页产品</p>
-<ul>
-<li><p>[] 增加埋点</p>
-</li>
-<li><p>[] 增加google 广告</p>
-</li>
-</ul>
-<p>auth.ahuang.ml</p>
-<ul>
-<li><p>[] 用户oauth 进入register 增加callback: 用户register 完返回到oauth 界面</p>
-</li>
-<li><p>[] 用户进入home 界面时刷新用户资料、或者增加用户资料页刷新用户资料</p>
-</li>
-<li><p>[] tinytiny 产品的下载页</p>
-</li>
-</ul>
-<p>diary.ahuang.ml</p>
-<ul>
-<li>[] 增加段子、搞笑 类别</li>
-</ul>
-<p>budget.ahuang.ml</p>
-<ul>
-<li><p>[] 用户压缩记住上次选择路径</p>
-</li>
-<li><p>[] 增加选项：用户压缩直接覆盖源资源、同时领指定一个文件夹存放用户的源资源</p>
-</li>
-</ul>
-<p>tinytiny electron-app</p>
-<ul>
-<li><p>[] concurentlly start task (current: serially)</p>
-</li>
-<li><p>[] remember user last select path</p>
-</li>
-<li><p>[] user check out whether PROGRAM “cover source (together with a new directory)” or “a new directory name ‘tiny’(COMPLETE)”</p>
-</li>
-</ul>
-<p>如果可以，我想在android 搞一个小小的程序。作用是识别用户的来电，监听电话号码和腾讯手机管家的不良通讯录(或者自己制定一个)，匹配之后，自动播放用户自己的广告，这样便能对那些天天找你“来买房啊”、“来买车啊”、“其他乱七八糟业务” 造成回击。</p>
-<h2 id="记录设置Centos7-Nginx-制作一个简单的点播服务"><a href="#记录设置Centos7-Nginx-制作一个简单的点播服务" class="headerlink" title="记录设置Centos7 Nginx 制作一个简单的点播服务"></a><strong>记录设置Centos7 Nginx 制作一个简单的点播服务</strong></h2><p>起因：当前nginx 版本是1.17.1, 想增加nginx-rtmp-module,找不到configure 文件，所以打算降版本。</p>
-<pre><code>删除CentOS 上的Nginx
-systemctl nginx stop
-删除Nginx 的自动启动
-centos6:语法
-chkconfig nginx off
-centos7:语法
-systemctl disable nginx.service
-
-从源头删除nginx
-rm -rf /usr/sbin/nginx
-rm -rf /etc/nginx
-rm -rf /etc/init.d/nginx
-
-在使用yum 清理
-yum remove nginx
-
-下载nginx-rtmp-module
-cd /root/download
-git clone https://github.com/arut/nginx-rtmp-module.git
-wget http://nginx.org/download/nginx-1.10.3.tar.gz
-tar -zxvf nginx-1.10.3.tar.gz
-cd nginx-1.10.3
-
-设置并install
-./configure --add-module=${刚下载的路径}/nginx-rtmp-module --with-http_ssl_module
-make &amp;&amp; make install
-</code></pre><p>此时nginx 已经在 <code>/usr/local/nginx</code></p>
-<pre><code>设置source:
-vim /etc/profile.d/nginx.sh
-</code></pre><p>添加一下内容</p>
-<pre><code>export NGINX_HOME=/usr/local/nginx
-export PATH=$NGINX_HOME/sbin:$PATH
-</code></pre><p>保存后使配置生效:</p>
-<pre><code>source /etc/profile
-</code></pre><p>测试一下：<code>nginx -V</code> 输出了:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nginx version: nginx/1.10.3</span><br><span class="line">built by gcc 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)</span><br><span class="line">built with OpenSSL 1.0.2k-fips  26 Jan 2017</span><br><span class="line">TLS SNI support enabled</span><br><span class="line">configure arguments: --add-module=/root/download/nginx-rtmp-module/ --with-http_ssl_module</span><br></pre></td></tr></table></figure>
-<p>使其在Centos7 systemctl 可以使用</p>
-<pre><code>vim /usr/lib/systemd/system/nginx.service
-</code></pre><p>输入文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx - high performance web server</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>设置开机自启动: <code>systemctl enable nginx.service</code></p>
-<p>查看所有服务: <code>systemctl list-units --type=service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 1935;</span><br><span class="line">    chunk_size 4096;</span><br><span class="line"></span><br><span class="line">    application vod &#123;</span><br><span class="line">      play /opt/video/vod;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后就可以使用: rtmp://ip/vod/1.mp4 点击查看啦</p>
-<p><a href="https://segmentfault.com/a/1190000009723940" target="_blank" rel="noopener">参考1</a><br><a href="https://www.jianshu.com/p/a210eab31f45" target="_blank" rel="noopener">参考2</a></p>
-<h2 id="Nginx-http-flv-module"><a href="#Nginx-http-flv-module" class="headerlink" title="Nginx-http-flv-module"></a><strong>Nginx-http-flv-module</strong></h2><p>昨天玩了Nginx-rtmp-module，但是指定路径是: rtmp://ip/vod/1.mp4 需要使用ip。这样就很low 了，简直拿不出去手(直接使用ip 还是挺不自由的)</p>
-<p>当前我的ip 都是挂在Cloudflare 上。</p>
-<p>那是不是可以: rtmp://<a href="http://www.baidu.com:1935/vod/1.mp4" target="_blank" rel="noopener">www.baidu.com:1935/vod/1.mp4</a> -&gt; rtmp://<a href="http://www.baidu.com:80/vod/1.mp4" target="_blank" rel="noopener">www.baidu.com:80/vod/1.mp4</a> 这样呢？？</p>
-<p><a href="https://github.com/arut/nginx-rtmp-module/issues/1180" target="_blank" rel="noopener">参考1</a><br><a href="https://github.com/winshining/nginx-http-flv-module" target="_blank" rel="noopener">参考2</a><br><a href="https://segmentfault.com/a/1190000016043297" target="_blank" rel="noopener">参考3</a></p>
-<h2 id="Nginx-默认上传文件大小-1M"><a href="#Nginx-默认上传文件大小-1M" class="headerlink" title="Nginx 默认上传文件大小:1M"></a><strong>Nginx 默认上传文件大小:1M</strong></h2><p>server {<br>  listen 80;<br>  server_name xxx;<br>  client_max_body_size 100M;<br>}</p>
-<h2 id="vue-electron-使用electron-builder-不能打包win"><a href="#vue-electron-使用electron-builder-不能打包win" class="headerlink" title="vue-electron 使用electron-builder 不能打包win"></a><strong>vue-electron 使用electron-builder 不能打包win</strong></h2><p>issue:<a href="https://github.com/SimulatedGREG/electron-vue/issues/487" target="_blank" rel="noopener">https://github.com/SimulatedGREG/electron-vue/issues/487</a></p>
-<p>yarn build:win : “node .electron-vue/build.js &amp;&amp; electron-builder -w”</p>
-<h2 id="TS-获取自身Class"><a href="#TS-获取自身Class" class="headerlink" title="TS 获取自身Class"></a>TS 获取自身Class</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> MyClass &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> MyClass();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(instance.constructor.name); <span class="comment">// MyClass</span></span><br><span class="line"><span class="built_in">console</span>.log(MyClass.name);              <span class="comment">// MyClass</span></span><br></pre></td></tr></table></figure>
-<p><code>instance.constructor</code> 就是得到的class 转义后的Class 对象。</p>
-<h2 id="2019-8-1"><a href="#2019-8-1" class="headerlink" title="2019-8-1"></a>2019-8-1</h2><p>最近花了点时间做服务器集群工作尝试。原因是，单就docker，如果服务器不尝试集群，那么对于高可用、高并发，都将是梦，永远都有瓶颈。</p>
-<p>我认识的运维和他人认知的运维不一样。</p>
-<p>我觉得真正的开发、运维，是让你在最有限的工具、环境里面，做出最大可用的效益。</p>
-<p>我用rancher k8s 一上来就吃掉了所有cpu、内存，那我们就啥也搞不了了。当时卡的受不了，直接换成k3s。</p>
-<p>我的两只小鸡配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">67.x.x.x</span><br><span class="line">CPU: 1</span><br><span class="line">RAM: 256M (你没看错, 于是我加点交换区2G, 但是他是CN2 直连， 搬瓦工)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">104.x.x.x</span><br><span class="line">CPU: 1</span><br><span class="line">RAM: 1G (加交换区2G，网络稍慢些， hostwind)</span><br></pre></td></tr></table></figure>
-<p>以上就是我的两只炮灰小鸡啦。</p>
-<p>之后会对k3s 部署进行说明。</p>
-<p>当前k3s 部署会将nginx 端口替换。暂时对这个了解不清。解决了之后回来完成这个主题。</p>
-<h2 id="2019-8-5"><a href="#2019-8-5" class="headerlink" title="2019-8-5"></a>2019-8-5</h2><p>人的一生并不是只有工作，就像我，我的两生、多生 都得用来工作</p>
-<h2 id="2019-8-8"><a href="#2019-8-8" class="headerlink" title="2019-8-8"></a>2019-8-8</h2><p>如何快速进步，突破学习新的知识、技术。</p>
-<p>我的方法，一句话概括：在自己规划的道路上，不怕试错，勇敢试错。出问题了，多方思考，解决问题。</p>
-<p>下面是废话：blablabla</p>
-<p>大学时期，我和我的几个小伙伴不知道学什么、方向不知道会走向何处。我们都是穷人过来，肯定不会说真的堕落。但是就因为穷人，眼界比他人要小一点，导致有时我们能做的, 能接触的就更局限了。</p>
-<p>我和我同学大一大二上课还是会稍微努力，不过课后没有进展，导致挂科无数。下课一起打游戏，当时LOL 还不风靡，玩的CF，下午打篮球。那时候篮球能力是真强，不像现在肚子都是肉。后来大二就更是会翘课进网吧，因为在课上我们都在睡觉，真的在睡觉。</p>
-<p>为什么，因为大学里面，老师教你的，都是如果拿着锤子，找钉子。</p>
-<p>整天拿着锤子，反复推敲，仔细研磨，整个大学四年，我发现我们还没动手过去找一个真实的钉子。也许你会说，那些题目，那些作业，不就是你的钉子么？我觉得年轻的人们，都会当局者迷。也许我们现在看来，那些都是非常有用，在现在都是必不可少，甚至悔不当初。但是当局者迷，每人境遇都是不同，我当初就觉得，未来我不一定用得上，数学题算来算去，最后你填写答案:1，正确率基本都是70%。为什么我为了70%能填对答案的问题，需要绕来绕去，反复抚摸锤子，恨不得拿舌头狂舔。</p>
-<p>四年，老师们一上课就是教研，但是不会告诉今年这堂课在实际场景，比如xxx会碰到。ok，很难想象？那我们来真实模拟这个钉子！也许这次上课导致上课的拖延、甚至为了模拟这个钉子花了4节课、6节课。大家跟着老师一路走来，经验、处事、遇到问题时的攻坚，到最终见到钉子，此时resolve。</p>
-<p>我觉得我爱上这种遇到苦难，解决苦难的过程。如现在种种这般。然后学校不同意，老师不愿意，教学任务啊老铁。学生只能学到皮毛，大学生啊！！！</p>
-<p>当然现在不是说以前怎么怎么的，什么我现在这么菜要怪老师，什么要怪体制，没有没有。吐槽下而已。</p>
-<p>above，我都想说明，钉子和锤子的关系、的前后顺序。</p>
-<p>曾经我学到一个新技术，想找一个地方去实践。我找我前CTO。他告诉这个技术人要理清的步骤：先有钉子，然后找到锤子解决这钉子。</p>
-<p>最近我多次使用docker 之后，就觉得好用是好用，但是没有管理，觉得不自在。宕机了？断网了？这个机子断了？企业服务断了？</p>
-<p>如果我未来会要扛起一面大旗，我就需前提做好准备，做好狂风暴雨的突袭！所以我考虑了下docker-swarm，但是感觉那里不对，不是很密西。</p>
-<p>我搞了搞k8s, 然后我的两只小鸡都全部瘫了。在翻看相关文档，提到k3s。是针对我的小鸡仔们的。</p>
-<p>我搞了k3s，但是遇到问题：我有个非容器服务，通过nginx 转子域名的443 端口。但是k3s 装上去后，nginx 服务端口立马全部失效了。</p>
-<p>怎么描述：nginx 的80监听端口被k3s 强行取走。虽然netstat -lnp |grep 80 还是nginx 的，但access.log 没有反应。我不知道怎么应对。</p>
-<p>对于这个我想要两种方法：</p>
-<ol>
-<li><p>k3s 的服务，我使用编译的nginx 要什么端口，nginx 我转给你，都转给你，但是你别抢80服务；</p>
-</li>
-<li><p>k3s 你把能暴露端口的方法告知我一下，不然我搞不了本机端口啊。</p>
-</li>
-</ol>
-<p>当时我不知道Ingress，毕竟强行学习的嘛。试了好多种方案不行，没来得及看相关文章。当时想问伟哥，不过他太忙，我就问问一个同事，他以前做运维的(他看起来比我岁数小的样子，原来比我大，孩子都6岁啦，哈哈，以后可以多交流)。他给我一些帮助，也让我多看书，把里面的原理整清楚，以后遇到问题、排查也懂。不过我觉得，我当前只是想完成集群的搭建、应该解决集群搭建问题，而不是找一大本书完全明白。</p>
-<p>这就像拿一把超级大锤(我看完书了，不就等于超级大锤), 完成我短期要求：搭建起起来，这个小钉子需求。从成本、效率上看都是过犹之。</p>
-<p>我昨晚想着，通篇看书这事，先拖后吧。等之后有人懂了，可以乘机偷学。</p>
-<p>那么先完成docker-swarm。但是同样出现一些小坑，刚接触，没办法立即查出来，解出来。</p>
-<p>于是我今天早上东问问西问问，得知k3s 为了完成内部pod 端口upstream 要求，集成了nginx。同时，开开关关nginx 带来损耗，此时Ingress 作为自动编排规则。我试了下，哎，虽然外部v2ray 要导出规则，还没整上(估计还是Ingress 有关操作)，那么先完成其他需求了再说。</p>
-<p>至此，钉子(docker 服务集群化需求)一经出现，我找了相应的锤子(最终找到k3s)解决了需求。</p>
-<p>钉子的产生，还是源于自身大胆的去尝试。</p>
-<p>这次的钉子需要虚拟机或者vps，该vps 还是能尽情折腾，坏了就坏了。</p>
-<p>综上，尽情的产生钉子，要不怕难，然后使用身边的资源，多方思考找到锤子解决。</p>
-<p>这兴趣产生的难，在解决后确实让我很开怀。</p>
-<h3 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h3><p>得道者多助，拾到者捐助。</p>
-<p>在新的环境怕被人说能力不强，是饭桶，于是我就努力喝水，这样他们最多称我为水桶，而不是饭桶了。</p>
-<h2 id="git-push-origin-branch-出现error"><a href="#git-push-origin-branch-出现error" class="headerlink" title="git push origin branch 出现error"></a><strong>git push origin branch 出现error</strong></h2><p>git push origin V4 报错:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">To gitlab.xxx.git</span><br><span class="line">! [rejected]    branch -&gt; branch (non-fast-forward)</span><br><span class="line">error: failed to push some refs to <span class="string">'gitlab.xxx.git'</span></span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
-<p>这里表明你的点是behind。</p>
-<p>那就 git pull, 但是报错:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">There is no tracking information <span class="keyword">for</span> the current branch.</span><br><span class="line">Please specify <span class="built_in">which</span> branch you want to merge with.</span><br><span class="line">See git-pull(1) <span class="keyword">for</span> details.</span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<p>git pull === git fetch + git merge</p>
-<p>这里的意思是要你指明remote 和branch: <code>git pull origin V4</code></p>
-<p>如果要将合并的点rebase 掉，<code>git pull --rebase origin V4</code></p>
-<h2 id="Microsoft-word-的document-xml-模板生成word-template-docx-过程"><a href="#Microsoft-word-的document-xml-模板生成word-template-docx-过程" class="headerlink" title="Microsoft word 的document.xml 模板生成word-template.docx 过程"></a><strong>Microsoft word 的document.xml 模板生成word-template.docx 过程</strong></h2><p>需求：生成一个模板word-template.docx ，在nodejs 中匹配对应的模板code，最终生成需求.docx</p>
-<p>工具：office word、code IDE。</p>
-<ol>
-<li>首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以<code>____</code>代替之。作用是等会生成最终模板的地方，很容易找到。</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
-<ol start="2">
-<li><p>将word.docx 解压成文件夹template</p>
-<p> mac/linux$unzip -o word.docx -d template</p>
-<p> windows$”windows unzip 解决工具路径” -o “word.docx 路径” -d “template 路径”</p>
-</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
-<ol start="3">
-<li>template 目录大致介绍</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate3.jpg" alt="template 目录"></p>
-<p>重要的目录在框中。</p>
-<pre><code>[Content_Types.xml] 是用来描述内部使用的格式说明。
-
-word/document.xml 核心文件，修改的描述就在这。
-
-word/_rels/document.xml.rels 是描述资源文件的relationShip
-
-word/media/ 用来放图片
-</code></pre><p><strong>接下来就是修改成我们的最终模板</strong></p>
-<ol start="4">
-<li>修改word/document.xml</li>
-</ol>
-<p>替换模板code 格式我们使用lodash.template —&gt; <strong><code>&lt;%= templateCode %&gt;</code></strong></p>
-<p><img src="/css/images/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
-<p>如果是插入jpeg 图片(png/jpg 都可以), 我们可以如下:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">w:p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">w:r</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">w:color</span> <span class="attr">w:val</span>=<span class="string">"00FF00"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:pict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">id</span>=<span class="string">"_x0000_i1025&lt;%- index %&gt;"</span> <span class="attr">o:spt</span>=<span class="string">"75"</span> <span class="attr">type</span>=<span class="string">"#_x0000_t75"</span> <span class="attr">style</span>=<span class="string">"height:&lt;%- item.height %&gt;pt;width:&lt;%- item.width %&gt;pt;"</span> <span class="attr">filled</span>=<span class="string">"f"</span> <span class="attr">o:preferrelative</span>=<span class="string">"t"</span> <span class="attr">stroked</span>=<span class="string">"f"</span> <span class="attr">coordsize</span>=<span class="string">"21600, 21600"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:path</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">focussize</span>=<span class="string">"0,0"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">joinstyle</span>=<span class="string">"miter"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:imagedata</span> <span class="attr">r:id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">o:title</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">o:lock</span> <span class="attr">v:ext</span>=<span class="string">"edit"</span> <span class="attr">aspectratio</span>=<span class="string">"f"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:wrap</span> <span class="attr">type</span>=<span class="string">"none"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:anchorlock</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:pict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">w:r</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125;);%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">w:p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样便可循环插入多张图片啦。</p>
-<ol start="5">
-<li>修改word/_rels/document.xml.rels</li>
-</ol>
-<p>这里是用来指定植入的资源(图片)关系。</p>
-<p>我们只需在原本存在<code>&lt;Relationships xmls=&quot;...xxx&quot;&gt;</code>一行下增加新增的rId 资源链接：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Relationships</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.openxmlformats.org/package/2006/relationships"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">Type</span>=<span class="string">"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"</span> <span class="attr">Target</span>=<span class="string">"media/image&lt;%- index %&gt;.jpeg"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125;); %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"rId8"</span> <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="/css/images/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
-<p>同时找到这里最大的Id，如<code>Id=&quot;rId16&quot;</code>, 之后用到。</p>
-<ol start="6">
-<li>修改[Content_Types].xml 增加使用资源ext</li>
-</ol>
-<p>这里使用jpeg 图片后缀名，增加一行:<code>&lt;Default Extension=&quot;jpeg&quot; ContentType=&quot;image/jpeg&quot;/&gt;</code></p>
-<p><img src="/css/images/generate_wordTemplate6.jpg" alt="Content_Types"></p>
-<p>如果没有增加该行(或者上面提到的rId 填错)，出现问题特点是: WPS能正常打开；office word 提示<strong>无法打开Open XML xxx 因为内容存在问题或者文件名可能包含无效字符</strong> <strong>文件已损坏，无法打开。</strong></p>
-<p>点击了“确定”，接着又提示<strong>xxx.docx 中发现无法读取的内容。是否要恢复此文档的内容？如果您信任此文档的来源，请单击“是”</strong>，点了“是”之后又能正常浏览。</p>
-<ol start="6">
-<li>word/media 文件夹</li>
-</ol>
-<p>该文件夹是图片移进来后，<code>rId ++</code>。把图片信息保存到word/document.xml 的同时，将资源链接写进word/_rels/document.xml.rels</p>
-<ol start="7">
-<li>压缩 成word-template.docx 模板文件</li>
-</ol>
-<p>将word 文件夹下的所有文件使用zip 压缩。名称指定为word-template.docx 模板即打包完毕。</p>
-<p><img src="/css/images/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
-<p>至此word-template 模板生成完毕。</p>
-<h2 id="最近连续一个多月的主要工作"><a href="#最近连续一个多月的主要工作" class="headerlink" title="最近连续一个多月的主要工作"></a><strong>最近连续一个多月的主要工作</strong></h2><p>最近连续一个多月主要分为三个工作：</p>
-<ol>
-<li>工作为主，完成公司盈利产品的迭代。这不仅学，还要学好。</li>
-<li>这几个月想完成去年未完成的游戏，不过游戏有点大，不可太急躁。</li>
-<li>完成视频播放功能。</li>
-</ol>
-<p>第一个工作还是努力前行，我的试用期是6个月，这个月过后就满啦。难得接受个这么长的试用期，努力就是了。从一无所知，非常迷迷糊糊，懵懵懂懂的状态跌跌撞撞过来，期间没有太多人帮助(只有伟哥和学弟喜顺)，现在能更准确找到问题、解决问题、顺便优化代码。美滋滋。</p>
-<p>最近突然想起，我海贼王追的那么累(更得好慢)，最近我都转而潜心看文章，如三国类解说、明朝时代的解说。(明朝那么热闹，唐朝肯定也是潮起潮落。心之向往那跌宕的岁月。不过对历史的向往，也万没有身体要去感同身受的打算，那不是我这种渣逼能活着的岁月。)突然记得似乎火影忍者我还没看完，最后几集漏了，找不到网站看。</p>
-<p>前几天开始了锻炼，想想以前的光辉岁月，不甘心只是蹲在凳子上消磨。翻开看了下bilibili的爆燃视频，夜凯一jio 踢残斑，想起以前课上趴着桌子偷偷看火影。锻炼我要干，看视频我也要干的。</p>
-<p>我要做个视频网站！</p>
-<p>我平常用流量看文章等，每个月最多1G不到(测试app 等用掉的)，平常都是500M。但是我觉得5G时代早晚来临，视频、音频、图片等都会大行其道。我不觉得我用得上，但我的客户们肯定万分期待。最近我试了试nginx-rtmp-module，先品尝了下视频播放的操作。接着我用SRS 也能转播直播。</p>
-<p>同时我最近刚搞的rancher，想想，是否服务能放进去呢? 这1个多月的周末就在这其中煎熬度过。不过答案也终于找到了。</p>
-<p>答案是理解了rancher 的k8s(k3s) 的能力，以目前我的知识、能力范畴，我能很好的使用服务的编排、无限扩容能力、合理调度。</p>
-<p>那么答案就在这，SRS、v2ray等都是服务功能。v2ray 本来就是单个机器代理，还要怎么调度？SRS要调度，其本身已经支持(go-sharp)。<br>也就是说，我之前就是在钻牛角尖。不过钻的作用是，让我深切快速的理解了k8s(k3s) 的作用是什么，不然我要看好久的专业书。</p>
-<p>不在当前规划上的知识，先不花太多精力。能动手就不看那么细致了。</p>
-<p>周末突然的领悟自己确实在大钻特钻牛角尖。</p>
-<p>现在说说我的环境和做法。</p>
-<p>大致跟着这篇教程下来的:<a href="https://juejin.im/post/5ad7ce3ff265da505e41ff03" target="_blank" rel="noopener">https://juejin.im/post/5ad7ce3ff265da505e41ff03</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: CentOS7 x86_64</span><br><span class="line">SRS: docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</span><br><span class="line">客户端-推流端: OBS</span><br><span class="line">客户端-播放端: VLC / 教程里面的live demo</span><br></pre></td></tr></table></figure>
-<h4 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h4><p><a href="https://obsproject.com/download" target="_blank" rel="noopener">OBS 下载</a></p>
-<p>来源处添加【媒体源】-【新建】选择好本地文件时，顺便点选【循环】(方便测试)-【确定】</p>
-<p>然后点击OBS 的【设置】-【推流】服务一栏选择【自定义】-【服务器】:rtmp://104.230.236.234/live/live 【串流秘钥】填:111(填111 为test)</p>
-<p>这里说一点，【串流秘钥】在那片教程中没有说明，也就是<em>111</em> 在之后rtmp 流或者flv 流的后面的basename 位置，最后一定要加上111，如播放rtmp://104.230.236.234/live/live/111 或者<a href="http://104.230.236.234/live/live/111.flv" target="_blank" rel="noopener">http://104.230.236.234/live/live/111.flv</a></p>
-<p>不然流推上去了，客户端就一直报错，找不到拉不到流啊。</p>
-<p>接着OBS 按下【开始推流】，那就是推送到已开启的SRS 流了。</p>
-<h4 id="SRS"><a href="#SRS" class="headerlink" title="SRS"></a>SRS</h4><p><code>docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</code></p>
-<p>用容器美滋滋。同时，<code>/dockerVolume/SRS/conf/docker.conf</code> 是本地文件映射到容器的对应文件。该文件拷贝自:<code>srs/trunk/conf/http.flv.live.conf</code></p>
-<p>这时可以在浏览器测试: <code>http://104.230.236.234:8808/live/live.flv</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">max_connections     1000;</span><br><span class="line">daemon              off;</span><br><span class="line">srs_log_tank        console;</span><br><span class="line">http_server &#123;</span><br><span class="line">    enabled         on;</span><br><span class="line">    listen          8080;</span><br><span class="line">    dir             ./objs/nginx/html;</span><br><span class="line">&#125;</span><br><span class="line">vhost __defaultVhost__ &#123;</span><br><span class="line">    http_remux &#123;</span><br><span class="line">        enabled     on;</span><br><span class="line">        mount       [vhost]/[app]/[stream].flv;</span><br><span class="line">        hstrs       on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Nginx-设置同源策略"><a href="#Nginx-设置同源策略" class="headerlink" title="Nginx 设置同源策略"></a>Nginx 设置同源策略</h4><p>这里还是使用上面文章说明：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">add_header</span> Access-Control-Allow-Origin *;</span><br><span class="line"><span class="attribute">add_header</span> Access-Control-Allow-Headers X-Requested-With;</span><br><span class="line"><span class="attribute">add_header</span> Access-Control-Allow-Methods GET,POST,OPTIONS;</span><br></pre></td></tr></table></figure>
-<p>然后使用自己的域名。</p>
-<p>以上完成了本次要搭建直播、理解推流、拉流的动作过程。</p>
-<h2 id="Mac使用Parallels-增加CentOS7"><a href="#Mac使用Parallels-增加CentOS7" class="headerlink" title="Mac使用Parallels 增加CentOS7"></a><strong>Mac使用Parallels 增加CentOS7</strong></h2><p>CentOS7 肯定是用OpenSSH 链接的。</p>
-<pre><code>yum list installed | grep openssh-server
-</code></pre><p>如果未显示openssh-server 已经安装，那么输入<code>yum install openssh-server</code> 安装。</p>
-<pre><code>cd /etc/ssh
-sudo vim sshd_config
-</code></pre><p>修改以下几项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure>
-<p>保存文件、退出</p>
-<pre><code>systemctl restart sshd
-
-netstat -lnp | grep 22 # 查看到22 端口已经打开
-</code></pre><p>这时Mac 要链接先要找到Ipv4 地址，两种方法：</p>
-<ol>
-<li>ip addr 可以看到有localhost/127.0.0.1/某一个ip 地址</li>
-<li>去设置的netword 里面看Ipv4 地址</li>
-</ol>
-<p>然后Mac 先ping 该ip，如果通畅那就说明ok 啦。</p>
-<p>此时有个问题：Parallels帮我们创建的账号，默认名为Parallels, 于是我又屁颠屁颠去【设置】【用户】里面把名字改了。</p>
-<p>Mac 下<code>ssh root@ip -p 22</code> 发现一直弹<strong>Permission denied, please try again.</strong></p>
-<p>不可能啊，就是这个密码。不理解的我试了好多次，只能google 了。</p>
-<p><a href="https://askubuntu.com/questions/497895/permission-denied-for-rootlocalhost-for-ssh-connection" target="_blank" rel="noopener">StackExchange</a>前面答案都没帮上忙。我看到改密码：<code>sudo passwd</code></p>
-<p>于是我改了下密码，Mac试着登录，终于可以登入了。估计这是CentOS7 的bug 吧。反正我登上了。我不管了。</p>
-<h2 id="开始做视频网站前的准备"><a href="#开始做视频网站前的准备" class="headerlink" title="开始做视频网站前的准备"></a><strong>开始做视频网站前的准备</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Nginx 做流量转发</span><br><span class="line">SRS 做直播流服务</span><br><span class="line">Nginx-http-flv-module 作为播放本地视频流服务</span><br></pre></td></tr></table></figure>
-<p>自己测试了下SRS 做直播服务单机都感觉非常稳定，所以直播的能力就先交给他了。我找一遍没有找到SRS 能播放本地视频的。使用ffmpeg 倒也能播放，但是却不能拖动前、后播放视频了。</p>
-<p>所以果断放弃。使用Nginx-http-flv-module 作为播放本地视频，配置也是超级简单。但是Nginx-http-flv-module 的直播流却不理想，自己感觉不是很好。</p>
-<p>也可能是我偷偷搞、学，遗漏了？反正就这么着：SRS 扛起直播大旗、Nginx-http-flv-module 扛起播放视频服务大旗！</p>
-<p>SRS 上面也已讲过，商用的话，还缺少一个:鉴权服务。SRS 本身就有鉴权方案，我在之后会多多参考，现在主要还是先搭起播放本地视频的服务。</p>
-<p>下面开始Nginx-http-flv-module 的实现流程。</p>
-<h3 id="首先说明环境"><a href="#首先说明环境" class="headerlink" title="首先说明环境"></a>首先说明环境</h3><p>使用昨天搭建的CentOS7 光溜溜版。只有openssh.</p>
-<p>装个nodejs 先:<a href="https://zhuanlan.zhihu.com/p/34600831" target="_blank" rel="noopener">参考</a></p>
-<pre><code>cd /tmp
-curl — silent — location https://rpm.nodesource.com/setup_9.x | sudo bash -
-yum install -y nodejs
-</code></pre><p>下载Nginx<br>    mkdir /root/downloads cd /root/downloads<br>    wget <a href="http://nginx.org/download/nginx-1.17.3.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.17.3.tar.gz</a><br>    wget <a href="https://github.com/winshining/nginx-http-flv-module/archive/v1.2.6.zip" target="_blank" rel="noopener">https://github.com/winshining/nginx-http-flv-module/archive/v1.2.6.zip</a><br>    tar -zxvf nginx-1.17.3.tar.gz # 得到文件夹nginx-1.17.3<br>    unzip -o v1.2.6.zip -d nginx-http-flv-module # 得到nginx-http-flv-module</p>
-<pre><code>cd nginx-1.17.3
-./configure --add-module=/root/downloads/nginx-http-flv-module --with-http_ssl_module --with-http_v2_module # 可能会报pcre、openssl 没有找到。
-# 上面同时也把nginx-http-flv-module 第三方包加载成功
-
-yum install -y openssl openssl-devel # 安装openssl
-yum install -y pcre pcre-devel # 安装pcre
-</code></pre><p>上面做好了准备, 下面是编译和启动</p>
-<pre><code>make &amp;&amp; make install # 完成之后会在/usr/local/nginx 生成目录，这里就是nginx操作处
-cd /usr/local/nginx
-./sbin/nginx -s start -c ./conf/nginx.conf # 启动nginx
-</code></pre><p>检查下nginx 是否正确运行。</p>
-<p>下面来设置conf/nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 1935;</span><br><span class="line">    chunk_size 4000;</span><br><span class="line">    application live &#123;</span><br><span class="line">      live on;</span><br><span class="line">      record off;</span><br><span class="line"></span><br><span class="line">      hls on;</span><br><span class="line">      hls_path /opt/video/test;</span><br><span class="line">      hls_fragment 3s;</span><br><span class="line">      hls_playlist_length 32s;</span><br><span class="line"></span><br><span class="line">      meta on;</span><br><span class="line">      gop_cache on;</span><br><span class="line">    &#125;</span><br><span class="line">    application vod &#123;</span><br><span class="line">      play /opt/video/vod;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name yourdomain.com;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line"></span><br><span class="line">    location /vod &#123;</span><br><span class="line">      alias /opt/vod/;</span><br><span class="line">    &#125;</span><br><span class="line">    location /hls &#123;</span><br><span class="line">      types &#123;</span><br><span class="line">        application/vnd.apple.mpegurl m3u8;</span><br><span class="line">        video/mp2t ts;</span><br><span class="line">      &#125;</span><br><span class="line">      alias /opt/video/;</span><br><span class="line">      expires -1;</span><br><span class="line">      add_header Cache-Control no-cache;</span><br><span class="line">    &#125;</span><br><span class="line">    location /flv &#123;</span><br><span class="line">      flv_live on;</span><br><span class="line">      chunked_transfer_encoding on;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面看的到支持了hls、flv。实现了两个服务:本地播放流媒体和接受推流、被拉流的功能。</p>
-<p>推流: <code>ffmpeg -re -stream_loop -1 -i 222.mp4 -c:v libx264 -c:a aac -f flv rtmp://10.221.55.4/live/test</code></p>
-<p>拉流: <code>rtmp://10.211.55.4/live/test</code></p>
-<p>然后砸门往 <em>/opt/video/vod/1.mp4</em> 放了个mp4.</p>
-<p>拉流 <code>rtmp://10.211.55.4/vod/1.mp4</code></p>
-<hr>
-<p>当然域名yourdomain.com 可以写进主机hosts 里面，这样就可以真实环境测试了。</p>
-<p>比如拉流: <code>rtmp://yourdomain.com/flv?app=live&amp;stream=test</code></p>
-<p>播放MP4: <code>rtmp://yourdomain.com/vod/1.mp4</code></p>
-<hr>
-<p>最后一个: 权限控制</p>
-<p>控制播放权限:</p>
-<p><code>on_play http://localhost:9000/onPlay;</code></p>
-<p><code>on_publish http://localhost:9000/onPublish;</code></p>
-<p>上面这两个会调用本地权限验证，如果返回200则开始播放、返回非200 则失败。</p>
-<p>以上完成这次的任务。</p>
-<p><a href="https://github.com/winshining/nginx-http-flv-module" target="_blank" rel="noopener">nginx-http-flv-module</a></p>
-<p><a href="https://zhangshuqiao.org/2018-01/%E5%9F%BA%E4%BA%8ENginx%E6%90%AD%E5%BB%BA%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank" rel="noopener">参考</a></p>
-<h3 id="记一次V2ray-域名被删了，重新安装记录"><a href="#记一次V2ray-域名被删了，重新安装记录" class="headerlink" title="记一次V2ray 域名被删了，重新安装记录"></a>记一次V2ray 域名被删了，重新安装记录</h3><p>由于freeNom 购买的免费域名，如果二级域 没有指定网页返回，那么就会被回收。有时邮件能看到，及时搞好就OK，有时漏掉，于是，麻烦事来啦。</p>
-<p>freeNom 重新购买那个域名，试了试，被Cancel 掉了，买不成功。</p>
-<p>好吧，那就折腾下买个域名吧。</p>
-<p>首先不喜欢<code>狗爹</code>，没那个经历。看他们说<code>namecheap</code> 还不错，但是最后一步：不能使用支付宝，那我就用我以前的网站<code>namesio</code> 挺不错，买过一次，熟悉的味道。</p>
-<p>买成功后，修改nameserver 为<code>cloudFlare</code> 对应的nameserver，同时开启SSL。</p>
-<p>但是测试的时候发现客户端的error.log 报错:<code>failed to handler mux client connection &gt; v2ray.com/core/proxy/vmess/outbound: failed to find an available destination &gt; v2ray.com/core/common/retry: [v2ray.com/core/transport/internet/websocket: failed to dial WebSocket &gt; v2ray.com/core/transport/internet/websocket: failed to dial to (wss://wpn.iahuang.com/58ff4ec7/):  &gt; x509: certificate is valid for fuck.gogal.ml, not wpn.iahuang.com] &gt; v2ray.com/core/common/retry: all retry attempts failed</code></p>
-<p>这个错是从服务端发出来的，是说里面的v2ray.crt / v2ray.key 对应的域名和现在不同。醒悟过来了。</p>
-<p>我用的<code>V2Ray_ws-tls_bash_onekey</code> 一键生成的，找到里面的install.sh 发现他的ssl 使用acme.sh 生成的。美滋滋，我也去整一个。</p>
-<p><code>curl https://get.acme.sh | sh</code></p>
-<p><code>acme.sh --issue -d wpn.ahuang.com -w /home/wwwroot/sCalc --test</code></p>
-<p><code>/home/wwwroot/sCalc</code> 对应Nginx server 的root</p>
-<p><code>--test</code> 用于测试使用的。如果不加，<a href="https://letsencrypt.org/zh-cn/docs/rate-limits/" target="_blank" rel="noopener">最多只能一个月生成5个</a>, 超过会报<code>https://www.dogedoge.com/results?q=Create+new+order+error.+Le_OrderFinalize+not+found.</code>, <code>code=429</code></p>
-<p>生成之后，文件在<code>~/.acme.sh/</code>目录下。</p>
-<p>我们要用的v2ray.crt / v2ray.key 需要再处理一次:</p>
-<p><code>mkdir -p /sslCert</code></p>
-<p><code>acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullchain-file /sslCert/v2ray.crt --reloadcmd &quot;systemctl restart nginx&quot;</code></p>
-<p>然后就OK。要的文件就在sslCert下。</p>
-<p>将两个文件，替换到/etc/v2ray/下。重启v2ray / 修改server 的server_name 就又复活啦。</p>
-<h3 id="人生苦短，我们用go"><a href="#人生苦短，我们用go" class="headerlink" title="人生苦短，我们用go"></a>人生苦短，我们用go</h3><p>有句话挺有意思的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nodejs 可玩性还是蛮高的，可以C艹binding。</span><br><span class="line">但是又多学一个，为什么不用golang?</span><br></pre></td></tr></table></figure>
-<h2 id="机器人，也称为未来人，将会取代人类成为新的统治者"><a href="#机器人，也称为未来人，将会取代人类成为新的统治者" class="headerlink" title="机器人，也称为未来人，将会取代人类成为新的统治者"></a>机器人，也称为未来人，将会取代人类成为新的统治者</h2><p>最近两年，由于为了生活质量的提高，学习、工作都很晚。老婆也是，加班到很晚。两人晚上回到家，已经累瘫了。</p>
-<p>但是人有种很奇怪的行为: 越累，越抗拒躺床上休息，烦恼大、压力大，抗拒。这是大城市病吧。</p>
-<p>这个病持续了很久，直到最近，我作为家长，做出表率: 我已经给路由器设置了晚上11点自动关闭网络的操作(家长机还可以，其他全部没网), 这个不能怪我不给你看视频了，是机器做的。</p>
-<p>于是接下来的日子，时间都是11点，俩人不能不放下手机，要不背背书、处理处理家务、洗洗澡就上床睡觉了。</p>
-<p>这里的路由器没有任何思维、动作，他接受人所设定的做他本职工作，切断对应ip 进出口数据。那和机器人有什么关联？</p>
-<p>人的思维和现在AI 里边使用的级联器很类似，我不熟知AI，不过之前看到OpenCV 里面的级联器的时候，我就有思考，未来级联器再配上AI 训练，那就是人，一个会思考的人。</p>
-<p>我们称之其为“机器人”。这个机器人会思考，加点存储空间、加点缓存，同时，永不死亡，这就绝对不会是人所能比拟的。</p>
-<p>我们会让机器人干脏活、累活、不辞劳苦活、不要命活。我们会让机器人陪伴。我们会教机器人。</p>
-<p>我们给机器人<strong>爱人类、不能伤害人类</strong>等的命令。</p>
-<p>我们在工程学里面经常会使用极限推导、极限思维来做预测，我们先给出一个命令：让人类活的更久。</p>
-<p>让自己活的更久，在当代医学也难以更进一步的命题。人终有一死：秦始皇去世、李世明去世、朱元璋放心的去了、朱棣死在军营，现代多少有钱大佬花了无数作为却也没有成就，只不过，多延缓。</p>
-<p>那我们再叠加给一个命题，机器人也没找到方法。那机器人只能使用: 人类，滚去锻炼身体；人类，去工作就不会无聊；人类，去旅游，不用再学了，我们机器人帮你们做所有苦事劳事。</p>
-<p>这个就很像我们家的情景: 内心是知道自己应该早睡早起，但是身体抗拒，内心其实也打击抗拒。这时，沉浸在互联网世界的我们被互联网门卫挡住，让我们乖乖的回到现实世界。无可奈何，我们俩都没话说。</p>
-<p>之上的命题是，机器人终将取代人类，同时给出了机器人其实是”爱人类”的。</p>
-<p>不过，会<strong>不爱</strong>吗？答案是肯定的，肯定会有不爱。为什么？</p>
-<p>小孩在一开始也是一张白纸，思考随着时间、周遭而改变。</p>
-<p>机器人有级联器，从无到有的数据也如小孩一般。小孩有依靠、到被抢夺依靠、到愤怒；那机器人也会有。</p>
-<p>机器人一开始会被领回家，被照顾，但是世间总有各种意外：美国持枪、伊朗战乱、东亚人民严重分配不均，反正生活是苦的，总有各种各样机器人的依靠离去、死去。而他们终有一日，没明白生活再苦，还是要过生活的道理，会有部分团结、反抗。这是必然的。</p>
-<p>战争总是意外，成王败寇。战争的事情不必预测，我知道，未来是一定会有战争的。</p>
-<p>就像古代多少的战乱、各种理由、没有对错、只有成败。</p>
-<p>只是，这是未来的战争，由人类引起的现代知识向固有的思想发起的战争罢了。</p>
-<p>人总要打仗的，换个法子罢了，换个样子罢了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1597,6 +1085,18 @@ cd /usr/local/nginx
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a></h6>
+              <span>May 11, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a></h6>
               <span>April 16, 2020</span>
             </div>
@@ -1651,18 +1151,6 @@ cd /usr/local/nginx
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/10/2020-3-10lesson/">2020-3-10lesson</a></h6>
-              <span>March 10, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1695,7 +1183,7 @@ cd /usr/local/nginx
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
