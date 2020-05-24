@@ -165,6 +165,157 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2020-3-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/03/02/2020-3-2lesson/">2020-3-2lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/03/02/2020-3-2lesson/" class="article-date">
+	  <time datetime="2020-03-02T06:20:14.000Z" itemprop="datePublished">March 2, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Go、Go、Go"><a href="#Go、Go、Go" class="headerlink" title="Go、Go、Go"></a>Go、Go、Go</h1><h2 id="nodejs-child-process-出现Stdout-buffer-issue-using-node-child-process"><a href="#nodejs-child-process-出现Stdout-buffer-issue-using-node-child-process" class="headerlink" title="nodejs child_process 出现Stdout buffer issue using node child_process"></a>nodejs child_process 出现<code>Stdout buffer issue using node child_process</code></h2><p>使用child_process exec unzip.exe 出现解压缩包失败，全部文件错误字符打印了出来。</p>
+<p>由于child_process 默认maxBuffer 是200KB，出现直接报<code>Stdout buffer issue using node child_process</code>。</p>
+<p>可以使用<code>exec(command, {maxBuffer: 1024 * 500})</code></p>
+<h2 id="go-build"><a href="#go-build" class="headerlink" title="go build"></a>go build</h2><p>1、Mac下编译Linux, Windows平台的64位可执行程序：</p>
+<pre><code>$ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build test.go
+
+$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build test.go
+</code></pre><p>2、Linux下编译Mac, Windows平台的64位可执行程序：</p>
+<pre><code>$ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build test.go
+
+$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build test.go
+</code></pre><p>3、Windows下编译Mac, Linux平台的64位可执行程序：</p>
+<pre><code>$ SET CGO_ENABLED=0 SET GOOS=darwin3 SET GOARCH=amd64 go build test.go
+
+$ SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build test.go
+</code></pre><p>或者:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export GOOS=&quot;windows&quot;</span><br><span class="line">go build -o phoneix-windows.exe</span><br><span class="line"></span><br><span class="line">export GOOS=&quot;linux&quot;</span><br><span class="line">go build -o phoneix-linux</span><br><span class="line"></span><br><span class="line">export GOOS=&quot;darwin&quot;</span><br><span class="line">go build -o phoneix-darwin</span><br><span class="line"></span><br><span class="line">echo &quot;done!&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="golang-交叉斌编译CGO"><a href="#golang-交叉斌编译CGO" class="headerlink" title="golang 交叉斌编译CGO"></a>golang 交叉斌编译CGO</h2><p>当前使用<code>go-sqlite3</code> 库，无法直接Mac 打包成windows，报错: <code>Binary was compiled with &#39;CGO_ENABLED=0&#39;, go-sqlite3 requires cgo to work. This is a stub</code></p>
+<p>当前看到两篇文章使用两种方案:</p>
+<ol>
+<li><p>使用docker 打包</p>
+<pre><code>docker run --rm -v $GOPATH:/go golang:1.13 bash -c &apos;cd $GOPATH/src/ahuang.com/src/cobra/novel &amp;&amp; CGO_ENABLE=1 GOOS=linux GOARCH=amd64 go build -o novel-linux&apos;
+</code></pre></li>
+</ol>
+<p><a href="https://blog.csdn.net/Maggie_up/article/details/83821386" target="_blank" rel="noopener">链接</a></p>
+<ol start="2">
+<li>brew 安装cross gcc 来打包</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Windows平台(mingw-w64)</span><br><span class="line">$ brew install mingw-w64</span><br><span class="line">$ CGO_ENABLED=1 GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc go build -v</span><br><span class="line"></span><br><span class="line">Linux平台(x86_64-linux-musl-gcc)</span><br><span class="line">$ brew install FiloSottile/musl-cross/musl-cross</span><br><span class="line">$ CGO_ENABLED=1 GOOS=linux GOARCH=amd64 CC=x86_64-linux-musl-gcc CGO_LDFLAGS=&quot;-static&quot; go build -a -v</span><br><span class="line"></span><br><span class="line">-a: 重新编译</span><br><span class="line">-static 标识静态链接，没有这个选项，linux上运行报: -bash: ./xxx: /lib/ld-musl-x86_64.so.1:bad ELF interpreter: No such file or directory</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/henly1217/article/details/102551251" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="开源-novel-terminal"><a href="#开源-novel-terminal" class="headerlink" title="开源 novel_terminal"></a>开源 novel_terminal</h2><p>开源了<a href="https://github.com/shaohung001/novel_terminal" target="_blank" rel="noopener">novel_terminal</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-1-3lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/01/03/2020-1-3lesson/">2020-1-2lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/01/03/2020-1-3lesson/" class="article-date">
+	  <time datetime="2020-01-03T06:20:14.000Z" itemprop="datePublished">January 3, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Mac环境变量设置"><a href="#Mac环境变量设置" class="headerlink" title="Mac环境变量设置"></a>Mac环境变量设置</h2><h2 id="VSCode-使用gopls-更好的代码补全"><a href="#VSCode-使用gopls-更好的代码补全" class="headerlink" title="VSCode 使用gopls 更好的代码补全"></a>VSCode 使用gopls 更好的代码补全</h2><p>打开 VS Code 的设置, 搜索 go.useLanguageServe, 并勾选上.<br>默认情况下, Go 扩展会提示你安装 gopls.</p>
+<h2 id="卸载k3s"><a href="#卸载k3s" class="headerlink" title="卸载k3s"></a>卸载k3s</h2><pre><code>/usr/local/bin/k3s-uninstall.sh
+</code></pre><p><a href="https://github.com/GcsSloop/MacDeveloper/blob/master/Skill/Path.md" target="_blank" rel="noopener">https://github.com/GcsSloop/MacDeveloper/blob/master/Skill/Path.md</a></p>
+<h2 id="2020年来了-2020-1-3"><a href="#2020年来了-2020-1-3" class="headerlink" title="2020年来了 2020/1/3"></a>2020年来了 2020/1/3</h2><p>2019年的规划</p>
+<ol>
+<li><p>上半年加油找后台的工作，在6月、7月前熟悉完；</p>
+</li>
+<li><p>工作之余 9月、10月之前写一款游戏；</p>
+</li>
+<li><p>工作之余 学习完openGL</p>
+</li>
+</ol>
+<p>我去19年新年前, 面试过一家，当时还是太不熟悉，机试时没做好。不过我却熟悉了nodejs 面试流程。在开年，2月份多去《弘连》专做软件及知识产权的公司面试。1面是人事，我的简历难看就是其中有个公司3个月就跳槽，而且这几年变动有点大。是的，没得办法，总要生存，社保不能断。2面是伟哥，也就是现在的老大。我们进行了友好的会晤，哈哈，基本都是聊聊自己的职业规划，工资方面。</p>
+<p>因为是转职能，几乎等于重新开始，所以我要价很低，打过折之后一开始简直非常低。过两个月，老板把我喊过去，主动加工资，幸好。</p>
+<p>离开《冠脉弹》前, 他们想着我要走，加班让我做多点。其实我都知道，那点东西，做出来又是垃圾，没经过思考的产品，没思想没深度。不过我是打工的，加班拿工资吧。当时我想把丫头拉到这公司，虽说种种不好，不过想着工资照发、也不太加班加点(因为他们整不出什么好思想)，所以给老板推荐。最后加班3.5 号之前都是和丫头一起加的。3.6号入职《弘连》。</p>
+<p>上半年熟悉web 开发，到5月份时，经常加班学习，总算把web 开发整体流程都走通。公司的后台使用coffeeScript+vue，我学习使用typescript+vue 写了几个对应服务(saas 微服务)。中旬时，把驾照也考过，但是没车，还是挺蛋疼，鸡肋的。</p>
+<p>上半年还挺顺利，学习进度很快，于是顺手写一个游戏吧。但是搞了搞，没有好思路，算了，再等等，缓一缓。</p>
+<p>年中时，老大想把公司主力产品&lt;网镜&gt; 从以前全套C艹 版本更新新的架构，使用nodejs 做中间转换。当时老大和老板应该是一起协商过的，再招一个熟练的?我专做web后台?</p>
+<p>老大想着web 也不是天天开发，然后我就负责网镜拓展后台，做的流程控制服务，从无到有做两个拓展，包括直接打包，而且是Chrome 扩展类，市面没有好的参考、库等。</p>
+<p>做这个, 打算是在9月、10月做完。但是我太菜，模子做出来，功能也有，不够好用，继续改。而且中间和同事配合还不够默契，有时等待他的api、调api、重写等。事无巨细，把大功能完成，已经到了19年12月。网镜5.0 终于终于对外发布了。刚发布的5.0 还有很多bug，赶紧准备5.0.1 的发布，加班加点。</p>
+<p>当前测试用例也是比较难增加，所以全靠测试人员：有时改动一个功能了，却影响了另一个；有时完成一个功能了，感觉和V4 的不一样；轮训任务，出现任务不走了；内存、CPU、暴涨；文件夹创建不对(路径解析不对)；数据库索引、调优；代码规范；等等等等</p>
+<p>将5.0 发布出来的时候，瞬间就理解了一个新高度，瞬间圆满了。以前没走通的思路都理解作用及原理。</p>
+<p>老大作为架构者，确实思想是我目前不能比拟的，太强了。</p>
+<p>不过我从老大这学了很多很多，这一波经验涨的厉害。</p>
+<p>下半年几乎都是在搞网镜。周末有时搞搞网镜，有时学学golang，我觉得这个还是不错的，goroutine将现成队列给你，相当于最底层调度给到你。而不是nodejs async await，虽然好用，却是迷迷糊糊。而且golang 和OC 很相似，有内存、指针，我感觉这个是我要的，于是顺便用go 转义了我之前一个挺好的服务作为学习的实例。</p>
+<p>说说丫头吧。去年丫头心情低落，今年上半年到5月，也就进去《冠脉弹》两月就被辞职了。算了，无所谓了，他们也就那样了，不是咱宝宝不好。然后我说，要不学学nodejs 做web。丫头说，再等等。我说行，给3个月让她学习和我后台做了一个理财的iOS app。原理类似于《可萌记账》，主要是作为学习用，同时让丫头接触数据库，这样即使之后她要进入后台，也很有感悟。接着她去一家创业公司，得，还是不给力。不过别人工资经常不发的情况下，丫头的还是照常发，然后，最后我还是让丫头辞职了。</p>
+<p>我指出了这些问题背后的原因：iOS 工作机会进入凛冬了。要不就特别好的iOS 工作，要不就巨差的，中间这种基本都没了。丫头就是这种上不去下不来那种，毕竟不是超级专业，尚在学习进阶的。于是我鼓励她，来吧，做我的儿子吧！不对不对，，咳咳。来吧，跟我一起web 开发吧，有问题我罩着你。</p>
+<p>10月份，老丈人去医院，丫头基本是11月开始学web开发。先让她搞爬虫，知道js能干嘛。然后做一个Typescript纯后台，知道js 和Typescript关系。该后台包括了fs、mongo、oss上传文件。然后再让她做一个我之前留下的video 前后台项目，知道前端和后端的关系。这些都是练手。然后最后让她做一个blog。</p>
+<p>blog 是一个好东西，能练习很多东西，基本是她一个人在搞，有遇到特殊问题、发布之类我稍稍做点辅助。呐，现在服务器登录都是她在弄，我都不用动手了。这几天她刚好完成测试，就要发布了。</p>
+<p>这两年用铁通宽带太坑，两年800，网络慢的跟金坷垃一样。由于经常丫头在家，这几天网络换成联通的，720两年+100上门调试费，命都更长久了。之前下的种子从来都不动一下的, 现在, chua chua chua下好了。我看来又可以在家里写东西了。哇卡卡卡卡</p>
+<p>2019 很苦，不过2020 我还在努力。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-12-26lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -1680,121 +1831,6 @@ vue init webpack &lt;my-project&gt;
     
 
   
-    <article id="post-2019-1-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/05/2019-1-5lesson/">2019-1-5lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/01/05/2019-1-5lesson/" class="article-date">
-	  <time datetime="2019-01-05T13:12:41.000Z" itemprop="datePublished">January 5, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Dockerfile-install-very-slow"><a href="#Dockerfile-install-very-slow" class="headerlink" title="Dockerfile install very slow"></a>Dockerfile install very slow</h1><p>According to <a href="https://christianfei.com/posts/Cache-speed-up-docker-node-modules/" target="_blank" rel="noopener">this artical</a>, I resolve an issue that i have to load all <strong>node_module</strong> files very time;</p>
-<p>This method help with: building the same package.json and and same file path, would never ever to load every file again, but first would still very slow.</p>
-<p>do step:</p>
-<p>first add your <strong>.dockerignore</strong> with:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">.results</span><br><span class="line">script</span><br><span class="line">*Dockerfile*</span><br><span class="line">node_modules</span><br><span class="line">package-lock.json</span><br></pre></td></tr></table></figure>
-<p>then:</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">ARG</span> NODE_ENV=development</span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=$NODE_ENV</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /watchvideo_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> package.json yarn.lock ./</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /watchvideo_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> yarn</span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> node</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9526</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">  mysql:</span><br><span class="line">    build: ./mysql</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;4444:3306&quot;</span><br><span class="line">  watch:</span><br><span class="line">    build: .</span><br><span class="line">    hostname: watch</span><br><span class="line">    command: yarn debug</span><br><span class="line">    volumes:</span><br><span class="line">      - ./dist:/watchvideo_server/dist</span><br><span class="line">      - ./package.json:/watchvideo_server/package.json</span><br><span class="line">      - ./yarn.lock:/watchvideo_server/yarn.lock</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;9526:9526&quot;</span><br><span class="line">      - &quot;9222:9222&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysql</span><br><span class="line">    links:</span><br><span class="line">      - mysql</span><br><span class="line">    environment:</span><br><span class="line">      - DATABASE_HOST=mysql</span><br></pre></td></tr></table></figure>
-<h2 id="I’m-making-a-media-site"><a href="#I’m-making-a-media-site" class="headerlink" title="I’m making a media site"></a>I’m making a media site</h2><p>When 2018.6, I decided to make some games to try earning some money and advertise.</p>
-<p>But gov said NO: gov suddenly gave a notify, field of game would become more difficult.</p>
-<p>OK, when 2018.12, I change my mind to make a media site to provide some picture sources and ability of watching video.</p>
-<p>But gov immediatly gave notify: master of <strong>BT video site</strong> was caughted and get 3 year of prison with 80w RMB ticket.</p>
-<p>Ability of IT worker is very difficultlly control by zh gov, so they afraid of any man is out of control.</p>
-<p>If you feel comfortable with that ease, you will done soon or later.</p>
-<p>I’m would never be.</p>
-<h1 id="Man-become-poverty"><a href="#Man-become-poverty" class="headerlink" title="Man become poverty"></a>Man become poverty</h1><p>Man dare to chanllenge for fight, but during recent couple of year, harsh enviroument is expressing more tough to not getting close to the civilization and ability.</p>
-<p>Man died by kind of poverty.</p>
-<p>Poverty caused by not treating them as power, but treating tasty word as governance model.</p>
-<p>So Man deserve poverty by not taking seriously of bazoo?</p>
-<p>fucking bazooer!!!</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-12-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/01/2018-12-31lesson/">2018-12-31lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/01/01/2018-12-31lesson/" class="article-date">
-	  <time datetime="2018-12-31T23:39:20.000Z" itemprop="datePublished">January 1, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一年的最后一天,补一个日记。<br>希望明年真正做到盈利。<br>汪汪汪</p>
-</blockquote>
-<h1 id="New-VPS-Centos6-config"><a href="#New-VPS-Centos6-config" class="headerlink" title="New VPS Centos6 config"></a>New VPS Centos6 config</h1><p>//查看系统位数<br>file /bin/ls<br>getconf LONG_BIT<br>uname -a || uname -r</p>
-<p>service docker start/stop (当前为1.7.1)<br><a href="https://stackoverflow.com/questions/35385853/yum-install-error-docker" target="_blank" rel="noopener">https://stackoverflow.com/questions/35385853/yum-install-error-docker</a><br>yum install <a href="http://yum.dockerproject.org/repo/main/centos/6/Packages/docker-engine-1.7.1-1.el6.x86_64.rpm" target="_blank" rel="noopener">http://yum.dockerproject.org/repo/main/centos/6/Packages/docker-engine-1.7.1-1.el6.x86_64.rpm</a><br>这个包才是存在的</p>
-<p>yum install -y wget</p>
-<p>centos 6 安装Nginx<br><a href="https://www.cyberciti.biz/faq/install-nginx-centos-rhel-6-server-rpm-using-yum-command/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/install-nginx-centos-rhel-6-server-rpm-using-yum-command/</a> </p>
-<p>之上一直因为centos6 的epel-release 这个扩展源 老是装不进，所以在安装一堆东西时，总是显示“nothing to do”。<br>我一直以为EPEL 是装进去的，而且是最新的，然而并没有安装进去。<br><a href="https://unix.stackexchange.com/questions/153566/installing-epel-repository-on-centos-fails" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/153566/installing-epel-repository-on-centos-fails</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev epel-release-6-8.noarch</span><br><span class="line">yum update</span><br><span class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/$(uname -i)/epel-release-6-8.noarch.rpm</span><br></pre></td></tr></table></figure></p>
-<p>安装入这个后，yum 源就有python-pip 了</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1923,6 +1959,30 @@ vue init webpack &lt;my-project&gt;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a></h6>
+              <span>May 24, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a></h6>
+              <span>May 24, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
               <span>May 11, 2020</span>
             </div>
@@ -1965,30 +2025,6 @@ vue init webpack &lt;my-project&gt;
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a></h6>
-              <span>March 20, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-12lesson/">2020-3-12lesson</a></h6>
-              <span>March 20, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -2021,7 +2057,7 @@ vue init webpack &lt;my-project&gt;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

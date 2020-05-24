@@ -165,6 +165,114 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2017-3-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/02/2017-3-2lesson/">2017/3/2lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/02/2017-3-2lesson/" class="article-date">
+	  <time datetime="2017-03-02T14:14:16.000Z" itemprop="datePublished">March 2, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="记录这几天的发现或者想到了的东西，哈哈"><a href="#记录这几天的发现或者想到了的东西，哈哈" class="headerlink" title="记录这几天的发现或者想到了的东西，哈哈"></a>记录这几天的发现或者想到了的东西，哈哈</h3><ul>
+<li>关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”]; </li>
+<li>缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache</li>
+<li>collection需要使用<code>self.collectionNode performBatchUpdates:^</code></li>
+<li>如果<code>-(BOOL)shouldBatchFetchForCollectionNode:(ASCollectionNode *)collectionNode</code>为YES，但是不再获取数据，那么就是你没有给上次Batch确认completeBatch</li>
+<li>这里处理了一次collectionNode的获取数据和返回数据的完整逻辑，可以参照，实战demo</li>
+<li>Theme能力由发通知会更好，毕竟如果有缓存，单元格没法刷新，还是需要发通知更改背景颜色、某些图片等，可以一步步更改</li>
+<li>主流方向可以往可爱等线路发展</li>
+<li>小玩意之类往往能点亮用户好奇心，比如“粉粉日记”的首页台灯、不同时间的首页动物、不同时段，该动物、背景会替换，让动物动起来等；每晚开放的树洞功能等</li>
+<li>会员能力很重要，要让他们感到与众不同，代价每次都是一点点就很正确</li>
+<li>首页采用多屏处理，展示不同格局东西。</li>
+<li>首页是很能体现APP动机的地方。如果是微博类，首页就是Feed分类；如果是淘宝类，首页就是商品分类；如果是QQ、微信，首页就是你的聊天列表类；如果是游戏、地图等，首页就是你该展示的地方；“粉粉”这里首页就是展示萌创意、手账的地方，那么他走的主路线就该是这方面功能。</li>
+<li>APP功能太全有时候会成为累赘，可以参考“花瓣”、“Facebook”的分离法，将不同业务分出去，将主功能留下。比如“Facebook”的Message功能就会让你跳出去到另一个App。</li>
+<li>粒度这个东西有时候要考虑清楚，有时候深一点使用组件化，有时候直接写有他的好处</li>
+<li>说一个今天遇到的缓存能力ASDK，当我刷新，我将dataSource的数据都删光了，然后没写好，没有reloadData全部，而是insert数据到当前单元格，下面数据仍然在，ASDK的缓存能力确实太厉害了，然而反观“粉粉”里面的缓存，其实他做的就是将基本数据缓存起来，等还要再cellForItemAtIndexPath的时候，他还是会更新当前的单元格。所以严格意义上说，“粉粉”里面之前的缓存方案，仅是对数据的再次缓存得到快速获取，而不是前缘科技里面的Feed页面写法。</li>
+<li>从前一个公司到现在的粉粉日记领悟到一个思想：前一个公司很在意功能上的全，比如我们要有自己的图片选取工具、纯文字发布能力的特立独行、视频这块大块头的实现类似“美拍”的全逻辑。由于人员的不够，我在竭尽全力下初窥视频骨架，但是公司在一次次的冲击市场下都没有反响中放弃了。其中原因是大骨头很难啃，其他东西没抓住，人员配置不够；粉粉公司反其道，一步一步走，走的路也更早，探索出了抓住青少年人群的美少女“萌”。粉粉到现在才开始有了拍摄视频的能力，而且仅仅只有拍摄这一步，目前还是内测；粉粉每走一步都测试、保证再保证没有问题才将功能加上去。粉粉的选取图片能力还有滤镜能力，目前走到了这么一个地步：使用其他公司的SDK：在功能左下角还有某某SDK的字样。里面框架也是挺卡的，我拿了个iPod5的测试机，FPS有时直接到0了，有些页面写的，连复用都没有；比如图片这块，我们使用qiniu作为图片保存地址，他们使用的UPYun是腾讯的，目前还属于内测阶段，而且他们居然没有看文档，不知道可以图片地址后面拼接image的后缀，让服务器帮忙更改图片属性功能。可以这么说，内容、市场、人员、测试、流程，粉粉都比“呱拍”走的很远，但是一些功能上的，确实“呱拍”使用的前缘功能，要比粉粉走太远：当我已经要试试FaceDetect功能的时候，粉粉才在有拍摄功能。。。</li>
+<li>最近练手了一个自定义CollectionLayout，联系之前看的OpenGL ES 的皮毛，类比到ASDK和autoLayout中布局说明，终于理解了一个原理：程序是死的，目前我接触到的都是死的，他需要人说明，包括每个pixel需要展示什么颜色定义，需要opacity多少，每个点需要人告诉程序。比如手机、电脑在某一快需要展示蓝色，布局定义等都会转化为绝对坐标，绝对坐标再转化为在底层GPU需要的布局信息，GPU在将每一层需要的颜色重叠起来，看需要输出到屏幕的是什么，才最终呈现出来</li>
+<li>如果要判别一个公司的团队实力，可以在看市场竞争能力，我想到作为在iOS技能求职者一个新方法：下一个该公司的APP—&gt;使用iPhone4s看其表现能力，iPhone6不能作为功能测试机，不过可以作为布局测试机！！！</li>
+<li>今天改了下host，进入公司的FTP服务器，改host需要vim的权限，于是我使用sudo vim +“对应文件夹Path” 写完后按左上角esc键盘按键，然后输入<em>:wq</em>意思是write and quit</li>
+<li>今天下午搞了下git branch，之前使用都是小心翼翼，不太懂整，他们搞过来搞过去，嗯哼，还不太给力ing</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2017-2-20lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/20/2017-2-20lesson/">2017/2/20lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/20/2017-2-20lesson/" class="article-date">
+	  <time datetime="2017-02-20T14:18:31.000Z" itemprop="datePublished">February 20, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天第一次去粉粉日记报到，记录下流程。<br>这几天是大风大雪天，最后一次寒潮，连着2周晚睡晚起，而且还是没有开空调裸睡，，，嘴里一直念叨着<em>我是要做大事之人</em>才哆嗦着起来，，，<br>本来打算今早去体检，怕来回来不及，小电驴也没充电，赶紧吃了俩小面包就出发了。<br>到公司后人事先给我安排到桌子前，没想到公司都用Mac mini，嘿嘿，很久没用啦，开发效率估计要打折，，哈哈<br>我先捣鼓下开启主机，然后写入职表。过了一会，公司每天的早会，我看他们全围成一圈报告，有一定好处，有规划知道做什么是很重要的事。接着我继续下载我可能要用到的软件呀、下homebrew、cocoapods啊；常用软件：蓝灯、Chrome、微信、Reveal等等常用的；设置下电脑，看看PhotoKit（最近要开始gif图片等研究）等。<br>公司里面“粉粉日记”成员蛮多的，才知道粉粉是从2013年的项目到现在，过了一会，他们把代码发过来我先看着了。里面项目有几点想说的，包确实很大，比环球高尔夫还大，但是资源管理很有条例（我自己处理的话尽量用IconFont管理图片资源吧），用的一些技术我没去掌握的有那么几个：JSBridge、Mantal、CoreData、Archive、以及一些其他一些以前没去接触过的。<br>JSBridge以前没有实验对象；Mantal以前觉得对model有入侵；CoreData觉得一些啥啥问题等；Archive没试验对象；之后可以看看哪里有没有契机接触使用等了，，，<br>11点多的时候在钉钉里面和大家大哥招呼，大家群里立马热闹起来了，互开着玩笑。<br>中午一下就来了，和iOS几个一起吃午饭，还不知道这附近怎么吃，跟着他们吃就好了。他们人挺热情的，那么多人在办公室，大家工作有讨论，有去开会，挺热闹；大家吃饭，我们几个在一个厅里吃饭，也是来来回回大家玩闹。<br>下午的时候，我先看了很久的代码。过没一会还要填一些规章、录个指纹啥的，然后人事小妹带我跟大家都走一遍认识认识。我估计记不清，只能记大概范围的工作区，还有去<strong>可萌记账</strong>组走一下，大概知道销售、商务、iOS开发、后台开发、安卓开发、网页开发、UI组、插画组等的位置。也去转了财务、经理处。<br>回来继续看代码，他们安排了一个小任务。<br>这个小任务是本来别的地方有的，我给写到新的地方，不是太难。我考虑的比较多，以为其图片是从外部传递进去控制的，没想到是内部写好，这样估计没法再重新用的；不过另一层也会考虑到不能过度封装，也会带来一些隐患。我也能看到这项目有些没设计好的地方，毕竟项目大了，有些没能全盘思考，总体设计方案很值得我学习，细节方面值得我学习注意规避。<br>有些设计我粗略看了下还没看全。<br>textView的inputView、accessInputView原来是用来代替keyboardPad的，环球高尔夫看到过，没留意，现在清楚了。<br>将代码直接拖到sourceTree建立branch，新建一个branch给代码添分支，这些我居然以前没去搞过，一直花时间写/学新东西，现在有的补上了，，，<br>下午的时候主要就是改那个需求，改成和另一个完全一样，还差和后台人对接数据。到最后7点多了也确实饿了，给上级发了个今天任务完成邮件后先回来吃饭了。发每日任务有个好处，上级对下面的管控，知道过程、进程如何。我看到他们有写一句话的，不过我记录修改习惯早就养成，修改哪里，细节等都会列举，如果有技术手段处理过程、试验过程也会记录，习惯，让我不这么写我也会在便签记下，哈哈。<br>晚上回来，总要学点啥，或者写点啥吧，我问了下parse中<code>I have a mainPostTable and three other tables,three other tables owns mainPostTable&#39;s objectId, how can i count from other three table??</code>这样怎么处理，等待他们回答结果。然后测试数据include “user”这个pointer，哇哈，返回数据了，那就好啦，，哈哈，，首页就差问他们的那个问题啦。<br>等会看看文章，就早点睡了，面对明天新的任务，毕竟给我的任务肯定会越来越重，赶紧在公司的时候多看代码，不然做的效率在不知道相应代码位置的话会吃亏的。<br>再多说一句，加入“粉粉”组有好处，比如知道他们怎么运营，我这里看到的数据最直观；也有坏处，我的一身本事，不能乱显身手，哈哈哈，不要乱加代码嘛，是吧，尽量和原作者手法一致；私下多写自己代码，不然有些自己的东西会忘却的哦，加油2017，，，</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2017-2-18lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -570,147 +678,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-device连接到本地电脑服务器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/04/device连接到本地电脑服务器/">device连接到本地电脑服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/04/device连接到本地电脑服务器/" class="article-date">
-	  <time datetime="2017-02-04T09:31:16.000Z" itemprop="datePublished">February 4, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先是根据这个答案<a href="http://stackoverflow.com/questions/12657651/connect-device-to-mac-localhost-server" target="_blank" rel="noopener">http://stackoverflow.com/questions/12657651/connect-device-to-mac-localhost-server</a><br>我搞了一会，parse服务器地址不变，将我的<br><code>configuration.server = @&quot;http://localhost:1337/parse&quot;</code>的地址改为<code>@&quot;http://&quot;MAC IP&quot;:1337/parse&quot;</code> MAC IP就是你电脑的地址，即可。很类似RN中将其指向本地构建的服务器中，脑袋没转过弯来，居然还要去查答案，万幸，没有花太多时间。<br>记录一下。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-大年初二研究成果" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/29/大年初二研究成果/">大年初二研究成果</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/29/大年初二研究成果/" class="article-date">
-	  <time datetime="2017-01-29T12:50:01.000Z" itemprop="datePublished">January 29, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天大年初二，还是不能停歇，毕竟有兴趣，马达就一直在脑袋转着，哈哈。<br>先介绍我之前想用不敢用的一款文本创建第三方工具：<code>ZSSRichTextEditor</code></p>
-<h3 id="ZSSRichTextEditor"><a href="#ZSSRichTextEditor" class="headerlink" title="ZSSRichTextEditor"></a>ZSSRichTextEditor</h3><p>这款作用是将你输入转化为html文本，你直接就可以将它当做链接用，如：<br>`NSString *htmlStr = @”<div class="\" test\""></div>\<br><!-- This is an HTML comment -->\</p>
-<p></p><p>This is a test of the <strong>ZSSRichTextEditor</strong> by <a title="\" zed" said\" href="\" http: www.zedsaid.com\"">Zed Said Studio</a>\<br><img src="\" http: common.cnblogs.com images wechat.png\"" alt="\" weichat\"">\<br></p><font face="\" times" new roman, times, serif\">Dffhhhfff<sub>ffggg</sub><sup>ggggggggg<strike>gggggggggggg</strike><u>uuuuuuuuuuuuuuyy</u><i><u>tttttttt</u><b><u>gggggggggggggg</u>vvv</b></i></sup></font>\<p></p>
-<p><div><a href="\" www.baidu.com\"">baidubaidu</a><font face="\" times" new roman, times, serif\"><sup><i><b><br></b></i></sup></font>\<br></div>“;<code>如果其中的</code>&lt;img src=\”data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBYR……alt=””&gt;<code>那么其为数据类型，data可能会很大，可能我会想办法将其作为图片传到服务器，然后再将其类型更改为地址，这样其中的数据就变小了。
-使用的话，很简单，如：</code>[self.webView loadHTMLString:self.htmlStr baseURL:nil];`<br>你可以自己加上头、背景啥的，一个文章便创建成功了，哈哈。<br>慢慢我也要学习前段知识啦，刚好之前学的React语法用得上，估计可以比较快用的顺手，嗷嗷，提供一个学习地址:<a href="http://www.cenizal.com/" target="_blank" rel="noopener">大牛博客</a></p>
-<h3 id="快要睡觉了-直接贴FontAwesome学习使用代码"><a href="#快要睡觉了-直接贴FontAwesome学习使用代码" class="headerlink" title="快要睡觉了,直接贴FontAwesome学习使用代码"></a>快要睡觉了,直接贴FontAwesome学习使用代码</h3><p><code>FAKIonIcons *starIcon = [FAKIonIcons starIconWithSize:30];
-UIImage *starImage = [starIcon imageWithSize:CGSizeMake(30, 30)];
-FAKFontAwesome *settingIcon = [FAKFontAwesome cogIconWithSize:30];
-UIImage *settingImage = [settingIcon imageWithSize:CGSizeMake(30, 30)];
-NSArray *imageArr = @[starImage,settingImage];
-NSArray *selectedArr = @[starImage,settingImage];
-NSArray *nameArr = @[@&quot;&quot;,@&quot;&quot;];
-//    self.label.attributedText = [starIcon attributedString];
-//    starIcon.drawingBackgroundColor = [UIColor blackColor];
-//    starIcon.drawingPositionAdjustment = UIOffsetMake(2, 2);
-//    [starIcon removeAttribute:NSForegroundColorAttributeName];
-//    [starIcon setAttributes:attributes];
-//    [starIcon attributes];
-//    [starIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];</code></p>
-<ul>
-<li>这里提一点，我将其Cocoapods导入的，然后捏，本身有.a文件，但是搜不到，于是我将其Resources文件复制到主工程的Resource下才OK，哈哈，记录一下吧</li>
-</ul>
-<h3 id="Array使用valueForKeyPath"><a href="#Array使用valueForKeyPath" class="headerlink" title="Array使用valueForKeyPath"></a>Array使用valueForKeyPath</h3><p>参考：<a href="http://blog.csdn.net/binyanye1/article/details/43413333" target="_blank" rel="noopener">http://blog.csdn.net/binyanye1/article/details/43413333</a><br><code>NSArray *testArray = [NSArray arrayWithObjects:@&quot;2.0&quot;, @&quot;2.3&quot;, @&quot;3.0&quot;, @&quot;4.0&quot;, nil];
-NSNumber *sum = [testArray valueForKeyPath:@&quot;@sum.floatValue&quot;];
-NSNumber *avg = [testArray valueForKeyPath:@&quot;@avg.floatValue&quot;];
-NSNumber *avg = [testArray valueForKeyPath:@&quot;@max.floatValue&quot;];
-NSNumber *avg = [testArray valueForKeyPath:@&quot;@min.floatValue&quot;];</code></p>
-<p>如果类型如下：<br><code>(
-    {
-        city = “Beijing”;
-        country = “China”;
-    },
-    {
-        city = “Tokyo”;
-        country = “Japan”;
-    },
-    {
-        city = “New York”;
-        country = “U.S.”;
-    }
-)</code></p>
-<p>使用<code>[array valueForKeyPath:@&quot;city&quot;];</code><br>则会得到<br><code>(
-    “Beijing”,
-    “Tokyo”,
-    “New York”
-)</code><br>然后利用array的index:<code>[[array valueForKeyPath:@&quot;city&quot;] indexOfObject:@”Beijing”];</code><br>然后用得到的index获取对象：<code>[array objectAtIndex:[[array valueForKeyPath:@&quot;city&quot;] indexOfObject:@”Beijing]];</code></p>
-<p>这是一个例子<br><code>NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-[dic setObject:@&quot;v1&quot; forKey:@&quot;k1&quot;];
-[dic setObject:@&quot;v2&quot; forKey:@&quot;k2&quot;];
-[dic setObject:@&quot;v3&quot; forKey:@&quot;k3&quot;];
-NSArray *array=[NSArray arrayWithObjects:@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;,nil];
-[dic setObject:array forKey:@&quot;k4&quot;];
-id obj=[dic valueForKeyPath:@&quot;k4.@sum.floatValue&quot;];
-NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -839,6 +806,30 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a></h6>
+              <span>May 24, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a></h6>
+              <span>May 24, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
               <span>May 11, 2020</span>
             </div>
@@ -881,30 +872,6 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a></h6>
-              <span>March 20, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/03/20/2020-3-12lesson/">2020-3-12lesson</a></h6>
-              <span>March 20, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -937,7 +904,7 @@ NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
