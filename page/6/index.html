@@ -165,6 +165,61 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2017-3-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/13/2017-3-13lesson/">2017/3/13lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/13/2017-3-13lesson/" class="article-date">
+	  <time datetime="2017-03-13T12:45:24.000Z" itemprop="datePublished">March 13, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//创建标准的变换矩阵</span><br><span class="line">CGAffineTransform CGAffineTransformIdentity;</span><br><span class="line">//手动创建变换矩阵</span><br><span class="line">CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);</span><br><span class="line">//创建平移变换</span><br><span class="line">CGAffineTransform CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty);</span><br><span class="line">//创建缩放变换</span><br><span class="line">CGAffineTransform CGAffineTransformMakeScale(CGFloat sx, CGFloat sy);</span><br><span class="line">//创建旋转变换</span><br><span class="line">CGAffineTransform CGAffineTransformMakeRotation(CGFloat angle);</span><br><span class="line">//判断某个变化是否是来自标准矩阵的变换</span><br><span class="line">bool CGAffineTransformIsIdentity(CGAffineTransform t);</span><br><span class="line">//对某个变换矩阵进行平移变换</span><br><span class="line">CGAffineTransform CGAffineTransformTranslate(CGAffineTransform t, CGFloat tx, CGFloat ty);</span><br><span class="line">//对某个变换矩阵进行缩放变换</span><br><span class="line">CGAffineTransform CGAffineTransformScale(CGAffineTransform t, CGFloat sx, CGFloat sy);</span><br><span class="line">//对某个变换矩阵进行旋转变换</span><br><span class="line">CGAffineTransform CGAffineTransformRotate(CGAffineTransform t, CGFloat angle);</span><br><span class="line">//对某个变换矩阵进行翻转变换</span><br><span class="line">CGAffineTransform CGAffineTransformInvert(CGAffineTransform t);</span><br><span class="line">//对两个变换矩阵进行计算</span><br><span class="line">CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2);</span><br><span class="line">//比较两个变换矩阵是否相同</span><br><span class="line">bool CGAffineTransformEqualToTransform(CGAffineTransform t1, CGAffineTransform t2);</span><br><span class="line">//获取应用变换后某点的坐标</span><br><span class="line">CGPoint CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t);</span><br><span class="line">//获取应用变换后某个区域的尺寸</span><br><span class="line">CGSize CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t);</span><br><span class="line">//获取应用变换后某个区域的位置和尺寸</span><br><span class="line">CGRect CGRectApplyAffineTransform(CGRect rect, CGAffineTransform t);</span><br></pre></td></tr></table></figure>
+<p>记录一下矩阵变换含义</p>
+<p>昨天做了下图片PhotoKit取图片，使用PHImageManager 同步获取200*200某张图片直接在cellForItem里面，性能还是不错的。估计得判断GIF，只能在用户点击之后，才能使用方法验证其属性。继续往下做吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">2xx  成功  </span><br><span class="line">200  正常；请求已完成。  </span><br><span class="line">201  正常；紧接 POST 命令。  </span><br><span class="line">202  正常；已接受用于处理，但处理尚未完成。  </span><br><span class="line">203  正常；部分信息 — 返回的信息只是一部分。  </span><br><span class="line">204  正常；无响应 — 已接收请求，但不存在要回送的信息。  </span><br><span class="line">3xx  重定向  </span><br><span class="line">301  已移动 — 请求的数据具有新的位置且更改是永久的。  </span><br><span class="line">302  已找到 — 请求的数据临时具有不同 URI。  </span><br><span class="line">303  请参阅其它 — 可在另一 URI 下找到对请求的响应，且应使用 GET 方法检索此响应。  </span><br><span class="line">304  未修改 — 未按预期修改文档。  </span><br><span class="line">305  使用代理 — 必须通过位置字段中提供的代理来访问请求的资源。  </span><br><span class="line">306  未使用 — 不再使用；保留此代码以便将来使用。  </span><br><span class="line">4xx  客户机中出现的错误  </span><br><span class="line">400  错误请求 — 请求中有语法问题，或不能满足请求。  </span><br><span class="line">401  未授权 — 未授权客户机访问数据。  </span><br><span class="line">402  需要付款 — 表示计费系统已有效。  </span><br><span class="line">403  禁止 — 即使有授权也不需要访问。  </span><br><span class="line">404  找不到 — 服务器找不到给定的资源；文档不存在。  </span><br><span class="line">407  代理认证请求 — 客户机首先必须使用代理认证自身。  </span><br><span class="line">415  介质类型不受支持 — 服务器拒绝服务请求，因为不支持请求实体的格式。  </span><br><span class="line">5xx  服务器中出现的错误  </span><br><span class="line">500  内部错误 — 因为意外情况，服务器不能完成请求。  </span><br><span class="line">501  未执行 — 服务器不支持请求的工具。  </span><br><span class="line">502  错误网关 — 服务器接收到来自上游服务器的无效响应。  </span><br><span class="line">503  无法获得服务 — 由于临时过载或维护，服务器无法处理请求。</span><br></pre></td></tr></table></figure>
+<p>遇到一个问题，就是字符里面出现\r\n、\r、\n、\t等特殊字符，做法是将其replace成\r\n、\r、\n、\t、，没有其他做法了，，特殊的是，\r\n需要最先被替换</p>
+<p>//    一列数：-1,2,3,10,15,26…n，写一个方法计算第n个数的值</p>
+<blockquote>
+</blockquote>
+<p>答案：<br>3-&gt;1<br>7-&gt;5<br>11-&gt;?<br>?应该是9<br>然后接下去是<br>隔下去数是加15</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BOOL needDescount = NO;</span><br><span class="line">int increaseCount = 4;</span><br><span class="line">int totalNum = -1;</span><br><span class="line">while (true) &#123;</span><br><span class="line">if (needDescount) &#123;</span><br><span class="line">increaseCount -=2;</span><br><span class="line">needDescount = YES;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">increaseCount +=4;</span><br><span class="line">needDescount = NO;</span><br><span class="line">&#125;</span><br><span class="line">totalNum +=increaseCount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IOS－－ UIView中的坐标转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 将像素point由point所在视图转换到目标视图view中，返回在目标视图view中的像素值</span><br><span class="line">- (CGPoint)convertPoint:(CGPoint)point toView:(UIView *)view;</span><br><span class="line">// 将像素point从view中转换到当前视图中，返回在当前视图中的像素值</span><br><span class="line">- (CGPoint)convertPoint:(CGPoint)point fromView:(UIView *)view;</span><br><span class="line"></span><br><span class="line">// 将rect由rect所在视图转换到目标视图view中，返回在目标视图view中的rect</span><br><span class="line">- (CGRect)convertRect:(CGRect)rect toView:(UIView *)view;</span><br><span class="line">// 将rect从view中转换到当前视图中，返回在当前视图中的rect</span><br><span class="line">- (CGRect)convertRect:(CGRect)rect fromView:(UIView *)view;</span><br><span class="line"></span><br><span class="line">例把UITableViewCell中的subview(btn)的frame转换到 controllerA中</span><br><span class="line"></span><br><span class="line">// controllerA 中有一个UITableView, UITableView里有多行UITableVieCell，cell上放有一个button</span><br><span class="line">// 在controllerA中实现:</span><br><span class="line">CGRect rc = [cell convertRect:cell.btn.frame toView:self.view];</span><br><span class="line">或</span><br><span class="line">CGRect rc = [self.view convertRect:cell.btn.frame fromView:cell];</span><br><span class="line">// 此rc为btn在controllerA中的rect</span><br><span class="line"></span><br><span class="line">或当已知btn时：</span><br><span class="line">CGRect rc = [btn.superview convertRect:btn.frame toView:self.view];</span><br><span class="line">或</span><br><span class="line">CGRect rc = [self.view convertRect:btn.frame fromView:btn.superview];</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2017-3-3lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -626,49 +681,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-Overview" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/10/Overview/" class="article-date">
-	  <time datetime="2017-02-10T09:01:36.000Z" itemprop="datePublished">February 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>There is an established pattern where UICollectionViewLayout talks directly to the collection view’s delegate to get additional layout info e.g. the size of a header in a given section.</p>
-<p>This pattern is established by Apple’s flow layout, and it is used by Pinterest and I’m sure others. It is dangerous when used with ASDK because we update asynchronously, so<br>for instance if you delete a section from your data source, the layout won’t find out until later and in the meantime it may ask the delegate about a section that doesn’t exist!</p>
-<p>The solution is to capture this kind of information from the data source immediately when a section is inserted, and make it available to the layout as we update the UICollectionView so that everyone is on the same page.</p>
-<p>Enter: ASSectionUserInfo</p>
-<p>Internally, we use a private object ASCollectionSection to represent one version of a section of items and supplementaries. If the user wants, they can provide us with an ASSectionUserInfo object to accompany the section, which will be read synchronously when the section is inserted.</p>
-<h2 id="Usage-During-Layout"><a href="#Usage-During-Layout" class="headerlink" title="Usage During Layout"></a>Usage During Layout</h2><p>The collection view will make these section infos available in the same way that finished nodes are currently available.</p>
-<h4 id="Sequence-Diagram"><a href="#Sequence-Diagram" class="headerlink" title="Sequence Diagram:"></a><a href="https://www.websequencediagrams.com/?lz=dGl0bGUgcHJlcGFyZUxheW91dCAtIHNlY3Rpb24gbWV0cmljcwoKQ1YtPgAYBjoAHw4KbG9vcCBmb3IgZWFjaAAxCAogICAgCiAgICAATQYtPkNWOgBOCEluZm9BdEluZGV4OgAkBUNWLQBUClJldHVybiBQSU1hc29ucnlTACsKCgBFDQAOFDogY29sdW1uQ291bnQAgQAFADQUAFwSACYQAEYed2lkdGhPZkMAZgUAgT0NAEgmADsFAIIRDQCCUwhVc2UAgmsJZW5kCgoAgjgHAII6BihPSykK&amp;s=napkin" target="_blank" rel="noopener">Sequence Diagram:</a></h4><p><img src="https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgcHJlcGFyZUxheW91dCAtIHNlY3Rpb24gbWV0cmljcwoKQ1YtPgAYBjoAHw4KbG9vcCBmb3IgZWFjaAAxCAogICAgCiAgICAATQYtPkNWOgBOCEluZm9BdEluZGV4OgAkBUNWLQBUClJldHVybiBQSU1hc29ucnlTACsKCgBFDQAOFDogY29sdW1uQ291bnQAgQAFADQUAFwSACYQAEYed2lkdGhPZkMAZgUAgT0NAEgmADsFAIIRDQCCUwhVc2UAgmsJZW5kCgoAgjgHAII6BihPSykK&amp;s=napkin" alt></p>
-<h2 id="Creation-When-Inserting-Sections"><a href="#Creation-When-Inserting-Sections" class="headerlink" title="Creation When Inserting Sections"></a>Creation When Inserting Sections</h2><p>The section infos for any inserted/reloaded sections are queried synchronously, before the node blocks for their items. The top part of this diagram is the same as the current behavior but I think it’s useful info =)</p>
-<h4 id="Sequence-Diagram-1"><a href="#Sequence-Diagram-1" class="headerlink" title="Sequence Diagram:"></a><a href="https://www.websequencediagrams.com/?lz=dGl0bGUgSW5zZXJ0aW5nL1JlbG9hZGluZyBTZWN0aW9ucwoKRGF0YSBTb3VyY2UtPkNWOiBpACoFABkIQXRJbmRleGVzOgpDVi0-Q2hhbmdlU2V0IAAzBUNvbnRyb2xsZXIAHRsAURFlbmRVcGRhdGVzADQgAB4MAGIYLT4AehFiZWdpbgAFNACBYxlsb29wIGZvciBlYWNoIHMAgjgGIGluZGV4CiAgIACBAhJDVjoAHwhJbmZvAIJABzoAKAVDVgCBLQcAgnEGAA8aAIMQDACDFwZSZXR1cm4gaWQ8QVMAgz0HVXNlckluZm8-AFQIAIF-EwAWIQCBUg5pdGVtIGluAIFgCACBXQUAgU0Zbm9kZUJsb2NrAIQkB1BhdGgAgWIGAIFXFQARHgCBWRlub2RlIGJsb2NrAE8MAIFRGgAhD2VuZAplbmQAhBktAIUcCwCEYxAAhW0cAIUPGwCGWwYKAIMaCgCDeQgKCg&amp;s=napkin" target="_blank" rel="noopener">Sequence Diagram:</a></h4><p><img src="https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgSW5zZXJ0aW5nL1JlbG9hZGluZyBTZWN0aW9ucwoKRGF0YSBTb3VyY2UtPkNWOiBpACoFABkIQXRJbmRleGVzOgpDVi0-Q2hhbmdlU2V0IAAzBUNvbnRyb2xsZXIAHRsAURFlbmRVcGRhdGVzADQgAB4MAGIYLT4AehFiZWdpbgAFNACBYxlsb29wIGZvciBlYWNoIHMAgjgGIGluZGV4CiAgIACBAhJDVjoAHwhJbmZvAIJABzoAKAVDVgCBLQcAgnEGAA8aAIMQDACDFwZSZXR1cm4gaWQ8QVMAgz0HVXNlckluZm8-AFQIAIF-EwAWIQCBUg5pdGVtIGluAIFgCACBXQUAgU0Zbm9kZUJsb2NrAIQkB1BhdGgAgWIGAIFXFQARHgCBWRlub2RlIGJsb2NrAE8MAIFRGgAhD2VuZAplbmQAhBktAIUcCwCEYxAAhW0cAIUPGwCGWwYKAIMaCgCDeQgKCg&amp;s=napkin" alt></p>
-<!-- Reference -->
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -797,6 +809,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
+              <span>May 29, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a></h6>
               <span>May 26, 2020</span>
             </div>
@@ -851,18 +875,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a></h6>
-              <span>May 11, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -875,7 +887,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年-小说/">2020过年 小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750-hackintoshell/">GTX750 hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme-v2ray-nginx/">acme v2ray nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/">v2ray</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -885,7 +897,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年-小说/" style="font-size: 10px;">2020过年 小说</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750-hackintoshell/" style="font-size: 10px;">GTX750 hackintoshell</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme-v2ray-nginx/" style="font-size: 10px;">acme v2ray nginx</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/nginx/" style="font-size: 20px;">nginx</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a>
     </div>
   </div>
 
@@ -895,7 +907,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
