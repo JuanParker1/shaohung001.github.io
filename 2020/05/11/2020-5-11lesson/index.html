@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="aKer">
 <meta property="og:description" content="Use github package publish dockergitlab.com 网络特别慢，经常 docker push 各种失败. 考虑到github.com 全部免费了，故接下来都转战github 了。(自建是不可能自建的，没有机器) 使用github token 登录(密码登录即将被废弃, 且push、pull 等操作都没有权限)  Go to your GitHub account">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-11T12:25:56.266Z">
+<meta property="og:updated_time" content="2020-06-01T02:56:41.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020-5-11lesson">
 <meta name="twitter:description" content="Use github package publish dockergitlab.com 网络特别慢，经常 docker push 各种失败. 考虑到github.com 全部免费了，故接下来都转战github 了。(自建是不可能自建的，没有机器) 使用github token 登录(密码登录即将被废弃, 且push、pull 等操作都没有权限)  Go to your GitHub account">
@@ -230,11 +230,12 @@ var themeMenus = {};
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>明显是有done 这个操作的，难道throw error 导致没有进入done 了？？那我加个try catch 吧:</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        done(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>然后gitlab-ci 看到编译正常通过了, 但是没有进catch, 因为进了catch 我接下来拿不到server， 但之后又正常，说明只是说，要有try catch 确保有done 回馈即可!</p>
+<p><del>然后gitlab-ci 看到编译正常通过了, 但是没有进catch, 因为进了catch 我接下来拿不到server， 但之后又正常，说明只是说，要有try catch 确保有done 回馈即可!</del></p>
 <p>以上. node -v : <code>v10.20.1</code></p>
 <p>这里更新下：</p>
 <p>上面有时可以有时失败，说明不是最终原因. 以下是最终原因</p>
 <p>最终的原因是gitlab-ci cpu、memory 太低，运行太慢，导致获取到server 太慢，无法得到done，做法是<code>mocha -t 240000</code> 设置4分钟.</p>
+<p>这个原因也是没有预料到，没想到是机器配置比较低的原因。</p>
 
       
     </div>
