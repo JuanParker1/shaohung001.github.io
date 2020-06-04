@@ -165,7 +165,7 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-UIBazier学习和CAMediaTimingFunction" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2017-2-6lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -173,7 +173,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/UIBazier学习和CAMediaTimingFunction/">UIBazier学习和CAMediaTimingFunction</a>
+      <a class="article-title" href="/2017/02/06/2017-2-6lesson/">记录一次Issues in NSObjCRuntime, NSZone, and NSObject</a>
     </h1>
   
 
@@ -181,273 +181,18 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/01/10/UIBazier学习和CAMediaTimingFunction/" class="article-date">
-	  <time datetime="2017-01-10T01:34:44.000Z" itemprop="datePublished">January 10, 2017</time>
+	Posted on <a href="/2017/02/06/2017-2-6lesson/" class="article-date">
+	  <time datetime="2017-02-06T09:20:33.000Z" itemprop="datePublished">February 6, 2017</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>UIBezier，这篇文章写得很好，简洁易懂。<br>我认为主要用到的有：<br>1：创建<br><code>UIBezierPath* aPath = [UIBezierPath bezierPath];</code><br>2：设置初始位置<br><code>[aPath moveToPoint:CGPointMake(100.0, 0.0)];</code><br>3：拐点<br><code>aPath.lineCapStyle = kCGLineCapRound;</code>//线条拐角<br><code>aPath.lineJoinStyle = kCGLineCapRound;</code>//终点处理<br>4：stroke和fill的区别<br>5：<code>- (void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint</code>方法<br>由于有setToPoint初始位置，有endPoint，然后controlPoint为改变曲面的<br>可以参考下图<br><img src="http://upload-images.jianshu.io/upload_images/3993684-22d35b19984fed4d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片1"><br>6：<code>- (void)addCurveToPoint:(CGPoint)endPoint controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2</code>//多参值<br>7：这句话很好：<br>使用UIBezierPath创建多边形—在path下面添加直线条形成多边形<br>多边形是一些简单的形状,这些形状是由一些直线线条组成，我们可以用moveToPoint: 和 addLineToPoint:方法去构建。<br>方法moveToPoint:设置我们想要创建形状的起点。从这点开始，我们可以用方法addLineToPoint:去创建一个形状的线段。<br>我们可以连续的创建line，每一个line的起点都是先前的终点，终点就是指定的点。<br><code>// Only override drawRect: if you perform custom drawing.</code><br><code>// An empty implementation adversely affects performance during animation.</code><br><code>- (void)drawRect:(CGRect)rect{
-    UIColor *color = [UIColor redColor];
-    [color set];//设置线条颜色
-    UIBezierPath* aPath = [UIBezierPath bezierPath];
-    aPath.lineWidth = 5.0;
-    aPath.lineCapStyle = kCGLineCapRound;//线条拐角
-    aPath.lineJoinStyle = kCGLineCapRound;//终点处理
-    // Set the starting point of the shape.
-    [aPath moveToPoint:CGPointMake(100.0, 0.0)];
-    // Draw the lines
-    [aPath addLineToPoint:CGPointMake(200.0, 40.0)];
-    [aPath addLineToPoint:CGPointMake(160, 140)];
-    [aPath addLineToPoint:CGPointMake(40.0, 140)];
-    [aPath addLineToPoint:CGPointMake(0.0, 40.0)];
-    [aPath closePath];//第五条线通过调用closePath方法得到的
-    [aPath stroke];//Draws line 根据坐标点连线
-}</code></p>
-<p>CAMediaTimingFunction时间线可以通过<br><code>CAMediaTimingFunction *a = [CAMediaTimingFunction functionWithControlPoints:0.85 :0.01 :0.33 :1.14];</code>//创建</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-一些查询很久才得出的答案或者尝试很久得到的答案" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/一些查询很久才得出的答案或者尝试很久得到的答案/">一些查询很久才得出的答案或者尝试很久得到的答案</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/10/一些查询很久才得出的答案或者尝试很久得到的答案/" class="article-date">
-	  <time datetime="2017-01-10T01:31:14.000Z" itemprop="datePublished">January 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2 months ago)</p>
-<p><a href="https://github.com/shaohung001/One-person-project" target="_blank" rel="noopener">地址</a></p>
-<p>一些查询很久才得出的答案或者尝试很久得到的答案，类目主要用在chat、social、video、multi pic、watermark、filter、audio、Parse（FB）、个人无后台开发</p>
-<p>1：由于用到贴图，网上寻觅不得，只说 UIGraphicsBeginImageContext(&lt;#CGSize size#&gt;)-&gt;换成UIGraphicsBeginImageContextWithOptions(&lt;#CGSize size#&gt;,&lt;#Bool opaque#&gt;,&lt;#CGFloat scale#&gt;) 上面这句话是重点 scale是缩放因子，使用[UIScreen mainScreen].scale即可； 中间的opaque是识别里面有没有alpha通道，如果有通道则填入NO，相反的哦； size则为你的图片的大小，比如上面一张大图，下面一张watermark，这size为大图的大小，毕竟大图在下面，第一个放入的； 这样子图片就会变为高清！！！没错，如果还没有变为高清，是有另一个原因的，那就是你的贴图不是@2x或者@3x的倍率，将其放入图片文件夹或者source，加入后缀，一定使用@3x，@2x也不怎么清晰！！！ 最后一步才是本文重点，网上没人说，自己尝试出来的</p>
-<p>这一段是苹果私密api，用来找出Reveal的各个APP的bundleID，挺好用的</p>
-<p><code>Class LSApplicationWorkspace_class = objc_getClass(&quot;LSApplicationWorkspace&quot;);
-    NSObject* workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-    NSArray *array = [workspace performSelector:@selector(allApplications)];
-    id a = array[0];
-    NSLog(@&quot;apps: %@&quot;, [workspace performSelector:@selector(allApplications)]);</code></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-iOS导航栏颜色和给的颜色不一样" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/iOS导航栏颜色和给的颜色不一样/">iOS导航栏颜色和给的颜色不一样</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/iOS导航栏颜色和给的颜色不一样/" class="article-date">
-	  <time datetime="2017-01-09T02:11:10.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-12-14 19:43:11)</p>
-<p>原因在于navigationBar的translucent，也就是是否带有透视选项的原因。<br>有时候APP上滑要看到美轮美奂的下边的图片如油画膜一般，慢慢掠过，默认该属性为true。<br>此时的设置颜色就会和给定的颜色不一般，会有一层白色膜一般。<br>但是将translucent设置为NO的话，加入的颜色，导航栏会看来有点厚重，看情况而定吧</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-UIBazier学习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/UIBazier学习/">UIBazier学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/UIBazier学习/" class="article-date">
-	  <time datetime="2017-01-09T02:10:05.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-12-14 19:41:34)</p>
-<p>粗略的看了一遍这篇博客<br><a href="http://blog.csdn.net/crayondeng/article/details/11093689" target="_blank" rel="noopener">UIBezier</a><br>简介易懂，</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-列举Apple的示例demo，同时提供了一个github下载地址" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/列举Apple的示例demo，同时提供了一个github下载地址/">列举Apple的示例demo，同时提供了一个github下载地址</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/列举Apple的示例demo，同时提供了一个github下载地址/" class="article-date">
-	  <time datetime="2017-01-09T02:09:02.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-12-06 18:24:22)</p>
-<p><a href="http://www.jianshu.com/p/79a29a23d980" target="_blank" rel="noopener">http://www.jianshu.com/p/79a29a23d980</a><br>这个简书写了，感觉挺有用的，毕竟看其介绍能学到比较中肯的内容</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-使用JSPatch的一些经验总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/使用JSPatch的一些经验总结/">使用JSPatch的一些经验总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/使用JSPatch的一些经验总结/" class="article-date">
-	  <time datetime="2017-01-09T02:05:35.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-12-01 09:20:19)</p>
-<p>在这之前你得</p>
+        <p>iOS 我加了一个c的程序进到程序，然后程序始终编译不过。<br>这里有两个方案：</p>
 <ol>
-<li>尽量简化你的代码,尽量把你要实现的功能写成方法,这好替换,</li>
-<li>在使用oc转换成js的时候,可以使用JSPatch convertor 这个软件来先转换一下,然后在具体修改,<br>转换以后修改你的代码的时候</li>
-<li>一定要注意是否是js对象,还是oc对象,这个地方是我解析数据用的,传进来的是一个id类型的一个对象.这是oc的,所以我要在js里使用的话必须得用,.toJS()来转化成 (图一),如果你是在js里面初始化的对象,那就是js的obj,不用再转换,如(图二)<br><img src="http://s10.sinaimg.cn/mw690/003479W3zy76QdcKRND89&amp;690" alt="图一"><br><img src="http://s8.sinaimg.cn/mw690/003479W3zy76QdcQr9J47&amp;690" alt="图二"></li>
-<li>你oc里面的下划线_,都要替换成双下划线__,是都要替换</li>
-<li>NSArray/NSDictionary/NSString的处理:这个用JSPatch convertor 都可以转换出来要注意的就是你操做的是不是js对象,</li>
-<li>只要是类带的属性,都要加()比如 model.ptitle(),因为默认帮你实现了setter 和getter的方法,你调用的是方法,方法就得加()</li>
-<li>有一个大坑.是for in  在js里面的for in和oc里面的不一样<br><img src="http://s2.sinaimg.cn/mw690/003479W3zy76QdcpPEde1&amp;690" alt="图三"><br>【链接】JSPatch使用原理详解<br><a href="http://blog.csdn.net/iphonecat/article/details/50963317" target="_blank" rel="noopener">http://blog.csdn.net/iphonecat/article/details/50963317</a><br>这文章很详细,可以看一下</li>
+<li><a href="http://stackoverflow.com/questions/11857765/ios-parse-issues-in-nsobjcruntime-nszone-and-nsobject" target="_blank" rel="noopener">http://stackoverflow.com/questions/11857765/ios-parse-issues-in-nsobjcruntime-nszone-and-nsobject</a></li>
+<li><a href="https://my.oschina.net/ioslighter/blog/416199" target="_blank" rel="noopener">https://my.oschina.net/ioslighter/blog/416199</a></li>
 </ol>
 
       
@@ -468,7 +213,7 @@ var themeMenus = {};
     
 
   
-    <article id="post-用for循环的出操作中操作错误" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2月5日lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -476,7 +221,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/用for循环的出操作中操作错误/">was mutated while being enumerate 这个错误</a>
+      <a class="article-title" href="/2017/02/05/2月5日lesson/">2月5日lesson</a>
     </h1>
   
 
@@ -484,24 +229,473 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/01/09/用for循环的出操作中操作错误/" class="article-date">
-	  <time datetime="2017-01-09T02:03:42.000Z" itemprop="datePublished">January 9, 2017</time>
+	Posted on <a href="/2017/02/05/2月5日lesson/" class="article-date">
+	  <time datetime="2017-02-05T03:00:02.000Z" itemprop="datePublished">February 5, 2017</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>发表于(2016-11-30 10:38:14)</p>
-<p>用for循环的（id object in array）这种方法，如果内部有调整操作，则会跳出来was mutated while being enumerate 这个错误。<br>面对这个崩溃，不知道从哪里入手。<br>其实可以这样理解，我要操作object对象，挪动它，那么势必会影响后面哥们的战队。扩展一下，我object在最后，是不是就不会崩溃了？是的，因为操作了就不影响有站错队的哥们了，他们全都有队可站。<br>这里有几个做法：</p>
+        <p>这里记录一下给他人介绍一个想法</p>
+<h3 id="闲鱼"><a href="#闲鱼" class="headerlink" title="闲鱼"></a>闲鱼</h3><p>闲鱼是淘宝的子APP，用来对付58等同城信息发布的应用<br>闲鱼有一个很了不起的功能：法院拍卖<code>法院拍卖这种交易不是谁想做就做的，马云能把这谈下来，简直了</code><br>闲鱼有个查询身份还有一些信用的手段，58或者赶集什么的，基本压力超大的了<br>闲鱼账号，你有淘宝账号，就有闲鱼账号</p>
+<h3 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h3><p>首先在闲鱼网站，或者闲鱼APP，推荐app，搜索类似图例<img src="http://7xjcms.com1.z0.glb.clouddn.com/333.png" alt="搜索条件"></p>
+<h2 id="因为转卖为必须要卖出去，留在手上没毛用的，又不需要用，所以优先考虑全新-奖品-未拆封之类的"><a href="#因为转卖为必须要卖出去，留在手上没毛用的，又不需要用，所以优先考虑全新-奖品-未拆封之类的" class="headerlink" title="因为转卖为必须要卖出去，留在手上没毛用的，又不需要用，所以优先考虑全新,奖品,未拆封之类的"></a>因为转卖为必须要卖出去，留在手上没毛用的，又不需要用，所以优先考虑<code>全新</code>,<code>奖品</code>,<code>未拆封</code>之类的</h2><p>我就先拿闲鱼截了一张某一商品图图<img src="http://7xjcms.com1.z0.glb.clouddn.com/111.png" alt="闲鱼上的商品，价格：2200"><br>在淘宝上可以搜索当今的价格<img src="http://7xjcms.com1.z0.glb.clouddn.com/222.png" alt="淘宝目前价格：2999"><br><img src="http://7xjcms.com1.z0.glb.clouddn.com/444.png" alt="例"><img src="http://7xjcms.com1.z0.glb.clouddn.com/555.png" alt="例"><br><img src="http://7xjcms.com1.z0.glb.clouddn.com/666.png" alt="例"><img src="http://7xjcms.com1.z0.glb.clouddn.com/777.png" alt="例"><br>这里说给定了价，其实你还可以还价。还价在闲鱼里面私聊，然后还价还到无耻为止，你就说“你不用了，你留着没用，浪费资源，尽早出了”之类的话。<br>最好自己亲自前往勘察物品真实性，这个环节做多了都会。</p>
+<h2 id="亲自前往费用基本属于乘坐地铁、坐公交、自己骑车前往等。"><a href="#亲自前往费用基本属于乘坐地铁、坐公交、自己骑车前往等。" class="headerlink" title="亲自前往费用基本属于乘坐地铁、坐公交、自己骑车前往等。"></a>亲自前往费用基本属于乘坐地铁、坐公交、自己骑车前往等。</h2><p>所在城市，推荐中国直辖市，物品很多很多，每天都一堆的更新。</p>
+<blockquote>
+<p>拿一次我的经历：2015年时候我抽奖抽到一个蓝牙Beat音响。我自己根本不用，耳机的话还好说；寄回家里吧，没必要，家里还不如空放音响，那就只能卖了。淘宝我自己查了大概450多，我连外面的拆封都没有撕开。然后一个估计也是做这个的，跟我要价到320。好吧，留着也是留着。见面的时候他提了个黑色大挎包，鬼知道里面什么东西，矮胖矮胖的，他看到没拆封，300直接拿给我说“就300吧，我都亲自来取的”，然后直接往后走。他给的钱比较散，我还没说完，人就走远了。算了，亏20就20吧，我特么真的用不到，还不如买糖吃。</p>
+</blockquote>
+<p>呐，真的如此，这就是做生意了。里面还有很多门道，自己喜欢搞七搞八，都试试才知道世事不是那么简单。我也不喜欢整天憋家里，就靠赚那几毛生活。<br>打“蛇蛇争霸”这游戏，大家都会围着大蛇在旁边，就等着有肉吃自己上去抢一波，老妈还让我在小乡村卖菜？老妈老爸真的老了，所以才会有这思想，安稳才好。<br>安稳当然好，但是也只有灰色地带，才有油水了吧。不要太平凡，不要太激烈，循序渐进发展，能冲一波就冲，嘿嘿，，，<br>有空我多整整一些门道，，，</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-device连接到本地电脑服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/02/04/device连接到本地电脑服务器/">device连接到本地电脑服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/02/04/device连接到本地电脑服务器/" class="article-date">
+	  <time datetime="2017-02-04T09:31:16.000Z" itemprop="datePublished">February 4, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先是根据这个答案<a href="http://stackoverflow.com/questions/12657651/connect-device-to-mac-localhost-server" target="_blank" rel="noopener">http://stackoverflow.com/questions/12657651/connect-device-to-mac-localhost-server</a><br>我搞了一会，parse服务器地址不变，将我的<br><code>configuration.server = @&quot;http://localhost:1337/parse&quot;</code>的地址改为<code>@&quot;http://&quot;MAC IP&quot;:1337/parse&quot;</code> MAC IP就是你电脑的地址，即可。很类似RN中将其指向本地构建的服务器中，脑袋没转过弯来，居然还要去查答案，万幸，没有花太多时间。<br>记录一下。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-大年初二研究成果" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/29/大年初二研究成果/">大年初二研究成果</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/29/大年初二研究成果/" class="article-date">
+	  <time datetime="2017-01-29T12:50:01.000Z" itemprop="datePublished">January 29, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天大年初二，还是不能停歇，毕竟有兴趣，马达就一直在脑袋转着，哈哈。<br>先介绍我之前想用不敢用的一款文本创建第三方工具：<code>ZSSRichTextEditor</code></p>
+<h3 id="ZSSRichTextEditor"><a href="#ZSSRichTextEditor" class="headerlink" title="ZSSRichTextEditor"></a>ZSSRichTextEditor</h3><p>这款作用是将你输入转化为html文本，你直接就可以将它当做链接用，如：<br>`NSString *htmlStr = @”<div class="\" test\""></div>\<br><!-- This is an HTML comment -->\</p>
+<p></p><p>This is a test of the <strong>ZSSRichTextEditor</strong> by <a title="\" zed" said\" href="\" http: www.zedsaid.com\"">Zed Said Studio</a>\<br><img src="\" http: common.cnblogs.com images wechat.png\"" alt="\" weichat\"">\<br></p><font face="\" times" new roman, times, serif\">Dffhhhfff<sub>ffggg</sub><sup>ggggggggg<strike>gggggggggggg</strike><u>uuuuuuuuuuuuuuyy</u><i><u>tttttttt</u><b><u>gggggggggggggg</u>vvv</b></i></sup></font>\<p></p>
+<p><div><a href="\" www.baidu.com\"">baidubaidu</a><font face="\" times" new roman, times, serif\"><sup><i><b><br></b></i></sup></font>\<br></div>“;<code>如果其中的</code>&lt;img src=\”data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBYR……alt=””&gt;<code>那么其为数据类型，data可能会很大，可能我会想办法将其作为图片传到服务器，然后再将其类型更改为地址，这样其中的数据就变小了。
+使用的话，很简单，如：</code>[self.webView loadHTMLString:self.htmlStr baseURL:nil];`<br>你可以自己加上头、背景啥的，一个文章便创建成功了，哈哈。<br>慢慢我也要学习前段知识啦，刚好之前学的React语法用得上，估计可以比较快用的顺手，嗷嗷，提供一个学习地址:<a href="http://www.cenizal.com/" target="_blank" rel="noopener">大牛博客</a></p>
+<h3 id="快要睡觉了-直接贴FontAwesome学习使用代码"><a href="#快要睡觉了-直接贴FontAwesome学习使用代码" class="headerlink" title="快要睡觉了,直接贴FontAwesome学习使用代码"></a>快要睡觉了,直接贴FontAwesome学习使用代码</h3><p><code>FAKIonIcons *starIcon = [FAKIonIcons starIconWithSize:30];
+UIImage *starImage = [starIcon imageWithSize:CGSizeMake(30, 30)];
+FAKFontAwesome *settingIcon = [FAKFontAwesome cogIconWithSize:30];
+UIImage *settingImage = [settingIcon imageWithSize:CGSizeMake(30, 30)];
+NSArray *imageArr = @[starImage,settingImage];
+NSArray *selectedArr = @[starImage,settingImage];
+NSArray *nameArr = @[@&quot;&quot;,@&quot;&quot;];
+//    self.label.attributedText = [starIcon attributedString];
+//    starIcon.drawingBackgroundColor = [UIColor blackColor];
+//    starIcon.drawingPositionAdjustment = UIOffsetMake(2, 2);
+//    [starIcon removeAttribute:NSForegroundColorAttributeName];
+//    [starIcon setAttributes:attributes];
+//    [starIcon attributes];
+//    [starIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];</code></p>
+<ul>
+<li>这里提一点，我将其Cocoapods导入的，然后捏，本身有.a文件，但是搜不到，于是我将其Resources文件复制到主工程的Resource下才OK，哈哈，记录一下吧</li>
+</ul>
+<h3 id="Array使用valueForKeyPath"><a href="#Array使用valueForKeyPath" class="headerlink" title="Array使用valueForKeyPath"></a>Array使用valueForKeyPath</h3><p>参考：<a href="http://blog.csdn.net/binyanye1/article/details/43413333" target="_blank" rel="noopener">http://blog.csdn.net/binyanye1/article/details/43413333</a><br><code>NSArray *testArray = [NSArray arrayWithObjects:@&quot;2.0&quot;, @&quot;2.3&quot;, @&quot;3.0&quot;, @&quot;4.0&quot;, nil];
+NSNumber *sum = [testArray valueForKeyPath:@&quot;@sum.floatValue&quot;];
+NSNumber *avg = [testArray valueForKeyPath:@&quot;@avg.floatValue&quot;];
+NSNumber *avg = [testArray valueForKeyPath:@&quot;@max.floatValue&quot;];
+NSNumber *avg = [testArray valueForKeyPath:@&quot;@min.floatValue&quot;];</code></p>
+<p>如果类型如下：<br><code>(
+    {
+        city = “Beijing”;
+        country = “China”;
+    },
+    {
+        city = “Tokyo”;
+        country = “Japan”;
+    },
+    {
+        city = “New York”;
+        country = “U.S.”;
+    }
+)</code></p>
+<p>使用<code>[array valueForKeyPath:@&quot;city&quot;];</code><br>则会得到<br><code>(
+    “Beijing”,
+    “Tokyo”,
+    “New York”
+)</code><br>然后利用array的index:<code>[[array valueForKeyPath:@&quot;city&quot;] indexOfObject:@”Beijing”];</code><br>然后用得到的index获取对象：<code>[array objectAtIndex:[[array valueForKeyPath:@&quot;city&quot;] indexOfObject:@”Beijing]];</code></p>
+<p>这是一个例子<br><code>NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+[dic setObject:@&quot;v1&quot; forKey:@&quot;k1&quot;];
+[dic setObject:@&quot;v2&quot; forKey:@&quot;k2&quot;];
+[dic setObject:@&quot;v3&quot; forKey:@&quot;k3&quot;];
+NSArray *array=[NSArray arrayWithObjects:@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;,nil];
+[dic setObject:array forKey:@&quot;k4&quot;];
+id obj=[dic valueForKeyPath:@&quot;k4.@sum.floatValue&quot;];
+NSLog(@&quot;%@&quot;,[obj description]);//==14</code></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-记一次和后台讨论bug的过程吧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/25/记一次和后台讨论bug的过程吧/">记一次和后台讨论bug的过程吧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/25/记一次和后台讨论bug的过程吧/" class="article-date">
+	  <time datetime="2017-01-25T08:30:05.000Z" itemprop="datePublished">January 25, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>和公司后台大哥打交道也有几次了，都不是很给力的解决bug过程。</p>
+<h4 id="先说一下上一次的情形吧。"><a href="#先说一下上一次的情形吧。" class="headerlink" title="先说一下上一次的情形吧。"></a>先说一下上一次的情形吧。</h4><p>我们的后台是用php写的，我以前都是和java后台打交道，所以有些怪，而且后台用的他们以前公司的架构，我们之前的所有api，重要不重要都需要post请求，而且调试bug需要我们前段调节，我记得以前的java那边可以使用terminal调试。<br>这些都不是事，接下来的才是比较蛋疼的。<br>我们那次调试发布，类似发布帖子情形，怎么都发布不出去。我跟后台调了好久，最后我先下去吃饭了，一上来，说解决了。这件事离得比较久，有些忘记了，不过跟后台沟通真麻烦，真蛋疼的那种，我说说这次的吧，基本差不多，感受一下。</p>
+<h4 id="“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”"><a href="#“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”" class="headerlink" title="“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”"></a>“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”</h4><p>是的，这个真是他这样说的。<br>这次是2017年1月23号，也就是鸡年快过年最后一天班。心比较急是真的。<br>后台把代码放到线上，我们都发现登陆、发布这两块不能用。<br>我们可以用排除法：</p>
+<ul>
+<li>登陆我使用测试登陆：手机号登陆、第三方登陆都没有问题；</li>
+<li>我使用线上登陆：手机号登陆失败，第三方登陆没有问题；</li>
+<li>我们前段iOS，线上线下唯一区别就是域名不一样，没有其他。</li>
+<li>发布这个接口也有问题</li>
+<li>我很久没有修改登陆位置的代码了<br>呐，上面可以看出，真的，要么线上线下都不能登录，要么所有接口全都不能用，那肯定是我们哪里错了，他就一句话一开始：肯定是你们前段的错，你们代码没有写好。<br>我当时一直的态度都是确定的知道是后台的错，我愿意陪你来改，帮后台查查那边的错误。<br>他一直说我们这都问题，好吧，毕竟是我当时写的，那我看看代码有没有变动吧：没有，只字未变，，，<br>我说，大哥，我们这里真的没有问题，要不你再查一查。<br>他就说，绝对不可能，怎么可能我这里有问题，你再查查再查查。说的很激动，，肯定是你们的错的。<br>我还是好言好语，毕竟做不好，大家年都不好过，心里想着。<br>接着他说，不然我们调bug。<br>好吧，于是调bug过程也很蛋疼，我用AFNetworking，简单使用网络连接的，他说88888，有没有，我说收到383838 38，中间有个空格。<br>他说我给你88888，你给我383838中间还有空格，肯定是你们那里错了，不然那里来的3，还出来空格，你赶紧改你们代码。<br>我说，大哥啊，我们收到什么就是什么，你给383838空格38，我当然收到相应的了，真不是我们这有错啊。<br>然后他就很凶的，我给你88888，你到时给出来38383838，你还说我这里有问题，那你说这3还有空格哪里来的。<br>我当时回说不知道啊，我们前段收到什么就是什么了。<br>他就一扭头，你先解决3和空格哪里来的在跟我说下一步，再说调试。<br>我无奈的说，你发过来什么我怎么可能找出来哪里来的3，真是服务器的情况啊，你看看测试可以用，线上第三方都能用<br>他插话，语气很凶的说，你不要跟我说什么测试能用，第三方能用，你先把383838那个3和空格找出来（这纯粹转移话题了，解决登陆、发布问题变成了解决3和空格问题）<br>我说，大哥，这没法测了，我们解决登陆问题，你让我查3和空格，我们这，你要什么参数我们提供给你们，你返回什么数据我们就收，我真查不出来啊。<br>然后他就更凶了，你说不是你们问题，那还不是我们问题类，那这样不要测了，不能做不要做了，<br>我蛋疼啊，我还是苦口婆心（毕竟这大过年的，登陆都没法，大家过年都不用过了，老板肯定会很气愤的啊，做了大半年），大哥，我们再查一查吧，毕竟不能登陆，老板肯定发飙啊。<br>他的凶依旧，查什么查，我这里根本不用查，你那边多出来3和空格还让我这边查，那要这样，我把代码还原，要是你还不能登陆，发布有问题，我跟你说好，接下来也不用找我，你自己解决，也不用找我帮忙。<br>（呐，听到这，真的很心寒，我确定是他那边有问题，我都是打着帮他调试bug的态度，心里也嘀咕，要真登陆不了，我没有后台帮忙调试，没法搞啊），我就说先下去吃饭了，登陆上来就换回之前代码试试，没办法了呀，只有这样才能确定是他那边还是我这边，要真我这边，那我也没话说啊<br>，，，我下去吃饭中，，，<br>心情也没被搞坏，毕竟出来给人工作，没必要受同事的气的，吃个饭，慢走慢走的上来了，大冬天，有点太阳，心情还是有点蛋疼。<br>上来看见我们iOS另一个同事和大哥调试着代码，慢慢调着，始终能把矛头指向他们那服务器有问题。<br>因为我一开始就能预见—&gt;才没几行代码啊，出去回来一个过程。<br>后来好吧，后台把代码退回去，（服务器还没运行）还是登不上，我做对面，觉得不对啊，然后他们退到首页看其他数据也没有，然后大哥说还没启动。（服务器运行着）：登陆、发布全部正常，这回后台没话说了，真的没话说了。<br>我也没说什么，搞我自己的东西，这明显的啊。<br>后来说是当时他们搞一些别的东西给代码加上别的东西。<br>可以这么说，这回我是真的蛋疼，特别蛋疼，我一直好声好气，给别人打工啊，没办法啊，后台那边就可以一句话：那就不用做了，不要做了，，，<br>我只是发泄一下，，，毕竟有苦闷着绝对不好，哈哈<br>如果界面有问题，那不用说了，前段的错。<br>逻辑有问题，可能双方哪里合作没有调试好。<br>如果比较矛盾问题，那估计是服务器有问题了。基本都是，前段的东西基本很少的，就这么几个代码啊！！！<br>我真是老好人，人家都凶成这样，我都还是笑脸相迎，我都恨不得给自己一巴掌得了：做你麻痹程序员，写你麻痹代码，，，<br>我其实也可以甩手，不用做就不用做呗，不做就不做呗，我本职做好，谁都没话说，你凶就你凶呗。<br>额弥陀福，，，也记住这一次，下一次还有类似蛋疼的，我就发这给大哥看看好了，我真的以大局为重，要都不解决，登陆不了，明年我们都散伙得了，我怎么对得起其他同事，，，真不想管那么多啊，真想随便拿个工资做做自己手上的事多好，，，，</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-微博API分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/23/微博API分析/">微博API分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/23/微博API分析/" class="article-date">
+	  <time datetime="2017-01-23T09:26:10.000Z" itemprop="datePublished">January 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>createdAt:<br>id:<br>pics:[“”,””,””]<br>text:”文字内容”<br>sourcetype:””—–&gt;不知道是什么鬼<br>geo:”地理位置”<br>source:”从哪里发过来的，什么设备”<br>video:”……..”    视频链接<br>user:{<br>id:<br>screen_name:”新浪财经”<br>province:”11”<br>city:”8”<br>description:”……” 简介<br>url:”……..” 其选填官网<br>“profile_image_url”:”……” 头像<br>“cover_image_phone”:”……” 其个人主页的背景图片<br>“gender”:m/f<br>followers_count:14020824<br>friends_count:1450<br>following:true/false 是否我关注了他<br>follow_me:false 是否关注了我<br>“level”:2   这里可以使用自己的积分<br>}<br>reposts_count:678 转发数<br>comments_count:262 评论数<br>attitudes_count:96 点赞数<br>page_info:{        这个是文章在外边时候展示的<br>page_id:<br>page_title:”…..”<br>page_url:”…….”<br>page_pic:”…….”<br>content1:”银行汇出100元就要进口100元”<br>content2:”。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。”<br>object_type:”webpage”<br>}<br>url_struct:[{      这个应该是文章的构造，跳转构造<br>page_id:””<br>ori_url:”……..”  文章跳转url<br>url_title:”银行汇出100元就要进口100原”<br>url_type_pic:””  图片<br>}]<br>topic_struct:[{    这个是#xxx#<br>“topic_title”:”一盒子的年味”<br>“topic_url”:”…………”<br>}]<br>retweeted_status:{<br>被转发的内容，同上内容<br>}</p>
+<p>文章类型<br>图片类型<br>纯文字类型<br>视频类型</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-读文章微信导航栏实现写了demo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/23/读文章微信导航栏实现写了demo/">读文章微信导航栏实现写了demo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/23/读文章微信导航栏实现写了demo/" class="article-date">
+	  <time datetime="2017-01-23T08:39:50.000Z" itemprop="datePublished">January 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看了这位大哥<a href="http://www.jobbole.com/members/3170539585/的文章，关于微信导航栏的实现。" target="_blank" rel="noopener">http://www.jobbole.com/members/3170539585/的文章，关于微信导航栏的实现。</a><br>由于他没有给出代码实现，当时我没有设置barstyle，导致不好看，哈哈。<br>这里给出完整代码<br>`#import “SHNavigationVC.h”</p>
+<p>#import “UIColor+expanded.h”<br>@interface SHNavigationVC ()<br>@property (nonatomic, strong) UIView *blurBackView;<br>@end<br>@implementation SHNavigationVC</p>
+<ul>
+<li>(void)viewDidLoad {<br>[super viewDidLoad];<br>// Do any additional setup after loading the view.<br>UINavigationBar <em>navBar = self.navigationBar;<br>[navBar insertSubview:self.blurBackView atIndex:0];<br>}<br>-(UIView </em>)blurBackView{<br>if (!_blurBackView) {<br>_blurBackView = [UIView new];<br>_blurBackView.frame = CGRectMake(0, -20, KScreenSize.width, 64);<br>CAGradientLayer *gradientLayer = [[CAGradientLayer alloc]init];<br>gradientLayer.frame = CGRectMake(0, 0, KScreenSize.width, 64);<br>gradientLayer.colors = @[(<strong>bridge id)[UIColor colorWithHexString:@”0x040012” andAlpha:0.76].CGColor,(</strong>bridge id)[UIColor colorWithHexString:@”0x040012” andAlpha:0.28].CGColor];<br>gradientLayer.startPoint = CGPointMake(0, 0);<br>gradientLayer.endPoint = CGPointMake(0, 1.0);<br>[_blurBackView.layer addSublayer:gradientLayer];<br>_blurBackView.userInteractionEnabled = NO;<br>_blurBackView.alpha = 0.5;<br>}<br>return _blurBackView;<br>}`</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-动画显示和隐藏Tabbar和NaviBar" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/19/动画显示和隐藏Tabbar和NaviBar/">动画显示和隐藏Tabbar和NaviBar</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/19/动画显示和隐藏Tabbar和NaviBar/" class="article-date">
+	  <time datetime="2017-01-19T06:55:07.000Z" itemprop="datePublished">January 19, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>‘//隐藏标签栏</p>
+<ul>
+<li>(void)hiddenTheTabBar<br>{<br>if (![[NSUserDefaults standardUserDefaults] boolForKey:@”isHiddenTabBar”]) {<br>for (UIView *v in [self.view subviews]) {<br>if ([v isKindOfClass:[UITabBar class]]) {<br>[UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.origin.y += 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>} else {<br>[UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.size.height += 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>}<br>}<br>[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@”isHiddenTabBar”];<br>}<br>}<br>//显示标签栏</li>
+<li>(void)showTheTabBar<br>{<br>if ([[NSUserDefaults standardUserDefaults] boolForKey:@”isHiddenTabBar”]) {<br>for (UIView *v in [self.view subviews]) {<br>if ([v isKindOfClass:[UITabBar class]]) {<br>[UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.origin.y -= 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>} else {<br>[UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){<br>CGRect frame = v.frame;<br>frame.size.height -= 49.0f;<br>v.frame = frame;<br>} completion:nil];<br>}<br>}<br>[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@”isHiddenTabBar”];<br>}<br>}<br>‘<br>思路就是这样，别人那边看到的，就是找出来，然后拿着这玩意做动效，存着吧</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-最近做项目要用到的库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/18/最近做项目要用到的库/">最近做项目要用到的库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/18/最近做项目要用到的库/" class="article-date">
+	  <time datetime="2017-01-18T14:52:28.000Z" itemprop="datePublished">January 18, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于2017年了，没有一个非常好的，拿得出手的项目，决定在闲暇时间花更多精力去写好一个产品。不能总是东拼西凑完成一些功能，代码自己也要完善好。这里先想好需要哪些东西，从哪里开始，做到哪里。</p>
+<h3 id="framework"><a href="#framework" class="headerlink" title="framework"></a>framework</h3><p>由于想做的内容有多媒体，GPUImage必不可少，最近也研究了很久，公司项目又正好有用到，虽然还不太熟悉，不过，硬着头皮也要上。</p>
 <ol>
-<li><code>for （int i=0；i&lt;x;i++)</code></li>
-<li><code>[array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-do something...
-*stop = YES;
-}];</code></li>
-<li>或者操作完你这一个之后，break整个循环<br>双击666</li>
+<li>GPUImage</li>
+<li>ReactiveCocoa</li>
+<li>AsyncDisplayKit</li>
+<li>Parse&amp;&amp;ParseServer</li>
+<li>MBProgress</li>
+<li>MMMarkdown</li>
+<li>Shimmer</li>
+<li>ChameleonFramework</li>
+<li>MLeaksFinder</li>
+<li>pop</li>
+<li>Qiniu</li>
+<li>MJRefresh/MJExtension</li>
+<li>AVOS(这个怎么讲，免费额度还是不错的，一些快捷数据存放在那边，很好。)</li>
+<li>CTMediator</li>
+<li>ijk</li>
+<li>Realm</li>
+<li>320</li>
+<li>AF</li>
+<li>FLAnimatedImage</li>
+<li>SD</li>
+<li>GYBootingProtection</li>
+<li>DZNEmptyDataSet</li>
+<li>FontAwesome</li>
+<li>LxDBAnything</li>
+<li>Origami</li>
+<li>FontAwesome</li>
+<li>PermissionScope<br>大型库就差不多了。小的自己撸。<h3 id="做个啥"><a href="#做个啥" class="headerlink" title="做个啥"></a>做个啥</h3></li>
+<li>能发布内容，包括<br>文本-&gt;markdown语法，解析棒啊<br>图片-&gt;拍摄加本地存取图片滤镜+gif<br>视频-&gt;拍摄加本地存取+视频+背景音乐+贴图+MV效果</li>
+<li>展示页面<br>参考了微博、Facebook、twitter、内涵段子</li>
+<li>总共界面<br>Feed界面、登陆界面、上传等界面、我的界面、查看用户界面</li>
+<li>首先先这么多，哈哈<h3 id="什么方向"><a href="#什么方向" class="headerlink" title="什么方向"></a>什么方向</h3></li>
+<li>我估计会做成跟内涵段子差不多方向</li>
+<li>百思不得骑姐不行</li>
+<li>那还是想内涵段子学习，多研究推送，参考大亨“Pinterest”、“Facebook”、“Weibo”、“即刻”、“微信”等推送能力</li>
+<li>做东西不能想着赚钱，不过要想好赚钱渠道：</li>
 </ol>
+<ul>
+<li>比如进入时的广告页</li>
+<li>广场的广告页</li>
+<li>观看时的广告页</li>
+<li>推送<h3 id="做到哪里"><a href="#做到哪里" class="headerlink" title="做到哪里"></a>做到哪里</h3>做到哪里不如说，我想做什么。</li>
+</ul>
+<ul>
+<li>之前大半年的业余时间，大半都浪费了。有想法了，就持续做出好的来，别东一个西一个。</li>
+<li>由于最近搞的东西很多，没把React-native嵌进去已然减轻了很多了</li>
+<li>边写边学。</li>
+<li>比如视频部分，公司最近一直有往这一方向走。不过说实话，由于没资源、没人问导、老板又催促，着实很着急，这方面知识很难，毕竟这一块作品又不是烂大街。市场上有很多？更多的是新闻类好伐。</li>
+<li>自己也有对视频有爱好，继续往里面学习。早先我就研究WebRTC，不过学的很粗浅，最后面用别人的（OpenTok+parse实现无后台操作）才实现了方案。GPUImage，很多坑，你没有做这些尝试，你都不知道做下去能不能出来。</li>
+<li>这方面市场上还不是非常非常多人，尝试往里面挤挤，说不定有一些油水哟。</li>
+</ul>
+<hr>
+<p>由于SVG对做地图比较好，我这里基本想用ttf搞定，就先忽略SVG</p>
+<p>#最近要做的事情给他列一下好了</p>
+<ul>
+<li>CTMediator学习并直接使用到新项目   <strong>完成</strong></li>
+<li>系统主题变色学习，将其swift改为OC版本，并且直接使用到新项目   <strong>使用微信导航栏方案代替</strong></li>
+<li>GIF图搞进去,保存可以选择将GIF转成视频保存、或者GIF保存也行，便于复制转发。</li>
+<li>编写APP啦</li>
+<li>Origami继续搞</li>
+<li>collection layout tutorial学习</li>
+<li>学习一个非常酷的3D效果菜单，以前我写过一些类似的，但没有从大方向，不伦不类，好好看看他们怎么写的</li>
+<li>OpenCV学习</li>
+<li>阅读几个源码：FLAnimatedImage、RESidemenu、SDWebImage等文章</li>
+<li>给我的博客优化优化，添加百度谷歌搜索</li>
+<li>给我的博客加上广告，哈哈</li>
+<li>评论区加上</li>
+<li>统计</li>
+</ul>
+<p>这样梳理下来，有搞头了，知道方向就好多了，哈哈。</p>
 
       
     </div>
@@ -521,7 +715,7 @@ do something...
     
 
   
-    <article id="post-AsyncDisplayKit的learning" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-使用charles下载appStore历史版本" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -529,7 +723,7 @@ do something...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/AsyncDisplayKit的learning/">AsyncDisplayKit的learning</a>
+      <a class="article-title" href="/2017/01/17/使用charles下载appStore历史版本/">使用charles下载appStore历史版本</a>
     </h1>
   
 
@@ -537,125 +731,60 @@ do something...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/01/09/AsyncDisplayKit的learning/" class="article-date">
-	  <time datetime="2017-01-09T01:59:17.000Z" itemprop="datePublished">January 9, 2017</time>
+	Posted on <a href="/2017/01/17/使用charles下载appStore历史版本/" class="article-date">
+	  <time datetime="2017-01-17T03:47:12.000Z" itemprop="datePublished">January 17, 2017</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>发表于(2016-11-29 17:35:30)</p>
-<p><a href="http://www.open-open.com/lib/view/open1472701267252.html" target="_blank" rel="noopener">文章一</a><br>这篇文章讲了布局调用顺序measureWithSizeRange<br>当我们使用 ASDK 布局时，需要做下面四件事情中的一件：<br><em>提供 layoutSpecBlock
-</em>覆写 - layoutSpecThatFits: 方法<br><em>覆写 - calculateSizeThatFits: 方法
-</em>覆写 - calculateLayoutThatFits: 方法<br>*只有做上面四件事情中的其中一件才能对 ASDK 中的视图或者说结点进行布局。<br>同时给了一个网址<a href="http://nguyenhuy.github.io/froggy-asdk-layout/" target="_blank" rel="noopener">Foggy-ASDK-Layout</a>，我学了一下，对比React-native，一模一样。<br>然后找了下这篇文章<a href="http://www.qingpingshan.com/rjbc/ios/167576.html" target="_blank" rel="noopener">文章二</a><br>里面主要讲了有哪些基本属性enum可以使用</p>
+        <p>今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。</p>
+<h3 id="申明几点"><a href="#申明几点" class="headerlink" title="申明几点"></a>申明几点</h3><p>charles可以使用手机代理来查看http或者https内容。但是到了App Store去下载时，点击下去，始终出现</p>
+<blockquote>
+<p><a href="https://p33-buy.itunes.apple.com" target="_blank" rel="noopener">https://p33-buy.itunes.apple.com</a> SSLHandshake: Remote host closed connection during handshake</p>
+</blockquote>
+<p>懒得整了，于是这里全部使用电脑端的使用，而且很快。</p>
+<ol start="2">
+<li>记得要翻墙，对了，姿势要对，比如左手放在大腿附近，右手点击快进键。</li>
+<li>我这里charles版本为3.11.2版本。正不正版无所谓，没付费不就是老是弹提示嘛，多弹几次能给我钱，那就更好了。</li>
+<li>我这里使用的是MAC电脑<h3 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h3></li>
+</ol>
+<ul>
+<li>下载https证书<a href="https://www.charlesproxy.com/assets/legacy-ssl/ssl.zip" target="_blank" rel="noopener">https://www.charlesproxy.com/assets/legacy-ssl/ssl.zip</a></li>
+<li>解压之后,双击该证书。</li>
+<li>前往钥匙串，搜索charles，然后就出现<img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png" alt="该证书不被信任" title="不被信任不正常嘛"></li>
+<li>双击该证书，同时点击第一项，使其<em>始终信任</em><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_02.png" alt="该证书选为始终信任" title="始终信任"></li>
+<li>左上角关闭，同时要求输入mac电脑密码。<h4 id="因为我们在电脑上搞，那么我们要将代理设到电脑上。"><a href="#因为我们在电脑上搞，那么我们要将代理设到电脑上。" class="headerlink" title="因为我们在电脑上搞，那么我们要将代理设到电脑上。"></a>因为我们在电脑上搞，那么我们要将代理设到电脑上。</h4></li>
+<li>打开网络设置偏好-&gt;高级-&gt;代理-&gt;将http和https都设置为127.0.0.1 port:8888 <img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_03.png" alt="代理设置" title="按照步骤"></li>
+<li>完了之后选择“应用”<h4 id="这里开始搞charles"><a href="#这里开始搞charles" class="headerlink" title="这里开始搞charles"></a>这里开始搞charles</h4></li>
+<li>打开charles，我这个版本的ssl proxy设置在 proxy下边的#SSL Proxying settings#里边，点击他进入，同时按图中设置 <a href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_04.png" title="按照步骤" target="_blank" rel="noopener">proxy设置</a><h4 id="这时打开iTunes和charles"><a href="#这时打开iTunes和charles" class="headerlink" title="这时打开iTunes和charles"></a>这时打开iTunes和charles</h4></li>
+<li>在charles startRecording的时候，在iTunes-&gt;应用-&gt;App Store里面搜索“秒拍”<br>可以看到图中解释 <img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_05.png" alt="charles内容解释" title="按照步骤"><br>往下翻看到<br>key&gt;softwareVersionBundleId<br><string>com.yixia.iphone</string><br><key>softwareVersionExternalIdentifier</key><integer>820135955</integer><br><key>softwareVersionExternalIdentifiers</key><br><array><br><integer>4981074</integer><br><integer>5394180</integer><br><integer>6879271</integer><br><integer>7521689</integer><br><integer>7688644</integer><br><integer>7941305</integer><br><integer>8166440</integer><br><integer>9007047</integer><br><integer>9411091</integer><br><integer>9872854</integer><br><integer>10633066</integer><br><integer>15892678</integer><br><integer>15974682</integer><br><integer>16060211</integer><br><integer>16091930</integer><br><integer>16504676</integer><br><integer>17263812</integer><br><integer>59592659</integer><br><integer>81073287</integer><br><integer>139932634</integer><br><integer>192742647</integer><br><integer>220962670</integer><br><integer>294852730</integer><br><integer>305732696</integer><br><integer>329852736</integer><br><integer>398862656</integer><br><integer>468142680</integer><br><integer>513982646</integer><br><integer>572242779</integer><br><integer>589372761</integer><br><integer>641902654</integer><br><integer>652212932</integer><br><integer>655043181</integer><br><integer>662912853</integer><br><integer>701362692</integer><br><integer>709942656</integer><br><integer>770264233</integer><br><integer>811423848</integer><br><integer>811487803</integer><br><integer>811635729</integer><br><integer>811781222</integer><br><integer>812037027</integer><br><integer>812232597</integer><br><integer>812328295</integer><br><integer>812440942</integer><br><integer>812536145</integer><br><integer>812563006</integer><br><integer>812597840</integer><br><integer>812675604</integer><br><integer>812763862</integer><br><integer>812874619</integer><br><integer>812980000</integer><br><integer>813078957</integer><br><integer>813307221</integer><br><integer>813588175</integer><br><integer>813621742</integer><br><integer>813630679</integer><br><integer>814108034</integer><br><integer>814127199</integer><br><integer>814228608</integer><br><integer>814261627</integer><br><integer>814370408</integer><br><integer>814372706</integer><br><integer>814567037</integer><br><integer>814567882</integer><br><integer>814592662</integer><br><integer>814800494</integer><br><integer>814875099</integer><br><integer>815021644</integer><br><integer>815023592</integer><br><integer>815055555</integer><br><integer>815350442</integer><br><integer>815358012</integer><br><integer>815393500</integer><br><integer>815457608</integer><br><integer>815607029</integer><br><integer>815608372</integer><br><integer>815615057</integer><br><integer>815654426</integer><br><integer>816131497</integer><br><integer>816162845</integer><br><integer>816749956</integer><br><integer>816873466</integer><br><integer>816998702</integer><br><integer>817114988</integer><br><integer>817301959</integer><br><integer>818053825</integer><br><integer>818219564</integer><br><integer>818406305</integer><br><integer>818614237</integer><br><integer>818735711</integer><br><integer>818784109</integer><br><integer>818961748</integer><br><integer>819270136</integer><br><integer>819601281</integer><br><integer>820135955</integer><br></array><br><key>vendorId</key><br><integer>1754660</integer><br><key>drmVersionNumber</key><br><integer>0</integer>
+
+</li>
+</ul>
+<p>这里820135955为目前最新的下载版本号，<br>这个4981074，则为其第一个版本</p>
+<p><integer>820135955</integer> </p>
+<p><key>softwareVersionExternalIdentifiers</key> </p>
+<p><array> </array></p>
+<p><integer>4981074</integer></p>
+<h1 id="进入重点啦！！！"><a href="#进入重点啦！！！" class="headerlink" title="进入重点啦！！！"></a>进入重点啦！！！</h1><ul>
+<li>删掉刚才的秒拍，给charles的那条链接点选这两个勾！！！breakpoint会让程序停在一开始的将要开始地方(这里就可以更改里面的参数，让其下载4981074历史版本)<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_06.png" alt="charles勾选内容" title="两个都勾上"></li>
+<li>关掉charles,iTunes不要关闭</li>
+<li>打开charles,选上proxy-&gt;MAC OS X proxy</li>
+<li>到将要下载秒拍的那个地方,点击获取，charles breakpoint到这张图<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_07.png" alt="将要下载的内容换成“呱拍”,不要在意这个"></li>
+<li>根据下图，修改里面的参数<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_08.png" alt="根据步骤操作"><br>当版本号修改过后，即可点击下面的按钮“excuse”，可能要点击2次，观察iTunes下载是否开始，当要结束时，似乎还要点击一次“excuse”，最后反正就是下载成功了。<br>我这里使用iTool安装，你也可以直接用iTunes安装，个人爱好。到这里，你就可以随意搞你要的各个app版本啦。</li>
+</ul>
+<p>附我参考的文章<br><a href="http://www.cocoachina.com/ios/20161214/18351.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20161214/18351.html</a></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a></li></ul>
 
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录/">CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录/" class="article-date">
-	  <time datetime="2017-01-09T01:57:27.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-11-29 10:39:20)</p>
-<p>视频帧处理有一点要明确，<br>CMTimeMakeWithSeconds(<br>Float64 seconds,<br>int32_t preferredTimescale)<br>这里seconds是第几次，preferredTimescale为片，<br>比如我要每秒一帧图片从视频取出来<br>`AVAssetImageGenerator <em>assetImageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:self.viewModel.asset];<br>CGFloat scale = KScreenWidth</em>1.f/MAXImageShowInCollection/80;//collectionFlowSize width/height<br>assetImageGenerator.maximumSize = CGSizeMake(200<em>scale,200);<br>assetImageGenerator.appliesPreferredTrackTransform = TRUE;<br>Float64 duration = CMTimeGetSeconds(self.viewModel.asset.duration);<br>NSMutableArray </em>timeArr = [[NSMutableArray alloc]initWithCapacity:0];<br>if (self.segmentedControl.selectedSegmentIndex) {<br>for (int i=0; i&lt;8; i++) {//MIN(duration, 60)<br>[timeArr addObject:[NSValue valueWithCMTime:CMTimeMakeWithSeconds(i, duration/8)]];<br>}<br>}else{<br>for (int i=0; i&lt;floor(duration); i++) {<br>[timeArr addObject:[NSValue valueWithCMTime:CMTimeMakeWithSeconds(i, 1)]];<br>}<br>}<br>[assetImageGenerator generateCGImagesAsynchronouslyForTimes:timeArr completionHandler:<br>^(CMTime requestedTime, CGImageRef image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError <em>error)<br>{<br>@strongify(self);<br>NSLog(@”actual got image at time:%f”, CMTimeGetSeconds(actualTime));<br>if (image)<br>{<br>UIImage </em>img = [UIImage imageWithCGImage:image];<br>[self.imageArray addObject:img];<br>if (self.imageArray.count==timeArr.count) {<br>dispatch_async(dispatch_get_main_queue(), ^{<br>@strongify(self);<br>[self.collection reloadData];<br>});<br>}<br>}</p>
-<p>}];`</p>
-<p>此处参考了美拍的如果取10s以内的视频，则都是以1s一片取图片CMTimeMakeWithSeconds(i, 1)，如果为1分钟或者美拍的那种5分钟，则就取8帧，总共就8帧CMTimeMakeWithSeconds(i, duration/8)。</p>
-<p>UIPanGestureRecognize在手势滑动的判断<br>我犯得错误是使用坐标对坐标，两个会变动的参数判断，这里给自己提一个醒！！！<br>每次对其内部判断，都是在判断时，对[x locationInView:trimView]判断，对目前你的手在区域内位置判断，不然会狂闪。<br><code>[[leftPanGesture rac_gestureSignal] subscribeNext:^(UIPanGestureRecognizer * x) {
-@strongify(self);
-if (x.state == UIGestureRecognizerStateBegan) {
-}else if (x.state == UIGestureRecognizerStateChanged) {
-if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLength) {
-}else{
-}
-}</code><br>道理都懂，有时就会犯迷糊，谨记</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-苹果加急审核" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/苹果加急审核/">苹果加急审核</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/苹果加急审核/" class="article-date">
-	  <time datetime="2017-01-09T01:56:12.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-11-29 10:34:01)</p>
-<p>转载至<a href="http://blog.csdn.net/showhilllee/article/details/19541493" target="_blank" rel="noopener">http://blog.csdn.net/showhilllee/article/details/19541493</a><br>加急入口在Apple Connection 右下角</p>
-<p>打电话的似乎寻求不到太大帮助，毕竟团队不一样。apple 审核团队向来神秘闻名，我们由于UGC的问题，被打了很多次了，其实对着他写的回复修改，也只能遮掩。我们遇到这次很逗，审核团队要求我们给“注册”时的账号，不是demo account，我们注册时有短信验证，给也没用啊，，，蛋疼，，，</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
       
             
       
@@ -673,7 +802,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/8/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/8/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/">Next</a>
   </nav>
 
 </section>
@@ -797,8 +926,8 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
-              <span>May 29, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-6zatan/">2019-9-6zatan</a></h6>
+              <span>June 4, 2020</span>
             </div>
 
           </li>
@@ -809,8 +938,8 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a></h6>
-              <span>May 26, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-6lesson/">2019-9-6lesson</a></h6>
+              <span>June 4, 2020</span>
             </div>
 
           </li>
@@ -821,8 +950,8 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-13/">2020-5-13</a></h6>
-              <span>May 26, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-5lesson/">2019-9-5lesson</a></h6>
+              <span>June 4, 2020</span>
             </div>
 
           </li>
@@ -833,8 +962,8 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a></h6>
-              <span>May 24, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-4lesson/">2019-9-4lesson</a></h6>
+              <span>June 4, 2020</span>
             </div>
 
           </li>
@@ -845,8 +974,8 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a></h6>
-              <span>May 24, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-3obs/">2019-9-3obs</a></h6>
+              <span>June 4, 2020</span>
             </div>
 
           </li>
@@ -857,8 +986,8 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
-              <span>May 11, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-2lesson/">2019-9-2lesson</a></h6>
+              <span>June 4, 2020</span>
             </div>
 
           </li>
@@ -875,7 +1004,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/">v2ray</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/">v2ray</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -885,7 +1014,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/nginx/" style="font-size: 20px;">nginx</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/v2ray/" style="font-size: 20px;">v2ray</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -895,7 +1024,7 @@ if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLen
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
