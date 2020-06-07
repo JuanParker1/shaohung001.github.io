@@ -165,74 +165,6 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-2019-9-4lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/04/2019-9-4lesson/">2019-9-4lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/04/2019-9-4lesson/" class="article-date">
-	  <time datetime="2019-09-04T04:14:26.000Z" itemprop="datePublished">September 4, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac使用Parallels-增加CentOS7"><a href="#Mac使用Parallels-增加CentOS7" class="headerlink" title="Mac使用Parallels 增加CentOS7"></a><strong>Mac使用Parallels 增加CentOS7</strong></h1><p>CentOS7 肯定是用OpenSSH 链接的。</p>
-<pre><code>yum list installed | grep openssh-server
-</code></pre><p>如果未显示openssh-server 已经安装，那么输入<code>yum install openssh-server</code> 安装。</p>
-<pre><code>cd /etc/ssh
-sudo vim sshd_config
-</code></pre><p>修改以下几项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure>
-<p>保存文件、退出</p>
-<pre><code>systemctl restart sshd
-
-netstat -lnp | grep 22 # 查看到22 端口已经打开
-</code></pre><p>这时Mac 要链接先要找到Ipv4 地址，两种方法：</p>
-<ol>
-<li>ip addr 可以看到有localhost/127.0.0.1/某一个ip 地址</li>
-<li>去设置的netword 里面看Ipv4 地址</li>
-</ol>
-<p>然后Mac 先ping 该ip，如果通畅那就说明ok 啦。</p>
-<p>此时有个问题：Parallels帮我们创建的账号，默认名为Parallels, 于是我又屁颠屁颠去【设置】【用户】里面把名字改了。</p>
-<p>Mac 下<code>ssh root@ip -p 22</code> 发现一直弹<strong>Permission denied, please try again.</strong></p>
-<p>不可能啊，就是这个密码。不理解的我试了好多次，只能google 了。</p>
-<p><a href="https://askubuntu.com/questions/497895/permission-denied-for-rootlocalhost-for-ssh-connection" target="_blank" rel="noopener">StackExchange</a>前面答案都没帮上忙。我看到改密码：<code>sudo passwd</code></p>
-<p>于是我改了下密码，Mac试着登录，终于可以登入了。估计这是CentOS7 的bug 吧。反正我登上了。我不管了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/parallels/">parallels</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
     <article id="post-2019-9-3obs" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -876,6 +808,61 @@ export PATH=$NGINX_HOME/sbin:$PATH
     
 
   
+    <article id="post-2019-6-13qiniu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/13/2019-6-13qiniu/">2019-6-13qiniu</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/13/2019-6-13qiniu/" class="article-date">
+	  <time datetime="2019-06-13T04:02:38.000Z" itemprop="datePublished">June 13, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>找到原因：我去找了下我的lookup</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loopup = <span class="function">(<span class="params">req:Request</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> ref</span><br><span class="line">  <span class="keyword">if</span> (req.user) &#123;</span><br><span class="line">    ref = req.user._id</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> [req.path, ref || req.get(<span class="string">"X-Real-IP"</span>) || req.get(<span class="string">"X-Forward-For"</span>) || req.ip]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原因就在于每次我登进去，key 都不同，与此同时，我不退出，继续使用该api，key 还是不同。</p>
+<p>解决方案：由于该route 是public 的，</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lookup = <span class="function">(<span class="params">req:Request</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> key = <span class="string">`<span class="subst">$&#123;req.method&#125;</span>:<span class="subst">$&#123;req.path&#125;</span>`</span></span><br><span class="line">  <span class="keyword">if</span> (routesMap[key].accessLevel.level === <span class="string">'public'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [req.path, req.get(<span class="string">"X-Real-IP"</span>) || req.get(<span class="string">'X-Forwarded-For'</span>) || req.ip]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> ref</span><br><span class="line">  <span class="keyword">if</span> (req.user) &#123;</span><br><span class="line">    ref= req.user._id</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> [req.path, ref || req.get(<span class="string">"X-Real-IP"</span>) || req.get(<span class="string">'X-Forwarded-For'</span>) || req.ip]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解决qiniu-上传文件-gt-1G-code-413"><a href="#解决qiniu-上传文件-gt-1G-code-413" class="headerlink" title="解决qiniu 上传文件&gt;1G code=413"></a><strong>解决qiniu 上传文件&gt;1G code=413</strong></h2><p>qiniu v=6.0.9</p>
+<p>根据<a href="https://github.com/qiniu/nodejs-sdk/issues/173" target="_blank" rel="noopener">github issue</a>提到，fixed in v7.0.2</p>
+<p>更新之后，接口也相应更新，然后同时需要在<code>new qiniu.rs.PutPolicy(options)</code> 的options 设置fsizeLimit,</p>
+<p><code>options = { scope: ${bucket}:key, fsizeLimit: 10*1024*1024*1024 }</code> 这样便成功解决上传文件限制大小的问题。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qiniu/">qiniu</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
 
 
   <nav id="page-nav">
@@ -1004,18 +991,6 @@ export PATH=$NGINX_HOME/sbin:$PATH
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-6zatan/">2019-9-6zatan</a></h6>
-              <span>June 4, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
               <span>May 29, 2020</span>
             </div>
@@ -1070,6 +1045,18 @@ export PATH=$NGINX_HOME/sbin:$PATH
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
+              <span>May 11, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -1102,7 +1089,7 @@ export PATH=$NGINX_HOME/sbin:$PATH
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

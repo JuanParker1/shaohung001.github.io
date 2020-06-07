@@ -165,75 +165,6 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-2020-3-20lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/03/20/2020-3-20lesson/" class="article-date">
-	  <time datetime="2020-03-20T07:00:34.000Z" itemprop="datePublished">March 20, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="gorm-参考使用"><a href="#gorm-参考使用" class="headerlink" title="gorm 参考使用"></a>gorm 参考使用</h3><p><a href="https://segmentfault.com/a/1190000013216540" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013216540</a></p>
-<p>启动mysql</p>
-<p><code>docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7</code></p>
-<p>如果Sequel Pro 连接报错<code>Authentication plugin &#39;caching_sha2_password&#39; cannot be loaded: dlopen(/usr/local/lib/plugin/caching_sha2_password.so, 2): image not found</code>, 则</p>
-<p><code>docker exec -it mysql bash</code></p>
-<p><code>$mysql -uroot -p</code></p>
-<p><code>$ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;</code></p>
-<h3 id="goland-无法解析go-mod-的包"><a href="#goland-无法解析go-mod-的包" class="headerlink" title="goland 无法解析go.mod 的包"></a>goland 无法解析go.mod 的包</h3><p>开始建立一个go 项目， 使用go mod。一直都是OK的。然而在另一个机子导入、或者本机挪了个位置，就出现goland 无法识别第三方包的情况。</p>
-<p>当前goland 第三方包或者go mod init xxx，使用 xxx/config 之类的也都全部无法识别。</p>
-<p>找了半天看到<a href="https://learnku.com/go/t/35849" target="_blank" rel="noopener">帖子</a>中跟我描述一致，最后一个回复中，给出另一个链接<a href="https://segmentfault.com/q/1010000020603338/" target="_blank" rel="noopener">segmentfault</a><br>提到、而且截图和我情况一致。</p>
-<p>下面回复点醒了我:</p>
-<blockquote>
-<p>如果是导入已有项目，记得启用下 Go Module，进入 Preference -&gt; Go -&gt; Go Modules，启用下就好。</p>
-</blockquote>
-<p>也就是说，导入、或者挪了位置，要启用。</p>
-<p>可是当前我的已经启用了呀Go - Go Modules(vgo) - Enable Go Modules (vgo)integration</p>
-<p>这个checkbox 本来就是加载的。</p>
-<p>此时我关闭他，然后apply; 再然后checkbox 打开他，再apply，这时就全部正常了。</p>
-<blockquote>
-<p>家里的mac 又出现这种情况。解决方法是:</p>
-<p>删除本地的.idea 文件夹; File-invalidate caches and restart; 然后重启电脑; 然后vgo 关闭再打开;</p>
-<p>基本OK了吧。记得查看下GOPATH 设置</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
     <article id="post-2020-3-12lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -1020,6 +951,74 @@ cd /usr/local/nginx
     
 
   
+    <article id="post-2019-9-4lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/09/04/2019-9-4lesson/">2019-9-4lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/09/04/2019-9-4lesson/" class="article-date">
+	  <time datetime="2019-09-04T04:14:26.000Z" itemprop="datePublished">September 4, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mac使用Parallels-增加CentOS7"><a href="#Mac使用Parallels-增加CentOS7" class="headerlink" title="Mac使用Parallels 增加CentOS7"></a><strong>Mac使用Parallels 增加CentOS7</strong></h1><p>CentOS7 肯定是用OpenSSH 链接的。</p>
+<pre><code>yum list installed | grep openssh-server
+</code></pre><p>如果未显示openssh-server 已经安装，那么输入<code>yum install openssh-server</code> 安装。</p>
+<pre><code>cd /etc/ssh
+sudo vim sshd_config
+</code></pre><p>修改以下几项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure>
+<p>保存文件、退出</p>
+<pre><code>systemctl restart sshd
+
+netstat -lnp | grep 22 # 查看到22 端口已经打开
+</code></pre><p>这时Mac 要链接先要找到Ipv4 地址，两种方法：</p>
+<ol>
+<li>ip addr 可以看到有localhost/127.0.0.1/某一个ip 地址</li>
+<li>去设置的netword 里面看Ipv4 地址</li>
+</ol>
+<p>然后Mac 先ping 该ip，如果通畅那就说明ok 啦。</p>
+<p>此时有个问题：Parallels帮我们创建的账号，默认名为Parallels, 于是我又屁颠屁颠去【设置】【用户】里面把名字改了。</p>
+<p>Mac 下<code>ssh root@ip -p 22</code> 发现一直弹<strong>Permission denied, please try again.</strong></p>
+<p>不可能啊，就是这个密码。不理解的我试了好多次，只能google 了。</p>
+<p><a href="https://askubuntu.com/questions/497895/permission-denied-for-rootlocalhost-for-ssh-connection" target="_blank" rel="noopener">StackExchange</a>前面答案都没帮上忙。我看到改密码：<code>sudo passwd</code></p>
+<p>于是我改了下密码，Mac试着登录，终于可以登入了。估计这是CentOS7 的bug 吧。反正我登上了。我不管了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/parallels/">parallels</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
 
 
   <nav id="page-nav">
@@ -1148,18 +1147,6 @@ cd /usr/local/nginx
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-6zatan/">2019-9-6zatan</a></h6>
-              <span>June 4, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
               <span>May 29, 2020</span>
             </div>
@@ -1214,6 +1201,18 @@ cd /usr/local/nginx
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
+              <span>May 11, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -1246,7 +1245,7 @@ cd /usr/local/nginx
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
