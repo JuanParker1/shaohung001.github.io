@@ -233,7 +233,7 @@ var themeMenus = {};
     
 
   
-    <article id="post-2019-9-6lesson" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2020-5-29lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -241,7 +241,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-9-6lesson/">2019-9-6lesson</a>
+      <a class="article-title" href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a>
     </h1>
   
 
@@ -249,468 +249,105 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2020/06/04/2019-9-6lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:15:45.000Z" itemprop="datePublished">June 4, 2020</time>
+	Posted on <a href="/2020/05/29/2020-5-29lesson/" class="article-date">
+	  <time datetime="2020-05-29T02:17:46.000Z" itemprop="datePublished">May 29, 2020</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="记一次V2ray-域名被删了，重新安装记录"><a href="#记一次V2ray-域名被删了，重新安装记录" class="headerlink" title="记一次V2ray 域名被删了，重新安装记录"></a>记一次V2ray 域名被删了，重新安装记录</h1><p>由于freeNom 购买的免费域名，如果二级域 没有指定网页返回，那么就会被回收。有时邮件能看到，及时搞好就OK，有时漏掉，于是，麻烦事来啦。</p>
-<p>freeNom 重新购买那个域名，试了试，被Cancel 掉了，买不成功。</p>
-<p>好吧，那就折腾下买个域名吧。</p>
-<p>首先不喜欢<code>狗爹</code>，没那个经历。看他们说<code>namecheap</code> 还不错，但是最后一步：不能使用支付宝，那我就用我以前的网站<code>namesio</code> 挺不错，买过一次，熟悉的味道。</p>
-<p>买成功后，修改nameserver 为<code>cloudFlare</code> 对应的nameserver，同时开启SSL。</p>
-<p>但是测试的时候发现客户端的error.log 报错:<code>failed to handler mux client connection &gt; v2ray.com/core/proxy/vmess/outbound: failed to find an available destination &gt; v2ray.com/core/common/retry: [v2ray.com/core/transport/internet/websocket: failed to dial WebSocket &gt; v2ray.com/core/transport/internet/websocket: failed to dial to (wss://wpn.iahuang.com/58ff4ec7/):  &gt; x509: certificate is valid for fuck.gogal.ml, not wpn.iahuang.com] &gt; v2ray.com/core/common/retry: all retry attempts failed</code></p>
-<p>这个错是从服务端发出来的，是说里面的v2ray.crt / v2ray.key 对应的域名和现在不同。醒悟过来了。</p>
-<p>我用的<code>V2Ray_ws-tls_bash_onekey</code> 一键生成的，找到里面的install.sh 发现他的ssl 使用acme.sh 生成的。美滋滋，我也去整一个。</p>
-<p><code>curl https://get.acme.sh | sh</code></p>
-<p><code>acme.sh --issue -d wpn.ahuang.com -w /home/wwwroot/sCalc --test</code></p>
-<p><code>/home/wwwroot/sCalc</code> 对应Nginx server 的root</p>
-<p><code>--test</code> 用于测试使用的。如果不加，<a href="https://letsencrypt.org/zh-cn/docs/rate-limits/" target="_blank" rel="noopener">最多只能一个月生成5个</a>, 超过会报<code>https://www.dogedoge.com/results?q=Create+new+order+error.+Le_OrderFinalize+not+found.</code>, <code>code=429</code></p>
-<p>生成之后，文件在<code>~/.acme.sh/</code>目录下。</p>
-<p>我们要用的v2ray.crt / v2ray.key 需要再处理一次:</p>
-<p><code>mkdir -p /sslCert</code></p>
-<p><code>acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/v2ray.key --fullchain-file /sslCert/v2ray.crt --reloadcmd &quot;systemctl restart nginx&quot;</code></p>
-<p>然后就OK。要的文件就在sslCert下。</p>
-<p>将两个文件，替换到/etc/v2ray/下。重启v2ray / 修改server 的server_name 就又复活啦。</p>
+        <h1 id="使用docker-golang-执行本地golang-服务"><a href="#使用docker-golang-执行本地golang-服务" class="headerlink" title="使用docker/golang 执行本地golang 服务"></a>使用docker/golang 执行本地golang 服务</h1><pre><code>cd $工作目录
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v2ray/">v2ray</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-9-5lesson/">2019-9-5lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/04/2019-9-5lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:15:07.000Z" itemprop="datePublished">June 4, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="开始做视频网站前的准备"><a href="#开始做视频网站前的准备" class="headerlink" title="开始做视频网站前的准备"></a><strong>开始做视频网站前的准备</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Nginx 做流量转发</span><br><span class="line">SRS 做直播流服务</span><br><span class="line">Nginx-http-flv-module 作为播放本地视频流服务</span><br></pre></td></tr></table></figure>
-<p>自己测试了下SRS 做直播服务单机都感觉非常稳定，所以直播的能力就先交给他了。我找一遍没有找到SRS 能播放本地视频的。使用ffmpeg 倒也能播放，但是却不能拖动前、后播放视频了。</p>
-<p>所以果断放弃。使用Nginx-http-flv-module 作为播放本地视频，配置也是超级简单。但是Nginx-http-flv-module 的直播流却不理想，自己感觉不是很好。</p>
-<p>也可能是我偷偷搞、学，遗漏了？反正就这么着：SRS 扛起直播大旗、Nginx-http-flv-module 扛起播放视频服务大旗！</p>
-<p>SRS 上面也已讲过，商用的话，还缺少一个:鉴权服务。SRS 本身就有鉴权方案，我在之后会多多参考，现在主要还是先搭起播放本地视频的服务。</p>
-<p>下面开始Nginx-http-flv-module 的实现流程。</p>
-<h3 id="首先说明环境"><a href="#首先说明环境" class="headerlink" title="首先说明环境"></a>首先说明环境</h3><p>使用昨天搭建的CentOS7 光溜溜版。只有openssh.</p>
-<p>装个nodejs 先:<a href="https://zhuanlan.zhihu.com/p/34600831" target="_blank" rel="noopener">参考</a></p>
-<pre><code>cd /tmp
-curl — silent — location https://rpm.nodesource.com/setup_9.x | sudo bash -
-yum install -y nodejs
-</code></pre><p>下载Nginx<br>    mkdir /root/downloads cd /root/downloads<br>    wget <a href="http://nginx.org/download/nginx-1.17.3.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.17.3.tar.gz</a><br>    wget <a href="https://github.com/winshining/nginx-http-flv-module/archive/v1.2.6.zip" target="_blank" rel="noopener">https://github.com/winshining/nginx-http-flv-module/archive/v1.2.6.zip</a><br>    tar -zxvf nginx-1.17.3.tar.gz # 得到文件夹nginx-1.17.3<br>    unzip -o v1.2.6.zip -d nginx-http-flv-module # 得到nginx-http-flv-module</p>
-<pre><code>cd nginx-1.17.3
-./configure --add-module=/root/downloads/nginx-http-flv-module --with-http_ssl_module --with-http_v2_module # 可能会报pcre、openssl 没有找到。
-# 上面同时也把nginx-http-flv-module 第三方包加载成功
-
-yum install -y openssl openssl-devel # 安装openssl
-yum install -y pcre pcre-devel # 安装pcre
-</code></pre><p>上面做好了准备, 下面是编译和启动</p>
-<pre><code>make &amp;&amp; make install # 完成之后会在/usr/local/nginx 生成目录，这里就是nginx操作处
-cd /usr/local/nginx
-./sbin/nginx -s start -c ./conf/nginx.conf # 启动nginx
-</code></pre><p>检查下nginx 是否正确运行。</p>
-<p>下面来设置conf/nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 1935;</span><br><span class="line">    chunk_size 4000;</span><br><span class="line">    application live &#123;</span><br><span class="line">      live on;</span><br><span class="line">      record off;</span><br><span class="line"></span><br><span class="line">      hls on;</span><br><span class="line">      hls_path /opt/video/test;</span><br><span class="line">      hls_fragment 3s;</span><br><span class="line">      hls_playlist_length 32s;</span><br><span class="line"></span><br><span class="line">      meta on;</span><br><span class="line">      gop_cache on;</span><br><span class="line">    &#125;</span><br><span class="line">    application vod &#123;</span><br><span class="line">      play /opt/video/vod;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name yourdomain.com;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line"></span><br><span class="line">    location /vod &#123;</span><br><span class="line">      alias /opt/vod/;</span><br><span class="line">    &#125;</span><br><span class="line">    location /hls &#123;</span><br><span class="line">      types &#123;</span><br><span class="line">        application/vnd.apple.mpegurl m3u8;</span><br><span class="line">        video/mp2t ts;</span><br><span class="line">      &#125;</span><br><span class="line">      alias /opt/video/;</span><br><span class="line">      expires -1;</span><br><span class="line">      add_header Cache-Control no-cache;</span><br><span class="line">    &#125;</span><br><span class="line">    location /flv &#123;</span><br><span class="line">      flv_live on;</span><br><span class="line">      chunked_transfer_encoding on;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面看的到支持了hls、flv。实现了两个服务:本地播放流媒体和接受推流、被拉流的功能。</p>
-<p>推流: <code>ffmpeg -re -stream_loop -1 -i 222.mp4 -c:v libx264 -c:a aac -f flv rtmp://10.221.55.4/live/test</code></p>
-<p>拉流: <code>rtmp://10.211.55.4/live/test</code></p>
-<p>然后砸门往 <em>/opt/video/vod/1.mp4</em> 放了个mp4.</p>
-<p>拉流 <code>rtmp://10.211.55.4/vod/1.mp4</code></p>
-<hr>
-<p>当然域名yourdomain.com 可以写进主机hosts 里面，这样就可以真实环境测试了。</p>
-<p>比如拉流: <code>rtmp://yourdomain.com/flv?app=live&amp;stream=test</code></p>
-<p>播放MP4: <code>rtmp://yourdomain.com/vod/1.mp4</code></p>
-<hr>
-<p>最后一个: 权限控制</p>
-<p>控制播放权限:</p>
-<p><code>on_play http://localhost:9000/onPlay;</code></p>
-<p><code>on_publish http://localhost:9000/onPublish;</code></p>
-<p>上面这两个会调用本地权限验证，如果返回200则开始播放、返回非200 则失败。</p>
-<p>以上完成这次的任务。</p>
-<p><a href="https://github.com/winshining/nginx-http-flv-module" target="_blank" rel="noopener">nginx-http-flv-module</a></p>
-<p><a href="https://zhangshuqiao.org/2018-01/%E5%9F%BA%E4%BA%8ENginx%E6%90%AD%E5%BB%BA%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank" rel="noopener">参考</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-4lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-9-4lesson/">2019-9-4lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/04/2019-9-4lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:14:26.000Z" itemprop="datePublished">June 4, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac使用Parallels-增加CentOS7"><a href="#Mac使用Parallels-增加CentOS7" class="headerlink" title="Mac使用Parallels 增加CentOS7"></a><strong>Mac使用Parallels 增加CentOS7</strong></h1><p>CentOS7 肯定是用OpenSSH 链接的。</p>
-<pre><code>yum list installed | grep openssh-server
-</code></pre><p>如果未显示openssh-server 已经安装，那么输入<code>yum install openssh-server</code> 安装。</p>
-<pre><code>cd /etc/ssh
-sudo vim sshd_config
-</code></pre><p>修改以下几项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure>
-<p>保存文件、退出</p>
-<pre><code>systemctl restart sshd
-
-netstat -lnp | grep 22 # 查看到22 端口已经打开
-</code></pre><p>这时Mac 要链接先要找到Ipv4 地址，两种方法：</p>
+docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo -p 14500:8080 golang
+</code></pre><h1 id="弄懂-Nginx-location"><a href="#弄懂-Nginx-location" class="headerlink" title="弄懂 Nginx location"></a>弄懂 Nginx location</h1><h2 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h2><p>之前服务器已使用有a.ahuang.ml 域名的A服务，仅提供后台api 接口；然后再做B服务时，由于理念很接近，还得使用a.ahuang.ml 的子域名，所以规划好location 就很重要。</p>
+<h2 id="我的本地解决测试方案"><a href="#我的本地解决测试方案" class="headerlink" title="我的本地解决测试方案"></a>我的本地解决测试方案</h2><p>当前给出我改好的location 样式：</p>
 <ol>
-<li>ip addr 可以看到有localhost/127.0.0.1/某一个ip 地址</li>
-<li>去设置的netword 里面看Ipv4 地址</li>
+<li>首先设定好本地的test 域名 DNS 转向本地:</li>
 </ol>
-<p>然后Mac 先ping 该ip，如果通畅那就说明ok 啦。</p>
-<p>此时有个问题：Parallels帮我们创建的账号，默认名为Parallels, 于是我又屁颠屁颠去【设置】【用户】里面把名字改了。</p>
-<p>Mac 下<code>ssh root@ip -p 22</code> 发现一直弹<strong>Permission denied, please try again.</strong></p>
-<p>不可能啊，就是这个密码。不理解的我试了好多次，只能google 了。</p>
-<p><a href="https://askubuntu.com/questions/497895/permission-denied-for-rootlocalhost-for-ssh-connection" target="_blank" rel="noopener">StackExchange</a>前面答案都没帮上忙。我看到改密码：<code>sudo passwd</code></p>
-<p>于是我改了下密码，Mac试着登录，终于可以登入了。估计这是CentOS7 的bug 吧。反正我登上了。我不管了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/parallels/">parallels</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-3obs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-9-3obs/">2019-9-3obs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/04/2019-9-3obs/" class="article-date">
-	  <time datetime="2020-06-04T04:11:58.000Z" itemprop="datePublished">June 4, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h1><p><a href="https://obsproject.com/download" target="_blank" rel="noopener">OBS 下载</a></p>
-<p>来源处添加【媒体源】-【新建】选择好本地文件时，顺便点选【循环】(方便测试)-【确定】</p>
-<p>然后点击OBS 的【设置】-【推流】服务一栏选择【自定义】-【服务器】:rtmp://104.230.236.234/live/live 【串流秘钥】填:111(填111 为test)</p>
-<p>这里说一点，【串流秘钥】在那片教程中没有说明，也就是<em>111</em> 在之后rtmp 流或者flv 流的后面的basename 位置，最后一定要加上111，如播放rtmp://104.230.236.234/live/live/111 或者<a href="http://104.230.236.234/live/live/111.flv" target="_blank" rel="noopener">http://104.230.236.234/live/live/111.flv</a></p>
-<p>不然流推上去了，客户端就一直报错，找不到拉不到流啊。</p>
-<p>接着OBS 按下【开始推流】，那就是推送到已开启的SRS 流了。</p>
-<h4 id="SRS"><a href="#SRS" class="headerlink" title="SRS"></a>SRS</h4><p><code>docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</code></p>
-<p>用容器美滋滋。同时，<code>/dockerVolume/SRS/conf/docker.conf</code> 是本地文件映射到容器的对应文件。该文件拷贝自:<code>srs/trunk/conf/http.flv.live.conf</code></p>
-<p>这时可以在浏览器测试: <code>http://104.230.236.234:8808/live/live.flv</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">max_connections     1000;</span><br><span class="line">daemon              off;</span><br><span class="line">srs_log_tank        console;</span><br><span class="line">http_server &#123;</span><br><span class="line">    enabled         on;</span><br><span class="line">    listen          8080;</span><br><span class="line">    dir             ./objs/nginx/html;</span><br><span class="line">&#125;</span><br><span class="line">vhost __defaultVhost__ &#123;</span><br><span class="line">    http_remux &#123;</span><br><span class="line">        enabled     on;</span><br><span class="line">        mount       [vhost]/[app]/[stream].flv;</span><br><span class="line">        hstrs       on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obs/">obs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/srs/">srs</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-9-2lesson/">2019-9-2lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/04/2019-9-2lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:11:25.000Z" itemprop="datePublished">June 4, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近连续一个多月的主要工作"><a href="#最近连续一个多月的主要工作" class="headerlink" title="最近连续一个多月的主要工作"></a><strong>最近连续一个多月的主要工作</strong></h1><p>最近连续一个多月主要分为三个工作：</p>
-<ol>
-<li>工作为主，完成公司盈利产品的迭代。这不仅学，还要学好。</li>
-<li>这几个月想完成去年未完成的游戏，不过游戏有点大，不可太急躁。</li>
-<li>完成视频播放功能。</li>
-</ol>
-<p>第一个工作还是努力前行，我的试用期是6个月，这个月过后就满啦。难得接受个这么长的试用期，努力就是了。从一无所知，非常迷迷糊糊，懵懵懂懂的状态跌跌撞撞过来，期间没有太多人帮助(只有伟哥和学弟喜顺)，现在能更准确找到问题、解决问题、顺便优化代码。美滋滋。</p>
-<p>最近突然想起，我海贼王追的那么累(更得好慢)，最近我都转而潜心看文章，如三国类解说、明朝时代的解说。(明朝那么热闹，唐朝肯定也是潮起潮落。心之向往那跌宕的岁月。不过对历史的向往，也万没有身体要去感同身受的打算，那不是我这种渣逼能活着的岁月。)突然记得似乎火影忍者我还没看完，最后几集漏了，找不到网站看。</p>
-<p>前几天开始了锻炼，想想以前的光辉岁月，不甘心只是蹲在凳子上消磨。翻开看了下bilibili的爆燃视频，夜凯一jio 踢残斑，想起以前课上趴着桌子偷偷看火影。锻炼我要干，看视频我也要干的。</p>
-<p>我要做个视频网站！</p>
-<p>我平常用流量看文章等，每个月最多1G不到(测试app 等用掉的)，平常都是500M。但是我觉得5G时代早晚来临，视频、音频、图片等都会大行其道。我不觉得我用得上，但我的客户们肯定万分期待。最近我试了试nginx-rtmp-module，先品尝了下视频播放的操作。接着我用SRS 也能转播直播。</p>
-<p>同时我最近刚搞的rancher，想想，是否服务能放进去呢? 这1个多月的周末就在这其中煎熬度过。不过答案也终于找到了。</p>
-<p>答案是理解了rancher 的k8s(k3s) 的能力，以目前我的知识、能力范畴，我能很好的使用服务的编排、无限扩容能力、合理调度。</p>
-<p>那么答案就在这，SRS、v2ray等都是服务功能。v2ray 本来就是单个机器代理，还要怎么调度？SRS要调度，其本身已经支持(go-sharp)。<br>也就是说，我之前就是在钻牛角尖。不过钻的作用是，让我深切快速的理解了k8s(k3s) 的作用是什么，不然我要看好久的专业书。</p>
-<p>不在当前规划上的知识，先不花太多精力。能动手就不看那么细致了。</p>
-<p>周末突然的领悟自己确实在大钻特钻牛角尖。</p>
-<p>现在说说我的环境和做法。</p>
-<p>大致跟着这篇教程下来的:<a href="https://juejin.im/post/5ad7ce3ff265da505e41ff03" target="_blank" rel="noopener">https://juejin.im/post/5ad7ce3ff265da505e41ff03</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: CentOS7 x86_64</span><br><span class="line">SRS: docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</span><br><span class="line">客户端-推流端: OBS</span><br><span class="line">客户端-播放端: VLC / 教程里面的live demo</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-1make-wordTemplate" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-9-1make-wordTemplate/">2019-9-1make_wordTemplate</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/04/2019-9-1make-wordTemplate/" class="article-date">
-	  <time datetime="2020-06-04T04:08:05.000Z" itemprop="datePublished">June 4, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Microsoft-word-的document-xml-模板生成word-template-docx-过程"><a href="#Microsoft-word-的document-xml-模板生成word-template-docx-过程" class="headerlink" title="Microsoft word 的document.xml 模板生成word-template.docx 过程"></a><strong>Microsoft word 的document.xml 模板生成word-template.docx 过程</strong></h1><p>需求：生成一个模板word-template.docx ，在nodejs 中匹配对应的模板code，最终生成需求.docx</p>
-<p>工具：office word、code IDE。</p>
-<ol>
-<li>首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以<code>____</code>代替之。作用是等会生成最终模板的地方，很容易找到。</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/host</span><br><span class="line">输入 127.0.0.1 test.ahuang.ml</span><br><span class="line">vim ~/conf/ahuang.conf</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li><p>将word.docx 解压成文件夹template</p>
-<p> mac/linux$unzip -o word.docx -d template</p>
-<p> windows$”windows unzip 解决工具路径” -o “word.docx 路径” -d “template 路径”</p>
+<li>书写~/conf/ahuang.conf</li>
+</ol>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">~/conf/ahuang.conf</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span> test.ahuang.ml;</span><br><span class="line">  <span class="attribute">client_max_body_size</span> <span class="number">500M</span>;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">800</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="regexp">~ ^/(api|evidence/)</span> &#123;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">900</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行启动nginx</li>
+</ol>
+<p><code>docker run --rm -p 127.0.0.1:8888:80 --name mynginx -v $PWD/conf:/etc/nginx/conf.d nginx</code></p>
+<ol start="4">
+<li><p>测试</p>
+<p> curl <a href="http://test.ahuang.ml:8888/api" target="_blank" rel="noopener">http://test.ahuang.ml:8888/api</a> # 返回900<br> curl <a href="http://test.ahuang.ml:8888/evidence/xx" target="_blank" rel="noopener">http://test.ahuang.ml:8888/evidence/xx</a> # 返回900<br> curl <a href="http://test.ahuang.ml:888/abc" target="_blank" rel="noopener">http://test.ahuang.ml:888/abc</a> # 返回800</p>
 </li>
 </ol>
-<p><img src="/css/images/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
-<ol start="3">
-<li>template 目录大致介绍</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate3.jpg" alt="template 目录"></p>
-<p>重要的目录在框中。</p>
-<pre><code>[Content_Types.xml] 是用来描述内部使用的格式说明。
-
-word/document.xml 核心文件，修改的描述就在这。
-
-word/_rels/document.xml.rels 是描述资源文件的relationShip
-
-word/media/ 用来放图片
-</code></pre><p><strong>接下来就是修改成我们的最终模板</strong></p>
-<ol start="4">
-<li>修改word/document.xml</li>
-</ol>
-<p>替换模板code 格式我们使用lodash.template —&gt; <strong><code>&lt;%= templateCode %&gt;</code></strong></p>
-<p><img src="/css/images/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
-<p>如果是插入jpeg 图片(png/jpg 都可以), 我们可以如下:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">w:p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">w:r</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">w:color</span> <span class="attr">w:val</span>=<span class="string">"00FF00"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:pict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">id</span>=<span class="string">"_x0000_i1025&lt;%- index %&gt;"</span> <span class="attr">o:spt</span>=<span class="string">"75"</span> <span class="attr">type</span>=<span class="string">"#_x0000_t75"</span> <span class="attr">style</span>=<span class="string">"height:&lt;%- item.height %&gt;pt;width:&lt;%- item.width %&gt;pt;"</span> <span class="attr">filled</span>=<span class="string">"f"</span> <span class="attr">o:preferrelative</span>=<span class="string">"t"</span> <span class="attr">stroked</span>=<span class="string">"f"</span> <span class="attr">coordsize</span>=<span class="string">"21600, 21600"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:path</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">focussize</span>=<span class="string">"0,0"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">joinstyle</span>=<span class="string">"miter"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:imagedata</span> <span class="attr">r:id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">o:title</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">o:lock</span> <span class="attr">v:ext</span>=<span class="string">"edit"</span> <span class="attr">aspectratio</span>=<span class="string">"f"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:wrap</span> <span class="attr">type</span>=<span class="string">"none"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:anchorlock</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:pict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">w:r</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125;);%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">w:p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样便可循环插入多张图片啦。</p>
-<ol start="5">
-<li>修改word/_rels/document.xml.rels</li>
-</ol>
-<p>这里是用来指定植入的资源(图片)关系。</p>
-<p>我们只需在原本存在<code>&lt;Relationships xmls=&quot;...xxx&quot;&gt;</code>一行下增加新增的rId 资源链接：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Relationships</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.openxmlformats.org/package/2006/relationships"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">Type</span>=<span class="string">"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"</span> <span class="attr">Target</span>=<span class="string">"media/image&lt;%- index %&gt;.jpeg"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125;); %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"rId8"</span> <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="/css/images/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
-<p>同时找到这里最大的Id，如<code>Id=&quot;rId16&quot;</code>, 之后用到。</p>
-<ol start="6">
-<li>修改[Content_Types].xml 增加使用资源ext</li>
-</ol>
-<p>这里使用jpeg 图片后缀名，增加一行:<code>&lt;Default Extension=&quot;jpeg&quot; ContentType=&quot;image/jpeg&quot;/&gt;</code></p>
-<p><img src="/css/images/generate_wordTemplate6.jpg" alt="Content_Types"></p>
-<p>如果没有增加该行(或者上面提到的rId 填错)，出现问题特点是: WPS能正常打开；office word 提示<strong>无法打开Open XML xxx 因为内容存在问题或者文件名可能包含无效字符</strong> <strong>文件已损坏，无法打开。</strong></p>
-<p>点击了“确定”，接着又提示<strong>xxx.docx 中发现无法读取的内容。是否要恢复此文档的内容？如果您信任此文档的来源，请单击“是”</strong>，点了“是”之后又能正常浏览。</p>
-<ol start="6">
-<li>word/media 文件夹</li>
-</ol>
-<p>该文件夹是图片移进来后，<code>rId ++</code>。把图片信息保存到word/document.xml 的同时，将资源链接写进word/_rels/document.xml.rels</p>
-<ol start="7">
-<li>压缩 成word-template.docx 模板文件</li>
-</ol>
-<p><code>zip ../word-template.docx -r .</code></p>
-<p>将word 文件夹下的所有文件使用zip 压缩。名称指定为word-template.docx 模板即打包完毕。</p>
-<p><img src="/css/images/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
-<p>至此word-template 模板生成完毕。</p>
-<blockquote>
-<p>!!!ATTENTION \<br>制作最好用Windows 操作系统。如果使用Mac OS 制作，一定要将制作好的文件拖到Windows 虚拟机查看是否多出文件, 如 <code>.DS_Store</code> 文件</p>
-</blockquote>
-<blockquote>
-<p>上述情况会导致WPS 能正常打开，微软的word 总是提示失败超级bug</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-8-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-8-9lesson/">2019-8-9lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/04/2019-8-9lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:07:21.000Z" itemprop="datePublished">June 4, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="git-push-origin-branch-出现error"><a href="#git-push-origin-branch-出现error" class="headerlink" title="git push origin branch 出现error"></a><strong>git push origin branch 出现error</strong></h1><p>git push origin V4 报错:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">To gitlab.xxx.git</span><br><span class="line">! [rejected]    branch -&gt; branch (non-fast-forward)</span><br><span class="line">error: failed to push some refs to <span class="string">'gitlab.xxx.git'</span></span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
-<p>这里表明你的点是behind。</p>
-<p>那就 git pull, 但是报错:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">There is no tracking information <span class="keyword">for</span> the current branch.</span><br><span class="line">Please specify <span class="built_in">which</span> branch you want to merge with.</span><br><span class="line">See git-pull(1) <span class="keyword">for</span> details.</span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<p>git pull === git fetch + git merge</p>
-<p>这里的意思是要你指明remote 和branch: <code>git pull origin V4</code></p>
-<p>如果要将合并的点rebase 掉，<code>git pull --rebase origin V4</code></p>
+<h2 id="读参考文章注意点"><a href="#读参考文章注意点" class="headerlink" title="读参考文章注意点"></a>读参考文章注意点</h2><p><a href="https://juejin.im/post/5ce5e1f65188254159084141" target="_blank" rel="noopener">完全参考掘金文章</a></p>
+<p>推荐直接参考原文章</p>
+<h3 id="location修饰符类型"><a href="#location修饰符类型" class="headerlink" title="location修饰符类型"></a><strong>location修饰符类型</strong></h3><p>location 支持的语法 <code>location [=|~|~*|^~|@] pattern { ... }</code></p>
+<h4 id="「-」-修饰符-要求路径完全匹配"><a href="#「-」-修饰符-要求路径完全匹配" class="headerlink" title="「=」 修饰符: 要求路径完全匹配"></a><strong>「=」 修饰符: 要求路径完全匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location = /abcd &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/ABCD</code> <strong>可能会匹配</strong>，也可能不匹配，取决于操作系统的文件系统是否大小写敏感(case-sensitive)。ps: MAC 默认是大小写不敏感的。</p>
+</li>
+<li><p><code>http://website.com/abcd?param1*param2</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
+</li>
+</ul>
+<h4 id="「-」-修饰符-区分大小写的正则匹配"><a href="#「-」-修饰符-区分大小写的正则匹配" class="headerlink" title="「~」 修饰符: 区分大小写的正则匹配"></a><strong>「~」 修饰符: 区分大小写的正则匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~ ^/abcd$ &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>^/abcd$</code> 这个正则表达式标识字符串必须以 <code>/</code>开始，以<code>$</code>结束，中介必须是<code>abcd</code></p>
+<ul>
+<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/ABCD</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd?param1&amp;param2</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
+</li>
+</ul>
+<h4 id="「-」-修饰符-不区分大小写的正则匹配"><a href="#「-」-修饰符-不区分大小写的正则匹配" class="headerlink" title="「~*」 修饰符: 不区分大小写的正则匹配"></a><strong>「~*」 修饰符: 不区分大小写的正则匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~* ^/abcd$ &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/ABCD</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd?param1&amp;param2</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
+</li>
+</ul>
+<h4 id="「-」-修饰符-前缀匹配"><a href="#「-」-修饰符-前缀匹配" class="headerlink" title="「^~」 修饰符: 前缀匹配"></a><strong>「^~」 修饰符: 前缀匹配</strong></h4><p>如果该location 是最佳的匹配，那么对于匹配这个location 的字符串，该修饰符不再进行正则表达式的检测。注意，这不是一个正则表达式匹配，他的目的是优先于正则表达式的匹配</p>
+<h3 id="路径查找顺序及优先级"><a href="#路径查找顺序及优先级" class="headerlink" title="路径查找顺序及优先级"></a><strong>路径查找顺序及优先级</strong></h3><p>当有多条location 规则时，nginx 有一套比较复杂的规则，优先级如下:</p>
+<ul>
+<li><p>精确匹配 <code>=</code></p>
+</li>
+<li><p>前缀匹配 <code>^~</code> 立刻停止后续的正则搜索</p>
+</li>
+<li><p>按文件中顺序的正则匹配 ~ 或 ~*</p>
+</li>
+<li><p>匹配不带任何修饰的前缀匹配</p>
+</li>
+</ul>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a><strong>案例分析</strong></h3><p><a href="https://juejin.im/post/5ce5e1f65188254159084141" target="_blank" rel="noopener">原文章</a>的案例分析非常的给人容易学习</p>
+<h4 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a><strong>案例1</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 701; # 用这样的方式，可以方便的知道请求到了哪里</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702; # 用这样的方式，可以方便的知道请求到了哪里</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I  website.com:8080/document</span><br><span class="line">HTTP/1.1 702</span><br></pre></td></tr></table></figure>
+<p>按照上述的规则，第二个会有更高的优先级</p>
+<h4 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a><strong>案例2</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /document &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I  website.com:8080/document</span><br></pre></td></tr></table></figure>
+<p>第二个匹配了正则表达式，优先级高于第一个普通前缀匹配</p>
+<h4 id="案例3"><a href="#案例3" class="headerlink" title="案例3"></a><strong>案例3</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ^~ /doc &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl http://website.com/document</span><br><span class="line">HTTP/1.1 701</span><br></pre></td></tr></table></figure>
+<p>第一个前缀匹配^~命中以后不会再搜寻正则匹配，所以会第一个命中</p>
+<h4 id="案例4"><a href="#案例4" class="headerlink" title="案例4"></a><strong>案例4</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /docu &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 701，</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">  location /docu &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 依然返回 HTTP/1.1 701</span><br></pre></td></tr></table></figure>
+<p>前缀匹配下，返回最长匹配的 location，与 location 所在位置顺序无关</p>
+<h4 id="案例5"><a href="#案例5" class="headerlink" title="案例5"></a><strong>案例5</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~ ^/doc[a-z]+ &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~ ^/docu[a-z]+ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 701</span><br></pre></td></tr></table></figure>
+<p>把顺序换一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 8080;</span><br><span class="line">	server_name website.com;</span><br><span class="line">  location ~ ^/docu[a-z]+ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~ ^/doc[a-z]+ &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 702</span><br></pre></td></tr></table></figure>
+<p>正则匹配是使用文件中的顺序，找到返回</p>
 
       
     </div>
@@ -718,7 +355,7 @@ word/media/ 用来放图片
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-golang/">docker golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
 
       
             
@@ -733,7 +370,7 @@ word/media/ 用来放图片
     
 
   
-    <article id="post-2019-8-8lesson" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2020-5-23kanfang" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -741,7 +378,7 @@ word/media/ 用来放图片
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-8-8lesson/">2019-8-8lesson</a>
+      <a class="article-title" href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a>
     </h1>
   
 
@@ -749,50 +386,350 @@ word/media/ 用来放图片
     
     <div class="article-meta">
       
-	Posted on <a href="/2020/06/04/2019-8-8lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:06:31.000Z" itemprop="datePublished">June 4, 2020</time>
+	Posted on <a href="/2020/05/26/2020-5-23kanfang/" class="article-date">
+	  <time datetime="2020-05-26T06:28:40.000Z" itemprop="datePublished">May 26, 2020</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><p>如何快速进步，突破学习新的知识、技术。</p>
-<p>我的方法，一句话概括：在自己规划的道路上，不怕试错，勇敢试错。出问题了，多方思考，解决问题。</p>
-<p>下面是废话：blablabla</p>
-<p>大学时期，我和我的几个小伙伴不知道学什么、方向不知道会走向何处。我们都是穷人过来，肯定不会说真的堕落。但是就因为穷人，眼界比他人要小一点，导致有时我们能做的, 能接触的就更局限了。</p>
-<p>我和我同学大一大二上课还是会稍微努力，不过课后没有进展，导致挂科无数。下课一起打游戏，当时LOL 还不风靡，玩的CF，下午打篮球。那时候篮球能力是真强，不像现在肚子都是肉。后来大二就更是会翘课进网吧，因为在课上我们都在睡觉，真的在睡觉。</p>
-<p>为什么，因为大学里面，老师教你的，都是如果拿着锤子，找钉子。</p>
-<p>整天拿着锤子，反复推敲，仔细研磨，整个大学四年，我发现我们还没动手过去找一个真实的钉子。也许你会说，那些题目，那些作业，不就是你的钉子么？我觉得年轻的人们，都会当局者迷。也许我们现在看来，那些都是非常有用，在现在都是必不可少，甚至悔不当初。但是当局者迷，每人境遇都是不同，我当初就觉得，未来我不一定用得上，数学题算来算去，最后你填写答案:1，正确率基本都是70%。为什么我为了70%能填对答案的问题，需要绕来绕去，反复抚摸锤子，恨不得拿舌头狂舔。</p>
-<p>四年，老师们一上课就是教研，但是不会告诉今年这堂课在实际场景，比如xxx会碰到。ok，很难想象？那我们来真实模拟这个钉子！也许这次上课导致上课的拖延、甚至为了模拟这个钉子花了4节课、6节课。大家跟着老师一路走来，经验、处事、遇到问题时的攻坚，到最终见到钉子，此时resolve。</p>
-<p>我觉得我爱上这种遇到苦难，解决苦难的过程。如现在种种这般。然后学校不同意，老师不愿意，教学任务啊老铁。学生只能学到皮毛，大学生啊！！！</p>
-<p>当然现在不是说以前怎么怎么的，什么我现在这么菜要怪老师，什么要怪体制，没有没有。吐槽下而已。</p>
-<p>above，我都想说明，钉子和锤子的关系、的前后顺序。</p>
-<p>曾经我学到一个新技术，想找一个地方去实践。我找我前CTO。他告诉这个技术人要理清的步骤：先有钉子，然后找到锤子解决这钉子。</p>
-<p>最近我多次使用docker 之后，就觉得好用是好用，但是没有管理，觉得不自在。宕机了？断网了？这个机子断了？企业服务断了？</p>
-<p>如果我未来会要扛起一面大旗，我就需前提做好准备，做好狂风暴雨的突袭！所以我考虑了下docker-swarm，但是感觉那里不对，不是很密西。</p>
-<p>我搞了搞k8s, 然后我的两只小鸡都全部瘫了。在翻看相关文档，提到k3s。是针对我的小鸡仔们的。</p>
-<p>我搞了k3s，但是遇到问题：我有个非容器服务，通过nginx 转子域名的443 端口。但是k3s 装上去后，nginx 服务端口立马全部失效了。</p>
-<p>怎么描述：nginx 的80监听端口被k3s 强行取走。虽然netstat -lnp |grep 80 还是nginx 的，但access.log 没有反应。我不知道怎么应对。</p>
-<p>对于这个我想要两种方法：</p>
+        <h1 id="2020-5-23-中介约看房经历"><a href="#2020-5-23-中介约看房经历" class="headerlink" title="2020/5/23 中介约看房经历"></a>2020/5/23 中介约看房经历</h1><p>之前办理积分时，和人事与一个财务同事去社保办事，财务同事帮我推荐了一个炒房团的。说我们公司之前有个同事前两年从他手上交易过一个房子。我觉得这样有个参考性，就像我之前学车，有参考就会顺利很多。加了那个人微信后，本来约定周五去同他学习点知识，没想到周三丫头住院去不了了。老婆出院后，晚上回到家，看龙柏那附近的房子，有几个感觉还不错的，右上角有个按钮说线上带看房子，哦，居然联通链家的房产经纪人。于是就跟他聊了聊，也说自己社保还未满。不过倒是可以多转转多学学。 同时约定周末都是可以去看看房子的。</p>
+<p>周六早上起床玩了会游戏，然后和老妈联通视频，说了说自己的一些打算，老妈也帮我问了问她的姐妹，打算明年买房的时候不够跟她们借点，提前打声招呼。然后时间也快到2:30，赶紧出门去龙柏附近那个中介那。这一下午，就是两辆电驴在一直奔走。</p>
+<p>先是去看了往上看到的两房改三房的六楼，其实还不错，不过，我自己掂量着的一楼六楼都不考虑，不过来了就看看。中介帮我找了十款二手房，价格都在300w左右，龙柏那好多动迁房，300w都是很宽敞58、59、60平这样。</p>
+<p>先看了龙柏七村。有六楼的，太高；二楼的，专做来买，加个挺高的；四楼(之前网上就有看到户型什么的都不错)，一梯四户，最靠小区里面；一楼，户型很奇葩，但是挺大，反正一楼不会要就对了。</p>
+<p>再看了龙柏四村，路就很宽敞、干净。看了六楼一个老大爷，进去刺鼻尿骚味，一直博美在房间很安静。装修好也没事，但是户型是前面一个大房间，后面一个小房间，采光估计会差一点。还有就是六楼不好；另一个六楼是一个大哥，俩女儿在睡觉。他们打算置换，中间厅很大，俩房间朝南，房子还是挺干净的，一梯四户的楼梯口那一户；还有一个一楼的，完全空关多年，很黑暗，老久。反正买来必须装修把。卖点是一个大院子。</p>
+<p>再看了龙柏三村，紫藤路。六楼的，正在出租，妹子加班回来开门，我们进去转了转，都是多年装修，但是都很干净，整洁，等于是拎包入住都很舒适的装修。</p>
+<p>以上看了都是有各种奇葩、厅超级大、或者房子位置不那么靠中、顶天立地、房型采光、集体产权其他人也有比例、满二、满五、唯不唯一等。</p>
+<p>这几个小区都是围绕之前我租的小区（《龙柏龙兴苑》）附近，都是动迁房。感觉一个天一个地呀，哈哈。</p>
+<p>和中介聊了聊，毕竟价格在那摆着，人家面价比较大嘛。然后我心里觉得有没有那种不那么面积大、然后两房的（一年前还想着一房一个大厅，大厅可以隔出来睡人即可那种，飘了飘了低配要两房了）。我之前就想问能不能看看龙柏附近小区叫做《虹梅花苑》的，中介就拿出手机帮我看了看，说这款279的不错，原价320，房东说想腾房票，挂了44天降了几次。可以可以，中介能看到更多信息，然后联系那边中介(跨区域了)，然后出发前往。</p>
+<p>那个小区在虹桥路上，10多分钟到那附近，找了一圈原来入口是一个大拱门-王子公寓-虹桥路2222弄，是一个多合一统一入口。进来很干净，清幽，附近是长宁区别墅群，很多有钱人、明星等；一路上都是老外。龙柏那边欧美面孔有一些，更多的是台湾、韩国等面孔；虹桥路这里更多的是欧美面孔。欧美一家子、欧美大姑凉、欧美小子。找这个过程多绕了一圈，还看到一个家庭人在那烧烤，可以，我也憧憬着。</p>
+<p>进来这，是一个帅小伙中介，他说这个房子是顶楼，不过总高是五楼，不过楼顶是有三角隔热层，防热、防水。当前房子空关一年了，都有一些灰层，这都不是事。一楼向上，是一梯两户。最后一层时，由于这间空关，楼道就都是另一个房子堆放的物资，不过如果新房有人入住，他们肯定收起来的。五楼也不高，再高一层，不行，绝对不行。然后进去一看。</p>
+<p>哇，真是我理想的。价格合适，房间也合适，没有厅没关系，别的都一应俱全。小区靠近高架，但是前面隔了一排，灰层不会那么多，声音也不大。门一关很安静。进门左侧是厨房，还挺大，比我现在租的整洁。正对面是次卧，有一个大窗，面积也合适。之前我看的龙柏那都床头床尾直接就满了，多余离门不到一米，太窄，不小心的话会着火的，而且只能睡觉。这个厅就很合适。没有厅，吃饭就围着厨房吃，那个冰箱比较占位置，买个大的冰箱当桌子？？进门左转就是过道，然后过道比较窄，而且房东还放着一个大木柜，去了过道就正常了。过道中间是洗浴厕所，这还有个小窗子呢，厕所里面有窗子，不要太好哦，厕所空间也大，合理。过道大概2、3米就到主卧了。主卧有个大衣柜，奶白色，这直接就省了一笔钱。没有阳台，主卧显得比较大，装修整套都是间接，干净，难用。主卧向南正对高架。前面也说了，不吵，这还是很好的，反正高架11点，我都是12点才睡。</p>
+<p>这真的是当前我心中很中意的。毕竟自己也才第一天看嘛。楼下就和中介在这个小区转了转，简直就是把之前中介那个按在地板摩擦，狠狠摩擦那种，不对，是死死摩擦，毫不留情死死摩擦。小区中间是运动员，很多人在这聊聊天。</p>
+<p>然后出来大门，小区入口大拱门这，我和中介聊了聊。中介估计之前也不好卖，感觉有点伤感，没过来这里看，真不知道手上房源差的感觉，难怪不好卖。我这里也问了问自己之后有哪些买房前准备工作。也说了刚刚那套房超级中意。聊了好一会，就先回来了，离住处很近。</p>
+<p>回到住处就问中介，能否帮我问问房东能否能8个月我社保到期来买呢？我可以押金4、50，同时房价不讲价。</p>
+<p>然后晚上喝老妈也说了说自己今天看房，还挺中意。</p>
+<p>夜晚也看了看相关注意点。该房、该小区属于售后公房，好好的看看各种小心点。反正随缘吧，中介那不能急。不过房类型、小区估计比较中意《虹梅花苑》，明年基本能定在那个小区。</p>
+<p>好了，今天又过完了，爬楼梯爬爬爬。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/看房/">看房</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-13" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/26/2020-5-13/">2020-5-13</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/26/2020-5-13/" class="article-date">
+	  <time datetime="2020-05-26T06:28:22.000Z" itemprop="datePublished">May 26, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2020-5-13-猴头菇说肚子痛要去医院"><a href="#2020-5-13-猴头菇说肚子痛要去医院" class="headerlink" title="2020/5/13 猴头菇说肚子痛要去医院"></a>2020/5/13 猴头菇说肚子痛要去医院</h1><p>2020/5/13 中午接近两点，正忙着，猴头菇发微信说要去医院，肚子很痛。我一听，她都这么提了，说明肯定就是不舒服，赶紧让她打车离她很近的八院，我赶紧过来。她说中午吃完饭，肚子就有点不舒服，躺在公司的一个沙发，到现在还是很痛，等我过去带她。我说，痛就赶紧打车去医院，她说等我过来，她不懂路。那行，我赶快过去。</p>
+<p>我发个请假邮件，跟伟哥说声老婆生病去医院，赶紧就跑过去，半路想起来忘带丫头身份证(办居住证积分时，留在公司)，跟丫头说自己打车过去医院，我回去拿她身份证。一来一回，真担心车子跑没电不走了。</p>
+<p>赶到医院，丫头肚子痛，伴有一点发烧，先在新冠病毒检查点(这时间点必须检查)。来回检查，猴头菇肚子大大的，鼓鼓的。我过去陪她，她连坐着都很痛，还得来回检查。新冠检查还得500多，丫头没医保，全部自己出钱。发烧检查完毕说可以去妇科看。这时间点，最好别生病。</p>
+<p>这时候去妇科看，妇科医生阿姨帮忙赶紧的在4:30 检查完(超过就不检查了)，然后去办理住院手续。办理住院手续的时候，丫头站也不是坐也不是，反正就是痛的不行了。期间要办理好了，我拿错我的医保，拖了点时间，然后换成丫头的，丫头的不能用，又得转账押金5000，这中间，丫头肚子更痛了，付费窗口蹲下都痛，嘴唇都白了。</p>
+<p>赶紧到住院部，丫头都快走不动了。上来后，丫头在29床躺了会，然后被叫到一个小屋子穿刺看到血很多。我在屋外一直听到猴头菇的惨叫。然后医生用针筒吸出了血，得知卵巢破裂，出血没有愈合。得，刚才还走来走去，更特么病重。</p>
+<p>然后我被叫去签家属委托做手术的风险书。心里担心啊。然后下午7点左右，丫头被推上车子，担心她一直没吃东西，会不会血糖低，又测了下说行。她去了五楼做手术了。</p>
+<p>三个多小时一直待病房等，心里焦急啊。旁边是一个老奶奶，还没做手术，她的小儿子来服侍。她的小儿子-大叔，就跟我说，别担心，一会就好了。我说，嗯，是的，一会就好了，低头看知乎，其实担心死了，但是我毫无办法，只能转移注意力。</p>
+<p>中间我还吃了大叔给的几块饼干，喝了杯水，然后晚上10点，丫头才终于做好手术，我都又饿咯，别说猴头仔了。手术车推上来的时候，我把丫头抱下床，她冷的发抖，嘴唇毫无血色，冷的两条腿一直抖。就像活鱼跳到岸上那样，抖得蹦跶那样。放到床上赶紧盖上被子、我把好几件衣服盖上，好让猴子暖和点。过了会她才好些。这时候她还禁食禁水，挂着吊瓶，尿袋。我就喊吊瓶没水了、给她倒尿。忙里忙外。给她楼下去买了个小碗，等醒了可以喝水。吊瓶挂到凌晨2点，我都大黑眼圈了。那个大叔也一直玩手机麻将到2点才睡。他带了个躺椅，我啥都没有，但如果躺椅也是睡不着的，我就趴着床下边，大约5点起来喂水。然后说喂她喝无糖葛粉。今天又是挂吊瓶，早上挂到下午2点多，去附近买了混沌，和丫头一人一碗混沌，吃完赶紧去公司了。晚上赶紧去医院，路上刚好买了白稀饭。今天晚上比较好的是，我去住的地方拿了丫头的瑜伽垫，哇，休息好了，第二天果然精神多了。第二天一早，赶紧去转转，有去附近买到个白稀饭，美滋滋，丫头的改善早饭有着落了，路是远了点，不敢用自己的电瓶车，别到时没电，骑的哈罗单车，真特么难骑。中午一直挂瓶到下午2点多，给她买了个午餐、准备好水，丫头吃了后，赶紧的去公司写点东西。自己也没吃啥，路上买了个黄山鸭腿菜饭（不用等，现成的，快，等红灯时买，绿灯还没灭就又可以过）。到了公司，大家都在干活，饿的不行，把饭吃了，鸭腿来不及吃，晚上去医院。我把公司的晚餐也带来，鸭腿也带来，公司晚餐吃了，鸭腿放那没吃。晚上睡到一半，说隔壁床来人，我瑜伽垫没地方，于是半夜就跑到走道上的床位躺了会，那灯光亮的呀，闪瞎我的狗眼，于是又睡得不是很好。隔天早上隔壁床来了一菇凉，子宫外孕做手术。她照看的人一个都木有，我给她抱床上，菇凉都是可怜的娃呀。她也是冷，没猴头菇抖的那么厉害。给她穿上自己带的一个袜子，脚暖和了，就不那么冷了，把身上外套也给她盖上。她男朋友来了，我的使命也就到了。当天中午猴头挂完吊瓶，我跑回住所休息了会，打了个游戏，美滋滋，不过肯定是睡不着，躺着看了看手机视频，差不多了就赶紧去医院。今天晚上有个好处，就是我又整了个位置放瑜伽垫睡，而且还看到有一个闲置的医院被子，刚好垫着，美滋滋。</p>
+<p>一连好多天照看猴子，工作日下午就去上班，非工作日下午就会跑回住所休息休息，，嘎嘎。</p>
+<p>终于到丫头出院那天中午，中午跟伟哥说了声，赶紧去给丫头结账出院，带回家。由于丫头心疼打车钱、一个人坐车一个人骑车麻烦，就坚持做我的电驴。心疼啊。路上中午还有交警，还得让丫头下来走一段路。回到家，稍微收拾收拾，赶紧就去公司了。</p>
+<p>啊，好累。啊，老婆还在，真好。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-12shebao" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/24/2020-5-12shebao/" class="article-date">
+	  <time datetime="2020-05-24T10:13:19.000Z" itemprop="datePublished">May 24, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="上海社保断缴引发的经历"><a href="#上海社保断缴引发的经历" class="headerlink" title="上海社保断缴引发的经历"></a>上海社保断缴引发的经历</h1><p>刚来上海，外地来的多少都会有公司倒闭、部门人员压缩(狼狈被裁)等等因素导致换工作。换工作时，前公司没整好、后公司没法填补，自己不懂，没有社保补上，于是出现社保断缴补缴回去、断缴但没有补缴回去的情况。</p>
+<p>我就有2次这个经历: 第一份工作被裁(2014年经融危机)，断了之后待在出租屋3个月努力做进一步学习，导致断了3个月(那时真不懂这件事)；第二次是老板没钱，过完年解散，但是最后两个月居然没交(全公司都没交)。</p>
+<p>明年可能有机会买房，现在看看我明年能真正有房票。</p>
+<p>前一天去人才服务中心办理居住证积分，进展顺利，心情格外的好。然后隔天周日来公司，看了看房知识，看到一些网络的文章，各种断章取义的错误知识分享给你，然而当时我一头雾水，心里担心受怕，看到了说，必须连续5年，中间一点断缴都不行，如果你断了却没有补回去，是不能买房的。</p>
+<p>那一刻感觉我懵了。我刚来上海努力等待2年，至少有房票有盼头吧，然而17年上海新政变成要等待5年，然后现在说我白忙活。明年2021年春天将要到5年的，却得从16年开始算起(第二次断缴时间)，也就是2022年春天才有房票。这一颗真的毫无斗志。</p>
+<p>我东问问、西问问，公司人事也不是很清楚；网络有说连续5年，有说累计5年；众说风云，就是不见房产交易所有什么公告。那几天一直在网络查，知乎问。各种各样信息。我自己也在知乎问了一个，强调必须近期有实操人回答，没想到来了个知识普及的回答，逗比。</p>
+<p>那几日天天都是想着这事，睡都睡不好觉。谁特么知道我再等两年，上海是什么样？刚需再等两年我也就应该滚回家了。真的受够租房了。</p>
+<p>第二次去人才服务中心时(前几天就想着这事，觉没睡好，黑眼圈前去办理业务)，我们先去社保中心，同去办理居住证积分的伙伴他老公也是有断缴社保，但是他补缴回去了，已经可以买房了。，跟我不一样，我的是断缴，但是没有补缴回去。人事就说，要不你直接社保办理查询。我拿号后，社保工作人员也不知道，对了一遍我的社保缴纳情况。我又晕头转向的出来了。她们问如何，工作人员有说什么不？我回答很迷糊，得不到我想知道的切确信息。</p>
+<p>她们说，要不你直接去房产交易中心问，问哪里都不如直接问交易中心。</p>
+<p>我一听，那行，反正等会也去那附近办事，地址就是拉取个人所得税完税证明的水清路159号二楼位置。我骑着哈喽单车10几分钟就到了。</p>
+<p>先是在一楼问了一个大哥，他再三强调可以买，我这个是正常的。后来他有人询问事情，他上了楼上。我觉得既然来了，顺便再次再次再次一次性询问交易中心咨询人员，于是就到了二楼拿咨询单问真实工作人员。</p>
+<p>在外边等了会，然后暂停服务窗口的工作人员来了，问“你来咨询吗”，然后俺就很客气的说来询问相关的东西。我顺便开着手机录音，怕我自己听错了。一再强调我的特殊情况，是断缴，她说63个月内有60个月正常缴交，就能交易。这也就是说，社保是按<strong>累计63个月满60个月正常缴纳社保</strong>而不是<em>连续63个月满60个月</em>。断缴补缴、断缴没补缴是一样的，都可能买房。</p>
+<p>政策的东西就是这样，公告没有，全靠猜。语言说的又迷糊，累计和连续两个字，是相差十万八千里的。</p>
+<p>从交易中心走到人才服务中心路上，感觉完全不一样。感觉之前努力不是白费，也痛恨那些无良信息发布者。之前大中午，迷迷糊糊的，路上却走得越来越有劲。把相关信息发给老婆，告诉她，我们还是有机会的。给老妈打电话，告诉她，我没有努力白费，之前看到网络上的信息都是无良信息发布者，到房产交易中心咨询正确信息是，我有资格买房的。</p>
+<p>啊，那天太阳很大，不过天真的很蓝。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房资格/">买房资格</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-12jifen" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/24/2020-5-12jifen/" class="article-date">
+	  <time datetime="2020-05-24T08:51:10.000Z" itemprop="datePublished">May 24, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="上海申请居住证积分经历"><a href="#上海申请居住证积分经历" class="headerlink" title="上海申请居住证积分经历"></a>上海申请居住证积分经历</h1><p>这次去办理居住证积分，总结下历程（当前材料已提交，正在等待审核，审核期是2个月）</p>
+<h2 id="为什么要办理居住证积分"><a href="#为什么要办理居住证积分" class="headerlink" title="为什么要办理居住证积分"></a>为什么要办理居住证积分</h2><p>刚来上海，一直都是租房时，能住就好了。租房的价格也不便宜，租房的权益，包括孩子上学权、办理居住证、各种证权都是难以享受到的。没办法，寄人篱下，房东绝对不会理你这个没钱的外地租客。</p>
+<p>我前两年遇到一个很好的房东，当时我要办理居住证，通过中介，她也是帮我跑动。当时为孩子和老婆办理时，来回跑，让房东等待，过意不去。不过幸好房东的帮助，办理好了。上海政策是，只要是本科以上，一年内缴纳6个月正常社保，其会自动续签(居住证都是一年一签)。</p>
+<p>有了居住证后，买电瓶车，自己就可以上牌，当时还给哥们电瓶车也上牌。后来2019年我又买一辆电瓶车时，这时政策不用居住证，拿身份证就可以办理时，人多的呀，排了两条街。我是早上6点去排队，硬是等到快下午，饿了个半死。</p>
+<p>居住证好处，不止这点，上面是举个例子，这是特权吧。不过现在拿身份证就可以办理。</p>
+<p>居住证另一个好处，就是孩子可以在上海上学。但是不能中考、不能高考。我查阅或者询问周围人，得到的答案是，其实学校不会招纳这些人，因为你都不能中考、不能高考，你来这里上学干嘛，占用教育资源？当然，如果要上学，那就送到郊区一些称为”菜小”的学校去。</p>
+<p>这时候，居住证积分的作用就是，虽然你不是上海户口，但是你能享受上海户口的相关权益：孩子能在上海中高考等(我列举不来)。当然了，能把上海户口办理下来，简直就是最好的了。</p>
+<h2 id="办理历程"><a href="#办理历程" class="headerlink" title="办理历程"></a>办理历程</h2><p>之前一直犹豫是不是现在去办理相关的事情，因为来公司到现在差不多刚好一年，恩，应该问起来时机刚刚好。</p>
+<p>2020/4/20 早上10:00 直接大胆的问人事。人事回的很及时，先让我网上核对下分数，我在<a href="http://www.shxnedu.com/jifen.html" target="_blank" rel="noopener">模拟积分</a> 模拟出来是够的。然后人事让我<a href="http://sh.bendibao.com/zffw/2014710/110532.shtm" target="_blank" rel="noopener">准备好材料</a> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 单位人事专员介绍信、身份证、公司相关材料 // 人事会携带好的</span><br><span class="line">2. 持证人有效期内&lt;上海市居住证&gt; // 记得去街道办公室刷新一下，前后页打印好</span><br><span class="line">3. 持证人有效身份证件 // 前后页打印好</span><br><span class="line">4. 孩子要享受积分政策(这不必须的嘛，管上), 出生医学证明原件、复印件</span><br><span class="line">5. 妻子要享受积分政策(这不是很好嘛，管上)，(1). 妻子身份证原件、复印件 (2). 结婚证原件、复印件 (3). 户口本页面原件、复印件 // 三个都要带齐</span><br><span class="line">6. 户口本原件、复印件，每个人都复印，*每个人都复印*，**每个人都复印** // 人才管理窗口会给你整理好的，全都打印</span><br><span class="line">7. 一年期及以上有效合同，快到期的话，需要续签，同时给他每页复印</span><br><span class="line">8. 个人所得税完税证明 // 我去的上海市闵行区水清路159号3层打印</span><br><span class="line">9. 社保缴交证明</span><br></pre></td></tr></table></figure>
+<p>公司部分材料公司会准备好，我这里就不赘述；</p>
+<p>同时人事在公司开好账户，我登上<a href="http://jzzjf.rsj.sh.gov.cn/jzzjf/" target="_blank" rel="noopener">积分网站</a>登上个人账户，填写相关信息。</p>
+<p>填写信息注意点:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">第一页:</span><br><span class="line">政治面貌: 其他</span><br><span class="line">居住证有效日期: 你的居住证有效日期</span><br><span class="line">户籍所在地地址: 填写户口本上一致的</span><br><span class="line">在沪居住地址: 你的居住证写着的</span><br><span class="line">毕业时间: 你的毕业证书一致</span><br><span class="line">聘用(劳动)合同签订日期、起始日期、终止日期: 合同里一致</span><br><span class="line">在沪缴纳社会保险期限(月): 你的社保单一致</span><br><span class="line">-------------------------------------------------</span><br><span class="line">第二页:</span><br><span class="line">个人简历，从什么时候上大学、大学终止，一直到现在</span><br><span class="line">-------------------------------------------------</span><br><span class="line">第三页:</span><br><span class="line">境内人员--填写家庭情况:</span><br><span class="line">填写妻子的信息:</span><br><span class="line">是否需享受积分相关待遇: 填是</span><br><span class="line">户籍地: 户口本一致</span><br><span class="line">填写子女情况:</span><br><span class="line">是否需享受积分相关待遇: 填是</span><br><span class="line">户籍地: 户口本一致</span><br></pre></td></tr></table></figure>
+<p>上述材料准备妥当后，等了两周人事忙完事，就和另一个同事一起去水清路388号的上海市闵行区人才服务中心。</p>
+<p>到该处后，我们去附近准备好相关材料准备(个税完税证明、打印相关文件)，然后返回人才服务中心。</p>
+<p>当前就是确认相关材料是否齐全、填写材料是否有误，有误的话及时改正，旁边就有两台联网机器。</p>
+<p>那个是假期补班，人比较少。我们那个窗口一个可爱的妹子(戴着口罩，肯定也可爱)超级有耐心，我的材料有错，错了立马改，改了又帮我再重新检查，重复三次。我要是有钱，我肯定经常跑来和她聊天，小姑凉，你有男朋友不啊，可以和我阿黄认识下呗，我阿黄和可爱的。</p>
+<p>当前无法办理有另一个原因是，当前学籍学历不是在这里进行办理的。而是准备好材料，发送到一个邮箱，工作人员会人工帮你审核。材料：毕业证书扫描件、学士学位证书扫描件、学历学位证书、学信网电子注册备案表、学信网在线验证报告、学位网认证报告、身份证复印件正反面全都要发过来。教育背景核实邮件发送格式: <code>某某公司-某某人（教育背景合适）-共几人</code></p>
+<p><img src="/css/images/jifen_joy.jpeg" alt="办理趣事"></p>
+<p><img src="/css/images/jifen_certificate_check.png" alt="全都要"></p>
+<p>当前完成回来后，晚上我便去重新整理缺失的申请材料、扫描相关证书等。然后发送邮件到指定邮箱。材料缺失的话，对方会告知，然后赶紧补上。<a href="http://www.cdgdc.edu.cn/" target="_blank" rel="noopener">学位网认证报告</a>这个比较慢，会需要等待好多天，你可以提交加急，并告知你加急是为什么。我当时加急后，第二天对方就帮我办好了。</p>
+<p>然后2020/5/12 那天又前往办理好相关材料递交。</p>
+<p>以上基本等通知就好了，反正我正在等通知ing…</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/居住证积分/">居住证积分</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-12lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/11/2020-5-12lesson/" class="article-date">
+	  <time datetime="2020-05-11T12:30:43.000Z" itemprop="datePublished">May 11, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用github-travis-自动化打包"><a href="#使用github-travis-自动化打包" class="headerlink" title="使用github + travis 自动化打包"></a>使用github + travis 自动化打包</h1><h1 id="使用gitlab-gitlab-ci-自动化测试、覆盖、打包"><a href="#使用gitlab-gitlab-ci-自动化测试、覆盖、打包" class="headerlink" title="使用gitlab + gitlab-ci 自动化测试、覆盖、打包"></a>使用gitlab + gitlab-ci 自动化测试、覆盖、打包</h1>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/11/2020-5-11lesson/" class="article-date">
+	  <time datetime="2020-05-11T12:25:36.000Z" itemprop="datePublished">May 11, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Use-github-package-publish-docker"><a href="#Use-github-package-publish-docker" class="headerlink" title="Use github package publish docker"></a>Use github package publish docker</h1><p>gitlab.com 网络特别慢，经常 docker push 各种失败.</p>
+<p>考虑到github.com 全部免费了，故接下来都转战github 了。(自建是不可能自建的，没有机器)</p>
+<p>使用github token 登录(密码登录即将被废弃, 且push、pull 等操作都没有权限)</p>
 <ol>
-<li><p>k3s 的服务，我使用编译的nginx 要什么端口，nginx 我转给你，都转给你，但是你别抢80服务；</p>
+<li><p>Go to your GitHub account -&gt; Settings -&gt; Developer Settings -&gt; Personal access tokens -&gt; generate new token</p>
 </li>
-<li><p>k3s 你把能暴露端口的方法告知我一下，不然我搞不了本机端口啊。</p>
+<li><p>Note 选项写上一个标签</p>
+</li>
+<li><p>勾选 write:packages/read:packages, 然后保存</p>
+</li>
+<li><p>复制得到的token</p>
 </li>
 </ol>
-<p>当时我不知道Ingress，毕竟强行学习的嘛。试了好多种方案不行，没来得及看相关文章。当时想问伟哥，不过他太忙，我就问问一个同事，他以前做运维的(他看起来比我岁数小的样子，原来比我大，孩子都6岁啦，哈哈，以后可以多交流)。他给我一些帮助，也让我多看书，把里面的原理整清楚，以后遇到问题、排查也懂。不过我觉得，我当前只是想完成集群的搭建、应该解决集群搭建问题，而不是找一大本书完全明白。</p>
-<p>这就像拿一把超级大锤(我看完书了，不就等于超级大锤), 完成我短期要求：搭建起起来，这个小钉子需求。从成本、效率上看都是过犹之。</p>
-<p>我昨晚想着，通篇看书这事，先拖后吧。等之后有人懂了，可以乘机偷学。</p>
-<p>那么先完成docker-swarm。但是同样出现一些小坑，刚接触，没办法立即查出来，解出来。</p>
-<p>于是我今天早上东问问西问问，得知k3s 为了完成内部pod 端口upstream 要求，集成了nginx。同时，开开关关nginx 带来损耗，此时Ingress 作为自动编排规则。我试了下，哎，虽然外部v2ray 要导出规则，还没整上(估计还是Ingress 有关操作)，那么先完成其他需求了再说。</p>
-<p>至此，钉子(docker 服务集群化需求)一经出现，我找了相应的锤子(最终找到k3s)解决了需求。</p>
-<p>钉子的产生，还是源于自身大胆的去尝试。</p>
-<p>这次的钉子需要虚拟机或者vps，该vps 还是能尽情折腾，坏了就坏了。</p>
-<p>综上，尽情的产生钉子，要不怕难，然后使用身边的资源，多方思考找到锤子解决。</p>
-<p>这兴趣产生的难，在解决后确实让我很开怀。</p>
-<h1 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h1><p>得道者多助，拾到者捐助。</p>
-<p>在新的环境怕被人说能力不强，是饭桶，于是我就努力喝水，这样他们最多称我为水桶，而不是饭桶了。</p>
+<p>docker login docker.pkg.github.com</p>
+<p>User: 你的用户名(比如shaohung001)</p>
+<p>Password: 第4步得到的token</p>
+<h1 id="node-升级package-的库版本"><a href="#node-升级package-的库版本" class="headerlink" title="node 升级package 的库版本"></a>node 升级package 的库版本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br><span class="line">ncu -u</span><br></pre></td></tr></table></figure>
+<h1 id="Mac-删除node-使用nvm-管理node"><a href="#Mac-删除node-使用nvm-管理node" class="headerlink" title="Mac 删除node, 使用nvm 管理node"></a>Mac 删除node, 使用nvm 管理node</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</span><br><span class="line">sudo rm -rf /usr/local/include/node /Users/$USER/.npm</span><br><span class="line">sudo rm /usr/local/bin/node</span><br><span class="line">sudo rm /usr/local/share/man/man1/node.1</span><br><span class="line">sudo rm /usr/local/lib/dtrace/node.d</span><br></pre></td></tr></table></figure>
+<p>下载nvm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br><span class="line">或者</span><br><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br></pre></td></tr></table></figure>
+<p>然后在 ~/.bash_profile ~/.zshrc 中加入如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</span><br><span class="line">[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This loads nvm bash_completion</span><br></pre></td></tr></table></figure>
+<pre><code>source ~/.bash_profile &amp;&amp; source ~/.zshrc
+</code></pre><p>重开一个terminal 就可以用看到 nvm 命令了</p>
+<h1 id="简单探索nodejs-不同第三方库dependence-相同库不同版本"><a href="#简单探索nodejs-不同第三方库dependence-相同库不同版本" class="headerlink" title="简单探索nodejs 不同第三方库dependence 相同库不同版本"></a>简单探索nodejs 不同第三方库dependence 相同库不同版本</h1><p>今天使用puppeteer 和express 时发现，这两个dependence 包含有同一个库: mime。但是express 依赖mime 1.6.4 版本；puppeteer 依赖 2.x 版本；</p>
+<p>我们到node_modules 子目录看到第三方库规划: node_modules/mime 是1.6.4，也就是express 依赖的；我们找到puppeteer 下，其提前依赖库本地的mime 2.x 的。</p>
+<p>这样，puppeteer 在内部中，require 的是其自身node_modules/mime；express 自身没有node_modules 于是就往上找，也找到对应mime；</p>
+<p>以上各自依赖相同库，不同版本，便不会冲突了</p>
+<h1 id="mocha-test-时不通过"><a href="#mocha-test-时不通过" class="headerlink" title="mocha test 时不通过"></a>mocha test 时不通过</h1><p>使用mocha test不通过，报错信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;before all&quot; hook for &quot;GET /VERSION&quot;:</span><br><span class="line">Error: Timeout of 8000ms exceeded. For async tests and hooks, ensure &quot;done()&quot; is called; if returning a Promise, ensure it resolves. (/builds/xxxxxx/xxxxxx/backend/test/api.test.ts)</span><br></pre></td></tr></table></figure>
+<p>说明报错报错信息来源于 beforeAll 方法，且说没有使用done 告知.</p>
+<p>原方法：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>明显是有done 这个操作的，难道throw error 导致没有进入done 了？？那我加个try catch 吧:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        done(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><del>然后gitlab-ci 看到编译正常通过了, 但是没有进catch, 因为进了catch 我接下来拿不到server， 但之后又正常，说明只是说，要有try catch 确保有done 回馈即可!</del></p>
+<p>以上. node -v : <code>v10.20.1</code></p>
+<p>这里更新下：</p>
+<p>上面有时可以有时失败，说明不是最终原因. 以下是最终原因</p>
+<p>最终的原因是gitlab-ci cpu、memory 太低，运行太慢，导致获取到server 太慢，无法得到done，做法是<code>mocha -t 240000</code> 设置4分钟.</p>
+<p>这个原因也是没有预料到，没想到是机器配置比较低的原因。</p>
 
       
     </div>
@@ -812,7 +749,7 @@ word/media/ 用来放图片
     
 
   
-    <article id="post-2019-8-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2020-4-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -820,7 +757,7 @@ word/media/ 用来放图片
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/04/2019-8-5lesson/">2019-8-5lesson</a>
+      <a class="article-title" href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a>
     </h1>
   
 
@@ -828,15 +765,86 @@ word/media/ 用来放图片
     
     <div class="article-meta">
       
-	Posted on <a href="/2020/06/04/2019-8-5lesson/" class="article-date">
-	  <time datetime="2020-06-04T04:06:09.000Z" itemprop="datePublished">June 4, 2020</time>
+	Posted on <a href="/2020/04/16/2020-4-16lesson/" class="article-date">
+	  <time datetime="2020-04-16T12:38:16.000Z" itemprop="datePublished">April 16, 2020</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>人的一生并不是只有工作，就像我，我的两生、多生 都得用来工作</p>
+        <p>It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes.</p>
+<p>I dreamed of age grow up , and I worried about that !</p>
+<p>I never ever thinking about the troublesome before this period !</p>
+<p>Last five year, I fight for gain more power from technology , dreaming of arriving  to the top, money or any other comes to me.</p>
+<p>But, I didn’t had a rest last five year, nothing got but age and bit of knowledge of IT.</p>
+<p>It really  disappointed !</p>
+<p>I made a determination last  year , skills which  I  handled is much enough to made something I  ever determined to do.</p>
+<p>Last two months, I made out a website “阿黄小说”, reading novel site. Attending to try a test of earning money or even little acknowledge of setting up  a big site , but I lost my mind again.</p>
+<p>I made a discussion  with little shuai, I talked about my confuse of my career. Company didn’t raise salary since I entered last year.</p>
+<p>Am I not worth of raising by my work ? I had grow much more I had done . I continue of leaning deeply of my work , or I have a test to make some games ?</p>
+<p>I survey the game area no long ago, situation is serious recently , new come will very difficult to make effort .</p>
+<p>During discussion , I realized that the company I stay , I always treat myself a passenger . I join the car, car drive me some years distance , I get off when Company contract arrived.</p>
+<p>I never become a partner with any organization before . Am I make mistake ?</p>
+<p>I realized that I made a wrong plan all life before . Money I  lack of it , because  I will buy a house the close two year , but after that ? I employed by some one else again ? Not my career grow , but only stare at the salary I should get just now ?</p>
+<p>I made a determination of a more energy pay for myself career. Have a try to something different from before .</p>
+<p>Another plan is to have a plan of learning deep in my IT field , and if possible to examine some useful  certificates !!! It’s never too late to do your decision !</p>
+<p>When learning deep arrived some stage , I will have a try to make some games 😁…</p>
+<p>Finally , I remember  my fate again , I know where to go , and I will not confuse again .</p>
+<p>I am always young !!! My heart  will goes on !</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-4-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/04/16/2020-4-13lesson/" class="article-date">
+	  <time datetime="2020-04-16T12:37:06.000Z" itemprop="datePublished">April 16, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vue-cli-3-0"><a href="#vue-cli-3-0" class="headerlink" title="vue cli 3.0"></a>vue cli 3.0</h1><p>package.json 中的script:dev 命令: vue-cli-service serve 其实类似于<code>npx vue-cli-service serve</code> === <code>node ./node_modules/.bin/vue-cli-service serve</code></p>
+<h1 id="unzip-exe-在某一客户机报错"><a href="#unzip-exe-在某一客户机报错" class="headerlink" title="unzip.exe 在某一客户机报错"></a>unzip.exe 在某一客户机报错</h1><p>程序里使用到zip.exe unzip.exe bin 程序，正常使用很久了。</p>
+<p>然而今天出现<code>Archive: xxx error: zipfile probably corrupt (segmentation violation)</code></p>
+<p>关于windows 使用unzip.exe bin 程序，当前版本: UnZip 5.52 of 28 February 2005, by Info-ZIP.  Maintained by C. Spieler.</p>
+<p>从搜索列表中, 发现很多都指向网址: <a href="ftp://ftp.info-zip.org/pub/infozip/win32/" target="_blank" rel="noopener">ftp://ftp.info-zip.org/pub/infozip/win32/</a></p>
+<p>从里面可以直接下到5.52 bin 执行文件(其和当前程序使用版本相同，于是继续找).</p>
+<p>继续找到下载: <a href="https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe" target="_blank" rel="noopener">https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe</a> 下载下来是个安装程序。</p>
+<p>安装到windows 上后，找到:</p>
+<p><img src="/css/images/unzipexeerror.jpg" alt="/bin/unzip.exe"></p>
+<p>直接替换，当前确实解决该问题。</p>
 
       
     </div>
@@ -996,8 +1004,8 @@ word/media/ 用来放图片
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-6lesson/">2019-9-6lesson</a></h6>
-              <span>June 4, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
+              <span>May 29, 2020</span>
             </div>
 
           </li>
@@ -1008,8 +1016,8 @@ word/media/ 用来放图片
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-5lesson/">2019-9-5lesson</a></h6>
-              <span>June 4, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a></h6>
+              <span>May 26, 2020</span>
             </div>
 
           </li>
@@ -1020,8 +1028,8 @@ word/media/ 用来放图片
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-4lesson/">2019-9-4lesson</a></h6>
-              <span>June 4, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-13/">2020-5-13</a></h6>
+              <span>May 26, 2020</span>
             </div>
 
           </li>
@@ -1032,8 +1040,8 @@ word/media/ 用来放图片
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-3obs/">2019-9-3obs</a></h6>
-              <span>June 4, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a></h6>
+              <span>May 24, 2020</span>
             </div>
 
           </li>
@@ -1044,8 +1052,8 @@ word/media/ 用来放图片
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/04/2019-9-2lesson/">2019-9-2lesson</a></h6>
-              <span>June 4, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a></h6>
+              <span>May 24, 2020</span>
             </div>
 
           </li>
@@ -1082,7 +1090,7 @@ word/media/ 用来放图片
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
