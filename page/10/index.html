@@ -165,6 +165,89 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-使用charles下载appStore历史版本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/17/使用charles下载appStore历史版本/">使用charles下载appStore历史版本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/17/使用charles下载appStore历史版本/" class="article-date">
+	  <time datetime="2017-01-17T03:47:12.000Z" itemprop="datePublished">January 17, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。</p>
+<h3 id="申明几点"><a href="#申明几点" class="headerlink" title="申明几点"></a>申明几点</h3><p>charles可以使用手机代理来查看http或者https内容。但是到了App Store去下载时，点击下去，始终出现</p>
+<blockquote>
+<p><a href="https://p33-buy.itunes.apple.com" target="_blank" rel="noopener">https://p33-buy.itunes.apple.com</a> SSLHandshake: Remote host closed connection during handshake</p>
+</blockquote>
+<p>懒得整了，于是这里全部使用电脑端的使用，而且很快。</p>
+<ol start="2">
+<li>记得要翻墙，对了，姿势要对，比如左手放在大腿附近，右手点击快进键。</li>
+<li>我这里charles版本为3.11.2版本。正不正版无所谓，没付费不就是老是弹提示嘛，多弹几次能给我钱，那就更好了。</li>
+<li>我这里使用的是MAC电脑<h3 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h3></li>
+</ol>
+<ul>
+<li>下载https证书<a href="https://www.charlesproxy.com/assets/legacy-ssl/ssl.zip" target="_blank" rel="noopener">https://www.charlesproxy.com/assets/legacy-ssl/ssl.zip</a></li>
+<li>解压之后,双击该证书。</li>
+<li>前往钥匙串，搜索charles，然后就出现<img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png" alt="该证书不被信任" title="不被信任不正常嘛"></li>
+<li>双击该证书，同时点击第一项，使其<em>始终信任</em><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_02.png" alt="该证书选为始终信任" title="始终信任"></li>
+<li>左上角关闭，同时要求输入mac电脑密码。<h4 id="因为我们在电脑上搞，那么我们要将代理设到电脑上。"><a href="#因为我们在电脑上搞，那么我们要将代理设到电脑上。" class="headerlink" title="因为我们在电脑上搞，那么我们要将代理设到电脑上。"></a>因为我们在电脑上搞，那么我们要将代理设到电脑上。</h4></li>
+<li>打开网络设置偏好-&gt;高级-&gt;代理-&gt;将http和https都设置为127.0.0.1 port:8888 <img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_03.png" alt="代理设置" title="按照步骤"></li>
+<li>完了之后选择“应用”<h4 id="这里开始搞charles"><a href="#这里开始搞charles" class="headerlink" title="这里开始搞charles"></a>这里开始搞charles</h4></li>
+<li>打开charles，我这个版本的ssl proxy设置在 proxy下边的#SSL Proxying settings#里边，点击他进入，同时按图中设置 <a href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_04.png" title="按照步骤" target="_blank" rel="noopener">proxy设置</a><h4 id="这时打开iTunes和charles"><a href="#这时打开iTunes和charles" class="headerlink" title="这时打开iTunes和charles"></a>这时打开iTunes和charles</h4></li>
+<li>在charles startRecording的时候，在iTunes-&gt;应用-&gt;App Store里面搜索“秒拍”<br>可以看到图中解释 <img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_05.png" alt="charles内容解释" title="按照步骤"><br>往下翻看到<br>key&gt;softwareVersionBundleId<br><string>com.yixia.iphone</string><br><key>softwareVersionExternalIdentifier</key><integer>820135955</integer><br><key>softwareVersionExternalIdentifiers</key><br><array><br><integer>4981074</integer><br><integer>5394180</integer><br><integer>6879271</integer><br><integer>7521689</integer><br><integer>7688644</integer><br><integer>7941305</integer><br><integer>8166440</integer><br><integer>9007047</integer><br><integer>9411091</integer><br><integer>9872854</integer><br><integer>10633066</integer><br><integer>15892678</integer><br><integer>15974682</integer><br><integer>16060211</integer><br><integer>16091930</integer><br><integer>16504676</integer><br><integer>17263812</integer><br><integer>59592659</integer><br><integer>81073287</integer><br><integer>139932634</integer><br><integer>192742647</integer><br><integer>220962670</integer><br><integer>294852730</integer><br><integer>305732696</integer><br><integer>329852736</integer><br><integer>398862656</integer><br><integer>468142680</integer><br><integer>513982646</integer><br><integer>572242779</integer><br><integer>589372761</integer><br><integer>641902654</integer><br><integer>652212932</integer><br><integer>655043181</integer><br><integer>662912853</integer><br><integer>701362692</integer><br><integer>709942656</integer><br><integer>770264233</integer><br><integer>811423848</integer><br><integer>811487803</integer><br><integer>811635729</integer><br><integer>811781222</integer><br><integer>812037027</integer><br><integer>812232597</integer><br><integer>812328295</integer><br><integer>812440942</integer><br><integer>812536145</integer><br><integer>812563006</integer><br><integer>812597840</integer><br><integer>812675604</integer><br><integer>812763862</integer><br><integer>812874619</integer><br><integer>812980000</integer><br><integer>813078957</integer><br><integer>813307221</integer><br><integer>813588175</integer><br><integer>813621742</integer><br><integer>813630679</integer><br><integer>814108034</integer><br><integer>814127199</integer><br><integer>814228608</integer><br><integer>814261627</integer><br><integer>814370408</integer><br><integer>814372706</integer><br><integer>814567037</integer><br><integer>814567882</integer><br><integer>814592662</integer><br><integer>814800494</integer><br><integer>814875099</integer><br><integer>815021644</integer><br><integer>815023592</integer><br><integer>815055555</integer><br><integer>815350442</integer><br><integer>815358012</integer><br><integer>815393500</integer><br><integer>815457608</integer><br><integer>815607029</integer><br><integer>815608372</integer><br><integer>815615057</integer><br><integer>815654426</integer><br><integer>816131497</integer><br><integer>816162845</integer><br><integer>816749956</integer><br><integer>816873466</integer><br><integer>816998702</integer><br><integer>817114988</integer><br><integer>817301959</integer><br><integer>818053825</integer><br><integer>818219564</integer><br><integer>818406305</integer><br><integer>818614237</integer><br><integer>818735711</integer><br><integer>818784109</integer><br><integer>818961748</integer><br><integer>819270136</integer><br><integer>819601281</integer><br><integer>820135955</integer><br></array><br><key>vendorId</key><br><integer>1754660</integer><br><key>drmVersionNumber</key><br><integer>0</integer>
+
+</li>
+</ul>
+<p>这里820135955为目前最新的下载版本号，<br>这个4981074，则为其第一个版本</p>
+<p><integer>820135955</integer> </p>
+<p><key>softwareVersionExternalIdentifiers</key> </p>
+<p><array> </array></p>
+<p><integer>4981074</integer></p>
+<h1 id="进入重点啦！！！"><a href="#进入重点啦！！！" class="headerlink" title="进入重点啦！！！"></a>进入重点啦！！！</h1><ul>
+<li>删掉刚才的秒拍，给charles的那条链接点选这两个勾！！！breakpoint会让程序停在一开始的将要开始地方(这里就可以更改里面的参数，让其下载4981074历史版本)<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_06.png" alt="charles勾选内容" title="两个都勾上"></li>
+<li>关掉charles,iTunes不要关闭</li>
+<li>打开charles,选上proxy-&gt;MAC OS X proxy</li>
+<li>到将要下载秒拍的那个地方,点击获取，charles breakpoint到这张图<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_07.png" alt="将要下载的内容换成“呱拍”,不要在意这个"></li>
+<li>根据下图，修改里面的参数<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_08.png" alt="根据步骤操作"><br>当版本号修改过后，即可点击下面的按钮“excuse”，可能要点击2次，观察iTunes下载是否开始，当要结束时，似乎还要点击一次“excuse”，最后反正就是下载成功了。<br>我这里使用iTool安装，你也可以直接用iTunes安装，个人爱好。到这里，你就可以随意搞你要的各个app版本啦。</li>
+</ul>
+<p>附我参考的文章<br><a href="http://www.cocoachina.com/ios/20161214/18351.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20161214/18351.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-20170112meetbug" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -606,67 +689,6 @@ NSLog(@&quot;%@&quot;,self);
     
 
   
-    <article id="post-UIBazier学习和CAMediaTimingFunction" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/UIBazier学习和CAMediaTimingFunction/">UIBazier学习和CAMediaTimingFunction</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/10/UIBazier学习和CAMediaTimingFunction/" class="article-date">
-	  <time datetime="2017-01-10T01:34:44.000Z" itemprop="datePublished">January 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>UIBezier，这篇文章写得很好，简洁易懂。<br>我认为主要用到的有：<br>1：创建<br><code>UIBezierPath* aPath = [UIBezierPath bezierPath];</code><br>2：设置初始位置<br><code>[aPath moveToPoint:CGPointMake(100.0, 0.0)];</code><br>3：拐点<br><code>aPath.lineCapStyle = kCGLineCapRound;</code>//线条拐角<br><code>aPath.lineJoinStyle = kCGLineCapRound;</code>//终点处理<br>4：stroke和fill的区别<br>5：<code>- (void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint</code>方法<br>由于有setToPoint初始位置，有endPoint，然后controlPoint为改变曲面的<br>可以参考下图<br><img src="http://upload-images.jianshu.io/upload_images/3993684-22d35b19984fed4d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片1"><br>6：<code>- (void)addCurveToPoint:(CGPoint)endPoint controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2</code>//多参值<br>7：这句话很好：<br>使用UIBezierPath创建多边形—在path下面添加直线条形成多边形<br>多边形是一些简单的形状,这些形状是由一些直线线条组成，我们可以用moveToPoint: 和 addLineToPoint:方法去构建。<br>方法moveToPoint:设置我们想要创建形状的起点。从这点开始，我们可以用方法addLineToPoint:去创建一个形状的线段。<br>我们可以连续的创建line，每一个line的起点都是先前的终点，终点就是指定的点。<br><code>// Only override drawRect: if you perform custom drawing.</code><br><code>// An empty implementation adversely affects performance during animation.</code><br><code>- (void)drawRect:(CGRect)rect{
-    UIColor *color = [UIColor redColor];
-    [color set];//设置线条颜色
-    UIBezierPath* aPath = [UIBezierPath bezierPath];
-    aPath.lineWidth = 5.0;
-    aPath.lineCapStyle = kCGLineCapRound;//线条拐角
-    aPath.lineJoinStyle = kCGLineCapRound;//终点处理
-    // Set the starting point of the shape.
-    [aPath moveToPoint:CGPointMake(100.0, 0.0)];
-    // Draw the lines
-    [aPath addLineToPoint:CGPointMake(200.0, 40.0)];
-    [aPath addLineToPoint:CGPointMake(160, 140)];
-    [aPath addLineToPoint:CGPointMake(40.0, 140)];
-    [aPath addLineToPoint:CGPointMake(0.0, 40.0)];
-    [aPath closePath];//第五条线通过调用closePath方法得到的
-    [aPath stroke];//Draws line 根据坐标点连线
-}</code></p>
-<p>CAMediaTimingFunction时间线可以通过<br><code>CAMediaTimingFunction *a = [CAMediaTimingFunction functionWithControlPoints:0.85 :0.01 :0.33 :1.14];</code>//创建</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -795,6 +817,18 @@ NSLog(@&quot;%@&quot;,self);
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/06/15/2020-6-15lesson/">2020-6-15lesson</a></h6>
+              <span>June 15, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
               <span>May 29, 2020</span>
             </div>
@@ -849,18 +883,6 @@ NSLog(@&quot;%@&quot;,self);
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a></h6>
-              <span>May 11, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -873,7 +895,7 @@ NSLog(@&quot;%@&quot;,self);
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/">v2ray</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -883,7 +905,7 @@ NSLog(@&quot;%@&quot;,self);
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/v2ray/" style="font-size: 20px;">v2ray</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -893,7 +915,7 @@ NSLog(@&quot;%@&quot;,self);
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
