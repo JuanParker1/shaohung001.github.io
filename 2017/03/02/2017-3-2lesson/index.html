@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>2017/3/2lesson | aKer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
+  
+  
+  
+  <meta name="description" content="记录这几天的发现或者想到了的东西，哈哈 关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”];  缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache collection需要使用self.collectionNode performBatch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017&#x2F;3&#x2F;2lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2017/03/02/2017-3-2lesson/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="记录这几天的发现或者想到了的东西，哈哈 关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”];  缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache collection需要使用self.collectionNode performBatch">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-03-02T14:14:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2017&#x2F;3&#x2F;2lesson">
+<meta name="twitter:description" content="记录这几天的发现或者想到了的东西，哈哈 关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”];  缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache collection需要使用self.collectionNode performBatch">
+  
+    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7054334687711145",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="aKer" rel="home"> aKer </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt src>
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2017-3-2lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      2017/3/2lesson
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/02/2017-3-2lesson/" class="article-date">
+	  <time datetime="2017-03-02T14:14:16.000Z" itemprop="datePublished">March 2, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="记录这几天的发现或者想到了的东西，哈哈"><a href="#记录这几天的发现或者想到了的东西，哈哈" class="headerlink" title="记录这几天的发现或者想到了的东西，哈哈"></a>记录这几天的发现或者想到了的东西，哈哈</h3><ul>
+<li>关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”]; </li>
+<li>缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache</li>
+<li>collection需要使用<code>self.collectionNode performBatchUpdates:^</code></li>
+<li>如果<code>-(BOOL)shouldBatchFetchForCollectionNode:(ASCollectionNode *)collectionNode</code>为YES，但是不再获取数据，那么就是你没有给上次Batch确认completeBatch</li>
+<li>这里处理了一次collectionNode的获取数据和返回数据的完整逻辑，可以参照，实战demo</li>
+<li>Theme能力由发通知会更好，毕竟如果有缓存，单元格没法刷新，还是需要发通知更改背景颜色、某些图片等，可以一步步更改</li>
+<li>主流方向可以往可爱等线路发展</li>
+<li>小玩意之类往往能点亮用户好奇心，比如“粉粉日记”的首页台灯、不同时间的首页动物、不同时段，该动物、背景会替换，让动物动起来等；每晚开放的树洞功能等</li>
+<li>会员能力很重要，要让他们感到与众不同，代价每次都是一点点就很正确</li>
+<li>首页采用多屏处理，展示不同格局东西。</li>
+<li>首页是很能体现APP动机的地方。如果是微博类，首页就是Feed分类；如果是淘宝类，首页就是商品分类；如果是QQ、微信，首页就是你的聊天列表类；如果是游戏、地图等，首页就是你该展示的地方；“粉粉”这里首页就是展示萌创意、手账的地方，那么他走的主路线就该是这方面功能。</li>
+<li>APP功能太全有时候会成为累赘，可以参考“花瓣”、“Facebook”的分离法，将不同业务分出去，将主功能留下。比如“Facebook”的Message功能就会让你跳出去到另一个App。</li>
+<li>粒度这个东西有时候要考虑清楚，有时候深一点使用组件化，有时候直接写有他的好处</li>
+<li>说一个今天遇到的缓存能力ASDK，当我刷新，我将dataSource的数据都删光了，然后没写好，没有reloadData全部，而是insert数据到当前单元格，下面数据仍然在，ASDK的缓存能力确实太厉害了，然而反观“粉粉”里面的缓存，其实他做的就是将基本数据缓存起来，等还要再cellForItemAtIndexPath的时候，他还是会更新当前的单元格。所以严格意义上说，“粉粉”里面之前的缓存方案，仅是对数据的再次缓存得到快速获取，而不是前缘科技里面的Feed页面写法。</li>
+<li>从前一个公司到现在的粉粉日记领悟到一个思想：前一个公司很在意功能上的全，比如我们要有自己的图片选取工具、纯文字发布能力的特立独行、视频这块大块头的实现类似“美拍”的全逻辑。由于人员的不够，我在竭尽全力下初窥视频骨架，但是公司在一次次的冲击市场下都没有反响中放弃了。其中原因是大骨头很难啃，其他东西没抓住，人员配置不够；粉粉公司反其道，一步一步走，走的路也更早，探索出了抓住青少年人群的美少女“萌”。粉粉到现在才开始有了拍摄视频的能力，而且仅仅只有拍摄这一步，目前还是内测；粉粉每走一步都测试、保证再保证没有问题才将功能加上去。粉粉的选取图片能力还有滤镜能力，目前走到了这么一个地步：使用其他公司的SDK：在功能左下角还有某某SDK的字样。里面框架也是挺卡的，我拿了个iPod5的测试机，FPS有时直接到0了，有些页面写的，连复用都没有；比如图片这块，我们使用qiniu作为图片保存地址，他们使用的UPYun是腾讯的，目前还属于内测阶段，而且他们居然没有看文档，不知道可以图片地址后面拼接image的后缀，让服务器帮忙更改图片属性功能。可以这么说，内容、市场、人员、测试、流程，粉粉都比“呱拍”走的很远，但是一些功能上的，确实“呱拍”使用的前缘功能，要比粉粉走太远：当我已经要试试FaceDetect功能的时候，粉粉才在有拍摄功能。。。</li>
+<li>最近练手了一个自定义CollectionLayout，联系之前看的OpenGL ES 的皮毛，类比到ASDK和autoLayout中布局说明，终于理解了一个原理：程序是死的，目前我接触到的都是死的，他需要人说明，包括每个pixel需要展示什么颜色定义，需要opacity多少，每个点需要人告诉程序。比如手机、电脑在某一快需要展示蓝色，布局定义等都会转化为绝对坐标，绝对坐标再转化为在底层GPU需要的布局信息，GPU在将每一层需要的颜色重叠起来，看需要输出到屏幕的是什么，才最终呈现出来</li>
+<li>如果要判别一个公司的团队实力，可以在看市场竞争能力，我想到作为在iOS技能求职者一个新方法：下一个该公司的APP—&gt;使用iPhone4s看其表现能力，iPhone6不能作为功能测试机，不过可以作为布局测试机！！！</li>
+<li>今天改了下host，进入公司的FTP服务器，改host需要vim的权限，于是我使用sudo vim +“对应文件夹Path” 写完后按左上角esc键盘按键，然后输入<em>:wq</em>意思是write and quit</li>
+<li>今天下午搞了下git branch，之前使用都是小心翼翼，不太懂整，他们搞过来搞过去，嗯哼，还不太给力ing</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/wechatPay.jpg?raw=true',
+  alipayImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/aliPay.jpg?raw=true'
+});
+</script>
+      
+            
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'shaohung001';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/02/2017-3-2lxlesson/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2017/3/2lxlesson
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/20/2017-2-20lesson/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2017/2/20lesson</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录这几天的发现或者想到了的东西，哈哈"><span class="nav-number">1.</span> <span class="nav-text">记录这几天的发现或者想到了的东西，哈哈</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 aKer All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/click.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
