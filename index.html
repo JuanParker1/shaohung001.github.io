@@ -165,6 +165,107 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2020-8-21lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/08/25/2020-8-21lesson/">2020-8-21lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/08/25/2020-8-21lesson/" class="article-date">
+	  <time datetime="2020-08-25T12:56:52.000Z" itemprop="datePublished">August 25, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-7-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/08/25/2020-7-13lesson/">2020-7-13lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/08/25/2020-7-13lesson/" class="article-date">
+	  <time datetime="2020-08-25T12:56:22.000Z" itemprop="datePublished">August 25, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="未来人类体型预测"><a href="#未来人类体型预测" class="headerlink" title="未来人类体型预测"></a>未来人类体型预测</h2><p>看了很多科幻片说未来是聪明人占主导比例。</p>
+<p>当前社会一直在演进，那当然是必然现象。每次的战争、争夺，都是新社会体制对旧社会的冲击。之前看有个视频，大清体制是集农业文明大成，也是非常庞大的体制。</p>
+<p>新社会体系联合起来慢慢才蚕食殆尽，所以体制的进步是必然。在现代，人才才是资源，而且在新社会体系贡献会越来越大。</p>
+<p>看到说未来的人聪明，脑袋大，我说不对。</p>
+<p>个体体能好，就要锻炼，身体就会健壮；个体脑力好，就要专研，于是有两种分项：1）肚子大大的，发量少少的，因为要思考，坐着，大脑用脑多，让肚子多保留更多的脂肪，保护大脑；另一种就是肚子没有或者有一点点，然后发量差不多；</p>
+<p>嘎嘎。哪有可能脑袋超级大，特别大，躯干很小那种。大脑聪明又不是越大越好。</p>
+<h2 id="记录下SSH-使用ssh-key-使用秘钥登录"><a href="#记录下SSH-使用ssh-key-使用秘钥登录" class="headerlink" title="记录下SSH 使用ssh-key 使用秘钥登录"></a>记录下SSH 使用ssh-key 使用秘钥登录</h2><p>创建秘钥对</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line">cd .ssh</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line">chmod 600 authorized_keys</span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>修改sshd_config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+<p>重启ssh: <code>systemctl restart sshd</code></p>
+<p>拷贝好服务器端的id_rsa 文件内容到本地机器: <code>cat ~/.ssh/id_rsa</code></p>
+<p>将id_rsa 文本放到本地文件，如 ~/.ssh/66id_rsa</p>
+<p>此时本地直接使用该秘钥文件会报权限过大，不允许使用, 控制台: <code>chmod 0600 66id_rsa</code></p>
+<p>登录时语句: <code>ssh root@ip -p port -i ~/.ssh/66id_rsa</code> 即可正确登录</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2020-6-15lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -736,121 +837,6 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
     
 
   
-    <article id="post-2020-4-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/04/16/2020-4-16lesson/" class="article-date">
-	  <time datetime="2020-04-16T12:38:16.000Z" itemprop="datePublished">April 16, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes.</p>
-<p>I dreamed of age grow up , and I worried about that !</p>
-<p>I never ever thinking about the troublesome before this period !</p>
-<p>Last five year, I fight for gain more power from technology , dreaming of arriving  to the top, money or any other comes to me.</p>
-<p>But, I didn’t had a rest last five year, nothing got but age and bit of knowledge of IT.</p>
-<p>It really  disappointed !</p>
-<p>I made a determination last  year , skills which  I  handled is much enough to made something I  ever determined to do.</p>
-<p>Last two months, I made out a website “阿黄小说”, reading novel site. Attending to try a test of earning money or even little acknowledge of setting up  a big site , but I lost my mind again.</p>
-<p>I made a discussion  with little shuai, I talked about my confuse of my career. Company didn’t raise salary since I entered last year.</p>
-<p>Am I not worth of raising by my work ? I had grow much more I had done . I continue of leaning deeply of my work , or I have a test to make some games ?</p>
-<p>I survey the game area no long ago, situation is serious recently , new come will very difficult to make effort .</p>
-<p>During discussion , I realized that the company I stay , I always treat myself a passenger . I join the car, car drive me some years distance , I get off when Company contract arrived.</p>
-<p>I never become a partner with any organization before . Am I make mistake ?</p>
-<p>I realized that I made a wrong plan all life before . Money I  lack of it , because  I will buy a house the close two year , but after that ? I employed by some one else again ? Not my career grow , but only stare at the salary I should get just now ?</p>
-<p>I made a determination of a more energy pay for myself career. Have a try to something different from before .</p>
-<p>Another plan is to have a plan of learning deep in my IT field , and if possible to examine some useful  certificates !!! It’s never too late to do your decision !</p>
-<p>When learning deep arrived some stage , I will have a try to make some games 😁…</p>
-<p>Finally , I remember  my fate again , I know where to go , and I will not confuse again .</p>
-<p>I am always young !!! My heart  will goes on !</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-4-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/04/16/2020-4-13lesson/" class="article-date">
-	  <time datetime="2020-04-16T12:37:06.000Z" itemprop="datePublished">April 16, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue-cli-3-0"><a href="#vue-cli-3-0" class="headerlink" title="vue cli 3.0"></a>vue cli 3.0</h1><p>package.json 中的script:dev 命令: vue-cli-service serve 其实类似于<code>npx vue-cli-service serve</code> === <code>node ./node_modules/.bin/vue-cli-service serve</code></p>
-<h1 id="unzip-exe-在某一客户机报错"><a href="#unzip-exe-在某一客户机报错" class="headerlink" title="unzip.exe 在某一客户机报错"></a>unzip.exe 在某一客户机报错</h1><p>程序里使用到zip.exe unzip.exe bin 程序，正常使用很久了。</p>
-<p>然而今天出现<code>Archive: xxx error: zipfile probably corrupt (segmentation violation)</code></p>
-<p>关于windows 使用unzip.exe bin 程序，当前版本: UnZip 5.52 of 28 February 2005, by Info-ZIP.  Maintained by C. Spieler.</p>
-<p>从搜索列表中, 发现很多都指向网址: <a href="ftp://ftp.info-zip.org/pub/infozip/win32/" target="_blank" rel="noopener">ftp://ftp.info-zip.org/pub/infozip/win32/</a></p>
-<p>从里面可以直接下到5.52 bin 执行文件(其和当前程序使用版本相同，于是继续找).</p>
-<p>继续找到下载: <a href="https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe" target="_blank" rel="noopener">https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe</a> 下载下来是个安装程序。</p>
-<p>安装到windows 上后，找到:</p>
-<p><img src="/css/images/unzipexeerror.jpg" alt="/bin/unzip.exe"></p>
-<p>直接替换，当前确实解决该问题。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -979,6 +965,30 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2020/08/25/2020-8-21lesson/">2020-8-21lesson</a></h6>
+              <span>August 25, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2020/08/25/2020-7-13lesson/">2020-7-13lesson</a></h6>
+              <span>August 25, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/06/15/2020-6-15lesson/">2020-6-15lesson</a></h6>
               <span>June 15, 2020</span>
             </div>
@@ -1021,30 +1031,6 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a></h6>
-              <span>May 24, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a></h6>
-              <span>May 24, 2020</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1077,7 +1063,7 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
