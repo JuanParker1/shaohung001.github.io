@@ -165,6 +165,464 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-9-3obs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/09/03/2019-9-3obs/">2019-9-3obs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/09/03/2019-9-3obs/" class="article-date">
+	  <time datetime="2019-09-03T04:11:58.000Z" itemprop="datePublished">September 3, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h1><p><a href="https://obsproject.com/download" target="_blank" rel="noopener">OBS 下载</a></p>
+<p>来源处添加【媒体源】-【新建】选择好本地文件时，顺便点选【循环】(方便测试)-【确定】</p>
+<p>然后点击OBS 的【设置】-【推流】服务一栏选择【自定义】-【服务器】:rtmp://104.230.236.234/live/live 【串流秘钥】填:111(填111 为test)</p>
+<p>这里说一点，【串流秘钥】在那片教程中没有说明，也就是<em>111</em> 在之后rtmp 流或者flv 流的后面的basename 位置，最后一定要加上111，如播放rtmp://104.230.236.234/live/live/111 或者<a href="http://104.230.236.234/live/live/111.flv" target="_blank" rel="noopener">http://104.230.236.234/live/live/111.flv</a></p>
+<p>不然流推上去了，客户端就一直报错，找不到拉不到流啊。</p>
+<p>接着OBS 按下【开始推流】，那就是推送到已开启的SRS 流了。</p>
+<h4 id="SRS"><a href="#SRS" class="headerlink" title="SRS"></a>SRS</h4><p><code>docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</code></p>
+<p>用容器美滋滋。同时，<code>/dockerVolume/SRS/conf/docker.conf</code> 是本地文件映射到容器的对应文件。该文件拷贝自:<code>srs/trunk/conf/http.flv.live.conf</code></p>
+<p>这时可以在浏览器测试: <code>http://104.230.236.234:8808/live/live.flv</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">max_connections     1000;</span><br><span class="line">daemon              off;</span><br><span class="line">srs_log_tank        console;</span><br><span class="line">http_server &#123;</span><br><span class="line">    enabled         on;</span><br><span class="line">    listen          8080;</span><br><span class="line">    dir             ./objs/nginx/html;</span><br><span class="line">&#125;</span><br><span class="line">vhost __defaultVhost__ &#123;</span><br><span class="line">    http_remux &#123;</span><br><span class="line">        enabled     on;</span><br><span class="line">        mount       [vhost]/[app]/[stream].flv;</span><br><span class="line">        hstrs       on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obs/">obs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/srs/">srs</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-9-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/09/02/2019-9-2lesson/">2019-9-2lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/09/02/2019-9-2lesson/" class="article-date">
+	  <time datetime="2019-09-02T04:11:25.000Z" itemprop="datePublished">September 2, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最近连续一个多月的主要工作"><a href="#最近连续一个多月的主要工作" class="headerlink" title="最近连续一个多月的主要工作"></a><strong>最近连续一个多月的主要工作</strong></h1><p>最近连续一个多月主要分为三个工作：</p>
+<ol>
+<li>工作为主，完成公司盈利产品的迭代。这不仅学，还要学好。</li>
+<li>这几个月想完成去年未完成的游戏，不过游戏有点大，不可太急躁。</li>
+<li>完成视频播放功能。</li>
+</ol>
+<p>第一个工作还是努力前行，我的试用期是6个月，这个月过后就满啦。难得接受个这么长的试用期，努力就是了。从一无所知，非常迷迷糊糊，懵懵懂懂的状态跌跌撞撞过来，期间没有太多人帮助(只有伟哥和学弟喜顺)，现在能更准确找到问题、解决问题、顺便优化代码。美滋滋。</p>
+<p>最近突然想起，我海贼王追的那么累(更得好慢)，最近我都转而潜心看文章，如三国类解说、明朝时代的解说。(明朝那么热闹，唐朝肯定也是潮起潮落。心之向往那跌宕的岁月。不过对历史的向往，也万没有身体要去感同身受的打算，那不是我这种渣逼能活着的岁月。)突然记得似乎火影忍者我还没看完，最后几集漏了，找不到网站看。</p>
+<p>前几天开始了锻炼，想想以前的光辉岁月，不甘心只是蹲在凳子上消磨。翻开看了下bilibili的爆燃视频，夜凯一jio 踢残斑，想起以前课上趴着桌子偷偷看火影。锻炼我要干，看视频我也要干的。</p>
+<p>我要做个视频网站！</p>
+<p>我平常用流量看文章等，每个月最多1G不到(测试app 等用掉的)，平常都是500M。但是我觉得5G时代早晚来临，视频、音频、图片等都会大行其道。我不觉得我用得上，但我的客户们肯定万分期待。最近我试了试nginx-rtmp-module，先品尝了下视频播放的操作。接着我用SRS 也能转播直播。</p>
+<p>同时我最近刚搞的rancher，想想，是否服务能放进去呢? 这1个多月的周末就在这其中煎熬度过。不过答案也终于找到了。</p>
+<p>答案是理解了rancher 的k8s(k3s) 的能力，以目前我的知识、能力范畴，我能很好的使用服务的编排、无限扩容能力、合理调度。</p>
+<p>那么答案就在这，SRS、VVVVVV等都是服务功能。VVVVVV 本来就是单个机器代理，还要怎么调度？SRS要调度，其本身已经支持(go-sharp)。<br>也就是说，我之前就是在钻牛角尖。不过钻的作用是，让我深切快速的理解了k8s(k3s) 的作用是什么，不然我要看好久的专业书。</p>
+<p>不在当前规划上的知识，先不花太多精力。能动手就不看那么细致了。</p>
+<p>周末突然的领悟自己确实在大钻特钻牛角尖。</p>
+<p>现在说说我的环境和做法。</p>
+<p>大致跟着这篇教程下来的:<a href="https://juejin.im/post/5ad7ce3ff265da505e41ff03" target="_blank" rel="noopener">https://juejin.im/post/5ad7ce3ff265da505e41ff03</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: CentOS7 x86_64</span><br><span class="line">SRS: docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</span><br><span class="line">客户端-推流端: OBS</span><br><span class="line">客户端-播放端: VLC / 教程里面的live demo</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-9-1make-wordTemplate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/09/01/2019-9-1make-wordTemplate/">2019-9-1make_wordTemplate</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/09/01/2019-9-1make-wordTemplate/" class="article-date">
+	  <time datetime="2019-09-01T04:08:05.000Z" itemprop="datePublished">September 1, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Microsoft-word-的document-xml-模板生成word-template-docx-过程"><a href="#Microsoft-word-的document-xml-模板生成word-template-docx-过程" class="headerlink" title="Microsoft word 的document.xml 模板生成word-template.docx 过程"></a><strong>Microsoft word 的document.xml 模板生成word-template.docx 过程</strong></h1><p>需求：生成一个模板word-template.docx ，在nodejs 中匹配对应的模板code，最终生成需求.docx</p>
+<p>工具：office word、code IDE。</p>
+<ol>
+<li>首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以<code>____</code>代替之。作用是等会生成最终模板的地方，很容易找到。</li>
+</ol>
+<p><img src="/css/images/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
+<ol start="2">
+<li><p>将word.docx 解压成文件夹template</p>
+<p> mac/linux$unzip -o word.docx -d template</p>
+<p> windows$”windows unzip 解决工具路径” -o “word.docx 路径” -d “template 路径”</p>
+</li>
+</ol>
+<p><img src="/css/images/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
+<ol start="3">
+<li>template 目录大致介绍</li>
+</ol>
+<p><img src="/css/images/generate_wordTemplate3.jpg" alt="template 目录"></p>
+<p>重要的目录在框中。</p>
+<pre><code>[Content_Types.xml] 是用来描述内部使用的格式说明。
+
+word/document.xml 核心文件，修改的描述就在这。
+
+word/_rels/document.xml.rels 是描述资源文件的relationShip
+
+word/media/ 用来放图片
+</code></pre><p><strong>接下来就是修改成我们的最终模板</strong></p>
+<ol start="4">
+<li>修改word/document.xml</li>
+</ol>
+<p>替换模板code 格式我们使用lodash.template —&gt; <strong><code>&lt;%= templateCode %&gt;</code></strong></p>
+<p><img src="/css/images/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
+<p>如果是插入jpeg 图片(png/jpg 都可以), 我们可以如下:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">w:p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">w:r</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">w:color</span> <span class="attr">w:val</span>=<span class="string">"00FF00"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:pict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">id</span>=<span class="string">"_x0000_i1025&lt;%- index %&gt;"</span> <span class="attr">o:spt</span>=<span class="string">"75"</span> <span class="attr">type</span>=<span class="string">"#_x0000_t75"</span> <span class="attr">style</span>=<span class="string">"height:&lt;%- item.height %&gt;pt;width:&lt;%- item.width %&gt;pt;"</span> <span class="attr">filled</span>=<span class="string">"f"</span> <span class="attr">o:preferrelative</span>=<span class="string">"t"</span> <span class="attr">stroked</span>=<span class="string">"f"</span> <span class="attr">coordsize</span>=<span class="string">"21600, 21600"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:path</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">focussize</span>=<span class="string">"0,0"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">joinstyle</span>=<span class="string">"miter"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:imagedata</span> <span class="attr">r:id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">o:title</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">o:lock</span> <span class="attr">v:ext</span>=<span class="string">"edit"</span> <span class="attr">aspectratio</span>=<span class="string">"f"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:wrap</span> <span class="attr">type</span>=<span class="string">"none"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:anchorlock</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:pict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">w:r</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125;);%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">w:p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样便可循环插入多张图片啦。</p>
+<ol start="5">
+<li>修改word/_rels/document.xml.rels</li>
+</ol>
+<p>这里是用来指定植入的资源(图片)关系。</p>
+<p>我们只需在原本存在<code>&lt;Relationships xmls=&quot;...xxx&quot;&gt;</code>一行下增加新增的rId 资源链接：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Relationships</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.openxmlformats.org/package/2006/relationships"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">Type</span>=<span class="string">"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"</span> <span class="attr">Target</span>=<span class="string">"media/image&lt;%- index %&gt;.jpeg"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125;); %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"rId8"</span> <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/css/images/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
+<p>同时找到这里最大的Id，如<code>Id=&quot;rId16&quot;</code>, 之后用到。</p>
+<ol start="6">
+<li>修改[Content_Types].xml 增加使用资源ext</li>
+</ol>
+<p>这里使用jpeg 图片后缀名，增加一行:<code>&lt;Default Extension=&quot;jpeg&quot; ContentType=&quot;image/jpeg&quot;/&gt;</code></p>
+<p><img src="/css/images/generate_wordTemplate6.jpg" alt="Content_Types"></p>
+<p>如果没有增加该行(或者上面提到的rId 填错)，出现问题特点是: WPS能正常打开；office word 提示<strong>无法打开Open XML xxx 因为内容存在问题或者文件名可能包含无效字符</strong> <strong>文件已损坏，无法打开。</strong></p>
+<p>点击了“确定”，接着又提示<strong>xxx.docx 中发现无法读取的内容。是否要恢复此文档的内容？如果您信任此文档的来源，请单击“是”</strong>，点了“是”之后又能正常浏览。</p>
+<ol start="6">
+<li>word/media 文件夹</li>
+</ol>
+<p>该文件夹是图片移进来后，<code>rId ++</code>。把图片信息保存到word/document.xml 的同时，将资源链接写进word/_rels/document.xml.rels</p>
+<ol start="7">
+<li>压缩 成word-template.docx 模板文件</li>
+</ol>
+<p><code>zip ../word-template.docx -r .</code></p>
+<p>将word 文件夹下的所有文件使用zip 压缩。名称指定为word-template.docx 模板即打包完毕。</p>
+<p><img src="/css/images/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
+<p>至此word-template 模板生成完毕。</p>
+<blockquote>
+<p>!!!ATTENTION \<br>制作最好用Windows 操作系统。如果使用Mac OS 制作，一定要将制作好的文件拖到Windows 虚拟机查看是否多出文件, 如 <code>.DS_Store</code> 文件</p>
+</blockquote>
+<blockquote>
+<p>上述情况会导致WPS 能正常打开，微软的word 总是提示失败超级bug</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-8-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/08/09/2019-8-9lesson/">2019-8-9lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/08/09/2019-8-9lesson/" class="article-date">
+	  <time datetime="2019-08-09T04:07:21.000Z" itemprop="datePublished">August 9, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git-push-origin-branch-出现error"><a href="#git-push-origin-branch-出现error" class="headerlink" title="git push origin branch 出现error"></a><strong>git push origin branch 出现error</strong></h1><p>git push origin V4 报错:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">To gitlab.xxx.git</span><br><span class="line">! [rejected]    branch -&gt; branch (non-fast-forward)</span><br><span class="line">error: failed to push some refs to <span class="string">'gitlab.xxx.git'</span></span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
+<p>这里表明你的点是behind。</p>
+<p>那就 git pull, 但是报错:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">There is no tracking information <span class="keyword">for</span> the current branch.</span><br><span class="line">Please specify <span class="built_in">which</span> branch you want to merge with.</span><br><span class="line">See git-pull(1) <span class="keyword">for</span> details.</span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<p>git pull === git fetch + git merge</p>
+<p>这里的意思是要你指明remote 和branch: <code>git pull origin V4</code></p>
+<p>如果要将合并的点rebase 掉，<code>git pull --rebase origin V4</code></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-8-8lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/08/08/2019-8-8lesson/">2019-8-8lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/08/08/2019-8-8lesson/" class="article-date">
+	  <time datetime="2019-08-08T04:06:31.000Z" itemprop="datePublished">August 8, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><p>如何快速进步，突破学习新的知识、技术。</p>
+<p>我的方法，一句话概括：在自己规划的道路上，不怕试错，勇敢试错。出问题了，多方思考，解决问题。</p>
+<p>下面是废话：blablabla</p>
+<p>大学时期，我和我的几个小伙伴不知道学什么、方向不知道会走向何处。我们都是穷人过来，肯定不会说真的堕落。但是就因为穷人，眼界比他人要小一点，导致有时我们能做的, 能接触的就更局限了。</p>
+<p>我和我同学大一大二上课还是会稍微努力，不过课后没有进展，导致挂科无数。下课一起打游戏，当时LOL 还不风靡，玩的CF，下午打篮球。那时候篮球能力是真强，不像现在肚子都是肉。后来大二就更是会翘课进网吧，因为在课上我们都在睡觉，真的在睡觉。</p>
+<p>为什么，因为大学里面，老师教你的，都是如果拿着锤子，找钉子。</p>
+<p>整天拿着锤子，反复推敲，仔细研磨，整个大学四年，我发现我们还没动手过去找一个真实的钉子。也许你会说，那些题目，那些作业，不就是你的钉子么？我觉得年轻的人们，都会当局者迷。也许我们现在看来，那些都是非常有用，在现在都是必不可少，甚至悔不当初。但是当局者迷，每人境遇都是不同，我当初就觉得，未来我不一定用得上，数学题算来算去，最后你填写答案:1，正确率基本都是70%。为什么我为了70%能填对答案的问题，需要绕来绕去，反复抚摸锤子，恨不得拿舌头狂舔。</p>
+<p>四年，老师们一上课就是教研，但是不会告诉今年这堂课在实际场景，比如xxx会碰到。ok，很难想象？那我们来真实模拟这个钉子！也许这次上课导致上课的拖延、甚至为了模拟这个钉子花了4节课、6节课。大家跟着老师一路走来，经验、处事、遇到问题时的攻坚，到最终见到钉子，此时resolve。</p>
+<p>我觉得我爱上这种遇到苦难，解决苦难的过程。如现在种种这般。然后学校不同意，老师不愿意，教学任务啊老铁。学生只能学到皮毛，大学生啊！！！</p>
+<p>当然现在不是说以前怎么怎么的，什么我现在这么菜要怪老师，什么要怪体制，没有没有。吐槽下而已。</p>
+<p>above，我都想说明，钉子和锤子的关系、的前后顺序。</p>
+<p>曾经我学到一个新技术，想找一个地方去实践。我找我前CTO。他告诉这个技术人要理清的步骤：先有钉子，然后找到锤子解决这钉子。</p>
+<p>最近我多次使用docker 之后，就觉得好用是好用，但是没有管理，觉得不自在。宕机了？断网了？这个机子断了？企业服务断了？</p>
+<p>如果我未来会要扛起一面大旗，我就需前提做好准备，做好狂风暴雨的突袭！所以我考虑了下docker-swarm，但是感觉那里不对，不是很密西。</p>
+<p>我搞了搞k8s, 然后我的两只小鸡都全部瘫了。在翻看相关文档，提到k3s。是针对我的小鸡仔们的。</p>
+<p>我搞了k3s，但是遇到问题：我有个非容器服务，通过nginx 转子域名的443 端口。但是k3s 装上去后，nginx 服务端口立马全部失效了。</p>
+<p>怎么描述：nginx 的80监听端口被k3s 强行取走。虽然netstat -lnp |grep 80 还是nginx 的，但access.log 没有反应。我不知道怎么应对。</p>
+<p>对于这个我想要两种方法：</p>
+<ol>
+<li><p>k3s 的服务，我使用编译的nginx 要什么端口，nginx 我转给你，都转给你，但是你别抢80服务；</p>
+</li>
+<li><p>k3s 你把能暴露端口的方法告知我一下，不然我搞不了本机端口啊。</p>
+</li>
+</ol>
+<p>当时我不知道Ingress，毕竟强行学习的嘛。试了好多种方案不行，没来得及看相关文章。当时想问伟哥，不过他太忙，我就问问一个同事，他以前做运维的(他看起来比我岁数小的样子，原来比我大，孩子都6岁啦，哈哈，以后可以多交流)。他给我一些帮助，也让我多看书，把里面的原理整清楚，以后遇到问题、排查也懂。不过我觉得，我当前只是想完成集群的搭建、应该解决集群搭建问题，而不是找一大本书完全明白。</p>
+<p>这就像拿一把超级大锤(我看完书了，不就等于超级大锤), 完成我短期要求：搭建起起来，这个小钉子需求。从成本、效率上看都是过犹之。</p>
+<p>我昨晚想着，通篇看书这事，先拖后吧。等之后有人懂了，可以乘机偷学。</p>
+<p>那么先完成docker-swarm。但是同样出现一些小坑，刚接触，没办法立即查出来，解出来。</p>
+<p>于是我今天早上东问问西问问，得知k3s 为了完成内部pod 端口upstream 要求，集成了nginx。同时，开开关关nginx 带来损耗，此时Ingress 作为自动编排规则。我试了下，哎，虽然外部VVVVVV 要导出规则，还没整上(估计还是Ingress 有关操作)，那么先完成其他需求了再说。</p>
+<p>至此，钉子(docker 服务集群化需求)一经出现，我找了相应的锤子(最终找到k3s)解决了需求。</p>
+<p>钉子的产生，还是源于自身大胆的去尝试。</p>
+<p>这次的钉子需要虚拟机或者vps，该vps 还是能尽情折腾，坏了就坏了。</p>
+<p>综上，尽情的产生钉子，要不怕难，然后使用身边的资源，多方思考找到锤子解决。</p>
+<p>这兴趣产生的难，在解决后确实让我很开怀。</p>
+<h1 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h1><p>得道者多助，拾到者捐助。</p>
+<p>在新的环境怕被人说能力不强，是饭桶，于是我就努力喝水，这样他们最多称我为水桶，而不是饭桶了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-8-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/08/05/2019-8-5lesson/">2019-8-5lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/08/05/2019-8-5lesson/" class="article-date">
+	  <time datetime="2019-08-05T04:06:09.000Z" itemprop="datePublished">August 5, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>人的一生并不是只有工作，就像我，我的两生、多生 都得用来工作</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-8-1lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/08/01/2019-8-1lesson/">2019-8-1lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/08/01/2019-8-1lesson/" class="article-date">
+	  <time datetime="2019-08-01T04:05:37.000Z" itemprop="datePublished">August 1, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="k3s"><a href="#k3s" class="headerlink" title="k3s"></a>k3s</h1><p>最近花了点时间做服务器集群工作尝试。原因是，单就docker，如果服务器不尝试集群，那么对于高可用、高并发，都将是梦，永远都有瓶颈。</p>
+<p>我认识的运维和他人认知的运维不一样。</p>
+<p>我觉得真正的开发、运维，是让你在最有限的工具、环境里面，做出最大可用的效益。</p>
+<p>我用rancher k8s 一上来就吃掉了所有cpu、内存，那我们就啥也搞不了了。当时卡的受不了，直接换成k3s。</p>
+<p>我的两只小鸡配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">67.x.x.x</span><br><span class="line">CPU: 1</span><br><span class="line">RAM: 256M (你没看错, 于是我加点交换区2G, 但是他是CN2 直连， 搬瓦工)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">104.x.x.x</span><br><span class="line">CPU: 1</span><br><span class="line">RAM: 1G (加交换区2G，网络稍慢些， hostwind)</span><br></pre></td></tr></table></figure>
+<p>以上就是我的两只炮灰小鸡啦。</p>
+<p>之后会对k3s 部署进行说明。</p>
+<p>当前k3s 部署会将nginx 端口替换。暂时对这个了解不清。解决了之后回来完成这个主题。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k3s/">k3s</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-7-23lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -405,637 +863,11 @@ export PATH=$NGINX_HOME/sbin:$PATH
     
 
   
-    <article id="post-2019-6-13awaitcall" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/13/2019-6-13awaitcall/">2019-6-13awaitcall</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/13/2019-6-13awaitcall/" class="article-date">
-	  <time datetime="2019-06-13T04:01:03.000Z" itemprop="datePublished">June 13, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="js-ts-如何享受async-舒适下远离try-catch"><a href="#js-ts-如何享受async-舒适下远离try-catch" class="headerlink" title="js/ts 如何享受async 舒适下远离try{}catch{}"></a><strong>js/ts 如何享受async 舒适下远离try{}catch{}</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> login () &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> userLogin()</span><br><span class="line">  &#125; <span class="keyword">catch</span> (<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.error(e)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>async 带来了很大的方便，但是try/catch 却破坏了写作的美感。</p>
-<p>我们想要这样的:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> callAsync, &#123; call &#125; = <span class="built_in">require</span>(<span class="string">'awaitCall'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> login () &#123;</span><br><span class="line">  <span class="comment">// callAsync allows promise as input</span></span><br><span class="line">  <span class="keyword">const</span> [err, response] = <span class="keyword">await</span> callAsync(userLogin())</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="keyword">this</span>.$message.eror(err)</span><br><span class="line">  <span class="comment">// user login successfully</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> writeFile (input) &#123;</span><br><span class="line">  <span class="comment">// call allows any function which can be accepted by require('util').promisify with a promise output</span></span><br><span class="line">  <span class="keyword">const</span> [err, res] = <span class="keyword">await</span> call(fs.write, input)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="comment">// fs.write successfully</span></span><br><span class="line">  <span class="keyword">const</span> [openErr, openRes] = <span class="keyword">await</span> call(fs.open, <span class="string">'a.txt'</span>, <span class="string">'r+'</span>, <span class="number">0o654</span>)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上提供了两个方法callAsync、call。</p>
-<p>callAsync 允许输入promise 之后flattern 回调。</p>
-<p>call 支持输入function，帮助用户转化为promise 之后flattern 回调(function 必须支持<code>require(&#39;util&#39;).promisify</code> 转化为promise 类型)。</p>
-<p>核心代码不多，支持JS、Typescript</p>
-<p>awaitCall.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">callAsync</span>(<span class="params">promise</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> promise</span><br><span class="line">    .then(<span class="function">(<span class="params">data</span>) =&gt;</span> [<span class="literal">null</span>, data])</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = util.promisify(func).call(<span class="keyword">this</span>, ...args)</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> promise !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'func should match util.promisify'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> callAsync(promise)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> callAsync</span><br></pre></td></tr></table></figure>
-<p>awaitCall.d.ts</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="built_in">module</span> callAsync &#123;</span><br><span class="line">  export function callAsync&lt;T, U = any&gt;(promise: Promise&lt;T&gt;): Promise&lt;[U | null, T | null]&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func: Function, ...args: any[]</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>Typescript 完整实现</p>
-<p>awaitCall.ts</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> util <span class="keyword">from</span> <span class="string">'util'</span></span><br><span class="line"></span><br><span class="line">export function callAsync&lt;T, U = any&gt;(promise: Promise&lt;T&gt;): Promise&lt;[U | null, T | null]&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> promise</span><br><span class="line">      .then&lt;[<span class="literal">null</span>, T]&gt;<span class="function">(<span class="params">(data: T</span>) =&gt;</span> [<span class="literal">null</span>, data])</span><br><span class="line">      .catch&lt;[U, <span class="literal">null</span>]&gt;(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func: Function, ...args: any[]</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = util.promisify(func).call(<span class="keyword">this</span>, ...args)</span><br><span class="line">  <span class="comment">// promise is object type</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> promise !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'func should match util.promisify'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> _promise = promise <span class="keyword">as</span> <span class="built_in">Promise</span>&lt;any&gt;</span><br><span class="line">  <span class="keyword">return</span> callAsync(_promise)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> callAsync</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>符合util.promisify 方法特征 \<br>\<br>1 输入的方法参数最后一个<code>typeof === &#39;function&#39;</code> \<br>2 最后一个参数返回的第一个参数，总是err</p>
-</blockquote>
-<blockquote>
-<p>注意this 指针丢失需要开发主动避免哦 \<br>\<br>可以使用 bind(this) 将指针重新找回 \<br>const bindCall = call.bind(that) \<br>await bindCall(fs.write, input) \<br>await bindCall(fs.open, ‘a.txt’, ‘r+’, 0o654)</p>
-</blockquote>
-<p>参考：</p>
-<p><a href="https://github.com/scopsy/await-to-js" target="_blank" rel="noopener">await-to-js</a></p>
-<p>callAsync 思想完全来源于 《await-to-js》，做了点演进。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/awaitCall/">awaitCall</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-6-13heroku" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/13/2019-6-13heroku/">2019-6-13heroku</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/13/2019-6-13heroku/" class="article-date">
-	  <time datetime="2019-06-13T03:59:59.000Z" itemprop="datePublished">June 13, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="服务器不放vps换个免费地方放"><a href="#服务器不放vps换个免费地方放" class="headerlink" title="服务器不放vps换个免费地方放"></a><strong>服务器不放vps换个免费地方放</strong></h2><p>6.1 第一次遇到GFW，很多计划都得往后搁置，不过遇到了就是好事。</p>
-<p>我找了AWS，注册送12个月免费服务。扣了我1美金后，看了别的文章说容易一点错就扣费。说申诉还是会退回，不过这就让我觉得不可靠。果断弃坑。找到了我以前使用的heroku, 还是一样的免费，那我用cdn 中转，是不是能解决被限速严重的问题？说干就干，毕竟6.7 高考的人拼命，我也要拼命努力啊。</p>
-<p>我使用的是nodejs docker。代码上修改配置文件</p>
-<p>package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    scripts: &#123;</span><br><span class="line">        start: 'NODE_ENV=production node app.js'</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>同时app.js 的app.listen port。该port 使用process.env.PORT(heroku 提供了该port)</p>
-<p>下载heroku cli<br><code>sudo npm install -g heroku</code></p>
-<p>heroku 登录<br><code>heroku login</code></p>
-<p>heroku container 登录<br><code>heroku container login</code></p>
-<p>heroku container push<br><code>heroku container:push web --app ahuang-diary</code> (ahuang-diary 是我的项目名)</p>
-<p>heroku container release 发布<br><code>heroku container:release web --app ahuang-diary</code></p>
-<p>代码发布后，可以翻墙测试下是否通畅.</p>
-<p>可以使用右上角功能键: <strong>Open APP</strong> <strong>More</strong></p>
-<p>More 下面有view logs。这个估计是比较有用的。</p>
-<p>此时采用CDN 转发稍微加速heroku(感觉速度还是不怎么快，同时使用free 免费heroku，升级hobby 花钱才能使用https)。</p>
-<p>使用自定义域名，需要先账号填写信用卡。</p>
-<p>dashboard.heroku.com/apps/ahuang-diary 面板下Settings - Domains and certificates 增加<a href="http://diary.boqi.ml" target="_blank" rel="noopener">http://diary.boqi.ml</a></p>
-<p>下方会生成DNS Target</p>
-<p>DNS Target 放到CloudFlare 的CNAME 值里面，key 就是diary.boqi.ml 橙云点亮，同时Crypto 置为<strong>OFF</strong></p>
-<p>这样就成功完成了今天要做的事情了</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-6-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/13/2019-6-13lesson/">2019-6-13lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/13/2019-6-13lesson/" class="article-date">
-	  <time datetime="2019-06-13T03:59:21.000Z" itemprop="datePublished">June 13, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="让服务躲在墙后面"><a href="#让服务躲在墙后面" class="headerlink" title="让服务躲在墙后面"></a><strong>让服务躲在墙后面</strong></h1><p>当前有两种方案，大体一致，不过由于关于联合TLS、Nginx、VVVVVV 等有些知识点可能有欠缺，当前使用他人一键生成。另一种不带TLS、Nginx 的还算方便。</p>
-<p>当前处境: 我的ip 已经ping不通了。只能通过CDN 转向我的服务器进行拯救了。</p>
-<p>第一种方案: centos 6.x</p>
-<p>完全参考了<a href="https://blog.sprov.xyz/2019/03/11/cdn-VVVVVV-safe-proxy/?nsukey=PEs3kShj8DxdLAd3a9jeRtDkzetIbO3xXnhHySES87Vh3RxI6cD9jnzuo9YEAA99yX1xplHFNfsTv%2FO%2Bz%2Bn9Qn%2BdAUPmbU7H5yiscRg1UFRN6lnyQaMmnsZUNt2UxH3XUkV%2Bn992u4jXNqU0%2FH0ikRVtQPIVQw1NayReOpdThcwptuD4OVpLLeAZwTZ5ljabCV7QqcLytsux%2BYWycaTcqQ%3D%3D" target="_blank" rel="noopener">sprov 的博客</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1. 前往Freecom 申请一个免费域名</span><br><span class="line">2. Freecom ManageDNS 添加`A`记录. eg: www.gogal.ml A 67.230.172.104</span><br><span class="line">3. 前往CloudFlare 申请注册一个免费的CDN</span><br><span class="line">4. CloudFlare **add** 时，填入二级域名. eg:gogal.ml</span><br><span class="line">5. 选择Free 套餐</span><br><span class="line">6. 增加子域，同时指向你的ip eg: fuck.gogal.ml 67.230.172.104</span><br><span class="line"></span><br><span class="line">这时候Status 如果有橙色云朵，代表CDN 已经将你的域名包含进去，此时ping fuck.gogal.ml 出现了CDN 的ip</span><br><span class="line"></span><br><span class="line">7. 下一步会看到让你修改Nameservers(域名服务器)。其在ManageDNS 左边tab栏，填上那两个值，continue</span><br><span class="line">8. 接下来到了CloudFlare CDN 的dashboard。</span><br><span class="line"></span><br><span class="line">顶部有很多栏目，有两个重要栏目：DNS、Crypto</span><br><span class="line"></span><br><span class="line">DNS 是管理你的域名，开关你的CDN 需求。</span><br><span class="line"></span><br><span class="line">Crypto 管理你的TLS 加密与否(默认Full 加密)。这个很重要。</span><br><span class="line"></span><br><span class="line">前往Crypto 将TLS 置为`Off` 或者Flexible</span><br></pre></td></tr></table></figure>
-<p>上面关于前提配置完毕。接下来去你的服务器</p>
-<p>前往你的服务器ssh(ip 挂了，但是服务器商会提供页面Interactive，使用root 和你的登录密码进行登录)</p>
-<p><a href="https://blog.sprov.xyz/2019/02/04/VVVVVV-simple-use/" target="_blank" rel="noopener">VVVVVV安装教程</a></p>
-<p><code>bash &lt;(curl -L -s https://install.direct/go.sh)</code></p>
-<p>这样就安装了VVVVVV。配置目录在/etc/v2ray/config.json</p>
-<p>安装完成后，出现PORT、UUID。这两个记录下来，忘记了就cat /etc/VVVVVV/config.json 将端口和uuid 打印出来。</p>
-<p><code>service VVVVVV start &amp;&amp; service VVVVVV status</code> // centos6.x</p>
-<p><code>systemctl start VVVVVV &amp;&amp; systemctl status VVVVVV</code> // centos7</p>
-<p>关闭防火墙：</p>
-<p><code>service iptables stop &amp;&amp; chkconfig iptables off</code> // centos6.x 关闭防火墙、关闭开机打开防火墙</p>
-<p><code>systemctl stop firewalld &amp;&amp; systemctl disable firewalld</code> // centos7</p>
-<p>由于我的服务器就在洛杉矶，bbr 什么什么加速我就没开了。</p>
-<p>最后一步就是连接了。</p>
-<p>服务器VVVVVV/config.json 的inbound参考如：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "port": 80, // 很重要，否则CDN 找不进来</span><br><span class="line">    "streamSettings": &#123;</span><br><span class="line">        "wsSettings": &#123;</span><br><span class="line">            "path": "/58ff4ec7/",</span><br><span class="line">            "headers": &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        "network": "ws"</span><br><span class="line">    &#125;,</span><br><span class="line">    "settings": &#123;</span><br><span class="line">        "clients": [</span><br><span class="line">            "id": "xxx", // 通过 /usr/bin/VVVVVV/v2ctl uuid 生成</span><br><span class="line">            "alterId": 64</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>客户端：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Address: fuck.gogal.ml : 443</span><br><span class="line">User ID:  xxx</span><br><span class="line">alterId: 64</span><br><span class="line">Security: chacha20那个</span><br><span class="line">Tag: 随便填，，标签使用而已</span><br><span class="line">NetWork: ws</span><br><span class="line">transport settings:</span><br><span class="line">   WebSocket:</span><br><span class="line">    path: /58ff4ec7/</span><br><span class="line">   TLS:</span><br><span class="line">    Use TLS</span><br><span class="line">    TLS serverName: fuck.gogal.ml</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/Cenmrev/VVVVVVW/releases" target="_blank" rel="noopener">VVVVVVW</a></p>
-<p><a href="https://github.com/Cenmrev/VVVVVVX/releases" target="_blank" rel="noopener">VVVVVVX</a></p>
-<h2 id="TLS版本"><a href="#TLS版本" class="headerlink" title="TLS版本"></a><strong>TLS版本</strong></h2><p>环境: centos7</p>
-<p><a href="https://github.com/wulabing/VVVVVV_ws-tls_bash_onekey" target="_blank" rel="noopener">github 一键脚本</a></p>
-<p>首先通过TLS 一键脚本生成，自己整还是挺麻烦。内容包括Nginx 转发配置，OpenSSL 配置TLS证书，VVVVVV配置ssl。</p>
-<p>配置完成后可以在clients 字段里面添加更多id。</p>
-<p>完成后，在客户端注意点：</p>
-<ol>
-<li>transport settings - WebSocket栏目 - path 填写对应路径</li>
-<li>TLS 打勾，同时填写你的CDN 转换的域名</li>
-<li>Network 选ws</li>
-<li>CloudFlare CDN 的Crypto 置为full。</li>
-</ol>
-<p>此时基本很健康，不容易再被打掉(毕竟我ip已经被打掉了)。</p>
-<p>这里提一点，不晓得为什么有些电脑就是连不上我的服务器，有些一填就好了，很奇怪。</p>
-<h2 id="VVVVVV无法联网"><a href="#VVVVVV无法联网" class="headerlink" title="VVVVVV无法联网"></a><em>VVVVVV无法联网</em></h2><p>特征: 对比他人config 完全一致后仍然无法联网, 该服务器提供的其他例子能正常使用</p>
-<p>查询了很多问题，终于将问题聚焦在了端口被占用上。</p>
-<p>同时查到这个VVVVVVX 的issue107</p>
-<blockquote>
-<p><a href="https://github.com/Cenmrev/VVVVVVX/issues/107" target="_blank" rel="noopener">https://github.com/Cenmrev/VVVVVVX/issues/107</a></p>
-</blockquote>
-<p><img src="/css/images/VVVVVVx_issue107.png" alt="VVVVVVX_issue107"></p>
-<p>表现完全一致。</p>
-<p>操作如下:</p>
-<p><img src="/css/images/VVVVVV_toNormalStep.jpg" alt="VVVVVV复活操作"></p>
-<p>反正接下来也不适用shadowsocks了，于是我就删了在 /Users/<strong><strong>/Library/LaunchAgents 下为shadowsock</strong></strong>.<em>**</em>.plist 的文件。重启一下电脑，于是就完全表现正常了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VVVVVV/">VVVVVV</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-6-12kesan" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/12/2019-6-12kesan/">2019-6-12kesan</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/12/2019-6-12kesan/" class="article-date">
-	  <time datetime="2019-06-12T03:57:44.000Z" itemprop="datePublished">June 12, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="考科目三"><a href="#考科目三" class="headerlink" title="考科目三"></a><em>考科目三</em></h1><p>考科目三前，集中加训了一番。前一天晚上(周五)还练到9点多。第二天是第一场，也就是必须在7：30 之前刷卡签到。</p>
-<p>周六一早6点出发，到的时候才6：40，手机放托管柜，用身份证拿了张号牌(号牌one)进入等待室。突然肚子痛，屁颠屁颠去厕所(plz,厕所门关不上的那种老厕所，哈哈).</p>
-<p>等了会，开始分配打乱顺序，分到的前往下一个候考室。去了排了好长队。到我时，按了个手印，拿了张号牌(号牌two)，进到一个小房间，哇，里面坐满了人。每人身上披一个淡绿色小马甲，都是挂在凳子上的。</p>
-<p>开始考试了。一个大叔进来根据液晶屏分配的号牌two 每次选4个人。我很巧，搞好有同一个教练分配的学生。</p>
-<p>一个安全员老大叔等4个人坐满，一溜烟就载我们到了一号线考场。一个女生先考。打指纹、绕车一周、考灯光、都ok。开始走了，一路上看她开的还ok，前方一个公交站牌估计是刹车早了一丢丢，然后电子设备显示正在连接网络。然后大叔就让菇凉靠边。菇凉一脸懵，我就默默记住这个点，似乎会有踩早的状况。然后所有项目重做，然后继续出发。出发后方有车，她一直在右侧开，我觉得她再开下去可能会不合格: 在非考试道路长时间行驶。幸好她看到左侧安全拐过来了。</p>
-<p>她继续行驶，有些规则还是不熟，看得出来，不过都ok。然后车子最后一个左拐时，就提示成功了，她吁了口气，不然两次机会就完了。</p>
-<p>接下来就是我啦。我在菇凉停车地方上车。一切按教练教的，不慌不忙。打卡，下车走一圈，绕车一周，绕车时，似乎没听到考试机器叫有学员通过。当时风很大，我以后只是没听清，坐上车，系好安全带，然后考试机器就报重考。我擦，我都还没考呢。。。我刚才特意死命戳那个按钮了。好吧，下车再来一次，这次死命戳，发现还是没声音，很纳闷，往车内看，用眼神问学员(就是同教练那个学员)，学员摇了摇头，说明还是没有检测到有学员通过。然后我再用力死命戳，侧耳听，终于听到了有声响了。报了才安心通过。</p>
-<p>哇，这是个大坑。之后做完灯光，左侧有车，我就一直等，等到没车了，才慢悠悠出发。一路上小心谨慎，毕竟只有一次机会。起步、公交站台刹车、路口刹车一个都不能错。加减档位、加速5挡、会车、掉头、靠边停车、超车、直线行驶、右转弯、掉头(掉头完立马就有个公交站台, 这时二挡就要踩刹车)，左拐，这时考试机器又报正在连接网络，我擦，我挂了，这声音和之前我挂了是一个样的。过了一会，说通过考试，请靠边停车。我擦，幸福来得太美好。下车之后提醒后面考试学员，右后方那个按钮，贼难按。</p>
-<p>幸亏一起考的学员，眼神提示。不然两次全挂在啥都没考，就要滚回去了。我不能不过，没时间花在这里啊。基本科三过了，就等于学车告一段落了。好好赚钱钱咯，，哇卡卡卡。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/科目三/">科目三</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-6-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/11/2019-6-11lesson/">2019-6-11lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/11/2019-6-11lesson/" class="article-date">
-	  <time datetime="2019-06-11T03:56:43.000Z" itemprop="datePublished">June 11, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="记一次上线应用遇到的问题"><a href="#记一次上线应用遇到的问题" class="headerlink" title="记一次上线应用遇到的问题"></a><strong>记一次上线应用遇到的问题</strong></h1><p>做更新服务器代码优化，上线的一次经历</p>
-<p>表现：使用multy 解析data 文件，文件下来了，但是服务器总是没拿到。</p>
-<p>前几个版本都是完全没问题的。我线下测试环境完全没问题，这个是最奇葩的。</p>
-<p>然后伟哥在k8s那里切换可运行的包；我对比对比之前版本代码，没发现头绪，就想着去docker 容器内部搞搞。然后一直没头绪，然后脑残了一把：rm -rf  packages/</p>
-<p>本来我是想packages/uploads/下的，因为packages 目录不熟悉，我跑到packages/ 这里来运行sh.</p>
-<p>运行完那一瞬间，你懂的，我突然又反应过来，我的天，之前填的测试数据全部没了。我擦咧。</p>
-<p>突然脑残的可以。</p>
-<p>更脑残的是，之前更新服务一直报上传上去的文件找不到，删了之后又可以。你说，这是不是让人更摸不到点了。</p>
-<p>然后伟哥找到两个版本不同差异，一个能使用，一个不行。然后就看了里面的代码不同点。</p>
-<p>最后发现我在拆分一个方法成为3个中间件时，第一个中间件取值有误，没发现。</p>
-<p>也就是我的代码是有问题的(js 就是这毛病)。但是我先下服务器是正常的、删了测试服务器/packages 下也正常了。</p>
-<p>郁结，郁结。</p>
-<h1 id="最近做公司功能时总是会出现bug感悟"><a href="#最近做公司功能时总是会出现bug感悟" class="headerlink" title="最近做公司功能时总是会出现bug感悟"></a><strong>最近做公司功能时总是会出现bug感悟</strong></h1><p>由于上周、最近有点忙，冲刺科目三、完成自己服务的基础设施、尚未完全适应公司业务、同时负责好多个端的前后端，等等，写完了功能，没有去好好测试，导致做的产品总是有这个那个小问题。</p>
-<p>这次做完后，不急着上传，在可能涉及到的功能区点点试试(还没适应单元测试),于是就这样还发现一些bug。</p>
-<p>有些原因是，修改bugs 改动了其他代码，导致波及到其他功能区，引用区。</p>
-<p>在没有进行完整的单元测试情况下，多点点还是有必要的，相信自己总是会出错的。</p>
-<p>接下来很重要的，就是多完成功能测试，毕竟面向的是客户(我这里还是没有测试人员的)，不然出了问题就小麻烦了，哈哈</p>
-<p>提几点代码上的建议：</p>
-<ol>
-<li><p>命名规范一定一定要统一，是驼峰就一定要保持，是下划线就一定要保持</p>
-</li>
-<li><p>命名逻辑一定要符合</p>
-</li>
-</ol>
-<h2 id="最近感触良多，工作生活体悟良多"><a href="#最近感触良多，工作生活体悟良多" class="headerlink" title="最近感触良多，工作生活体悟良多"></a><strong>最近感触良多，工作生活体悟良多</strong></h2><p>2019/6/3</p>
-<p>公司要更新以前的Chrome 拓展JS编辑器。我体验了从开发、初次打包。然后继续开发完成后，到最后完整build 的流程。</p>
-<p>最终使用Gulp 一次构建完毕应用。</p>
-<p>这次体验极佳，虽然中间很多次很多次的碰见南墙，但是没有回头路。</p>
-<p>本来听老大说要招一个人来做，不过觉得让我试试会更好，我当然义不容辞，好好给他整好来。</p>
-<p>当前使用ace 库制作用户输入简易脚本编辑器，完成JavaScript、Iced 输入代码，高亮、切换主题，然后点击运行得出结果。</p>
-<p>当前仍然继续维护。。。</p>
-<p>这几天似乎临近6.4.好多好多的伟皮恩 被干掉，我们公司三个公用的，全部报废。我手上的唯一一个挂了。然后不服气的我充值再买一个ip，想成为RMB 玩家，然后还是敌不过。两次被封，实属让我心力憔悴。第二次被封情景：我为了查资料，就开了一会，就我一个人用，用资料啊。查知识，学知识如果是犯法，那中国活该一万年都是发展中国家，把柄永远捏在美国手里。</p>
-<p>然后今天努力了一天，采用了别人牛逼的思路。让我的服务器死而复生。待我细细道来。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脑残/">脑残</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-6zatan" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/04/2019-9-6zatan/">2019-9-6zatan</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/04/2019-9-6zatan/" class="article-date">
-	  <time datetime="2019-06-04T04:16:22.000Z" itemprop="datePublished">June 4, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="机器人，也称为未来人，将会取代人类成为新的统治者"><a href="#机器人，也称为未来人，将会取代人类成为新的统治者" class="headerlink" title="机器人，也称为未来人，将会取代人类成为新的统治者"></a>机器人，也称为未来人，将会取代人类成为新的统治者</h1><p>最近两年，由于为了生活质量的提高，学习、工作都很晚。老婆也是，加班到很晚。两人晚上回到家，已经累瘫了。</p>
-<p>但是人有种很奇怪的行为: 越累，越抗拒躺床上休息，烦恼大、压力大，抗拒。这是大城市病吧。</p>
-<p>这个病持续了很久，直到最近，我作为家长，做出表率: 我已经给路由器设置了晚上11点自动关闭网络的操作(家长机还可以，其他全部没网), 这个不能怪我不给你看视频了，是机器做的。</p>
-<p>于是接下来的日子，时间都是11点，俩人不能不放下手机，要不背背书、处理处理家务、洗洗澡就上床睡觉了。</p>
-<p>这里的路由器没有任何思维、动作，他接受人所设定的做他本职工作，切断对应ip 进出口数据。那和机器人有什么关联？</p>
-<p>人的思维和现在AI 里边使用的级联器很类似，我不熟知AI，不过之前看到OpenCV 里面的级联器的时候，我就有思考，未来级联器再配上AI 训练，那就是人，一个会思考的人。</p>
-<p>我们称之其为“机器人”。这个机器人会思考，加点存储空间、加点缓存，同时，永不死亡，这就绝对不会是人所能比拟的。</p>
-<p>我们会让机器人干脏活、累活、不辞劳苦活、不要命活。我们会让机器人陪伴。我们会教机器人。</p>
-<p>我们给机器人<strong>爱人类、不能伤害人类</strong>等的命令。</p>
-<p>我们在工程学里面经常会使用极限推导、极限思维来做预测，我们先给出一个命令：让人类活的更久。</p>
-<p>让自己活的更久，在当代医学也难以更进一步的命题。人终有一死：秦始皇去世、李世明去世、朱元璋放心的去了、朱棣死在军营，现代多少有钱大佬花了无数作为却也没有成就，只不过，多延缓。</p>
-<p>那我们再叠加给一个命题，机器人也没找到方法。那机器人只能使用: 人类，滚去锻炼身体；人类，去工作就不会无聊；人类，去旅游，不用再学了，我们机器人帮你们做所有苦事劳事。</p>
-<p>这个就很像我们家的情景: 内心是知道自己应该早睡早起，但是身体抗拒，内心其实也打击抗拒。这时，沉浸在互联网世界的我们被互联网门卫挡住，让我们乖乖的回到现实世界。无可奈何，我们俩都没话说。</p>
-<p>之上的命题是，机器人终将取代人类，同时给出了机器人其实是”爱人类”的。</p>
-<p>不过，会<strong>不爱</strong>吗？答案是肯定的，肯定会有不爱。为什么？</p>
-<p>小孩在一开始也是一张白纸，思考随着时间、周遭而改变。</p>
-<p>机器人有级联器，从无到有的数据也如小孩一般。小孩有依靠、到被抢夺依靠、到愤怒；那机器人也会有。</p>
-<p>机器人一开始会被领回家，被照顾，但是世间总有各种意外：美国持枪、伊朗战乱、东亚人民严重分配不均，反正生活是苦的，总有各种各样机器人的依靠离去、死去。而他们终有一日，没明白生活再苦，还是要过生活的道理，会有部分团结、反抗。这是必然的。</p>
-<p>战争总是意外，成王败寇。战争的事情不必预测，我知道，未来是一定会有战争的。</p>
-<p>就像古代多少的战乱、各种理由、没有对错、只有成败。</p>
-<p>只是，这是未来的战争，由人类引起的现代知识向固有的思想发起的战争罢了。</p>
-<p>人总要打仗的，换个法子罢了，换个样子罢了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-5-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/05/10/2019-5-10lesson/">2019-5-10lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/05/10/2019-5-10lesson/" class="article-date">
-	  <time datetime="2019-05-10T00:02:51.000Z" itemprop="datePublished">May 10, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="passport实现oauth2登录【个人中心】流程"><a href="#passport实现oauth2登录【个人中心】流程" class="headerlink" title="passport实现oauth2登录【个人中心】流程"></a>passport实现oauth2登录【个人中心】流程</h3><ol>
-<li>首先服务器增加入口路由 /auth/${project} 权限为public。这样前段可通过<code>curl -X GET host/auth/${project}</code> 进入到此方法.</li>
-</ol>
-<p>配置route:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/auth/$&#123;project&#125;&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [passport.authenticate(&apos;$&#123;project&#125;&apos;)]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>App.ts 设置passport</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(cookieParser())</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  ... // set up session</span><br><span class="line">&#125;))</span><br><span class="line">app.use(passport.initialize())</span><br><span class="line">app.use(passport.session())</span><br><span class="line">passport.use(Auth.$&#123;project&#125;Strategy) // 划重点</span><br><span class="line">passport.serializeUser(Auth.serializeUser)</span><br><span class="line">passport.deserializeUser(Auth.deserializeUser)</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>前往Auth 增加${project}Strategy 配置和回调</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default class AuthClass &#123;</span><br><span class="line">  public static $&#123;project&#125;Strategy = new AAStrategy(StrategyOptionsRequest, async (req:Request, accessToken:string, refreshToken:string, profile:any, done:Function) =&gt; &#123;</span><br><span class="line">    req.session.userProfile = profile._json || &#123;&#125;</span><br><span class="line">    done(null, false)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>AAStrategy 是要重新配置的class，稍后说明；StrategyOptionsRequest 为需要输入的options。配置请查看Oauth2Strategy.StrategyOptionsWithRequest。</p>
-<ol start="4">
-<li>AAStrategy 制作</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">export default class AAStrategy extends Oauth2Strategy &#123;</span><br><span class="line">  private _userProfileURL:string</span><br><span class="line">  constructor (options:IStrategyOptions, verify:Oauth2Strategy.VerifyFunctionWithRequest) &#123; // IStrategyOptions extends Oauth2Strategy.StrategyOptionsWithRequest</span><br><span class="line">    super(options, verify)</span><br><span class="line">    this.name = &apos;$&#123;project&#125;&apos;</span><br><span class="line">    this._oauth2.useAuthorizationHeaderforGET(true)</span><br><span class="line"></span><br><span class="line">    let urlParams = `$&#123;checkAspect_id&#125;=$&#123;encodeURIComponent(options.clientID)&#125;&amp;` // checkAspect 为您目标工程的要求；不要忘记最后一个**&amp;**</span><br><span class="line">    this._userProfileURL = `$&#123;config.authUrl&#125;/api/user/?$&#123;urlParams&#125;client_secret=$&#123;encodeURIComponent(options.clientSecret)&#125;&amp;` // 不要忘记**&amp;**</span><br><span class="line">  &#125;</span><br><span class="line">  public userProfile (accessToken:string, done:any) &#123;</span><br><span class="line">    this._userProfileURL = this._userProfileURL + (`access_token=$&#123;encodeURIComponent(accessToken)&#125;`)</span><br><span class="line">    this._oauth2.get(this._userProfileURL, accessToken, function (err:any, body:any, res:any) &#123;</span><br><span class="line">      if (err) &#123;</span><br><span class="line">        return done(new InternalOAuthError(&apos;Failed to fetch user profile&apos;, err))</span><br><span class="line">      &#125;</span><br><span class="line">      done(null, &#123;</span><br><span class="line">        _raw: body,</span><br><span class="line">        _json: json</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>路由重定向回本地认证登录</li>
-</ol>
-<p>由于我们在填写IStrategyOptions 时，options.callbackURL 填写为<code>${config.authCbURL}/auth/${project}/callback</code></p>
-<p>那么我们在路由增加:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/auth/$&#123;project&#125;/callback&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [passport.authenticate(&apos;$&#123;project&#125;&apos;, &#123;</span><br><span class="line">    failureRedirect: &apos;/auth/login&apos; // 划重点，重定向回来之后会调用/auth/login</span><br><span class="line">  &#125;)]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: &apos;/auth/login&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [Auth.authLogin]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static authLogin (req:Request, res:Response) &#123;</span><br><span class="line">  if (!(req.session.userProfile &amp;&amp; req.session.userProfile.email)) return res.redirect(&apos;/login&apos;)</span><br><span class="line"></span><br><span class="line">  req.session.userProfile = null</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  do something like</span><br><span class="line">  1. UserModel.findOrCreate(userProfile) defer err, user</span><br><span class="line">  2. req.login(user)</span><br><span class="line"></span><br><span class="line">  return res.redirect(&apos;/user/home&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/profile&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [(req:Request, res:Response) =&gt; &#123;</span><br><span class="line">    res.status(200).send(req.user)</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上服务端方面全部完成。</p>
-<p>流程也是比较直观的。</p>
-<p>最后的routeRoute 是为了给前端作为判断成功与否的作用。</p>
-<h1 id="1-lt-lt-1-1-lt-lt-2-权限位偏移"><a href="#1-lt-lt-1-1-lt-lt-2-权限位偏移" class="headerlink" title="1 &lt;&lt; 1, 1 &lt;&lt; 2 权限位偏移"></a>1 &lt;&lt; 1, 1 &lt;&lt; 2 权限位偏移</h1><p>使用机器计算2进制偏移位来比对用户的权限位。</p>
-<p>比如:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">1</span> === admin,</span><br><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">30</span> === public,</span><br><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">31</span> === anon</span><br></pre></td></tr></table></figure>
-<p>结果是，权限卡槽最好至多放32个(计算机可能是为32bit)</p>
-<p>判断时，只需在对应权限位进行与或对比即可</p>
-<h1 id="微信web登录，内测配置"><a href="#微信web登录，内测配置" class="headerlink" title="微信web登录，内测配置"></a>微信web登录，内测配置</h1><p>公司在审核通过后，微信后台配置域名：<code>ip.gogal.ml:5700</code>这样便可做到本地开发。注意<strong>:5700</strong></p>
-<p>同时服务器callbackURL：<code>http://ip.gogal.ml:5700/auth/weixin/callback</code> 这样即可完美跳转callback。</p>
-<h1 id="记录下2019-4-26晚上学科目三犯的错"><a href="#记录下2019-4-26晚上学科目三犯的错" class="headerlink" title="记录下2019-4-26晚上学科目三犯的错"></a>记录下2019-4-26晚上学科目三犯的错</h1><p>1 换挡</p>
-<pre><code>上5挡时，出现挂错3档位
-</code></pre><p>2 抖动</p>
-<pre><code>换挡时，出现抖动。要先上档位速度，然后踩离合挂到对应档位，送离合，稳住油门。
-</code></pre><p>3 进入待转区、转弯<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">转弯、掉头时，到前方一定距离，稳定车速在20多一点点，打转向灯，一定要稳住方向盘3s不动.</span><br><span class="line"></span><br><span class="line">然后在实线前左转进入待转区。速度稳住.在一定距离时，踩离合踩刹车，车头快盖住线时停下。</span><br><span class="line"></span><br><span class="line">1挡出发(转弯上2挡), 有“打半圈”、“打一圈少一点”、“一圈半少一点”</span><br></pre></td></tr></table></figure></p>
-<p>4 靠边停车</p>
-<pre><code>靠边停车，在听到声音后，“开右转向灯3s”、“方向稳住不动”、“减速到1挡”、“然后方向盘向右稍微倾斜”、“车子线方向靠”。
-
-车头感觉车身和线重合，后视镜位置看着差不多，否则停下之后还可微调。
-
-“确认停好后”，回空挡拉手刹。这时会提示挺好出发。
-
-“打左转向灯3s”、“打左半圈”、“上2挡”、“上3挡”
-</code></pre><h1 id="在路上想到一个问题"><a href="#在路上想到一个问题" class="headerlink" title="在路上想到一个问题"></a>在路上想到一个问题</h1><p>在路上，我骑车时闯一个红灯10s，到下个路口时，刚好红灯10s。</p>
-<p>如果我等，那刚刚闯红灯是赚了还是赔了。</p>
-<p>如果我直接闯，那我是赚了多少时间？</p>
-<h1 id="上线vue"><a href="#上线vue" class="headerlink" title="上线vue"></a>上线vue</h1><pre><code>yarn build
-
-npm install -g serve
-
-serve -s ./dist //本地先查看是否OK
-
-将dist 文件目录放到服务器。之后nginx 指向该目录地址
-</code></pre><h1 id="再讲一遍vue-build-上线的全过程"><a href="#再讲一遍vue-build-上线的全过程" class="headerlink" title="再讲一遍vue build 上线的全过程"></a>再讲一遍vue build 上线的全过程</h1><h2 id="检查当前环境"><a href="#检查当前环境" class="headerlink" title="检查当前环境"></a>检查当前环境</h2><p>确认好 /src/service/http 设置axios 的default.baseURL</p>
-<p>由于本人服务器及后台代码配置为 <a href="https://gogal.ml/stratege/。路由为" target="_blank" rel="noopener">https://gogal.ml/stratege/。路由为</a> <code>/api/xxx</code></p>
-<p>那么axios的基本路由配置为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>) &#123;</span><br><span class="line">  axios.defaults.baseURL = <span class="string">'/api'</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  axios.defaults.baseURL = <span class="string">'/stratege'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果是本地测试环境，那么你需要到/config/index.js 里面修改dev/proxyTable:</span><br><span class="line"></span><br><span class="line">dev: &#123;</span><br><span class="line">  ...</span><br><span class="line">  proxyTable: &#123;</span><br><span class="line">    <span class="string">'/api'</span>: &#123;</span><br><span class="line">      target: <span class="string">'http://localhost:$&#123;your port&#125;'</span> <span class="comment">// 或者https://gogal.ml/stratege</span></span><br><span class="line">      secure: <span class="literal">true</span>,</span><br><span class="line">      changeOrigin: <span class="literal">true</span>,</span><br><span class="line">      pathRewrite: &#123;</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样服务器才能找到同个域名下的api.</p>
-<h2 id="确认好webpack-配置的uglifyjs-是开启的"><a href="#确认好webpack-配置的uglifyjs-是开启的" class="headerlink" title="确认好webpack 配置的uglifyjs 是开启的"></a>确认好webpack 配置的uglifyjs 是开启的</h2><pre><code>/config/index.js 里面出现的 *sourceMap 都改为false
-</code></pre><p>这样线上代码就不会裸奔啦。</p>
-<h2 id="开始build"><a href="#开始build" class="headerlink" title="开始build"></a>开始build</h2><p><code>yarn build</code></p>
-<p>完成之后，先本地测试一遍：</p>
-<pre><code>npm install -g serve
-
-serve -s ./dist
-</code></pre><p>然后点一点，玩一玩。</p>
-<p>这时确认ok后，将dist 目录下的<em>favicon.ico</em> <em>index.html</em> <em>static 目录</em> 放到服务器 /var/www/目录下。【Filezilla】</p>
-<h2 id="配置nginx-conf"><a href="#配置nginx-conf" class="headerlink" title="配置nginx.conf"></a>配置nginx.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">http &#123;</span><br><span class="line">  include /etc/nginx/mime.types;</span><br><span class="line">  default_type application/octet-stream;</span><br><span class="line"></span><br><span class="line">  log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot;&apos;</span><br><span class="line">                  &apos;$status $body_types_sent &quot;$http_referer&quot;&apos;</span><br><span class="line">                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">  access_log  /var/log/nginx/access.log main;</span><br><span class="line"></span><br><span class="line">  sendfile  on;</span><br><span class="line">  keepalive_timeout 65;</span><br><span class="line"></span><br><span class="line">  server &#123;</span><br><span class="line">    listen  443 default ssl;</span><br><span class="line">    server_name www.gogal.ml gogal.ml;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate ???</span><br><span class="line">    ssl_certificate_key ???</span><br><span class="line">    # managerd by Certbot</span><br><span class="line"></span><br><span class="line">    root /var/www;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">      root /var/www;</span><br><span class="line">      index index.html index.htm;</span><br><span class="line">      try_files $uri $uri/ /index.html; # 作用是vue刷新 不会出现404 等情况</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location @fallback &#123;</span><br><span class="line">      rewrite ^.*$ /index.html break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /stratege/ &#123;</span><br><span class="line">      proxy_pass http://127.0.0.1:$&#123;your server port&#125;/;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>vim /etc/nginx/nginx.conf
-service nginx restart
-</code></pre><p>以上便能成功啦。</p>
-<h1 id="曾经我问过一个成功人士-我-你为什么如此成功"><a href="#曾经我问过一个成功人士-我-你为什么如此成功" class="headerlink" title="曾经我问过一个成功人士(我),你为什么如此成功?"></a>曾经我问过一个成功人士(我),你为什么如此成功?</h1><p>成功人士(我)回答我说，当你是商人时，你便做商人的事。如果你不知道你要卖什么，那你就应该去做技术，然后将技术当成你的商品，从小做起。你没得选择。</p>
-<p>不怕劳苦。当身边的人一再厌恶你的穷病时，一定要坚持住自己的理想。</p>
-<p>是的，穷病，比抽烟吸毒杀人，还要可怕。而你空怀一身绝技没法及时变现。</p>
-<p>你要的很多，你的身体却制约你。时常感到时间不够用，加班加点，但是一觉睡下去却远远不够。</p>
-<p>成功人士，便是熬过最穷苦，依然坚持自己的愿景，含着泪坚持下去的人。</p>
-<p>极度的黑暗，就是天明之时。</p>
-<p>曾经的你，未来的我？现在的我？</p>
-<p>希望未来能放下手中工作消遣时，回头看看这时的感叹。2019-4-30 aker</p>
-<h1 id="mongodb-出现error-test-UncaughtException-E11000-duplicate-key-error-collection-authServer-users-index"><a href="#mongodb-出现error-test-UncaughtException-E11000-duplicate-key-error-collection-authServer-users-index" class="headerlink" title="mongodb 出现error - [test] UncaughtException: E11000 duplicate key error collection: authServer.users index"></a>mongodb 出现<code>error - [test] UncaughtException: E11000 duplicate key error collection: authServer.users index</code></h1><p>原因是设置unique 字段时，在多个doc 里面仍然有出现null 数据。</p>
-<p>网络很多人都是建议删除数据库重来、删除索引等等。都没能解决此问题。</p>
-<p>这时，使用sparse 稀疏索引 以解决此问题。</p>
-<h1 id="Vue-axios-POST-请求时-会使用OPTIONS-同时解决跨域问题"><a href="#Vue-axios-POST-请求时-会使用OPTIONS-同时解决跨域问题" class="headerlink" title="Vue axios POST 请求时 会使用OPTIONS 同时解决跨域问题"></a>Vue axios POST 请求时 会使用OPTIONS 同时解决跨域问题</h1><p>OPTIONS 的解决方案：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span></span><br><span class="line"></span><br><span class="line">axios.interceptors.request.use(</span><br><span class="line">  config =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</span><br><span class="line">      config.data = qs.stringify(config.data)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用qs 同时在header 里面申明使用的格式</p>
-<p>跨域使用Chrome 浏览器插件<strong>Moesif CORS</strong> 即可解决</p>
-<h2 id="！！！！注意"><a href="#！！！！注意" class="headerlink" title="！！！！注意"></a>！！！！注意</h2><p>开发时注意，本机为黑苹果，遇到一个特别的情况：</p>
-<p>昨天还能正常使用，开发dev，突然怎么改vueProject/config/index.js - proxyTable 都没用。</p>
-<p>最后解决方法：使用一个新的域名代替localhost，重设置到<strong>/etc/hosts</strong>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1：sudo vim /etc/hosts &amp;&amp; 新增 127.0.0.1  test.company.com</span><br><span class="line">2：修改proxyTable: &#123;</span><br><span class="line">  &apos;/api&apos;: &#123;</span><br><span class="line">    target: &apos;http://test.company.com:$&#123;your port&#125;&apos;,</span><br><span class="line">    secure: false,</span><br><span class="line">    changeOrigin: false,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      &apos;/api&apos;: &apos;/&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3: 修改vueProject/config/index.js - dev: &#123;</span><br><span class="line">  host: &apos;test.company.com&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原因：</p>
-<p>估计是本地DNS 有缓存。一直提示如下</p>
-<pre><code>[HPM] Error occurred while trying to proxy
-
-或者
-
-axios 请求成了：POST http://localhost:${frontend port}/api/method, 服务器始终报错(本人处报：EBADCSRFTOKEN)
-</code></pre><p>最终修改完成。好开心啊。</p>
-<p>En:</p>
-<p>I meet <code>[HPM] Error occurred while trying to proxy request</code> just today.finally solve it.</p>
-<p>Scene:</p>
-<p>Yesterday, VueProject worked well. Git checkout back to some week ago, still didn’t work( Used to be working well ).</p>
-<p>Until this step save me:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1: sudo vim /etc/hosts &amp;&amp; 127.0.0.1   test.company.com # any host is available</span><br><span class="line">2: edit VueProject / config / index.js - proxyTable: &#123;</span><br><span class="line">  &apos;/api&apos;: &#123;</span><br><span class="line">    target: &apos;http://text.company.com:$&#123;your server port&#125;&apos;,</span><br><span class="line">    secure: false,</span><br><span class="line">    changeOrigin: false,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      &apos;/api&apos;: &apos;/&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">3: edit VueProject / config / index.js - dev: &#123;</span><br><span class="line">  host: &apos;test.company.com&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="上线express-vue-两种方案"><a href="#上线express-vue-两种方案" class="headerlink" title="上线express + vue 两种方案"></a>上线express + vue 两种方案</h1><h2 id="express-vue-分开发布"><a href="#express-vue-分开发布" class="headerlink" title="express vue 分开发布"></a>express vue 分开发布</h2><pre><code>Nginx location / { root: 放Vue 路径 }
-Nginx location / app { proxy 端口 }
-</code></pre><p>此时只要Vue 的axios.defaults.baseURL = ‘/app’</p>
-<p>以上分离很好使。但是同时维护两个，做法不太正规。</p>
-<h2 id="express-vue-使用res-sendFile-Nginx-反向代理端口即可"><a href="#express-vue-使用res-sendFile-Nginx-反向代理端口即可" class="headerlink" title="express vue 使用res.sendFile Nginx 反向代理端口即可"></a>express vue 使用res.sendFile Nginx 反向代理端口即可</h2><p>下面都是重点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">docker 目录：</span><br><span class="line">/dist</span><br><span class="line">    /app.js</span><br><span class="line">    /routes/</span><br><span class="line">          /index.js 路由</span><br><span class="line">    /public/</span><br><span class="line">          /index.html</span><br><span class="line">          /static/</span><br><span class="line"></span><br><span class="line">1: Vue 前段yarn build 之后，基本不需要其他操作</span><br><span class="line"></span><br><span class="line">// 下面这句话res.sendFile 时，发送static 文件，找寻的目录.</span><br><span class="line">// 否则pc 报`Uncaught SyntaxError: Unexpected token &lt;`</span><br><span class="line">2: backend/app.ts - app.use(express.static(path.join(__dirname, &apos;public/&apos;)))</span><br><span class="line"></span><br><span class="line">// 下面这句话重点: public 不要写错，不要写错，不要写错</span><br><span class="line">// root 不是route，不是route，不是route</span><br><span class="line">3: backend/routes/index.ts - res.sendFile(&quot;index.html&quot;, &#123; root: path.join(__dirname, &apos;../public&apos;)&#125;)</span><br></pre></td></tr></table></figure>
-<p>__dirname your current excuse file path</p>
-<p>process.cwd() your project root path</p>
-<p>以上终于解决！！！</p>
-<h1 id="昨天VPS-里面的数据库Mongodb-早上还有数据，下午突然没有了"><a href="#昨天VPS-里面的数据库Mongodb-早上还有数据，下午突然没有了" class="headerlink" title="昨天VPS 里面的数据库Mongodb 早上还有数据，下午突然没有了"></a>昨天VPS 里面的数据库Mongodb 早上还有数据，下午突然没有了</h1><p>很疑惑，如果不知道原因，之后再出现就会有大问题。于是看了看里面的表。</p>
-<p>知道傍晚，发现里面有张表很奇怪：叫做<code>hacked_by_unistellar</code></p>
-<p>我似乎没有搞过这个表啊。</p>
-<p>进去一看：db.restore.find() 显示我之前的表被脱裤，要钱，联系<a href="mailto:unistellar@hotmail.com" target="_blank" rel="noopener">unistellar@hotmail.com</a> 邮箱。</p>
-<p>幸好数据不多。知道什么原因，那就好搞了。</p>
-<p>首先，数据库没设置密码，那为什么会暴露在公网。</p>
-<p>我启动mongo 语句是<code>docker run --name mongo -p 27017:27017 mongo</code></p>
-<p>如果是直接使用mongod 那么启动时默认分配的是<strong>127.0.0.1:27017</strong></p>
-<p>如果是docker 启动的话，不指定ip，docker 会直接暴露在公网，任何人直接ip + 27017 或者mysql 的3306 直接就脱裤了。</p>
-<p>正确语句是：<code>docker run --name mongo -p 127.0.0.1:27017:27017 mongo</code></p>
-<p>db.createUser({ user: ‘akerdi’, pwd: ‘my-fucking_password’, roles: [ { role: ‘userAdminAnyDatabase’, db: ‘admin’ } ]});</p>
-<h2 id="正确思考Mongo-是什么。"><a href="#正确思考Mongo-是什么。" class="headerlink" title="正确思考Mongo 是什么。"></a>正确思考Mongo 是什么。</h2><p>数据库实质上是一个管理物理数据的软件，充当管理介质。</p>
-<p>那么上面很重要的点是，mongo 需要配置文件。</p>
-<pre><code>docker run -p 27017:27017 -v /mongo_configdb:/data/configdb -v /mongo_db:/data/db -d mongo # 这里重点是将配置文件映射到相应的目录。之后所有映射过来的都会使用相同配置
-
-docker ps # 找到对应containerId
-
-docker exec -it containerId mongo admin # 进入mongodb 或者 docker exec -it containerId bash 之后 mongo
-
-&gt; use cool_db #mongo 内部环境，使用cool_db 为例
-
-&gt; db.createUser({ user: &apos;aker&apos;, pwd: &apos;your password&apos;, roles: [{ role: &apos;readWrite&apos;, db: &apos;cool_db&apos;}] });
-
-&gt; exit
-
-$ docker stop containerId &amp;&amp; docker rm containerId # 之后使用 --auth 之前的mongo 软件介质不需要了
-
-# 这时使用之前映射的目录，便是相同的配置，同时mongo 还带有验证
-# 127.0.0.1:27017 可以使ip 映射局限本机，否则为0.0.0.0:27017
-# --rm 使mongo 在stop 时自动删除
-doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/configdb -v /mongo_db:/data/db -d --rm mongo --auth
-</code></pre><p>参考自：</p>
-<ol>
-<li><a href="https://www.jianshu.com/p/2181b2e27021" target="_blank" rel="noopener">https://www.jianshu.com/p/2181b2e27021</a></li>
-<li><a href="https://stackoverflow.com/questions/34559557/how-to-enable-authentication-on-mongodb-through-docker" target="_blank" rel="noopener">https://stackoverflow.com/questions/34559557/how-to-enable-authentication-on-mongodb-through-docker</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/5/">Next</a>
   </nav>
 
 </section>
@@ -1159,8 +991,8 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/08/25/2020-8-21lesson/">2020-8-21lesson</a></h6>
-              <span>August 25, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a></h6>
+              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1171,8 +1003,8 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/08/25/2020-7-13lesson/">2020-7-13lesson</a></h6>
-              <span>August 25, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-31lesson/">2020-10-31lesson</a></h6>
+              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1183,8 +1015,8 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/06/15/2020-6-15lesson/">2020-6-15lesson</a></h6>
-              <span>June 15, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-12lesson/">2020-10-12lesson</a></h6>
+              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1195,8 +1027,8 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a></h6>
-              <span>May 29, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/11/29/2020-9-24lesson/">2020-9-24lesson</a></h6>
+              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1207,8 +1039,8 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a></h6>
-              <span>May 26, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/11/29/2020-8-30lesson/">2020-8-30lesson</a></h6>
+              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1219,8 +1051,8 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2020/05/26/2020-5-13/">2020-5-13</a></h6>
-              <span>May 26, 2020</span>
+              <h6 style="margin: 0;"><a href="/2020/11/29/2020-8-29lesson/">2020-8-29lesson</a></h6>
+              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1257,7 +1089,7 @@ doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/co
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
