@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>20210129-hackintosh | aKer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
+  
+  
+  
+  <meta name="description" content="升级Hackintosh跟着之前的教程 制作MacOS 启动盘，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。 如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300. 还有一种选择是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20210129-hackintosh">
+<meta property="og:url" content="https://shaohung001.github.io/2021/01/29/20210129-hackintosh/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="升级Hackintosh跟着之前的教程 制作MacOS 启动盘，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。 如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300. 还有一种选择是">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-01-29T08:27:17.332Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="20210129-hackintosh">
+<meta name="twitter:description" content="升级Hackintosh跟着之前的教程 制作MacOS 启动盘，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。 如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300. 还有一种选择是">
+  
+    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7054334687711145",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="aKer" rel="home"> aKer </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt src>
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20210129-hackintosh" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      20210129-hackintosh
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/01/29/20210129-hackintosh/" class="article-date">
+	  <time datetime="2021-01-29T08:23:42.000Z" itemprop="datePublished">January 29, 2021</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="升级Hackintosh"><a href="#升级Hackintosh" class="headerlink" title="升级Hackintosh"></a>升级Hackintosh</h1><p>跟着之前的教程 <a href="/2019/04/25/2019-3-25lesson">制作MacOS 启动盘</a>，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。</p>
+<p>如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。<br>A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300.</p>
+<p>还有一种选择是NVIDIA N卡，但是其支持的MacOS 系统最高支持到10.13.6.</p>
+<p>今天我们就来根据N卡来匹配硬件。</p>
+<p>当前支持以下系列配置版本，使用GTX1050ti，系统版本10.13.6(17G65)</p>
+<ol>
+<li>技嘉Z370 + i7-8700 + GTX1050ti</li>
+</ol>
+<p>新出的Z490同样满足</p>
+<p>配置清单:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">英特尔（Intel）酷睿四核I7-8700 CPU 技嘉Z370套装 |1 3249</span><br><span class="line"> https://item.jd.com/17208129343.html</span><br><span class="line">2. 内存</span><br><span class="line">金士顿(Kingston)骇客神条 Fury系列 DDR4 2400 8G 台式机内存 |2 399</span><br><span class="line">http://item.jd.com/2121097.html</span><br><span class="line">4 电源 美商海盗船（USCorsair）额定550W VS550 电源 |1 299</span><br><span class="line"> https://item.jd.com/840370.html</span><br><span class="line">5 机箱 酷冷至尊(CoolerMaster)毁灭者经典U3升级版 |1 229</span><br><span class="line">http://item.jd.com/123814.html</span><br><span class="line">6 键鼠 雷柏（Rapoo）V500械键盘，V19鼠标 |1 99+58</span><br><span class="line">http://item.jd.com/3086129.html，https://item.jd.com/8963957.html</span><br><span class="line">7 三星500G SSD M.2 接口固态硬盘 |1 579</span><br><span class="line">https://item.jd.com/7234518.html</span><br><span class="line">8 SSD 闪迪(SanDisk) 至尊高速系列-3D版 250G SATA6Gb/s接口 |1 349</span><br><span class="line">http://item.jd.com/1185238.html</span><br><span class="line">9 显示器 戴尔（DELL） SE2416H 23.8英寸微边框 HDMI高清接口 广视角IPS |2 849</span><br><span class="line">http://item.jd.com/1769180.html</span><br><span class="line">10 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br></pre></td></tr></table></figure>
+<p><a href="https://pan.baidu.com/s/1GNvsMwzTELwmJchOpv6slA" target="_blank" rel="noopener">EFI 提取码: 22ux</a></p>
+<ol start="2">
+<li>配置二: ASUS B365-PLUS + i7-8700 + GTX1050ti</li>
+</ol>
+<p>配置清单:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">ASUS PRIME B365-PLUS (300 Series 芯片组 Family(B365)) + I7-8700</span><br><span class="line">2. 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br><span class="line">3. 。。。其他配件和上边可以类似，</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>华硕 PRIME Z270-A (Z270芯片组) + I7-7700k + GTX1050ti</li>
+</ol>
+<p>配置清单:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">ASUA PRIME Z270-A (Z270芯片组) + I7-7700k</span><br><span class="line">2. 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br><span class="line">3. 。。。其他配件和上边可以类似，</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果使用SATA硬盘，出现安装系统选择硬盘界面，没有识别SATA硬盘，需要再Bios - Adcanced - PCH Storage Configuration - SATA Mode Selection 中选择AHXI，否则无法识别SATA 硬盘</p>
+</blockquote>
+<p>当前EFI 支持集成显卡，但是只有HDMI口可用，也就是只有一个显示屏。多个显示屏，需要使用独立显卡+NVIDIA驱动。</p>
+<p><a href="https://pan.baidu.com/s/1L5Kyjpq8fdYj6wAwU4vKLg" target="_blank" rel="noopener">EFI 提取码: iyq9</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/wechatPay.jpg?raw=true',
+  alipayImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/aliPay.jpg?raw=true'
+});
+</script>
+      
+            
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'shaohung001';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/29/20210129-docker-aarch64v8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          20210129-docker-aarch64v8
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/29/20210129lesson/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">20210129lesson</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#升级Hackintosh"><span class="nav-number">1.</span> <span class="nav-text">升级Hackintosh</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2021 aKer All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/click.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

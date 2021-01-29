@@ -165,6 +165,203 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2020-8-21lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/08/25/2020-8-21lesson/">2020-8-21lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/08/25/2020-8-21lesson/" class="article-date">
+	  <time datetime="2020-08-25T12:56:52.000Z" itemprop="datePublished">August 25, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="记录最近去客户-某公安局-那做现场开发20200821"><a href="#记录最近去客户-某公安局-那做现场开发20200821" class="headerlink" title="记录最近去客户(某公安局)那做现场开发20200821"></a>记录最近去客户(某公安局)那做现场开发20200821</h2><p>公司主力产品与客户内部系统脱钩，需要做一个中间层，我在公司做过一个类似的，于是我就肩负着该任务。</p>
+<p>之前来过两次获取需要的数据材料，同事大佬顺路用小车带我去的，这周开始便是自己前往(自己小电驴)。</p>
+<p>周一约好前往，下午两点半在大门等同事大佬(产品大哥)，他们稍微慢一些到，太阳有点辣，手都嗮疼了。门口领牌客户对接人签字带进去。</p>
+<p>上去后，由于他们开会，我和同事大佬等到了近5点。他们开完会，我说我要求的机器等，然后和客户部门大大佬打好招呼，说要装两个单机软件、和U盘复制文件需求: 要小心哦，别把那个专网服务器搞坏了。我小心翼翼的答应着。</p>
+<p>5点半开始摸到了电脑:4G windows 7, 不能乱装软件，不能乱连网，否则报警的话，史上最快被抓的就是我了 – 右边大哥把手搭我肩上，就把俺抓了。接下来就是来回来回的拷贝文件，接下来的几天都是如此，且听接下来故事。</p>
+<p>将其中一个软件安装，另一个软件联系公司同事发送来，拷贝(拷贝超级慢)，稍微调整就已很晚，只能先回去。明早去公司多多做好准备，当前至少知道软件起不来，似乎数据库启动不起来。走时和对接民警说了相关需求，帮我将内存提升到16G，那就太好。</p>
+<p>中午的时候遇到浦东哥们来这处理业务，晚饭一起去食堂吃。哇，超级实惠。一大荤一小荤一素一汤一饭9块，滴，内部证件。美滋滋。晚上搞到9点，回去回去，离住处好近，不错。</p>
+<p>第二天到公司之后，赶紧拿公司几个相似的机子试验起来，包括软件许可这关，幸好早晨可以过来试验，省去了到那边之后各种交流不畅、无法相关测试问题。客户那边说，内存只能提高到8G。也行，应该OK。下午又自己屁颠屁颠开着自己的电驴过去了。</p>
+<p>到了之后，把早上得到所得经验用上: 许可安装 - 成功；mongo本地启动 - 启动被链接成功。开心啊，马上就要到输入数据了，有点激动，第一次用这个软件，有点生疏，数据进去了，开心。咦，主题生成了，但是，数据包没有？没关系，公司同事说，没事，淡定，少了某个数据库，没事，整起。那，那就整起吧。哦吼，连接专网程序，成功！！！</p>
+<p>咦，但是，为什么任务跑发现没有下载到包？我就是来整合包的，难道某个数据库同样很重要？同事之前说了没事的啊？？？</p>
+<p>今天折腾一天了: 解决其中各种各样麻烦、测试数据等等。。。</p>
+<p>晚上又是和浦东哥们吃饭，因为昨天同事没搞好，浦东哥们又被喊过来了。今天两大荤一小荤一汤一饭10块，滴，内部证件。晚上又遇到问题，解决不了，搞了搞会就回住处了。</p>
+<p>第三天，其实是周三，早上又来公司，和周二一样，一早就有各种问题(其他项目的问题)。东搞搞西搞搞，同事说去下个符合windows7 的neo4j 数据库。我觉得现场设备配置清晰，去那边下吧，似乎网络很快哟。去了之后，没想到网络好慢好慢，求助同事。老大帮我下好了该数据库。我想了想，要不看看那个单机软件自带的数据库为啥就启动不起来，terminal 看了之后原来是有个文件路径不对，和csdn 一篇文章相同问题，修改就运行成功了。美滋滋。现在再次上传一个案子之后，果然和昨天不一样，心里开心啊。</p>
+<p>全部数据都齐全之后，这回是真全了，我也就接触这个系统一两天。东西一跑，咦，下载包有问题，先绕过这个吧，回去看，这个好实现。直接到上传包，奇怪，我怎么都上传不上去。各种各样的方案，使出十八般武艺，把他的源码脚本都艹出来，就是失败，就返回status200，，即使对比该系统真实手动上传相同包的情况，其他基本相同就是上传不了。</p>
+<p>当前就知道Content-length 与他不同；form-data boundary 的md5 也不同。</p>
+<p>时间已经很晚了，今天浦东同事没来，人不熟，没借警官卡，没法滴滴滴了。先搞把，说不定就好了？-_-</p>
+<p>晚上还是想不出来问题，和同事、老大想想对策。老大推荐wireshark 把进出数据对比出来。我把数据拿到。得，10点半了。饿，下午4点就开始开始饿了。</p>
+<p>先回去吃，吃麻辣烫要的微辣，该死，吃起来好辣，，，吃完11点半，家里跪地上趴在床上玩了下手机就0点，赶紧洗洗屁屁睡觉。</p>
+<p>第四天，早上又是忙别的事，顺便好好分析了下昨天搞到的数据样本。中午终于知道wireshark 怎么用，对比了下，其估计是为老项目，文件 type 为<code>application/zip</code> 格式，我传输的一直是<code>octet-stream</code>. 当前猜测是文件类型不支持，自己的传输方式试了好多次，都是OK的。</p>
+<blockquote>
+<p>简单的，才是最难的。简单的，做出来难，对于想操作，如果遇到了某种原因导致失败，那就更毫无头绪。</p>
+</blockquote>
+<p>之前在浏览器中没有任何报错，status 200. 所以我心底才会想<code>简单的，才是最难的</code>。</p>
+<p>今天搞了搞，就已经很晚了，不能过去了。明天来吧，希望明天会有好运!</p>
+<p>周五早上和老大交流，不同点有两个，一个是<code>application/zip</code> 的文件type，一个是上传文件field 在ajax加载时被转换为另一个。中午过去先试了修改文件type，没用，心里着急啊，只剩最后一个方案，最后一个也失败真完蛋。但是想了想，其又未对系统做什么超级难设置，肯定能成功这次。果然，field 改为抓包看到的终于成功。哇，内心超级激动，哇卡卡卡卡。</p>
+<p>这几天来来回回小房间拷贝文件，然后到工作测试那台机器复制后运行。工具代码执行编译、复制拷贝；一些工具包拷贝；案件内容拷贝；拷贝拷贝拷贝, 小心的拷贝。拷贝文件是最慢的，3kb/s</p>
+<h2 id="记录修改操作"><a href="#记录修改操作" class="headerlink" title="记录修改操作"></a>记录修改操作</h2><ol>
+<li>mongodb 需要使用另一个包，3.4那个包</li>
+</ol>
+<p>执行语句: D:\1xx\mongodb\bin $mongod –dbpath “D:\1xx\mongodb\data”</p>
+<p>此时mongodb 直接就建立起来，并可以连接了。</p>
+<ol start="2">
+<li>neo4j 中出现 <code>Import-Module: 未能加载指定的模块&quot;\Neo4j-Management.psd1&quot;</code></li>
+</ol>
+<p>更改neo4j.ps1 文件里<code>Import-Module &quot;$PSScriptRoot\Neo4j-Management.psd1&quot;</code> 为绝对路径</p>
+<p>该文件就是neo4j 中的 Neo4j-Management.psd1 文件</p>
+<p>执行语句: C:\Users\xxx\AppData\Local\Honglian\WebTrace\database\Neo4j\bin\neo4j.bat console</p>
+<h2 id="遇到FormData-上传文件-multer-没有响应"><a href="#遇到FormData-上传文件-multer-没有响应" class="headerlink" title="遇到FormData 上传文件, multer 没有响应"></a>遇到FormData 上传文件, multer 没有响应</h2><p>后端用multer 中间件，frontend上传文件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formData = <span class="keyword">new</span> FormData()</span><br><span class="line">formData.append(<span class="string">"file"</span>, <span class="keyword">new</span> Blob([html], &#123; <span class="attr">type</span>: <span class="string">"text/html"</span> &#125;))</span><br><span class="line">formData.append(<span class="string">"otherField"</span>, <span class="built_in">JSON</span>.stringify(largeJSON_object)) <span class="comment">// vary large json object</span></span><br><span class="line">axios.post(url, formData)</span><br></pre></td></tr></table></figure>
+<p>这时出现时不时能上传成功或失败，没有任何规律。想了一晚没想出来。</p>
+<p>隔天早上在<a href="https://github.com/expressjs/multer/issues/53#issuecomment-224174412" target="_blank" rel="noopener">multer issues</a> 里面看到原因: 需要把上传的文件放到最后才解决了问题。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-7-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/08/25/2020-7-13lesson/">2020-7-13lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/08/25/2020-7-13lesson/" class="article-date">
+	  <time datetime="2020-08-25T12:56:22.000Z" itemprop="datePublished">August 25, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="未来人类体型预测"><a href="#未来人类体型预测" class="headerlink" title="未来人类体型预测"></a>未来人类体型预测</h2><p>看了很多科幻片说未来是聪明人占主导比例。</p>
+<p>当前社会一直在演进，那当然是必然现象。每次的战争、争夺，都是新社会体制对旧社会的冲击。之前看有个视频，大清体制是集农业文明大成，也是非常庞大的体制。</p>
+<p>新社会体系联合起来慢慢才蚕食殆尽，所以体制的进步是必然。在现代，人才才是资源，而且在新社会体系贡献会越来越大。</p>
+<p>看到说未来的人聪明，脑袋大，我说不对。</p>
+<p>个体体能好，就要锻炼，身体就会健壮；个体脑力好，就要专研，于是有两种分项：1）肚子大大的，发量少少的，因为要思考，坐着，大脑用脑多，让肚子多保留更多的脂肪，保护大脑；另一种就是肚子没有或者有一点点，然后发量差不多；</p>
+<p>嘎嘎。哪有可能脑袋超级大，特别大，躯干很小那种。大脑聪明又不是越大越好。</p>
+<h2 id="记录下SSH-使用ssh-key-使用秘钥登录"><a href="#记录下SSH-使用ssh-key-使用秘钥登录" class="headerlink" title="记录下SSH 使用ssh-key 使用秘钥登录"></a>记录下SSH 使用ssh-key 使用秘钥登录</h2><p>创建秘钥对</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line">cd .ssh</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line">chmod 600 authorized_keys</span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>修改sshd_config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+<p>重启ssh: <code>systemctl restart sshd</code></p>
+<p>拷贝好服务器端的id_rsa 文件内容到本地机器: <code>cat ~/.ssh/id_rsa</code></p>
+<p>将id_rsa 文本放到本地文件，如 ~/.ssh/66id_rsa</p>
+<p>此时本地直接使用该秘钥文件会报权限过大，不允许使用, 控制台: <code>chmod 0600 66id_rsa</code></p>
+<p>登录时语句: <code>ssh root@ip -p port -i ~/.ssh/66id_rsa</code> 即可正确登录</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-6-15lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/06/15/2020-6-15lesson/">2020-6-15lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/06/15/2020-6-15lesson/" class="article-date">
+	  <time datetime="2020-06-15T04:29:17.000Z" itemprop="datePublished">June 15, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="gitlab-ci-frontend-打包-出错"><a href="#gitlab-ci-frontend-打包-出错" class="headerlink" title="gitlab-ci frontend 打包 出错"></a>gitlab-ci frontend 打包 出错</h1><p>原因是frontend 安装: <code>npm install --production</code> 仅安装了dependence 库，需要去掉 –production</p>
+<p>本地打包没问题，gitlab-ci 出现该情况，基本能断定就是安装库缺少打包库的问题</p>
+<h1 id="记录本次安装VVVVVV-遇到的问题"><a href="#记录本次安装VVVVVV-遇到的问题" class="headerlink" title="记录本次安装VVVVVV 遇到的问题"></a>记录本次安装VVVVVV 遇到的问题</h1><h2 id="使用-Nginx-acme-sh-制作证书"><a href="#使用-Nginx-acme-sh-制作证书" class="headerlink" title="使用 Nginx + acme.sh 制作证书"></a>使用 Nginx + acme.sh 制作证书</h2><p>首先cloudflare 取消橘色云朵，采用直连方式(这样letsencrypt 才能请求过来)</p>
+<p>Nginx 采用原生模块(不要使用docker 的nginx，有各种坑点，下面会描述此次遇到的坑)</p>
+<p><a href="https://qizhanming.com/blog/2018/08/06/how-to-install-nginx-on-centos-7" target="_blank" rel="noopener">Nginx 遇到坑，安装参考了:</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 设置系统时间为上海时间</span><br><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock</span><br><span class="line"># 添加源</span><br><span class="line">sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line"># 展开源</span><br><span class="line">sudo yum repolist</span><br><span class="line">sudo yum install nginx</span><br><span class="line">sudo systemctl enable nginx</span><br><span class="line">sudo systemctl start nginx</span><br><span class="line"># 打开防火墙端口</span><br><span class="line"># 默认 CentOS7 使用的防火墙 firewalld 是关闭 http 服务的（打开 80 端口）</span><br><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=http</span><br><span class="line">sudo firewall-cmd --reload</span><br><span class="line"># 查看防火墙打开的所有服务</span><br><span class="line">sudo firewall-cmd --list-service # ssh dhcpv6-client http</span><br><span class="line"># 需要指出的是 CentOS 7 的 SELinux，使用反向代理需要打开网络访问权限</span><br><span class="line">sudo setsebool -P httpd_can_network_connect on</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conf.d/VVVVVV.conf</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name wpn.example.com;</span><br><span class="line">  root /home/wwwroot/sCalc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ssl.sh</span><br><span class="line">alias acme.sh=/.acme.sh/acme.sh</span><br><span class="line"># 链接letsencrypted 识别域名和生成证书</span><br><span class="line">acme.sh --issue -d wpn.example.com -w /home/wwwroot/sCalc --nginx</span><br><span class="line"># 生成nginx 使用的key 和crt</span><br><span class="line">acme.sh --install-cert -d wpn.example.com --key-file /VVVVVV.key --fullchain-file /VVVVVV.crt</span><br><span class="line"># 拷贝目标文件</span><br><span class="line">cp /VVVVVV* /etc/VVVVVV/</span><br></pre></td></tr></table></figure>
+<p>此时 <code>systemctl restart VVVVVV</code>, 在点击cloudflare 橙云代理CDN 即可正确链接了。</p>
+<h2 id="复盘遇到的问题"><a href="#复盘遇到的问题" class="headerlink" title="复盘遇到的问题"></a>复盘遇到的问题</h2><p>上周搞的时候用的docker-nginx，当时用的ipv6，然后一直报404 letsencrypt 链接不进来，于是上周将服务器重新建立了。</p>
+<p>这周还是遇到这个问题，于是想了好久，哦，原来nginx 的容器，我只映射了本地的conf.d 目录，没有把 /home/wwwroot/sCalc 目录映射进去(-v /home/wwwroot/sCalc:/home/wwwroot/sCalc, 替换进去后，又发现没有把 /etc/VVVVVV/<em>.crt </em>.key 映射进去)，难怪一直404.</p>
+<p>docker-nginx一直没有使用这个版本，一时没想过来。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2020-5-29lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -682,190 +879,6 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
     
 
   
-    <article id="post-2020-4-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/04/16/2020-4-16lesson/" class="article-date">
-	  <time datetime="2020-04-16T12:38:16.000Z" itemprop="datePublished">April 16, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes.</p>
-<p>I dreamed of age grow up , and I worried about that !</p>
-<p>I never ever thinking about the troublesome before this period !</p>
-<p>Last five year, I fight for gain more power from technology , dreaming of arriving  to the top, money or any other comes to me.</p>
-<p>But, I didn’t had a rest last five year, nothing got but age and bit of knowledge of IT.</p>
-<p>It really  disappointed !</p>
-<p>I made a determination last  year , skills which  I  handled is much enough to made something I  ever determined to do.</p>
-<p>Last two months, I made out a website “阿黄小说”, reading novel site. Attending to try a test of earning money or even little acknowledge of setting up  a big site , but I lost my mind again.</p>
-<p>I made a discussion  with little shuai, I talked about my confuse of my career. Company didn’t raise salary since I entered last year.</p>
-<p>Am I not worth of raising by my work ? I had grow much more I had done . I continue of leaning deeply of my work , or I have a test to make some games ?</p>
-<p>I survey the game area no long ago, situation is serious recently , new come will very difficult to make effort .</p>
-<p>During discussion , I realized that the company I stay , I always treat myself a passenger . I join the car, car drive me some years distance , I get off when Company contract arrived.</p>
-<p>I never become a partner with any organization before . Am I make mistake ?</p>
-<p>I realized that I made a wrong plan all life before . Money I  lack of it , because  I will buy a house the close two year , but after that ? I employed by some one else again ? Not my career grow , but only stare at the salary I should get just now ?</p>
-<p>I made a determination of a more energy pay for myself career. Have a try to something different from before .</p>
-<p>Another plan is to have a plan of learning deep in my IT field , and if possible to examine some useful  certificates !!! It’s never too late to do your decision !</p>
-<p>When learning deep arrived some stage , I will have a try to make some games 😁…</p>
-<p>Finally , I remember  my fate again , I know where to go , and I will not confuse again .</p>
-<p>I am always young !!! My heart  will goes on !</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-4-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/04/16/2020-4-13lesson/" class="article-date">
-	  <time datetime="2020-04-16T12:37:06.000Z" itemprop="datePublished">April 16, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue-cli-3-0"><a href="#vue-cli-3-0" class="headerlink" title="vue cli 3.0"></a>vue cli 3.0</h1><p>package.json 中的script:dev 命令: vue-cli-service serve 其实类似于<code>npx vue-cli-service serve</code> === <code>node ./node_modules/.bin/vue-cli-service serve</code></p>
-<h1 id="unzip-exe-在某一客户机报错"><a href="#unzip-exe-在某一客户机报错" class="headerlink" title="unzip.exe 在某一客户机报错"></a>unzip.exe 在某一客户机报错</h1><p>程序里使用到zip.exe unzip.exe bin 程序，正常使用很久了。</p>
-<p>然而今天出现<code>Archive: xxx error: zipfile probably corrupt (segmentation violation)</code></p>
-<p>关于windows 使用unzip.exe bin 程序，当前版本: UnZip 5.52 of 28 February 2005, by Info-ZIP.  Maintained by C. Spieler.</p>
-<p>从搜索列表中, 发现很多都指向网址: <a href="ftp://ftp.info-zip.org/pub/infozip/win32/" target="_blank" rel="noopener">ftp://ftp.info-zip.org/pub/infozip/win32/</a></p>
-<p>从里面可以直接下到5.52 bin 执行文件(其和当前程序使用版本相同，于是继续找).</p>
-<p>继续找到下载: <a href="https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe" target="_blank" rel="noopener">https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe</a> 下载下来是个安装程序。</p>
-<p>安装到windows 上后，找到:</p>
-<p><img src="/css/images/unzipexeerror.jpg" alt="/bin/unzip.exe"></p>
-<p>直接替换，当前确实解决该问题。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-3-20lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/03/20/2020-3-20lesson/">2020-3-20lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/03/20/2020-3-20lesson/" class="article-date">
-	  <time datetime="2020-03-20T07:00:34.000Z" itemprop="datePublished">March 20, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="gorm-参考使用"><a href="#gorm-参考使用" class="headerlink" title="gorm 参考使用"></a>gorm 参考使用</h3><p><a href="https://segmentfault.com/a/1190000013216540" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013216540</a></p>
-<p>启动mysql</p>
-<p><code>docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 mysql:5.7</code></p>
-<p>如果Sequel Pro 连接报错<code>Authentication plugin &#39;caching_sha2_password&#39; cannot be loaded: dlopen(/usr/local/lib/plugin/caching_sha2_password.so, 2): image not found</code>, 则</p>
-<p><code>docker exec -it mysql bash</code></p>
-<p><code>$mysql -uroot -p</code></p>
-<p><code>$ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;</code></p>
-<h3 id="goland-无法解析go-mod-的包"><a href="#goland-无法解析go-mod-的包" class="headerlink" title="goland 无法解析go.mod 的包"></a>goland 无法解析go.mod 的包</h3><p>开始建立一个go 项目， 使用go mod。一直都是OK的。然而在另一个机子导入、或者本机挪了个位置，就出现goland 无法识别第三方包的情况。</p>
-<p>当前goland 第三方包或者go mod init xxx，使用 xxx/config 之类的也都全部无法识别。</p>
-<p>找了半天看到<a href="https://learnku.com/go/t/35849" target="_blank" rel="noopener">帖子</a>中跟我描述一致，最后一个回复中，给出另一个链接<a href="https://segmentfault.com/q/1010000020603338/" target="_blank" rel="noopener">segmentfault</a><br>提到、而且截图和我情况一致。</p>
-<p>下面回复点醒了我:</p>
-<blockquote>
-<p>如果是导入已有项目，记得启用下 Go Module，进入 Preference -&gt; Go -&gt; Go Modules，启用下就好。</p>
-</blockquote>
-<p>也就是说，导入、或者挪了位置，要启用。</p>
-<p>可是当前我的已经启用了呀Go - Go Modules(vgo) - Enable Go Modules (vgo)integration</p>
-<p>这个checkbox 本来就是加载的。</p>
-<p>此时我关闭他，然后apply; 再然后checkbox 打开他，再apply，这时就全部正常了。</p>
-<blockquote>
-<p>家里的mac 又出现这种情况。解决方法是:</p>
-<p>删除本地的.idea 文件夹; File-invalidate caches and restart; 然后重启电脑; 然后vgo 关闭再打开;</p>
-<p>基本OK了吧。记得查看下GOPATH 设置</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -994,6 +1007,42 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a></h6>
+              <span>January 29, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/01/29/20210129-hackintosh/">20210129-hackintosh</a></h6>
+              <span>January 29, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/01/29/20210129lesson/">20210129lesson</a></h6>
+              <span>January 29, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a></h6>
               <span>November 29, 2020</span>
             </div>
@@ -1019,42 +1068,6 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
             
 
               <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-12lesson/">2020-10-12lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-9-24lesson/">2020-9-24lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-8-30lesson/">2020-8-30lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-8-29lesson/">2020-8-29lesson</a></h6>
               <span>November 29, 2020</span>
             </div>
 
@@ -1092,7 +1105,7 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
@@ -1106,7 +1119,7 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2020 aKer All Rights Reserved.
+	      &copy; 2021 aKer All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  

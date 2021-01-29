@@ -165,6 +165,143 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-RN了SecRandomCopyBytes-ignoring-return-value" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/">RN了SecRandomCopyBytes_ignoring_return_value</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/" class="article-date">
+	  <time datetime="2017-01-09T01:19:16.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-09-19 10:16:43)</p>
+<p>大早上的起来，在XCode8，iOS10环境中，就看见RN编译不起来，报SecRandomCopyBytes ignoring return value这样的错。在RCTWebSocket 的SecRandomCopyBytes函数编译不过去，有3种方法，自行实测一种，很方便的一种（1）<br>1：<a href="https://github.com/facebook/react-native/issues/8584中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8584中</a><br><img src="http://s3.sinaimg.cn/mw690/003479W3zy74Zv5sPiG22&amp;690" alt="图片1"><br>双击Library里面的RCTWebSocket进入上图界面，将“3”中的两个删除即可<br>2、3：<a href="https://github.com/facebook/react-native/issues/8108中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8108中</a><br>mskalra所述和antoor所述，针对不同问题的解决方案</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-展示大图出现卡顿" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/08/展示大图出现卡顿/">展示大图出现卡顿</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/08/展示大图出现卡顿/" class="article-date">
+	  <time datetime="2017-01-08T15:08:27.000Z" itemprop="datePublished">January 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-09-18 12:06:12)</p>
+<p>这里拿iOS里边代码做考究：<br>图片页面，我之前不是说会很卡吗？？如果用户拿去很大的图片的话，我这里之前的处理是压缩<br><img src="http://s10.sinaimg.cn/mw690/003479W3zy74WlkrbAZ69&amp;690" alt="图片1"><br>这里压缩是把相同临近像素融合，减小像素密度，，但是卡顿原因不是这个，，其实是—》<br>这样理解，就是我有一张比如一个墙壁大的图片，相框只有200*200，于是照片要放进去就比较麻烦，但是我减小照片大小，<br><img src="http://s6.sinaimg.cn/mw690/003479W3zy74WlmwDU975&amp;690" alt="图片2"><br>这样图片不大，放进相框就好放啦，，，1000是系数，可以自行比例系数哦</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-这里记录一个获取图片时，图片旋转问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/08/这里记录一个获取图片时，图片旋转问题/">这里记录一个获取图片时，图片旋转问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/08/这里记录一个获取图片时，图片旋转问题/" class="article-date">
+	  <time datetime="2017-01-08T15:07:34.000Z" itemprop="datePublished">January 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-09-05 11:09:26)<br>这里记录一个获取图片时，图片旋转问题：<br>ALAssetRepresentation<em> rep = self.asset.defaultRepresentation;<br>if (rep) {<br>UIImage</em> image = [UIImage imageWithCGImage:rep.fullResolutionImage<br>scale:rep.scale<br>orientation:0];<br>return image;</p>
+<p>如上写法，orientation：0的时候会发生图片旋转，即使本应该的说要拿取肖像orientation，<br>改成如下：<br>ALAssetRepresentation<em> rep = self.asset.defaultRepresentation;<br>if (rep) {<br>UIImage</em> image = [UIImage imageWithCGImage:rep.fullResolutionImage<br>scale:rep.scale<br>orientation:(UIImageOrientation)rep.orientation];//0];</p>
+<p>return image;</p>
+<p>此时拿到的图片不再旋转。。。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-很长时间没有更新记录了" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -505,155 +642,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-xcode一直不会更新的新下载的证书" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/xcode一直不会更新的新下载的证书/">xcode一直不会更新的新下载的证书</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/xcode一直不会更新的新下载的证书/" class="article-date">
-	  <time datetime="2017-01-08T14:54:30.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-06-02 10:12:04)</p>
-<p>个人觉得这个是帮了个大忙，xcode一直不会更新的新下载的证书，好烦，很久以前就一直有的问题。明明我刚下好的certificate，就是不出现，说没有这个。我说下我的步骤：1，在project，是的，如果你用workspace，还是要右键project“显示包文件”；2，找到图中所说的project.pbxproj文件，编辑器打开；3：将所有“PROVISIONING_PROFILE”的一整行删除，不放心的话，你可以提前先拷贝一份你的绿色的project文件，安全是吧。然后重开xcode，这简直帮了我大忙。<br><img src="http://s10.sinaimg.cn/mw690/003479W3gy729X8HJfX99&amp;690" alt="图片1"></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-谈谈对swift的看法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/谈谈对swift的看法/">谈谈对swift的看法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/谈谈对swift的看法/" class="article-date">
-	  <time datetime="2017-01-08T14:52:40.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-05-29 22:24:22)</p>
-<p>swift出来挺久的了，我一直在升级OC的技能，基本基础都OK。<br>最近要开始一个新的项目，我就在思考，如果不写swift会带来的后果，这是考量我该不该使用新的语言，毕竟我之前从来没看。</p>
-<ol>
-<li>我感觉，预计今年十月份开始，swift将会大行其道。你不会可能都说不过去了，毕竟就如一些技能“ASI”的过气、“MRC”也过气等等；这都是知名的，都是我之前的时代，我也在改变，那就毋庸置疑了，应该改变。</li>
-<li>我个人觉得，目前程序员不就是一直在学新的东西么，不就是一个语言么，没啥难度，用法不会，查不查就可以，毕竟和OC很相近的。</li>
-<li>之前我用的库也都能用，而且swift语言其实是基于OC的库，OC多稳定，swift只是一个编译程序的过程用的工具</li>
-<li>我当时花了两天，边打游戏边看github一个“30天30 swift demo”，基本也能掌握。</li>
-<li>怕个鸟，就是从ReactiveCocoa转到RxSwift比较麻烦<br>这里贴一个大哥的“简书”地址—-&gt;<a href="http://www.jianshu.com/p/7e286fbbc3d7，我当时学ReactiveCocoa的时候，其实也是比较值的变化，慢慢学，看了一会其实跟OC的响应式编程相近。项目中用到，多用几次就会了。" target="_blank" rel="noopener">http://www.jianshu.com/p/7e286fbbc3d7，我当时学ReactiveCocoa的时候，其实也是比较值的变化，慢慢学，看了一会其实跟OC的响应式编程相近。项目中用到，多用几次就会了。</a><br>其实后期我越来越感觉到，其实语言这东西，就是一个工具，就是一个工具，你写的东西，在相应的编译器才识别，也就是一个描述性文档，想要学的深，只能慢慢来，现在的范围广这一步我走的还行，多用多接触一些东西，慢慢的也要试试走更底层一些东西啦，，人生不停下就好，，，我还想当管理，我还想多学点，我还想户外运动，我还想业余活动，，，你慢慢想吧，，，，，，，，，</li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-IOS图片加水印或文字" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/IOS图片加水印或文字/">IOS图片加水印或文字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/IOS图片加水印或文字/" class="article-date">
-	  <time datetime="2017-01-08T14:51:30.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-04-30 23:40:20)</p>
-<p><a href="http://blog.sina.com.cn/s/blog_70854cfb0101d2dr.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_70854cfb0101d2dr.html</a><br>转载自这里，最近有做类似图片、视频的进阶，所以查阅了下博客，谢谢博主的分享啦</p>
-<p>1.加文字</p>
-<p>-(UIImage <em>)addText:(UIImage </em>)img text:(NSString <em>)text1<br>{<br>//get image width and height<br>int w = img.size.width;<br>int h = img.size.height;<br>CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();<br>//create a graphic context with CGBitmapContextCreate<br>CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 </em> w, colorSpace, kCGImageAlphaPremultipliedFirst);<br>CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);<br>CGContextSetRGBFillColor(context, 0.0, 1.0, 1.0, 1);<br>char<em> text = (char </em>)[text1 cStringUsingEncoding:NSASCIIStringEncoding];<br>CGContextSelectFont(context, “Georgia”, 30, kCGEncodingMacRoman);<br>CGContextSetTextDrawingMode(context, kCGTextFill);<br>CGContextSetRGBFillColor(context, 255, 0, 0, 1);<br>CGContextShowTextAtPoint(context, w/2-strlen(text)*5, h/2, text, strlen(text));<br>//Create image ref from the context<br>CGImageRef imageMasked = CGBitmapContextCreateImage(context);<br>CGContextRelease(context);<br>CGColorSpaceRelease(colorSpace);<br>return [UIImage imageWithCGImage:imageMasked];<br>}</p>
-<p>2.加图片<br>-(UIImage <em>)addImageLogo:(UIImage </em>)img text:(UIImage <em>)logo<br>{<br>//get image width and height<br>int w = img.size.width;<br>int h = img.size.height;<br>int logoWidth = logo.size.width;<br>int logoHeight = logo.size.height;<br>CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();<br>//create a graphic context with CGBitmapContextCreate<br>CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 </em> w, colorSpace, kCGImageAlphaPremultipliedFirst);<br>CGContextDrawImage(context, CGRectMake(0, 0, w, h), img.CGImage);<br>CGContextDrawImage(context, CGRectMake(w-logoWidth, 0, logoWidth, logoHeight), [logo CGImage]);<br>CGImageRef imageMasked = CGBitmapContextCreateImage(context);<br>CGContextRelease(context);<br>CGColorSpaceRelease(colorSpace);<br>return [UIImage imageWithCGImage:imageMasked];<br>//  CGContextDrawImage(contextRef, CGRectMake(100, 50, 200, 80), [smallImg CGImage]);<br>}</p>
-<p>3.加半透明的水印</p>
-<ul>
-<li>(UIImage <em>)addImage:(UIImage </em>)useImage addImage1:(UIImage <em>)addImage1<br>{<br>UIGraphicsBeginImageContext(useImage.size);<br>[useImage drawInRect:CGRectMake(0, 0, useImage.size.width, useImage.size.height)];<br>[addImage1 drawInRect:CGRectMake(0, useImage.size.height-addImage1.size.height, addImage1.size.width, addImage1.size.height)];<br>UIImage </em>resultingImage = UIGraphicsGetImageFromCurrentImageContext();<br>UIGraphicsEndImageContext();<br>return resultingImage;<br>}</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -782,6 +770,42 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a></h6>
+              <span>January 29, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/01/29/20210129-hackintosh/">20210129-hackintosh</a></h6>
+              <span>January 29, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/01/29/20210129lesson/">20210129lesson</a></h6>
+              <span>January 29, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a></h6>
               <span>November 29, 2020</span>
             </div>
@@ -807,42 +831,6 @@ var themeMenus = {};
             
 
               <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-12lesson/">2020-10-12lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-9-24lesson/">2020-9-24lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-8-30lesson/">2020-8-30lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-8-29lesson/">2020-8-29lesson</a></h6>
               <span>November 29, 2020</span>
             </div>
 
@@ -880,7 +868,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
@@ -894,7 +882,7 @@ var themeMenus = {};
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2020 aKer All Rights Reserved.
+	      &copy; 2021 aKer All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  
