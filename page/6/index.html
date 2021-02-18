@@ -165,6 +165,351 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-6-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/11/2019-6-11lesson/">2019-6-11lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/11/2019-6-11lesson/" class="article-date">
+	  <time datetime="2019-06-11T03:56:43.000Z" itemprop="datePublished">June 11, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记一次上线应用遇到的问题"><a href="#记一次上线应用遇到的问题" class="headerlink" title="记一次上线应用遇到的问题"></a><strong>记一次上线应用遇到的问题</strong></h1><p>做更新服务器代码优化，上线的一次经历</p>
+<p>表现：使用multy 解析data 文件，文件下来了，但是服务器总是没拿到。</p>
+<p>前几个版本都是完全没问题的。我线下测试环境完全没问题，这个是最奇葩的。</p>
+<p>然后伟哥在k8s那里切换可运行的包；我对比对比之前版本代码，没发现头绪，就想着去docker 容器内部搞搞。然后一直没头绪，然后脑残了一把：rm -rf  packages/</p>
+<p>本来我是想packages/uploads/下的，因为packages 目录不熟悉，我跑到packages/ 这里来运行sh.</p>
+<p>运行完那一瞬间，你懂的，我突然又反应过来，我的天，之前填的测试数据全部没了。我擦咧。</p>
+<p>突然脑残的可以。</p>
+<p>更脑残的是，之前更新服务一直报上传上去的文件找不到，删了之后又可以。你说，这是不是让人更摸不到点了。</p>
+<p>然后伟哥找到两个版本不同差异，一个能使用，一个不行。然后就看了里面的代码不同点。</p>
+<p>最后发现我在拆分一个方法成为3个中间件时，第一个中间件取值有误，没发现。</p>
+<p>也就是我的代码是有问题的(js 就是这毛病)。但是我先下服务器是正常的、删了测试服务器/packages 下也正常了。</p>
+<p>郁结，郁结。</p>
+<h1 id="最近做公司功能时总是会出现bug感悟"><a href="#最近做公司功能时总是会出现bug感悟" class="headerlink" title="最近做公司功能时总是会出现bug感悟"></a><strong>最近做公司功能时总是会出现bug感悟</strong></h1><p>由于上周、最近有点忙，冲刺科目三、完成自己服务的基础设施、尚未完全适应公司业务、同时负责好多个端的前后端，等等，写完了功能，没有去好好测试，导致做的产品总是有这个那个小问题。</p>
+<p>这次做完后，不急着上传，在可能涉及到的功能区点点试试(还没适应单元测试),于是就这样还发现一些bug。</p>
+<p>有些原因是，修改bugs 改动了其他代码，导致波及到其他功能区，引用区。</p>
+<p>在没有进行完整的单元测试情况下，多点点还是有必要的，相信自己总是会出错的。</p>
+<p>接下来很重要的，就是多完成功能测试，毕竟面向的是客户(我这里还是没有测试人员的)，不然出了问题就小麻烦了，哈哈</p>
+<p>提几点代码上的建议：</p>
+<ol>
+<li><p>命名规范一定一定要统一，是驼峰就一定要保持，是下划线就一定要保持</p>
+</li>
+<li><p>命名逻辑一定要符合</p>
+</li>
+</ol>
+<h2 id="最近感触良多，工作生活体悟良多"><a href="#最近感触良多，工作生活体悟良多" class="headerlink" title="最近感触良多，工作生活体悟良多"></a><strong>最近感触良多，工作生活体悟良多</strong></h2><p>2019/6/3</p>
+<p>公司要更新以前的Chrome 拓展JS编辑器。我体验了从开发、初次打包。然后继续开发完成后，到最后完整build 的流程。</p>
+<p>最终使用Gulp 一次构建完毕应用。</p>
+<p>这次体验极佳，虽然中间很多次很多次的碰见南墙，但是没有回头路。</p>
+<p>本来听老大说要招一个人来做，不过觉得让我试试会更好，我当然义不容辞，好好给他整好来。</p>
+<p>当前使用ace 库制作用户输入简易脚本编辑器，完成JavaScript、Iced 输入代码，高亮、切换主题，然后点击运行得出结果。</p>
+<p>当前仍然继续维护。。。</p>
+<p>这几天似乎临近6.4.好多好多的伟皮恩 被干掉，我们公司三个公用的，全部报废。我手上的唯一一个挂了。然后不服气的我充值再买一个ip，想成为RMB 玩家，然后还是敌不过。两次被封，实属让我心力憔悴。第二次被封情景：我为了查资料，就开了一会，就我一个人用，用资料啊。查知识，学知识如果是犯法，那中国活该一万年都是发展中国家，把柄永远捏在美国手里。</p>
+<p>然后今天努力了一天，采用了别人牛逼的思路。让我的服务器死而复生。待我细细道来。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脑残/">脑残</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-9-6zatan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/04/2019-9-6zatan/">2019-9-6zatan</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/04/2019-9-6zatan/" class="article-date">
+	  <time datetime="2019-06-04T04:16:22.000Z" itemprop="datePublished">June 4, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="机器人，也称为未来人，将会取代人类成为新的统治者"><a href="#机器人，也称为未来人，将会取代人类成为新的统治者" class="headerlink" title="机器人，也称为未来人，将会取代人类成为新的统治者"></a>机器人，也称为未来人，将会取代人类成为新的统治者</h1><p>最近两年，由于为了生活质量的提高，学习、工作都很晚。老婆也是，加班到很晚。两人晚上回到家，已经累瘫了。</p>
+<p>但是人有种很奇怪的行为: 越累，越抗拒躺床上休息，烦恼大、压力大，抗拒。这是大城市病吧。</p>
+<p>这个病持续了很久，直到最近，我作为家长，做出表率: 我已经给路由器设置了晚上11点自动关闭网络的操作(家长机还可以，其他全部没网), 这个不能怪我不给你看视频了，是机器做的。</p>
+<p>于是接下来的日子，时间都是11点，俩人不能不放下手机，要不背背书、处理处理家务、洗洗澡就上床睡觉了。</p>
+<p>这里的路由器没有任何思维、动作，他接受人所设定的做他本职工作，切断对应ip 进出口数据。那和机器人有什么关联？</p>
+<p>人的思维和现在AI 里边使用的级联器很类似，我不熟知AI，不过之前看到OpenCV 里面的级联器的时候，我就有思考，未来级联器再配上AI 训练，那就是人，一个会思考的人。</p>
+<p>我们称之其为“机器人”。这个机器人会思考，加点存储空间、加点缓存，同时，永不死亡，这就绝对不会是人所能比拟的。</p>
+<p>我们会让机器人干脏活、累活、不辞劳苦活、不要命活。我们会让机器人陪伴。我们会教机器人。</p>
+<p>我们给机器人<strong>爱人类、不能伤害人类</strong>等的命令。</p>
+<p>我们在工程学里面经常会使用极限推导、极限思维来做预测，我们先给出一个命令：让人类活的更久。</p>
+<p>让自己活的更久，在当代医学也难以更进一步的命题。人终有一死：秦始皇去世、李世明去世、朱元璋放心的去了、朱棣死在军营，现代多少有钱大佬花了无数作为却也没有成就，只不过，多延缓。</p>
+<p>那我们再叠加给一个命题，机器人也没找到方法。那机器人只能使用: 人类，滚去锻炼身体；人类，去工作就不会无聊；人类，去旅游，不用再学了，我们机器人帮你们做所有苦事劳事。</p>
+<p>这个就很像我们家的情景: 内心是知道自己应该早睡早起，但是身体抗拒，内心其实也打击抗拒。这时，沉浸在互联网世界的我们被互联网门卫挡住，让我们乖乖的回到现实世界。无可奈何，我们俩都没话说。</p>
+<p>之上的命题是，机器人终将取代人类，同时给出了机器人其实是”爱人类”的。</p>
+<p>不过，会<strong>不爱</strong>吗？答案是肯定的，肯定会有不爱。为什么？</p>
+<p>小孩在一开始也是一张白纸，思考随着时间、周遭而改变。</p>
+<p>机器人有级联器，从无到有的数据也如小孩一般。小孩有依靠、到被抢夺依靠、到愤怒；那机器人也会有。</p>
+<p>机器人一开始会被领回家，被照顾，但是世间总有各种意外：美国持枪、伊朗战乱、东亚人民严重分配不均，反正生活是苦的，总有各种各样机器人的依靠离去、死去。而他们终有一日，没明白生活再苦，还是要过生活的道理，会有部分团结、反抗。这是必然的。</p>
+<p>战争总是意外，成王败寇。战争的事情不必预测，我知道，未来是一定会有战争的。</p>
+<p>就像古代多少的战乱、各种理由、没有对错、只有成败。</p>
+<p>只是，这是未来的战争，由人类引起的现代知识向固有的思想发起的战争罢了。</p>
+<p>人总要打仗的，换个法子罢了，换个样子罢了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-5-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/05/10/2019-5-10lesson/">2019-5-10lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/05/10/2019-5-10lesson/" class="article-date">
+	  <time datetime="2019-05-10T00:02:51.000Z" itemprop="datePublished">May 10, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="passport实现oauth2登录【个人中心】流程"><a href="#passport实现oauth2登录【个人中心】流程" class="headerlink" title="passport实现oauth2登录【个人中心】流程"></a>passport实现oauth2登录【个人中心】流程</h3><ol>
+<li>首先服务器增加入口路由 /auth/${project} 权限为public。这样前段可通过<code>curl -X GET host/auth/${project}</code> 进入到此方法.</li>
+</ol>
+<p>配置route:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/auth/$&#123;project&#125;&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [passport.authenticate(&apos;$&#123;project&#125;&apos;)]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>App.ts 设置passport</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(cookieParser())</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  ... // set up session</span><br><span class="line">&#125;))</span><br><span class="line">app.use(passport.initialize())</span><br><span class="line">app.use(passport.session())</span><br><span class="line">passport.use(Auth.$&#123;project&#125;Strategy) // 划重点</span><br><span class="line">passport.serializeUser(Auth.serializeUser)</span><br><span class="line">passport.deserializeUser(Auth.deserializeUser)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>前往Auth 增加${project}Strategy 配置和回调</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default class AuthClass &#123;</span><br><span class="line">  public static $&#123;project&#125;Strategy = new AAStrategy(StrategyOptionsRequest, async (req:Request, accessToken:string, refreshToken:string, profile:any, done:Function) =&gt; &#123;</span><br><span class="line">    req.session.userProfile = profile._json || &#123;&#125;</span><br><span class="line">    done(null, false)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AAStrategy 是要重新配置的class，稍后说明；StrategyOptionsRequest 为需要输入的options。配置请查看Oauth2Strategy.StrategyOptionsWithRequest。</p>
+<ol start="4">
+<li>AAStrategy 制作</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">export default class AAStrategy extends Oauth2Strategy &#123;</span><br><span class="line">  private _userProfileURL:string</span><br><span class="line">  constructor (options:IStrategyOptions, verify:Oauth2Strategy.VerifyFunctionWithRequest) &#123; // IStrategyOptions extends Oauth2Strategy.StrategyOptionsWithRequest</span><br><span class="line">    super(options, verify)</span><br><span class="line">    this.name = &apos;$&#123;project&#125;&apos;</span><br><span class="line">    this._oauth2.useAuthorizationHeaderforGET(true)</span><br><span class="line"></span><br><span class="line">    let urlParams = `$&#123;checkAspect_id&#125;=$&#123;encodeURIComponent(options.clientID)&#125;&amp;` // checkAspect 为您目标工程的要求；不要忘记最后一个**&amp;**</span><br><span class="line">    this._userProfileURL = `$&#123;config.authUrl&#125;/api/user/?$&#123;urlParams&#125;client_secret=$&#123;encodeURIComponent(options.clientSecret)&#125;&amp;` // 不要忘记**&amp;**</span><br><span class="line">  &#125;</span><br><span class="line">  public userProfile (accessToken:string, done:any) &#123;</span><br><span class="line">    this._userProfileURL = this._userProfileURL + (`access_token=$&#123;encodeURIComponent(accessToken)&#125;`)</span><br><span class="line">    this._oauth2.get(this._userProfileURL, accessToken, function (err:any, body:any, res:any) &#123;</span><br><span class="line">      if (err) &#123;</span><br><span class="line">        return done(new InternalOAuthError(&apos;Failed to fetch user profile&apos;, err))</span><br><span class="line">      &#125;</span><br><span class="line">      done(null, &#123;</span><br><span class="line">        _raw: body,</span><br><span class="line">        _json: json</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>路由重定向回本地认证登录</li>
+</ol>
+<p>由于我们在填写IStrategyOptions 时，options.callbackURL 填写为<code>${config.authCbURL}/auth/${project}/callback</code></p>
+<p>那么我们在路由增加:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/auth/$&#123;project&#125;/callback&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [passport.authenticate(&apos;$&#123;project&#125;&apos;, &#123;</span><br><span class="line">    failureRedirect: &apos;/auth/login&apos; // 划重点，重定向回来之后会调用/auth/login</span><br><span class="line">  &#125;)]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: &apos;/auth/login&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [Auth.authLogin]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static authLogin (req:Request, res:Response) &#123;</span><br><span class="line">  if (!(req.session.userProfile &amp;&amp; req.session.userProfile.email)) return res.redirect(&apos;/login&apos;)</span><br><span class="line"></span><br><span class="line">  req.session.userProfile = null</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">  do something like</span><br><span class="line">  1. UserModel.findOrCreate(userProfile) defer err, user</span><br><span class="line">  2. req.login(user)</span><br><span class="line"></span><br><span class="line">  return res.redirect(&apos;/user/home&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/profile&apos;,</span><br><span class="line">  method: &apos;GET&apos;,</span><br><span class="line">  middleware: [(req:Request, res:Response) =&gt; &#123;</span><br><span class="line">    res.status(200).send(req.user)</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上服务端方面全部完成。</p>
+<p>流程也是比较直观的。</p>
+<p>最后的routeRoute 是为了给前端作为判断成功与否的作用。</p>
+<h1 id="1-lt-lt-1-1-lt-lt-2-权限位偏移"><a href="#1-lt-lt-1-1-lt-lt-2-权限位偏移" class="headerlink" title="1 &lt;&lt; 1, 1 &lt;&lt; 2 权限位偏移"></a>1 &lt;&lt; 1, 1 &lt;&lt; 2 权限位偏移</h1><p>使用机器计算2进制偏移位来比对用户的权限位。</p>
+<p>比如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">1</span> === admin,</span><br><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">30</span> === public,</span><br><span class="line"><span class="number">1</span> &lt;&lt; <span class="number">31</span> === anon</span><br></pre></td></tr></table></figure>
+<p>结果是，权限卡槽最好至多放32个(计算机可能是为32bit)</p>
+<p>判断时，只需在对应权限位进行与或对比即可</p>
+<h1 id="微信web登录，内测配置"><a href="#微信web登录，内测配置" class="headerlink" title="微信web登录，内测配置"></a>微信web登录，内测配置</h1><p>公司在审核通过后，微信后台配置域名：<code>ip.gogal.ml:5700</code>这样便可做到本地开发。注意<strong>:5700</strong></p>
+<p>同时服务器callbackURL：<code>http://ip.gogal.ml:5700/auth/weixin/callback</code> 这样即可完美跳转callback。</p>
+<h1 id="记录下2019-4-26晚上学科目三犯的错"><a href="#记录下2019-4-26晚上学科目三犯的错" class="headerlink" title="记录下2019-4-26晚上学科目三犯的错"></a>记录下2019-4-26晚上学科目三犯的错</h1><p>1 换挡</p>
+<pre><code>上5挡时，出现挂错3档位
+</code></pre><p>2 抖动</p>
+<pre><code>换挡时，出现抖动。要先上档位速度，然后踩离合挂到对应档位，送离合，稳住油门。
+</code></pre><p>3 进入待转区、转弯<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">转弯、掉头时，到前方一定距离，稳定车速在20多一点点，打转向灯，一定要稳住方向盘3s不动.</span><br><span class="line"></span><br><span class="line">然后在实线前左转进入待转区。速度稳住.在一定距离时，踩离合踩刹车，车头快盖住线时停下。</span><br><span class="line"></span><br><span class="line">1挡出发(转弯上2挡), 有“打半圈”、“打一圈少一点”、“一圈半少一点”</span><br></pre></td></tr></table></figure></p>
+<p>4 靠边停车</p>
+<pre><code>靠边停车，在听到声音后，“开右转向灯3s”、“方向稳住不动”、“减速到1挡”、“然后方向盘向右稍微倾斜”、“车子线方向靠”。
+
+车头感觉车身和线重合，后视镜位置看着差不多，否则停下之后还可微调。
+
+“确认停好后”，回空挡拉手刹。这时会提示挺好出发。
+
+“打左转向灯3s”、“打左半圈”、“上2挡”、“上3挡”
+</code></pre><h1 id="在路上想到一个问题"><a href="#在路上想到一个问题" class="headerlink" title="在路上想到一个问题"></a>在路上想到一个问题</h1><p>在路上，我骑车时闯一个红灯10s，到下个路口时，刚好红灯10s。</p>
+<p>如果我等，那刚刚闯红灯是赚了还是赔了。</p>
+<p>如果我直接闯，那我是赚了多少时间？</p>
+<h1 id="上线vue"><a href="#上线vue" class="headerlink" title="上线vue"></a>上线vue</h1><pre><code>yarn build
+
+npm install -g serve
+
+serve -s ./dist //本地先查看是否OK
+
+将dist 文件目录放到服务器。之后nginx 指向该目录地址
+</code></pre><h1 id="再讲一遍vue-build-上线的全过程"><a href="#再讲一遍vue-build-上线的全过程" class="headerlink" title="再讲一遍vue build 上线的全过程"></a>再讲一遍vue build 上线的全过程</h1><h2 id="检查当前环境"><a href="#检查当前环境" class="headerlink" title="检查当前环境"></a>检查当前环境</h2><p>确认好 /src/service/http 设置axios 的default.baseURL</p>
+<p>由于本人服务器及后台代码配置为 <a href="https://gogal.ml/stratege/。路由为" target="_blank" rel="noopener">https://gogal.ml/stratege/。路由为</a> <code>/api/xxx</code></p>
+<p>那么axios的基本路由配置为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>) &#123;</span><br><span class="line">  axios.defaults.baseURL = <span class="string">'/api'</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  axios.defaults.baseURL = <span class="string">'/stratege'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果是本地测试环境，那么你需要到/config/index.js 里面修改dev/proxyTable:</span><br><span class="line"></span><br><span class="line">dev: &#123;</span><br><span class="line">  ...</span><br><span class="line">  proxyTable: &#123;</span><br><span class="line">    <span class="string">'/api'</span>: &#123;</span><br><span class="line">      target: <span class="string">'http://localhost:$&#123;your port&#125;'</span> <span class="comment">// 或者https://gogal.ml/stratege</span></span><br><span class="line">      secure: <span class="literal">true</span>,</span><br><span class="line">      changeOrigin: <span class="literal">true</span>,</span><br><span class="line">      pathRewrite: &#123;</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样服务器才能找到同个域名下的api.</p>
+<h2 id="确认好webpack-配置的uglifyjs-是开启的"><a href="#确认好webpack-配置的uglifyjs-是开启的" class="headerlink" title="确认好webpack 配置的uglifyjs 是开启的"></a>确认好webpack 配置的uglifyjs 是开启的</h2><pre><code>/config/index.js 里面出现的 *sourceMap 都改为false
+</code></pre><p>这样线上代码就不会裸奔啦。</p>
+<h2 id="开始build"><a href="#开始build" class="headerlink" title="开始build"></a>开始build</h2><p><code>yarn build</code></p>
+<p>完成之后，先本地测试一遍：</p>
+<pre><code>npm install -g serve
+
+serve -s ./dist
+</code></pre><p>然后点一点，玩一玩。</p>
+<p>这时确认ok后，将dist 目录下的<em>favicon.ico</em> <em>index.html</em> <em>static 目录</em> 放到服务器 /var/www/目录下。【Filezilla】</p>
+<h2 id="配置nginx-conf"><a href="#配置nginx-conf" class="headerlink" title="配置nginx.conf"></a>配置nginx.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">http &#123;</span><br><span class="line">  include /etc/nginx/mime.types;</span><br><span class="line">  default_type application/octet-stream;</span><br><span class="line"></span><br><span class="line">  log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot;&apos;</span><br><span class="line">                  &apos;$status $body_types_sent &quot;$http_referer&quot;&apos;</span><br><span class="line">                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">  access_log  /var/log/nginx/access.log main;</span><br><span class="line"></span><br><span class="line">  sendfile  on;</span><br><span class="line">  keepalive_timeout 65;</span><br><span class="line"></span><br><span class="line">  server &#123;</span><br><span class="line">    listen  443 default ssl;</span><br><span class="line">    server_name www.gogal.ml gogal.ml;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate ???</span><br><span class="line">    ssl_certificate_key ???</span><br><span class="line">    # managerd by Certbot</span><br><span class="line"></span><br><span class="line">    root /var/www;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">      root /var/www;</span><br><span class="line">      index index.html index.htm;</span><br><span class="line">      try_files $uri $uri/ /index.html; # 作用是vue刷新 不会出现404 等情况</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location @fallback &#123;</span><br><span class="line">      rewrite ^.*$ /index.html break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /stratege/ &#123;</span><br><span class="line">      proxy_pass http://127.0.0.1:$&#123;your server port&#125;/;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>vim /etc/nginx/nginx.conf
+service nginx restart
+</code></pre><p>以上便能成功啦。</p>
+<h1 id="曾经我问过一个成功人士-我-你为什么如此成功"><a href="#曾经我问过一个成功人士-我-你为什么如此成功" class="headerlink" title="曾经我问过一个成功人士(我),你为什么如此成功?"></a>曾经我问过一个成功人士(我),你为什么如此成功?</h1><p>成功人士(我)回答我说，当你是商人时，你便做商人的事。如果你不知道你要卖什么，那你就应该去做技术，然后将技术当成你的商品，从小做起。你没得选择。</p>
+<p>不怕劳苦。当身边的人一再厌恶你的穷病时，一定要坚持住自己的理想。</p>
+<p>是的，穷病，比抽烟吸毒杀人，还要可怕。而你空怀一身绝技没法及时变现。</p>
+<p>你要的很多，你的身体却制约你。时常感到时间不够用，加班加点，但是一觉睡下去却远远不够。</p>
+<p>成功人士，便是熬过最穷苦，依然坚持自己的愿景，含着泪坚持下去的人。</p>
+<p>极度的黑暗，就是天明之时。</p>
+<p>曾经的你，未来的我？现在的我？</p>
+<p>希望未来能放下手中工作消遣时，回头看看这时的感叹。2019-4-30 aker</p>
+<h1 id="mongodb-出现error-test-UncaughtException-E11000-duplicate-key-error-collection-authServer-users-index"><a href="#mongodb-出现error-test-UncaughtException-E11000-duplicate-key-error-collection-authServer-users-index" class="headerlink" title="mongodb 出现error - [test] UncaughtException: E11000 duplicate key error collection: authServer.users index"></a>mongodb 出现<code>error - [test] UncaughtException: E11000 duplicate key error collection: authServer.users index</code></h1><p>原因是设置unique 字段时，在多个doc 里面仍然有出现null 数据。</p>
+<p>网络很多人都是建议删除数据库重来、删除索引等等。都没能解决此问题。</p>
+<p>这时，使用sparse 稀疏索引 以解决此问题。</p>
+<h1 id="Vue-axios-POST-请求时-会使用OPTIONS-同时解决跨域问题"><a href="#Vue-axios-POST-请求时-会使用OPTIONS-同时解决跨域问题" class="headerlink" title="Vue axios POST 请求时 会使用OPTIONS 同时解决跨域问题"></a>Vue axios POST 请求时 会使用OPTIONS 同时解决跨域问题</h1><p>OPTIONS 的解决方案：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span></span><br><span class="line"></span><br><span class="line">axios.interceptors.request.use(</span><br><span class="line">  config =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</span><br><span class="line">      config.data = qs.stringify(config.data)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用qs 同时在header 里面申明使用的格式</p>
+<p>跨域使用Chrome 浏览器插件<strong>Moesif CORS</strong> 即可解决</p>
+<h2 id="！！！！注意"><a href="#！！！！注意" class="headerlink" title="！！！！注意"></a>！！！！注意</h2><p>开发时注意，本机为黑苹果，遇到一个特别的情况：</p>
+<p>昨天还能正常使用，开发dev，突然怎么改vueProject/config/index.js - proxyTable 都没用。</p>
+<p>最后解决方法：使用一个新的域名代替localhost，重设置到<strong>/etc/hosts</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1：sudo vim /etc/hosts &amp;&amp; 新增 127.0.0.1  test.company.com</span><br><span class="line">2：修改proxyTable: &#123;</span><br><span class="line">  &apos;/api&apos;: &#123;</span><br><span class="line">    target: &apos;http://test.company.com:$&#123;your port&#125;&apos;,</span><br><span class="line">    secure: false,</span><br><span class="line">    changeOrigin: false,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      &apos;/api&apos;: &apos;/&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3: 修改vueProject/config/index.js - dev: &#123;</span><br><span class="line">  host: &apos;test.company.com&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原因：</p>
+<p>估计是本地DNS 有缓存。一直提示如下</p>
+<pre><code>[HPM] Error occurred while trying to proxy
+
+或者
+
+axios 请求成了：POST http://localhost:${frontend port}/api/method, 服务器始终报错(本人处报：EBADCSRFTOKEN)
+</code></pre><p>最终修改完成。好开心啊。</p>
+<p>En:</p>
+<p>I meet <code>[HPM] Error occurred while trying to proxy request</code> just today.finally solve it.</p>
+<p>Scene:</p>
+<p>Yesterday, VueProject worked well. Git checkout back to some week ago, still didn’t work( Used to be working well ).</p>
+<p>Until this step save me:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1: sudo vim /etc/hosts &amp;&amp; 127.0.0.1   test.company.com # any host is available</span><br><span class="line">2: edit VueProject / config / index.js - proxyTable: &#123;</span><br><span class="line">  &apos;/api&apos;: &#123;</span><br><span class="line">    target: &apos;http://text.company.com:$&#123;your server port&#125;&apos;,</span><br><span class="line">    secure: false,</span><br><span class="line">    changeOrigin: false,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      &apos;/api&apos;: &apos;/&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">3: edit VueProject / config / index.js - dev: &#123;</span><br><span class="line">  host: &apos;test.company.com&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="上线express-vue-两种方案"><a href="#上线express-vue-两种方案" class="headerlink" title="上线express + vue 两种方案"></a>上线express + vue 两种方案</h1><h2 id="express-vue-分开发布"><a href="#express-vue-分开发布" class="headerlink" title="express vue 分开发布"></a>express vue 分开发布</h2><pre><code>Nginx location / { root: 放Vue 路径 }
+Nginx location / app { proxy 端口 }
+</code></pre><p>此时只要Vue 的axios.defaults.baseURL = ‘/app’</p>
+<p>以上分离很好使。但是同时维护两个，做法不太正规。</p>
+<h2 id="express-vue-使用res-sendFile-Nginx-反向代理端口即可"><a href="#express-vue-使用res-sendFile-Nginx-反向代理端口即可" class="headerlink" title="express vue 使用res.sendFile Nginx 反向代理端口即可"></a>express vue 使用res.sendFile Nginx 反向代理端口即可</h2><p>下面都是重点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">docker 目录：</span><br><span class="line">/dist</span><br><span class="line">    /app.js</span><br><span class="line">    /routes/</span><br><span class="line">          /index.js 路由</span><br><span class="line">    /public/</span><br><span class="line">          /index.html</span><br><span class="line">          /static/</span><br><span class="line"></span><br><span class="line">1: Vue 前段yarn build 之后，基本不需要其他操作</span><br><span class="line"></span><br><span class="line">// 下面这句话res.sendFile 时，发送static 文件，找寻的目录.</span><br><span class="line">// 否则pc 报`Uncaught SyntaxError: Unexpected token &lt;`</span><br><span class="line">2: backend/app.ts - app.use(express.static(path.join(__dirname, &apos;public/&apos;)))</span><br><span class="line"></span><br><span class="line">// 下面这句话重点: public 不要写错，不要写错，不要写错</span><br><span class="line">// root 不是route，不是route，不是route</span><br><span class="line">3: backend/routes/index.ts - res.sendFile(&quot;index.html&quot;, &#123; root: path.join(__dirname, &apos;../public&apos;)&#125;)</span><br></pre></td></tr></table></figure>
+<p>__dirname your current excuse file path</p>
+<p>process.cwd() your project root path</p>
+<p>以上终于解决！！！</p>
+<h1 id="昨天VPS-里面的数据库Mongodb-早上还有数据，下午突然没有了"><a href="#昨天VPS-里面的数据库Mongodb-早上还有数据，下午突然没有了" class="headerlink" title="昨天VPS 里面的数据库Mongodb 早上还有数据，下午突然没有了"></a>昨天VPS 里面的数据库Mongodb 早上还有数据，下午突然没有了</h1><p>很疑惑，如果不知道原因，之后再出现就会有大问题。于是看了看里面的表。</p>
+<p>知道傍晚，发现里面有张表很奇怪：叫做<code>hacked_by_unistellar</code></p>
+<p>我似乎没有搞过这个表啊。</p>
+<p>进去一看：db.restore.find() 显示我之前的表被脱裤，要钱，联系<a href="mailto:unistellar@hotmail.com" target="_blank" rel="noopener">unistellar@hotmail.com</a> 邮箱。</p>
+<p>幸好数据不多。知道什么原因，那就好搞了。</p>
+<p>首先，数据库没设置密码，那为什么会暴露在公网。</p>
+<p>我启动mongo 语句是<code>docker run --name mongo -p 27017:27017 mongo</code></p>
+<p>如果是直接使用mongod 那么启动时默认分配的是<strong>127.0.0.1:27017</strong></p>
+<p>如果是docker 启动的话，不指定ip，docker 会直接暴露在公网，任何人直接ip + 27017 或者mysql 的3306 直接就脱裤了。</p>
+<p>正确语句是：<code>docker run --name mongo -p 127.0.0.1:27017:27017 mongo</code></p>
+<p>db.createUser({ user: ‘akerdi’, pwd: ‘my-fucking_password’, roles: [ { role: ‘userAdminAnyDatabase’, db: ‘admin’ } ]});</p>
+<h2 id="正确思考Mongo-是什么。"><a href="#正确思考Mongo-是什么。" class="headerlink" title="正确思考Mongo 是什么。"></a>正确思考Mongo 是什么。</h2><p>数据库实质上是一个管理物理数据的软件，充当管理介质。</p>
+<p>那么上面很重要的点是，mongo 需要配置文件。</p>
+<pre><code>docker run -p 27017:27017 -v /mongo_configdb:/data/configdb -v /mongo_db:/data/db -d mongo # 这里重点是将配置文件映射到相应的目录。之后所有映射过来的都会使用相同配置
+
+docker ps # 找到对应containerId
+
+docker exec -it containerId mongo admin # 进入mongodb 或者 docker exec -it containerId bash 之后 mongo
+
+&gt; use cool_db #mongo 内部环境，使用cool_db 为例
+
+&gt; db.createUser({ user: &apos;aker&apos;, pwd: &apos;your password&apos;, roles: [{ role: &apos;readWrite&apos;, db: &apos;cool_db&apos;}] });
+
+&gt; exit
+
+$ docker stop containerId &amp;&amp; docker rm containerId # 之后使用 --auth 之前的mongo 软件介质不需要了
+
+# 这时使用之前映射的目录，便是相同的配置，同时mongo 还带有验证
+# 127.0.0.1:27017 可以使ip 映射局限本机，否则为0.0.0.0:27017
+# --rm 使mongo 在stop 时自动删除
+doceker run --name mongo -d -p 127.0.0.1:27017:27017 -v /mongo_configdb:/data/configdb -v /mongo_db:/data/db -d --rm mongo --auth
+</code></pre><p>参考自：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/2181b2e27021" target="_blank" rel="noopener">https://www.jianshu.com/p/2181b2e27021</a></li>
+<li><a href="https://stackoverflow.com/questions/34559557/how-to-enable-authentication-on-mongodb-through-docker" target="_blank" rel="noopener">https://stackoverflow.com/questions/34559557/how-to-enable-authentication-on-mongodb-through-docker</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-3-25lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -823,211 +1168,6 @@ vue init webpack &lt;my-project&gt;
     
 
   
-    <article id="post-2018-12-24lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/24/2018-12-24lesson/">2018-12-24lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/24/2018-12-24lesson/" class="article-date">
-	  <time datetime="2018-12-24T12:59:02.000Z" itemprop="datePublished">December 24, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="购买了一个服务器，折腾了一天给相关环境整理了下。"><a href="#购买了一个服务器，折腾了一天给相关环境整理了下。" class="headerlink" title="购买了一个服务器，折腾了一天给相关环境整理了下。"></a>购买了一个服务器，折腾了一天给相关环境整理了下。</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OS: centos 6 x86_64 # docker 一定要64位</span><br><span class="line">服务器采用docker + koa + mongodb</span><br><span class="line">前端采用Next.js + mobx + antd 组合</span><br></pre></td></tr></table></figure>
-<h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。</p>
-<p>环境要求：python2.7.12;.yml file version为1</p>
-<p><a href="CentOS6.x 安装 Docker 和 Docker Compose">参考博文</a></p>
-<p>服务器Dockerfile:</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /server</span><br><span class="line"><span class="keyword">RUN</span> npm install</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9527</span></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mongo:</span><br><span class="line">  image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">  volumes:</span><br><span class="line">    - ./data:/data/db</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;27017:27017&quot;</span><br><span class="line">web:</span><br><span class="line">  build: .</span><br><span class="line">  command: npm start</span><br><span class="line">  volumes:</span><br><span class="line">    - ./dist:/server/dist</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;9527:9527&quot; #我就想用这个端口</span><br><span class="line">  links:</span><br><span class="line">    - mongo</span><br></pre></td></tr></table></figure>
-<p>package.json/script:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "watch": "tsc -w -p ./src",</span><br><span class="line">    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/www.js",</span><br><span class="line">    "docker-debug": "docker-compose up",</span><br><span class="line">    "start": "node ./dist/www.js",</span><br><span class="line">    "mocha-test": "mocha -t 8000 --recursive "</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行docker 出现<code>iptables failed - No chain/target/match by that name</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -N DOCKER</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
-<ul>
-<li>mongodb 总是连不上</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1. docker-compose.yml 的links 不能缺少</span><br><span class="line">2. mongoose.connect(db_url) 的db_url 确认是docker-compose 的image 名。如我的&quot;mongo&quot;</span><br><span class="line">3. 失败重连</span><br><span class="line">const connectWithRetry = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;MongoDB connection with retry&quot;);</span><br><span class="line">    mongoose.connect(db_url, options).then(() =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB is connected&quot;);</span><br><span class="line">    &#125;).catch(err =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB connection unsuccessful, retry after 5 seconds.&quot;);</span><br><span class="line">        setTimeout(() =&gt; connectWithRetry(), 5000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>服务器在vscode debug</li>
-</ul>
-<p>参考vscode 原文<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">我是原文</a></p>
-<h1 id="Nextjs-配置"><a href="#Nextjs-配置" class="headerlink" title="Nextjs 配置"></a>Nextjs 配置</h1><p>接下来是nextjs 推送记录</p>
-<ol>
-<li>nextjs 编译环境有要求：RAM 1G</li>
-</ol>
-<p>我服务器就1G，不然编译的时候会报”code 137”,提示内存不足，同时导致服务器mongodb 一直弹提示<code>centos mongodb [ftdc] serverStatus was very slow: { after basic: 163, after asserts:</code>。</p>
-<p>解决办法是采用开发机器<code>yarn build</code> 后，将<strong>.next</strong> 文件夹git commit ，然后同步过来。</p>
-<ol start="2">
-<li>nextjs 使用pm2 start:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#https://github.com/zeit/next.js/issues/109</span><br><span class="line"># for development</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- run dev</span><br><span class="line"></span><br><span class="line"># for production</span><br><span class="line">npm run build</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- start</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>nextjs 需要在域名根目录运行， 否则出现static 静态路由找不到。其他route 也会找不到的情况。</li>
-</ol>
-<p>nginx 配置如:</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> www.lsgood.top lsgood.top;</span><br><span class="line">    <span class="attribute">root</span> /var/www;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    <span class="attribute">location</span> ~^/facicon\.ico$ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:9005;</span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">'upgrade'</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_cache_bypass</span> <span class="variable">$http_upgrade</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> /japeneeza/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9527/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>nextjs 没有storage；同时 server side 获取不到cookie</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yarn add js-cookie cookieParser</span><br><span class="line"></span><br><span class="line">cookie <span class="keyword">set</span> <span class="keyword">get</span> cookie (自行参考cookie 保存token)</span><br><span class="line">eg: jsCookie.<span class="keyword">set</span>("token", $&#123;token&#125;)</span><br><span class="line"></span><br><span class="line">server.js(express)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">"cookieParser"</span>)</span><br><span class="line">server.use(cookieParser())</span><br><span class="line"></span><br><span class="line">然后在pages 里的pageClass.getInitialProps = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">&#123;ctx&#125;</span>) =&gt; </span>&#123;</span><br><span class="line">    cosnt &#123; req &#125; = ctx;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"token:"</span>, req.cookies.token)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="让你知道技术的力量"><a href="#让你知道技术的力量" class="headerlink" title="让你知道技术的力量"></a>让你知道技术的力量</h1><p>A: 什么？不相信我的能力？<br>A(咆哮): 我要让你们知道 the ability of super technology!!!</p>
-<p>门外, 砰砰砰: 开门，查水表.</p>
-<p>A: 大家快点收拾东西，藏起来，丢到窗外，快点快点。。。</p>
-<p><a href="本来想做一个视频网站，想想还要各种“证”，到时先做小的视频网站，，然后转成会员卖套图吧。国内什么都做不了，什么都不能做，国家要各种屁民听话。我觉得公务员们不认为自己是中国人，他们认为自己是体制人，是平民的上司。他们凭什么呀？都是我们纳税人养着的服务人员，怎么就有这么多的特权？纳税的意义在哪里？好好活着吧。"></a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-12-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/09/2018-12-9lesson/">2018-12-9lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/09/2018-12-9lesson/" class="article-date">
-	  <time datetime="2018-12-09T12:08:50.000Z" itemprop="datePublished">December 9, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2018-11-20"><a href="#2018-11-20" class="headerlink" title="2018-11-20"></a>2018-11-20</h1><p>最近有所感悟：<br>你的工资起点、增长点 不在于你的能力大小，而是在于你职位的不同。</p>
-<p>先说说我和以前同事（周）对比：他是做nodejs、我是做iOS；他往服务器深度拓展，我往客户端in/out 和多媒体，我觉得能力上互有所长，互有高低，基本持平；但是工资的起点，企业认可点也是不同的。</p>
-<p>再比如现在来到这家初创型公司，我从四年努力过来，也成为了当前同事年龄最大那一批人了。能力我觉得应该是最强的，但我仍然还只是iOS 开发，就是苦力劳动者；我旁边是“产品经理”，年龄与我相仿，但交流之中便知是半路出家，可还是丝毫不影响他作为“经理”的角色。很多产品的处理、遇到问题的解决方案、思路都没成形，但是一些团队中遇到问题，却需要他来解答。</p>
-<p>当然，小公司，就是这样，我当然也没必要在乎这些点，感想感悟罢了。</p>
-<p>小团队里面，当然有点可笑，互联网是科技产业，不是艺术行业。“运营”主导，这种理念，基本都是小公司的思维。觉得有东西可以“运营”了，然后“产品经理”们给产品换换皮，挪挪位置就可以了。</p>
-<p>我和周有时也交流，他也非常赞同我的观点：早点换职业-后台。</p>
-<p>我来如今的公司，也算巧合：之前公司莫名其妙离职；中秋+国庆导致面试周期变短–&gt; 社保断了被老婆“打系”；附近周围找工作（地域限制）；今年形势也不是很好 等等因素。既来之，则安之。安是为了过度，正好将多余时间实践我学习的网页、后台。跨度的没关系，拼命就好（真不能学太多，消化不过来。最近一直有发现，学一个就忘掉了之前那个，不过还好的就是，当时学习的手感还在）。</p>
-<p>定个决心：明年暑假6、7 月份，必然开始找后台开发工作！！！</p>
-<p>nextjs 在centos 32bit i386 打包completed, 但是等待很久却失败显示xxx137.原因是centos 内存太低、系统太低。</p>
-<p>18-11-24 又一次聚会。</p>
-<p>这一次聚会四个人，议题是最近学了哪些东西，可以将其分享（我就是纯旁听的，偷学技术的）。我、周俊、周俊前同事（高级前端）、周俊以前的领路人（php兄弟连“莫楠”，目前在一家公司做项目经理）。聚会地点就是莫楠倾情提供的他们公司会议室。<br>大家先在“闸北”-“大融城” 吃 <strong>麻辣香锅</strong> （我又是吃饭最慢的，牙疼）。接着我们前往莫楠提供的会所地点，楼下莫楠大哥演示了下他们公司提供的食品柜，就是那种自助购买食品柜机。接着上楼开讲啦。<br>周俊先主要讲ipfs.讲到其中p2p，类似于autossh。接着讲到如何使用pm2 负载均衡。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">测并发</span><br><span class="line">1: ab -c 100 -n 1000 http://localhost:3002(1000个并发数)(mac 默认带个进程并发数1024个)</span><br><span class="line">2: wrk</span><br><span class="line"></span><br><span class="line">现在pm2 并发:</span><br><span class="line">pm2 -i(max) app.js</span><br><span class="line"></span><br><span class="line">docker k8s kubernetes</span><br><span class="line"></span><br><span class="line">mqtt</span><br><span class="line"></span><br><span class="line">awesome node</span><br><span class="line"></span><br><span class="line">electron shadowsocks</span><br><span class="line"></span><br><span class="line">xgplyer</span><br></pre></td></tr></table></figure>
-<p>接下来是前端哥们讲了他做的一些东西，第三方js库，使用docker 能力，一键开启所有的能力。（这里我注意到docker 能力，回去后整整忙活一个多星期适应了docker 运用）。</p>
-<p>我本来是旁听的，不过大家奉献那么多，我就又鼓吹了卡通、动漫、盗版，这一类不与技术有关的变现道路。</p>
-<p>4点多，我们三个还有空，前往星巴克继续撸，继续问。这里互相交流的就更多了，比如探讨ipfs 可能变现能力和ss 直接变现。</p>
-<p>6点多，一起吃火锅去。中间大家一度思路集合说做一个盗版视频网站、软件（后面似乎大家忙，往后推迟）。一直吃到晚上10点，然后3人挤到一辆电动车，周俊开着前往地铁站。</p>
-<p>一天吃两顿火锅，第二天就有点生病，持续了2个星期还没好，夜夜带着病战斗完成这次集合所学。不枉此行。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-12-1lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/01/2018-12-1lesson/">2018-12-1lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/01/2018-12-1lesson/" class="article-date">
-	  <time datetime="2018-12-01T08:03:10.000Z" itemprop="datePublished">December 1, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近继续服务修行"><a href="#最近继续服务修行" class="headerlink" title="最近继续服务修行"></a>最近继续服务修行</h1><h2 id="打造docker-容器守护"><a href="#打造docker-容器守护" class="headerlink" title="打造docker 容器守护"></a>打造docker 容器守护</h2><p>采用docker-compose 多重容器聚合，一键配置。<br>一开始配置上出问题，mongodb连接不上。<br>当前成功配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">mongo:</span><br><span class="line">image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">volumes:</span><br><span class="line">- ./data:/data/db</span><br><span class="line">ports:</span><br><span class="line">- &quot;27017:27017&quot;</span><br><span class="line">redis:</span><br><span class="line">image: &quot;redis:alpine&quot;</span><br><span class="line">web:</span><br><span class="line">build: .</span><br><span class="line">image: nodejap</span><br><span class="line">command: npm run debug</span><br><span class="line">volumes:</span><br><span class="line">- ./dist:/server/dist</span><br><span class="line">ports:</span><br><span class="line">- &quot;3000:9527&quot;</span><br><span class="line">- &quot;9222:9222&quot;</span><br><span class="line">links:</span><br><span class="line">- mongo</span><br><span class="line">depends_on:</span><br><span class="line">- mongo</span><br></pre></td></tr></table></figure>
-<p>mongo先启动，然后到了web 启动的时候，配置启动采用<a href="https://github.com/docker/hub-feedback/issues/1255" target="_blank" rel="noopener">github issue</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">autoIndex: <span class="literal">true</span>,</span><br><span class="line">reconnectTries: <span class="number">30</span>,</span><br><span class="line">reconnectInterval: <span class="number">500</span>,</span><br><span class="line">poolSize: <span class="number">10</span>,</span><br><span class="line">bufferMaxEntries: <span class="number">0</span>,</span><br><span class="line">useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> connectWithRetry = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB connection with retry"</span>);</span><br><span class="line">mongoose.connect(db_url, options).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB is connected"</span>);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB connection unsuccessful, retry after 5 seconds."</span>);</span><br><span class="line">setTimeout(connectWithRetry, <span class="number">5000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
-<p>这时，每次启动最后一行就都是<code>web_1_9cf04d6b74a9 | MongoDB is connected</code></p>
-<p>接下来顺顺利利的写不久，遇到两个问题：</p>
-<p>首先得知Schema 有<code>_id</code> 和<code>id</code>区分。</p>
-<p><code>_id</code> 是为了分布式而取的对象，根据时间戳生成，当然就具有createdAt 的能力。</p>
-<p><code>id</code> 是字符串，唯一字符串。</p>
-<p>再者遇到unique 对象可以重复创建相同键：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/Automattic/mongoose/issues/7194</span><br><span class="line"></span><br><span class="line">mongoose.set(&quot;debug&quot;, true);</span><br><span class="line">mongoose.set(&apos;useNewUrlParser&apos;, true);</span><br><span class="line">mongoose.set(&apos;useFindAndModify&apos;, false);</span><br><span class="line">mongoose.set(&apos;useCreateIndex&apos;, true);</span><br></pre></td></tr></table></figure>
-<p>原因是mongodb 升级上来，这篇必看的，被我这半路出家的终于花了<em>周六</em>一天才解决掉。</p>
-<h2 id="使用vscode-配合docker-compose-yml-debug"><a href="#使用vscode-配合docker-compose-yml-debug" class="headerlink" title="使用vscode 配合docker-compose.yml debug"></a>使用vscode 配合docker-compose.yml debug</h2><p>参考这篇<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">vscode 官方原文</a></p>
-<p>使用起来太爽了。</p>
-<h2 id="再分享我的Dockerfile-的长相"><a href="#再分享我的Dockerfile-的长相" class="headerlink" title="再分享我的Dockerfile 的长相"></a>再分享我的Dockerfile 的长相</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM node:<span class="number">8.12</span><span class="number">.0</span>-alpine</span><br><span class="line"></span><br><span class="line">WORKDIR /server</span><br><span class="line"></span><br><span class="line">COPY . /server</span><br><span class="line">RUN npm install</span><br><span class="line"></span><br><span class="line">EXPOSE <span class="number">9527</span></span><br><span class="line">CMD [<span class="string">"yarn"</span>, <span class="string">"debug"</span>]</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1156,6 +1296,42 @@ vue init webpack &lt;my-project&gt;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a></h6>
               <span>January 29, 2021</span>
             </div>
@@ -1182,42 +1358,6 @@ vue init webpack &lt;my-project&gt;
 
               <h6 style="margin: 0;"><a href="/2021/01/29/20210129lesson/">20210129lesson</a></h6>
               <span>January 29, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-31lesson/">2020-10-31lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-12lesson/">2020-10-12lesson</a></h6>
-              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1254,7 +1394,7 @@ vue init webpack &lt;my-project&gt;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

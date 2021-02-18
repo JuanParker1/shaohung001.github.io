@@ -165,6 +165,152 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-记一次和后台讨论bug的过程吧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/25/记一次和后台讨论bug的过程吧/">记一次和后台讨论bug的过程吧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/25/记一次和后台讨论bug的过程吧/" class="article-date">
+	  <time datetime="2017-01-25T08:30:05.000Z" itemprop="datePublished">January 25, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>和公司后台大哥打交道也有几次了，都不是很给力的解决bug过程。</p>
+<h4 id="先说一下上一次的情形吧。"><a href="#先说一下上一次的情形吧。" class="headerlink" title="先说一下上一次的情形吧。"></a>先说一下上一次的情形吧。</h4><p>我们的后台是用php写的，我以前都是和java后台打交道，所以有些怪，而且后台用的他们以前公司的架构，我们之前的所有api，重要不重要都需要post请求，而且调试bug需要我们前段调节，我记得以前的java那边可以使用terminal调试。<br>这些都不是事，接下来的才是比较蛋疼的。<br>我们那次调试发布，类似发布帖子情形，怎么都发布不出去。我跟后台调了好久，最后我先下去吃饭了，一上来，说解决了。这件事离得比较久，有些忘记了，不过跟后台沟通真麻烦，真蛋疼的那种，我说说这次的吧，基本差不多，感受一下。</p>
+<h4 id="“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”"><a href="#“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”" class="headerlink" title="“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”"></a>“我这代码绝对没有问题，想想你们代码怎么写的吧；不是你们的错，也绝对不是我代码有问题，好吧，那就不用做了，不要做了”</h4><p>是的，这个真是他这样说的。<br>这次是2017年1月23号，也就是鸡年快过年最后一天班。心比较急是真的。<br>后台把代码放到线上，我们都发现登陆、发布这两块不能用。<br>我们可以用排除法：</p>
+<ul>
+<li>登陆我使用测试登陆：手机号登陆、第三方登陆都没有问题；</li>
+<li>我使用线上登陆：手机号登陆失败，第三方登陆没有问题；</li>
+<li>我们前段iOS，线上线下唯一区别就是域名不一样，没有其他。</li>
+<li>发布这个接口也有问题</li>
+<li>我很久没有修改登陆位置的代码了<br>呐，上面可以看出，真的，要么线上线下都不能登录，要么所有接口全都不能用，那肯定是我们哪里错了，他就一句话一开始：肯定是你们前段的错，你们代码没有写好。<br>我当时一直的态度都是确定的知道是后台的错，我愿意陪你来改，帮后台查查那边的错误。<br>他一直说我们这都问题，好吧，毕竟是我当时写的，那我看看代码有没有变动吧：没有，只字未变，，，<br>我说，大哥，我们这里真的没有问题，要不你再查一查。<br>他就说，绝对不可能，怎么可能我这里有问题，你再查查再查查。说的很激动，，肯定是你们的错的。<br>我还是好言好语，毕竟做不好，大家年都不好过，心里想着。<br>接着他说，不然我们调bug。<br>好吧，于是调bug过程也很蛋疼，我用AFNetworking，简单使用网络连接的，他说88888，有没有，我说收到383838 38，中间有个空格。<br>他说我给你88888，你给我383838中间还有空格，肯定是你们那里错了，不然那里来的3，还出来空格，你赶紧改你们代码。<br>我说，大哥啊，我们收到什么就是什么，你给383838空格38，我当然收到相应的了，真不是我们这有错啊。<br>然后他就很凶的，我给你88888，你到时给出来38383838，你还说我这里有问题，那你说这3还有空格哪里来的。<br>我当时回说不知道啊，我们前段收到什么就是什么了。<br>他就一扭头，你先解决3和空格哪里来的在跟我说下一步，再说调试。<br>我无奈的说，你发过来什么我怎么可能找出来哪里来的3，真是服务器的情况啊，你看看测试可以用，线上第三方都能用<br>他插话，语气很凶的说，你不要跟我说什么测试能用，第三方能用，你先把383838那个3和空格找出来（这纯粹转移话题了，解决登陆、发布问题变成了解决3和空格问题）<br>我说，大哥，这没法测了，我们解决登陆问题，你让我查3和空格，我们这，你要什么参数我们提供给你们，你返回什么数据我们就收，我真查不出来啊。<br>然后他就更凶了，你说不是你们问题，那还不是我们问题类，那这样不要测了，不能做不要做了，<br>我蛋疼啊，我还是苦口婆心（毕竟这大过年的，登陆都没法，大家过年都不用过了，老板肯定会很气愤的啊，做了大半年），大哥，我们再查一查吧，毕竟不能登陆，老板肯定发飙啊。<br>他的凶依旧，查什么查，我这里根本不用查，你那边多出来3和空格还让我这边查，那要这样，我把代码还原，要是你还不能登陆，发布有问题，我跟你说好，接下来也不用找我，你自己解决，也不用找我帮忙。<br>（呐，听到这，真的很心寒，我确定是他那边有问题，我都是打着帮他调试bug的态度，心里也嘀咕，要真登陆不了，我没有后台帮忙调试，没法搞啊），我就说先下去吃饭了，登陆上来就换回之前代码试试，没办法了呀，只有这样才能确定是他那边还是我这边，要真我这边，那我也没话说啊<br>，，，我下去吃饭中，，，<br>心情也没被搞坏，毕竟出来给人工作，没必要受同事的气的，吃个饭，慢走慢走的上来了，大冬天，有点太阳，心情还是有点蛋疼。<br>上来看见我们iOS另一个同事和大哥调试着代码，慢慢调着，始终能把矛头指向他们那服务器有问题。<br>因为我一开始就能预见—&gt;才没几行代码啊，出去回来一个过程。<br>后来好吧，后台把代码退回去，（服务器还没运行）还是登不上，我做对面，觉得不对啊，然后他们退到首页看其他数据也没有，然后大哥说还没启动。（服务器运行着）：登陆、发布全部正常，这回后台没话说了，真的没话说了。<br>我也没说什么，搞我自己的东西，这明显的啊。<br>后来说是当时他们搞一些别的东西给代码加上别的东西。<br>可以这么说，这回我是真的蛋疼，特别蛋疼，我一直好声好气，给别人打工啊，没办法啊，后台那边就可以一句话：那就不用做了，不要做了，，，<br>我只是发泄一下，，，毕竟有苦闷着绝对不好，哈哈<br>如果界面有问题，那不用说了，前段的错。<br>逻辑有问题，可能双方哪里合作没有调试好。<br>如果比较矛盾问题，那估计是服务器有问题了。基本都是，前段的东西基本很少的，就这么几个代码啊！！！<br>我真是老好人，人家都凶成这样，我都还是笑脸相迎，我都恨不得给自己一巴掌得了：做你麻痹程序员，写你麻痹代码，，，<br>我其实也可以甩手，不用做就不用做呗，不做就不做呗，我本职做好，谁都没话说，你凶就你凶呗。<br>额弥陀福，，，也记住这一次，下一次还有类似蛋疼的，我就发这给大哥看看好了，我真的以大局为重，要都不解决，登陆不了，明年我们都散伙得了，我怎么对得起其他同事，，，真不想管那么多啊，真想随便拿个工资做做自己手上的事多好，，，，</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-微博API分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/23/微博API分析/">微博API分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/23/微博API分析/" class="article-date">
+	  <time datetime="2017-01-23T09:26:10.000Z" itemprop="datePublished">January 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>createdAt:<br>id:<br>pics:[“”,””,””]<br>text:”文字内容”<br>sourcetype:””—–&gt;不知道是什么鬼<br>geo:”地理位置”<br>source:”从哪里发过来的，什么设备”<br>video:”……..”    视频链接<br>user:{<br>id:<br>screen_name:”新浪财经”<br>province:”11”<br>city:”8”<br>description:”……” 简介<br>url:”……..” 其选填官网<br>“profile_image_url”:”……” 头像<br>“cover_image_phone”:”……” 其个人主页的背景图片<br>“gender”:m/f<br>followers_count:14020824<br>friends_count:1450<br>following:true/false 是否我关注了他<br>follow_me:false 是否关注了我<br>“level”:2   这里可以使用自己的积分<br>}<br>reposts_count:678 转发数<br>comments_count:262 评论数<br>attitudes_count:96 点赞数<br>page_info:{        这个是文章在外边时候展示的<br>page_id:<br>page_title:”…..”<br>page_url:”…….”<br>page_pic:”…….”<br>content1:”银行汇出100元就要进口100元”<br>content2:”。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。”<br>object_type:”webpage”<br>}<br>url_struct:[{      这个应该是文章的构造，跳转构造<br>page_id:””<br>ori_url:”……..”  文章跳转url<br>url_title:”银行汇出100元就要进口100原”<br>url_type_pic:””  图片<br>}]<br>topic_struct:[{    这个是#xxx#<br>“topic_title”:”一盒子的年味”<br>“topic_url”:”…………”<br>}]<br>retweeted_status:{<br>被转发的内容，同上内容<br>}</p>
+<p>文章类型<br>图片类型<br>纯文字类型<br>视频类型</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-读文章微信导航栏实现写了demo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/23/读文章微信导航栏实现写了demo/">读文章微信导航栏实现写了demo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/23/读文章微信导航栏实现写了demo/" class="article-date">
+	  <time datetime="2017-01-23T08:39:50.000Z" itemprop="datePublished">January 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看了这位大哥<a href="http://www.jobbole.com/members/3170539585/的文章，关于微信导航栏的实现。" target="_blank" rel="noopener">http://www.jobbole.com/members/3170539585/的文章，关于微信导航栏的实现。</a><br>由于他没有给出代码实现，当时我没有设置barstyle，导致不好看，哈哈。<br>这里给出完整代码<br>`#import “SHNavigationVC.h”</p>
+<p>#import “UIColor+expanded.h”<br>@interface SHNavigationVC ()<br>@property (nonatomic, strong) UIView *blurBackView;<br>@end<br>@implementation SHNavigationVC</p>
+<ul>
+<li>(void)viewDidLoad {<br>[super viewDidLoad];<br>// Do any additional setup after loading the view.<br>UINavigationBar <em>navBar = self.navigationBar;<br>[navBar insertSubview:self.blurBackView atIndex:0];<br>}<br>-(UIView </em>)blurBackView{<br>if (!_blurBackView) {<br>_blurBackView = [UIView new];<br>_blurBackView.frame = CGRectMake(0, -20, KScreenSize.width, 64);<br>CAGradientLayer *gradientLayer = [[CAGradientLayer alloc]init];<br>gradientLayer.frame = CGRectMake(0, 0, KScreenSize.width, 64);<br>gradientLayer.colors = @[(<strong>bridge id)[UIColor colorWithHexString:@”0x040012” andAlpha:0.76].CGColor,(</strong>bridge id)[UIColor colorWithHexString:@”0x040012” andAlpha:0.28].CGColor];<br>gradientLayer.startPoint = CGPointMake(0, 0);<br>gradientLayer.endPoint = CGPointMake(0, 1.0);<br>[_blurBackView.layer addSublayer:gradientLayer];<br>_blurBackView.userInteractionEnabled = NO;<br>_blurBackView.alpha = 0.5;<br>}<br>return _blurBackView;<br>}`</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-动画显示和隐藏Tabbar和NaviBar" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -612,151 +758,6 @@ NSLog(@&quot;%@&quot;,self);
     
 
   
-    <article id="post-Realm数据库的创建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/Realm数据库的创建/">Realm数据库的创建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/10/Realm数据库的创建/" class="article-date">
-	  <time datetime="2017-01-10T01:55:23.000Z" itemprop="datePublished">January 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1：创建成一个库<br><img src="http://upload-images.jianshu.io/upload_images/3767775-6188a342798c67f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="50多兆"><br>重要的几点，一定要加到Embed framework里面，如图<br><img src="http://upload-images.jianshu.io/upload_images/3767775-4d0f08cf50c9c6ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一定要加到Embed framework里面"><br><em>还有</em>！！！<br><img src="http://upload-images.jianshu.io/upload_images/3767775-c42e10c8b84e9d2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="*这个一定一定要写,不然发布到app Store会失败*"><br><code>bash&quot;${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh&quot;</code><br>Run Script是让你在上传到苹果商店的时候打进去。<br>不然里面会有问题，最大的问题就是，通不过审核，哈哈。<br>使用的话，去看Realm的doc。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-xcode碰到-lcrt1-3-1-o" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/xcode碰到-lcrt1-3-1-o/">xcode碰到-lcrt1.3.1.o</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/10/xcode碰到-lcrt1-3-1-o/" class="article-date">
-	  <time datetime="2017-01-10T01:54:43.000Z" itemprop="datePublished">January 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>xcode 碰到这种错误</p>
-<p>选择target-》General-》Deployment Target 一项，将手机版本改为8.0以后即可</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-使用GPUImage一些坑" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/使用GPUImage一些坑/">使用GPUImage一些坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/10/使用GPUImage一些坑/" class="article-date">
-	  <time datetime="2017-01-10T01:50:38.000Z" itemprop="datePublished">January 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>首先理解了安装，作者推荐动态库安装，好处就是特么的，你看到的source都是输入源，filters都是滤镜过程，output就是出口啦</li>
-<li>GPUImageMovie能接受<br>1）asset、2）AVPlayItem、3）URL路径，，，如果你有特殊要求，可以使用GPUImageMovieComposition这个类，允许你输入AVFoundation的多音频输入、画质动作、剪切之后的AVMutableComposition，我就用的这个</li>
-<li>GPUImageMovie没有音频播放，美拍不知道怎么整的，估计我觉得就是使用另外一些人提供的思路，对源码侵入加入播放器<br>可以参考这个：1）：<a href="http://blog.csdn.net/personsky/article/details/52992919" target="_blank" rel="noopener">http://blog.csdn.net/personsky/article/details/52992919</a><br>2）：<a href="https://gist.github.com/anonymous/5112961" target="_blank" rel="noopener">https://gist.github.com/anonymous/5112961</a><br>毕竟音频播放就是个形式，，要不然你有没有美拍的源码，对了美拍还真就是用GPUImage，用的真是6啊，，偶像<br>3)：如果你没有用AVMutableComposition修改视频orientation，其滤镜里面也有能修改方向的方法setInputRotation<br>用法如：[sepiaFilter setInputRotation:kGPUImageRotateRight atIndex:0];</li>
-<li>检查滤镜过程使用：filter setFrameProcessingCompletionBlock:^(GPUImageOutput *output,CMTime frameTime)<br>比如你可以在GPUImageElement里面修改这个</li>
-<li>注意检查输入滤镜的pipeline过程有没有问题<br><a href="http://blog.csdn.net/u1031/article/details/48712163" target="_blank" rel="noopener">http://blog.csdn.net/u1031/article/details/48712163</a><br>这个大哥的几张图挺好的，看了之后对addTarget有更多的理解</li>
-<li>多视频输入我这还好，没有什么问题，多语音的话，你就考虑使用GPUImageMovieComposition的audiomix，但是没法控制播放了似乎，</li>
-<li>NSString*pathToMovie = [self movieSavedPath];<br>unlink([pathToMovieUTF8String]);// If a file already exists, AVAssetWriter won’t let you record new frames, so delete the old movie<br>可以使用快捷unlink视频，我特么不知道，仍然在使用filemanager，low逼格</li>
-<li>附一个滤镜表在我国—&gt;China🇨🇳境内的名字翻译地址<br><a href="http://blog.csdn.net/qq_27074387/article/details/52221938" target="_blank" rel="noopener">http://blog.csdn.net/qq_27074387/article/details/52221938</a></li>
-<li>在多视频输入里面，将self.movieFile.playAtActualSpeed=YES;<br>playAtActualSpeed都写上，如果视频不同步，有一个先完成了，则会有可能10s视频变成了4s，有时前一段视频播放正常，后一段就视频画面不动了。</li>
-<li>forceProcessingAtSize：CGSize<br>给其定义大小</li>
-<li>GPUImage  pipeline<br>1）、创建图片处理类GPUImagePicture把图片传进去stillImage<br>GPUImagePicture <em>staticPicture = [[GPUImagePicture alloc] initWithImage:stillImage smoothlyScaleOutput:YES];<br>2）、把多个滤镜对象放到数组中<br>NSMutableArray </em>arrayTemp=[NSMutableArray array];<br>[arrayTempaddObject:RGBFilter];<br>3）、创建GPUImageFilterPipeline对象 初始化使用<br>initWithOrderedFilters:(NSArray<em>) filters input:(GPUImageOutput</em>)input output:(id )output;<br>这个方法；这个方法需要三个参数：<br>filters：多个滤镜的数组<br>input：被渲染的图片（步骤1 的staticPicture 对象）<br>output：渲染后的图片的容器（类型是view）<br>GPUImageFilterPipeline <em> filterPipeline = [[GPUImageFilterPipeline alloc] initWithOrderedFilters:arrayTempinput:staticPictureoutput:output];<br>4）、渲染图片 使用processImage（此方法是GPUImagePicture类下的）和useNextFrameForImageCapture(此方法是GPUImageOutput下也就是单个滤镜)；<br>[staticPicture processImage];<br>[filteruseNextFrameForImageCapture];//这个filter 可以是RGBFiltertoonFilter等<br>5）、获取图片 使用currentFilteredFrame（此方法是GPUImageFilterPipeline类下的）；<br>UIImage </em>img = [pipeline currentFilteredFrame];<br>6）、对于使用GPUImageUIElement没有给contentView设置rect则会出现：<br>: CGContextTranslateCTM: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.<br>*** Assertion failure in -[GPUImageFramebuffer generateFramebuffer], address/Submodules/framework/Source/GPUImageFramebuffer.m:156<br>同时breakpoint跳到<br><img src="http://upload-images.jianshu.io/upload_images/3767775-79332ec074f7938e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="breakpoint"></li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -885,6 +886,42 @@ NSLog(@&quot;%@&quot;,self);
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a></h6>
               <span>January 29, 2021</span>
             </div>
@@ -911,42 +948,6 @@ NSLog(@&quot;%@&quot;,self);
 
               <h6 style="margin: 0;"><a href="/2021/01/29/20210129lesson/">20210129lesson</a></h6>
               <span>January 29, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-31lesson/">2020-10-31lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-12lesson/">2020-10-12lesson</a></h6>
-              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -983,7 +984,7 @@ NSLog(@&quot;%@&quot;,self);
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

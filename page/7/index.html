@@ -165,6 +165,211 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2018-12-24lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/24/2018-12-24lesson/">2018-12-24lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/24/2018-12-24lesson/" class="article-date">
+	  <time datetime="2018-12-24T12:59:02.000Z" itemprop="datePublished">December 24, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="购买了一个服务器，折腾了一天给相关环境整理了下。"><a href="#购买了一个服务器，折腾了一天给相关环境整理了下。" class="headerlink" title="购买了一个服务器，折腾了一天给相关环境整理了下。"></a>购买了一个服务器，折腾了一天给相关环境整理了下。</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OS: centos 6 x86_64 # docker 一定要64位</span><br><span class="line">服务器采用docker + koa + mongodb</span><br><span class="line">前端采用Next.js + mobx + antd 组合</span><br></pre></td></tr></table></figure>
+<h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。</p>
+<p>环境要求：python2.7.12;.yml file version为1</p>
+<p><a href="CentOS6.x 安装 Docker 和 Docker Compose">参考博文</a></p>
+<p>服务器Dockerfile:</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /server</span><br><span class="line"><span class="keyword">RUN</span> npm install</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9527</span></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mongo:</span><br><span class="line">  image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">  volumes:</span><br><span class="line">    - ./data:/data/db</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;27017:27017&quot;</span><br><span class="line">web:</span><br><span class="line">  build: .</span><br><span class="line">  command: npm start</span><br><span class="line">  volumes:</span><br><span class="line">    - ./dist:/server/dist</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;9527:9527&quot; #我就想用这个端口</span><br><span class="line">  links:</span><br><span class="line">    - mongo</span><br></pre></td></tr></table></figure>
+<p>package.json/script:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "watch": "tsc -w -p ./src",</span><br><span class="line">    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/www.js",</span><br><span class="line">    "docker-debug": "docker-compose up",</span><br><span class="line">    "start": "node ./dist/www.js",</span><br><span class="line">    "mocha-test": "mocha -t 8000 --recursive "</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行docker 出现<code>iptables failed - No chain/target/match by that name</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -N DOCKER</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
+<ul>
+<li>mongodb 总是连不上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1. docker-compose.yml 的links 不能缺少</span><br><span class="line">2. mongoose.connect(db_url) 的db_url 确认是docker-compose 的image 名。如我的&quot;mongo&quot;</span><br><span class="line">3. 失败重连</span><br><span class="line">const connectWithRetry = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;MongoDB connection with retry&quot;);</span><br><span class="line">    mongoose.connect(db_url, options).then(() =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB is connected&quot;);</span><br><span class="line">    &#125;).catch(err =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB connection unsuccessful, retry after 5 seconds.&quot;);</span><br><span class="line">        setTimeout(() =&gt; connectWithRetry(), 5000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>服务器在vscode debug</li>
+</ul>
+<p>参考vscode 原文<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">我是原文</a></p>
+<h1 id="Nextjs-配置"><a href="#Nextjs-配置" class="headerlink" title="Nextjs 配置"></a>Nextjs 配置</h1><p>接下来是nextjs 推送记录</p>
+<ol>
+<li>nextjs 编译环境有要求：RAM 1G</li>
+</ol>
+<p>我服务器就1G，不然编译的时候会报”code 137”,提示内存不足，同时导致服务器mongodb 一直弹提示<code>centos mongodb [ftdc] serverStatus was very slow: { after basic: 163, after asserts:</code>。</p>
+<p>解决办法是采用开发机器<code>yarn build</code> 后，将<strong>.next</strong> 文件夹git commit ，然后同步过来。</p>
+<ol start="2">
+<li>nextjs 使用pm2 start:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#https://github.com/zeit/next.js/issues/109</span><br><span class="line"># for development</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- run dev</span><br><span class="line"></span><br><span class="line"># for production</span><br><span class="line">npm run build</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- start</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>nextjs 需要在域名根目录运行， 否则出现static 静态路由找不到。其他route 也会找不到的情况。</li>
+</ol>
+<p>nginx 配置如:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> www.lsgood.top lsgood.top;</span><br><span class="line">    <span class="attribute">root</span> /var/www;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    <span class="attribute">location</span> ~^/facicon\.ico$ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:9005;</span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">'upgrade'</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_cache_bypass</span> <span class="variable">$http_upgrade</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> /japeneeza/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9527/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>nextjs 没有storage；同时 server side 获取不到cookie</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yarn add js-cookie cookieParser</span><br><span class="line"></span><br><span class="line">cookie <span class="keyword">set</span> <span class="keyword">get</span> cookie (自行参考cookie 保存token)</span><br><span class="line">eg: jsCookie.<span class="keyword">set</span>("token", $&#123;token&#125;)</span><br><span class="line"></span><br><span class="line">server.js(express)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">"cookieParser"</span>)</span><br><span class="line">server.use(cookieParser())</span><br><span class="line"></span><br><span class="line">然后在pages 里的pageClass.getInitialProps = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">&#123;ctx&#125;</span>) =&gt; </span>&#123;</span><br><span class="line">    cosnt &#123; req &#125; = ctx;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"token:"</span>, req.cookies.token)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="让你知道技术的力量"><a href="#让你知道技术的力量" class="headerlink" title="让你知道技术的力量"></a>让你知道技术的力量</h1><p>A: 什么？不相信我的能力？<br>A(咆哮): 我要让你们知道 the ability of super technology!!!</p>
+<p>门外, 砰砰砰: 开门，查水表.</p>
+<p>A: 大家快点收拾东西，藏起来，丢到窗外，快点快点。。。</p>
+<p><a href="本来想做一个视频网站，想想还要各种“证”，到时先做小的视频网站，，然后转成会员卖套图吧。国内什么都做不了，什么都不能做，国家要各种屁民听话。我觉得公务员们不认为自己是中国人，他们认为自己是体制人，是平民的上司。他们凭什么呀？都是我们纳税人养着的服务人员，怎么就有这么多的特权？纳税的意义在哪里？好好活着吧。"></a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2018-12-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/09/2018-12-9lesson/">2018-12-9lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/09/2018-12-9lesson/" class="article-date">
+	  <time datetime="2018-12-09T12:08:50.000Z" itemprop="datePublished">December 9, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2018-11-20"><a href="#2018-11-20" class="headerlink" title="2018-11-20"></a>2018-11-20</h1><p>最近有所感悟：<br>你的工资起点、增长点 不在于你的能力大小，而是在于你职位的不同。</p>
+<p>先说说我和以前同事（周）对比：他是做nodejs、我是做iOS；他往服务器深度拓展，我往客户端in/out 和多媒体，我觉得能力上互有所长，互有高低，基本持平；但是工资的起点，企业认可点也是不同的。</p>
+<p>再比如现在来到这家初创型公司，我从四年努力过来，也成为了当前同事年龄最大那一批人了。能力我觉得应该是最强的，但我仍然还只是iOS 开发，就是苦力劳动者；我旁边是“产品经理”，年龄与我相仿，但交流之中便知是半路出家，可还是丝毫不影响他作为“经理”的角色。很多产品的处理、遇到问题的解决方案、思路都没成形，但是一些团队中遇到问题，却需要他来解答。</p>
+<p>当然，小公司，就是这样，我当然也没必要在乎这些点，感想感悟罢了。</p>
+<p>小团队里面，当然有点可笑，互联网是科技产业，不是艺术行业。“运营”主导，这种理念，基本都是小公司的思维。觉得有东西可以“运营”了，然后“产品经理”们给产品换换皮，挪挪位置就可以了。</p>
+<p>我和周有时也交流，他也非常赞同我的观点：早点换职业-后台。</p>
+<p>我来如今的公司，也算巧合：之前公司莫名其妙离职；中秋+国庆导致面试周期变短–&gt; 社保断了被老婆“打系”；附近周围找工作（地域限制）；今年形势也不是很好 等等因素。既来之，则安之。安是为了过度，正好将多余时间实践我学习的网页、后台。跨度的没关系，拼命就好（真不能学太多，消化不过来。最近一直有发现，学一个就忘掉了之前那个，不过还好的就是，当时学习的手感还在）。</p>
+<p>定个决心：明年暑假6、7 月份，必然开始找后台开发工作！！！</p>
+<p>nextjs 在centos 32bit i386 打包completed, 但是等待很久却失败显示xxx137.原因是centos 内存太低、系统太低。</p>
+<p>18-11-24 又一次聚会。</p>
+<p>这一次聚会四个人，议题是最近学了哪些东西，可以将其分享（我就是纯旁听的，偷学技术的）。我、周俊、周俊前同事（高级前端）、周俊以前的领路人（php兄弟连“莫楠”，目前在一家公司做项目经理）。聚会地点就是莫楠倾情提供的他们公司会议室。<br>大家先在“闸北”-“大融城” 吃 <strong>麻辣香锅</strong> （我又是吃饭最慢的，牙疼）。接着我们前往莫楠提供的会所地点，楼下莫楠大哥演示了下他们公司提供的食品柜，就是那种自助购买食品柜机。接着上楼开讲啦。<br>周俊先主要讲ipfs.讲到其中p2p，类似于autossh。接着讲到如何使用pm2 负载均衡。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">测并发</span><br><span class="line">1: ab -c 100 -n 1000 http://localhost:3002(1000个并发数)(mac 默认带个进程并发数1024个)</span><br><span class="line">2: wrk</span><br><span class="line"></span><br><span class="line">现在pm2 并发:</span><br><span class="line">pm2 -i(max) app.js</span><br><span class="line"></span><br><span class="line">docker k8s kubernetes</span><br><span class="line"></span><br><span class="line">mqtt</span><br><span class="line"></span><br><span class="line">awesome node</span><br><span class="line"></span><br><span class="line">electron shadowsocks</span><br><span class="line"></span><br><span class="line">xgplyer</span><br></pre></td></tr></table></figure>
+<p>接下来是前端哥们讲了他做的一些东西，第三方js库，使用docker 能力，一键开启所有的能力。（这里我注意到docker 能力，回去后整整忙活一个多星期适应了docker 运用）。</p>
+<p>我本来是旁听的，不过大家奉献那么多，我就又鼓吹了卡通、动漫、盗版，这一类不与技术有关的变现道路。</p>
+<p>4点多，我们三个还有空，前往星巴克继续撸，继续问。这里互相交流的就更多了，比如探讨ipfs 可能变现能力和ss 直接变现。</p>
+<p>6点多，一起吃火锅去。中间大家一度思路集合说做一个盗版视频网站、软件（后面似乎大家忙，往后推迟）。一直吃到晚上10点，然后3人挤到一辆电动车，周俊开着前往地铁站。</p>
+<p>一天吃两顿火锅，第二天就有点生病，持续了2个星期还没好，夜夜带着病战斗完成这次集合所学。不枉此行。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2018-12-1lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/01/2018-12-1lesson/">2018-12-1lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/01/2018-12-1lesson/" class="article-date">
+	  <time datetime="2018-12-01T08:03:10.000Z" itemprop="datePublished">December 1, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最近继续服务修行"><a href="#最近继续服务修行" class="headerlink" title="最近继续服务修行"></a>最近继续服务修行</h1><h2 id="打造docker-容器守护"><a href="#打造docker-容器守护" class="headerlink" title="打造docker 容器守护"></a>打造docker 容器守护</h2><p>采用docker-compose 多重容器聚合，一键配置。<br>一开始配置上出问题，mongodb连接不上。<br>当前成功配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">mongo:</span><br><span class="line">image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">volumes:</span><br><span class="line">- ./data:/data/db</span><br><span class="line">ports:</span><br><span class="line">- &quot;27017:27017&quot;</span><br><span class="line">redis:</span><br><span class="line">image: &quot;redis:alpine&quot;</span><br><span class="line">web:</span><br><span class="line">build: .</span><br><span class="line">image: nodejap</span><br><span class="line">command: npm run debug</span><br><span class="line">volumes:</span><br><span class="line">- ./dist:/server/dist</span><br><span class="line">ports:</span><br><span class="line">- &quot;3000:9527&quot;</span><br><span class="line">- &quot;9222:9222&quot;</span><br><span class="line">links:</span><br><span class="line">- mongo</span><br><span class="line">depends_on:</span><br><span class="line">- mongo</span><br></pre></td></tr></table></figure>
+<p>mongo先启动，然后到了web 启动的时候，配置启动采用<a href="https://github.com/docker/hub-feedback/issues/1255" target="_blank" rel="noopener">github issue</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">autoIndex: <span class="literal">true</span>,</span><br><span class="line">reconnectTries: <span class="number">30</span>,</span><br><span class="line">reconnectInterval: <span class="number">500</span>,</span><br><span class="line">poolSize: <span class="number">10</span>,</span><br><span class="line">bufferMaxEntries: <span class="number">0</span>,</span><br><span class="line">useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> connectWithRetry = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB connection with retry"</span>);</span><br><span class="line">mongoose.connect(db_url, options).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB is connected"</span>);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"MongoDB connection unsuccessful, retry after 5 seconds."</span>);</span><br><span class="line">setTimeout(connectWithRetry, <span class="number">5000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
+<p>这时，每次启动最后一行就都是<code>web_1_9cf04d6b74a9 | MongoDB is connected</code></p>
+<p>接下来顺顺利利的写不久，遇到两个问题：</p>
+<p>首先得知Schema 有<code>_id</code> 和<code>id</code>区分。</p>
+<p><code>_id</code> 是为了分布式而取的对象，根据时间戳生成，当然就具有createdAt 的能力。</p>
+<p><code>id</code> 是字符串，唯一字符串。</p>
+<p>再者遇到unique 对象可以重复创建相同键：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/Automattic/mongoose/issues/7194</span><br><span class="line"></span><br><span class="line">mongoose.set(&quot;debug&quot;, true);</span><br><span class="line">mongoose.set(&apos;useNewUrlParser&apos;, true);</span><br><span class="line">mongoose.set(&apos;useFindAndModify&apos;, false);</span><br><span class="line">mongoose.set(&apos;useCreateIndex&apos;, true);</span><br></pre></td></tr></table></figure>
+<p>原因是mongodb 升级上来，这篇必看的，被我这半路出家的终于花了<em>周六</em>一天才解决掉。</p>
+<h2 id="使用vscode-配合docker-compose-yml-debug"><a href="#使用vscode-配合docker-compose-yml-debug" class="headerlink" title="使用vscode 配合docker-compose.yml debug"></a>使用vscode 配合docker-compose.yml debug</h2><p>参考这篇<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">vscode 官方原文</a></p>
+<p>使用起来太爽了。</p>
+<h2 id="再分享我的Dockerfile-的长相"><a href="#再分享我的Dockerfile-的长相" class="headerlink" title="再分享我的Dockerfile 的长相"></a>再分享我的Dockerfile 的长相</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM node:<span class="number">8.12</span><span class="number">.0</span>-alpine</span><br><span class="line"></span><br><span class="line">WORKDIR /server</span><br><span class="line"></span><br><span class="line">COPY . /server</span><br><span class="line">RUN npm install</span><br><span class="line"></span><br><span class="line">EXPOSE <span class="number">9527</span></span><br><span class="line">CMD [<span class="string">"yarn"</span>, <span class="string">"debug"</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2018-11-14lesson"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -813,329 +1018,6 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
     
 
   
-    <article id="post-2018-8-3lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/25/2018-8-3lesson/">2018-8-3lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/25/2018-8-3lesson/" class="article-date">
-	  <time datetime="2018-08-25T06:50:29.000Z" itemprop="datePublished">August 25, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-8-3"><a href="#2018-8-3" class="headerlink" title="2018/8/3"></a>2018/8/3</h3><h3 id="TS-使用enum-出现-ts-Operator-‘-’-cannot-be-applied-to-types"><a href="#TS-使用enum-出现-ts-Operator-‘-’-cannot-be-applied-to-types" class="headerlink" title="TS 使用enum 出现[ts] Operator ‘==’ cannot be applied to types"></a>TS 使用enum 出现[ts] Operator ‘==’ cannot be applied to types</h3><p><code>[ts] Operator &#39;==&#39; cannot be applied to types &#39;CheckCleanStep.Idle | CheckCleanStep.Input&#39; and &#39;CheckCleanStep.Check&#39;.</code><br>Typescript 出现和这个issue <a href="https://github.com/Microsoft/TypeScript/issues/15835" target="_blank" rel="noopener">https://github.com/Microsoft/TypeScript/issues/15835</a> 一样。<br>目前解决方法是，在判别的时候，强制判别类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ((checkStep as CheckCleanStep) == CheckCleanStep.Check) &#123;</span><br><span class="line">    //do stuff</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="周末写Typescript-游戏有感"><a href="#周末写Typescript-游戏有感" class="headerlink" title="周末写Typescript 游戏有感"></a>周末写Typescript 游戏有感</h3><ol>
-<li><p>egret TypeScript 游戏在lib 选项，是es5，于是在要用到Map、Set 时，需要给其添加上<strong>es6</strong> 才能使用。<br>由于在最终打包时，只能打为es5，尴尬的一幕出现了：Map 在’for of’ 语句 提示，在es5 中，不能使用literial，没有这玩意(该为es6 新增对象)一样。<br>使用’for in’ 出现的问题是该loop 不会进入。<br>还有一种备选办法是：Array.from(map.keys()/map.values())<br>这样在每次都需要创建新的Array。<br>最终我的处理是map.forEach((value, key) =&gt; {})</p>
-</li>
-<li><p>之前写法是Object =&gt; {} 保存数据格式。简直太js，于是全部改为对象处理。啊，啊，，爽。</p>
-</li>
-<li>需要注意的是Map、Set 在需要正确使用set、add、get、size、delete等。千万千万别<code>map[key] = value;</code>变成使用{} 对象方法了。</li>
-<li>egret 中exml 的元件是在this 对象中。</li>
-<li>游戏的好不好玩并不是功能。体现在对游戏的难度分级和结果回馈。<br>难度分级就是由简单到复杂，由平缓到陡峭。<br>结果肯定明了：分数不能低的难看啊，怎么的，玩个200多分、300分，心里爽啊。20分就难看啦。</li>
-<li>断点修改，好用，for 循环的断点，太好用，简直。</li>
-<li>逻辑、玩法多打注释。毕竟游戏跟需求是天生姻缘。</li>
-<li>合理的建立对象。合理的摆放对象坐标。</li>
-<li>对象初始化。如果知道对象初始化为null，数组初始化个数，则在申明时就给其定义规则。</li>
-<li>egret.Sound 这个类，不能被继承！我继承就报错，之后接触多了再看原因。</li>
-<li>声音播放有个大坑。初始化完我就播放，老是会播放惜败，似乎要延时播放才可以。<br>其 示例- 声音播放 教程，是初始化完成、界面显示完成后，用户点击播放，那么微信、QQ、网页、模拟器都是播放正常的。<br>但是修改成mp3 加载完成立即播放，就也是QQ、模拟器能播放，其他都不能播放了。</li>
-</ol>
-<h3 id="nginx-出现permission-delay"><a href="#nginx-出现permission-delay" class="headerlink" title="nginx 出现permission delay"></a>nginx 出现permission delay</h3><ol>
-<li>原因是控制该nginx 的能力为nobody，权限不够。<br>改为<code>user root;</code>能暂时解决该问题。但是安全性不够。</li>
-<li>设置egret 游戏服务器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">        &#123;</span><br><span class="line">                listen 80;</span><br><span class="line">                server_name www.lsgood.top lsgood.top;</span><br><span class="line">                root /root/Work/web/;</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>web 目录下是popcirle 的文件夹游戏<br>web/popcircle/index.html<br>所以最终游戏目录为：<a href="http://lsgood.top/popcircle/index.html" target="_blank" rel="noopener">http://lsgood.top/popcircle/index.html</a></p>
-<h3 id="egret-打包小游戏的坑"><a href="#egret-打包小游戏的坑" class="headerlink" title="egret 打包小游戏的坑"></a>egret 打包小游戏的坑</h3><ol>
-<li>打包显示index.html “data-scale-mode” 的模式”showAll” 错误，改成”fixedWidth”</li>
-<li>做小游戏，申请wxAppid，在微信选择面板一定要选择游戏，不然会出现提示”app.json”找不到，因为此时换成了”game.json”</li>
-<li><strong>VM4477:1 gameThirdScriptError ReferenceError: Boom is not defined</strong><br>出现的问题是:egret - scripts - wxgame - wxgame.ts 里面”async onFile(file: plugins.File) {“ 方法最后一句<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (filename == &apos;main.js&apos;) &#123;</span><br><span class="line">        content += &quot;;window.Main = Main;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">file.contents = new Buffer(content);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (filename == &apos;main.js&apos;) &#123;</span><br><span class="line">        content += &quot;;window.Main = Main;&quot;;</span><br><span class="line">        [&quot;Circle&quot;,  &quot;GameData&quot;,</span><br><span class="line">        &quot;GameOverLayer&quot;, &quot;GameScene&quot;, &quot;Kill&quot;].forEach(v =&gt; &#123;</span><br><span class="line">                content += `window.$&#123;v&#125;=$&#123;v&#125;;`</span><br><span class="line">        &#125;); </span><br><span class="line">        &#125;</span><br><span class="line">file.contents = new Buffer(content);</span><br></pre></td></tr></table></figure></p>
-<p>添加的为你要加入的新的类名。空的不要添加！</p>
-<ol start="4">
-<li>玩的时候闪屏:index.html 的”data-frame-rate” 改为60桢(之前的是30)</li>
-<li>调用第三方库，小程序找不到，比如particle<br>解决方法：在egret - scripts - wxgame - wxgame.ts 里面”async onFile(file: plugins.File) {“ 方法<br>对应增加一句,如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (filename == &quot;libs/modules/particle/particle.js&quot; || filename == &quot;libs/modules/particle/particle.min.js&quot;) &#123;</span><br><span class="line">        content += &quot;;window.particle = particle;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>表示链接新的库</p>
-<ol start="6">
-<li>egret 粒子系统内存问题<br><a href="https://xmanyou.com/egretde-li-zi-xi-tong-nei-cun-xie-lou/" target="_blank" rel="noopener">https://xmanyou.com/egretde-li-zi-xi-tong-nei-cun-xie-lou/</a><br>参考的这篇。先删掉再说，嘿嘿。<br>在要离开页面的地方：this.particleSys.close(true);</li>
-<li>openDataContext 是公共域，开放权限的地方。其他都为主域。<br>公共域只允许进数据。platform.js 通过<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const openDataContext = wx.getOpenDataContext();</span><br><span class="line">openDataContext.postMessage(data);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>把data 传进去,然后openDataContext.index.js 接受：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addOpenDataContextListener () &#123;</span><br><span class="line">        wx.onMessage((data) =&gt; &#123;</span><br><span class="line">                if (data.command == &apos;open&apos;) &#123;&#125;</span><br><span class="line">                else if (data.command == &apos;loadRes&apos;) &#123;&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后里面去拿数据、展示页面等。<br>openDataContext 只有postMessage、onMessage、shareCanvas 三个可以和外部交互的功能。<br>所以另起一个Promise function 走不通；<br>往postMessage 传入callback 也是不行的：postMessage 只接受基础变量，其他的会被过滤。</p>
-<p>这时 <code>wx.getFriendCloudStorage</code> 这个方法只允许在公共域处理拿数据、处理数据、展示数据！<br>同时记住：get 回来的数据最后一层是string 哟。</p>
-<p><code>wx.setUserCloudStorage</code> 可以在各个地方获取。<br>我直接写在platform.js 下另起一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">setWxStorage(dataStr) &#123;</span><br><span class="line">        return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">                wx.setUserCloudStorage(&#123;</span><br><span class="line">                        KVDataList: [&#123; key: &quot;score&quot;, value: dataStr &#125;],</span><br><span class="line">                        success: res =&gt; &#123;</span><br><span class="line">                                resolve(res);</span><br><span class="line">                        &#125;,</span><br><span class="line">                        fail: res =&gt; &#123;</span><br><span class="line">                                reject(res);</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注意，value 一定要是str就可以了。</p>
-<ol start="8">
-<li>头像没有显示出来。不知道为啥。当你选择下一页的时候居然又出来了。先这样吧。</li>
-<li>自己最高分方案是使用本地缓存，然后判别是否有更高分进行setUserCloudStorage。</li>
-<li>由于openDataContext权限问题，那么好友分数排序就只能从getFriendCloudStorage 数据之后进行json 对象化，转换数据格式、然后排序。<br>排序使用js 的Array.prototype.sort((n1, n2) =&gt; {}) 高阶函数排序。</li>
-<li>当前判别是否是wxgame 还是h5，使用platform.openDataContext == null。</li>
-</ol>
-<h3 id="记录微信小游戏打包过程。"><a href="#记录微信小游戏打包过程。" class="headerlink" title="记录微信小游戏打包过程。"></a>记录微信小游戏打包过程。</h3><p>个人微信账号，只需填写两个资料：1游戏自审自查报告；2计算机软件著作权登记证书。<br>游戏自审自查这里采用一个jpg，申明微信小游戏在一开始添加了“健康安全提示语”，且截图小游戏加载页面；其他包括授权、公司名称等；同时还有公司的对此发行软件责任等。<br>计算机著作权登记证书 是去软件著作权中心申请（plz，去那边申请太慢。如果小游戏还比较小，可以先网上找个著作权ps 凑和，不然要等很久）。</p>
-<p>公司账号需要填写4个资料等，很麻烦。这个资料没找齐，没搞。</p>
-<p>游戏创作完成后，直接点击顶部的上传，即可上传测试文件。在微信公众号:<a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a> 登录之后 - 开发管理 - 开发版本 里面会有最新的开发包。在下拉选项卡中“发布测试” 可以发布一个包含填写的测试人员们内部测试的包。如果点击“提交审核”则直接发布release。接下来就是填写信息然后发布啦。<br>流量主，这个功能有个门槛，需要用户达到1000个以上才可以申请。</p>
-<h3 id="看raywenderlich-网站文章英语对高考英语失利有感"><a href="#看raywenderlich-网站文章英语对高考英语失利有感" class="headerlink" title="看raywenderlich 网站文章英语对高考英语失利有感"></a>看raywenderlich 网站文章英语对高考英语失利有感</h3><p>高考一直有个遗憾，前三科手感超出我的预期。英语是最后一科，而我也是班里英语前三，第一位置偶尔也能轮换位置的人，在最后却发挥失常。<br>有几个原因，其中一个与今天“有感” 有关联。</p>
-<ol>
-<li>前三科太轻松，超过了我的预期，特别是我最不熟练的数学、理综。<br>心存侥幸（我的运气一直是爆表的，感觉和住在庵堂旁边有关系），心里稍稍在高考第二天下午放松。</li>
-<li>那天中午也由于太高兴，自己内心有估算的，于是玩起2011年火热的iPod 街霸游戏。<br>我确实还是没有长大啊，内心的开心，总得释放，不能与他人语（成绩还要1个月后出来，要低调），那就释放玩游戏；心想“下午正是我最拿手的英语，简单”。</li>
-<li>我一直贯彻“李阳英语”理念，一直拼命的读，没事看看文章。特点是平时的交流都能顺利，我觉得基本能和外国人日常交流。<br>虽然脑袋中午放松，成绩也不能低到哪里去，所以出弱势问题，可能：<br>贯彻的“李阳英语”理念也有一个弊端，那就是对高考学术型的英语不一样。<br>高考学术型，听力比模拟考时正式，听得时候平常心里是不翻译，而是直接内心模拟出场景，高考时，心里紧张（外加中午没休息好），硬是内心一句一句翻译却跟不上读速了；<br>笔试部分也由于听力失利（自己感受的出来，蒙的比例比以前多多了），感觉有一点点困顿，不太在状态；心里有点后悔中午没休息好；<br>总的来说，有得有失，到现在内心也已翻不出大波浪，时过境迁。要是我更多分，我还会想现在这样么？或许会有那么点不一样吧，也许吧。</li>
-</ol>
-<h3 id="掌握知识点的表现"><a href="#掌握知识点的表现" class="headerlink" title="掌握知识点的表现"></a>掌握知识点的表现</h3><p>当你能描述出那个知识点，同时将他比喻出来。比如面向过程和面向对象，你就可以这样比喻：同样是煮一杯咖啡，面向过程是讲步骤过程化，每个步骤要干什么，满足什么条件，于是就出来了什么咖啡；面向对象的不同点是，关注的是拆解元素，比如承装的被子，煮咖啡机器，水元素，model 这一很重要的概念。<br>所以我也能大致确认，大部分的知识点，可以使用我们日常一些元素，环境描述，那么你就真正得到了该知识。</p>
-<h3 id="微信分享时，背景声音在回来后没有再播放"><a href="#微信分享时，背景声音在回来后没有再播放" class="headerlink" title="微信分享时，背景声音在回来后没有再播放"></a>微信分享时，背景声音在回来后没有再播放</h3><p>找到wxgame 全局搜索<code>var innerAudioContext = wx.createInnerAudioContext();</code><br>找到了weapp-adapter.js 下856行，<br>然后下面添加这两句即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wx.onShow(function () &#123;</span><br><span class="line">        innerAudioContext.play();</span><br><span class="line">&#125;);</span><br><span class="line">wx.onAudioInterruptionEnd(function () &#123;</span><br><span class="line">        innerAudioContext.play();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值-三个可以和外部交互的功能。"><a href="#这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值-三个可以和外部交互的功能。" class="headerlink" title="这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值+ 三个可以和外部交互的功能。"></a>这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值+ 三个可以和外部交互的功能。</h3><h3 id="这两天看OpenGL-遇到的等等数学知识思考大学为什么没学会，或者说没学-盘点下"><a href="#这两天看OpenGL-遇到的等等数学知识思考大学为什么没学会，或者说没学-盘点下" class="headerlink" title="这两天看OpenGL 遇到的等等数学知识思考大学为什么没学会，或者说没学 盘点下"></a>这两天看OpenGL 遇到的等等数学知识思考大学为什么没学会，或者说没学 盘点下</h3><p>遇到的有欧拉角 四元数、笛卡尔坐标、齐次方程组、万向节；<br>这么些需要建模，知道大概，然后将其映射到目前工业、图形学重要应用的知识，居然在大学只是书里画了个图，黑板上一直写，快考试的时候说会考，仅此而已？<br>为什么不是老师们代码建模，把形状形态，大致描绘出来？中间会出一些问题，带着问题思考，生动形象点？难道还如授课的教授们当年学习般，只有靠“拼命学”才能“突出重围”么？<br>教授年纪都比较大，但是前缘的技术也是需要接触的。让更生动的计算机科学和数学结合，让更多人参与到知识的海洋中，而不是一些死记硬背，目的只是“拼命学”“突出重围”的一小部分人得到知识的一小部分；<br>大部分人都可以参与，可以互相讨论。更多人参与才能带动领域的增强，讨论才能出点子，才能出一些人想不到的思绪。<br>然而并没用。<br>如今离开大学，我又重新看这些晦涩难懂的知识。能稍稍理解，如果要进一步理解呢？那就是直接将他们画出来，运用起来。</p>
-<h3 id="小游戏登录解密"><a href="#小游戏登录解密" class="headerlink" title="小游戏登录解密"></a>小游戏登录解密</h3><p>首先准备小游戏的appid 和appsecret。之后会用到<br>用户wx.login 的时候得到code；<br>用户wx.getUserInfo 的时候得到a = {encryptedData:xxx, iv:xxx, userInfo:xxx};<br>a 里面的userInfo 数据不完善，没有用户ID。其他更多信息。通过去微信服务器得到一个session_key可以解开。<br>在这个目录里面有该资料：<br>code 就是登陆时候返回的code。APPID 为小游戏APPID。SECRET 为小游戏的密钥。<br><code>https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code</code><br>会返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//正常返回的JSON数据包</span><br><span class="line">&#123;</span><br><span class="line">  	&quot;openid&quot;: &quot;OPENID&quot;,</span><br><span class="line">  	&quot;session_key&quot;: &quot;SESSIONKEY&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后通过hmac_sha256解密得到数据信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">signature = hmac_sha256( post_data, session_key )</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-7-23lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/02/2018-7-23lesson/">2018-7-23lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/02/2018-7-23lesson/" class="article-date">
-	  <time datetime="2018-08-02T13:48:43.000Z" itemprop="datePublished">August 2, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-7-23"><a href="#2018-7-23" class="headerlink" title="2018/7/23"></a>2018/7/23</h3><p>今天又发布了Colox 的第二版本，感悟到其中一些思想。<br>要做好一个完整，商用的产品，需要经过：</p>
-<ol>
-<li>核心功能研发</li>
-<li>整体方向，回款（产品售卖、广告营收、产品获利、周边发展等）</li>
-<li>UI 整体视觉</li>
-<li>上线</li>
-<li>开发营收</li>
-<li>产品推广、改进</li>
-</ol>
-<p>这几个阶段我觉得是个人开发很好的流程，而且一经决定一定要坚持下去。<br>我好几次都把产品开发拖的很长。原因有几个：</p>
-<ol>
-<li>我在学习后台（当时有这么好的学习资源）</li>
-<li>后台差不多了，也使用当时的语言js 学习游戏开发（也是刚好有这资源）</li>
-<li>一直的学习，心却是有点累。</li>
-</ol>
-<p>所以有时在家里搞着搞着，才搞了一个功能，或者某些小功能就退却，打游戏到了深夜。<br>之前在粉粉，每天下班回来晚，已经是半条命；现在新的公司终于终于能抽出空了呀！而且目前还在开发阶段，也不会特别特别紧，所以整体感觉都好了很多。<br>目前把产品推进，“哈皮涂色” 进入到了开发营收。我觉得可以有这几个点营收：</p>
-<ol>
-<li>设置页面给一个二维码，是“鼓励开发哥哥，让他快马加鞭做出更好的产品”</li>
-<li>横幅广告、激励性广告营收</li>
-<li>内购该产品</li>
-</ol>
-<h3 id="CollectionView-里面layer-frame-frame"><a href="#CollectionView-里面layer-frame-frame" class="headerlink" title="CollectionView 里面layer.frame = frame"></a>CollectionView 里面layer.frame = frame</h3><p><a href="http://adad184.com/2015/11/10/disable-uicollectionview-implicit-animation/" target="_blank" rel="noopener">http://adad184.com/2015/11/10/disable-uicollectionview-implicit-animation/</a><br>UICollectionView.reloadData 时会做隐式动画。<br>可以使用以下三种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//方法一</span><br><span class="line">[UIView performWithoutAnimation:^&#123;</span><br><span class="line"></span><br><span class="line">    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">//方法二</span><br><span class="line">[UIView animateWithDuration:0 animations:^&#123;</span><br><span class="line">    [collectionView performBatchUpdates:^&#123;</span><br><span class="line">        [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;];</span><br><span class="line">    </span><br><span class="line">//方法三</span><br><span class="line">[UIView setAnimationsEnabled:NO];</span><br><span class="line">[self.trackPanel performBatchUpdates:^&#123;</span><br><span class="line">    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];</span><br><span class="line">&#125; completion:^(BOOL finished) &#123;</span><br><span class="line">    [UIView setAnimationsEnabled:YES];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
-<p>但是我要做的是一个gradientLayer 的布局(单元格形状不一样，布局是一样的)，不得已。<br>于是这句话拯救了我，不然我就要用一张图片解决我问题了，问题是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如果你的cell中还包含有CALayer的动画 比如这样</span><br><span class="line">- (void)layoutSubviews</span><br><span class="line">&#123;</span><br><span class="line">    [super layoutSubviews];</span><br><span class="line">    </span><br><span class="line">    self.frameLayer.frame = self.frameView.bounds;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>解决方法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[CATransaction begin];</span><br><span class="line">[CATransaction setDisableActions:YES];</span><br><span class="line">self.frameLayer.frame = self.frameView.bounds;</span><br><span class="line">[CATransaction commit];</span><br></pre></td></tr></table></figure></p>
-<h3 id="LaunchScreen-storyboard-动态设置版本号"><a href="#LaunchScreen-storyboard-动态设置版本号" class="headerlink" title="LaunchScreen.storyboard 动态设置版本号"></a>LaunchScreen.storyboard 动态设置版本号</h3><p><a href="https://www.jianshu.com/p/5253f671436b" target="_blank" rel="noopener">https://www.jianshu.com/p/5253f671436b</a><br>哈哈，连header 都是拿的原作者的。<br>小弟这里记录记录。</p>
-<ol>
-<li>选中LaunchScreen.storyboard 的label，为该label 的Show the Identity inspector(XCode 最右边栏从左到右边：文本、问好、xx -&gt; 就是这玩意啦),在Document - Label 填入”APP_VERSION”.</li>
-<li>点击Project - Target - Build Phases - “New Run Script Phase”</li>
-<li>给新创建的”Run Script” 改名为 “Update Launch Version”, 同时展开它</li>
-<li>在Shell 后面输入 <code>/bin/bash</code>，然后在下面输入脚本语句写入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">versionNumber=$(/usr/libexec/PlistBuddy -c &quot;Print :CFBundleShortVersionString&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;)</span><br><span class="line">sed -i bak -e &quot;/userLabel=\&quot;APP_VERSION\&quot;/s/text=\&quot;[^\&quot;]*\&quot;/text=\&quot;v $versionNumber\&quot;/&quot; $PROJECT_DIR/XXT/resource/Base.lproj/LaunchScreen.storyboard</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>以上script 注意3个点:</p>
-<ol>
-<li><code>$PROJECT_DIR/XXT/resource/Base.lproj/LaunchScreen.storyboard</code><br><code>XXT</code>是工程target 名。</li>
-<li><code>/resource/</code> 是对应LaunchScreen 位置(ps 我改过他的位置了)</li>
-<li><code>sed</code> 前面有折行。如果运行正确，效果没出来的，给<code>sed</code> 前面折行</li>
-</ol>
-<p>至此以后就不用那么麻烦了。</p>
-<h3 id="记录一次iOS-上传release-包出现”ITMS-90037”，debug-正常"><a href="#记录一次iOS-上传release-包出现”ITMS-90037”，debug-正常" class="headerlink" title="记录一次iOS 上传release 包出现”ITMS-90037”，debug 正常"></a>记录一次iOS 上传release 包出现”ITMS-90037”，debug 正常</h3><ol>
-<li>debug 非常正常。打包到fir.im 里面OK。</li>
-<li>上传testfly 的时候，总是出现<code>ERROR ITMS-90037: &quot;This bundle is invalid. The Info.plist file is missing or could not be parsed. Please check it for embedded control characters.&quot;</code><br>查google，大部分说<blockquote>
-<p>问题描述：这个包是无效的。Info。plist文件丢失或不能被解析。请检查plist的字符。<br>问题解决：info.plist 里面有一个非法字符，用终端打开这个文件查看一下，可能会有中文的字符或其他不能识别的字符。</p>
-</blockquote>
-</li>
-</ol>
-<p>但是我大眼瞪小眼还是没看出来。<br>从另一个角度：APP 之前可以上传；中间重大改版，里面用到了AliyunvideoPlayer 我觉得有问题。<br>然后我看到这篇文章：<a href="https://www.jianshu.com/p/f62c7767e16b" target="_blank" rel="noopener">https://www.jianshu.com/p/f62c7767e16b</a><br>里面链接到这篇<a href="https://blog.csdn.net/q_littlestone/article/details/51000112" target="_blank" rel="noopener">https://blog.csdn.net/q_littlestone/article/details/51000112</a> 里面的这篇：<a href="http://ios.jobbole.com/84323/" target="_blank" rel="noopener">http://ios.jobbole.com/84323/</a><br>终于找到了最终问题，并说明了原因：<br>里面有第三方framework。其framework 里面的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bundle version</span><br><span class="line">Bundle identifier</span><br><span class="line">Bundle versions string, short</span><br></pre></td></tr></table></figure></p>
-<p>没有和项目自己的对应。如果你自己还有bundle，里面取名不要使用<strong>Info.plist</strong> 或者<strong>info.plist</strong><br>处理办法：</p>
-<ol>
-<li>改变自己bundle 里面的Info.plist / info.plist</li>
-<li>讲第三方的Info.plist 里面的 “Bundle version/Bundle identifier/Bundle versions string, short” 改为和主Info.plist 内容一致。<br>最终终于通过了。<br>我的天，我花了快1天半呀。<br>需要不断尝试，同时看是否能上传成功，同时也要和以前对比。<br>打包、上传。半条命。</li>
-</ol>
-<h3 id="记录一次Xcode-release-下打包CFBundleVersion-1"><a href="#记录一次Xcode-release-下打包CFBundleVersion-1" class="headerlink" title="记录一次Xcode release 下打包CFBundleVersion +1"></a>记录一次Xcode release 下打包CFBundleVersion +1</h3><p>打包增加CFBundleVersion 需要另外考虑一件事：几个同事之间打包，build 号可能会污染。可以使用时间或者git 上传次数。<br>当前使用的是自动+1 操作。<br>首先</p>
-<ol>
-<li>在Build Phases 里面增加一个Run script.</li>
-<li>修改下名字，比如：AutoIncreaseBuildVersion</li>
-<li>把其拖到第一个下面</li>
-<li>增加script 如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">// 判断是哪个configuration</span><br><span class="line">// Release Debug 或者只自定义的配置</span><br><span class="line">if [ &quot;Release&quot; != &quot;$&#123;CONFIGURATION&#125;&quot; ]</span><br><span class="line">// 如果是Release做哪些事情</span><br><span class="line">then</span><br><span class="line">// 如果不是Release做哪些事情</span><br><span class="line">    exit 0 退出 不执行下面的代码</span><br><span class="line">fi</span><br><span class="line">buildNumber=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleVersion&quot; &quot;$INFOPLIST_FILE&quot;)</span><br><span class="line">buildNumber=$(($buildNumber + 1))</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion $buildNumber&quot; &quot;$INFOPLIST_FILE&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>上面的exit 0 可以注释也可以加上。效果就是其他CONFIGURATION 不会执行下面动作</p>
-<p><strong>跟随时间变化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">buildNumber=$(date +%Y%m%d%H%M%S)</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion $buildNumber&quot; &quot;$INFOPLIST_FILE&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>获取info.plist信息 CFBundleVersion 可以更改为想获取的信息的名字</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">buildNumber=$(/usr/libexec/PlistBuddy -c &quot;Print :CFBundleVersion&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;)  </span><br><span class="line">shortVersion=$(/usr/libexec/PlistBuddy -c &quot;Print :CFBundleShortVersionString&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;)  </span><br><span class="line">buildNumber=`date +&quot;%m%d&quot;`  </span><br><span class="line">buildNumber=&quot;$shortVersion.$buildNumber&quot;  </span><br><span class="line"></span><br><span class="line">// 设置info.plist</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion $buildNumber&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>修改项目显示名称为版本号（适用于不同版本号装到一个机器里面，便于区分是哪个版本）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash</span><br><span class="line">if [ &quot;Release&quot; != &quot;$&#123;CONFIGURATION&#125;&quot; ]; then</span><br><span class="line"></span><br><span class="line">DisplayName=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleShortVersionString&quot; &quot;$INFOPLIST_FILE&quot;)</span><br><span class="line">DisplayName=&quot;ep$&#123;DisplayName&#125;-I&quot;</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleDisplayName $DisplayName&quot; &quot;$INFOPLIST_FILE&quot;</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line"></span><br><span class="line">DisplayName=&quot;真正的项目名称&quot;</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleDisplayName $DisplayName&quot; &quot;$INFOPLIST_FILE&quot;</span><br><span class="line"></span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
-<h3 id="记录一次使用Egret-wing-调试出现"><a href="#记录一次使用Egret-wing-调试出现" class="headerlink" title="记录一次使用Egret wing 调试出现"></a>记录一次使用Egret wing 调试出现</h3><p>“No such module: atom_renderer_v8_util”<br>崩溃到这一句”return process.binding(<code>atom_${process.type}_${name}</code>)”</p>
-<p>然后换成debug 用chrome 可以用几次，但是用出错。<br>明明没有代码错误，把代码拷到另一个工程，又能运行。<br>最终解决：把翻墙关了。<br>网上也有一些解决方案，但都没有说到点，心里还嘀咕怎么可能跟我shadowSocks 有关。<br>后来确实没有再出现了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-6-28lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/07/21/2018-6-28lesson/">2018/6/28lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/07/21/2018-6-28lesson/" class="article-date">
-	  <time datetime="2018-07-21T01:28:37.000Z" itemprop="datePublished">July 21, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-6-28"><a href="#2018-6-28" class="headerlink" title="2018/6/28"></a>2018/6/28</h3><p>记录一下这几天的事<br>之前从粉粉离职，原因有很多很多方面导致我在这大热天毅然决然的选择离开.</p>
-<ol>
-<li>工资从未提升，哪怕变动或者变少都行，表示公司有一定考核.<br>2.周末采取单双休，双休的时候感觉太幸福了；单休的时候，周日等于没有休息，等于连上12天班。饥饿策略。</li>
-<li>项目采用快速迭代策略，2周一版本，代码质量要管控、逻辑要管控、需求没有明确特别是需求不明确，做到一定才发现有些有冲突，或者有些和另外东西结合了，或者导致另外东西也要变动，然而时间也是被一并算进迭代版本里面。正如最后要走时，旭哥和我开玩笑的说‘在外面公司好点，因为他们不懂代码，粉粉技术懂，所以就会很紧，以后你就会舒服啦’。是的，他们懂代码他们也为我尽量宽松了些，但是细节可能在做到的时候才会碰到。</li>
-<li>公司感受不到我的存在位置，我就是个码农？这不是我想要的。</li>
-</ol>
-<p>进粉粉目的如同我刚上大学就知道自己绝不会考研一样：‘我是来学技术的’。学完如果公司还有我存在的意义，那么我会选择留下来，以上总总都没有。</p>
-<p>后来和根根（前粉粉安卓组成员）聊天时，他说的也正是我明了的：<strong>粉粉 是不是觉得 举步维艰</strong> 、<strong>陷入泥潭一样？</strong></p>
-<p>所以我预算的最好的时间就是学完，前端学完，后端学完，溜了溜了。<br>期间面试了有十数家公司。</p>
-<p>有+我才3个开发的公司，产品基本等于设想的。</p>
-<p>有要做区块链 的公司（好多家都想蹭这个热度）</p>
-<p>有做广告SDK 的（当时去到该处，我先看他们代码，告诉他们这要做什么，对我来说有什么理解、难处等等）</p>
-<p>有做心理学社交的，我当时先让他电话面试，别他们觉得不合适，我就可以不用过去了</p>
-<p>也有做公司产品+外包的</p>
-<p>我拒绝了几个（3、4个，六月份找工作确实不好找）</p>
-<p>我被拒绝了2次一个做医疗社交的，看他开价12 - 19，，又看到他们内部技术，我的天，那就意思意思17左吧，，真没漫天要价。一个做看小说的，似乎有个产品叫“漫画”似乎要很牛逼的，，我特么不写着我自己期望的嘛，你特么喊我过来，问的问题我以为什么鬼。搞得很牛逼的样子，反正不用理这个。继续自己的学习发展，确实很都比的人）</p>
-<p>得到4、5个offer。最后来到一个也是做社交的小公司。正好可以把从粉粉学到的运用上去。</p>
-<p>老实说，当时看到他们的代码，有种熟悉又不熟悉的味道。代码规范、格式，这里不存在的。创建者是个php 的小哥（即将离开），能力不咋滴（产品逻辑、规范、Wiki、流程都不知道）还拽的250似得。我也懒得和这种性格有缺陷的人多聊一会，问documents 有没有？不存在的，全部是3、4年前写的种使用字典；服务端也别想有documents。反正一团糟。哈哈。反正所有东西都是3、4年前那一套。</p>
-<p>那我就慢慢来好了，我不急，急不来，自己好好规划规划就可以了。</p>
-<p>来到这个公司，有几个特点。</p>
-<p>优点：公司有自己目前主营业务。新来了个小哥php 、规范等和自己有共同语言，产品负责人和c 哥很像。多年产品人，设计，游戏设计。新来的那个小哥也做白鹭游戏，这个是我想要的。之后可能也会分配做些游戏。老板似乎是宁波人，公司方面也有和宁波政府合作。这个和我也有点想去宁波发展发展有点好处。额，还可以还可以。</p>
-<p>缺点：确实没有粉粉明面上的热闹，进来之后感觉我有点无足轻重。技术垃圾到极点（目前都走光了，剩下产品大哥-长得有点像‘无所谓’的杨坤，和php 小哥）。老板性格、说话有点像干辉，哈哈。老板一点都不懂技术，但是比较会被技术说的云里雾里，然后似懂非懂。老板管理上不咋滴的。</p>
-<p>好吧，吐槽吐槽就到这里了。不多说，溜了溜了。</p>
-<h3 id="UICollectionView-addSubviews-UIView-内部有autolayout-CollectionView-视觉出bug"><a href="#UICollectionView-addSubviews-UIView-内部有autolayout-CollectionView-视觉出bug" class="headerlink" title="UICollectionView addSubviews UIView 内部有autolayout CollectionView 视觉出bug"></a>UICollectionView addSubviews UIView 内部有autolayout CollectionView 视觉出bug</h3><p>错误确定为：<br>CollectionView addSubviews 里面不能存在内部有约束的UIView。<br>否则其直接导致CollectionView 内部结构、内部约束直接紊乱。<br>其上的新增detailInfoview 有两种方法可以处理<br>1：如同当前新建view 处理，内部全部为frame 布局。目前来看似乎还不错<br>2：在CollectionViewLayout 上多流出来一个layoutAttributes，给第一个，然后frame 由代理DataSource 从controller 得到。这样等于得到一个特定cell</p>
-<h3 id="Xcode-插件还能用"><a href="#Xcode-插件还能用" class="headerlink" title="Xcode 插件还能用"></a>Xcode 插件还能用</h3><p>curl -fsSL <a href="https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh" target="_blank" rel="noopener">https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh</a> | sh<br>但是提示 <strong>xcrun: error: unable to find utility “xcodebuild”, not a developer tool or in PATH</strong></p>
-<p><a href="https://www.jianshu.com/p/ff1d99fe1d17" target="_blank" rel="noopener">https://www.jianshu.com/p/ff1d99fe1d17</a></p>
-<p>opened Xcode.<br>Preferences<br>Locations<br>Selected the Command Lin Tools: (选择xcode版本)</p>
-<p>-&gt; <strong>Alcatraz successfully installed!!1!🍻  Please restart your Xcode (9.4).</strong></p>
-<p>然后解决Xcode 8 之后不能使用Alcatraz</p>
-<p><a href="https://www.jianshu.com/p/0b541f145a1a" target="_blank" rel="noopener">https://www.jianshu.com/p/0b541f145a1a</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install update_xcode_plugins</span><br><span class="line">$ update_xcode_plugins</span><br><span class="line">$ update_xcode_plugins --unsign</span><br></pre></td></tr></table></figure>
-<p><strong>Choose which Xcode you would like to unsign (use arrows): Xcode (9.1) [Signed]: /Applications/Xcode.app</strong><br><code>$ Y</code></p>
-<p>似乎出现了Xcode 关闭之后，再打开，PackageManager 不见了。<br>解决请参考：</p>
-<p><a href="https://www.jianshu.com/p/a9448154c09e" target="_blank" rel="noopener">https://www.jianshu.com/p/a9448154c09e</a></p>
-<p>之后确实都出来了，不知是否这个原因</p>
-<h3 id="iOS-转场动画"><a href="#iOS-转场动画" class="headerlink" title="iOS 转场动画"></a>iOS 转场动画</h3><p>很久没有做转场动画了。这里把遇到的坑填一填。</p>
-<h3 id="如果程序中改变了某个空间的transform-不要使用frame；视觉bug-是其会变成CGRectZero"><a href="#如果程序中改变了某个空间的transform-不要使用frame；视觉bug-是其会变成CGRectZero" class="headerlink" title="如果程序中改变了某个空间的transform 不要使用frame；视觉bug 是其会变成CGRectZero"></a>如果程序中改变了某个空间的transform 不要使用frame；视觉bug 是其会变成CGRectZero</h3><p><a href="https://www.jianshu.com/p/9dfd337e8266" target="_blank" rel="noopener">https://www.jianshu.com/p/9dfd337e8266</a><br>应该使用bounds+center</p>
-<h3 id="iOS-某个VC-rotation-还有statusBar-状态"><a href="#iOS-某个VC-rotation-还有statusBar-状态" class="headerlink" title="iOS 某个VC rotation 还有statusBar 状态"></a>iOS 某个VC rotation 还有statusBar 状态</h3><p>//<a href="http://www.jianshu.com/p/4196d7cf95f4" target="_blank" rel="noopener">http://www.jianshu.com/p/4196d7cf95f4</a><br>BaseNavigationViewController:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*顶部状态栏 接下来会调用该viewController 的</span><br><span class="line">- (BOOL)prefersStatusBarHidden &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">- (UIStatusBarStyle)preferredStatusBarStyle &#123;</span><br><span class="line">    return UIStatusBarStyleLightContent;</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">-(UIViewController *)childViewControllerForStatusBarStyle&#123;</span><br><span class="line">    return self.topViewController;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>程序默认为<strong>UIInterfaceOrientationMaskPortrait</strong><br>那么在BaseNavigationViewControlelr<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-(UIInterfaceOrientationMask)supportedInterfaceOrientations&#123;</span><br><span class="line">    return UIInterfaceOrientationMaskPortrait;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在需要的ViewController加入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)shouldAutorotate &#123;</span><br><span class="line">    return !self.isLocked;</span><br><span class="line">&#125;</span><br><span class="line">//这个比较重要。这里告诉了system 当前到底支持哪些种旋转方式</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations &#123;</span><br><span class="line">    if (self.isLocked) &#123;</span><br><span class="line">        return UIInterfaceOrientationMaskPortrait;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return UIInterfaceOrientationMaskPortrait|</span><br><span class="line">            UIInterfaceOrientationMaskLandscapeLeft|</span><br><span class="line">            UIInterfaceOrientationMaskLandscapeRight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation</span><br><span class="line">&#123;</span><br><span class="line">    if (self.isLocked) &#123;</span><br><span class="line">        return toInterfaceOrientation = UIInterfaceOrientationPortrait;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上即可在相关view 里面控制rotate。</p>
-<h3 id="最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了"><a href="#最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了" class="headerlink" title="最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了"></a>最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了</h3><p>2018/7/9<br>她说看太多不想看了。那我们来预测一下接下来她会怎么做，然后每天记录她当天的态度。</p>
-<p>什么是新的轮回？那就是，难受，不看电视剧，所以连同什么综艺节目（跑男、唱歌的、宝宝剧场）都不会看。当然，对于黄妈肯定是一开始很义正言辞的。<br>于是最近的3天到5天（最长5天，不可能超过5天，这也要考虑进去周末休息日）她一天比一天难受。很想看，但是又还记得刚说过的话。<br>下一个阶段是工作回来太累了，回到家不知道干什么，毕竟工作属于需要静下心来的；于是她就花点时间做菜，做好吃的。这阶段属于过渡期，这几天饭菜之类的都会可口一些吧。<br>当然过渡期不能称为阶段，因为这很短，大约2天~3天。期间还会有不应期，菜饭做好吃好，不想写东西，又睡不着，此时还不能看任何视频，这就难受了。于是就趴在床上看淘宝。<br>腐女嘛，不是看视频就是看淘宝，看淘宝还不买的那种，因为她知道她没钱。我要是店主，我肯定不开淘宝店了。页面统计数据挺好看的，就是没人买-&gt;都是她这种小妮子光看不买系列。<br>下一个阶段就是有些忘记之前说过的话啦，没全忘记那种。在一起吃饭时，她会嘿嘿嘿的偷笑，拿出iPad，怼到我面前，就像是我们一起看，看综艺节目（当前还不敢看电视剧的）。看着看着，然后又趴到床上看淘宝。<br>接下来的2~3天左右就会发现她捧着iPad在床上看看综艺节目演变成偷偷看韩剧，这时回头看她，她是带着耳机的，时不时偷笑；说她的时候，她就会不好意思，然后又继续看，有时也会放下。此时她的睡眠也不会熬夜。<br>其实这阶段还属于偷偷看。不敢光明正大看，也不能不看，估计不看的话，会，会，会坏掉的。<br>再接下来，有两个阶段，可以合并为一个。<br>先是吃饭的时候看韩剧，一起看一起看（说实话，那些逗逼韩剧那么多人看，我都想转行拍片了，没技术没含量没思想）。然后就是，自己一个人在后面，边吃零食、边看电视剧啦。<br>快乐的一个人看电视剧，手边总有吃的。因为没有吃的，她会把吃的扒拉过来放在身边，没吃嗑一点。</p>
-<p>实际：<br>第1~3天（7月9号为第1天）：<br>第1天：<br>第1天晚上回去，一菜一汤。然后屁颠屁颠坐下来看看weex。由于立马不看电视剧，接口看了下QQ，点开了QQ空间，里面看了好一会视频。看到我喝酒，怕被我打，赶紧不看了。<br>接着又看了会weex，手机上开发者页面，这么小屏幕，肯定看不下去，于是东搞搞西搞搞，这晚就过去了。<br>比较关键的是，她自己不能看视频，还不让我打游戏，，，这神逻辑。我又没说我不打游戏。我打游戏休闲娱乐，她居然也不让我看。哈哈。<br>第2天：<br>第2天晚上回去，进门就看到她开始看综艺节目啦。看来之前多次轮循，现在比较明目张胆了。我一说之后，马上收起来，屁颠屁颠去拿饭吃了。<br>今天晚上她身体不舒服，搞七搞八，视频又不能看，于是吃完饭差不多9点多了，就自己睡着了。<br>第3天：<br>第3天晚上回去，你懂得，饭也没煮，一开门就看到她在那看电视剧了。<br>嘿，这个转换的快啊。她赶紧收起来，然后不好意思屁颠屁颠去给我热粥。我吃饭时，让她做code review。那个脾气倔的，嘴巴都嘟起来，一直抠脚。我的天，不过是聊聊天而已，说实话，心里有点晦气-&gt;什么鬼。<br>然后她跑上床，又开始看起来了。我说了三次她才停下来，厉害厉害。</p>
-<p>第3天之后我就不必再写了，这人没救了。丢阿黄一个人在家，自己整天整夜看电视剧，沉迷的很。<br>最近工作也是不顺，整天还这么沉迷，“还一点点没看完，就快看完了”。<br>整天说，不准再打这么多游戏了；多写东西，别老打游戏；还撇着嘴，埋怨我整天打游戏。<br>我的天，我都很少打游戏好吧。<br>我打游戏有准则，她看视频都是没有限度的。她视电视剧犹如猛兽，所以老是说不看了，然而还是沉迷不止。<br>我觉得游戏是休闲，是比赛，我不觉得打游戏如何堕落。<br>她这简直是找抽。</p>
-<h3 id="申明init-入口"><a href="#申明init-入口" class="headerlink" title="申明init 入口"></a>申明init 入口</h3><p>申明initWithURL:(id)xx 入口有两种方法。<br>1: initWithURL:(id)xx NS_DESIGNATED_INITIALIZER;使用宏提示其为为设计入口。<br>这时会出现：<br><!--https://blog.csdn.net/zcube/article/details/51657417--><br>如果用了NS_DESIGNATED_INITIALIZER，那么警告中出现init还是initWithNibName或是其它，取决于你的继承的父类类型：</p>
-<p>UIViewController</p>
-<p>Method override for the designated initializer of the superclass ‘-initWithNibName:bundle:’ not found<br>Method override for the designated initializer of the superclass ‘-initWithCoder:’ not found<br>UIView</p>
-<p>Method override for the designated initializer of the superclass ‘-initWithFrame:’ not found<br>Method override for the designated initializer of the superclass ‘-initWithCoder:’ not found<br>NSObject</p>
-<p>Method override for the designated initializer of the superclass ‘-init’ not found</p>
-<p>那么就实现比如UIView 的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (instanceType)initWithFrame:(CGRect)frame &#123;return [self initWithURL:nil];&#125;</span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)aDecoder &#123;return [self initWithURL:nil];&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2: 把其他的入口设置为NS_UNAVAILABLE</p>
-<h3 id="这几天上传两个APP-收到2-1-拒绝大礼包"><a href="#这几天上传两个APP-收到2-1-拒绝大礼包" class="headerlink" title="这几天上传两个APP 收到2.1 拒绝大礼包"></a>这几天上传两个APP 收到2.1 拒绝大礼包</h3><ol>
-<li>首先是我写的一个房产计算器的项目。<br>一开始是因为在标题里面有<strong>免费</strong>的字样，去掉之后就出来2.1 大礼包了。<br>2.1 礼包说我这可能有隐藏功能、有贷款方面东西。</li>
-</ol>
-<p>我回复邮件说，我这绝对没有隐藏功能，也没有贷款方面的东西。因为觉得世面上的不好用、广告太多等，所以做了个这个功能。这个功能也是自主研发的，不是市面上的抄袭品。</p>
-<ol start="2">
-<li>还有一个涂色的项目。<br>上来直接就是2.1 大礼包。<br>我猜测原因是我展示页面出现<strong>免费</strong>字样，引导了用户。还有就是可能有隐藏功能。</li>
-</ol>
-<p>目前这两个项目我都做了广告，所以也不具备广告功能。我回复涂色项目的，我们没有隐藏功能，免费是因为素材时设计师们的心血，但是为了分享这份灵感，所以使用免费，但是绝没有付费，更不用说，除苹果外的第三方付费了。<br>免费同时也因为市面上其他APP 都是要付费的，我们就专打免费策略。最后，我们删除了展示页面的那张带有<strong>免费</strong>字样的图片。 </p>
-<p>最后再说一句：如果是原数据被拒绝，同时你认为不必要上传新的二进制，你就直接回复该邮件。<br>然后静静等待，不需要点击#提交以供审核#。如果点了，那么相当于重新审核，可能会等待7~8天。<br>相关帖子：<a href="http://www.cocoachina.com/bbs/read.php?tid-298671-page-1.html" target="_blank" rel="noopener">http://www.cocoachina.com/bbs/read.php?tid-298671-page-1.html</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1264,6 +1146,42 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a></h6>
+              <span>February 18, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a></h6>
               <span>January 29, 2021</span>
             </div>
@@ -1290,42 +1208,6 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
 
               <h6 style="margin: 0;"><a href="/2021/01/29/20210129lesson/">20210129lesson</a></h6>
               <span>January 29, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-31lesson/">2020-10-31lesson</a></h6>
-              <span>November 29, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2020/11/29/2020-10-12lesson/">2020-10-12lesson</a></h6>
-              <span>November 29, 2020</span>
             </div>
 
           </li>
@@ -1362,7 +1244,7 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
