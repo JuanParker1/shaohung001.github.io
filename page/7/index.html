@@ -165,6 +165,162 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-1-20lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/01/21/2019-1-20lesson/">2019-1-20lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/01/21/2019-1-20lesson/" class="article-date">
+	  <time datetime="2019-01-20T23:23:42.000Z" itemprop="datePublished">January 21, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最近记录及经历"><a href="#最近记录及经历" class="headerlink" title="最近记录及经历"></a>最近记录及经历</h1><p>记录下最近忙的事情：</p>
+<ol>
+<li><p>面试后台</p>
+</li>
+<li><p>vps 重启导致没进入centos 系统，同时需要重启ssserver</p>
+</li>
+<li><p>公司组织活动</p>
+</li>
+</ol>
+<h2 id="面试后台"><a href="#面试后台" class="headerlink" title="面试后台"></a>面试后台</h2><p>2019/1/17 晚上6:15 赶紧从锦江乐园开着那个破小电驴赶去仙霞路。终于在约定7点前3分钟到达亩的地。<br>进入后，笔试+机试。<br>笔试有</p>
+<ul>
+<li>module.epxorts 有什么特点</li>
+<li>2个Node.js API 有什么区别</li>
+<li>Node.js 使用什么库可以创建原生服务器，代码。</li>
+<li>Node.js 子程序、子程序生成和沟通</li>
+<li>js 什么是回调，如何防止回调地狱</li>
+</ul>
+<p>机试</p>
+<p>express + pug + vue.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">index.jade</span><br><span class="line"></span><br><span class="line">template.</span><br><span class="line">    ...布局</span><br><span class="line">scripts.</span><br><span class="line">    ...scripts</span><br><span class="line"></span><br><span class="line">输入&quot;[&quot;a&quot;,&quot;1&quot;,&quot;2&quot;,&quot;1&quot;,&quot;b&quot;,&quot;3&quot;,&quot;4&quot;,&quot;a&quot;]&quot;</span><br></pre></td></tr></table></figure>
+<p>将输入的文本传到后台，后台进行去重、排序得到<br>[“1”,”2”,”3”,”4”,”a”,”b”]<br>然后传递回前台展示</p>
+<p>做这题的时候vue.js 基本都会，但是pug 的混合有点懵。<br>express 没有watch file 更新服务器的便利，我给加了supervisord 库。<br>给的电脑是linux系统，键盘啥的，却都是windows 的操作。好烦，一直用ctrl+s，这啥玩意。一直担心这次修改的代码是未同步的。<br>字又很小很小那种、没有鼠标使用触控板，那个垃圾触控板啊。<br>外面又很吵。</p>
+<p>反正最后我只剩下“排序、去重”这俩 面试经理认为去网页找就好了的功能，我自己认为还算完成度高的（我还加了比如responseFormat、util、controller 分出操作）。<br>中间有个卡了点时间的地方：.jade template 里面想import 一个库，不行，最后找到ajax post 方法。</p>
+<p>之后面试经理问了些工作经历、一些别的知识点等等。</p>
+<p>做完面试，从晚上7点搞到了近晚上10点了都（确实时间长了点，不过跟环境有关吧，我自己环境搭起来，那就会特别特别爽，很快就能好，毕竟能断点嘛）。然后骑着已经一点电都没有的电驴推了好长一段路，幸好幸好没有下雨。推一会，骑一会，终于找到充电点，才终于回到家了。</p>
+<p>第一次后台面试，感觉能胜任，没啥。<br>我现在还在做一个资源下载网页、真·聊天软件。这几天给他整好来，我觉得明年年初必定能很OK！！！</p>
+<h2 id="vps重启、ssserver-启动"><a href="#vps重启、ssserver-启动" class="headerlink" title="vps重启、ssserver 启动"></a>vps重启、ssserver 启动</h2><p>首先我vps（搬瓦工CN2 专线）安装两次系统，导致重启之后，先点击左侧“terminal interaction”，然后会有新开一个网页版的操作交互页面，在提示“ESC”时， 需要按ESC 键进入选取系统页面，选取自己的server（我安装centos 6 x86），然后就可以进入centos 操作系统。</p>
+<p>ssserver 我这里参考这篇<a href="https://github.com/Helinhan/-shadowsocks-serverspeeder-/issues/1" target="_blank" rel="noopener">git issue</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start</span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
+<h2 id="新的公司“哇塞运动”公司组织活动"><a href="#新的公司“哇塞运动”公司组织活动" class="headerlink" title="新的公司“哇塞运动”公司组织活动"></a>新的公司“哇塞运动”公司组织活动</h2><p>时间：19.1.18 ~ 19.1.19<br>地点：苏州半岛阳澄湖酒店<br>事件：公司组织年会，团建</p>
+<p>早上坐了一个半小时的大巴到达。休息半小时后，每个人先在一个大面板签字，留影。接着是茶话会，点评公司优秀员工，主管点评员工，回顾一年来事迹、点滴。</p>
+<p>茶话会快结束了，还有剩余时间，我提议“成语接龙”，10s 没接上成语的同学发红包。玩了几圈，已经接近11点半，大家意犹未尽，但是还是抓紧休息时间，12点集合午饭时间。</p>
+<p>中午饭简洁实在：吃饱。下午有活动，所以主要还是吃饱，晚上才是重头戏，不能和晚上抢了风头。有些同学还会有嫌弃说简陋，但是见其也吃的不多，这也是我疑惑的地方。人果然都是不同的，我是来则安，而总会有人嫌弃这嫌弃那，而自己却又服务得不多。</p>
+<p>我做好自己的角色就好了，更不必理会不同的心声。</p>
+<p>吃完饭，回酒店休息了下，那40分钟，终于把我的ssserver 重启回去了。提一点：酒店的网络估计国家有监管，百度搜索很多稍稍敏感东西都被屏蔽了，感觉不到gov 的意图，总觉得很多小丑想在我身边窥视我的一举一动。浑身不自在！</p>
+<p>中午2点集合，集体出发去酒店附近的草地做运动。<br>首先大家分队，做些热身运动。<br>接着分成的两组开始接力跑。我们这组输了，原因有2：我们这组妹纸多一个；开头有个同学返回时没把接力棒传递，延迟数s之久。<br>开心即好。</p>
+<p>接下来我们还是2队比拼过跳绳速度。这个在接下来体现在团队合作。比如<strong>黑洞</strong>同学加油，减少错误率，手感好的同学，多个一起进入，加速进程。我们这队先跳，有几个”黑洞”同学，但不敢置信的是二队的黑洞才是最厉害的！着实拖着队友，哈哈。</p>
+<p>这两个游戏之后，还有三个游戏：报数抱团，毒圈丢球，撕名牌。</p>
+<p>报数抱团：中间同学报数，然后其他队友围成圈，报数时其他同学报成对应数字。<br>我怎么输的，在第三波时，数字8，我站过去是9，只能牺牲小我牺牲啦。</p>
+<p>毒圈丢球：全员分成四个队，中间一个队伍，其他三个队使用软球，将中间队伍砸下。</p>
+<p>撕名牌：大家身穿小外衣，两队颜色。背后由正反胶贴着自己的铭牌。大家分成两队，根据时间，慢慢缩小毒圈。大家互相开撕。</p>
+<p>这里说几个有意思的：撕的铭牌，那个黏度，三个男的扯都扯不下来。我当时被三个人撕都撕不下，哈哈，活到了最后。我觉得人事部一个小姑凉撕的人可就多，好多人被她撕撕撕。我一直躲躲躲，躲到了比赛最后，胜利✌️。<br>这游戏包括了好几波，都快喘不过气了。玩的没心没肺啊，如同回到大学时期。公司强项不愧是做策划执行的，线下的执行简直没话说的。</p>
+<p>大家玩完之后回酒店休息了下。没一会去吃晚饭。</p>
+<p>晚饭吃的就稍微更好了。这次喝的酒也稍微多了一些，米西米西。好吃的有一个小虾米，很嫩很滑口；苏州必带鸡汤么；烤猪脚很香；期间蒋总、翟总述说自己往事，公司建立来由，张总10年没放弃。2005年创建“点傲”，2014启动哇塞，合并为“冠脉堂”。期间张希亮，张总喝多了，说点傲团队，人员坚持下去，十年后还是大家伙，张总自己掏钱给留着的伙伴5w报答。确实，这就是新兴的互联网不能比的。互联网人，自身难保，随时可能被开，还想着自己留在公司？？（耳边有些小伙伴传来问是冠脉堂全员吗？小声嘀咕问。有这想法的人，看来年龄尚浅，未来前路只能在他人鼻息下留存啊）</p>
+<p>吃完之后回到酒店休息了下，就已经要晚上的晚会表演了。我们技术部本来要彩排一下的，已经来不及，直接开始了。</p>
+<p>我在这也有个小项目，就是唱<strong>革命人永远年轻</strong>这首歌。这首红歌，是大学红歌比赛时，我作为领唱，身后都是老师、院长、同学们，台下是几千人的同学，当时的我激动、紧张，使得我不经意间，不自觉、无法控制的腿抖。这次我要打破自己，表达自己。</p>
+<p>其实我在粉粉的时候就有多次code review、技术分享，在实践，表达，突破。这次很成功的表演（会不会是人比较少的原因，再也没有腿抖，也没有丝许不安？应该不是吧，哈哈）。</p>
+<p>翟总为我们深情朗诵，蒋总给我带来一曲古典的<strong>梨花颂</strong>。这首歌我高二的时候特别喜欢，喜欢不得了，现在老了，在工作场景耕耘，眼前早已不是夜景烟花，桃色满目了。<br>我们技术部有俩节目。有一个”兔子舞”，得了，崩盘。之后我们大合唱<strong>明天会更好</strong>,只能凭借真诚，最好还好，收了场。<br>边表演节目，边抽奖，反正我是没能拿到什么奖，阳光普照吧。<br>我觉得一等奖倒是挺意外，而且老板们脸都要绿的那种。平时最不干活，干活老喊累，推诿，能力最差的前端同学得到了，哈哈，我觉得老板脸，不是很好看，哈哈。</p>
+<p>接下来大家吃东西，唱歌，那玩个游戏。有个人带上眼罩，转三圈，然后在场地抓人，抓到人之后要猜出试谁。这个游戏也挺好玩的，我一直没被抓到过，之后一次请缨，有意思。这期间有个哥们为了猜出另一个哥们是谁，上上下下摸了个遍，都快亲上去了。哈哈</p>
+<p>基本这天就这么过去了，第二天回上海，然后那天下午，我们还加了半天班，想猴头菇了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-1-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/01/05/2019-1-5lesson/">2019-1-5lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/01/05/2019-1-5lesson/" class="article-date">
+	  <time datetime="2019-01-05T13:12:41.000Z" itemprop="datePublished">January 5, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Dockerfile-install-very-slow"><a href="#Dockerfile-install-very-slow" class="headerlink" title="Dockerfile install very slow"></a>Dockerfile install very slow</h1><p>According to <a href="https://christianfei.com/posts/Cache-speed-up-docker-node-modules/" target="_blank" rel="noopener">this artical</a>, I resolve an issue that i have to load all <strong>node_module</strong> files very time;</p>
+<p>This method help with: building the same package.json and and same file path, would never ever to load every file again, but first would still very slow.</p>
+<p>do step:</p>
+<p>first add your <strong>.dockerignore</strong> with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">.results</span><br><span class="line">script</span><br><span class="line">*Dockerfile*</span><br><span class="line">node_modules</span><br><span class="line">package-lock.json</span><br></pre></td></tr></table></figure>
+<p>then:</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">ARG</span> NODE_ENV=development</span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=$NODE_ENV</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /watchvideo_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> package.json yarn.lock ./</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /watchvideo_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> yarn</span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> node</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9526</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">  mysql:</span><br><span class="line">    build: ./mysql</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;4444:3306&quot;</span><br><span class="line">  watch:</span><br><span class="line">    build: .</span><br><span class="line">    hostname: watch</span><br><span class="line">    command: yarn debug</span><br><span class="line">    volumes:</span><br><span class="line">      - ./dist:/watchvideo_server/dist</span><br><span class="line">      - ./package.json:/watchvideo_server/package.json</span><br><span class="line">      - ./yarn.lock:/watchvideo_server/yarn.lock</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;9526:9526&quot;</span><br><span class="line">      - &quot;9222:9222&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysql</span><br><span class="line">    links:</span><br><span class="line">      - mysql</span><br><span class="line">    environment:</span><br><span class="line">      - DATABASE_HOST=mysql</span><br></pre></td></tr></table></figure>
+<h2 id="I’m-making-a-media-site"><a href="#I’m-making-a-media-site" class="headerlink" title="I’m making a media site"></a>I’m making a media site</h2><p>When 2018.6, I decided to make some games to try earning some money and advertise.</p>
+<p>But gov said NO: gov suddenly gave a notify, field of game would become more difficult.</p>
+<p>OK, when 2018.12, I change my mind to make a media site to provide some picture sources and ability of watching video.</p>
+<p>But gov immediatly gave notify: master of <strong>BT video site</strong> was caughted and get 3 year of prison with 80w RMB ticket.</p>
+<p>Ability of IT worker is very difficultlly control by zh gov, so they afraid of any man is out of control.</p>
+<p>If you feel comfortable with that ease, you will done soon or later.</p>
+<p>I’m would never be.</p>
+<h1 id="Man-become-poverty"><a href="#Man-become-poverty" class="headerlink" title="Man become poverty"></a>Man become poverty</h1><p>Man dare to chanllenge for fight, but during recent couple of year, harsh enviroument is expressing more tough to not getting close to the civilization and ability.</p>
+<p>Man died by kind of poverty.</p>
+<p>Poverty caused by not treating them as power, but treating tasty word as governance model.</p>
+<p>So Man deserve poverty by not taking seriously of bazoo?</p>
+<p>fucking bazooer!!!</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2018-12-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -714,268 +870,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-2018-10-17lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/29/2018-10-17lesson/">2018-10-17lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/10/29/2018-10-17lesson/" class="article-date">
-	  <time datetime="2018-10-29T14:50:41.000Z" itemprop="datePublished">October 29, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2018-10-17"><a href="#2018-10-17" class="headerlink" title="2018-10-17"></a>2018-10-17</h1><p>之前找工作，赶在了10月15号前入职（10月9号到岗），这样社保没有断，也算解决了尴尬的处境。</p>
-<p>国庆节放假，前三天认真学习，打打游戏。后面几天，突然老婆发神经，对，发神经，搞的不愉快，在倒数2天傍晚离开老婆自己一个人去跑步散心。于是那天晚上老婆又爬身上求我原谅。我看重原则，家人什么都是对的，但是原则不能错。后来怎么样，那只能原谅呗，嘎嘎。</p>
-<p>10月放假完第一天，有2个面试和傍晚的前往之前的复试（商谈工资）；</p>
-<p>早上去离不远一家搞智能硬件互联的公司，直接就给offer，但是离自己心里预期低；</p>
-<p>下午一家在七宝名叫<a href="小二郎">xx</a> 的一个婴幼儿教育的公司。约我去面试的女的面容姣好（去的时候刚好上楼遇见），保养很好，很美（无他不好的见解）。然后一个老头面试（说话结巴），先让我自我简介。我就巴拉巴拉说了自己的简况。然后他就问一个问题“数据结构”。是的，这个是我们系主任教的课，我听的特他妈认真。但是离校那么久，早还给老师了，而且当时也没学好，毕竟光听，没有真正实践的地方，没办法没办法。然后他就抓着这个点，说来面试的太差。哎哟，握草，现在面试iOS不仅要算法，还要数据结构很好？而且工资给的还非常低（8~15k，相对要做的领域，是非常低的，而且公司给的肯定就只有12k）？然后我就开始怼他，反正我又不是找不到工作的人。这种老头子能力肯定也是不咋地，要求却蛮多，脑子又不灵光，话都说不流利。肯定是忽悠公司花高价请自己来，说自己算法多好多好，实际一点产出都没有的人。现在互联网跟他的年龄早已不相仿。我敢断言：这个公司又会像以前我经历过的一些公司一样，不同的是，现在这个公司资金比我以前的要雄厚（毕竟我以前公司都比较穷，这个似乎会大一些），但是这种老古董定然给他败光！</p>
-<p>现在我又要屁颠屁颠灰溜溜滚蛋咯。</p>
-<p>回去到家再写了写东西，傍晚去复试。公司之前做线下运动的，线下有一定的资源，转线上。工资没有多高，社保又快到了，看老板眼神，跟着干吧，希望能带我脱离苦海吧。</p>
-<p>于是，又一次找工作历程经历完了。<br>有苦有乐，苦更多吧。更加让我续满动力实践自己的server！！！</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-9-27lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/27/2018-9-27lesson/">2018-9-27lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/09/27/2018-9-27lesson/" class="article-date">
-	  <time datetime="2018-09-27T05:14:06.000Z" itemprop="datePublished">September 27, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近是面试期么"><a href="#最近是面试期么" class="headerlink" title="最近是面试期么"></a>最近是面试期么</h1><h2 id="内心一定要淡定"><a href="#内心一定要淡定" class="headerlink" title="内心一定要淡定"></a>内心一定要淡定</h2><h3 id="记录下最近面试问到的一些问题"><a href="#记录下最近面试问到的一些问题" class="headerlink" title="记录下最近面试问到的一些问题"></a>记录下最近面试问到的一些问题</h3><p>之前从粉粉离开时，也没想到这是一个多事之秋。去了一家动漫IP 的公司，人没去之前老板已经有意决定停下互联网业务的，结果其中一个合伙人说再试一波，于是我以为其是想做事，就进去当小白鼠了。进去之后改版页面完，没目的没计划了。做了一个egret ”消消乐“的微信小游戏，学了该学的OpenGLES，然后中秋之前跟我说部门解散，，，</p>
-<p>大哥，这才三个月啊。</p>
-<p>所以说是一个多事之秋吧。</p>
-<p>好吧，出来面试吧。</p>
-<p>现在是9月份，面试第一个公司：”第一弹“，我个人觉得面试过程还好，然后说不合适。好吧，不合适就不合适吧，可惜了，距离我挺近的，比较看重距离。</p>
-<p>面试题里面有个题目：[1, … 100] 内 不等随机大小无序数，求最大的数和第二大的数。</p>
-<p>这个我做的时候直接是冒泡排序。但是有两层for 循环，效率不好，下面会给出最佳答案。</p>
-<p>第二家说想做一个短视频、即时通讯、webRTC 这一类产品。我不看好，不能跟，而且离得有点远，开发员工才几个人，工资也很低。大哥，做这类的工资不可能才15k 啊，，，做成个半成品，全是SDK 的，我不愿意把青春花在简单组合各类SDK上面，做完到时发现不赚钱，老板说解散，到时我又屁颠屁颠要出来找工作，何必。后来，之前面试的小哥打电话过来问意愿，那边那个老板也打电话过来问意愿，只能拒绝。没有投靠的意义，看的出来老板只是想试试水。</p>
-<p>第三家在之前我就有去面试的地方：徐汇慧谷创业中心。这家是做 AI提供用户数据给出用户穿衣服方案的公司。在找iOS 开发。先来个小胖哥，上来就说我看了你的博客了，还挺好，直接让技术经理来考你。这小胖哥有意思，人好。然后技术大哥来了就问技术的事，不与iOS 相关的，先问TCP协议（我没看面试题之类的（最近在搞网页）答得不好），然后出了两个题目：</p>
-<ol>
-<li>数组array[1~n] 随机大小无序，求从大到小第k个数。解法：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nums[n] = [<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> (int i=<span class="number">0</span>;i&lt;array.count;i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> element = array[i];</span><br><span class="line">    <span class="keyword">if</span> (nums[element]) &#123;<span class="comment">//如果有值</span></span><br><span class="line">        nums[element] = nums[element] ++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nums[element] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这个时候从n 到 1 如果内部是&gt;1 的都是有值的，&gt;2那就是有两个值. 于是第k 个值也能得出。</span></span><br></pre></td></tr></table></figure>
-<p>这正是“第一弹”笔试的比较好的答案吧。</p>
-<ol start="2">
-<li>有一个圆盘时钟，从00:00:00 ~ 24:00:00 过程有多少次秒针、分针、时针是全部重叠的。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="number">360</span>°/<span class="number">60</span> * n; <span class="comment">//秒针一圈第n秒时在什么角度</span></span><br><span class="line"><span class="keyword">let</span> m = <span class="number">360</span>°/(<span class="number">60</span>*<span class="number">60</span>) * n; <span class="comment">//分针一圈第n秒时在什么角度</span></span><br><span class="line"><span class="keyword">let</span> h = <span class="number">360</span>°/(<span class="number">12</span>*<span class="number">60</span>*<span class="number">60</span>) * n; <span class="comment">//时针一圈第n秒时在什么角度</span></span><br><span class="line"><span class="keyword">for</span> (int n=<span class="number">0</span>; n&lt;<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>; n++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s / <span class="number">360</span>° == m / <span class="number">360</span>° == h / <span class="number">360</span>°) &#123;<span class="comment">//除以360° 是让其点化为单位角度</span></span><br><span class="line">        <span class="comment">// 这就是相遇的点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这两个挺考智商的。但是我的脑子不好，我的学习都是不断的抄写他人知识，融合这些知识，所以直接回答纯粹的算法题我答的不好。比如第1题我还是使用冒泡排序，嘿嘿。当时甚至于冒泡排序还写错了。比较紧张吧：因为先回答了圆盘时钟的问题，却一直没解出来，导致思绪乱了，后面答第一个问题也更乱了。</p>
-<p>下面是借口，借口：</p>
-<p>一直学习，没顾上看面试题，没顾上看看算法题。面试完确实对我心里有点打击：我就是做个iOS，现在还需要算法了？iOS没有算法啊，苹果都给你优化过了，你写再好，比得过人家一个api？但是话说来，算法才是程序的灵魂，没有灵魂，写再多api 也不是程序。</p>
-<p>我的观点是，面试的时候遇到了什么不清晰的地方，就好好记录下来。平常学必要的，不要全都学，现在那么多知识点，哪里学的完。这没什么好狡辩，尽力无悔即可。</p>
-<p>唉，换工作比较麻烦，我早自知。但是我相信，现在困惑、困难，“树挪死，人挪活”，艰难刻苦总会过去的吧（目前还在艰难困苦中）。学到、实践到就是没白费过。</p>
-<h4 id="今天2018-9-26-两个面试。"><a href="#今天2018-9-26-两个面试。" class="headerlink" title="今天2018.9.26 两个面试。"></a>今天2018.9.26 两个面试。</h4><p>上午的面试面着面着，快一小时了，才知道他们要招员工到张江去上班的，唉，我看你是10k~15k过来试着面试面试，没想到你比我还皮，这个比较浪费时间，，算了心平气和滚蛋了，嘎嘎。</p>
-<p>下午离得稍微有点远，叫”Ratta” 雷塔的一个公司。我觉得功能方向稍微有点不太合适，也是试试去面试吧。</p>
-<p>先笔试：考跟之前算法一样的东西（现在全部公司的笔试题都一样了？）。答题吧。</p>
-<p>里面还有一个是跟我的APP“哈皮涂色”很类似的同步数据、展示数据的题目。<br>面试的是写c、c++ 的大哥。这人对基本数据比较了解。说一个数据{x:x,y:y,color:color} 这样一个int 数据元素要占用多少位？我肯定不知道啊，我就说bytes 是4字节，多少位我不知道。他说32位（int 是32位，NSInteger 是64，问这个干嘛哟，这个是读取速度，不是储存大小，我感觉这个大哥不是很靠谱，个人感觉）。然后他想问的如何压缩可以将数据不会存储那么大。我一时间哪能那么快想出来啊，能想出来答出来，那我肯定之前做过了，碰到过了，不然我答什么呀。</p>
-<p>之后就是问随意的问题。</p>
-<p>其中给他看了我的“哈皮涂色”，估计他有点懵逼了：这是他们公司的主营功能。他们有个硬件进行绘画，我直接就是手机上直接画。他们有点想知道核心功能，我才不告诉他们嘞，要知道？得花钱。</p>
-<p>然后问了一些技术上的问题，他也做了些功课：</p>
-<ol>
-<li>堆和栈的区别(还别说，没看面试题，我也都快忘光了，随便解答) 。</li>
-</ol>
-<blockquote>
-<p>一个由c/C++编译的程序占用的内存分为以下几个部分：</p>
-<ul>
-<li>栈区（stack）— 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。</li>
-<li>堆区（heap） — 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。</li>
-<li>全局区（静态区）（static）—，全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域，未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。程序结束后由系统释放。</li>
-<li>文字常量区 —常量字符串就是放在这里的。程序结束后由系统释放。</li>
-<li>程序代码区—存放函数体的二进制代码。</li>
-</ul>
-</blockquote>
-<ol start="2">
-<li>反射机制（从没用过~查询得知，其实就是使用字符动态查找创建类、方法，方便网络和客户端交互。反正我没这么用，多不安全啊。）</li>
-<li>https（我说上家公司没处理过，不过之前公司处理过，iOS 这里只需在网络那里配置下就好了，如果要双向验证，那就在iOS本地增加配置一个公钥，额，他还不信，害我跑回来看教程，没错啊，客户端要处理的真的很少。服务端也不多，nodejs 之前的我看过相关的教程，就增加配置个证书文件嘛）</li>
-</ol>
-<p><a href="https://www.jianshu.com/p/6b561705de06" target="_blank" rel="noopener">参考网址</a></p>
-<p>单向验证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//在你封装的网络工具类请求前初始化时增加以下代码</span><br><span class="line">AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];</span><br><span class="line">//设置证书模式，AFSSLPinningModeNone，代表前端包内不验证</span><br><span class="line">//在单向认证时，前端不放证书，服务器去验证</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];</span><br><span class="line">// 如果是需要服务端验证证书，需要设置为YES</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">//validatesDomainName 是否需要验证域名，默认为YES；</span><br><span class="line">securityPolicy.validatesDomainName = NO;</span><br><span class="line">//设置验证模式</span><br><span class="line">manager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
-<p>双向验证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//在你封装的网络工具类请求前初始化时增加以下代</span><br><span class="line">AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];</span><br><span class="line">//设置验证证书，该模式下许愿把证书打包进项目里，进行验证</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];</span><br><span class="line">//证书的路径</span><br><span class="line">NSString *cerPath = [[NSBundle mainBundle] pathForResource:@&quot;xxx&quot; ofType:@&quot;.cer&quot;];</span><br><span class="line">NSData *dataSou = [NSData dataWithContentsOfFile:cerPath];</span><br><span class="line">NSSet *set = [NSSet setWithObjects:dataSou, nil];</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">securityPolicy.validatesDomainName = YES;</span><br><span class="line">[securityPolicy setPinnedCertificates:set];</span><br><span class="line">//将验证方式赋值给管理者</span><br><span class="line">manager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
-<p>HTTPS 处理过程是在“[应用层] - <strong>[SSL/TLS]</strong> - [TCP] - [IP]”之间。HTTP 的TCP 握手是三次，但是HTTPS 握手需要更多次，因为这里使用非对称加密、对称加密等加密手段对数据进行保护。</p>
-<p>首先先理解加解密数据性能，非对称加密RSA 性能需要CPU 计算，寻找素数，耗时相对大，优点就是公钥可以公布，但是如果仅做一次，互相之间传递secretKey 就是非常好的；对称加密AES 速度快，但是需要互相之间都保存有secretKey。</p>
-<p>HTTPS 使用到的加密算法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">非对称加密算法：RSA，DSA/DSS </span><br><span class="line">对称加密算法：AES，RC4，3DES </span><br><span class="line">HASH算法：MD5，SHA1，SHA256</span><br></pre></td></tr></table></figure>
-<p>最简单的理解或者说模拟出一个HTTPS 一次传输过程要处理的事（只讲算法之间要干的事，更多请阅读下面参考链接讲解的过程）：</p>
-<ul>
-<li><p>客户端一开始和服务端使用公钥加密这次要使用的secretKey。因为大家都没有私钥，所以也不怕被截取。</p>
-</li>
-<li><p>服务器保存此次对应的人和对应的secretKey，同时可以使用AES 对从客户端收到了secretKey 的回应，加密的密钥就是secretKey。</p>
-</li>
-</ul>
-<p>服务端使用RSA 使用secretKey 私钥加密数据给客户端。</p>
-<p>客户端使用该secretKey 来给数据进行AES 加密。</p>
-<p>这样就完成加解密的过程了。</p>
-<p>上面的过程比较简单化，HTTPS 还做了很多，不过我只理解简单的，然后把他写下来。</p>
-<p>可以参考<a href="http://www.cnblogs.com/Yfling/p/6670495.html" target="_blank" rel="noopener">HTTPS加密原理</a></p>
-<h3 id="继续看面试题"><a href="#继续看面试题" class="headerlink" title="继续看面试题"></a>继续看面试题</h3><p>1:SEL Method</p>
-<p>SEL 方法编号：<br>SEL methodId = @selector(func1);<br>执行SEL:<br>[self performSelector:methodId withObject:nil];<br>IMP 获得和使用:<br>IMP methodPoint = [self methodForSelctor:methodId];<br>调用：methodPoint();<br>IMP objectMethodPoint = [object methodFor:@selector(message)]<br>调用：theResult = objectMethodPoint(anObject, aSelector);</p>
-<p>2:<br>反射机制<br>系统Foundation 下有这几个反射API</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FOUNDATION_EXPORT NSString *NSSTringFromSelector(SEL aSelector);</span><br><span class="line">FOUNDATION_EXPORT SEL NSSelectorFromString(NSString *aSelectorName);</span><br><span class="line">FOUNDATION_EXPORT NSString *NSStringFromClass(Class aClass);</span><br><span class="line">FOUNDATION_EXPORT Class __nullable NSClassFromString(NSString *aClassName);</span><br><span class="line">FOUNDATION_EXPORT NSString *NSStringFromProtocol(Protocol *proto) NS_AVAILABLE(10_5, 2_0);</span><br><span class="line">FOUNDATION_EXPORT Protocol * __nullable NSProtocolFromString(NSString *namestr) NSAVAIABLE(10_5, 2_0);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isKindOfClass:(Class)aClass;</span><br><span class="line">- (BOOL)isMemberOfClass:(Class)aClass;</span><br><span class="line">- (BOOL)conformsToProtocol:(Protocol *)aProtocol;</span><br><span class="line">- (BOOL)respondsToSelector:(SEL)aSelector;</span><br></pre></td></tr></table></figure>
-<p>3:NSDictionary</p>
-<p>iOS 的NSDictionary 是使用hash表来实现key value 的键值映射和存储的。于Typescript 一样，键都是转为string 类型查找。<br>根据这篇文章<a href="https://www.jianshu.com/p/915356e280fc" target="_blank" rel="noopener">参考</a> 能更深入了解NSDictionary 实现思路。</p>
-<p>首先NSArray 是没有hash 表来映射快速查找方法。时间复杂度就是o(n),数据长度。NSDictionary 在setObject 时提前判别对象hash 值是否已经存在。判别分两步：Step1：== 运算符判别对象指针是否相等；Step2:判别是否是同一类型；Step3:判别内在属性是否相等</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isEqual:(id)object &#123;</span><br><span class="line">    if (self == object) &#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    if (![object isKinkOfClass:[Person class]]) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return [self isEqualToPerson:(Person *)object];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isEqualToPerson:(Person *)person &#123;</span><br><span class="line">    if (!person) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BOOL haveEqualNames = (!self.name &amp;&amp; !person.name) || (self.name isEqualToString:person.name);</span><br><span class="line">    BOOL haveEqualbirthday = (!self.birthday &amp;&amp; !person.birthday) || (self.birthday isEqualToDate:person.birthday);</span><br><span class="line"></span><br><span class="line">    return haveEqualNames &amp;&amp; haveEqualBirthdays;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上部分可以采用RunTime 寻找属性判别。</p>
-<p>Hash Table 查找成员过程：Step1：通过hash值直接找到目标位置；Step2：如果目标位置上有多个相同hash值成员，再按照数组方式查找。</p>
-<p>Hash 调用时间：对象被添加至NSSet、设置NSDictionary 的key 时调用。</p>
-<p>正确重置Person 的hash 方式实现：</p>
-<p>大神Mattt Thompson在Equality中给出的结论就是</p>
-<blockquote>
-<p>In reality, a simple XOR over the hash values of critical properties is sufficient 99% of the time(对关键属性的hash值进行位或运算作为hash值)</p>
-</blockquote>
-<p>正确返回重置hash</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (NSUInter)hash &#123;</span><br><span class="line">    return [self.name hash] ^ [self.birthday hash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4:Block</p>
-<p>Block本质就是对象，因为本身就有指针。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv) &#123;</span><br><span class="line">    void (^block)() = ^&#123;</span><br><span class="line">        printf(&apos;hello world&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    block();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用clang 指令<br><code>clang -rewrite-objc main.m</code> 得到一个cpp 文件。<br>定义完block，创建了一个函数，在创建结构体时，同时把函数指针也传进去了。之后就可以拿出来使用了。</p>
-<p>5：线程间通讯<a href="https://www.jianshu.com/p/f9f3952a4a74" target="_blank" rel="noopener">参考网址</a></p>
-<p>1) NSThread</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)thread &#123;</span><br><span class="line">    NSString *imageUrlString;</span><br><span class="line">    [self performSelectorInBackground:@selector(loadImage:) withObject:imageUrlString];</span><br><span class="line">&#125;</span><br><span class="line">- (void)loadImage:(NSString *)imageUrlString &#123;</span><br><span class="line">    NSData *imageData = [NSData dataWithContentURL:[NSUrl urlWithString:imageUrlString]];</span><br><span class="line">    [self performSelectorOnMainThread:@selector(updateUI:) withObject:imageData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2) GCD</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)gcd &#123;</span><br><span class="line">    NSString *imageUrlString;</span><br><span class="line">    __Weak typeof(self) weakSelf = self;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        NSData *imageData = [NSData dataWithContentURL:[NSUrl urlWithString:imageUrlString]];</span><br><span class="line">        dispatch_async(dispatch_get_main_queue, ^&#123;</span><br><span class="line">            weakSelf.imageView.image = [UIImage imageWithData:imageData];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3) NSOperation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (void)operation &#123;</span><br><span class="line">    __weak typeof(self) weakSelf = self;</span><br><span class="line">    DownLoadOperation *downLoadOp = [DownLoadOperation new];</span><br><span class="line">    downLoadOp.imageUrlString = xxx;</span><br><span class="line">    downLoadOp.finishedBlock = ^(UIImage *image) &#123;</span><br><span class="line">        [[NSOperationQueue mainQueue] addOperationWithBlock:^&#123;</span><br><span class="line">            weakSelf.imageView.image = image;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;;</span><br><span class="line">    NSOperationQueue *concurrentQueue = [NSOperationQueue new];</span><br><span class="line">    [concurrentQueue addOperation:downLoadOp];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@interface DownloadOperation : NSOperation</span><br><span class="line">@property (nonatomic, copy) NSString *imageUrlString;</span><br><span class="line">@property (nonatomic, copy) FinishedBlock finishedBlock;</span><br><span class="line">@end</span><br><span class="line">@implementation DownloadOperation</span><br><span class="line">- (void)main &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        NSData *imageData = [NSData dataWithContentURL:[NSUrl urlWithString:self.imageUrlString]];</span><br><span class="line">        if (self.finishedBlock)</span><br><span class="line">            self.finishedBlock([UIImage imageWithData:imageData]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p>4) 加密算法</p>
-<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434501504929883d11d84a1541c6907eefd792c0da51000" target="_blank" rel="noopener">廖雪峰-node-crypto</a></p>
-<p>MD5和SHA1</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="keyword">const</span> hash = crypto.createHash(<span class="string">'md5'</span>);<span class="comment">//crypto.createHash('sha1');/sha256/sha512</span></span><br><span class="line">hash.update(<span class="string">'Hello, world'</span>);</span><br><span class="line">hash.update(<span class="string">'hello, nodejs'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(hash.digest(<span class="string">'hex'</span>));</span><br></pre></td></tr></table></figure>
-<p>Hmac 可以把Hmac理解为用随机数“增强”的哈希算法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="keyword">const</span> hmac = crypto.createHmac(<span class="string">'sha256'</span>, <span class="string">'your secret-key'</span>);</span><br><span class="line">hmac.update(<span class="string">'Hello, world'</span>);</span><br><span class="line">hmac.update(<span class="string">'Hello, nodejs'</span>);</span><br><span class="line">hmac.digest(<span class="string">'hex'</span>);</span><br></pre></td></tr></table></figure>
-<p>AES 对称加密算法，加解密都用同一个密钥</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aesEncrypt</span>(<span class="params">data, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cipher = crypto.createCipher(<span class="string">'aes192'</span>, key);</span><br><span class="line">    <span class="keyword">let</span> crypted = cipher.update(data, <span class="string">'utf8'</span>, <span class="string">'hex'</span>);</span><br><span class="line">    crypted += cipher.final(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> crypted;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aesDecrypt</span>(<span class="params">encrypted, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> decipher = crypto.createDecipher(<span class="string">'aes192'</span>, key);</span><br><span class="line">    <span class="keyword">let</span> decrypted = decipher.update(encrypted, <span class="string">'hex'</span>, <span class="string">'utf8'</span>);</span><br><span class="line">    decrypted += decipher.final(<span class="string">'utf8'</span>);</span><br><span class="line">    <span class="keyword">return</span> decrypted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> data = <span class="string">'Hello, this is a secret message!'</span>;</span><br><span class="line"><span class="keyword">let</span> key = <span class="string">'Password'</span>;</span><br><span class="line"><span class="keyword">let</span> encrypted = aesEncrypted(data, key);</span><br><span class="line"><span class="keyword">let</span> decrypted = aesDecrypted(encrypted, key);</span><br></pre></td></tr></table></figure>
-<p>RSA 加解密，非对称加密</p>
-<p>首先得到对应的公钥和私钥</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>),</span><br><span class="line">    crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadKey</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fs.readFileSync(file, <span class="string">'utf8'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> prvKey = loadKey(<span class="string">'./rsa-prv.pem'</span>),</span><br><span class="line">    pubKey = loadKey(<span class="string">'./rsa-pub.pem'</span>),</span><br><span class="line">    message = <span class="string">'Hello, world'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> enc_by_prv = crypto.privateEncrypt(prvKey, Buffer.from(message, <span class="string">'utf8'</span>));</span><br><span class="line"><span class="comment">//enc_by_prv.toString('hex');</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dec_by_pub = crypto.publicDecrypt(pubKey, enc_by_prv);</span><br><span class="line"><span class="comment">//dec_by_pub.toString('utf8');</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//然后还可以反过来对称加密</span></span><br></pre></td></tr></table></figure>
-<p>5) category 里添加属性</p>
-<p>category 它是在<strong>运行期编译</strong>的时候加上的，编译完成后对象内存已经确定，不能添加“_”的成员变量。</p>
-<p>runtime 能添加对象的原因是因为：关联对象由AssociationsManager 管理，AssociationManager 里面是一个静态AssociationsHashMap 来存储所有的关联对象的。所以直接保存新的关联对象kv键值对即能添加成功。</p>
-<p>6) autoreleasepool</p>
-<p>autoreleasepool本质上就是一个指针堆栈</p>
-<p>@autoreleasepool{} 其实是实现了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void *poolToken = objc_autoreleasePoolPush();</span><br><span class="line">objc_autoreleasePoolPop(poolToken);</span><br></pre></td></tr></table></figure>
-<p>7) KVC KVO深入研究</p>
-<p><a href="https://www.jianshu.com/p/37a92141077e" target="_blank" rel="noopener">参考博客</a></p>
-<p>KVC 运用isa-swizzling 类型混合指针机制。</p>
-<p>[site setValue:@”sitename” forKey:@”name”]; -&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SEL sel = sel_get_uid(&quot;setValue:forKey:&quot;);</span><br><span class="line">IMP method = objc_msg_lookup(site-&gt;isa, sel);</span><br><span class="line">method(site, sel, @&quot;sitename&quot;, @&quot;name&quot;);</span><br></pre></td></tr></table></figure>
-<p>KVC实现分三步.Step1:根据方法名找到运行方法所需要的环境参数；Step2:从自己isa指针结合参数找到具体方法实现接口；Step3:直接查找得来具体方法实现。</p>
-<p>KVO在这篇文章能很好的解释<a href="https://www.jianshu.com/p/d657ad764aaa" target="_blank" rel="noopener">博客</a></p>
-<p>KVO后续。。。</p>
-<h3 id="系统默认注册5个Mode"><a href="#系统默认注册5个Mode" class="headerlink" title="系统默认注册5个Mode:"></a>系统默认注册5个Mode:</h3><ol>
-<li>kCFRunLoopDefaultMode:App 默认Mode，主线程。</li>
-<li>UITrackingRunLoopMode:界面跟踪Mode，ScrollView 追踪触摸滑动，保证界面滑动时不受其他Mode 影响。</li>
-<li>UIInitializationRunLoopMode:在刚启动App时进入的第一个Mode, 启动完成后就不在使用。</li>
-<li>GSEventReceiveRunLoopMode:接受系统时间内部Mode,通常用不到。</li>
-<li>kCFRunLoopCommonModes</li>
-</ol>
-<p>–</p>
-<p>NSTimer 对象以NSDefaultRunLoopMode(kCFRunLoopDefaultMode) 添加到主运行循环后，滑动scrollView NSTimer 却不动了？</p>
-<blockquote>
-<p>NSTimer 是在defaultRunLoop 调用消息的，当我们滑动scrollview 的时候, NSDefaultRunLoopMode 模式自动切换成UITrackingRunLoopMode 下。所以NSTimer 需要在NSRunLoopCommonMode</p>
-</blockquote>
-<h3 id="RunTime-添加类、方法、实例变量"><a href="#RunTime-添加类、方法、实例变量" class="headerlink" title="RunTime 添加类、方法、实例变量"></a>RunTime 添加类、方法、实例变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class myClass = objc_allocateClassPair([NSObject class], &quot;Person&quot;, 0);</span><br><span class="line"></span><br><span class="line">class_addMethod 其中types参数为&quot;i@:@“，按顺序分别表示：具体类型可参照[官方文档](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html)i </span><br><span class="line">返回值类型int，若是v则表示void@ 参数id(self): SEL(_cmd)@ id(str)</span><br><span class="line">  V@:表示返回值是void 带有SEL参数 （An object (whether statically typed or typed id)</span><br><span class="line"></span><br><span class="line">class_addMethod(myClass, @selector(addMethodForMyClass:), (IMP)addMethodForMyClass, &quot;V@:&quot;);</span><br><span class="line"></span><br><span class="line">BOOL isSuccess = class_addIvar(myClass, &quot;name&quot;, sizeof(NSString *), 0, &quot;@&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="探讨atomic-一定是线程安全么"><a href="#探讨atomic-一定是线程安全么" class="headerlink" title="探讨atomic 一定是线程安全么"></a>探讨atomic 一定是线程安全么</h3><p>atomic 是在getter 和setter 存取方法的线程保证原子性，并不能保证整个对象的存取动作是线程安全的。</p>
-<p>在不同线程中写、读同一个对象，虽然写、读过程是原子性，但是由于等待之后，得到被修改的对象，还是：最终结果属于不可预测。</p>
-<p>要保证存、读可预测，可使用下面几个api锁住存取动作，保证线程安全、可预测：</p>
-<p>NSLock/NSLockLock/@synchronized(obj){}/pthread_mutex_t/OSSPinLock</p>
-<p>其中性能比较:</p>
-<p>OSSPinLock &gt; pthread_mutex_t &gt; NSLockLock &gt; NSLock &gt; @synchronized</p>
-<h3 id="读YY作者提的几点优化TableView-效率"><a href="#读YY作者提的几点优化TableView-效率" class="headerlink" title="读YY作者提的几点优化TableView 效率"></a>读YY作者提的几点优化TableView 效率</h3><p>对于GPU 等待显示器在一次VSync 时间内，CPU 或者GPU 没有完成内容提交，则那一帧就会被丢弃，等待下一次VSync 再显示，而这时显示器就保留了之前的内容不变，这就是界面卡顿的原因。</p>
-<p>CPU 应该优化处理的几个点：</p>
-<ol>
-<li>对象创建</li>
-<li>对象调整：frame、bounds 会对CALayer 绘制、创建动画等有比较大开销</li>
-<li>对象销毁，可以用一个小Tip：把对象捕获到block 中，然后扔到后台队列去销毁：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSArray *tmp = self.array;</span><br><span class="line">self.array = nil;</span><br><span class="line">dispatch_async(queue, ^&#123;</span><br><span class="line">    [tmp class];</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>布局计算</li>
-<li>Autolayout（复杂试图尽量使用其他如ComponentKit、AsyncDisplayKit 代替）</li>
-<li>文本计算（尽量缓存）</li>
-<li>文本渲染</li>
-<li>图片解码</li>
-<li>图像绘制（CoreGraphic 是线程安全的，可以放到后台进行绘制）</li>
-</ol>
-<h3 id="最近在搞React-Mobx-这一套"><a href="#最近在搞React-Mobx-这一套" class="headerlink" title="最近在搞React + Mobx 这一套"></a>最近在搞React + Mobx 这一套</h3><p>我已经确定使用这套组合了。因为直接使用vue 感觉没有成就感。React 函数式 + 初学Mobx 的便利(redux 实在是太繁琐了，很多例子很被他绕晕了，真的真的放弃，虽然已经有点入门redux 了；)</p>
-<p>html首先碰到</p>
-<p>第一个问题:<code>Warning: A component is changing an uncontrolled input of type checkbox</code></p>
-<p>原因是我的(input:checkbox) 在checkd时出现传递了undefined 进去，需要判别一下:<code>(this.props.todo.finished === null ||this.props.todo.finished === undefined) ? false : this.props.todo.finished</code></p>
-<p>第二个问题:<code>Warning: Each child in an array or iterator should have a unique &quot;key&quot;</code></p>
-<p>原因是在组件内部如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;for(...)&#123;&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>有for循环，那么需要给里面的子控件加上key={aString} 的参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &#123;this.props.todolist.todos.map(todo =&gt; (</span><br><span class="line">        &lt;TodoView todo=&#123;todo&#125; key=&#123;todo.id.toString()&#125;&gt;&lt;/TodoView&gt;</span><br><span class="line">    ))&#125;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1104,6 +998,30 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a></h6>
+              <span>May 17, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/05/16/2021-5-16lesson/">2021-5-16lesson</a></h6>
+              <span>May 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/03/11/2021-3-11lesson/">2021-3-11lesson</a></h6>
               <span>March 11, 2021</span>
             </div>
@@ -1146,30 +1064,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a></h6>
-              <span>January 29, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/01/29/20210129-hackintosh/">20210129-hackintosh</a></h6>
-              <span>January 29, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1182,7 +1076,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1192,7 +1086,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -1202,7 +1096,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
