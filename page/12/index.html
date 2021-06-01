@@ -165,6 +165,63 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20170112meetbug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/12/20170112meetbug/">20170112meetbug</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/12/20170112meetbug/" class="article-date">
+	  <time datetime="2017-01-12T07:52:13.000Z" itemprop="datePublished">January 12, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记一个比较逗比的bug。<br>由于使用ASDK，在里面使用<br>create a displayNode and return a block uiview:</p>
+<p><code>self.progressView = [[SHRecordProgressView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 8)];
+self.progressView.backgroundColor = RGBA(245, 245, 245, 0.6);
+self.progressNode = [[ASDisplayNode alloc]initWithViewBlock:^UIView * _Nonnull{
+@strongify(self);
+return self.progressView;
+}];</code></p>
+<p>progressView create views when user interactor with device,<br>I change the one of the “views”‘s width,<br>effect that come:progressView<br><code>-(void)layoutSubviews{
+[super layoutSubviews];
+NSLog(@&quot;%@&quot;,self);
+}</code></p>
+<p>infinite  log :round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0; frame = (0 342; 320 8); layer = &lt;CALayer: 0x180f0080&gt;&gt;<br>:round_pushpin:-[SHRecordProgressView layoutSubviews] + 31:balloon:  self = &lt;SHRecordProgressView: 0x1807afd0<br>what does it mean??help:joy:</p>
+<p>akerdi [3:48 PM]<br>I figure it out,I use FBShimmerView  add to the progressView, subViews not inside of  shimmerView will disappeare:joy:I am not use to ShimmerView</p>
+<p>我使用ASDK，每当我改变progressView中某个subView的Width，程序便一直进入layoutSubViews，同时所有其他的progressView的subViews都不见了，关键是不见了。<br>我以为是ASDK哪里引发的。<br>最后注释掉了FBShimmerView，才发现问题跟他有关。<br>progressView addSubView:FBShimmerView<br>当ShimmerView的contentView大小被我改成和progressView中subViews的最后一个时，除了rect里面View，其他的都不见了。没搞懂FBShimmer的思想，确实不好找问题啊。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-根据一张gif图返回每张图片" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -610,64 +667,11 @@ var themeMenus = {};
     
 
   
-    <article id="post-一些查询很久才得出的答案或者尝试很久得到的答案" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/10/一些查询很久才得出的答案或者尝试很久得到的答案/">一些查询很久才得出的答案或者尝试很久得到的答案</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/10/一些查询很久才得出的答案或者尝试很久得到的答案/" class="article-date">
-	  <time datetime="2017-01-10T01:31:14.000Z" itemprop="datePublished">January 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2 months ago)</p>
-<p><a href="https://github.com/shaohung001/One-person-project" target="_blank" rel="noopener">地址</a></p>
-<p>一些查询很久才得出的答案或者尝试很久得到的答案，类目主要用在chat、social、video、multi pic、watermark、filter、audio、Parse（FB）、个人无后台开发</p>
-<p>1：由于用到贴图，网上寻觅不得，只说 UIGraphicsBeginImageContext(&lt;#CGSize size#&gt;)-&gt;换成UIGraphicsBeginImageContextWithOptions(&lt;#CGSize size#&gt;,&lt;#Bool opaque#&gt;,&lt;#CGFloat scale#&gt;) 上面这句话是重点 scale是缩放因子，使用[UIScreen mainScreen].scale即可； 中间的opaque是识别里面有没有alpha通道，如果有通道则填入NO，相反的哦； size则为你的图片的大小，比如上面一张大图，下面一张watermark，这size为大图的大小，毕竟大图在下面，第一个放入的； 这样子图片就会变为高清！！！没错，如果还没有变为高清，是有另一个原因的，那就是你的贴图不是@2x或者@3x的倍率，将其放入图片文件夹或者source，加入后缀，一定使用@3x，@2x也不怎么清晰！！！ 最后一步才是本文重点，网上没人说，自己尝试出来的</p>
-<p>这一段是苹果私密api，用来找出Reveal的各个APP的bundleID，挺好用的</p>
-<p><code>Class LSApplicationWorkspace_class = objc_getClass(&quot;LSApplicationWorkspace&quot;);
-    NSObject* workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-    NSArray *array = [workspace performSelector:@selector(allApplications)];
-    id a = array[0];
-    NSLog(@&quot;apps: %@&quot;, [workspace performSelector:@selector(allApplications)]);</code></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/11/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/13/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/11/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/">Next</a>
   </nav>
 
 </section>
@@ -791,6 +795,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a></h6>
+              <span>May 31, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a></h6>
               <span>May 17, 2021</span>
             </div>
@@ -845,18 +861,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a></h6>
-              <span>February 18, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -889,7 +893,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
