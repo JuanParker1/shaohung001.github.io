@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>2021-6-10lesson | aKer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
+  
+  
+  
+  <meta name="description" content="网迹【权限优化】各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。 当前网迹权限长这样… 普及下权限比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示: 123456789101112131415&amp;#123;  code: &quot;user&quot;,  name: &quot;普通用户&quot;,  permissions">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-6-10lesson">
+<meta property="og:url" content="https://shaohung001.github.io/2021/06/16/2021-6-10lesson/index.html">
+<meta property="og:site_name" content="aKer">
+<meta property="og:description" content="网迹【权限优化】各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。 当前网迹权限长这样… 普及下权限比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示: 123456789101112131415&amp;#123;  code: &quot;user&quot;,  name: &quot;普通用户&quot;,  permissions">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-06-16T13:39:38.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2021-6-10lesson">
+<meta name="twitter:description" content="网迹【权限优化】各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。 当前网迹权限长这样… 普及下权限比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示: 123456789101112131415&amp;#123;  code: &quot;user&quot;,  name: &quot;普通用户&quot;,  permissions">
+  
+    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7054334687711145",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="aKer" rel="home"> aKer </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt src>
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-2021-6-10lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      2021-6-10lesson
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/06/16/2021-6-10lesson/" class="article-date">
+	  <time datetime="2021-06-16T13:31:23.000Z" itemprop="datePublished">June 16, 2021</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网迹【权限优化】"><a href="#网迹【权限优化】" class="headerlink" title="网迹【权限优化】"></a>网迹【权限优化】</h1><p>各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。</p>
+<h1 id="当前网迹权限长这样"><a href="#当前网迹权限长这样" class="headerlink" title="当前网迹权限长这样"></a>当前网迹权限长这样</h1><p>…</p>
+<h1 id="普及下权限"><a href="#普及下权限" class="headerlink" title="普及下权限"></a>普及下权限</h1><p>比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  code: "user",</span><br><span class="line">  name: "普通用户",</span><br><span class="line">  permissions: ["mod_collect"]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  code: "onlyEditor",</span><br><span class="line">  name: "上传者",</span><br><span class="line">  permissions: ["mod_collect", "mod_sysUser_edit", "mod_sysUser_del"]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  code: "superman",</span><br><span class="line">  name: "超人",</span><br><span class="line">  permissions: ["mod_collect", "mod_sysUser", "mod_sysUser_edit", "mod_sysUser_del", "mod_sysRole"] // 没有采集修改权限</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应接口如:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: "/collect",</span><br><span class="line">  method: "GET",</span><br><span class="line">  permission: "mod_collect"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时很简单的方案就是直接判别数组内是否有该权限，有当然就能使用该接口啦。</p>
+<p>但是此时会发现一个问题，数组查找字符串，其实是一个很耗时的操作。数组<code>[&quot;mod_collect&quot;, &quot;mod_collect_edit&quot;].include(&quot;mod_collect&quot;)</code> 会先for 循环查找第一个字符串(mod_collect)，第一个字符串对比从第一个字符开始一个个比对。</p>
+<p>你会说，那也很快啊，CPU买买买，快快快。</p>
+<p>有这想法的人得自己深思了，这里的判别是作用在所有中间件，当然是尽可能快，能提高用户使用、设备使用。大多在中间件出现的数据，一定要尽可能的缓存或者优化。</p>
+<p>OK，那怎么解？我们都知道字符串判别是一个一个字符比较O(n)，如果是数字判别，则是类似于O(1)的时间复杂度。我们将现有的所有permission都转化为一个数字: Bitmap. 比如: <code>mod_collect: 1 &lt;&lt; 2 = 4; mod_collect_edit: 1 &lt;&lt; 3 = 8; mod_sysUser: 1 &lt;&lt; 4 = 16; mod_sysUser_edit: 1 &lt;&lt; 5 = 32; mod_sysUser_del: 1 &lt;&lt; 6 = 64; mod_sysRole: 1 &lt;&lt; 7 = 128; ...</code></p>
+<p>以上得到关联: user 有一个权限: [4]; onlyEditor有三个权限, 我们使用 <code>|</code>运算符给他串起来: <code>8 | 32 | 64 = 104</code>, 我们这时可以说 user用户的权限是4, onlyEditor用户的权限是104, superman超人的权限是244.</p>
+<p>我们将上述的数据量不大，基本不怎么变动的数据都内存缓存下来:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">roles: &#123;</span><br><span class="line">  "mod_collect": 4,</span><br><span class="line">  "mod_colelct_edit": 8,</span><br><span class="line">  "mod_sysUser": 16,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">permissions: &#123;</span><br><span class="line">  "user": 4,</span><br><span class="line">  "onlyEditor": 104,</span><br><span class="line">  "superman": 244</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时如果接口进入中间件:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假装我是中间件内部判别权限</span></span><br><span class="line"><span class="keyword">const</span> curRoutePermission = <span class="string">"mod_collect_edit"</span> <span class="comment">// 当前接口必须的权限</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPermission</span>(<span class="params">role:<span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> tPerm = permissions[role]</span><br><span class="line">  <span class="keyword">const</span> curRole = roles[curRoutePermission]</span><br><span class="line">  <span class="keyword">return</span> tPerm &amp; curRole <span class="comment">// `与`符能得到交集 -&gt; 这个用户是否有该接口的权限</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果是user判别需要<code>&quot;mod_collect_edit&quot;</code>接口 =&gt; 4 &amp; 8 = 0; onlyEditor =&gt; 104 &amp; 8 = 8, 说明是有权限的!</p>
+<blockquote>
+<p>使用位运算<code>&amp;</code>比较，如果 &gt; 0 则表明这是有权限的。</p>
+</blockquote>
+<p>以上是权限基础普及，下面开始进入权限升级部分: ↓↓↓</p>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><h3 id="设定数据范围、权限及访问路由"><a href="#设定数据范围、权限及访问路由" class="headerlink" title="设定数据范围、权限及访问路由"></a>设定数据范围、权限及访问路由</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">enum DataScope &#123;</span><br><span class="line">  All = <span class="number">1</span>, <span class="comment">// 全局</span></span><br><span class="line">  ThisWithSubordinate = <span class="number">2</span>, <span class="comment">// 本单位及下属单位</span></span><br><span class="line">  This, <span class="comment">// 仅本单位</span></span><br><span class="line">  self <span class="comment">// 本人</span></span><br><span class="line">&#125;</span><br><span class="line">enum UrlMap &#123;</span><br><span class="line">  browseCollection = <span class="string">"/browse/collection"</span>, <span class="comment">// 采集管理</span></span><br><span class="line">  sysUser = <span class="string">"/sys/user"</span>,</span><br><span class="line">  sysRole = <span class="string">"/sys/role"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Urls = [</span><br><span class="line">  UrlMap.browseCollection,</span><br><span class="line">  UrlMap.sysUser,</span><br><span class="line">  UrlMap.sysRole</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> roleSchema = &#123;</span><br><span class="line">  name: <span class="built_in">String</span>, <span class="comment">// 用于记录角色名称，比如 `超人`</span></span><br><span class="line">  code: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">unique</span>: <span class="literal">true</span>&#125;, <span class="comment">// 用于声明角色编码，如superman/user/u001等代号</span></span><br><span class="line">  permissions: [&#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;], <span class="comment">// 该角色拥有的权限数组</span></span><br><span class="line">  urls: [&#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;], <span class="comment">// 该角色展示的页面数组</span></span><br><span class="line">  dataScope: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>, <span class="attr">enum</span>: DataScope&#125;, <span class="comment">// 数据范围声明</span></span><br><span class="line">  remark: <span class="built_in">String</span> <span class="comment">// 加个简介好记忆?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>角色表包含有数据权限dataScope，页面列表urls，权限列表permissions。</p>
+<p>数据范围定义数据获取等级。侧重点是支持中间件将该用户的数据权限，写到用户数据中:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将已构建的角色对应结构保存在内存中</span></span><br><span class="line">staticbuildInRoleMaps:IBuildInRoleMap</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">async</span> dataScopeMiddleware(req:Request, <span class="attr">res</span>:Response, <span class="attr">next</span>:NextFunction) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.hasPermission(<span class="string">"admin"</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.user.departmentNo) <span class="keyword">return</span> res.status(<span class="number">403</span>).send(<span class="string">"您没有设置组织机构"</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    req.user.dataScope = DataScope.All</span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> requserRole = Utils.getUserFirstRole(req.user)</span><br><span class="line">  <span class="keyword">if</span> (!_.includes([<span class="string">"anon"</span>], requserRole)) &#123;</span><br><span class="line">    <span class="keyword">const</span> theRole = Role.buildInRoleMaps[requserRole]</span><br><span class="line">    <span class="keyword">if</span> (!theRole) <span class="keyword">return</span> next(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"权限获取出错，请联系管理员"</span>))</span><br><span class="line">    req.user.dataScope = theRole.dataScope</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将改变不大的数据存在内存中，可以很快速的进行获取数据。</p>
+</blockquote>
+<h3 id="数据范围设定-根据业务划分不同的接口"><a href="#数据范围设定-根据业务划分不同的接口" class="headerlink" title="数据范围设定(根据业务划分不同的接口)"></a>数据范围设定(根据业务划分不同的接口)</h3><p>下面是我所使用的获取数据过滤方式之一:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> dataScopeForCollect(user:&#123;<span class="attr">dataScope</span>:DataScope, <span class="attr">departmentNo</span>:string, <span class="attr">policeNo</span>:string&#125;) &#123;</span><br><span class="line">  <span class="keyword">let</span> cond:&#123;departmentNo?:string, code?:<span class="built_in">RegExp</span>, policeNo?:string&#125; = &#123;&#125;</span><br><span class="line">  <span class="keyword">if</span> (!_.isNumber(user.dataScope)) <span class="keyword">return</span> cond</span><br><span class="line">  <span class="keyword">if</span> (user.dataScope === DataScope.All) <span class="keyword">return</span> cond</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.ThisWithSubordinate) &#123;</span><br><span class="line">    cond.code = Utils.orgReg(user.departmentNo)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.This) &#123;</span><br><span class="line">    cond.departmentNo = user.departmentNo</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.self) &#123;</span><br><span class="line">    cond.policeNo = user.policeNo</span><br><span class="line">    <span class="keyword">if</span> (user.departmentNo) cond.departmentNo = user.departmentNo</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cond</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>于是我很快就能知道对应的获取数据方案。</p>
+<h3 id="限制页面路由"><a href="#限制页面路由" class="headerlink" title="限制页面路由"></a>限制页面路由</h3><p>这方面由李豪同学来交流下。当初也是李豪同学提出来，我保存好，由他来约束这块的逻辑。点赞。</p>
+<h3 id="接口权限的组合"><a href="#接口权限的组合" class="headerlink" title="接口权限的组合"></a>接口权限的组合</h3><p>这块复用第一章节的逻辑。第一章节将静态的数据，在这里转化为可调节配置的权限组合。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>Number 类型是32位的。使用Number 进行位运算，当角色超过32位时， <code>1 &lt;&lt; 32 = 0</code>.</p>
+<p>使用BigInt 可能突破这个限制: <code>BigInt(1) &lt;&lt; BigInt(x)</code>.当使用BigInt 作为json 传输时需要<code>将其转为字符串</code>，在Chrome67之后版本支持BigInt 类型。前段收到对应角色编码，将其转化为BigInt:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ BigInt(<span class="string">"17179869185"</span>)</span><br><span class="line">$ <span class="number">17179869185</span>n</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/wechatPay.jpg?raw=true',
+  alipayImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/aliPay.jpg?raw=true'
+});
+</script>
+      
+            
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'shaohung001';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/16/2021-6-11lesson/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2021-6-11lesson
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/31/2021-5-31lesson/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2021-5-31lesson</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网迹【权限优化】"><span class="nav-number">1.</span> <span class="nav-text">网迹【权限优化】</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当前网迹权限长这样"><span class="nav-number">2.</span> <span class="nav-text">当前网迹权限长这样</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普及下权限"><span class="nav-number">3.</span> <span class="nav-text">普及下权限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计思路"><span class="nav-number">3.1.</span> <span class="nav-text">设计思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设定数据范围、权限及访问路由"><span class="nav-number">3.1.1.</span> <span class="nav-text">设定数据范围、权限及访问路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围设定-根据业务划分不同的接口"><span class="nav-number">3.1.2.</span> <span class="nav-text">数据范围设定(根据业务划分不同的接口)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制页面路由"><span class="nav-number">3.1.3.</span> <span class="nav-text">限制页面路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口权限的组合"><span class="nav-number">3.1.4.</span> <span class="nav-text">接口权限的组合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">3.2.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2021 aKer All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/click.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

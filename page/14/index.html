@@ -165,6 +165,252 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-用for循环的出操作中操作错误" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/用for循环的出操作中操作错误/">was mutated while being enumerate 这个错误</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/用for循环的出操作中操作错误/" class="article-date">
+	  <time datetime="2017-01-09T02:03:42.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-11-30 10:38:14)</p>
+<p>用for循环的（id object in array）这种方法，如果内部有调整操作，则会跳出来was mutated while being enumerate 这个错误。<br>面对这个崩溃，不知道从哪里入手。<br>其实可以这样理解，我要操作object对象，挪动它，那么势必会影响后面哥们的战队。扩展一下，我object在最后，是不是就不会崩溃了？是的，因为操作了就不影响有站错队的哥们了，他们全都有队可站。<br>这里有几个做法：</p>
+<ol>
+<li><code>for （int i=0；i&lt;x;i++)</code></li>
+<li><code>[array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+do something...
+*stop = YES;
+}];</code></li>
+<li>或者操作完你这一个之后，break整个循环<br>双击666</li>
+</ol>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-AsyncDisplayKit的learning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/AsyncDisplayKit的learning/">AsyncDisplayKit的learning</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/AsyncDisplayKit的learning/" class="article-date">
+	  <time datetime="2017-01-09T01:59:17.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-11-29 17:35:30)</p>
+<p><a href="http://www.open-open.com/lib/view/open1472701267252.html" target="_blank" rel="noopener">文章一</a><br>这篇文章讲了布局调用顺序measureWithSizeRange<br>当我们使用 ASDK 布局时，需要做下面四件事情中的一件：<br><em>提供 layoutSpecBlock
+</em>覆写 - layoutSpecThatFits: 方法<br><em>覆写 - calculateSizeThatFits: 方法
+</em>覆写 - calculateLayoutThatFits: 方法<br>*只有做上面四件事情中的其中一件才能对 ASDK 中的视图或者说结点进行布局。<br>同时给了一个网址<a href="http://nguyenhuy.github.io/froggy-asdk-layout/" target="_blank" rel="noopener">Foggy-ASDK-Layout</a>，我学了一下，对比React-native，一模一样。<br>然后找了下这篇文章<a href="http://www.qingpingshan.com/rjbc/ios/167576.html" target="_blank" rel="noopener">文章二</a><br>里面主要讲了有哪些基本属性enum可以使用</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录/">CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/CMTime中fps的scale理解和UIPanGestureRecorgnize的手势记录/" class="article-date">
+	  <time datetime="2017-01-09T01:57:27.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-11-29 10:39:20)</p>
+<p>视频帧处理有一点要明确，<br>CMTimeMakeWithSeconds(<br>Float64 seconds,<br>int32_t preferredTimescale)<br>这里seconds是第几次，preferredTimescale为片，<br>比如我要每秒一帧图片从视频取出来<br>`AVAssetImageGenerator <em>assetImageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:self.viewModel.asset];<br>CGFloat scale = KScreenWidth</em>1.f/MAXImageShowInCollection/80;//collectionFlowSize width/height<br>assetImageGenerator.maximumSize = CGSizeMake(200<em>scale,200);<br>assetImageGenerator.appliesPreferredTrackTransform = TRUE;<br>Float64 duration = CMTimeGetSeconds(self.viewModel.asset.duration);<br>NSMutableArray </em>timeArr = [[NSMutableArray alloc]initWithCapacity:0];<br>if (self.segmentedControl.selectedSegmentIndex) {<br>for (int i=0; i&lt;8; i++) {//MIN(duration, 60)<br>[timeArr addObject:[NSValue valueWithCMTime:CMTimeMakeWithSeconds(i, duration/8)]];<br>}<br>}else{<br>for (int i=0; i&lt;floor(duration); i++) {<br>[timeArr addObject:[NSValue valueWithCMTime:CMTimeMakeWithSeconds(i, 1)]];<br>}<br>}<br>[assetImageGenerator generateCGImagesAsynchronouslyForTimes:timeArr completionHandler:<br>^(CMTime requestedTime, CGImageRef image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError <em>error)<br>{<br>@strongify(self);<br>NSLog(@”actual got image at time:%f”, CMTimeGetSeconds(actualTime));<br>if (image)<br>{<br>UIImage </em>img = [UIImage imageWithCGImage:image];<br>[self.imageArray addObject:img];<br>if (self.imageArray.count==timeArr.count) {<br>dispatch_async(dispatch_get_main_queue(), ^{<br>@strongify(self);<br>[self.collection reloadData];<br>});<br>}<br>}</p>
+<p>}];`</p>
+<p>此处参考了美拍的如果取10s以内的视频，则都是以1s一片取图片CMTimeMakeWithSeconds(i, 1)，如果为1分钟或者美拍的那种5分钟，则就取8帧，总共就8帧CMTimeMakeWithSeconds(i, duration/8)。</p>
+<p>UIPanGestureRecognize在手势滑动的判断<br>我犯得错误是使用坐标对坐标，两个会变动的参数判断，这里给自己提一个醒！！！<br>每次对其内部判断，都是在判断时，对[x locationInView:trimView]判断，对目前你的手在区域内位置判断，不然会狂闪。<br><code>[[leftPanGesture rac_gestureSignal] subscribeNext:^(UIPanGestureRecognizer * x) {
+@strongify(self);
+if (x.state == UIGestureRecognizerStateBegan) {
+}else if (x.state == UIGestureRecognizerStateChanged) {
+if ((rightPullView.centerX-[x locationInView:trimView].x)&gt;self.miniTwoLineLength) {
+}else{
+}
+}</code><br>道理都懂，有时就会犯迷糊，谨记</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-苹果加急审核" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/苹果加急审核/">苹果加急审核</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/苹果加急审核/" class="article-date">
+	  <time datetime="2017-01-09T01:56:12.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-11-29 10:34:01)</p>
+<p>转载至<a href="http://blog.csdn.net/showhilllee/article/details/19541493" target="_blank" rel="noopener">http://blog.csdn.net/showhilllee/article/details/19541493</a><br>加急入口在Apple Connection 右下角</p>
+<p>打电话的似乎寻求不到太大帮助，毕竟团队不一样。apple 审核团队向来神秘闻名，我们由于UGC的问题，被打了很多次了，其实对着他写的回复修改，也只能遮掩。我们遇到这次很逗，审核团队要求我们给“注册”时的账号，不是demo account，我们注册时有短信验证，给也没用啊，，，蛋疼，，，</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/">这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/" class="article-date">
+	  <time datetime="2017-01-09T01:52:17.000Z" itemprop="datePublished">January 9, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发表于(2016-11-24 15:25:55)</p>
+<p>测试域名是有限制的,测试域名，其客户端配置：单 IP 每秒限制请求次数 10 次，大于 10 次 403 禁止 5 秒；限速：单 url 限速 8Mbps，下载到 10MB 之后，限速 1Mbps 带宽没有区别。<br>所以不建议将测试域名配置在生产环境上。<br>上面是需要更改为自定义融合CDN的原因。<br>接下来需要做的是，点开“融合CDN”-&gt;新增一个加速域名列表，其中一个填写你要做的二级域名，比如主域名为baidu.com，那么你可以写example.baidu.com,直接选确定。<br>审核12个小时以内（我的2个小时），出现在其“域名信息”一栏“填写CNAME”，此时复制“源站信息”的右边一串字符，将其复制到服务器(因为公司大陆备案过的域名在阿里云，那么就进入阿里云的服务器控制端)上的新增二级域名的地方。<br>按照<a href="https://support.qiniu.com/hc/kb/article/68977这个里面的这张图片" target="_blank" rel="noopener">https://support.qiniu.com/hc/kb/article/68977这个里面的这张图片</a><br><img src="http://s14.sinaimg.cn/mw690/003479W3zy76FqygSm1cd&amp;690" alt="图片1"><br>记录类型：就写CNAME<br>主机记录：比如我的example.baidu.com就写example即可<br>解析线路：为默认<br>记录值：填写七牛在“域名配置”-&gt;CNAME所属值：<br>别的其他都不用管，保存即可<br>接下来等待大概半小时，在“内容管理”随便一个您已经上传的文件，点击小眼睛，文件显示出来，那么就是正确的了，以后就可以使用这个链接了。<br>这里补充两点<br>1：你可以用站长工具测试某一个文件，看ping通花了多少毫秒，我对比了7牛的测试连接，44ms，而通过新的自定义的却很慢，达到280ms，提个工单，确实快了很多，88ms。<br>2：<a href="https://www.v2ex.com/t/292587这里有个文章讲了这么个事情，所以特么需要注意啦，我现在还在调整这个问题，看如何解决。" target="_blank" rel="noopener">https://www.v2ex.com/t/292587这里有个文章讲了这么个事情，所以特么需要注意啦，我现在还在调整这个问题，看如何解决。</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-16-11-18办理暂住证-过程-上海" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -391,299 +637,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-RAC循环引用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/RAC循环引用/">RAC循环引用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/RAC循环引用/" class="article-date">
-	  <time datetime="2017-01-09T01:35:39.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-27 16:35:49)</p>
-<p>最近项目到某个节点，我在解决一些问题的时候，记录一下：</p>
-<ol>
-<li>RAC 在引用的时候会忽略一点，如<br><code>@weakify(self);
-@weakify(cell);
-[[[cell.clearButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(UIButton *x) {
-if ([self_weak_.selectedNumArray containsObject:asset]) {
-[self_weak_.selectedNumArray removeObject:asset];
-cell_weak_.numButton.selected = NO;
-[self_weak_.collectionView reloadData];
-}else{
-if (self_weak_.addMorePicture) {
-if (self_weak_.selectedNumArray.count==self_weak_.maxPictureCanAdd) {
-LxDBAnyVar(self_weak_.selectedNumArray);
-LxDBAnyVar(self_weak_.maxPictureCanAdd);
-[SHUIHelper showAlertMessage:[NSString stringWithFormat:@&quot;您最多可添加%ld张哦&quot;,self_weak_.maxPictureCanAdd]];
-}else{
-[self_weak_.selectedNumArray addObject:asset];
-cell_weak_.numButton.selected = YES;
-[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
-}
-}else{
-if (self_weak_.selectedNumArray.count==6) {
-[SHUIHelper showAlertMessage:@&quot;选取最多6张&quot;];
-}else{
-[self_weak_.selectedNumArray addObject:asset];
-cell_weak_.numButton.selected = YES;
-[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
-}
-}
-}
-cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
-}];</code><br>上面这里的cell，自己对自己进行了循环引用，原因就是：这一段如果写在该Cell class里面，那么block里面的cell，其实在自身类里面也叫self，于是也需要进行weak处理。<br>这里会出现这样的错误，就是因为写得太快了，然后有时候会想不出来，可以慢慢思考。</li>
-<li>Realm 的RLMArray 如果添加某一个元素，但其已经存在数据库中，那么做法是先使用<code>[RLMObject objectForPrimaryKey：@“keyID”]</code>找出该元素添加进去，即可<blockquote>
-<p>Just want to add a comment for future users of Realm. I think TiM means[ objectForPrimaryKey:…]. I literally typed [RLMObject objectForPrimaryKey:…] and got a crash about “RLMObject” is not persisted in Realm database</p>
-</blockquote>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-MleaksFinder手动导入framework" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/MleaksFinder手动导入framework/">MleaksFinder手动导入framework</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/MleaksFinder手动导入framework/" class="article-date">
-	  <time datetime="2017-01-09T01:23:27.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-19 18:24:20)<br>由于前段时间cocoapods有个issue，导致我的第三方工程都得手动导入，今天抽出时间把MleaksFinder这款很好的监测内存泄漏的工具用手动导入方式写出来。</p>
-<ul>
-<li><p>先去下两个zip：</p>
-<ul>
-<li><a href="https://github.com/Zepo/MLeaksFinder" target="_blank" rel="noopener">https://github.com/Zepo/MLeaksFinder</a></li>
-<li><a href="https://github.com/facebook/FBRetainCycleDetector" target="_blank" rel="noopener">https://github.com/facebook/FBRetainCycleDetector</a></li>
-</ul>
-</li>
-<li><p>直接将</p>
-<ul>
-<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74Yms7wiQd8&amp;690" alt="导入工程，记得点选1、2、4选项" title="导入工程，记得点选1、2、4选项"></li>
-<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74YmyHZy038&amp;690" alt="导入工程，记得点选1、2、4选项" title="导入工程，记得点选1、2、4选项"></li>
-</ul>
-</li>
-<li>将下载下来的FBRetainCycleDetector-master直接复制到根目录文件<ul>
-<li><img src="http://s3.sinaimg.cn/mw690/003479W3zy74YmO5Xpg42&amp;690" alt="将下载下来的FBRetainCycleDetector-master直接复制到根目录文件" title="将下载下来的FBRetainCycleDetector-master直接复制到根目录文件"></li>
-</ul>
-</li>
-<li>如图操作：<ul>
-<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74YoNFBAk28&amp;690" alt="第四步如图操作"></li>
-<li>同时将FBRetainCycleDetector.xcodeproj-》Targets-》Deployment Info的Deployment Target 改为手机适用的，不然会运行起来说target版本不对</li>
-</ul>
-</li>
-<li>加入framework<ul>
-<li><img src="http://s1.sinaimg.cn/mw690/003479W3zy74YnTj7gI20&amp;690" alt="加入framework"></li>
-</ul>
-</li>
-<li><em>至此，不需要添加代码，你就可以使用啦。我先记录，慢慢来开发他的使用啦</em></li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-RN了SecRandomCopyBytes-ignoring-return-value" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/">RN了SecRandomCopyBytes_ignoring_return_value</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/" class="article-date">
-	  <time datetime="2017-01-09T01:19:16.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-19 10:16:43)</p>
-<p>大早上的起来，在XCode8，iOS10环境中，就看见RN编译不起来，报SecRandomCopyBytes ignoring return value这样的错。在RCTWebSocket 的SecRandomCopyBytes函数编译不过去，有3种方法，自行实测一种，很方便的一种（1）<br>1：<a href="https://github.com/facebook/react-native/issues/8584中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8584中</a><br><img src="http://s3.sinaimg.cn/mw690/003479W3zy74Zv5sPiG22&amp;690" alt="图片1"><br>双击Library里面的RCTWebSocket进入上图界面，将“3”中的两个删除即可<br>2、3：<a href="https://github.com/facebook/react-native/issues/8108中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8108中</a><br>mskalra所述和antoor所述，针对不同问题的解决方案</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-展示大图出现卡顿" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/展示大图出现卡顿/">展示大图出现卡顿</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/展示大图出现卡顿/" class="article-date">
-	  <time datetime="2017-01-08T15:08:27.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-18 12:06:12)</p>
-<p>这里拿iOS里边代码做考究：<br>图片页面，我之前不是说会很卡吗？？如果用户拿去很大的图片的话，我这里之前的处理是压缩<br><img src="http://s10.sinaimg.cn/mw690/003479W3zy74WlkrbAZ69&amp;690" alt="图片1"><br>这里压缩是把相同临近像素融合，减小像素密度，，但是卡顿原因不是这个，，其实是—》<br>这样理解，就是我有一张比如一个墙壁大的图片，相框只有200*200，于是照片要放进去就比较麻烦，但是我减小照片大小，<br><img src="http://s6.sinaimg.cn/mw690/003479W3zy74WlmwDU975&amp;690" alt="图片2"><br>这样图片不大，放进相框就好放啦，，，1000是系数，可以自行比例系数哦</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-这里记录一个获取图片时，图片旋转问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/这里记录一个获取图片时，图片旋转问题/">这里记录一个获取图片时，图片旋转问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/这里记录一个获取图片时，图片旋转问题/" class="article-date">
-	  <time datetime="2017-01-08T15:07:34.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-05 11:09:26)<br>这里记录一个获取图片时，图片旋转问题：<br>ALAssetRepresentation<em> rep = self.asset.defaultRepresentation;<br>if (rep) {<br>UIImage</em> image = [UIImage imageWithCGImage:rep.fullResolutionImage<br>scale:rep.scale<br>orientation:0];<br>return image;</p>
-<p>如上写法，orientation：0的时候会发生图片旋转，即使本应该的说要拿取肖像orientation，<br>改成如下：<br>ALAssetRepresentation<em> rep = self.asset.defaultRepresentation;<br>if (rep) {<br>UIImage</em> image = [UIImage imageWithCGImage:rep.fullResolutionImage<br>scale:rep.scale<br>orientation:(UIImageOrientation)rep.orientation];//0];</p>
-<p>return image;</p>
-<p>此时拿到的图片不再旋转。。。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -812,68 +765,68 @@ cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
+              <span>July 6, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
+              <span>July 6, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-10lesson/">2021-6-10lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a></h6>
               <span>May 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a></h6>
-              <span>May 17, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/05/16/2021-5-16lesson/">2021-5-16lesson</a></h6>
-              <span>May 16, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/03/11/2021-3-11lesson/">2021-3-11lesson</a></h6>
-              <span>March 11, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a></h6>
-              <span>February 18, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a></h6>
-              <span>February 18, 2021</span>
             </div>
 
           </li>
@@ -890,7 +843,7 @@ cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -900,7 +853,7 @@ cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -910,7 +863,7 @@ cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

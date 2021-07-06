@@ -165,6 +165,340 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2021-7-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/07/06/2021-7-5lesson/" class="article-date">
+	  <time datetime="2021-07-06T12:11:54.000Z" itemprop="datePublished">July 6, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="纯虚继承多态的问题"><a href="#纯虚继承多态的问题" class="headerlink" title="纯虚继承多态的问题"></a>纯虚继承多态的问题</h2><p>创建 worker.h<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="built_in">string</span> <span class="title">getDeptName</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> m_Id, m_DeptId;</span><br><span class="line">    <span class="built_in">string</span> m_Name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>创建普通员工类Employee.h 和.cpp 其继承于Worker<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Employee.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"worker.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Employee(<span class="keyword">int</span> id, <span class="built_in">string</span> name, <span class="keyword">int</span> dId);</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="built_in">string</span> <span class="title">getDeptName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Employee.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Employee.h"</span></span></span><br><span class="line">Employee::Employee(<span class="keyword">int</span> id, <span class="built_in">string</span> name, <span class="keyword">int</span> dId) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_Id = id;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_Name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_DeptId = dId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> Employee::showInfo() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"我是要展示的info"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">string</span> Employee::getDeptName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"职工"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时运行使用多态方案，比如其他继承Worker 的类也想使用同样方法，然后delete 会出现内存泄漏bug:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Worker *worker = <span class="literal">NULL</span>;</span><br><span class="line">    worker = <span class="keyword">new</span> Employee(<span class="number">1</span>, <span class="string">"aker"</span>, <span class="number">1</span>);</span><br><span class="line">    worker.showInfo();</span><br><span class="line">    <span class="keyword">delete</span> worker; <span class="comment">// 这里就会报内存泄漏</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么？生成Employee地址空间，delete 自己的空间怎么会报错?</p>
+<p>我们这样理解: Worker *worker，worker 是纯虚指针，指向纯虚单独保存的空间，这里只有Worker。<code>delete worker</code>，虽然是打算释放Employee，但是纯虚里面不包括Employee 其他数据指针。直接delete 就会造成无法释放余下那部分数据。</p>
+<p>解决方法有两种<a href="https://blog.csdn.net/quicmous/article/details/100121382" target="_blank" rel="noopener">参考</a>:</p>
+<ol>
+<li>自己实现虚析构:</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~Employee() &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样释放就能直接找到自己的析构。</p>
+<ol start="2">
+<li>提供自己的delete 方法，自己释放自己:</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">delete</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> Employee::release() &#123;</span><br><span class="line">    <span class="keyword">delete</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">worker.release();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2021-7-6lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/07/06/2021-7-6lesson/" class="article-date">
+	  <time datetime="2021-07-06T12:09:53.000Z" itemprop="datePublished">July 6, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="es"><a href="#es" class="headerlink" title="es"></a>es</h1><h2 id="es-使用curl"><a href="#es-使用curl" class="headerlink" title="es 使用curl"></a>es 使用curl</h2><pre><code>$ alias curles=&apos;curl  -u elastic:elasticpassword&apos;
+$ curles -XPUT &quot;http://localhost:9200/movies/movie/1&quot; -d&apos;&apos;
+$ curles -X POST &quot;http://172.16.60.162:9200/_analyze&quot; -d &apos;{&quot;analyzer&quot;:&quot;standard&quot;, &quot;text&quot;:&quot;Like X 国庆放假的&quot;}&apos; -H &quot;Content-Type: application/json&quot;
+</code></pre><h2 id="为es-增加stopword-和词汇"><a href="#为es-增加stopword-和词汇" class="headerlink" title="为es 增加stopword 和词汇"></a>为es 增加stopword 和词汇</h2><h3 id="增加stopword-和词汇的操作"><a href="#增加stopword-和词汇的操作" class="headerlink" title="增加stopword 和词汇的操作"></a>增加stopword 和词汇的操作</h3><pre><code>$ docker cp ${dockerId}:/usr/share/elasticsearch/plugins/ik/config config
+// 支持往custom/mydic.dic 写入对应合并关键词、custom/ext_stopword.dic
+$ mkdir config/custom &amp;&amp; touch config/custom/mydict.dic &amp;&amp; touch config/custom/ext_stopword.dic
+$ docker cp config ${dockerId}:/usr/share/elasticsearch/plugins/ik // 拷贝配置文件回elastic
+$ docker restart ${dockerId} // 重启elastic
+</code></pre><h3 id="↑支持的plugins语法"><a href="#↑支持的plugins语法" class="headerlink" title="↑支持的plugins语法"></a>↑支持的plugins语法</h3><p>语法如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">新案件</span><br><span class="line">不要</span><br><span class="line">不可</span><br></pre></td></tr></table></figure></p>
+<h1 id="学习使用Neo4j"><a href="#学习使用Neo4j" class="headerlink" title="学习使用Neo4j"></a>学习使用Neo4j</h1><p>Neo4j 本身提供7474端口的及时UI操作服务。如: <a href="http://localhost:7474" target="_blank" rel="noopener">http://localhost:7474</a> 登录上即可。</p>
+<p>这里以nodejs 链接代码:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> neo4j = <span class="built_in">require</span>(<span class="string">"neo4j-driver"</span>)</span><br><span class="line"><span class="keyword">let</span> session = <span class="literal">null</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params">conf:&#123;url:<span class="built_in">string</span>, username:<span class="built_in">string</span>, password:<span class="built_in">string</span>&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> driver = neo4j.v1.driver(conf.url, neo4j.v1.auth.basic(conf.username, conf.password))</span><br><span class="line">    session = driver.session(neo4j.v1.session.WRITE)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">executeCypher</span>(<span class="params">data:&#123;cql:<span class="built_in">string</span>&#125;</span>) </span>&#123;</span><br><span class="line">    session.run(data.cql, data).subscribe(&#123;</span><br><span class="line">        onNext:<span class="function">(<span class="params">record</span>)=&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"[neo4j.onNext] record:"</span>, record)</span><br><span class="line">        &#125;,</span><br><span class="line">        onCompleted: <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"[neo4j.onCompleted] ..."</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        onError: <span class="function">(<span class="params">err</span>)=&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"[neo4j.onError] err: "</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cql语法"><a href="#cql语法" class="headerlink" title="cql语法"></a>cql语法</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><pre><code>$CREATE (m:Movie {title: &quot;The Matrix&quot;, released: 1990})
+$CREATE (m:Movie {title: &quot;Apollo 13&quot;, released: 2000})
+</code></pre><h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><pre><code>$match (m:Movie {title: &quot;The Matrix&quot;}) return m # match (m:Movie) where m.title = &quot;The Matrix&quot;
+</code></pre><h3 id="创建边"><a href="#创建边" class="headerlink" title="创建边"></a>创建边</h3><pre><code>// m0-r-&gt;m1
+$match (m0:Movie {title: &quot;The Matrix&quot;}) match (m1:Movie {title: &quot;Apollo 13&quot;}) \
+create (m0)-[r:ACTED_IN]-&gt;(m1) return m0, r, m1 # 每次只能创建一个方向
+// 在创建一个反向m0&lt;-r-m1
+$match (m0:Movie {title: &quot;The Matrix&quot;}) match (m1:Movie {title: &quot;Apollo 13&quot;}) \
+create (m0)&lt;-[r:ACTED_IN]-(m1) return m0, r, m1
+</code></pre><h3 id="删除边、node"><a href="#删除边、node" class="headerlink" title="删除边、node"></a>删除边、node</h3><pre><code>$match (m0:Movie {title: &quot;The Matrix&quot;}) match (m1:Movie {title: &quot;Apollo 13&quot;}) \
+optional match(m0)&lt;-[r0:ACTED_IN]-(m1) \
+optional match(m0)-[r1:ACTED_IN]-&gt;(m1) \
+DELETE r0, r1, m0 # 必须先删除所有边才可以删除node
+</code></pre><h3 id="STARTS-WITH-ENDS-WITH-CONTAINS"><a href="#STARTS-WITH-ENDS-WITH-CONTAINS" class="headerlink" title="STARTS WITH / ENDS WITH / CONTAINS"></a>STARTS WITH / ENDS WITH / CONTAINS</h3><pre><code>$where a.name STARTS WITH &apos;Ake&apos;
+$where a.name ENDS WITH &apos;ker&apos;
+$where a.name CONTAINS &apos;ke&apos;
+</code></pre><h3 id="EXISTS-属性检查"><a href="#EXISTS-属性检查" class="headerlink" title="EXISTS 属性检查"></a>EXISTS 属性检查</h3><pre><code>$match (m:Movie) where EXISTS(m.title)
+</code></pre><h3 id="NOT-取反"><a href="#NOT-取反" class="headerlink" title="NOT 取反"></a>NOT 取反</h3><pre><code>$where NOT m.title ends with &quot;ker&quot;
+</code></pre><h3 id="’regexp’-语法继承来自Java正则表达式"><a href="#’regexp’-语法继承来自Java正则表达式" class="headerlink" title="=~’regexp’ 语法继承来自Java正则表达式"></a>=~’regexp’ 语法继承来自Java正则表达式</h3><pre><code>$match (m:Movie) where m.title =~&apos;The Matr*&apos;
+</code></pre><h3 id="i-非大小写敏感"><a href="#i-非大小写敏感" class="headerlink" title="(?i) 非大小写敏感"></a>(?i) 非大小写敏感</h3><pre><code>$where n.name =~(?i)TOM.*&apos; return n
+</code></pre><h3 id="模式过滤"><a href="#模式过滤" class="headerlink" title="模式过滤"></a>模式过滤</h3><pre><code>$match (m0:Movie {title: &quot;The Matrix&quot;}), (m1:Movie) \
+where (m0)-[r:ACTED_IN]-(m1) return m0, m1
+相当于:
+$match (m0:Movie {title: &quot;The Matrix})-[r:ACTED_IN]-(m1:Movie) return m0, m1
+</code></pre><h3 id="关系类型过滤"><a href="#关系类型过滤" class="headerlink" title="关系类型过滤"></a>关系类型过滤</h3><pre><code>$match (n)-[r]-() where type(r)=~&apos;DIRE.*&apos; return n
+</code></pre><h3 id="IN运算符"><a href="#IN运算符" class="headerlink" title="IN运算符"></a>IN运算符</h3><pre><code>$match (m:Movie) where m.title IN [&quot;The Matrix&quot;, &quot;Apollo 13&quot;, &quot;the matrix&quot;]
+</code></pre><h3 id="OR-AND-IS-NULL-ORDER-BY"><a href="#OR-AND-IS-NULL-ORDER-BY" class="headerlink" title="OR/AND/IS NULL/ORDER BY"></a>OR/AND/IS NULL/ORDER BY</h3><pre><code>$match (m:Movie) where m.title = &quot;The Matrix&quot; OR m.title IS NULL return m ORDER BY m.title
+</code></pre><h3 id="DISTINCT-返回结果去掉重名"><a href="#DISTINCT-返回结果去掉重名" class="headerlink" title="DISTINCT 返回结果去掉重名"></a>DISTINCT 返回结果去掉重名</h3><pre><code>$match (m:Movie) return DISTINCT m.title
+</code></pre><h3 id="LIMIT-SKIP"><a href="#LIMIT-SKIP" class="headerlink" title="LIMIT / SKIP"></a>LIMIT / SKIP</h3><h3 id="FOREACH"><a href="#FOREACH" class="headerlink" title="FOREACH"></a>FOREACH</h3><pre><code>$match p=(m0:Movie {title: &quot;The Matrix&quot;})-[r:ACTED_IN]-(m1) FOREACH (n IN nodes(p) | set n.marked = true)
+</code></pre><h3 id="SIZE"><a href="#SIZE" class="headerlink" title="SIZE"></a>SIZE</h3><pre><code>$match p=(m0:Movie)-[r:ACTED_IN]-(m1:Movie) where m0.title=&quot;The Matrix&quot; return m0, SIZE(nodes(p))
+</code></pre><h3 id="COLLECT-将资源转为array"><a href="#COLLECT-将资源转为array" class="headerlink" title="COLLECT 将资源转为array"></a>COLLECT 将资源转为array</h3><h3 id="WITH-UNWIND"><a href="#WITH-UNWIND" class="headerlink" title="WITH / UNWIND"></a>WITH / UNWIND</h3><pre><code>$match (m:Movie) WITH COLLECT(m) as c UNWIND c as x return x
+</code></pre><h3 id="MERGE-CREATE-区别在于已存在"><a href="#MERGE-CREATE-区别在于已存在" class="headerlink" title="MERGE / CREATE 区别在于已存在"></a>MERGE / CREATE 区别在于已存在</h3><pre><code>$create (m:Movie {Id: 10}) create (m:Movie {Id: 10}) # 此时有两个Id=10 的movie
+$MERGE (m:Movie {Id: 20}) MERGE (m:Movie {Id: 20}) # 此时只会有一个Id=20 的movie
+</code></pre><h3 id="UNION-合并"><a href="#UNION-合并" class="headerlink" title="UNION 合并"></a>UNION 合并</h3><pre><code>// foreach 设置属性
+$match (cc:CreditCard) with collect(cc) as arr foreach(c in arr | set c.type = &quot;cc&quot;)
+// 合并CreditCard 和DebitCard 数据
+$match (cc:CreditCard) return cc.Id as Id, cc.name as name, cc.number as number order by cc.Id \
+union \
+match (dc:DebitCard) return dc.Id as Id, dc.name as name, dc.number as number order by dc.Id
+</code></pre><p><a href="https://www.huaweicloud.com/articles/53b4cf274b3463273fd5b03d845163f9.html" target="_blank" rel="noopener">参考1</a><br><a href="https://blog.csdn.net/chengyuqiang/article/details/102563408" target="_blank" rel="noopener">merge参考</a><br><a href="https://www.w3cschool.cn/neo4j/neo4j_cql_union.html" target="_blank" rel="noopener">union参考</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/neo4j/">neo4j</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2021-6-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/06/16/2021-6-16lesson/" class="article-date">
+	  <time datetime="2021-06-16T13:32:39.000Z" itemprop="datePublished">June 16, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="我的新目标cpp"><a href="#我的新目标cpp" class="headerlink" title="我的新目标cpp"></a>我的新目标cpp</h1><p>最近我的主要学习路线是C++. 我感到学go 之后还是有部分在web路上精疲力尽，我需要一个服务端的底层语言进行支撑。前年学go，去年写了两个gin 服务。本想今年年初好好深入学习，但是接手一个很大的平台服务，导致知道现在6.16号才终于稍稍缓和下来。</p>
+<p>我痛定思痛想知道自己真的想要什么。我是想继续web开发，api调用大法还是写轮子，搞定底层的。公司C++招聘看了下建立，都是半年就C++能培养；而且需求量还是很大。一直说C++越久越香，我觉得C++估计能给我点答案；而go 可能无法给我。</p>
+<p>当时觉得go 也有指针，也有引用，跟我以前的很类似。于是花了好多会认证学着。但是感觉杂乱不堪，还是没有建树。我觉得我要开始拼命学C++以补救。</p>
+<p>不是nodejs不行。而是nodejs 在最需要人的时候，没人提供binding。也许我自己可以给自己binding？所以我来了。</p>
+<hr>
+<p>今天刚好遇到个自己没理解清楚，问了个大佬突然明白的问题。</p>
+<p>这样编译没有问题，但是执行时报错: pvalue被释放了! 代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapAndStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">double</span>* pvalue = <span class="keyword">new</span> <span class="keyword">double</span>; <span class="comment">// pvalue 申请了堆空间</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">double</span> aa = <span class="number">29494.99</span>; <span class="comment">// aa申请了栈空间。</span></span><br><span class="line">  pvalue = &amp;aa; <span class="comment">// pvalue 获得了 aa 的地址(栈的地址) 此时可以认为pvalue 已经指向了栈，也就是*aa</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Value of pvalue : "</span> &lt;&lt; *pvalue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">delete</span> pvalue; <span class="comment">// 这时释放栈则报错: 栈是自动内存回收的；指针才可以delete</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2021-6-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/06/16/2021-6-11lesson/" class="article-date">
+	  <time datetime="2021-06-16T13:31:57.000Z" itemprop="datePublished">June 16, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="房子买后感"><a href="#房子买后感" class="headerlink" title="房子买后感"></a>房子买后感</h1><p>搬过来一周，工作日都是回来就直接躺下。里面有很多东西都要维修，很多东西要丢要收拾都忙没时间搞，先不管，房间里面也有点脏。老婆每天晚上就早早回家收拾，不知疲倦，我说三分钟热度猴，你别太累哦。别到时说哎呀好累啊，受不了啦。隔天老婆立马就躺床上不动，瞬间降温。</p>
+<p>其实也是怕老婆太累，周末搬家真的是来来回回的上下楼梯。腿都廋了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2021-6-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/06/16/2021-6-10lesson/">2021-6-10lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/06/16/2021-6-10lesson/" class="article-date">
+	  <time datetime="2021-06-16T13:31:23.000Z" itemprop="datePublished">June 16, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网迹【权限优化】"><a href="#网迹【权限优化】" class="headerlink" title="网迹【权限优化】"></a>网迹【权限优化】</h1><p>各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。</p>
+<h1 id="当前网迹权限长这样"><a href="#当前网迹权限长这样" class="headerlink" title="当前网迹权限长这样"></a>当前网迹权限长这样</h1><p>…</p>
+<h1 id="普及下权限"><a href="#普及下权限" class="headerlink" title="普及下权限"></a>普及下权限</h1><p>比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  code: "user",</span><br><span class="line">  name: "普通用户",</span><br><span class="line">  permissions: ["mod_collect"]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  code: "onlyEditor",</span><br><span class="line">  name: "上传者",</span><br><span class="line">  permissions: ["mod_collect", "mod_sysUser_edit", "mod_sysUser_del"]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  code: "superman",</span><br><span class="line">  name: "超人",</span><br><span class="line">  permissions: ["mod_collect", "mod_sysUser", "mod_sysUser_edit", "mod_sysUser_del", "mod_sysRole"] // 没有采集修改权限</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应接口如:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: "/collect",</span><br><span class="line">  method: "GET",</span><br><span class="line">  permission: "mod_collect"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时很简单的方案就是直接判别数组内是否有该权限，有当然就能使用该接口啦。</p>
+<p>但是此时会发现一个问题，数组查找字符串，其实是一个很耗时的操作。数组<code>[&quot;mod_collect&quot;, &quot;mod_collect_edit&quot;].include(&quot;mod_collect&quot;)</code> 会先for 循环查找第一个字符串(mod_collect)，第一个字符串对比从第一个字符开始一个个比对。</p>
+<p>你会说，那也很快啊，CPU买买买，快快快。</p>
+<p>有这想法的人得自己深思了，这里的判别是作用在所有中间件，当然是尽可能快，能提高用户使用、设备使用。大多在中间件出现的数据，一定要尽可能的缓存或者优化。</p>
+<p>OK，那怎么解？我们都知道字符串判别是一个一个字符比较O(n)，如果是数字判别，则是类似于O(1)的时间复杂度。我们将现有的所有permission都转化为一个数字: Bitmap. 比如: <code>mod_collect: 1 &lt;&lt; 2 = 4; mod_collect_edit: 1 &lt;&lt; 3 = 8; mod_sysUser: 1 &lt;&lt; 4 = 16; mod_sysUser_edit: 1 &lt;&lt; 5 = 32; mod_sysUser_del: 1 &lt;&lt; 6 = 64; mod_sysRole: 1 &lt;&lt; 7 = 128; ...</code></p>
+<p>以上得到关联: user 有一个权限: [4]; onlyEditor有三个权限, 我们使用 <code>|</code>运算符给他串起来: <code>8 | 32 | 64 = 104</code>, 我们这时可以说 user用户的权限是4, onlyEditor用户的权限是104, superman超人的权限是244.</p>
+<p>我们将上述的数据量不大，基本不怎么变动的数据都内存缓存下来:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">roles: &#123;</span><br><span class="line">  "mod_collect": 4,</span><br><span class="line">  "mod_colelct_edit": 8,</span><br><span class="line">  "mod_sysUser": 16,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">permissions: &#123;</span><br><span class="line">  "user": 4,</span><br><span class="line">  "onlyEditor": 104,</span><br><span class="line">  "superman": 244</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时如果接口进入中间件:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假装我是中间件内部判别权限</span></span><br><span class="line"><span class="keyword">const</span> curRoutePermission = <span class="string">"mod_collect_edit"</span> <span class="comment">// 当前接口必须的权限</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPermission</span>(<span class="params">role:<span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> tPerm = permissions[role]</span><br><span class="line">  <span class="keyword">const</span> curRole = roles[curRoutePermission]</span><br><span class="line">  <span class="keyword">return</span> tPerm &amp; curRole <span class="comment">// `与`符能得到交集 -&gt; 这个用户是否有该接口的权限</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果是user判别需要<code>&quot;mod_collect_edit&quot;</code>接口 =&gt; 4 &amp; 8 = 0; onlyEditor =&gt; 104 &amp; 8 = 8, 说明是有权限的!</p>
+<blockquote>
+<p>使用位运算<code>&amp;</code>比较，如果 &gt; 0 则表明这是有权限的。</p>
+</blockquote>
+<p>以上是权限基础普及，下面开始进入权限升级部分: ↓↓↓</p>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><h3 id="设定数据范围、权限及访问路由"><a href="#设定数据范围、权限及访问路由" class="headerlink" title="设定数据范围、权限及访问路由"></a>设定数据范围、权限及访问路由</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">enum DataScope &#123;</span><br><span class="line">  All = <span class="number">1</span>, <span class="comment">// 全局</span></span><br><span class="line">  ThisWithSubordinate = <span class="number">2</span>, <span class="comment">// 本单位及下属单位</span></span><br><span class="line">  This, <span class="comment">// 仅本单位</span></span><br><span class="line">  self <span class="comment">// 本人</span></span><br><span class="line">&#125;</span><br><span class="line">enum UrlMap &#123;</span><br><span class="line">  browseCollection = <span class="string">"/browse/collection"</span>, <span class="comment">// 采集管理</span></span><br><span class="line">  sysUser = <span class="string">"/sys/user"</span>,</span><br><span class="line">  sysRole = <span class="string">"/sys/role"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Urls = [</span><br><span class="line">  UrlMap.browseCollection,</span><br><span class="line">  UrlMap.sysUser,</span><br><span class="line">  UrlMap.sysRole</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> roleSchema = &#123;</span><br><span class="line">  name: <span class="built_in">String</span>, <span class="comment">// 用于记录角色名称，比如 `超人`</span></span><br><span class="line">  code: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">unique</span>: <span class="literal">true</span>&#125;, <span class="comment">// 用于声明角色编码，如superman/user/u001等代号</span></span><br><span class="line">  permissions: [&#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;], <span class="comment">// 该角色拥有的权限数组</span></span><br><span class="line">  urls: [&#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;], <span class="comment">// 该角色展示的页面数组</span></span><br><span class="line">  dataScope: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>, <span class="attr">enum</span>: DataScope&#125;, <span class="comment">// 数据范围声明</span></span><br><span class="line">  remark: <span class="built_in">String</span> <span class="comment">// 加个简介好记忆?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>角色表包含有数据权限dataScope，页面列表urls，权限列表permissions。</p>
+<p>数据范围定义数据获取等级。侧重点是支持中间件将该用户的数据权限，写到用户数据中:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将已构建的角色对应结构保存在内存中</span></span><br><span class="line">staticbuildInRoleMaps:IBuildInRoleMap</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">async</span> dataScopeMiddleware(req:Request, <span class="attr">res</span>:Response, <span class="attr">next</span>:NextFunction) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.hasPermission(<span class="string">"admin"</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.user.departmentNo) <span class="keyword">return</span> res.status(<span class="number">403</span>).send(<span class="string">"您没有设置组织机构"</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    req.user.dataScope = DataScope.All</span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> requserRole = Utils.getUserFirstRole(req.user)</span><br><span class="line">  <span class="keyword">if</span> (!_.includes([<span class="string">"anon"</span>], requserRole)) &#123;</span><br><span class="line">    <span class="keyword">const</span> theRole = Role.buildInRoleMaps[requserRole]</span><br><span class="line">    <span class="keyword">if</span> (!theRole) <span class="keyword">return</span> next(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"权限获取出错，请联系管理员"</span>))</span><br><span class="line">    req.user.dataScope = theRole.dataScope</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将改变不大的数据存在内存中，可以很快速的进行获取数据。</p>
+</blockquote>
+<h3 id="数据范围设定-根据业务划分不同的接口"><a href="#数据范围设定-根据业务划分不同的接口" class="headerlink" title="数据范围设定(根据业务划分不同的接口)"></a>数据范围设定(根据业务划分不同的接口)</h3><p>下面是我所使用的获取数据过滤方式之一:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> dataScopeForCollect(user:&#123;<span class="attr">dataScope</span>:DataScope, <span class="attr">departmentNo</span>:string, <span class="attr">policeNo</span>:string&#125;) &#123;</span><br><span class="line">  <span class="keyword">let</span> cond:&#123;departmentNo?:string, code?:<span class="built_in">RegExp</span>, policeNo?:string&#125; = &#123;&#125;</span><br><span class="line">  <span class="keyword">if</span> (!_.isNumber(user.dataScope)) <span class="keyword">return</span> cond</span><br><span class="line">  <span class="keyword">if</span> (user.dataScope === DataScope.All) <span class="keyword">return</span> cond</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.ThisWithSubordinate) &#123;</span><br><span class="line">    cond.code = Utils.orgReg(user.departmentNo)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.This) &#123;</span><br><span class="line">    cond.departmentNo = user.departmentNo</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.self) &#123;</span><br><span class="line">    cond.policeNo = user.policeNo</span><br><span class="line">    <span class="keyword">if</span> (user.departmentNo) cond.departmentNo = user.departmentNo</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cond</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>于是我很快就能知道对应的获取数据方案。</p>
+<h3 id="限制页面路由"><a href="#限制页面路由" class="headerlink" title="限制页面路由"></a>限制页面路由</h3><p>这方面由李豪同学来交流下。当初也是李豪同学提出来，我保存好，由他来约束这块的逻辑。点赞。</p>
+<h3 id="接口权限的组合"><a href="#接口权限的组合" class="headerlink" title="接口权限的组合"></a>接口权限的组合</h3><p>这块复用第一章节的逻辑。第一章节将静态的数据，在这里转化为可调节配置的权限组合。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>Number 类型是32位的。使用Number 进行位运算，当角色超过32位时， <code>1 &lt;&lt; 32 = 0</code>.</p>
+<p>使用BigInt 可能突破这个限制: <code>BigInt(1) &lt;&lt; BigInt(x)</code>.当使用BigInt 作为json 传输时需要<code>将其转为字符串</code>，在Chrome67之后版本支持BigInt 类型。前段收到对应角色编码，将其转化为BigInt:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ BigInt(<span class="string">"17179869185"</span>)</span><br><span class="line">$ <span class="number">17179869185</span>n</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2021-5-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -198,6 +532,16 @@ var themeMenus = {};
 <p>车牌也在拍当中，所以也是急急忙忙。</p>
 <p>5月也是超级超级忙碌啊。周末能用来加班的都用上，有时带上老婆去公司学习，路过公园还能转一圈，有时顺便就去打羽毛球，啊，累却又充实却又有所得。</p>
 <p>这篇就是胡言乱语文章，原因是好久好久没写博客了，今天也是抽空写下。</p>
+<h2 id="这是第二篇入住自己房子回顾"><a href="#这是第二篇入住自己房子回顾" class="headerlink" title="这是第二篇入住自己房子回顾"></a>这是第二篇入住自己房子回顾</h2><p>6月4号中午请示了下去自己房子交房。伟哥说别在意，不用请假了，这，只能多多加油，嗷嗷嗷。</p>
+<p>中午饭也不吃了，直接骑电驴过去，40分钟，大约摸清了之后要走的小路。到了之后顾问也在，然后等了一会各方人都到齐。我们先上楼查看。我和老婆前前后后到处转转，其实俺真看不出哪里不好。看各个物件: 能出水、能生火、电能通，OK。</p>
+<p>我们先和房东先签署一份交房补偿款，时间从6.5号开始，每天150，其实就是每个月4500进行补偿我们提前住进来。因为合同当时写确实是款清交房，公积金贷款和商贷贷款到齐才交房。没事，这房子这片租金没个6、7k也是下不来的，而且还是自己的住房。我在另一片租房也是3k，一室户，不如住过来，那个住起来不舒服。</p>
+<p>接下来也没别的，交钥匙，我们到物业处看能否物业过来。物业处置当天没得办理，自己来办理也OK的，带着产证过来就可以了，于是之后我自己过来办理就好了。物业费各方同意周二询问多少，前房东微信补齐后缴纳。</p>
+<p>然后我就回去上班了。上班重要嘛。</p>
+<p>周六的时候早上开始搬家，东西超级多，这个也不舍得那个也不舍得。我当时一个人看着那么多要下5楼，到时过去肯定也是上5楼，头大。这时一个扫地阿姨过来问是搬进来还是搬出去啊？我就问她帮忙搬东西，50块。我的天，居然同意了。我也出大力，搬了一趟有一趟。重的几乎都是我，或者和阿姨一起搬。搬到后面终于搬完，然后我问阿姨，明天要不要帮忙扫，当然扔垃圾啥的我来，我老婆也会帮忙打扫，200. 然后阿姨说好吧。(后来阿姨说搬下楼50好少的，我说是的，不过我也帮忙搬嘛，哈哈；然后她说打扫现在请人大概也是这价，我说是的，我也不懂)。于是中午的时候又不能走远，东西在下面，和老婆点了叫花鸡吃了下午看还有什么能收拾的赶紧叫车拉东西过去。今天出了多少汗，忘了，我的腿有多算，麻木了。</p>
+<p>叫车过来不加钱，货拉拉不鸟你，可能路程短，不想接单，唉，加个10块。叫了小货车，上车、下车，又是一阵忙活，看到还有那么大位置，赶紧上楼再拿多点东西，比如凳子之类的。<br>过去后，把东西放下来。哦对了，货拉拉要收额外上下货钱，60块，算了，那么多东西，60也是小钱。我的老哥来帮忙，嗷嗷，每次搬家我老哥都来帮忙，超级超级好同桌。不过最近他生病，只能我尽可能多搬，不过我手开始抖了。下午的时候也问了同事来帮忙，这时也到了。同事他正要学习被我喊过来，过来埋头就搬，也是超级感谢他，嘿嘿。</p>
+<p>上下上下搬了好多东西，女生帮忙带点东西就OK，我还把老婆多累一丢丢。我也是尽可能多搬，和我同事一起多搬，同桌身体还没恢复好，帮忙一些就很好了，嘿嘿。</p>
+<p>搬好之后已经6点了，没食材，没水(喝的水)，很乱，走，我们去附近南丰城的新白鹿吃。去那里吃，点多少，都不太贵。不过没考虑老哥不能吃辣(身体原因)，另外给他再来一些好吃的，反正这里点菜都不贵。</p>
+<p>吃完已经晚上9点了，送他们肥去，我们也赶紧回去收拾，去睡个觉了。</p>
 
       
     </div>
@@ -470,337 +814,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-2021-1-20videoService" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/02/18/2021-1-20videoService/" class="article-date">
-	  <time datetime="2021-02-18T07:01:38.000Z" itemprop="datePublished">February 18, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-1-15CompanyMeeting" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/02/18/2021-1-15CompanyMeeting/" class="article-date">
-	  <time datetime="2021-02-18T07:01:16.000Z" itemprop="datePublished">February 18, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2020年会"><a href="#2020年会" class="headerlink" title="2020年会"></a>2020年会</h1><p>我19年初来的公司，19年底因为疫情原因，木有举办，也是可惜。</p>
-<p>2020年末在动荡中，两年未见的各地公司同伴在年末齐聚本部。回来交流、活动、一齐出发年会。</p>
-<p>2021年年初，全国各地技术、销售回到上海本部。周一的时候在4楼开了一个技术和研发的讨论会，去了几个主要的技术。我到公司晚，赶紧塞两个包子，加个豆浆就去零时装修的4楼培训教室。里面技术都坐满了，在前排找了个位置坐下来。几个大佬先和大家介绍我们几个研发，主要负责模块，认好人，等会可以找到人对应吐槽。</p>
-<p>过程就是一些遇到的问题、疑难点、遇到的bug等；回答解决方案、当前正在处理和已经处理，有些不好修复等。感觉吐槽最多的还是，发布出去的器材质量不过关。技术、销售中午都是包饭的，我们就先去吃啦。<br>这么几天，都是培训，介绍公司一些产品、发票之类的。我们都参与不上，嘿嘿。</p>
-<p>时间来到2021年1月10号。今天是周日，我早早就赶到公司附近九亭一个网鱼网咖。二楼我们的同学都聚集好了，等着LOL开打。首先大家先剪刀石头布决出优胜可以首轮选在豪华房间打，没想到我战胜了其他5个队伍，进房间撸。这运气。<br>进来之后，等了很久他们终于开局。我拿ad烬。屏幕超级大，我改了设置、鼠标速度等，还是无法很好的补兵，鼠标飘的不行。得，第一局被杀爆了，蛋疼。</p>
-<p>第二局在外面打，这回我打辅助，感觉好多了，然后辅助石头人，全队第二伤害，拉第三好多伤害呢。看吧，也不是很菜，，嘎嘎。<br>第三局继续，不过这局对面好强，本来要赢了的，被我浪输了，我的坑坑火男辅助。<br>最后我们定位是第五名。唉，可惜可惜，，不过大家还好，都是玩玩，大家都是不熟悉，也不熟练。</p>
-<p>中午我有组织篮球比赛，饭都不吃了，直接去kc篮球公园。10几分钟小电驴。然后到了之后才几个人一起。确定好是内场，我们就先随便扔扔篮球。大概人到了13、4个的时候，我开始组织4:4:4 三个队比赛。有个1.9的是校队的被分走了，其他的也基本平衡。他们比赛的先打着。我顺便当个裁判。因为时间关系，基本也没什么判罚，直接跟着继续，就按照裁判的。然后里面有个胖胖的大哥说，都打手三次了，嘎嘎，不好意思了，，刚好也没看见。都6年没打球了，早就忘了精准了。</p>
-<p>感觉自己能摸把篮球，扔一扔，自己也能当做比赛了。然后一队毋庸置疑，文龙大佬超级壮身体，加上1.9米校队张哲，赢到了最后。我们这队输给他们，然后和另一组单独比了一场，赢了(队里几个同学扔球很准，扔到赢那种)。所以三个队伍比分也下来了。</p>
-<p>肚子实在是饿，买了些水，也不敢喝多，大冬天的。过了一会，早上打LOL比赛转场过来的剩下同学也来比赛篮球了(他们打完LOL集体吃午饭去了)，没办法，怕没比赛刚刚已经比完了。所以就招呼这群同学打打篮球了，不能冷场不是。</p>
-<p>下午的时候和大家打完就骑着我的小电驴回去了，下午回到出租屋，哇，好累啊。</p>
-<p>那几周刚好，很多去徐汇，怕如果有LOL决赛赶不上，下午我都会回来。到1月13号左右的时候，中午开始要比赛了。他们王者荣耀都是在公司休闲区比赛的，直接霸占老板办公室，各个地方都有他们团伙。我们直接在4楼没装修的那个培训教室背对背比赛，还有个大屏直播(吐槽下，关键时间就端，下面看比赛的比我们还紧张)。首先是2、3名打，然后是1、4名打，我们组就是第4名。</p>
-<p>我拿了个石头人辅助，你懂的，只要我混，不拖队友，俺队友就把第1名给打残了(第1名的本命英雄被ban了，玩脱了)。然后接着我们和后面赢的争第一，没办法，石头人被拿了，下路也运气不佳，一大堆兵，吃亏被打残了。然后这局我的机器人一点用没有: 对面莫甘娜+马尔扎哈。</p>
-<p>么得，得了个第二，抱大腿来的。可惜可惜。奖品是空气净化器，哈哈。</p>
-<p>1月15日，大早上大家还是要上个半天班。11点左右，我们就赶紧去食堂吃点东西，早上吃的晚，随便搞个混沌吧。11:30左右，大家集合，开始整理东西，上大巴出发前往江苏的黎里古镇。</p>
-<p>一个小时左右的车程，到了后，签到，东西放到入住房间。然后回到楼下来集合拍照留念。</p>
-<p>集合的时候没有个基点，龙哥呼喊1米8俱乐部过来集合。啊哈，有个基点，大家就知道怎么排列了。</p>
-<p>整个一个团队150~160人，很热闹。</p>
-<p>下午在二楼会议厅，首先是开场致词。各位大佬介绍各位，我和几个小哥们在后面就负责鼓掌，一个下午，手都拍红了。上面也是有我的照片，去年没来，今年是老员工的我，也算是半个萌新。然后是各个部门的成绩，继往开来。鉴定部门，技术部门，研发部门，财务部门，人事部门，各个致词，老板总结。新的一年，新的挑战。看到成长的一面，也要关注落后的痛点。</p>
-<p>期间休息，吃吃水果，面包，直到下午5、6点，然后在楼下拍照留念，因为二楼会议室转场为晚宴。我是和几个研发的同学有个小品，赶紧到我们房间排练排练。</p>
-<p>然后来了个全部一遍的小品彩排（就是在房间匆匆忙忙完成），然后就到6点入宴会了。下楼了，大家都就座了。我的座位靠前，和好几个大佬一桌。首先是几个主持人开场，介绍。</p>
-<p>第二个节目是鉴定部门女神们的现代舞蹈，看了我流口水，赶紧下面吃吃饭，和大佬们喝白酒，拍照。才喝几口都有点醉了。为什么直接第二个节目？额，第一个节目是那什么新年好，四个同学上面吆喝，笑场，好吧，快乐就对了。接下来还有单人唱，唱到一半停了，额，然后重来，冲啊，又断了，好吧，下一位好汉，不对不对，，下一位仙子: qian总千金。</p>
-<p>一袭红绣，青涩的脸庞还写着稚气未脱的羞涩，二八美好的年纪，在台上独舞，美，，，音乐的跳动，伴随轻盈的转身，动作不大，却灵巧的展现着男人眼中最纯的欣赏。我不敢拍照，睁大眼睛看着，怕破坏这少一格记忆就永远少一格回忆的瞬间。酒赶紧抿几口，猥琐的男人遇到这美好的【食物】，不禁真的会流口水吧。突然音乐氛围变动，成了现代舞蹈，仙子在场中去掉红绣，展现现代的舞蹈。</p>
-<p>现代舞蹈，女子所跳都会有韩国的口感，青涩的脸庞会缺少妩媚的妖娆，但是也会令人有一定的遐想: 未来定然是个美好女子!</p>
-<p>感觉我没有眨眼睛，不舍得。老子结过婚，老子也不舍得，那些伪君子的话在老子这站不住，要不抿几口酒，口水真就他么不争气留下来了！</p>
-<p>突然在舞蹈的一半，歌曲停了，我特么，导播在哪！？宴后问了导播（大千同学），他说她的视频真就那么长。这，伤心呐，痛心呐。</p>
-<p>接下来还有我的小品，效果还是不错的，大家也都是本事出演，毕竟我也是拉了我们的美女产品同学，我知道你们要我说道说道美女产品同学了。不可能，不会跟你们分享的！我曾经恨自己晚生百年，无法参与中国的风云际会，现在我又恨自己早生几年，要是这会遇到她们，我特么扑过去，我就是这么不要脸。但是，但是现在，现在家里也有可爱宝妈，爱不释手；这些也很好，唉，男人难做啊，难啊，啊！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</p>
-<p>接下来都是没那么给力的表演，我又怕忘了刚刚生动的身姿，喝酒。</p>
-<p>过程期间还有抽奖活动，我知道，我运气爆棚在时运，而不是这些上，不抱幻想。果然没我份，虽然预料到，但是还是小小伤感。</p>
-<p>也快结束了，找个机会和美女产品干一杯，说说话。才没说几句，得，组里的同学找到我说，顺顺同学酒喝多了，被扛上了房间，呕吐耍酒疯。我转身赶紧和人事说一声，俺也没遇到过，俺也一脸懵逼，先上去看看说。</p>
-<p>上来看到情况就是耍酒疯，嘴里”love you”啊，”爱你”啊之类的，，后来知道是他朋友圈分享的歌曲。感觉还行，不过完全没有思考本能，还呕吐，身子转来转去。不行，还是叫120吧，我没有这个经验，不过我们都不能承担如果是真的的不良后果。后来120来了，把他抬下去，到一半还吐。120车来了，闻着那味，加上晚上喝了两杯白酒，我自己也晕的差不多了。</p>
-<p>然后另外两个同学陪同过去(过去打了个醒酒针，就好了，然后挂个吊瓶到凌晨2、3点，另外两个同学也是精疲力尽了都)。</p>
-<p>我回头去酒会，他们正在玩，拍拍照。和龙哥聊聊天，说”包我身上，来年只要是你做的，给你卖个2、3套去，妥妥的”，哇哈，赶紧给龙哥鞠个躬，保证做好来。</p>
-<p>他们宴会就是第一场，接下来他们要去宵夜，第二场，我晕的不行，只能来年了来站了。帮忙拿点东西上楼，回到房间楼层，他们在玩狼人杀，我也进去搞起来。打到凌晨30分，我也受不了了，赶紧回去洗澡睡觉。</p>
-<p>第二天起床早晨还有个黎里古镇寻宝活动，可惜去了，成绩太小，木有奖励。中午吃个豪华午餐，然后差不多各个团队就回去了。</p>
-<p>这个年会很热闹，我2020努力，有一定的结果，比我以前的创业公司更有那么些期望，所以我想，我想更努力些，给真诚关心爱护我的人回报我的努力。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20210129-docker-aarch64v8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/01/29/20210129-docker-aarch64v8/" class="article-date">
-	  <time datetime="2021-01-29T08:28:14.000Z" itemprop="datePublished">January 29, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Docker服务运行在aarch64-服务器"><a href="#Docker服务运行在aarch64-服务器" class="headerlink" title="Docker服务运行在aarch64 服务器"></a>Docker服务运行在aarch64 服务器</h1><p>之前公司的服务都在x86架构服务器上，机缘下客户提供了一台华为云的aarch64 服务器。</p>
-<p>一开始我以为也就最多2小时全部搞完毕，没想到2小时环境都搭不起来，docker 都运行不了。两天才搞好。</p>
-<h2 id="安装yum-源"><a href="#安装yum-源" class="headerlink" title="安装yum 源"></a>安装yum 源</h2><p>首先试了下原本的源很慢很慢，<code>$ sudo yum update</code> 超级慢。</p>
-<p>故使用 <code>$ sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup &amp;&amp; sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</code></p>
-<p>发现<code>$ sudo yum makecache</code> 一直报404错误。</p>
-<p><code>$ arch # 或者uname -a</code> 看到aarch64.</p>
-<p>网上查是arm64 位版本。</p>
-<p>根据<a href="https://blog.csdn.net/smart9527_zc/article/details/84976097" target="_blank" rel="noopener">文章</a>，使用以下ali云源内容替换 <code>/etc/yum.repos.d/CentOS-Base.repo</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># CentOS-Base.repo</span><br><span class="line">#</span><br><span class="line"># The mirror system uses the connecting IP address of the client and the</span><br><span class="line"># update status of each mirror to pick mirrors that are updated to and</span><br><span class="line"># geographically close to the client.  You should use this for CentOS updates</span><br><span class="line"># unless you are manually picking other mirrors.</span><br><span class="line">#</span><br><span class="line"># If the mirrorlist= does not work for you, as a fall back you can try the</span><br><span class="line"># remarked out baseurl= line instead.</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">[base]</span><br><span class="line">name=CentOS-$releasever - Base</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/os/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#released updates</span><br><span class="line">[updates]</span><br><span class="line">name=CentOS-$releasever - Updates</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/updates/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#additional packages that may be useful</span><br><span class="line">[extras]</span><br><span class="line">name=CentOS-$releasever - Extras</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/extras/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">#additional packages that extend functionality of existing packages</span><br><span class="line">[centosplus]</span><br><span class="line">name=CentOS-$releasever - Plus</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/centosplus/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></table></figure>
-<p>其他没有替换，接下来执行:</p>
-<p><code>sudo yum clean all &amp;&amp; sudo yum makecache sudo yum update</code> 速度很快。</p>
-<h2 id="安装Docker-Docker-compose"><a href="#安装Docker-Docker-compose" class="headerlink" title="安装Docker Docker-compose"></a>安装Docker Docker-compose</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"></span><br><span class="line">$ sudo yum-config-manager --add-repo https://download.docker.com/Linux/centos/docker-cce.repo</span><br><span class="line"></span><br><span class="line">$ sudo yum update</span><br><span class="line"></span><br><span class="line">$ sudo yum install docker-ce</span><br><span class="line"></span><br><span class="line">$ sudo usermod -aG docker <span class="variable">$&#123;USER_NAME&#125;</span> <span class="comment"># 加入docker到用户组</span></span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker <span class="comment"># 添加docker到开机启动</span></span><br><span class="line"></span><br><span class="line">$ sudo docker run hello-world <span class="comment"># 验证安装</span></span><br></pre></td></tr></table></figure>
-<p>安装docker-compose:</p>
-<p><code>$ sudo yum install -y docker-compose</code></p>
-<h2 id="服务适配aarch64"><a href="#服务适配aarch64" class="headerlink" title="服务适配aarch64"></a>服务适配aarch64</h2><p>此时启动服务会报: <code>exec user process caused &quot;exec format error&quot;</code></p>
-<p>说明该服务镜像不支持aarch64架构。</p>
-<p>根据<a href="https://www.docker.com/blog/multi-arch-images/" target="_blank" rel="noopener">文章2</a>, 成功打了对应的包:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker 版本大于2.0以上</span></span><br><span class="line"><span class="comment">#勾选 Preference - Command Line - Enable experimental features</span></span><br><span class="line"></span><br><span class="line">$ docker buildx ls</span><br><span class="line">NAME/NODE    DRIVER/ENDPOINT             STATUS  PLATFORMS</span><br><span class="line">default      docker</span><br><span class="line">  default    default                     running linux/amd64, linux/arm64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们当前使用的是一个默认builder，我们创建一个新的builder 替换老的builder</span></span><br><span class="line">$ docker buildx create --name mybuilder</span><br><span class="line">mybuilder</span><br><span class="line"><span class="comment"># 使用该builder</span></span><br><span class="line">$ docker buildx use mybuilder</span><br><span class="line"><span class="comment"># --bootstrap 不是必须的，他形容了立即开启编译容器</span></span><br><span class="line">$ docker buildx inspect --bootstrap</span><br></pre></td></tr></table></figure>
-<p>此时根据之前的服务，再打一个arm64 的包:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建平台为arm64架构镜像并推送到package</span></span><br><span class="line">$ docker buildx build --platform linux/arm64 -t akerdi/onlyone:arm64-20210112 --push registry.akerdi.com/akerdi/onlyone .</span><br><span class="line"><span class="comment"># 查看镜像信息</span></span><br><span class="line">$ docker buildx imagetools inspect akerdi/onlyone:arm64-20210112</span><br><span class="line"><span class="comment"># 下载该镜像并运行</span></span><br><span class="line">$ docker run -p 7200:7200 --rm registry.akerdi.com/akerdi/onlyone:arm64-20210112</span><br><span class="line"><span class="comment"># 将该镜像保存</span></span><br><span class="line">$ docker save -o onlyone.tar registry.akerdi.com/akerdi/onlyone:arm64-20210112</span><br></pre></td></tr></table></figure>
-<p>我们也可以运行并查看是否是对应平台包:</p>
-<p><code>docker run --rm registry.akerdi.com/akerdi/onlyone:arm64-20210112 uname -m</code></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20210129-hackintosh" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/01/29/20210129-hackintosh/">20210129-hackintosh</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/01/29/20210129-hackintosh/" class="article-date">
-	  <time datetime="2021-01-29T08:23:42.000Z" itemprop="datePublished">January 29, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="升级Hackintosh"><a href="#升级Hackintosh" class="headerlink" title="升级Hackintosh"></a>升级Hackintosh</h1><p>跟着之前的教程 <a href="/2019/04/25/2019-3-25lesson">制作MacOS 启动盘</a>，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。</p>
-<p>如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。<br>A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300.</p>
-<p>还有一种选择是NVIDIA N卡，但是其支持的MacOS 系统最高支持到10.13.6.</p>
-<p>今天我们就来根据N卡来匹配硬件。</p>
-<p>当前支持以下系列配置版本，使用GTX1050ti，系统版本10.13.6(17G65)</p>
-<ol>
-<li>技嘉Z370 + i7-8700 + GTX1050ti</li>
-</ol>
-<p>新出的Z490同样满足</p>
-<p>配置清单:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">英特尔（Intel）酷睿四核I7-8700 CPU 技嘉Z370套装 |1 3249</span><br><span class="line"> https://item.jd.com/17208129343.html</span><br><span class="line">2. 内存</span><br><span class="line">金士顿(Kingston)骇客神条 Fury系列 DDR4 2400 8G 台式机内存 |2 399</span><br><span class="line">http://item.jd.com/2121097.html</span><br><span class="line">4 电源 美商海盗船（USCorsair）额定550W VS550 电源 |1 299</span><br><span class="line"> https://item.jd.com/840370.html</span><br><span class="line">5 机箱 酷冷至尊(CoolerMaster)毁灭者经典U3升级版 |1 229</span><br><span class="line">http://item.jd.com/123814.html</span><br><span class="line">6 键鼠 雷柏（Rapoo）V500械键盘，V19鼠标 |1 99+58</span><br><span class="line">http://item.jd.com/3086129.html，https://item.jd.com/8963957.html</span><br><span class="line">7 三星500G SSD M.2 接口固态硬盘 |1 579</span><br><span class="line">https://item.jd.com/7234518.html</span><br><span class="line">8 SSD 闪迪(SanDisk) 至尊高速系列-3D版 250G SATA6Gb/s接口 |1 349</span><br><span class="line">http://item.jd.com/1185238.html</span><br><span class="line">9 显示器 戴尔（DELL） SE2416H 23.8英寸微边框 HDMI高清接口 广视角IPS |2 849</span><br><span class="line">http://item.jd.com/1769180.html</span><br><span class="line">10 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br></pre></td></tr></table></figure>
-<p><a href="https://pan.baidu.com/s/1GNvsMwzTELwmJchOpv6slA" target="_blank" rel="noopener">EFI 提取码: 22ux</a></p>
-<ol start="2">
-<li>配置二: ASUS B365-PLUS + i7-8700 + GTX1050ti</li>
-</ol>
-<p>配置清单:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">ASUS PRIME B365-PLUS (300 Series 芯片组 Family(B365)) + I7-8700</span><br><span class="line">2. 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br><span class="line">3. 。。。其他配件和上边可以类似，</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>华硕 PRIME Z270-A (Z270芯片组) + I7-7700k + GTX1050ti</li>
-</ol>
-<p>配置清单:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">ASUA PRIME Z270-A (Z270芯片组) + I7-7700k</span><br><span class="line">2. 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br><span class="line">3. 。。。其他配件和上边可以类似，</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果使用SATA硬盘，出现安装系统选择硬盘界面，没有识别SATA硬盘，需要再Bios - Adcanced - PCH Storage Configuration - SATA Mode Selection 中选择AHXI，否则无法识别SATA 硬盘</p>
-</blockquote>
-<p>当前EFI 支持集成显卡，但是只有HDMI口可用，也就是只有一个显示屏。多个显示屏，需要使用独立显卡+NVIDIA驱动。</p>
-<p><a href="https://pan.baidu.com/s/1L5Kyjpq8fdYj6wAwU4vKLg" target="_blank" rel="noopener">EFI 提取码: iyq9</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20210129lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/01/29/20210129lesson/">20210129lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/01/29/20210129lesson/" class="article-date">
-	  <time datetime="2021-01-29T08:20:14.000Z" itemprop="datePublished">January 29, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="取综各产品研发分支开发"><a href="#取综各产品研发分支开发" class="headerlink" title="取综各产品研发分支开发"></a>取综各产品研发分支开发</h1><p>弘连各产品研发开发采用Git仓库管理。版本号取名规范等都是统一形式:</p>
-<p>${主版本号}.${子版本号}.${修正版本号}.${编译版本号}<br><code>Major_Version_Number.Minor_Version_Number.Revision_Number.Build_Number</code> 示例： <code>1.2.1.xxx 4.6.7.xxx 3.5.4.xxx</code></p>
-<p>现阶段分支管理没有好的秩序，各版本号发布随意，未有统一约定：</p>
-<ul>
-<li>完成某个新功能未设置tag，没有更清晰描述功能节点；</li>
-<li>开发某个新功能时，直接在原分支改，尔后才切换；</li>
-<li>当前分支修复某个功能的bug时，没有pick到原功能集(原功能有bug，只能升级，没有修复的更新版本)；</li>
-<li>dev分支管理松散</li>
-</ul>
-<h2 id="版本号约定"><a href="#版本号约定" class="headerlink" title="版本号约定"></a>版本号约定</h2><blockquote>
-<p><code>Major</code>: 具有相同名称但不同主版本号的程序集不可互换。例如，这适用于对产品的大量重写，这些重写使得无法实现向后兼容性。 \<br><code>Minor</code>: 如果两个程序集的名称和主版本号相同，而次版本号不同，这指示显著增强，但照顾到了向后兼容性。例如，这适用于产品的修正版或完全向后兼容的新版本。 \<br><code>Revision</code>: 名称、主版本号和次版本号都相同但修订号不同的程序集应是完全可互换的。这适用于修复以前发布的程序集中的安全漏洞。 \<br><code>Build</code>: 内部版本号的不同表示对相同源所作的重新编译。这适合于更改处理器、平台或编译器的情况。</p>
-</blockquote>
-<h2 id="版本号规则"><a href="#版本号规则" class="headerlink" title="版本号规则"></a>版本号规则</h2><blockquote>
-<p><code>主版本号修改</code>: 当功能模块有较大的变动，比如增加多个模块或者整体架构发生变化。此版本号由项目决定是否修改。 \<br><code>子版本号修改</code>: 当功能有一定的增加或变化，比如增加了对权限控制、增加自定义视图等功能。此版本号由项目决定是否修改。 \<br><code>阶段版本号修改</code>: 一般是 Bug 修复或是一些小的需求小的变动，要经常发布修订版，时间间隔不限，修复一个严重的bug即可发布一个修订版。此版本号由项目经理决定是否修改。 \<br><code>Build</code>: 用于记录和区分每次的[编译/代码录入]递增。</p>
-</blockquote>
-<h2 id="正确步骤"><a href="#正确步骤" class="headerlink" title="正确步骤"></a>正确步骤</h2><ul>
-<li><code>$git init</code> // 项目开始</li>
-<li><code>$git checkout -b dev</code> // 项目切到开发分支</li>
-<li>// dev分支，同组成员有pull，没有push权限；项目经理有pull/push 权限</li>
-<li>// 项目开始，fork项目，或者书写组内共识、开发文档等；</li>
-<li><code>$touch README.md &amp;&amp; git add . &amp;&amp; git commit -m &quot;doc 新增README&quot;</code> // commit 开头指明目的: fix feat chore doc style test refactor</li>
-<li><code>$git checkout -b dev-1.0</code> // 项目开始1.0（此时组内讨论开发迭代会）</li>
-<li><code>$git checkout -b dev-1.0.x</code> // 项目开始新功能开发，不断增加Revision/Build号: dev-1.0.x.xxx</li>
-<li><code>$git merge/rebase dev-1.0.x dev-1.0</code> // 合并开发分支至功能版本节点</li>
-<li><code>$git merge/rebase dev-1.0 dev</code> // 合并功能节点至开发节点</li>
-<li>// 开发下一个迭代</li>
-<li><code>$git checkout -b dev-1.1</code> // 项目开始1.1（此时组内讨论开发迭代会）</li>
-<li><code>$git checkout -b dev-1.1.0</code> // 项目开发新功能，不断增加build号: dev-1.1.x.xxx</li>
-<li><code>$echo &quot;new text&quot; &gt;&gt; new.txt</code> // 修改编辑</li>
-<li><code>$git add . &amp;&amp; git commit -m &quot;feat 修改new&quot;</code> // 新功能分支改了dev-1.0 的bug, 这时需要同步该修复</li>
-<li><code>$git checkout dev-1.0.x &amp;&amp; git cherry-pick ${修改commit}</code> // 使用cherry-pick 将修改commit 拿回到dev-1.0.x中，测试成功后，合并回dev-1.0中</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -929,68 +942,68 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
+              <span>July 6, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
+              <span>July 6, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-10lesson/">2021-6-10lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a></h6>
               <span>May 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a></h6>
-              <span>May 17, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/05/16/2021-5-16lesson/">2021-5-16lesson</a></h6>
-              <span>May 16, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/03/11/2021-3-11lesson/">2021-3-11lesson</a></h6>
-              <span>March 11, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a></h6>
-              <span>February 18, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a></h6>
-              <span>February 18, 2021</span>
             </div>
 
           </li>
@@ -1007,7 +1020,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1017,7 +1030,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -1027,7 +1040,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
