@@ -301,7 +301,10 @@ $match (cc:CreditCard) with collect(cc) as arr foreach(c in arr | set c.type = &
 $match (cc:CreditCard) return cc.Id as Id, cc.name as name, cc.number as number order by cc.Id \
 union \
 match (dc:DebitCard) return dc.Id as Id, dc.name as name, dc.number as number order by dc.Id
-</code></pre><p><a href="https://www.huaweicloud.com/articles/53b4cf274b3463273fd5b03d845163f9.html" target="_blank" rel="noopener">参考1</a><br><a href="https://blog.csdn.net/chengyuqiang/article/details/102563408" target="_blank" rel="noopener">merge参考</a><br><a href="https://www.w3cschool.cn/neo4j/neo4j_cql_union.html" target="_blank" rel="noopener">union参考</a></p>
+</code></pre><h3 id="ON-MERGE-CREATE-更新或者新建"><a href="#ON-MERGE-CREATE-更新或者新建" class="headerlink" title="ON MERGE / CREATE 更新或者新建"></a>ON MERGE / CREATE 更新或者新建</h3><pre><code>$MERGE (p:Person {name: &quot;Peter&quot;}) \
+ON MATCH SET peter += { hungry: true, position: &quot;GAO TOU&quot;}
+ON CREATE SET peter += {last: &quot;aker&quot;}
+</code></pre><p><a href="https://www.huaweicloud.com/articles/53b4cf274b3463273fd5b03d845163f9.html" target="_blank" rel="noopener">参考1</a><br><a href="https://blog.csdn.net/chengyuqiang/article/details/102563408" target="_blank" rel="noopener">merge参考</a><br><a href="https://www.w3cschool.cn/neo4j/neo4j_cql_union.html" target="_blank" rel="noopener">union参考</a><br><a href="https://stackoverflow.com/a/25179644/6677202" target="_blank" rel="noopener">on merge/create参考</a></p>
 
       
     </div>
