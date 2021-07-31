@@ -165,6 +165,85 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-8-8lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/08/08/2019-8-8lesson/">2019-8-8lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/08/08/2019-8-8lesson/" class="article-date">
+	  <time datetime="2019-08-08T04:06:31.000Z" itemprop="datePublished">August 8, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><p>如何快速进步，突破学习新的知识、技术。</p>
+<p>我的方法，一句话概括：在自己规划的道路上，不怕试错，勇敢试错。出问题了，多方思考，解决问题。</p>
+<p>下面是废话：blablabla</p>
+<p>大学时期，我和我的几个小伙伴不知道学什么、方向不知道会走向何处。我们都是穷人过来，肯定不会说真的堕落。但是就因为穷人，眼界比他人要小一点，导致有时我们能做的, 能接触的就更局限了。</p>
+<p>我和我同学大一大二上课还是会稍微努力，不过课后没有进展，导致挂科无数。下课一起打游戏，当时LOL 还不风靡，玩的CF，下午打篮球。那时候篮球能力是真强，不像现在肚子都是肉。后来大二就更是会翘课进网吧，因为在课上我们都在睡觉，真的在睡觉。</p>
+<p>为什么，因为大学里面，老师教你的，都是如果拿着锤子，找钉子。</p>
+<p>整天拿着锤子，反复推敲，仔细研磨，整个大学四年，我发现我们还没动手过去找一个真实的钉子。也许你会说，那些题目，那些作业，不就是你的钉子么？我觉得年轻的人们，都会当局者迷。也许我们现在看来，那些都是非常有用，在现在都是必不可少，甚至悔不当初。但是当局者迷，每人境遇都是不同，我当初就觉得，未来我不一定用得上，数学题算来算去，最后你填写答案:1，正确率基本都是70%。为什么我为了70%能填对答案的问题，需要绕来绕去，反复抚摸锤子，恨不得拿舌头狂舔。</p>
+<p>四年，老师们一上课就是教研，但是不会告诉今年这堂课在实际场景，比如xxx会碰到。ok，很难想象？那我们来真实模拟这个钉子！也许这次上课导致上课的拖延、甚至为了模拟这个钉子花了4节课、6节课。大家跟着老师一路走来，经验、处事、遇到问题时的攻坚，到最终见到钉子，此时resolve。</p>
+<p>我觉得我爱上这种遇到苦难，解决苦难的过程。如现在种种这般。然后学校不同意，老师不愿意，教学任务啊老铁。学生只能学到皮毛，大学生啊！！！</p>
+<p>当然现在不是说以前怎么怎么的，什么我现在这么菜要怪老师，什么要怪体制，没有没有。吐槽下而已。</p>
+<p>above，我都想说明，钉子和锤子的关系、的前后顺序。</p>
+<p>曾经我学到一个新技术，想找一个地方去实践。我找我前CTO。他告诉这个技术人要理清的步骤：先有钉子，然后找到锤子解决这钉子。</p>
+<p>最近我多次使用docker 之后，就觉得好用是好用，但是没有管理，觉得不自在。宕机了？断网了？这个机子断了？企业服务断了？</p>
+<p>如果我未来会要扛起一面大旗，我就需前提做好准备，做好狂风暴雨的突袭！所以我考虑了下docker-swarm，但是感觉那里不对，不是很密西。</p>
+<p>我搞了搞k8s, 然后我的两只小鸡都全部瘫了。在翻看相关文档，提到k3s。是针对我的小鸡仔们的。</p>
+<p>我搞了k3s，但是遇到问题：我有个非容器服务，通过nginx 转子域名的443 端口。但是k3s 装上去后，nginx 服务端口立马全部失效了。</p>
+<p>怎么描述：nginx 的80监听端口被k3s 强行取走。虽然netstat -lnp |grep 80 还是nginx 的，但access.log 没有反应。我不知道怎么应对。</p>
+<p>对于这个我想要两种方法：</p>
+<ol>
+<li><p>k3s 的服务，我使用编译的nginx 要什么端口，nginx 我转给你，都转给你，但是你别抢80服务；</p>
+</li>
+<li><p>k3s 你把能暴露端口的方法告知我一下，不然我搞不了本机端口啊。</p>
+</li>
+</ol>
+<p>当时我不知道Ingress，毕竟强行学习的嘛。试了好多种方案不行，没来得及看相关文章。当时想问伟哥，不过他太忙，我就问问一个同事，他以前做运维的(他看起来比我岁数小的样子，原来比我大，孩子都6岁啦，哈哈，以后可以多交流)。他给我一些帮助，也让我多看书，把里面的原理整清楚，以后遇到问题、排查也懂。不过我觉得，我当前只是想完成集群的搭建、应该解决集群搭建问题，而不是找一大本书完全明白。</p>
+<p>这就像拿一把超级大锤(我看完书了，不就等于超级大锤), 完成我短期要求：搭建起起来，这个小钉子需求。从成本、效率上看都是过犹之。</p>
+<p>我昨晚想着，通篇看书这事，先拖后吧。等之后有人懂了，可以乘机偷学。</p>
+<p>那么先完成docker-swarm。但是同样出现一些小坑，刚接触，没办法立即查出来，解出来。</p>
+<p>于是我今天早上东问问西问问，得知k3s 为了完成内部pod 端口upstream 要求，集成了nginx。同时，开开关关nginx 带来损耗，此时Ingress 作为自动编排规则。我试了下，哎，虽然外部VVVVVV 要导出规则，还没整上(估计还是Ingress 有关操作)，那么先完成其他需求了再说。</p>
+<p>至此，钉子(docker 服务集群化需求)一经出现，我找了相应的锤子(最终找到k3s)解决了需求。</p>
+<p>钉子的产生，还是源于自身大胆的去尝试。</p>
+<p>这次的钉子需要虚拟机或者vps，该vps 还是能尽情折腾，坏了就坏了。</p>
+<p>综上，尽情的产生钉子，要不怕难，然后使用身边的资源，多方思考找到锤子解决。</p>
+<p>这兴趣产生的难，在解决后确实让我很开怀。</p>
+<h1 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h1><p>得道者多助，拾到者捐助。</p>
+<p>在新的环境怕被人说能力不强，是饭桶，于是我就努力喝水，这样他们最多称我为水桶，而不是饭桶了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-8-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -786,85 +865,6 @@ export PATH=$NGINX_HOME/sbin:$PATH
     
 
   
-    <article id="post-2019-6-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/11/2019-6-11lesson/">2019-6-11lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/06/11/2019-6-11lesson/" class="article-date">
-	  <time datetime="2019-06-11T03:56:43.000Z" itemprop="datePublished">June 11, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="记一次上线应用遇到的问题"><a href="#记一次上线应用遇到的问题" class="headerlink" title="记一次上线应用遇到的问题"></a><strong>记一次上线应用遇到的问题</strong></h1><p>做更新服务器代码优化，上线的一次经历</p>
-<p>表现：使用multy 解析data 文件，文件下来了，但是服务器总是没拿到。</p>
-<p>前几个版本都是完全没问题的。我线下测试环境完全没问题，这个是最奇葩的。</p>
-<p>然后伟哥在k8s那里切换可运行的包；我对比对比之前版本代码，没发现头绪，就想着去docker 容器内部搞搞。然后一直没头绪，然后脑残了一把：rm -rf  packages/</p>
-<p>本来我是想packages/uploads/下的，因为packages 目录不熟悉，我跑到packages/ 这里来运行sh.</p>
-<p>运行完那一瞬间，你懂的，我突然又反应过来，我的天，之前填的测试数据全部没了。我擦咧。</p>
-<p>突然脑残的可以。</p>
-<p>更脑残的是，之前更新服务一直报上传上去的文件找不到，删了之后又可以。你说，这是不是让人更摸不到点了。</p>
-<p>然后伟哥找到两个版本不同差异，一个能使用，一个不行。然后就看了里面的代码不同点。</p>
-<p>最后发现我在拆分一个方法成为3个中间件时，第一个中间件取值有误，没发现。</p>
-<p>也就是我的代码是有问题的(js 就是这毛病)。但是我先下服务器是正常的、删了测试服务器/packages 下也正常了。</p>
-<p>郁结，郁结。</p>
-<h1 id="最近做公司功能时总是会出现bug感悟"><a href="#最近做公司功能时总是会出现bug感悟" class="headerlink" title="最近做公司功能时总是会出现bug感悟"></a><strong>最近做公司功能时总是会出现bug感悟</strong></h1><p>由于上周、最近有点忙，冲刺科目三、完成自己服务的基础设施、尚未完全适应公司业务、同时负责好多个端的前后端，等等，写完了功能，没有去好好测试，导致做的产品总是有这个那个小问题。</p>
-<p>这次做完后，不急着上传，在可能涉及到的功能区点点试试(还没适应单元测试),于是就这样还发现一些bug。</p>
-<p>有些原因是，修改bugs 改动了其他代码，导致波及到其他功能区，引用区。</p>
-<p>在没有进行完整的单元测试情况下，多点点还是有必要的，相信自己总是会出错的。</p>
-<p>接下来很重要的，就是多完成功能测试，毕竟面向的是客户(我这里还是没有测试人员的)，不然出了问题就小麻烦了，哈哈</p>
-<p>提几点代码上的建议：</p>
-<ol>
-<li><p>命名规范一定一定要统一，是驼峰就一定要保持，是下划线就一定要保持</p>
-</li>
-<li><p>命名逻辑一定要符合</p>
-</li>
-</ol>
-<h2 id="最近感触良多，工作生活体悟良多"><a href="#最近感触良多，工作生活体悟良多" class="headerlink" title="最近感触良多，工作生活体悟良多"></a><strong>最近感触良多，工作生活体悟良多</strong></h2><p>2019/6/3</p>
-<p>公司要更新以前的Chrome 拓展JS编辑器。我体验了从开发、初次打包。然后继续开发完成后，到最后完整build 的流程。</p>
-<p>最终使用Gulp 一次构建完毕应用。</p>
-<p>这次体验极佳，虽然中间很多次很多次的碰见南墙，但是没有回头路。</p>
-<p>本来听老大说要招一个人来做，不过觉得让我试试会更好，我当然义不容辞，好好给他整好来。</p>
-<p>当前使用ace 库制作用户输入简易脚本编辑器，完成JavaScript、Iced 输入代码，高亮、切换主题，然后点击运行得出结果。</p>
-<p>当前仍然继续维护。。。</p>
-<p>这几天似乎临近6.4.好多好多的伟皮恩 被干掉，我们公司三个公用的，全部报废。我手上的唯一一个挂了。然后不服气的我充值再买一个ip，想成为RMB 玩家，然后还是敌不过。两次被封，实属让我心力憔悴。第二次被封情景：我为了查资料，就开了一会，就我一个人用，用资料啊。查知识，学知识如果是犯法，那中国活该一万年都是发展中国家，把柄永远捏在美国手里。</p>
-<p>然后今天努力了一天，采用了别人牛逼的思路。让我的服务器死而复生。待我细细道来。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脑残/">脑残</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -993,6 +993,18 @@ export PATH=$NGINX_HOME/sbin:$PATH
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
+              <span>July 31, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
               <span>July 6, 2021</span>
             </div>
@@ -1047,18 +1059,6 @@ export PATH=$NGINX_HOME/sbin:$PATH
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a></h6>
-              <span>May 31, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1091,7 +1091,7 @@ export PATH=$NGINX_HOME/sbin:$PATH
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

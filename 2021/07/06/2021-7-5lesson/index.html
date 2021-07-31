@@ -31,7 +31,7 @@
 <meta property="og:site_name" content="aKer">
 <meta property="og:description" content="C++纯虚继承多态的问题创建 worker.h123456789101112#pragma once#include &amp;lt;iostream&amp;gt;#include &amp;lt;string&amp;gt;using namespace std;class Worker &amp;#123;public:    virtual void showInfo() = 0;    virtual string getDe">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-07-06T12:12:05.519Z">
+<meta property="og:updated_time" content="2021-07-31T15:24:20.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2021-7-5lesson">
 <meta name="twitter:description" content="C++纯虚继承多态的问题创建 worker.h123456789101112#pragma once#include &amp;lt;iostream&amp;gt;#include &amp;lt;string&amp;gt;using namespace std;class Worker &amp;#123;public:    virtual void showInfo() = 0;    virtual string getDe">
@@ -214,6 +214,13 @@ var themeMenus = {};
 <li>提供自己的delete 方法，自己释放自己:</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">delete</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> Employee::release() &#123;</span><br><span class="line">    <span class="keyword">delete</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">worker.release();</span><br></pre></td></tr></table></figure>
+<h2 id="cpp引用注意点"><a href="#cpp引用注意点" class="headerlink" title="cpp引用注意点"></a>cpp引用注意点</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相当于将aa指针也指向了a 的地址: &amp;a</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">int</span> * <span class="keyword">const</span> aa)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"result: "</span> &lt;&lt; *aa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// cpp 的引用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">int</span> &amp;aa)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"result: "</span> &lt;&lt; aa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">	func1(&amp;a);</span><br><span class="line">	func2(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cpp深拷贝-浅拷贝"><a href="#cpp深拷贝-浅拷贝" class="headerlink" title="cpp深拷贝/浅拷贝"></a>cpp深拷贝/浅拷贝</h2><p>浅拷贝: 简单的赋值拷贝操作<br>深拷贝: 在堆区重新申请空间，进行拷贝操作</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Person() &#123;&#125;</span><br><span class="line">	Person(<span class="keyword">const</span> Person &amp;p) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"拷贝构造函数!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		m_age = p.m_age;</span><br><span class="line">		m_height = <span class="keyword">new</span> <span class="keyword">int</span>(*p.m_height);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">int</span> m_age;</span><br><span class="line">	<span class="keyword">int</span> *m_height;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Person p1;</span><br><span class="line">	<span class="function">Person <span class="title">p2</span><span class="params">(p1)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果不实现 <code>Person(const Person &amp;p)</code>那么就是浅拷贝，直接进行对象的赋值操作； 但是如果内部属性在堆区开辟，一定要提供拷贝构造函数，否则可能导致浅拷贝的重复释放堆区的问题(赋值了指针，p2-&gt;m_height 有两份指针，释放时就释放了两次!)!</p>
+</blockquote>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -271,6 +278,15 @@ var a = new Donate({
     
 <nav id="article-nav">
   
+    <a href="/2021/07/31/2021-7-31lesson/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2021-7-31lesson
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/07/06/2021-7-6lesson/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
@@ -288,7 +304,7 @@ var a = new Donate({
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#纯虚继承多态的问题"><span class="nav-number">1.1.</span> <span class="nav-text">纯虚继承多态的问题</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#纯虚继承多态的问题"><span class="nav-number">1.1.</span> <span class="nav-text">纯虚继承多态的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cpp引用注意点"><span class="nav-number">1.2.</span> <span class="nav-text">cpp引用注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cpp深拷贝-浅拷贝"><span class="nav-number">1.3.</span> <span class="nav-text">cpp深拷贝/浅拷贝</span></a></li></ol></li></ol>
     
     </div>
   </aside>

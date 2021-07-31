@@ -165,6 +165,85 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-6-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/11/2019-6-11lesson/">2019-6-11lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/11/2019-6-11lesson/" class="article-date">
+	  <time datetime="2019-06-11T03:56:43.000Z" itemprop="datePublished">June 11, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记一次上线应用遇到的问题"><a href="#记一次上线应用遇到的问题" class="headerlink" title="记一次上线应用遇到的问题"></a><strong>记一次上线应用遇到的问题</strong></h1><p>做更新服务器代码优化，上线的一次经历</p>
+<p>表现：使用multy 解析data 文件，文件下来了，但是服务器总是没拿到。</p>
+<p>前几个版本都是完全没问题的。我线下测试环境完全没问题，这个是最奇葩的。</p>
+<p>然后伟哥在k8s那里切换可运行的包；我对比对比之前版本代码，没发现头绪，就想着去docker 容器内部搞搞。然后一直没头绪，然后脑残了一把：rm -rf  packages/</p>
+<p>本来我是想packages/uploads/下的，因为packages 目录不熟悉，我跑到packages/ 这里来运行sh.</p>
+<p>运行完那一瞬间，你懂的，我突然又反应过来，我的天，之前填的测试数据全部没了。我擦咧。</p>
+<p>突然脑残的可以。</p>
+<p>更脑残的是，之前更新服务一直报上传上去的文件找不到，删了之后又可以。你说，这是不是让人更摸不到点了。</p>
+<p>然后伟哥找到两个版本不同差异，一个能使用，一个不行。然后就看了里面的代码不同点。</p>
+<p>最后发现我在拆分一个方法成为3个中间件时，第一个中间件取值有误，没发现。</p>
+<p>也就是我的代码是有问题的(js 就是这毛病)。但是我先下服务器是正常的、删了测试服务器/packages 下也正常了。</p>
+<p>郁结，郁结。</p>
+<h1 id="最近做公司功能时总是会出现bug感悟"><a href="#最近做公司功能时总是会出现bug感悟" class="headerlink" title="最近做公司功能时总是会出现bug感悟"></a><strong>最近做公司功能时总是会出现bug感悟</strong></h1><p>由于上周、最近有点忙，冲刺科目三、完成自己服务的基础设施、尚未完全适应公司业务、同时负责好多个端的前后端，等等，写完了功能，没有去好好测试，导致做的产品总是有这个那个小问题。</p>
+<p>这次做完后，不急着上传，在可能涉及到的功能区点点试试(还没适应单元测试),于是就这样还发现一些bug。</p>
+<p>有些原因是，修改bugs 改动了其他代码，导致波及到其他功能区，引用区。</p>
+<p>在没有进行完整的单元测试情况下，多点点还是有必要的，相信自己总是会出错的。</p>
+<p>接下来很重要的，就是多完成功能测试，毕竟面向的是客户(我这里还是没有测试人员的)，不然出了问题就小麻烦了，哈哈</p>
+<p>提几点代码上的建议：</p>
+<ol>
+<li><p>命名规范一定一定要统一，是驼峰就一定要保持，是下划线就一定要保持</p>
+</li>
+<li><p>命名逻辑一定要符合</p>
+</li>
+</ol>
+<h2 id="最近感触良多，工作生活体悟良多"><a href="#最近感触良多，工作生活体悟良多" class="headerlink" title="最近感触良多，工作生活体悟良多"></a><strong>最近感触良多，工作生活体悟良多</strong></h2><p>2019/6/3</p>
+<p>公司要更新以前的Chrome 拓展JS编辑器。我体验了从开发、初次打包。然后继续开发完成后，到最后完整build 的流程。</p>
+<p>最终使用Gulp 一次构建完毕应用。</p>
+<p>这次体验极佳，虽然中间很多次很多次的碰见南墙，但是没有回头路。</p>
+<p>本来听老大说要招一个人来做，不过觉得让我试试会更好，我当然义不容辞，好好给他整好来。</p>
+<p>当前使用ace 库制作用户输入简易脚本编辑器，完成JavaScript、Iced 输入代码，高亮、切换主题，然后点击运行得出结果。</p>
+<p>当前仍然继续维护。。。</p>
+<p>这几天似乎临近6.4.好多好多的伟皮恩 被干掉，我们公司三个公用的，全部报废。我手上的唯一一个挂了。然后不服气的我充值再买一个ip，想成为RMB 玩家，然后还是敌不过。两次被封，实属让我心力憔悴。第二次被封情景：我为了查资料，就开了一会，就我一个人用，用资料啊。查知识，学知识如果是犯法，那中国活该一万年都是发展中国家，把柄永远捏在美国手里。</p>
+<p>然后今天努力了一天，采用了别人牛逼的思路。让我的服务器死而复生。待我细细道来。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脑残/">脑残</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-9-6zatan" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -1089,93 +1168,6 @@ vue init webpack &lt;my-project&gt;
     
 
   
-    <article id="post-2018-12-24lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/24/2018-12-24lesson/">2018-12-24lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/24/2018-12-24lesson/" class="article-date">
-	  <time datetime="2018-12-24T12:59:02.000Z" itemprop="datePublished">December 24, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="购买了一个服务器，折腾了一天给相关环境整理了下。"><a href="#购买了一个服务器，折腾了一天给相关环境整理了下。" class="headerlink" title="购买了一个服务器，折腾了一天给相关环境整理了下。"></a>购买了一个服务器，折腾了一天给相关环境整理了下。</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OS: centos 6 x86_64 # docker 一定要64位</span><br><span class="line">服务器采用docker + koa + mongodb</span><br><span class="line">前端采用Next.js + mobx + antd 组合</span><br></pre></td></tr></table></figure>
-<h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><p>由于docker 在centos6 下只能采用1.7.1 版本，导致docker-compose 只能采用1.5.2 版本。</p>
-<p>环境要求：python2.7.12;.yml file version为1</p>
-<p><a href="CentOS6.x 安装 Docker 和 Docker Compose">参考博文</a></p>
-<p>服务器Dockerfile:</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /server</span><br><span class="line"><span class="keyword">RUN</span> npm install</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9527</span></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mongo:</span><br><span class="line">  image: &quot;mongo:3.6.9-stretch&quot;</span><br><span class="line">  volumes:</span><br><span class="line">    - ./data:/data/db</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;27017:27017&quot;</span><br><span class="line">web:</span><br><span class="line">  build: .</span><br><span class="line">  command: npm start</span><br><span class="line">  volumes:</span><br><span class="line">    - ./dist:/server/dist</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;9527:9527&quot; #我就想用这个端口</span><br><span class="line">  links:</span><br><span class="line">    - mongo</span><br></pre></td></tr></table></figure>
-<p>package.json/script:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "watch": "tsc -w -p ./src",</span><br><span class="line">    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/www.js",</span><br><span class="line">    "docker-debug": "docker-compose up",</span><br><span class="line">    "start": "node ./dist/www.js",</span><br><span class="line">    "mocha-test": "mocha -t 8000 --recursive "</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行docker 出现<code>iptables failed - No chain/target/match by that name</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -N DOCKER</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
-<ul>
-<li>mongodb 总是连不上</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1. docker-compose.yml 的links 不能缺少</span><br><span class="line">2. mongoose.connect(db_url) 的db_url 确认是docker-compose 的image 名。如我的&quot;mongo&quot;</span><br><span class="line">3. 失败重连</span><br><span class="line">const connectWithRetry = () =&gt; &#123;</span><br><span class="line">    console.log(&quot;MongoDB connection with retry&quot;);</span><br><span class="line">    mongoose.connect(db_url, options).then(() =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB is connected&quot;);</span><br><span class="line">    &#125;).catch(err =&gt; &#123;</span><br><span class="line">        console.log(&quot;MongoDB connection unsuccessful, retry after 5 seconds.&quot;);</span><br><span class="line">        setTimeout(() =&gt; connectWithRetry(), 5000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">connectWithRetry();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>服务器在vscode debug</li>
-</ul>
-<p>参考vscode 原文<a href="https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript" target="_blank" rel="noopener">我是原文</a></p>
-<h1 id="Nextjs-配置"><a href="#Nextjs-配置" class="headerlink" title="Nextjs 配置"></a>Nextjs 配置</h1><p>接下来是nextjs 推送记录</p>
-<ol>
-<li>nextjs 编译环境有要求：RAM 1G</li>
-</ol>
-<p>我服务器就1G，不然编译的时候会报”code 137”,提示内存不足，同时导致服务器mongodb 一直弹提示<code>centos mongodb [ftdc] serverStatus was very slow: { after basic: 163, after asserts:</code>。</p>
-<p>解决办法是采用开发机器<code>yarn build</code> 后，将<strong>.next</strong> 文件夹git commit ，然后同步过来。</p>
-<ol start="2">
-<li>nextjs 使用pm2 start:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#https://github.com/zeit/next.js/issues/109</span><br><span class="line"># for development</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- run dev</span><br><span class="line"></span><br><span class="line"># for production</span><br><span class="line">npm run build</span><br><span class="line">pm2 start npm --name &quot;next&quot; -- start</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>nextjs 需要在域名根目录运行， 否则出现static 静态路由找不到。其他route 也会找不到的情况。</li>
-</ol>
-<p>nginx 配置如:</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> www.lsgood.top lsgood.top;</span><br><span class="line">    <span class="attribute">root</span> /var/www;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    <span class="attribute">location</span> ~^/facicon\.ico$ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:9005;</span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">'upgrade'</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_cache_bypass</span> <span class="variable">$http_upgrade</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> /japeneeza/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9527/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>nextjs 没有storage；同时 server side 获取不到cookie</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yarn add js-cookie cookieParser</span><br><span class="line"></span><br><span class="line">cookie <span class="keyword">set</span> <span class="keyword">get</span> cookie (自行参考cookie 保存token)</span><br><span class="line">eg: jsCookie.<span class="keyword">set</span>("token", $&#123;token&#125;)</span><br><span class="line"></span><br><span class="line">server.js(express)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">"cookieParser"</span>)</span><br><span class="line">server.use(cookieParser())</span><br><span class="line"></span><br><span class="line">然后在pages 里的pageClass.getInitialProps = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">&#123;ctx&#125;</span>) =&gt; </span>&#123;</span><br><span class="line">    cosnt &#123; req &#125; = ctx;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"token:"</span>, req.cookies.token)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="让你知道技术的力量"><a href="#让你知道技术的力量" class="headerlink" title="让你知道技术的力量"></a>让你知道技术的力量</h1><p>A: 什么？不相信我的能力？<br>A(咆哮): 我要让你们知道 the ability of super technology!!!</p>
-<p>门外, 砰砰砰: 开门，查水表.</p>
-<p>A: 大家快点收拾东西，藏起来，丢到窗外，快点快点。。。</p>
-<p><a href="本来想做一个视频网站，想想还要各种“证”，到时先做小的视频网站，，然后转成会员卖套图吧。国内什么都做不了，什么都不能做，国家要各种屁民听话。我觉得公务员们不认为自己是中国人，他们认为自己是体制人，是平民的上司。他们凭什么呀？都是我们纳税人养着的服务人员，怎么就有这么多的特权？纳税的意义在哪里？好好活着吧。"></a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1304,6 +1296,18 @@ vue init webpack &lt;my-project&gt;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
+              <span>July 31, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
               <span>July 6, 2021</span>
             </div>
@@ -1358,18 +1362,6 @@ vue init webpack &lt;my-project&gt;
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a></h6>
-              <span>May 31, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1402,7 +1394,7 @@ vue init webpack &lt;my-project&gt;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
