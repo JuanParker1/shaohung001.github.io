@@ -165,6 +165,201 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2020-3-12lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/03/20/2020-3-12lesson/">2020-3-12lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/03/20/2020-3-12lesson/" class="article-date">
+	  <time datetime="2020-03-20T06:59:33.000Z" itemprop="datePublished">March 20, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="华硕-GTX750-ti-NVIDIA-web-driver-黑屏问题"><a href="#华硕-GTX750-ti-NVIDIA-web-driver-黑屏问题" class="headerlink" title="华硕 GTX750/ti NVIDIA web driver 黑屏问题"></a>华硕 GTX750/ti NVIDIA web driver 黑屏问题</h1><p>这几天给丫头买了个显卡GTX750 觉得和以前一样很容易就整好了，没想到花了两个晚上加两个早晨找解决方案。</p>
+<p>首先根据<a href="https://shaohung001.github.io/2018/10/31/2018-10-31lesson/">我以前的记录 配置</a> 得到我要的web driver 是17G65 对应那个包, <a href="https://www.insanelymac.com/forum/topic/324195-nvidia-web-driver-updates-for-macos-high-sierra-update-08302018/" target="_blank" rel="noopener">下载地址</a></p>
+<p>然后跟以前一样EFI/clover/config配置，然后NVIDIA 选择<code>NVIDIA Web Driver</code> 时，系统在clover 引导后，进入了系统，但是HDMI 没有信号，屏幕黑的。</p>
+<p>系统确实进了，但是屏幕黑。我反复想和以前一样的做法，但是总是失败。直到: 在远景论坛一个帖子中看到，相同的显卡(华硕 GTX750 web driver 黑屏)，我敢肯定我有救了。</p>
+<p>我直接从HDMI换成VGA 接口，同时NVIDIA Web Driver 选择对应选项。重启后，立马就好了。鸥买嘎，开心了。</p>
+<p>还是要多看中文版的tonymac : 远景论坛</p>
+<p>同时的，这里也有提到: <a href="https://osx.cx/heipingguo-nvidia-balck-screen-fix.html" target="_blank" rel="noopener">黑苹果社区</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GTX750/">GTX750</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hackintoshell/">hackintoshell</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-3-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/03/11/2020-3-11lesson/">2020-3-11lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/03/11/2020-3-11lesson/" class="article-date">
+	  <time datetime="2020-03-11T08:55:19.000Z" itemprop="datePublished">March 11, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="最近VVVVVV-突然发现连不上"><a href="#最近VVVVVV-突然发现连不上" class="headerlink" title="最近VVVVVV 突然发现连不上"></a>最近VVVVVV 突然发现连不上</h2><p>突然发现连不上VVVVVV，正巧是丫头面试时间，可能要用到，赶紧找时间修下。</p>
+<p>这几天又正巧给丫头买了个显卡，GTX750，老是无法识别该显卡，新下的NVIDIA web driver 不小心点了上面个按钮，得,系统进不去了。</p>
+<p>想了下，给他系统全部重装好了，半夜搞到凌晨40分，好累，还没好。第二天起床赶紧搞起来。重新装了后，又不小心点了web driver 上面那个按钮，然后发现clover 界面时候到后面的option 按钮，进去后，在Graphic 取消选中 使用web driver就回去了。</p>
+<p>中午最后还是木有识别成功GTX750，先来公司吧，开电驴最快速度来到公司。</p>
+<p>解决了几个问题，在编排build 进程时，顺便搞下我的服务器吧。</p>
+<p>首先nginx 无法启动问题: <code>lsof -i :80</code></p>
+<p>发现caddy 这个程序占了？我都没发现这玩意，，算了，kill 之后就正常了。</p>
+<p>然后试了下VVVVVV 还是无法连接，说明确定是证书问题，毕竟都正常运行着嘛，过年过来3个月了，估计也要renew acme 了。</p>
+<p>不想整auto new acme，自己动手丰衣足食:</p>
+<p>先给nginx 加个server:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name wpn.domain.com;</span><br><span class="line">  root /home/wwwroot/sCalc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了保证acme 能连接到该处得到认证的文件。</p>
+<p>然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alias acme.sh=~/.acme.sh/acme.sh # 给acme.sh 做个别名</span><br><span class="line"></span><br><span class="line">acme.sh --issue -d wpn.domain.com -w /home/wwwroot/sCalc</span><br><span class="line"></span><br><span class="line">cd ~/.acme.sh/</span><br><span class="line"></span><br><span class="line">mkdir -p /sslCert</span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/VVVVVV.key --fullchain-file /sslCert/VVVVVV.crt</span><br></pre></td></tr></table></figure>
+<p>以上得到key 和crt 文件，在/sslCert 目录下。</p>
+<p><code>mv /sslCert/* /etc/VVVVVV/</code> 将2个文件放到VVVVVV 目录下，然后重启nginx 即可。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VVVVVV/">VVVVVV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acme/">acme</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-3-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/03/10/2020-3-10lesson/">2020-3-10lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/03/10/2020-3-10lesson/" class="article-date">
+	  <time datetime="2020-03-10T03:53:59.000Z" itemprop="datePublished">March 10, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="过年，最近一个月我一直看小说"><a href="#过年，最近一个月我一直看小说" class="headerlink" title="过年，最近一个月我一直看小说"></a>过年，最近一个月我一直看小说</h2><p>过年回家那天还下着小雨，又是一年回家。当时以为疫情不严重。丫头买了俩布口罩，还是一层那种。我很少戴口罩，米西米西把。俩人起早待在路口，老半天了都，就是打不到车，年年如此。</p>
+<p>心里想着，可能来年都不愿意回去了，除非自己有车。因为，有可能，真的打不到车，高铁钱浪费掉不说，还回不去。加把劲把。老半天没车，心里急，真不知道路上来来回回那些司机都是怎么预约的，贵点也行啊。然后和丫头决定去前面大路试试，走到半路，一个大叔开着很小那种三轮。</p>
+<p>我跟你说，当时我们都觉得，能出发就不错了，而且是运气超级好，刚刚十字路口也很多人等，司机大叔就把这机会留给俺们，哈哈。50走起。三轮一路冲啊，大叔冲红灯的时候那个左右观望的眼神，无情，冲啊。</p>
+<p>安全到家。</p>
+<p>这个年过得很长很长。从大年29到家，到元宵后才回上海。和阿黄玩了一个月了都。在家最大的事，就是逼着阿黄自己吃饭，不用一直追着喂，吃饭还看视频，最后饭都冷了还吃。</p>
+<p>家里啥21世纪的工具都没有，只有手机一个。为了不落下功课，顺便把socks5 协议看了，然后用纸抄写一个翻墙的源码。嗯，回到公司给他整一下。</p>
+<p>由于我把高铁车票凭证取了，之前买的回程(年年都买不到回程，就今年抢了1.31号回程，还取了凭证—还逗比的取出来了，你说是不是傻)得退票重新买之后的时间。查到永定可以退票，就骑着老爸的摩托车上了永定。</p>
+<p>中午永定吃饭的时候，因为我没有摩托车驾照，怕过年有查车，我就走一段路，看没人查车，车子就骑一小段；然后走一路看没人再骑一段，然后才来到小饭店。</p>
+<p>毕竟人不能被抓，车不能被扣，不能丢嘛，嘎嘎</p>
+<p>过年前我写了个GO 的软件: <a href="https://github.com/shaohung001/novel_terminal" target="_blank" rel="noopener">novel_terminal</a></p>
+<p>你懂的，写什么类型的东西就可能会被吸引进去。于是过年在家一直看爽文: 《斗罗大陆》，但是看到一半，失去了2刷刷完的劲头，看到一半感觉从书中获取不到灵感、感想，遂放弃。</p>
+<p>因为2.1号开始，公司都开始远程上班了，家里一无所有，所有现代化工具都没有。我去了村子电脑维修店看看能不能配出来一个，配件不齐全, 又想着配起来家里又没人用；去找认识的人借电脑？他说被什么妹夫借走了；找找家里电脑，全是灰，开了机肯定用不了。</p>
+<p>唉，算了算了，多呆了一星期，下周再不远程办公，说不定要扣工资咯，本来就低。</p>
+<p>2.7、8号时，说有个同村的也做IT 的也工作在上海，说一起同行。我说可以呀，他家人开车到龙岩，那就太好了，然后2.8号又说他们公司推迟3.10号，这次不去了。那没办法了，只能又联系蛮舅了。</p>
+<p>之前联系蛮舅知道他还没回深圳，说有那个一起去上海就跟蛮舅说不用麻烦蛮舅了。毕竟这个特殊时期。但是，然后现在还是得麻烦亲人，不然班车都不开了，请人载上龙岩，肯定500软妹币才出发。</p>
+<p>2.9号那天早上，为了响应上级号召，封锁更严厉。之前我们省道还没有检查站设立，今天开始了出乡就隔离14天。蛮舅就说去他自己娘家，我和丫头拉着行李出发去村头和蛮舅碰头。</p>
+<p>村头的桥都用大石头堵着。</p>
+<p>老妈领着阿黄送我们，还是得离开。不离开，不赚钱，怎么完成心中的理想。一路上还算顺利，直达龙岩火车站。蛮舅也回去了，还算顺利。</p>
+<p>我和丫头在车站外呆了好一会，然后拿出老妈早上做的蛋炒饭，很好吃，就是有点咸。车站外没坐的，和丫头一口一口吃着。然后站着酸，丫头又内急，进站后，两人躲在偏远的角落，怕被传染。</p>
+<p>车子临近时，做到了候车位置。还别说，配备的按摩凳，丫头那个时不时会动一动，免费享受，还挺舒服。上车时，车子座位基本是隔着坐，人不多。</p>
+<p>到了虹桥，就是扫手机短信看行程。然后各种扫二维码。到小区，登记。</p>
+<p>第二天用昨天用的口罩，下楼买一堆的吃的，还有饮用水，然后进行了长达好久好久的宅家。</p>
+<p>由于想重启小说，改了几个bug后，哎，不小心，看起来我高一时候看的一本小说：《神墓》，直到今天3.9 才看完。我是看的比较仔细的，而且一直执念般的看完了。</p>
+<p>点评下《神墓》:</p>
+<p>神墓的构造前后贯通是比较好的，全书都围绕由墓而生的主角，全书贯穿各种墓，中间主人公发展，然后到之后小六道、回到历史中时，才知道【天】这一虚拟口头被描述成实体的形象，这点厉害。然后又提到了混沌，才慢慢知道作者设定的多个天灭众生的多次灭杀行动。最后各人战上九天。前期都是写的蛮好，主人公菜逼的时候，来来回回搞，而且思路也不死，任务都有自己特色，不会死板。比如梦可儿为了结果主人公，都是绞尽奶汁付诸行动，没结果无所谓，真的绞尽x汁了。我都为她感动。</p>
+<p>该书在刻画人物方面也有独到之处，比如”欧米头发”、”一百遍啊一百遍”这样的。当然，这同时也是该书不够的地方，全书唯有这两个刻画出生动效果，但是作者没有深入使用，比如”欧米头发”，人物刻画出来了，没有了，看完之后，没有了。”只有一百遍啊一百遍”能够再次回想，内心淫荡一笑。</p>
+<p>红楼梦是我喜欢的名著，人物刻画、贯通方面是神墓要着重要点，可以借鉴借鉴。当然我作为刚读完神墓，要求不能太高。什么神墓早期写的，什么你非要拿震古烁今的四大名著来和爽文比。</p>
+<p>这不是在刚读完后，为这小说遗憾嘛。</p>
+<p>就当是爽文，有时闹书荒的时候，也想找更好更好的书不。</p>
+<p>神墓全书有不连贯的地方，我猜作者有让他人代笔，或者，当时作者构思出问题，出现了主角瞬间性格大变、思想大变的过度。比如早期主角还是努力奋斗的勤劳小伙子，在早期出现和对手突然就整起了搞笑痞子风格。那个篇章很生硬。</p>
+<p>还有就是各种大关系都和主角有关，不过这确实是爽文的特点(红楼梦也有这特点，谁人不想做宝玉啊，但红楼梦主旨、思想背景和爽文不同)，然后突然大战，突然就升级，这小子升级也忒快了吧；各种道具，还只能主角用；升级完基本就能跟对头干，不行就再加个宠物加个道具对着干，实在不行，再加个血脉、加个远古道具保命。</p>
+<p>这，爽文，理解理解。</p>
+<p>总的来说，神墓在场景(全书各种场地、场景刻画)、道具、和漂亮女人们的摩擦、打斗转换、各种绝境描绘、各种探险、前后埋疑点、主角衰及盛盛及衰、文笔、脉络都能通，值得一看，你看，2刷的我看完还推荐，very ok。</p>
+<p>plus，还是定义为爽文，不要太在意为啥主角每次都能装逼，爽完就过。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2020过年/">2020过年</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小说/">小说</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2020-3-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -824,236 +1019,11 @@ netstat -lnp | grep 22 # 查看到22 端口已经打开
     
 
   
-    <article id="post-2019-9-3obs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/03/2019-9-3obs/">2019-9-3obs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/03/2019-9-3obs/" class="article-date">
-	  <time datetime="2019-09-03T04:11:58.000Z" itemprop="datePublished">September 3, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h1><p><a href="https://obsproject.com/download" target="_blank" rel="noopener">OBS 下载</a></p>
-<p>来源处添加【媒体源】-【新建】选择好本地文件时，顺便点选【循环】(方便测试)-【确定】</p>
-<p>然后点击OBS 的【设置】-【推流】服务一栏选择【自定义】-【服务器】:rtmp://104.230.236.234/live/live 【串流秘钥】填:111(填111 为test)</p>
-<p>这里说一点，【串流秘钥】在那片教程中没有说明，也就是<em>111</em> 在之后rtmp 流或者flv 流的后面的basename 位置，最后一定要加上111，如播放rtmp://104.230.236.234/live/live/111 或者<a href="http://104.230.236.234/live/live/111.flv" target="_blank" rel="noopener">http://104.230.236.234/live/live/111.flv</a></p>
-<p>不然流推上去了，客户端就一直报错，找不到拉不到流啊。</p>
-<p>接着OBS 按下【开始推流】，那就是推送到已开启的SRS 流了。</p>
-<h4 id="SRS"><a href="#SRS" class="headerlink" title="SRS"></a>SRS</h4><p><code>docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</code></p>
-<p>用容器美滋滋。同时，<code>/dockerVolume/SRS/conf/docker.conf</code> 是本地文件映射到容器的对应文件。该文件拷贝自:<code>srs/trunk/conf/http.flv.live.conf</code></p>
-<p>这时可以在浏览器测试: <code>http://104.230.236.234:8808/live/live.flv</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">max_connections     1000;</span><br><span class="line">daemon              off;</span><br><span class="line">srs_log_tank        console;</span><br><span class="line">http_server &#123;</span><br><span class="line">    enabled         on;</span><br><span class="line">    listen          8080;</span><br><span class="line">    dir             ./objs/nginx/html;</span><br><span class="line">&#125;</span><br><span class="line">vhost __defaultVhost__ &#123;</span><br><span class="line">    http_remux &#123;</span><br><span class="line">        enabled     on;</span><br><span class="line">        mount       [vhost]/[app]/[stream].flv;</span><br><span class="line">        hstrs       on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obs/">obs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/srs/">srs</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/02/2019-9-2lesson/">2019-9-2lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/02/2019-9-2lesson/" class="article-date">
-	  <time datetime="2019-09-02T04:11:25.000Z" itemprop="datePublished">September 2, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近连续一个多月的主要工作"><a href="#最近连续一个多月的主要工作" class="headerlink" title="最近连续一个多月的主要工作"></a><strong>最近连续一个多月的主要工作</strong></h1><p>最近连续一个多月主要分为三个工作：</p>
-<ol>
-<li>工作为主，完成公司盈利产品的迭代。这不仅学，还要学好。</li>
-<li>这几个月想完成去年未完成的游戏，不过游戏有点大，不可太急躁。</li>
-<li>完成视频播放功能。</li>
-</ol>
-<p>第一个工作还是努力前行，我的试用期是6个月，这个月过后就满啦。难得接受个这么长的试用期，努力就是了。从一无所知，非常迷迷糊糊，懵懵懂懂的状态跌跌撞撞过来，期间没有太多人帮助(只有伟哥和学弟喜顺)，现在能更准确找到问题、解决问题、顺便优化代码。美滋滋。</p>
-<p>最近突然想起，我海贼王追的那么累(更得好慢)，最近我都转而潜心看文章，如三国类解说、明朝时代的解说。(明朝那么热闹，唐朝肯定也是潮起潮落。心之向往那跌宕的岁月。不过对历史的向往，也万没有身体要去感同身受的打算，那不是我这种渣逼能活着的岁月。)突然记得似乎火影忍者我还没看完，最后几集漏了，找不到网站看。</p>
-<p>前几天开始了锻炼，想想以前的光辉岁月，不甘心只是蹲在凳子上消磨。翻开看了下bilibili的爆燃视频，夜凯一jio 踢残斑，想起以前课上趴着桌子偷偷看火影。锻炼我要干，看视频我也要干的。</p>
-<p>我要做个视频网站！</p>
-<p>我平常用流量看文章等，每个月最多1G不到(测试app 等用掉的)，平常都是500M。但是我觉得5G时代早晚来临，视频、音频、图片等都会大行其道。我不觉得我用得上，但我的客户们肯定万分期待。最近我试了试nginx-rtmp-module，先品尝了下视频播放的操作。接着我用SRS 也能转播直播。</p>
-<p>同时我最近刚搞的rancher，想想，是否服务能放进去呢? 这1个多月的周末就在这其中煎熬度过。不过答案也终于找到了。</p>
-<p>答案是理解了rancher 的k8s(k3s) 的能力，以目前我的知识、能力范畴，我能很好的使用服务的编排、无限扩容能力、合理调度。</p>
-<p>那么答案就在这，SRS、VVVVVV等都是服务功能。VVVVVV 本来就是单个机器代理，还要怎么调度？SRS要调度，其本身已经支持(go-sharp)。<br>也就是说，我之前就是在钻牛角尖。不过钻的作用是，让我深切快速的理解了k8s(k3s) 的作用是什么，不然我要看好久的专业书。</p>
-<p>不在当前规划上的知识，先不花太多精力。能动手就不看那么细致了。</p>
-<p>周末突然的领悟自己确实在大钻特钻牛角尖。</p>
-<p>现在说说我的环境和做法。</p>
-<p>大致跟着这篇教程下来的:<a href="https://juejin.im/post/5ad7ce3ff265da505e41ff03" target="_blank" rel="noopener">https://juejin.im/post/5ad7ce3ff265da505e41ff03</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: CentOS7 x86_64</span><br><span class="line">SRS: docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</span><br><span class="line">客户端-推流端: OBS</span><br><span class="line">客户端-播放端: VLC / 教程里面的live demo</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-9-1make-wordTemplate" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/01/2019-9-1make-wordTemplate/">2019-9-1make_wordTemplate</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/01/2019-9-1make-wordTemplate/" class="article-date">
-	  <time datetime="2019-09-01T04:08:05.000Z" itemprop="datePublished">September 1, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Microsoft-word-的document-xml-模板生成word-template-docx-过程"><a href="#Microsoft-word-的document-xml-模板生成word-template-docx-过程" class="headerlink" title="Microsoft word 的document.xml 模板生成word-template.docx 过程"></a><strong>Microsoft word 的document.xml 模板生成word-template.docx 过程</strong></h1><p>需求：生成一个模板word-template.docx ，在nodejs 中匹配对应的模板code，最终生成需求.docx</p>
-<p>工具：office word、code IDE。</p>
-<ol>
-<li>首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以<code>____</code>代替之。作用是等会生成最终模板的地方，很容易找到。</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
-<ol start="2">
-<li><p>将word.docx 解压成文件夹template</p>
-<p> mac/linux$unzip -o word.docx -d template</p>
-<p> windows$”windows unzip 解决工具路径” -o “word.docx 路径” -d “template 路径”</p>
-</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
-<ol start="3">
-<li>template 目录大致介绍</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate3.jpg" alt="template 目录"></p>
-<p>重要的目录在框中。</p>
-<pre><code>[Content_Types.xml] 是用来描述内部使用的格式说明。
-
-word/document.xml 核心文件，修改的描述就在这。
-
-word/_rels/document.xml.rels 是描述资源文件的relationShip
-
-word/media/ 用来放图片
-</code></pre><p><strong>接下来就是修改成我们的最终模板</strong></p>
-<ol start="4">
-<li>修改word/document.xml</li>
-</ol>
-<p>替换模板code 格式我们使用lodash.template —&gt; <strong><code>&lt;%= templateCode %&gt;</code></strong></p>
-<p><img src="/css/images/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
-<p>如果是插入jpeg 图片(png/jpg 都可以), 我们可以如下:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">w:p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">w:r</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">w:color</span> <span class="attr">w:val</span>=<span class="string">"00FF00"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:pict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">id</span>=<span class="string">"_x0000_i1025&lt;%- index %&gt;"</span> <span class="attr">o:spt</span>=<span class="string">"75"</span> <span class="attr">type</span>=<span class="string">"#_x0000_t75"</span> <span class="attr">style</span>=<span class="string">"height:&lt;%- item.height %&gt;pt;width:&lt;%- item.width %&gt;pt;"</span> <span class="attr">filled</span>=<span class="string">"f"</span> <span class="attr">o:preferrelative</span>=<span class="string">"t"</span> <span class="attr">stroked</span>=<span class="string">"f"</span> <span class="attr">coordsize</span>=<span class="string">"21600, 21600"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:path</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">focussize</span>=<span class="string">"0,0"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">joinstyle</span>=<span class="string">"miter"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:imagedata</span> <span class="attr">r:id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">o:title</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">o:lock</span> <span class="attr">v:ext</span>=<span class="string">"edit"</span> <span class="attr">aspectratio</span>=<span class="string">"f"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:wrap</span> <span class="attr">type</span>=<span class="string">"none"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:anchorlock</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:pict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">w:r</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125;);%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">w:p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样便可循环插入多张图片啦。</p>
-<ol start="5">
-<li>修改word/_rels/document.xml.rels</li>
-</ol>
-<p>这里是用来指定植入的资源(图片)关系。</p>
-<p>我们只需在原本存在<code>&lt;Relationships xmls=&quot;...xxx&quot;&gt;</code>一行下增加新增的rId 资源链接：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Relationships</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.openxmlformats.org/package/2006/relationships"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">Type</span>=<span class="string">"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"</span> <span class="attr">Target</span>=<span class="string">"media/image&lt;%- index %&gt;.jpeg"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125;); %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"rId8"</span> <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="/css/images/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
-<p>同时找到这里最大的Id，如<code>Id=&quot;rId16&quot;</code>, 之后用到。</p>
-<ol start="6">
-<li>修改[Content_Types].xml 增加使用资源ext</li>
-</ol>
-<p>这里使用jpeg 图片后缀名，增加一行:<code>&lt;Default Extension=&quot;jpeg&quot; ContentType=&quot;image/jpeg&quot;/&gt;</code></p>
-<p><img src="/css/images/generate_wordTemplate6.jpg" alt="Content_Types"></p>
-<p>如果没有增加该行(或者上面提到的rId 填错)，出现问题特点是: WPS能正常打开；office word 提示<strong>无法打开Open XML xxx 因为内容存在问题或者文件名可能包含无效字符</strong> <strong>文件已损坏，无法打开。</strong></p>
-<p>点击了“确定”，接着又提示<strong>xxx.docx 中发现无法读取的内容。是否要恢复此文档的内容？如果您信任此文档的来源，请单击“是”</strong>，点了“是”之后又能正常浏览。</p>
-<ol start="6">
-<li>word/media 文件夹</li>
-</ol>
-<p>该文件夹是图片移进来后，<code>rId ++</code>。把图片信息保存到word/document.xml 的同时，将资源链接写进word/_rels/document.xml.rels</p>
-<ol start="7">
-<li>压缩 成word-template.docx 模板文件</li>
-</ol>
-<p><code>zip ../word-template.docx -r .</code></p>
-<p>将word 文件夹下的所有文件使用zip 压缩。名称指定为word-template.docx 模板即打包完毕。</p>
-<p><img src="/css/images/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
-<p>至此word-template 模板生成完毕。</p>
-<blockquote>
-<p>!!!ATTENTION \<br>制作最好用Windows 操作系统。如果使用Mac OS 制作，一定要将制作好的文件拖到Windows 虚拟机查看是否多出文件, 如 <code>.DS_Store</code> 文件</p>
-</blockquote>
-<blockquote>
-<p>上述情况会导致WPS 能正常打开，微软的word 总是提示失败超级bug</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/6/">Next</a>
   </nav>
 
 </section>
@@ -1201,6 +1171,30 @@ word/media/ 用来放图片
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/28/2020-07-28lesson/">2020-07-28lesson</a></h6>
+              <span>July 28, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/07/27/20200727lesson/">20200727lesson</a></h6>
+              <span>July 27, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
               <span>July 6, 2021</span>
             </div>
@@ -1219,30 +1213,6 @@ word/media/ 用来放图片
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1255,7 +1225,7 @@ word/media/ 用来放图片
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1265,7 +1235,7 @@ word/media/ 用来放图片
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -1275,7 +1245,7 @@ word/media/ 用来放图片
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

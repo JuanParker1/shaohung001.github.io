@@ -165,6 +165,265 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2020-5-29lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/29/2020-5-29lesson/" class="article-date">
+	  <time datetime="2020-05-29T02:17:46.000Z" itemprop="datePublished">May 29, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用docker-golang-执行本地golang-服务"><a href="#使用docker-golang-执行本地golang-服务" class="headerlink" title="使用docker/golang 执行本地golang 服务"></a>使用docker/golang 执行本地golang 服务</h1><pre><code>cd $工作目录
+
+docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo -p 14500:8080 golang
+</code></pre><h1 id="弄懂-Nginx-location"><a href="#弄懂-Nginx-location" class="headerlink" title="弄懂 Nginx location"></a>弄懂 Nginx location</h1><h2 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h2><p>之前服务器已使用有a.ahuang.ml 域名的A服务，仅提供后台api 接口；然后再做B服务时，由于理念很接近，还得使用a.ahuang.ml 的子域名，所以规划好location 就很重要。</p>
+<h2 id="我的本地解决测试方案"><a href="#我的本地解决测试方案" class="headerlink" title="我的本地解决测试方案"></a>我的本地解决测试方案</h2><p>当前给出我改好的location 样式：</p>
+<ol>
+<li>首先设定好本地的test 域名 DNS 转向本地:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/host</span><br><span class="line">输入 127.0.0.1 test.ahuang.ml</span><br><span class="line">vim ~/conf/ahuang.conf</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>书写~/conf/ahuang.conf</li>
+</ol>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">~/conf/ahuang.conf</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span> test.ahuang.ml;</span><br><span class="line">  <span class="attribute">client_max_body_size</span> <span class="number">500M</span>;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">800</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="regexp">~ ^/(api|evidence/)</span> &#123;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">900</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行启动nginx</li>
+</ol>
+<p><code>docker run --rm -p 127.0.0.1:8888:80 --name mynginx -v $PWD/conf:/etc/nginx/conf.d nginx</code></p>
+<ol start="4">
+<li><p>测试</p>
+<p> curl <a href="http://test.ahuang.ml:8888/api" target="_blank" rel="noopener">http://test.ahuang.ml:8888/api</a> # 返回900<br> curl <a href="http://test.ahuang.ml:8888/evidence/xx" target="_blank" rel="noopener">http://test.ahuang.ml:8888/evidence/xx</a> # 返回900<br> curl <a href="http://test.ahuang.ml:888/abc" target="_blank" rel="noopener">http://test.ahuang.ml:888/abc</a> # 返回800</p>
+</li>
+</ol>
+<h2 id="读参考文章注意点"><a href="#读参考文章注意点" class="headerlink" title="读参考文章注意点"></a>读参考文章注意点</h2><p><a href="https://juejin.im/post/5ce5e1f65188254159084141" target="_blank" rel="noopener">完全参考掘金文章</a></p>
+<p>推荐直接参考原文章</p>
+<h3 id="location修饰符类型"><a href="#location修饰符类型" class="headerlink" title="location修饰符类型"></a><strong>location修饰符类型</strong></h3><p>location 支持的语法 <code>location [=|~|~*|^~|@] pattern { ... }</code></p>
+<h4 id="「-」-修饰符-要求路径完全匹配"><a href="#「-」-修饰符-要求路径完全匹配" class="headerlink" title="「=」 修饰符: 要求路径完全匹配"></a><strong>「=」 修饰符: 要求路径完全匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location = /abcd &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/ABCD</code> <strong>可能会匹配</strong>，也可能不匹配，取决于操作系统的文件系统是否大小写敏感(case-sensitive)。ps: MAC 默认是大小写不敏感的。</p>
+</li>
+<li><p><code>http://website.com/abcd?param1*param2</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
+</li>
+</ul>
+<h4 id="「-」-修饰符-区分大小写的正则匹配"><a href="#「-」-修饰符-区分大小写的正则匹配" class="headerlink" title="「~」 修饰符: 区分大小写的正则匹配"></a><strong>「~」 修饰符: 区分大小写的正则匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~ ^/abcd$ &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>^/abcd$</code> 这个正则表达式标识字符串必须以 <code>/</code>开始，以<code>$</code>结束，中介必须是<code>abcd</code></p>
+<ul>
+<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/ABCD</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd?param1&amp;param2</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
+</li>
+</ul>
+<h4 id="「-」-修饰符-不区分大小写的正则匹配"><a href="#「-」-修饰符-不区分大小写的正则匹配" class="headerlink" title="「~*」 修饰符: 不区分大小写的正则匹配"></a><strong>「~*」 修饰符: 不区分大小写的正则匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~* ^/abcd$ &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/ABCD</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd?param1&amp;param2</code> <strong>匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
+</li>
+<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
+</li>
+</ul>
+<h4 id="「-」-修饰符-前缀匹配"><a href="#「-」-修饰符-前缀匹配" class="headerlink" title="「^~」 修饰符: 前缀匹配"></a><strong>「^~」 修饰符: 前缀匹配</strong></h4><p>如果该location 是最佳的匹配，那么对于匹配这个location 的字符串，该修饰符不再进行正则表达式的检测。注意，这不是一个正则表达式匹配，他的目的是优先于正则表达式的匹配</p>
+<h3 id="路径查找顺序及优先级"><a href="#路径查找顺序及优先级" class="headerlink" title="路径查找顺序及优先级"></a><strong>路径查找顺序及优先级</strong></h3><p>当有多条location 规则时，nginx 有一套比较复杂的规则，优先级如下:</p>
+<ul>
+<li><p>精确匹配 <code>=</code></p>
+</li>
+<li><p>前缀匹配 <code>^~</code> 立刻停止后续的正则搜索</p>
+</li>
+<li><p>按文件中顺序的正则匹配 ~ 或 ~*</p>
+</li>
+<li><p>匹配不带任何修饰的前缀匹配</p>
+</li>
+</ul>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a><strong>案例分析</strong></h3><p><a href="https://juejin.im/post/5ce5e1f65188254159084141" target="_blank" rel="noopener">原文章</a>的案例分析非常的给人容易学习</p>
+<h4 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a><strong>案例1</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 701; # 用这样的方式，可以方便的知道请求到了哪里</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702; # 用这样的方式，可以方便的知道请求到了哪里</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I  website.com:8080/document</span><br><span class="line">HTTP/1.1 702</span><br></pre></td></tr></table></figure>
+<p>按照上述的规则，第二个会有更高的优先级</p>
+<h4 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a><strong>案例2</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /document &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I  website.com:8080/document</span><br></pre></td></tr></table></figure>
+<p>第二个匹配了正则表达式，优先级高于第一个普通前缀匹配</p>
+<h4 id="案例3"><a href="#案例3" class="headerlink" title="案例3"></a><strong>案例3</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ^~ /doc &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl http://website.com/document</span><br><span class="line">HTTP/1.1 701</span><br></pre></td></tr></table></figure>
+<p>第一个前缀匹配^~命中以后不会再搜寻正则匹配，所以会第一个命中</p>
+<h4 id="案例4"><a href="#案例4" class="headerlink" title="案例4"></a><strong>案例4</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /docu &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 701，</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">  location /docu &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 依然返回 HTTP/1.1 701</span><br></pre></td></tr></table></figure>
+<p>前缀匹配下，返回最长匹配的 location，与 location 所在位置顺序无关</p>
+<h4 id="案例5"><a href="#案例5" class="headerlink" title="案例5"></a><strong>案例5</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~ ^/doc[a-z]+ &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~ ^/docu[a-z]+ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 701</span><br></pre></td></tr></table></figure>
+<p>把顺序换一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 8080;</span><br><span class="line">	server_name website.com;</span><br><span class="line">  location ~ ^/docu[a-z]+ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~ ^/doc[a-z]+ &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 702</span><br></pre></td></tr></table></figure>
+<p>正则匹配是使用文件中的顺序，找到返回</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-golang/">docker golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-23kanfang" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/26/2020-5-23kanfang/" class="article-date">
+	  <time datetime="2020-05-26T06:28:40.000Z" itemprop="datePublished">May 26, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2020-5-23-中介约看房经历"><a href="#2020-5-23-中介约看房经历" class="headerlink" title="2020/5/23 中介约看房经历"></a>2020/5/23 中介约看房经历</h1><p>之前办理积分时，和人事与一个财务同事去社保办事，财务同事帮我推荐了一个炒房团的。说我们公司之前有个同事前两年从他手上交易过一个房子。我觉得这样有个参考性，就像我之前学车，有参考就会顺利很多。加了那个人微信后，本来约定周五去同他学习点知识，没想到周三丫头住院去不了了。老婆出院后，晚上回到家，看龙柏那附近的房子，有几个感觉还不错的，右上角有个按钮说线上带看房子，哦，居然联通了链家的房产经纪人。于是就跟他聊了聊，也说自己社保还未满。不过倒是可以多转转多学学。 同时约定周末都是可以去看看房子的。</p>
+<p>周六早上起床玩了会游戏，然后和老妈联通视频，说了说自己的一些打算，老妈也帮我问了问她的姐妹，我的阿姨们，打算明年买房的时候不够跟她们借点，提前打声招呼。然后时间也快到2:30，赶紧出门去龙柏附近那个中介那。这一下午，就是两辆电驴在一直奔走。</p>
+<p>先是去看了网上看到的两房改三房的六楼，其实还不错，不过，我自己掂量着的一楼六楼都不考虑。不过，来了就看看。</p>
+<p>中介帮我找了十款二手房，价格都在300w左右，龙柏那好多动迁房，300w都是挺宽敞58、59、60平这样。</p>
+<p>先看了龙柏七村。有六楼的，太高；二楼的，专做来卖的，价格挺高的；四楼(之前网上就有看到户型什么的都不错)，一梯四户，最靠小区里面，两个缺陷吧；一楼，户型很奇葩，但是挺大，反正一楼不会要就对了。</p>
+<p>再看了龙柏四村，路就很宽敞、干净。看了六楼一个老大爷，进去刺鼻尿骚味，一只博美在房间趴着，很安静。房子装修好也没事，但是户型是前面一个大房间，后面一个小房间，采光估计会差一点，中间倒是有个小天井，有点光线。另一个六楼是一个大哥，俩女儿在睡觉。他们打算置换，中间厅很大，俩房间朝南，房子还是挺干净的，一梯四户的楼梯口那一户；还有一个一楼的，完全空关多年，很黑暗，老旧。反正买来必须装修把。卖点是一个大院子。</p>
+<p>再看了龙柏三村，紫藤路。六楼的，正在出租，租房妹子加班回来开门，我们进去转了转。虽然是装修多年，但是干净，整洁，等于是拎包入住都很舒适的装修。</p>
+<p>以上看了都是有各种奇葩：厅超级大、或者房子位置不那么靠中、顶天立地、房型采光、集体产权其他人也有比例、满二、满五、唯五不唯一等。</p>
+<p>这几个小区都是围绕之前我租的小区（龙柏龙兴苑）附近，都是动迁房。感觉一个天一个地呀，哈哈。</p>
+<p>和中介聊了聊，毕竟价格在那摆着，人家面价比较大嘛。然后我心里觉得有没有那种不那么面积大、然后两房的（一年前还想着一房一个大厅，大厅可以隔出来睡人即可那种，飘了飘了，现在低配要两房了）。我之前就想问能不能看看龙柏附近小区叫做《虹梅花苑》的，中介就拿出手机帮我看了看，说这款279的不错，原价320，房东说想腾房票，挂了44天降了几次。可以可以，中介能看到更多信息，然后联系那边中介(跨区域了)，然后出发前往。</p>
+<p>那个小区在虹桥路上，10多分钟到那附近，找了一圈原来入口是一个大拱门-王子公寓-虹桥路2222弄，是一个多合一统一入口。进来很干净，清幽，附近是长宁区别墅群，很多有钱人、明星等；一路上都是老外。龙柏那边欧美面孔有一些，更多的是台湾、韩国等面孔；虹桥路这里更多的是欧美面孔。欧美一家子、欧美大姑凉、欧美小子。找这个过程多绕了一圈，还看到一个家庭人在小区内烧烤，可以，我也憧憬着。</p>
+<p>进来这，是一个帅小伙中介，他说这个房子是顶楼，不过总高是五楼，不过楼顶是有三角隔热层，防热、防水。当前房子空关一年了，都有一些灰层，这都不是事。小区是一梯两户。最后一层时，由于这间空关，楼道就都是另一个房子堆放的物资，不过如果新房有人入住，他们肯定收起来的。五楼也不高，再高一层，不行，绝对不行。然后进去一看。</p>
+<p>哇，真是我理想的。价格合适，房间也合适，没有厅没关系，别的都一应俱全。小区靠近高架，但是前面隔了一排房子，灰层不会那么多，声音也不大。窗一关很安静。进门左侧是厨房，还挺大，比我现在租的整洁。进门正对面是次卧，有一个大窗，面积也合适。之前我看的龙柏几个房子，那都床头床尾直接就满了，侧面离门不到一米，太窄，不小心的话会着火的，而且只能睡觉。这个侧卧就很合适。没有厅，吃饭就围着厨房吃，那个冰箱比较占位置，买个大的冰箱当桌子？？进门右转就是过道，然后过道比较窄，而且房东还放着一个大木柜，去了大木柜，过道就稍稍正常了。过道中间是洗浴厕所，这还有个小窗子呢，厕所里面有窗子，不要太好哦，厕所空间也大，合理。过道长度大概2、3米就到主卧了。主卧有个大衣柜，奶白色，这直接就省了一笔钱。没有阳台，主卧显得比较大，装修整套都是间接，干净。主卧向南正对高架。前面也说了，不吵，这还是很好的，反正高架11点，我都是12点才睡。</p>
+<p>这真的是当前我心中很中意的。毕竟自己也才第一天看嘛。楼下就和中介在这个小区转了转，简直就是把之前中介介绍的那些个按在地板摩擦，狠狠摩擦那种，不对，是死死摩擦，毫不留情死死摩擦。小区中间是运动员，很多人在这聊聊天。</p>
+<p>然后出来大门，小区入口大拱门这，我和中介聊了聊。中介估计之前也不好卖，感觉有点伤感，没过来这里看，真不知道手上房源差的感觉，难怪不好卖(我自己臆测的)。我这里也问了问自己之后有哪些买房前准备工作。也说了刚刚那套房超级中意。聊了好一会，就先回来了，离住处很近。</p>
+<p>回到住处就问中介，能否帮我问问房东能否等8个月我社保到期来买呢？我可以押金4、50，同时房价不讲价。</p>
+<p>然后晚上和老妈也说了说自己今天看房，还挺中意。</p>
+<p>夜晚也看了看相关注意点。该房、该小区属于售后公房，好好的看看各种小心点。反正随缘吧，中介那不能急。不过房类型、小区估计比较中意《虹梅花苑》，明年基本能定在那个小区。</p>
+<p>好了，今天又过完了，爬楼梯爬爬爬。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/看房/">看房</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2020-5-13" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/05/26/2020-5-13/">2020-5-13</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/05/26/2020-5-13/" class="article-date">
+	  <time datetime="2020-05-26T06:28:22.000Z" itemprop="datePublished">May 26, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2020-5-13-猴头菇说肚子痛要去医院"><a href="#2020-5-13-猴头菇说肚子痛要去医院" class="headerlink" title="2020/5/13 猴头菇说肚子痛要去医院"></a>2020/5/13 猴头菇说肚子痛要去医院</h1><p>2020/5/13 中午接近两点，正忙着，猴头菇发微信说要去医院，肚子很痛。我一听，她都这么提了，说明肯定就是不舒服，赶紧让她打车离她很近的八院，我赶紧过来。她说中午吃完饭，肚子就有点不舒服，躺在公司的一个沙发，到现在还是很痛，等我过去带她。我说，痛就赶紧打车去医院，她说等我过来，她不懂路。那行，我赶快过去。</p>
+<p>我发个请假邮件，跟伟哥说声老婆生病去医院，赶紧就跑过去，半路想起来忘带丫头身份证(办居住证积分时，留在公司)，跟丫头说自己打车过去医院，我回去拿她身份证。一来一回，真担心车子跑没电不走了。</p>
+<p>赶到医院，丫头肚子痛，伴有一点发烧，先在新冠病毒检查点(这时间点必须检查)。来回检查，猴头菇肚子大大的，鼓鼓的。我过去陪她，她连坐着都很痛，还得来回检查。新冠检查还得500多，丫头没医保，全部自己出钱。发烧检查完毕说可以去妇科看。这时间点，最好别生病。</p>
+<p>这时候去妇科看，妇科医生阿姨帮忙赶紧的在4:30 检查完(超过就不检查了)，然后去办理住院手续。办理住院手续的时候，丫头站也不是坐也不是，反正就是痛的不行了。期间要办理好了，我拿错我的医保，拖了点时间，然后换成丫头的，丫头的不能用，又得转账押金5000，这中间，丫头肚子更痛了，付费窗口蹲下都痛，嘴唇都白了。</p>
+<p>赶紧到住院部，丫头都快走不动了。上来后，丫头在29床躺了会，然后被叫到一个小屋子穿刺看到血很多。我在屋外一直听到猴头菇的惨叫。然后医生用针筒吸出了血，得知卵巢破裂，出血没有愈合。得，刚才还走来走去，更特么病重。</p>
+<p>然后我被叫去签家属委托做手术的风险书。心里担心啊。然后下午7点左右，丫头被推上车子，担心她一直没吃东西，会不会血糖低，又测了下说行。她去了五楼做手术了。</p>
+<p>三个多小时一直待病房等，心里焦急啊。旁边是一个老奶奶，还没做手术，她的小儿子来服侍。她的小儿子-大叔，就跟我说，别担心，一会就好了。我说，嗯，是的，一会就好了，低头看知乎，其实担心死了，但是我毫无办法，只能转移注意力。</p>
+<p>中间我还吃了大叔给的几块饼干，喝了杯水，然后晚上10点，丫头才终于做好手术，我都又饿咯，别说猴头仔了。手术车推上来的时候，我把丫头抱下床，她冷的发抖，嘴唇毫无血色，冷的两条腿一直抖。就像活鱼跳到岸上那样，抖得蹦跶那样。放到床上赶紧盖上被子、我把好几件衣服盖上，好让猴子暖和点。过了会她才好些。这时候她还禁食禁水，挂着吊瓶，尿袋。我就喊吊瓶没水了、给她倒尿。忙里忙外。给她楼下去买了个小碗，等醒了可以喝水。吊瓶挂到凌晨2点，我都大黑眼圈了。那个大叔也一直玩手机麻将到2点才睡。他带了个躺椅，我啥都没有，但如果躺椅也是睡不着的，我就趴着床下边，大约5点起来喂水。然后说喂她喝无糖葛粉。今天又是挂吊瓶，早上挂到下午2点多，去附近买了混沌，和丫头一人一碗混沌，吃完赶紧去公司了。晚上赶紧去医院，路上刚好买了白稀饭。今天晚上比较好的是，我去住的地方拿了丫头的瑜伽垫，哇，休息好了，第二天果然精神多了。第二天一早，赶紧去转转，有去附近买到个白稀饭，美滋滋，丫头的改善早饭有着落了，路是远了点，不敢用自己的电瓶车，别到时没电，骑的哈罗单车，真特么难骑。中午一直挂瓶到下午2点多，给她买了个午餐、准备好水，丫头吃了后，赶紧的去公司写点东西。自己也没吃啥，路上买了个黄山鸭腿菜饭（不用等，现成的，快，等红灯时买，绿灯还没灭就又可以过）。到了公司，大家都在干活，饿的不行，把饭吃了，鸭腿来不及吃，晚上去医院。我把公司的晚餐也带来，鸭腿也带来，公司晚餐吃了，鸭腿放那没吃。晚上睡到一半，说隔壁床来人，我瑜伽垫没地方，于是半夜就跑到走道上的床位躺了会，那灯光亮的呀，闪瞎我的狗眼，于是又睡得不是很好。隔天早上隔壁床来了一菇凉，子宫外孕做手术。她照看的人一个都木有，我给她抱床上，菇凉都是可怜的娃呀。她也是冷，没猴头菇抖的那么厉害。给她穿上自己带的一个袜子，脚暖和了，就不那么冷了，把身上外套也给她盖上。她男朋友来了，我的使命也就到了。当天中午猴头挂完吊瓶，我跑回住所休息了会，打了个游戏，美滋滋，不过肯定是睡不着，躺着看了看手机视频，差不多了就赶紧去医院。今天晚上有个好处，就是我又整了个位置放瑜伽垫睡，而且还看到有一个闲置的医院被子，刚好垫着，美滋滋。</p>
+<p>一连好多天照看猴子，工作日下午就去上班，非工作日下午就会跑回住所休息休息，，嘎嘎。</p>
+<p>终于到丫头出院那天中午，中午跟伟哥说了声，赶紧去给丫头结账出院，带回家。由于丫头心疼打车钱、一个人坐车一个人骑车麻烦，就坚持做我的电驴。心疼啊。路上中午还有交警，还得让丫头下来走一段路。回到家，稍微收拾收拾，赶紧就去公司了。</p>
+<p>啊，好累。啊，老婆还在，真好。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2020-5-12shebao" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -607,206 +866,11 @@ var themeMenus = {};
     
 
   
-    <article id="post-2020-3-12lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/03/20/2020-3-12lesson/">2020-3-12lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/03/20/2020-3-12lesson/" class="article-date">
-	  <time datetime="2020-03-20T06:59:33.000Z" itemprop="datePublished">March 20, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="华硕-GTX750-ti-NVIDIA-web-driver-黑屏问题"><a href="#华硕-GTX750-ti-NVIDIA-web-driver-黑屏问题" class="headerlink" title="华硕 GTX750/ti NVIDIA web driver 黑屏问题"></a>华硕 GTX750/ti NVIDIA web driver 黑屏问题</h1><p>这几天给丫头买了个显卡GTX750 觉得和以前一样很容易就整好了，没想到花了两个晚上加两个早晨找解决方案。</p>
-<p>首先根据<a href="https://shaohung001.github.io/2018/10/31/2018-10-31lesson/">我以前的记录 配置</a> 得到我要的web driver 是17G65 对应那个包, <a href="https://www.insanelymac.com/forum/topic/324195-nvidia-web-driver-updates-for-macos-high-sierra-update-08302018/" target="_blank" rel="noopener">下载地址</a></p>
-<p>然后跟以前一样EFI/clover/config配置，然后NVIDIA 选择<code>NVIDIA Web Driver</code> 时，系统在clover 引导后，进入了系统，但是HDMI 没有信号，屏幕黑的。</p>
-<p>系统确实进了，但是屏幕黑。我反复想和以前一样的做法，但是总是失败。直到: 在远景论坛一个帖子中看到，相同的显卡(华硕 GTX750 web driver 黑屏)，我敢肯定我有救了。</p>
-<p>我直接从HDMI换成VGA 接口，同时NVIDIA Web Driver 选择对应选项。重启后，立马就好了。鸥买嘎，开心了。</p>
-<p>还是要多看中文版的tonymac : 远景论坛</p>
-<p>同时的，这里也有提到: <a href="https://osx.cx/heipingguo-nvidia-balck-screen-fix.html" target="_blank" rel="noopener">黑苹果社区</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GTX750/">GTX750</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hackintoshell/">hackintoshell</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-3-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/03/11/2020-3-11lesson/">2020-3-11lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/03/11/2020-3-11lesson/" class="article-date">
-	  <time datetime="2020-03-11T08:55:19.000Z" itemprop="datePublished">March 11, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="最近VVVVVV-突然发现连不上"><a href="#最近VVVVVV-突然发现连不上" class="headerlink" title="最近VVVVVV 突然发现连不上"></a>最近VVVVVV 突然发现连不上</h2><p>突然发现连不上VVVVVV，正巧是丫头面试时间，可能要用到，赶紧找时间修下。</p>
-<p>这几天又正巧给丫头买了个显卡，GTX750，老是无法识别该显卡，新下的NVIDIA web driver 不小心点了上面个按钮，得,系统进不去了。</p>
-<p>想了下，给他系统全部重装好了，半夜搞到凌晨40分，好累，还没好。第二天起床赶紧搞起来。重新装了后，又不小心点了web driver 上面那个按钮，然后发现clover 界面时候到后面的option 按钮，进去后，在Graphic 取消选中 使用web driver就回去了。</p>
-<p>中午最后还是木有识别成功GTX750，先来公司吧，开电驴最快速度来到公司。</p>
-<p>解决了几个问题，在编排build 进程时，顺便搞下我的服务器吧。</p>
-<p>首先nginx 无法启动问题: <code>lsof -i :80</code></p>
-<p>发现caddy 这个程序占了？我都没发现这玩意，，算了，kill 之后就正常了。</p>
-<p>然后试了下VVVVVV 还是无法连接，说明确定是证书问题，毕竟都正常运行着嘛，过年过来3个月了，估计也要renew acme 了。</p>
-<p>不想整auto new acme，自己动手丰衣足食:</p>
-<p>先给nginx 加个server:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name wpn.domain.com;</span><br><span class="line">  root /home/wwwroot/sCalc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为了保证acme 能连接到该处得到认证的文件。</p>
-<p>然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alias acme.sh=~/.acme.sh/acme.sh # 给acme.sh 做个别名</span><br><span class="line"></span><br><span class="line">acme.sh --issue -d wpn.domain.com -w /home/wwwroot/sCalc</span><br><span class="line"></span><br><span class="line">cd ~/.acme.sh/</span><br><span class="line"></span><br><span class="line">mkdir -p /sslCert</span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d wpn.iahuang.com --key-file /sslCert/VVVVVV.key --fullchain-file /sslCert/VVVVVV.crt</span><br></pre></td></tr></table></figure>
-<p>以上得到key 和crt 文件，在/sslCert 目录下。</p>
-<p><code>mv /sslCert/* /etc/VVVVVV/</code> 将2个文件放到VVVVVV 目录下，然后重启nginx 即可。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VVVVVV/">VVVVVV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acme/">acme</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-3-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/03/10/2020-3-10lesson/">2020-3-10lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/03/10/2020-3-10lesson/" class="article-date">
-	  <time datetime="2020-03-10T03:53:59.000Z" itemprop="datePublished">March 10, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="过年，最近一个月我一直看小说"><a href="#过年，最近一个月我一直看小说" class="headerlink" title="过年，最近一个月我一直看小说"></a>过年，最近一个月我一直看小说</h2><p>过年回家那天还下着小雨，又是一年回家。当时以为疫情不严重。丫头买了俩布口罩，还是一层那种。我很少戴口罩，米西米西把。俩人起早待在路口，老半天了都，就是打不到车，年年如此。</p>
-<p>心里想着，可能来年都不愿意回去了，除非自己有车。因为，有可能，真的打不到车，高铁钱浪费掉不说，还回不去。加把劲把。老半天没车，心里急，真不知道路上来来回回那些司机都是怎么预约的，贵点也行啊。然后和丫头决定去前面大路试试，走到半路，一个大叔开着很小那种三轮。</p>
-<p>我跟你说，当时我们都觉得，能出发就不错了，而且是运气超级好，刚刚十字路口也很多人等，司机大叔就把这机会留给俺们，哈哈。50走起。三轮一路冲啊，大叔冲红灯的时候那个左右观望的眼神，无情，冲啊。</p>
-<p>安全到家。</p>
-<p>这个年过得很长很长。从大年29到家，到元宵后才回上海。和阿黄玩了一个月了都。在家最大的事，就是逼着阿黄自己吃饭，不用一直追着喂，吃饭还看视频，最后饭都冷了还吃。</p>
-<p>家里啥21世纪的工具都没有，只有手机一个。为了不落下功课，顺便把socks5 协议看了，然后用纸抄写一个翻墙的源码。嗯，回到公司给他整一下。</p>
-<p>由于我把高铁车票凭证取了，之前买的回程(年年都买不到回程，就今年抢了1.31号回程，还取了凭证—还逗比的取出来了，你说是不是傻)得退票重新买之后的时间。查到永定可以退票，就骑着老爸的摩托车上了永定。</p>
-<p>中午永定吃饭的时候，因为我没有摩托车驾照，怕过年有查车，我就走一段路，看没人查车，车子就骑一小段；然后走一路看没人再骑一段，然后才来到小饭店。</p>
-<p>毕竟人不能被抓，车不能被扣，不能丢嘛，嘎嘎</p>
-<p>过年前我写了个GO 的软件: <a href="https://github.com/shaohung001/novel_terminal" target="_blank" rel="noopener">novel_terminal</a></p>
-<p>你懂的，写什么类型的东西就可能会被吸引进去。于是过年在家一直看爽文: 《斗罗大陆》，但是看到一半，失去了2刷刷完的劲头，看到一半感觉从书中获取不到灵感、感想，遂放弃。</p>
-<p>因为2.1号开始，公司都开始远程上班了，家里一无所有，所有现代化工具都没有。我去了村子电脑维修店看看能不能配出来一个，配件不齐全, 又想着配起来家里又没人用；去找认识的人借电脑？他说被什么妹夫借走了；找找家里电脑，全是灰，开了机肯定用不了。</p>
-<p>唉，算了算了，多呆了一星期，下周再不远程办公，说不定要扣工资咯，本来就低。</p>
-<p>2.7、8号时，说有个同村的也做IT 的也工作在上海，说一起同行。我说可以呀，他家人开车到龙岩，那就太好了，然后2.8号又说他们公司推迟3.10号，这次不去了。那没办法了，只能又联系蛮舅了。</p>
-<p>之前联系蛮舅知道他还没回深圳，说有那个一起去上海就跟蛮舅说不用麻烦蛮舅了。毕竟这个特殊时期。但是，然后现在还是得麻烦亲人，不然班车都不开了，请人载上龙岩，肯定500软妹币才出发。</p>
-<p>2.9号那天早上，为了响应上级号召，封锁更严厉。之前我们省道还没有检查站设立，今天开始了出乡就隔离14天。蛮舅就说去他自己娘家，我和丫头拉着行李出发去村头和蛮舅碰头。</p>
-<p>村头的桥都用大石头堵着。</p>
-<p>老妈领着阿黄送我们，还是得离开。不离开，不赚钱，怎么完成心中的理想。一路上还算顺利，直达龙岩火车站。蛮舅也回去了，还算顺利。</p>
-<p>我和丫头在车站外呆了好一会，然后拿出老妈早上做的蛋炒饭，很好吃，就是有点咸。车站外没坐的，和丫头一口一口吃着。然后站着酸，丫头又内急，进站后，两人躲在偏远的角落，怕被传染。</p>
-<p>车子临近时，做到了候车位置。还别说，配备的按摩凳，丫头那个时不时会动一动，免费享受，还挺舒服。上车时，车子座位基本是隔着坐，人不多。</p>
-<p>到了虹桥，就是扫手机短信看行程。然后各种扫二维码。到小区，登记。</p>
-<p>第二天用昨天用的口罩，下楼买一堆的吃的，还有饮用水，然后进行了长达好久好久的宅家。</p>
-<p>由于想重启小说，改了几个bug后，哎，不小心，看起来我高一时候看的一本小说：《神墓》，直到今天3.9 才看完。我是看的比较仔细的，而且一直执念般的看完了。</p>
-<p>点评下《神墓》:</p>
-<p>神墓的构造前后贯通是比较好的，全书都围绕由墓而生的主角，全书贯穿各种墓，中间主人公发展，然后到之后小六道、回到历史中时，才知道【天】这一虚拟口头被描述成实体的形象，这点厉害。然后又提到了混沌，才慢慢知道作者设定的多个天灭众生的多次灭杀行动。最后各人战上九天。前期都是写的蛮好，主人公菜逼的时候，来来回回搞，而且思路也不死，任务都有自己特色，不会死板。比如梦可儿为了结果主人公，都是绞尽奶汁付诸行动，没结果无所谓，真的绞尽x汁了。我都为她感动。</p>
-<p>该书在刻画人物方面也有独到之处，比如”欧米头发”、”一百遍啊一百遍”这样的。当然，这同时也是该书不够的地方，全书唯有这两个刻画出生动效果，但是作者没有深入使用，比如”欧米头发”，人物刻画出来了，没有了，看完之后，没有了。”只有一百遍啊一百遍”能够再次回想，内心淫荡一笑。</p>
-<p>红楼梦是我喜欢的名著，人物刻画、贯通方面是神墓要着重要点，可以借鉴借鉴。当然我作为刚读完神墓，要求不能太高。什么神墓早期写的，什么你非要拿震古烁今的四大名著来和爽文比。</p>
-<p>这不是在刚读完后，为这小说遗憾嘛。</p>
-<p>就当是爽文，有时闹书荒的时候，也想找更好更好的书不。</p>
-<p>神墓全书有不连贯的地方，我猜作者有让他人代笔，或者，当时作者构思出问题，出现了主角瞬间性格大变、思想大变的过度。比如早期主角还是努力奋斗的勤劳小伙子，在早期出现和对手突然就整起了搞笑痞子风格。那个篇章很生硬。</p>
-<p>还有就是各种大关系都和主角有关，不过这确实是爽文的特点(红楼梦也有这特点，谁人不想做宝玉啊，但红楼梦主旨、思想背景和爽文不同)，然后突然大战，突然就升级，这小子升级也忒快了吧；各种道具，还只能主角用；升级完基本就能跟对头干，不行就再加个宠物加个道具对着干，实在不行，再加个血脉、加个远古道具保命。</p>
-<p>这，爽文，理解理解。</p>
-<p>总的来说，神墓在场景(全书各种场地、场景刻画)、道具、和漂亮女人们的摩擦、打斗转换、各种绝境描绘、各种探险、前后埋疑点、主角衰及盛盛及衰、文笔、脉络都能通，值得一看，你看，2刷的我看完还推荐，very ok。</p>
-<p>plus，还是定义为爽文，不要太在意为啥主角每次都能装逼，爽完就过。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2020过年/">2020过年</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小说/">小说</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/5/">Next</a>
   </nav>
 
 </section>
@@ -954,6 +1018,30 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/28/2020-07-28lesson/">2020-07-28lesson</a></h6>
+              <span>July 28, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/07/27/20200727lesson/">20200727lesson</a></h6>
+              <span>July 27, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
               <span>July 6, 2021</span>
             </div>
@@ -972,30 +1060,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1008,7 +1072,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1018,7 +1082,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -1028,7 +1092,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 

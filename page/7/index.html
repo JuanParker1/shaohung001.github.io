@@ -165,6 +165,232 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-6-13awaitcall" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/13/2019-6-13awaitcall/">2019-6-13awaitcall</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/13/2019-6-13awaitcall/" class="article-date">
+	  <time datetime="2019-06-13T04:01:03.000Z" itemprop="datePublished">June 13, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js-ts-如何享受async-舒适下远离try-catch"><a href="#js-ts-如何享受async-舒适下远离try-catch" class="headerlink" title="js/ts 如何享受async 舒适下远离try{}catch{}"></a><strong>js/ts 如何享受async 舒适下远离try{}catch{}</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> login () &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> userLogin()</span><br><span class="line">  &#125; <span class="keyword">catch</span> (<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.error(e)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>async 带来了很大的方便，但是try/catch 却破坏了写作的美感。</p>
+<p>我们想要这样的:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> callAsync, &#123; call &#125; = <span class="built_in">require</span>(<span class="string">'awaitCall'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> login () &#123;</span><br><span class="line">  <span class="comment">// callAsync allows promise as input</span></span><br><span class="line">  <span class="keyword">const</span> [err, response] = <span class="keyword">await</span> callAsync(userLogin())</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="keyword">this</span>.$message.eror(err)</span><br><span class="line">  <span class="comment">// user login successfully</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> writeFile (input) &#123;</span><br><span class="line">  <span class="comment">// call allows any function which can be accepted by require('util').promisify with a promise output</span></span><br><span class="line">  <span class="keyword">const</span> [err, res] = <span class="keyword">await</span> call(fs.write, input)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="comment">// fs.write successfully</span></span><br><span class="line">  <span class="keyword">const</span> [openErr, openRes] = <span class="keyword">await</span> call(fs.open, <span class="string">'a.txt'</span>, <span class="string">'r+'</span>, <span class="number">0o654</span>)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上提供了两个方法callAsync、call。</p>
+<p>callAsync 允许输入promise 之后flattern 回调。</p>
+<p>call 支持输入function，帮助用户转化为promise 之后flattern 回调(function 必须支持<code>require(&#39;util&#39;).promisify</code> 转化为promise 类型)。</p>
+<p>核心代码不多，支持JS、Typescript</p>
+<p>awaitCall.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">callAsync</span>(<span class="params">promise</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> promise</span><br><span class="line">    .then(<span class="function">(<span class="params">data</span>) =&gt;</span> [<span class="literal">null</span>, data])</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = util.promisify(func).call(<span class="keyword">this</span>, ...args)</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> promise !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'func should match util.promisify'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> callAsync(promise)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> callAsync</span><br></pre></td></tr></table></figure>
+<p>awaitCall.d.ts</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="built_in">module</span> callAsync &#123;</span><br><span class="line">  export function callAsync&lt;T, U = any&gt;(promise: Promise&lt;T&gt;): Promise&lt;[U | null, T | null]&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func: Function, ...args: any[]</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Typescript 完整实现</p>
+<p>awaitCall.ts</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> util <span class="keyword">from</span> <span class="string">'util'</span></span><br><span class="line"></span><br><span class="line">export function callAsync&lt;T, U = any&gt;(promise: Promise&lt;T&gt;): Promise&lt;[U | null, T | null]&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> promise</span><br><span class="line">      .then&lt;[<span class="literal">null</span>, T]&gt;<span class="function">(<span class="params">(data: T</span>) =&gt;</span> [<span class="literal">null</span>, data])</span><br><span class="line">      .catch&lt;[U, <span class="literal">null</span>]&gt;(<span class="function"><span class="params">err</span> =&gt;</span> [err, <span class="literal">null</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span>(<span class="params">func: Function, ...args: any[]</span>): <span class="title">Promise</span>&lt;<span class="title">any</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = util.promisify(func).call(<span class="keyword">this</span>, ...args)</span><br><span class="line">  <span class="comment">// promise is object type</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> promise !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="string">'func should match util.promisify'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> _promise = promise <span class="keyword">as</span> <span class="built_in">Promise</span>&lt;any&gt;</span><br><span class="line">  <span class="keyword">return</span> callAsync(_promise)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> callAsync</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>符合util.promisify 方法特征 \<br>\<br>1 输入的方法参数最后一个<code>typeof === &#39;function&#39;</code> \<br>2 最后一个参数返回的第一个参数，总是err</p>
+</blockquote>
+<blockquote>
+<p>注意this 指针丢失需要开发主动避免哦 \<br>\<br>可以使用 bind(this) 将指针重新找回 \<br>const bindCall = call.bind(that) \<br>await bindCall(fs.write, input) \<br>await bindCall(fs.open, ‘a.txt’, ‘r+’, 0o654)</p>
+</blockquote>
+<p>参考：</p>
+<p><a href="https://github.com/scopsy/await-to-js" target="_blank" rel="noopener">await-to-js</a></p>
+<p>callAsync 思想完全来源于 《await-to-js》，做了点演进。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/awaitCall/">awaitCall</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-6-13heroku" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/13/2019-6-13heroku/">2019-6-13heroku</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/13/2019-6-13heroku/" class="article-date">
+	  <time datetime="2019-06-13T03:59:59.000Z" itemprop="datePublished">June 13, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="服务器不放vps换个免费地方放"><a href="#服务器不放vps换个免费地方放" class="headerlink" title="服务器不放vps换个免费地方放"></a><strong>服务器不放vps换个免费地方放</strong></h2><p>6.1 第一次遇到GFW，很多计划都得往后搁置，不过遇到了就是好事。</p>
+<p>我找了AWS，注册送12个月免费服务。扣了我1美金后，看了别的文章说容易一点错就扣费。说申诉还是会退回，不过这就让我觉得不可靠。果断弃坑。找到了我以前使用的heroku, 还是一样的免费，那我用cdn 中转，是不是能解决被限速严重的问题？说干就干，毕竟6.7 高考的人拼命，我也要拼命努力啊。</p>
+<p>我使用的是nodejs docker。代码上修改配置文件</p>
+<p>package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    scripts: &#123;</span><br><span class="line">        start: 'NODE_ENV=production node app.js'</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同时app.js 的app.listen port。该port 使用process.env.PORT(heroku 提供了该port)</p>
+<p>下载heroku cli<br><code>sudo npm install -g heroku</code></p>
+<p>heroku 登录<br><code>heroku login</code></p>
+<p>heroku container 登录<br><code>heroku container login</code></p>
+<p>heroku container push<br><code>heroku container:push web --app ahuang-diary</code> (ahuang-diary 是我的项目名)</p>
+<p>heroku container release 发布<br><code>heroku container:release web --app ahuang-diary</code></p>
+<p>代码发布后，可以翻墙测试下是否通畅.</p>
+<p>可以使用右上角功能键: <strong>Open APP</strong> <strong>More</strong></p>
+<p>More 下面有view logs。这个估计是比较有用的。</p>
+<p>此时采用CDN 转发稍微加速heroku(感觉速度还是不怎么快，同时使用free 免费heroku，升级hobby 花钱才能使用https)。</p>
+<p>使用自定义域名，需要先账号填写信用卡。</p>
+<p>dashboard.heroku.com/apps/ahuang-diary 面板下Settings - Domains and certificates 增加<a href="http://diary.boqi.ml" target="_blank" rel="noopener">http://diary.boqi.ml</a></p>
+<p>下方会生成DNS Target</p>
+<p>DNS Target 放到CloudFlare 的CNAME 值里面，key 就是diary.boqi.ml 橙云点亮，同时Crypto 置为<strong>OFF</strong></p>
+<p>这样就成功完成了今天要做的事情了</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2019-6-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/13/2019-6-13lesson/">2019-6-13lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/06/13/2019-6-13lesson/" class="article-date">
+	  <time datetime="2019-06-13T03:59:21.000Z" itemprop="datePublished">June 13, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="让服务躲在墙后面"><a href="#让服务躲在墙后面" class="headerlink" title="让服务躲在墙后面"></a><strong>让服务躲在墙后面</strong></h1><p>当前有两种方案，大体一致，不过由于关于联合TLS、Nginx、VVVVVV 等有些知识点可能有欠缺，当前使用他人一键生成。另一种不带TLS、Nginx 的还算方便。</p>
+<p>当前处境: 我的ip 已经ping不通了。只能通过CDN 转向我的服务器进行拯救了。</p>
+<p>第一种方案: centos 6.x</p>
+<p>完全参考了<a href="https://blog.sprov.xyz/2019/03/11/cdn-VVVVVV-safe-proxy/?nsukey=PEs3kShj8DxdLAd3a9jeRtDkzetIbO3xXnhHySES87Vh3RxI6cD9jnzuo9YEAA99yX1xplHFNfsTv%2FO%2Bz%2Bn9Qn%2BdAUPmbU7H5yiscRg1UFRN6lnyQaMmnsZUNt2UxH3XUkV%2Bn992u4jXNqU0%2FH0ikRVtQPIVQw1NayReOpdThcwptuD4OVpLLeAZwTZ5ljabCV7QqcLytsux%2BYWycaTcqQ%3D%3D" target="_blank" rel="noopener">sprov 的博客</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1. 前往Freecom 申请一个免费域名</span><br><span class="line">2. Freecom ManageDNS 添加`A`记录. eg: www.gogal.ml A 67.230.172.104</span><br><span class="line">3. 前往CloudFlare 申请注册一个免费的CDN</span><br><span class="line">4. CloudFlare **add** 时，填入二级域名. eg:gogal.ml</span><br><span class="line">5. 选择Free 套餐</span><br><span class="line">6. 增加子域，同时指向你的ip eg: fuck.gogal.ml 67.230.172.104</span><br><span class="line"></span><br><span class="line">这时候Status 如果有橙色云朵，代表CDN 已经将你的域名包含进去，此时ping fuck.gogal.ml 出现了CDN 的ip</span><br><span class="line"></span><br><span class="line">7. 下一步会看到让你修改Nameservers(域名服务器)。其在ManageDNS 左边tab栏，填上那两个值，continue</span><br><span class="line">8. 接下来到了CloudFlare CDN 的dashboard。</span><br><span class="line"></span><br><span class="line">顶部有很多栏目，有两个重要栏目：DNS、Crypto</span><br><span class="line"></span><br><span class="line">DNS 是管理你的域名，开关你的CDN 需求。</span><br><span class="line"></span><br><span class="line">Crypto 管理你的TLS 加密与否(默认Full 加密)。这个很重要。</span><br><span class="line"></span><br><span class="line">前往Crypto 将TLS 置为`Off` 或者Flexible</span><br></pre></td></tr></table></figure>
+<p>上面关于前提配置完毕。接下来去你的服务器</p>
+<p>前往你的服务器ssh(ip 挂了，但是服务器商会提供页面Interactive，使用root 和你的登录密码进行登录)</p>
+<p><a href="https://blog.sprov.xyz/2019/02/04/VVVVVV-simple-use/" target="_blank" rel="noopener">VVVVVV安装教程</a></p>
+<p><code>bash &lt;(curl -L -s https://install.direct/go.sh)</code></p>
+<p>这样就安装了VVVVVV。配置目录在/etc/v2ray/config.json</p>
+<p>安装完成后，出现PORT、UUID。这两个记录下来，忘记了就cat /etc/VVVVVV/config.json 将端口和uuid 打印出来。</p>
+<p><code>service VVVVVV start &amp;&amp; service VVVVVV status</code> // centos6.x</p>
+<p><code>systemctl start VVVVVV &amp;&amp; systemctl status VVVVVV</code> // centos7</p>
+<p>关闭防火墙：</p>
+<p><code>service iptables stop &amp;&amp; chkconfig iptables off</code> // centos6.x 关闭防火墙、关闭开机打开防火墙</p>
+<p><code>systemctl stop firewalld &amp;&amp; systemctl disable firewalld</code> // centos7</p>
+<p>由于我的服务器就在洛杉矶，bbr 什么什么加速我就没开了。</p>
+<p>最后一步就是连接了。</p>
+<p>服务器VVVVVV/config.json 的inbound参考如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "port": 80, // 很重要，否则CDN 找不进来</span><br><span class="line">    "streamSettings": &#123;</span><br><span class="line">        "wsSettings": &#123;</span><br><span class="line">            "path": "/58ff4ec7/",</span><br><span class="line">            "headers": &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        "network": "ws"</span><br><span class="line">    &#125;,</span><br><span class="line">    "settings": &#123;</span><br><span class="line">        "clients": [</span><br><span class="line">            "id": "xxx", // 通过 /usr/bin/VVVVVV/v2ctl uuid 生成</span><br><span class="line">            "alterId": 64</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Address: fuck.gogal.ml : 443</span><br><span class="line">User ID:  xxx</span><br><span class="line">alterId: 64</span><br><span class="line">Security: chacha20那个</span><br><span class="line">Tag: 随便填，，标签使用而已</span><br><span class="line">NetWork: ws</span><br><span class="line">transport settings:</span><br><span class="line">   WebSocket:</span><br><span class="line">    path: /58ff4ec7/</span><br><span class="line">   TLS:</span><br><span class="line">    Use TLS</span><br><span class="line">    TLS serverName: fuck.gogal.ml</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/Cenmrev/VVVVVVW/releases" target="_blank" rel="noopener">VVVVVVW</a></p>
+<p><a href="https://github.com/Cenmrev/VVVVVVX/releases" target="_blank" rel="noopener">VVVVVVX</a></p>
+<h2 id="TLS版本"><a href="#TLS版本" class="headerlink" title="TLS版本"></a><strong>TLS版本</strong></h2><p>环境: centos7</p>
+<p><a href="https://github.com/wulabing/VVVVVV_ws-tls_bash_onekey" target="_blank" rel="noopener">github 一键脚本</a></p>
+<p>首先通过TLS 一键脚本生成，自己整还是挺麻烦。内容包括Nginx 转发配置，OpenSSL 配置TLS证书，VVVVVV配置ssl。</p>
+<p>配置完成后可以在clients 字段里面添加更多id。</p>
+<p>完成后，在客户端注意点：</p>
+<ol>
+<li>transport settings - WebSocket栏目 - path 填写对应路径</li>
+<li>TLS 打勾，同时填写你的CDN 转换的域名</li>
+<li>Network 选ws</li>
+<li>CloudFlare CDN 的Crypto 置为full。</li>
+</ol>
+<p>此时基本很健康，不容易再被打掉(毕竟我ip已经被打掉了)。</p>
+<p>这里提一点，不晓得为什么有些电脑就是连不上我的服务器，有些一填就好了，很奇怪。</p>
+<h2 id="VVVVVV无法联网"><a href="#VVVVVV无法联网" class="headerlink" title="VVVVVV无法联网"></a><em>VVVVVV无法联网</em></h2><p>特征: 对比他人config 完全一致后仍然无法联网, 该服务器提供的其他例子能正常使用</p>
+<p>查询了很多问题，终于将问题聚焦在了端口被占用上。</p>
+<p>同时查到这个VVVVVVX 的issue107</p>
+<blockquote>
+<p><a href="https://github.com/Cenmrev/VVVVVVX/issues/107" target="_blank" rel="noopener">https://github.com/Cenmrev/VVVVVVX/issues/107</a></p>
+</blockquote>
+<p><img src="/css/images/VVVVVVx_issue107.png" alt="VVVVVVX_issue107"></p>
+<p>表现完全一致。</p>
+<p>操作如下:</p>
+<p><img src="/css/images/VVVVVV_toNormalStep.jpg" alt="VVVVVV复活操作"></p>
+<p>反正接下来也不适用shadowsocks了，于是我就删了在 /Users/<strong><strong>/Library/LaunchAgents 下为shadowsock</strong></strong>.<em>**</em>.plist 的文件。重启一下电脑，于是就完全表现正常了。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VVVVVV/">VVVVVV</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-6-12kesan" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -893,289 +1119,11 @@ vue init webpack &lt;my-project&gt;
     
 
   
-    <article id="post-2019-2-19lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/02/19/2019-2-19lesson/">2019-2-19lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/02/19/2019-2-19lesson/" class="article-date">
-	  <time datetime="2019-02-18T16:04:38.000Z" itemprop="datePublished">February 19, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="记录最近学习nodejs"><a href="#记录最近学习nodejs" class="headerlink" title="记录最近学习nodejs"></a>记录最近学习nodejs</h1><h2 id="V8引擎-对类操作的加速"><a href="#V8引擎-对类操作的加速" class="headerlink" title="V8引擎 对类操作的加速"></a>V8引擎 对类操作的加速</h2><p>V8 引擎是google 邀请巴克为chrome 写的通用js底层引擎。<br>V8 创建类采用aClass = {}，如果有新的属性，则会生成一个隐藏bClass = { this.name = “b” }， 同时将aClass 指向bClass。aClass 会因为js 的GC 技术稍后销毁。这将带来巨大的性能优化。</p>
-<p>最佳做法：一次性声明aClass 属性，且尽量不要用 delete 方法。</p>
-<h2 id="CommonJS-类如何分割"><a href="#CommonJS-类如何分割" class="headerlink" title="CommonJS 类如何分割"></a>CommonJS 类如何分割</h2><p>web 全局有window，node 全局有global属性。相当于<code>var a = 0</code>;全局都会有<code>a</code>属性。<br>CommonJS 采用给每个被加载出来的js文件都变成某个函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> name = aKer;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>这时就变成一个个模块。</p>
-<h2 id="js-定义类的方法："><a href="#js-定义类的方法：" class="headerlink" title="js 定义类的方法："></a>js 定义类的方法：</h2><p>参考自：<a href="https://www.cnblogs.com/meteorcn/p/node_mianshiti_interview_question.html" target="_blank" rel="noopener">https://www.cnblogs.com/meteorcn/p/node_mianshiti_interview_question.html</a></p>
-<p>pluz，我背诵上面的参考网址就去面试js了。运气爆棚。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">构造函数方法定义类</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"aKer"</span></span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="keyword">this</span>.name) &#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.sayName()</span><br><span class="line"></span><br><span class="line">对象创建方法定义类</span><br><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">    name: <span class="string">"aKer"</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="keyword">this</span>.name); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="built_in">Object</span>.create(Person);</span><br><span class="line">person.sayName();</span><br><span class="line"></span><br><span class="line">极简主义法(参考自 阮一峰博客), 推荐使用</span><br><span class="line"><span class="keyword">var</span> Cat = &#123;</span><br><span class="line">    createNew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cat = &#123;&#125;;</span><br><span class="line">        cat.name = <span class="string">"aBai"</span>;</span><br><span class="line">        cat.makeSound = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; alert(<span class="string">"mmm"</span>); &#125;;</span><br><span class="line">        <span class="keyword">return</span> cat;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cat1 = Cat.createNew();</span><br><span class="line">cat1.makeSound();</span><br><span class="line">这时继承就会如：</span><br><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">    createNew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> animal = &#123;&#125;;</span><br><span class="line">        animal.sleep = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="string">"sleep"</span>); &#125;;</span><br><span class="line">        <span class="keyword">return</span> animal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> Cat = &#123;</span><br><span class="line">    createNew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cat = Animal.createNew();</span><br><span class="line">        cat.name = <span class="string">"aHei"</span>;</span><br><span class="line">        cat.makeSound = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="string">"mmm"</span>); &#125;;</span><br><span class="line">        <span class="keyword">return</span> cat;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cat1 = Cat.createNew();</span><br><span class="line">cat1.sleep();</span><br></pre></td></tr></table></figure>
-<h2 id="js类继承方法："><a href="#js类继承方法：" class="headerlink" title="js类继承方法："></a>js类继承方法：</h2><ul>
-<li>原型链法</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"animal"</span>;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.sayName = &#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype = Animal.prototype;</span><br><span class="line">Person.prototype.constructor = <span class="keyword">new</span> Animal;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>属性自制法</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (prop <span class="keyword">in</span> Animal.prototype) &#123;</span><br><span class="line">    Person.prototype[prop] = Animal.prototype[prop];</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.constructor = <span class="string">"Person"</span>;<span class="comment">//or new Person</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>构造器应用法</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    Animal.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="js常用设计模式：单例，工厂，代理，装饰，观察者模式"><a href="#js常用设计模式：单例，工厂，代理，装饰，观察者模式" class="headerlink" title="js常用设计模式：单例，工厂，代理，装饰，观察者模式"></a>js常用设计模式：单例，工厂，代理，装饰，观察者模式</h2><ul>
-<li><p>单例</p>
-</li>
-<li><p>工厂：同样形式参数返回不同实例</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Factory</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Factory.prototype.getInstance = <span class="function"><span class="keyword">function</span>(<span class="params">className</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">"new"</span> + className + <span class="string">"()"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123; <span class="keyword">this</span>.name = <span class="string">"Person1"</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>) </span>&#123; <span class="keyword">this</span>.name = <span class="string">"Animal1"</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> factory = <span class="keyword">new</span> Factory();</span><br><span class="line"><span class="keyword">var</span> person1 = factory.getInstance(<span class="string">"Person"</span>);</span><br><span class="line"><span class="keyword">var</span> animal1 = factory.getInstance(<span class="string">"Animal"</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>代理</p>
-</li>
-<li><p>观察者</p>
-</li>
-</ul>
-<h2 id="实现一个简单的http服务器"><a href="#实现一个简单的http服务器" class="headerlink" title="实现一个简单的http服务器"></a>实现一个简单的http服务器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123; <span class="string">"Content-Type"</span>: <span class="string">"text/html"</span> &#125;);</span><br><span class="line">    res.write(<span class="string">"aaa"</span>);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="child-process"><a href="#child-process" class="headerlink" title="child_process"></a>child_process</h2><ul>
-<li>spawn</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cp = <span class="built_in">require</span>(<span class="string">"child_process"</span>);</span><br><span class="line"><span class="keyword">var</span> child = cp.spawn(<span class="string">"echo"</span>, [<span class="string">"you"</span>, <span class="string">"hellow"</span>]);</span><br><span class="line">child.stdout.pipe(process.stdout);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>fork</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fork-parent.js</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cp = <span class="built_in">require</span>(<span class="string">"child_process"</span>);</span><br><span class="line"><span class="keyword">var</span> child = cp.fork(<span class="string">"./fork-child.js"</span>);</span><br><span class="line">child.on(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"parent get message from child"</span>, msg);</span><br><span class="line">&#125;)</span><br><span class="line">child.send(<span class="string">"parent send msg to child"</span>);</span><br><span class="line"></span><br><span class="line">fork-child.js</span><br><span class="line"></span><br><span class="line">process.on(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"child get msg from parent:"</span>, msg);</span><br><span class="line">    process.send(<span class="string">"child send msg to parent to ask for money!"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="判断用户密码时要注意什么"><a href="#判断用户密码时要注意什么" class="headerlink" title="判断用户密码时要注意什么"></a>判断用户密码时要注意什么</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkApiKey</span>(<span class="params">apiKeyFromDb, apiKeyReceived</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (apiKeyFromDb === apiKeyReceived) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>比较密码时，不能泄露任何信息，因此比较必须在固定时间完成。否则，可以使用<a href="https://en.wikipedia.org/wiki/Timing_attack" target="_blank" rel="noopener">timing attacks</a>来攻击你的应用。为什么会这样呢?Node.js使用V8引擎，它会从性能角度优化代码。它会逐个比较字符串的字母，一旦发现不匹配时就停止比较。当攻击者的密码更准确时，比较的时间越长。因此，攻击者可以通过比较的时间长短来判断密码的正确性。使用cryptiles可以解决这个问题:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkApiKey</span>(<span class="params">apiKeyFromDb, apiKeyReceived</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> cryptiles.fixedTimeComparison(apiKeyFromDb, apiKeyReceived)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="MySql-索引为什么SELECT-速度快"><a href="#MySql-索引为什么SELECT-速度快" class="headerlink" title="MySql 索引为什么SELECT 速度快"></a>MySql 索引为什么SELECT 速度快</h2><p><strong>引自廖雪峰大大</strong></p>
-<blockquote>
-<p>索引的效率取决于索引列的值是否散列，即该列的值如果越互不相同，那么索引效率越高。反过来，如果记录的列存在大量相同的值，例如gender列，大约一半的记录值是M，另一半是F，因此，对该列创建索引就没有意义。\<br>\<br>可以对一张表创建多个索引。索引的优点是提高了查询效率，缺点是在插入、更新和删除记录时，需要同时修改索引，因此，索引越多，插入、更新和删除记录的速度就越慢。\<br>\<br>对于主键，关系数据库会自动对其创建主键索引。使用主键索引的效率是最高的，因为主键会保证绝对唯一。</p>
-</blockquote>
-<h2 id="随机生成密码方法"><a href="#随机生成密码方法" class="headerlink" title="随机生成密码方法"></a>随机生成密码方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function randomString(length)</span><br><span class="line">&#123;</span><br><span class="line">    var charset = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;;</span><br><span class="line">    var i;</span><br><span class="line">    var result = &quot;&quot;;</span><br><span class="line">    var isOpera = Object.prototype.toString.call(window.opera) == &apos;[object Opera]&apos;;</span><br><span class="line">    if(window.crypto &amp;&amp; window.crypto.getRandomValues)</span><br><span class="line">    &#123;</span><br><span class="line">        values = new Uint32Array(length);</span><br><span class="line">        window.crypto.getRandomValues(values);</span><br><span class="line">        for(i=0; i&lt;length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result += charset[values[i] % charset.length];</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(isOpera)//Opera&apos;s Math.random is secure, see http://lists.w3.org/Archives/Public/public-webcrypto/2013Jan/0063.html</span><br><span class="line">    &#123;</span><br><span class="line">        for(i=0; i&lt;length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result += charset[Math.floor(Math.random()*charset.length)];</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    else throw new Error(&quot;Your browser sucks and can&apos;t generate secure random numbers&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(randomString(10))</span><br></pre></td></tr></table></figure>
-<h2 id="BDD-TDD-区别"><a href="#BDD-TDD-区别" class="headerlink" title="BDD/TDD 区别"></a>BDD/TDD 区别</h2><p><strong>此为其他处转载，忘记出处，侵权删</strong></p>
-<p>BDD是一种敏捷软件开发的技术。它对TDD的理念进行了扩展，在TDD中侧重点偏向开发，通过测试用例来规范约束开发者编写出质量更高、bug更少的代码。而BDD更加侧重设计，其要求在设计测试用例的时候对系统进行定义，倡导使用通用的语言将系统的行为描述出来，将系统设计和测试用例结合起来，从而以此为驱动进行开发工作。</p>
-<h2 id="柯里化函数"><a href="#柯里化函数" class="headerlink" title="柯里化函数"></a>柯里化函数</h2><p><strong>此为其他处转载，忘记出处，侵权删</strong></p>
-<p>ES 5的 bind()方法。<br>在pomelo的一些demo 里面可能会不理解这么一句话<br>session.on(‘closed’, onUserLeave.bind(null, this.app));</p>
-<p>var onUserLeave = function(app, session) {<br>  if(!session || !session.uid) {<br>        return;<br>    }<br>    app.rpc.chat.chatRemote.kick(session, session.uid, app.get(‘serverId’), session.get(‘rid’), null);<br>};<br>你可能会有这样的疑问</p>
-<ol>
-<li>为什么onUserLeave 会有两个参数? </li>
-<li>函数的bind() 第一个参数null 什么什么意思，结合第一个问题，这里就传了一个参数？那么那个session 还是怎么传过来的？ <br>这个函数 bind() 方法是ES 5 新增的一个特性。用于将函数绑定到某个对象上。<br>那么这里bind()的方法的作用是什么呢？<br>要明白这里的bind()的用法，首先我们需要了解一种函数式编程技术—柯里化（currying）<br>Wiki是这么定义的: 在计算机科学中，柯里化（Currying），是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。<br>为了帮助理解这里写一个小例子(来自于Javascript 权威指南第六版 p191)<br>var sum = function(x, y){<br> return x+y;<br>}<br>//创建一个类似于sum的新函数，但this的值绑定到null<br>//并且第一个参数绑定到1， 这个新函数的期望只传入一个实参<br>var succ = sum.bind(null, 1);</li>
-</ol>
-<p>console.log(succ(2)); //输出 3； x 绑定到1，并传入2作为实参</p>
-<p>//另外一个做累计计算的函数<br>var sum2 = function(y ,z){<br>    return this.x + y + z;<br>}</p>
-<p>//绑定this 和 y<br>var bindSum2 = sum2.bind({x : 1}, 2);<br>console.log(bindSum2(3)); //输出 6； this.x 绑定到1，y绑定到2， z 绑定到3.<br>上面这个例子就是柯里化的应用了，现在我们回到pomelo看下，chatpomelo例子里面怎么使用这个柯里化技术。<br>现在，应该能解决开头的第一个问题了，那么第二个问题，我们需要阅读一下pomelo的源码<br>阅读源码sessionService.js 464-478<br>从这十几行代码和柯里化的知识，我们就能够明白为什么onUserLeave为什么会有两个参数了。<br>var onUserLeave = function(app,  session){</p>
-<p>}<br>最后的参数是通过柯里化的技术把单参数 session 传到我们多参数函数里面。</p>
-<h2 id="CentOS6-Nginx-配置免费ssl"><a href="#CentOS6-Nginx-配置免费ssl" class="headerlink" title="CentOS6 Nginx 配置免费ssl"></a>CentOS6 Nginx 配置免费ssl</h2><p><a href="https://certbot.eff.org/lets-encrypt/centos6-nginx" target="_blank" rel="noopener">Certbot</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir /root/download/</span><br><span class="line">cd /root/download/</span><br><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">#设置权限</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure></p>
-<p>这时得到certbot-auto 文件夹</p>
-<p>./certbot-auto –nginx #这里会对nginx 服务器配置，同时会对conf 文件修改<br>(中间出现<strong>ImportError: No module named virtualenv</strong>, $pip install virtualenv)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(certbot-auto renew 刷新)</span><br><span class="line"></span><br><span class="line">//lsgood.top *.lsgood.top为我的域名，请填写自己的域名</span><br><span class="line">certbot-auto certonly -d *.lsgood.top -d lsgood.top</span><br></pre></td></tr></table></figure>
-<p>修改nginx.conf：<br>server {<br>    listen 443 default ssl;<br>    server_name lsgood.top;<br>    ssl on;<br>    ssl_certificate xxxxxxxxx;#这个会被自动填写,是ssl 的公钥<br>    ssl_certificate_key xxxxx;#同上,是ssl 的私钥</p>
-<pre><code>#其他不用设置可以
-</code></pre><p>}</p>
-<p>在设置 certbot 的时候需要注意碰到以下单词时，是需要到域名解析后台修改文件：</p>
-<blockquote>
-<p>Please deploy a DNS TXT record under the name _acme-challenge.lsgood.com with the following value:\<br>\<br>xxxxxxxxxxxxxxx\<br>\<br>Before continuing, verify the record is deployed.</p>
-</blockquote>
-<p>这意思是让你在继续下面之前，确保域名解析后台增加了以_acme-challenge 为前缀的子域名，同时将<code>xxxxxxxxxxxxxxx</code> 拷贝至里面的<strong>记录值</strong>一栏（记录类型为TXT）</p>
-<p>参考:</p>
-<p><a href="https://juejin.im/post/5b07c42c51882538c2203b2f#heading-2" target="_blank" rel="noopener">https://juejin.im/post/5b07c42c51882538c2203b2f#heading-2</a></p>
-<p><a href="https://segmentfault.com/a/1190000017081357" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017081357</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-1-20lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/21/2019-1-20lesson/">2019-1-20lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/01/21/2019-1-20lesson/" class="article-date">
-	  <time datetime="2019-01-20T23:23:42.000Z" itemprop="datePublished">January 21, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近记录及经历"><a href="#最近记录及经历" class="headerlink" title="最近记录及经历"></a>最近记录及经历</h1><p>记录下最近忙的事情：</p>
-<ol>
-<li><p>面试后台</p>
-</li>
-<li><p>vps 重启导致没进入centos 系统，同时需要重启ssserver</p>
-</li>
-<li><p>公司组织活动</p>
-</li>
-</ol>
-<h2 id="面试后台"><a href="#面试后台" class="headerlink" title="面试后台"></a>面试后台</h2><p>2019/1/17 晚上6:15 赶紧从锦江乐园开着那个破小电驴赶去仙霞路。终于在约定7点前3分钟到达亩的地。<br>进入后，笔试+机试。<br>笔试有</p>
-<ul>
-<li>module.epxorts 有什么特点</li>
-<li>2个Node.js API 有什么区别</li>
-<li>Node.js 使用什么库可以创建原生服务器，代码。</li>
-<li>Node.js 子程序、子程序生成和沟通</li>
-<li>js 什么是回调，如何防止回调地狱</li>
-</ul>
-<p>机试</p>
-<p>express + pug + vue.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">index.jade</span><br><span class="line"></span><br><span class="line">template.</span><br><span class="line">    ...布局</span><br><span class="line">scripts.</span><br><span class="line">    ...scripts</span><br><span class="line"></span><br><span class="line">输入&quot;[&quot;a&quot;,&quot;1&quot;,&quot;2&quot;,&quot;1&quot;,&quot;b&quot;,&quot;3&quot;,&quot;4&quot;,&quot;a&quot;]&quot;</span><br></pre></td></tr></table></figure>
-<p>将输入的文本传到后台，后台进行去重、排序得到<br>[“1”,”2”,”3”,”4”,”a”,”b”]<br>然后传递回前台展示</p>
-<p>做这题的时候vue.js 基本都会，但是pug 的混合有点懵。<br>express 没有watch file 更新服务器的便利，我给加了supervisord 库。<br>给的电脑是linux系统，键盘啥的，却都是windows 的操作。好烦，一直用ctrl+s，这啥玩意。一直担心这次修改的代码是未同步的。<br>字又很小很小那种、没有鼠标使用触控板，那个垃圾触控板啊。<br>外面又很吵。</p>
-<p>反正最后我只剩下“排序、去重”这俩 面试经理认为去网页找就好了的功能，我自己认为还算完成度高的（我还加了比如responseFormat、util、controller 分出操作）。<br>中间有个卡了点时间的地方：.jade template 里面想import 一个库，不行，最后找到ajax post 方法。</p>
-<p>之后面试经理问了些工作经历、一些别的知识点等等。</p>
-<p>做完面试，从晚上7点搞到了近晚上10点了都（确实时间长了点，不过跟环境有关吧，我自己环境搭起来，那就会特别特别爽，很快就能好，毕竟能断点嘛）。然后骑着已经一点电都没有的电驴推了好长一段路，幸好幸好没有下雨。推一会，骑一会，终于找到充电点，才终于回到家了。</p>
-<p>第一次后台面试，感觉能胜任，没啥。<br>我现在还在做一个资源下载网页、真·聊天软件。这几天给他整好来，我觉得明年年初必定能很OK！！！</p>
-<h2 id="vps重启、ssserver-启动"><a href="#vps重启、ssserver-启动" class="headerlink" title="vps重启、ssserver 启动"></a>vps重启、ssserver 启动</h2><p>首先我vps（搬瓦工CN2 专线）安装两次系统，导致重启之后，先点击左侧“terminal interaction”，然后会有新开一个网页版的操作交互页面，在提示“ESC”时， 需要按ESC 键进入选取系统页面，选取自己的server（我安装centos 6 x86），然后就可以进入centos 操作系统。</p>
-<p>ssserver 我这里参考这篇<a href="https://github.com/Helinhan/-shadowsocks-serverspeeder-/issues/1" target="_blank" rel="noopener">git issue</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start</span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
-<h2 id="新的公司“哇塞运动”公司组织活动"><a href="#新的公司“哇塞运动”公司组织活动" class="headerlink" title="新的公司“哇塞运动”公司组织活动"></a>新的公司“哇塞运动”公司组织活动</h2><p>时间：19.1.18 ~ 19.1.19<br>地点：苏州半岛阳澄湖酒店<br>事件：公司组织年会，团建</p>
-<p>早上坐了一个半小时的大巴到达。休息半小时后，每个人先在一个大面板签字，留影。接着是茶话会，点评公司优秀员工，主管点评员工，回顾一年来事迹、点滴。</p>
-<p>茶话会快结束了，还有剩余时间，我提议“成语接龙”，10s 没接上成语的同学发红包。玩了几圈，已经接近11点半，大家意犹未尽，但是还是抓紧休息时间，12点集合午饭时间。</p>
-<p>中午饭简洁实在：吃饱。下午有活动，所以主要还是吃饱，晚上才是重头戏，不能和晚上抢了风头。有些同学还会有嫌弃说简陋，但是见其也吃的不多，这也是我疑惑的地方。人果然都是不同的，我是来则安，而总会有人嫌弃这嫌弃那，而自己却又服务得不多。</p>
-<p>我做好自己的角色就好了，更不必理会不同的心声。</p>
-<p>吃完饭，回酒店休息了下，那40分钟，终于把我的ssserver 重启回去了。提一点：酒店的网络估计国家有监管，百度搜索很多稍稍敏感东西都被屏蔽了，感觉不到gov 的意图，总觉得很多小丑想在我身边窥视我的一举一动。浑身不自在！</p>
-<p>中午2点集合，集体出发去酒店附近的草地做运动。<br>首先大家分队，做些热身运动。<br>接着分成的两组开始接力跑。我们这组输了，原因有2：我们这组妹纸多一个；开头有个同学返回时没把接力棒传递，延迟数s之久。<br>开心即好。</p>
-<p>接下来我们还是2队比拼过跳绳速度。这个在接下来体现在团队合作。比如<strong>黑洞</strong>同学加油，减少错误率，手感好的同学，多个一起进入，加速进程。我们这队先跳，有几个”黑洞”同学，但不敢置信的是二队的黑洞才是最厉害的！着实拖着队友，哈哈。</p>
-<p>这两个游戏之后，还有三个游戏：报数抱团，毒圈丢球，撕名牌。</p>
-<p>报数抱团：中间同学报数，然后其他队友围成圈，报数时其他同学报成对应数字。<br>我怎么输的，在第三波时，数字8，我站过去是9，只能牺牲小我牺牲啦。</p>
-<p>毒圈丢球：全员分成四个队，中间一个队伍，其他三个队使用软球，将中间队伍砸下。</p>
-<p>撕名牌：大家身穿小外衣，两队颜色。背后由正反胶贴着自己的铭牌。大家分成两队，根据时间，慢慢缩小毒圈。大家互相开撕。</p>
-<p>这里说几个有意思的：撕的铭牌，那个黏度，三个男的扯都扯不下来。我当时被三个人撕都撕不下，哈哈，活到了最后。我觉得人事部一个小姑凉撕的人可就多，好多人被她撕撕撕。我一直躲躲躲，躲到了比赛最后，胜利✌️。<br>这游戏包括了好几波，都快喘不过气了。玩的没心没肺啊，如同回到大学时期。公司强项不愧是做策划执行的，线下的执行简直没话说的。</p>
-<p>大家玩完之后回酒店休息了下。没一会去吃晚饭。</p>
-<p>晚饭吃的就稍微更好了。这次喝的酒也稍微多了一些，米西米西。好吃的有一个小虾米，很嫩很滑口；苏州必带鸡汤么；烤猪脚很香；期间蒋总、翟总述说自己往事，公司建立来由，张总10年没放弃。2005年创建“点傲”，2014启动哇塞，合并为“冠脉堂”。期间张希亮，张总喝多了，说点傲团队，人员坚持下去，十年后还是大家伙，张总自己掏钱给留着的伙伴5w报答。确实，这就是新兴的互联网不能比的。互联网人，自身难保，随时可能被开，还想着自己留在公司？？（耳边有些小伙伴传来问是冠脉堂全员吗？小声嘀咕问。有这想法的人，看来年龄尚浅，未来前路只能在他人鼻息下留存啊）</p>
-<p>吃完之后回到酒店休息了下，就已经要晚上的晚会表演了。我们技术部本来要彩排一下的，已经来不及，直接开始了。</p>
-<p>我在这也有个小项目，就是唱<strong>革命人永远年轻</strong>这首歌。这首红歌，是大学红歌比赛时，我作为领唱，身后都是老师、院长、同学们，台下是几千人的同学，当时的我激动、紧张，使得我不经意间，不自觉、无法控制的腿抖。这次我要打破自己，表达自己。</p>
-<p>其实我在粉粉的时候就有多次code review、技术分享，在实践，表达，突破。这次很成功的表演（会不会是人比较少的原因，再也没有腿抖，也没有丝许不安？应该不是吧，哈哈）。</p>
-<p>翟总为我们深情朗诵，蒋总给我带来一曲古典的<strong>梨花颂</strong>。这首歌我高二的时候特别喜欢，喜欢不得了，现在老了，在工作场景耕耘，眼前早已不是夜景烟花，桃色满目了。<br>我们技术部有俩节目。有一个”兔子舞”，得了，崩盘。之后我们大合唱<strong>明天会更好</strong>,只能凭借真诚，最好还好，收了场。<br>边表演节目，边抽奖，反正我是没能拿到什么奖，阳光普照吧。<br>我觉得一等奖倒是挺意外，而且老板们脸都要绿的那种。平时最不干活，干活老喊累，推诿，能力最差的前端同学得到了，哈哈，我觉得老板脸，不是很好看，哈哈。</p>
-<p>接下来大家吃东西，唱歌，那玩个游戏。有个人带上眼罩，转三圈，然后在场地抓人，抓到人之后要猜出试谁。这个游戏也挺好玩的，我一直没被抓到过，之后一次请缨，有意思。这期间有个哥们为了猜出另一个哥们是谁，上上下下摸了个遍，都快亲上去了。哈哈</p>
-<p>基本这天就这么过去了，第二天回上海，然后那天下午，我们还加了半天班，想猴头菇了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2019-1-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/01/05/2019-1-5lesson/">2019-1-5lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/01/05/2019-1-5lesson/" class="article-date">
-	  <time datetime="2019-01-05T13:12:41.000Z" itemprop="datePublished">January 5, 2019</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Dockerfile-install-very-slow"><a href="#Dockerfile-install-very-slow" class="headerlink" title="Dockerfile install very slow"></a>Dockerfile install very slow</h1><p>According to <a href="https://christianfei.com/posts/Cache-speed-up-docker-node-modules/" target="_blank" rel="noopener">this artical</a>, I resolve an issue that i have to load all <strong>node_module</strong> files very time;</p>
-<p>This method help with: building the same package.json and and same file path, would never ever to load every file again, but first would still very slow.</p>
-<p>do step:</p>
-<p>first add your <strong>.dockerignore</strong> with:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">.results</span><br><span class="line">script</span><br><span class="line">*Dockerfile*</span><br><span class="line">node_modules</span><br><span class="line">package-lock.json</span><br></pre></td></tr></table></figure>
-<p>then:</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.12</span>.<span class="number">0</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">ARG</span> NODE_ENV=development</span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=$NODE_ENV</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span> /watchvideo_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> package.json yarn.lock ./</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span> . /watchvideo_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> yarn</span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> node</span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">9526</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span> ["yarn", "start"]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">  mysql:</span><br><span class="line">    build: ./mysql</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;4444:3306&quot;</span><br><span class="line">  watch:</span><br><span class="line">    build: .</span><br><span class="line">    hostname: watch</span><br><span class="line">    command: yarn debug</span><br><span class="line">    volumes:</span><br><span class="line">      - ./dist:/watchvideo_server/dist</span><br><span class="line">      - ./package.json:/watchvideo_server/package.json</span><br><span class="line">      - ./yarn.lock:/watchvideo_server/yarn.lock</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;9526:9526&quot;</span><br><span class="line">      - &quot;9222:9222&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysql</span><br><span class="line">    links:</span><br><span class="line">      - mysql</span><br><span class="line">    environment:</span><br><span class="line">      - DATABASE_HOST=mysql</span><br></pre></td></tr></table></figure>
-<h2 id="I’m-making-a-media-site"><a href="#I’m-making-a-media-site" class="headerlink" title="I’m making a media site"></a>I’m making a media site</h2><p>When 2018.6, I decided to make some games to try earning some money and advertise.</p>
-<p>But gov said NO: gov suddenly gave a notify, field of game would become more difficult.</p>
-<p>OK, when 2018.12, I change my mind to make a media site to provide some picture sources and ability of watching video.</p>
-<p>But gov immediatly gave notify: master of <strong>BT video site</strong> was caughted and get 3 year of prison with 80w RMB ticket.</p>
-<p>Ability of IT worker is very difficultlly control by zh gov, so they afraid of any man is out of control.</p>
-<p>If you feel comfortable with that ease, you will done soon or later.</p>
-<p>I’m would never be.</p>
-<h1 id="Man-become-poverty"><a href="#Man-become-poverty" class="headerlink" title="Man become poverty"></a>Man become poverty</h1><p>Man dare to chanllenge for fight, but during recent couple of year, harsh enviroument is expressing more tough to not getting close to the civilization and ability.</p>
-<p>Man died by kind of poverty.</p>
-<p>Poverty caused by not treating them as power, but treating tasty word as governance model.</p>
-<p>So Man deserve poverty by not taking seriously of bazoo?</p>
-<p>fucking bazooer!!!</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/8/">Next</a>
+    <a class="extend prev" rel="prev" href="/page/6/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/8/">Next</a>
   </nav>
 
 </section>
@@ -1323,6 +1271,30 @@ vue init webpack &lt;my-project&gt;
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/07/28/2020-07-28lesson/">2020-07-28lesson</a></h6>
+              <span>July 28, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/07/27/20200727lesson/">20200727lesson</a></h6>
+              <span>July 27, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
               <span>July 6, 2021</span>
             </div>
@@ -1341,30 +1313,6 @@ vue init webpack &lt;my-project&gt;
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1377,7 +1325,7 @@ vue init webpack &lt;my-project&gt;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1387,7 +1335,7 @@ vue init webpack &lt;my-project&gt;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -1397,7 +1345,7 @@ vue init webpack &lt;my-project&gt;
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
