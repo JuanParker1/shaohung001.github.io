@@ -350,135 +350,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-2020-07-28lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/07/28/2020-07-28lesson/">2020-07-28lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/07/28/2020-07-28lesson/" class="article-date">
-	  <time datetime="2021-07-28T03:23:13.000Z" itemprop="datePublished">July 28, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="iced2ts-断点调试"><a href="#iced2ts-断点调试" class="headerlink" title="iced2ts 断点调试"></a>iced2ts 断点调试</h1><p>上一讲说到iced2ts 平滑升级，但是如果是从静态类型过来，方便的IDE 对断点调试可是优化得很，vscode没有他，我不能活。</p>
-<p>开始活，整活:</p>
-<p>在项目根目录创建</p>
-<p>.vscode文件夹, 并且添加文件：launch.example.json</p>
-<p>内容为:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"configurations"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"Launch"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"node"</span>,</span><br><span class="line">      <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"$&#123;workspaceRoot&#125;/app.js"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"runtimeExecutable"</span>: <span class="string">"npm"</span>,</span><br><span class="line">      <span class="attr">"runtimeArgs"</span>: [</span><br><span class="line">          <span class="string">"run"</span>,</span><br><span class="line">          <span class="string">"dev"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"sourceMaps"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceRoot&#125;"</span>,</span><br><span class="line">      <span class="attr">"console"</span>: <span class="string">"integratedTerminal"</span>,</span><br><span class="line">      <span class="attr">"internalConsoleOptions"</span>: <span class="string">"neverOpen"</span>,</span><br><span class="line">      <span class="attr">"env"</span>: &#123;</span><br><span class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"dev"</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"protocol"</span>: <span class="string">"inspector"</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>重点是<code>runtimeArgs</code> 和 <code>cwd</code>路径。如果项目结构深，需要调整cwd深度。runtimeArgs可以调整运行项目的script。</p>
-<p>给出我使用的dev(如果是windows，则是 <code>node dev:win</code>): <code>nodemon --watch &#39;**/*.ts&#39; --ignore &#39;**/*.test.*&#39; --exec &#39;TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node --files -r tsconfig-paths/register&#39; app.ts</code></p>
-<p>此时bash <code>$ cp .vscode/launch.example.json .vscode/launch.json</code></p>
-<p>在.gitignore 中添加忽略信息:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.vscode/launch.json</span><br><span class="line">!.vscode/</span><br></pre></td></tr></table></figure>
-<p>怎么用?</p>
-<p>使用手上任意一根手指按向F5 的按钮即可！</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iced2ts/">iced2ts</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20200727lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/07/27/20200727lesson/">20200727lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/07/27/20200727lesson/" class="article-date">
-	  <time datetime="2021-07-27T03:19:26.000Z" itemprop="datePublished">July 27, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="iced2ts"><a href="#iced2ts" class="headerlink" title="iced2ts"></a>iced2ts</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Iced 语言在早期相对于js 无疑是进步巨大，告别语法臃肿、callback hell、直观等，早早就用上了await defer 等便捷语法。</p>
-<p>但是他的弱点就是，他就是传统脚本，小项目几个文件，不管你依不依赖，我记得住其他文件的需求，那么他很合适。但是到了中级项目、大型项目，上下文不通、脚本间不达意，维护起来非得常年累月的伙伴加班熬夜，只能边写脚本，边吃着小饼干才能维持得了生活这样子。</p>
-<p>Typescript 优点很多，编译强类型语言等等一系列光环之下也有一个弱点，就是项目特大之后，编译性能下降(社区里有讨论)。但是特大那种，是不是也应该想办法拆分业务的方案解决了。所以当前来看，直接整Typescript，发展了这么久的开源语言，没有后顾之忧。</p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>当前Iced 的项目，还是正常的运行，直接加上tsconfig.json 文件，将项目直接变成Typescript 项目。</p>
-<p>开发能正常运行后，开始下一步的打包开发文件。</p>
-<p>打包成本地开发文件后，本地测试能运行，上线测试是否正常。</p>
-<p>最终项目结构:</p>
-<p>图略</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>增加TYPESCRIPT 配置文件<br>直接在项目根目录中创建tsconfig.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"include"</span>: [ <span class="string">"**/*"</span> ],</span><br><span class="line">  <span class="attr">"exclude"</span>: [ <span class="string">"**/*/config.ts"</span>, <span class="string">"**/*/config.js"</span> ],</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"."</span>,</span><br><span class="line">    <span class="attr">"allowJs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"target"</span>: <span class="string">"ES6"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"CommonJS"</span>,</span><br><span class="line">    <span class="attr">"moduleResolution"</span>: <span class="string">"node"</span>,</span><br><span class="line">    <span class="attr">"types"</span>: [ <span class="string">"node"</span> ],</span><br><span class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"pretty"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"noImplicitAny"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"removeComments"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"./dist"</span>,</span><br><span class="line">    <span class="attr">"paths"</span>: &#123;</span><br><span class="line">      <span class="attr">"*"</span>: [</span><br><span class="line">        <span class="string">"node_modules/*"</span>,</span><br><span class="line">        <span class="string">"types/*"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"@/*"</span>: [<span class="string">"*"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>include 表示当前所有文件都包含(可根据您的目录进行修改，比如src/*<em>/</em>)</p>
-<blockquote>
-<p>此时开发直接便可运行Iced 的项目。当前【个人中心】改造一个脚本，很顺利全部改动过来。</p>
-</blockquote>
-<h2 id="修改原有ICED-脚本为TYPESCRIPT"><a href="#修改原有ICED-脚本为TYPESCRIPT" class="headerlink" title="修改原有ICED 脚本为TYPESCRIPT"></a>修改原有ICED 脚本为TYPESCRIPT</h2><p>此时外部引用时，需要引用其default 对象，写法为: App = require(“../service/app).default</p>
-<h2 id="增加所需第三方库"><a href="#增加所需第三方库" class="headerlink" title="增加所需第三方库"></a>增加所需第三方库</h2><p>上面开发已经能正常了，但是混合之后，打包就需要对应修改了。</p>
-<p>package.json 增加所需第三方库</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  scripts: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"nodemon --watch '**/*.ts' --ignore '**/*.test.ts' --exec 'ts-node --files -r tsconfig-paths/register' app.js"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"node app.js"</span></span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"gulp"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"module-alias"</span>: <span class="string">"^2.2.2"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"@types/express"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"@types/lodash"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"gulp"</span>: <span class="string">"~3.9.1"</span>,</span><br><span class="line">    <span class="string">"gulp-if"</span>: <span class="string">"~2.0.0"</span>,</span><br><span class="line">    <span class="string">"gulp-iced"</span>: <span class="string">"0.0.3"</span>,</span><br><span class="line">    <span class="string">"gulp-load-plugins"</span>: <span class="string">"~1.2.0"</span>,</span><br><span class="line">    <span class="string">"gulp-terser"</span>: <span class="string">"~1.2.0"</span>, <span class="comment">// 功能通uglify</span></span><br><span class="line">    <span class="string">"gulp-typescript"</span>: <span class="string">"^6.0.0-alpha.1"</span>,</span><br><span class="line">    <span class="string">"nodemon"</span>: <span class="string">"^2.0.4"</span>,</span><br><span class="line">    <span class="string">"ts-node"</span>: <span class="string">"^8.10.2"</span>,</span><br><span class="line">    <span class="string">"tsconfig-paths"</span>: <span class="string">"^3.9.0"</span>,</span><br><span class="line">    <span class="string">"typescript"</span>: <span class="string">"^3.9.7"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="修改GULPFILE"><a href="#修改GULPFILE" class="headerlink" title="修改GULPFILE"></a>修改GULPFILE</h2><p>第一步还是要 gulp iced 得到js文件。这时我们所需的Typescript 的项目文件就都在了。</p>
-<p>gulpfile.js 增加以下任务</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">"tsc"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> project = $.typescript.createProject(<span class="string">"tsconfig.json"</span>)</span><br><span class="line">  <span class="keyword">return</span> gulp.src([</span><br><span class="line">    <span class="string">'!node_modules/**/*'</span>,</span><br><span class="line">    <span class="string">'!node_modules/**/*.ts'</span>,</span><br><span class="line">    <span class="string">'**/*.js'</span>,</span><br><span class="line">    <span class="string">'**/*.ts'</span>,</span><br><span class="line">    <span class="string">'!gulpfile.js'</span>,</span><br><span class="line">    <span class="string">'!**/config.js'</span>,</span><br><span class="line">    <span class="string">'!**/config.ts'</span>,</span><br><span class="line">    <span class="string">'!apidoc/**/*'</span>,</span><br><span class="line">    <span class="string">'!test/**/*'</span>,</span><br><span class="line">    <span class="string">'!dongle/**/*'</span>,</span><br><span class="line">    <span class="string">'!license/**/*'</span>,</span><br><span class="line">    <span class="string">'!public/**/*'</span>,</span><br><span class="line">    <span class="string">'!packages/**/*'</span></span><br><span class="line">  ])</span><br><span class="line">  .pipe(project())</span><br><span class="line">  .pipe($.<span class="keyword">if</span>(<span class="string">'*.js'</span>, $.terser().on(<span class="string">'error'</span>, <span class="built_in">console</span>.error)))</span><br><span class="line">  .pipe(gulp.dest(<span class="string">"dist"</span>))</span><br><span class="line">&#125;)</span><br><span class="line">gulp.task(<span class="string">"copy-favicon"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src([<span class="string">"favicon.png"</span>])</span><br><span class="line">    .pipe(gulp.dest(<span class="string">"dist"</span>))</span><br><span class="line">&#125;)</span><br><span class="line">gulp.task(<span class="string">"copy-package"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src([<span class="string">"package*.json"</span>])</span><br><span class="line">    .pipe(gulp.dest(<span class="string">"dist"</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>此时dist 就是我们要的全部项目文件了。</p>
-<p>接下来的Docker 打包、上线流程还是和以前一样。</p>
-<h2 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h2><p>以上就是这次将Iced 的项目，转化为Typescript 项目。而且是平稳过渡，不影响之前功能。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iced2ts/">iced2ts</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
     <article id="post-2021-7-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -895,6 +766,113 @@ ON CREATE SET peter += {last: &quot;aker&quot;}
     
 
   
+    <article id="post-2021-5-17lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/05/17/2021-5-17lesson/" class="article-date">
+	  <time datetime="2021-05-17T02:09:01.000Z" itemprop="datePublished">May 17, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="产证到手"><a href="#产证到手" class="headerlink" title="产证到手"></a>产证到手</h1><p>最近已拿到产证，历经2.18 ~ 5.13 这么长时间，产证到手，每一步都是大胆的尝试，甚至相信命运，敢拿着100+w 孤注一试，且听我细细回顾.</p>
+<p>2.18 过年假期快要结束刚要上班的时候，快速找房东上门看了下房子即交了30w定金。30w，我当时还在不确定我有没有买房资格(一个月一个月往上数，刚好60个月，但是我心里还是打鼓的)，但是考虑到再不上车，不好上了。过完年约dfy顾问和房东一起简单看完房子即找了家喝茶的地方签订简单约定及定金，两天后完整签署合同。</p>
+<p>接下来的每半个月交首付至房东账户，交完134w，已经来到3月24号，约了雷老师(房东哥哥, 代)办理网签。过程很顺利，办了网签，这个房子是无论如何都没法交易，然后不放心是否有买房资格的我(如果不满足则稍稍往后延续几天，下个月初能多查到新的一个月)。等了三天，然后再次前往交易中心的前台经理查询: 62个月满足资格。</p>
+<p>这时心终于落下来了，我是真有资格的，不然就真是60w赔付违约金了。</p>
+<p>接下来就是把合同证件复印件等发给银行贷款老师，等待了2周(中间少资料，补齐寄送过去)通知全部通过。</p>
+<p>这时时间来到5.6号，手上得到贷款文书(公积金100w，商贷140w)，这天下午过去办理过户。我和老婆两人早早就到了，等待各方人员到场。先填写资料，然后dfy交易员老师帮忙等待排号，我和雷老师沟通了下意愿: 现在也是在租房3k，租自己要住的房子，想提前住进去；当然，合同写着款清交房，我愿意来租还没走完流程的房子。雷老师后面也和房东商量同意我们的要求(遵守合同义务，我们也爽快，所以也相信我们，很顺利进行)。</p>
+<p>接下来就是在窗口确认资料、确认在场的人、再再次确认资料、签名、签名、交了160块钱(支付宝扫码)。然后将各种收据等收入统一包包管理。下午清了很久的假，去未来的房子转转会，然后就回到出租屋了。</p>
+<p>过户完后，得过5天缴税拿产证。手上只有刚好3.8w的我，其实内心还是起波澜的。缴税前一晚都还在担心会不会有其他税费，打电话到交易员老师那里问，比如房产税。心想同学居住证超过三年就不用交，不然得多1w多啊。</p>
+<p>缴税当天，早晨，小雨。我早早过来等雷老师，然后排号等。缴税的时候是刷卡，我把银行卡拿出来刷，咦，真只刷我3.78w 一个点的契税。然后我质疑工作人员，会不会弄错，不是还有一堆什么什么税吗？他说，都取消了。</p>
+<p>等了20分钟，在邻桌，工作人员喊名字领证。上面有产证，还有各种贷款证书等，还有外汇的证明单子(房东外汇使用)等。今天早上就这样结束了，很圆满。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房-产证/">买房, 产证</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-2021-5-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2021/05/16/2021-5-16lesson/">2021-5-16lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/05/16/2021-5-16lesson/" class="article-date">
+	  <time datetime="2021-05-16T02:06:51.000Z" itemprop="datePublished">May 16, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="视频服务-点播及加密"><a href="#视频服务-点播及加密" class="headerlink" title="视频服务-点播及加密"></a>视频服务-点播及加密</h1><p><a href="https://github.com/gwuhaolin/blog/issues/10" target="_blank" rel="noopener">方案来源</a></p>
+<h2 id="网迹学习"><a href="#网迹学习" class="headerlink" title="网迹学习"></a>网迹学习</h2><h3 id="es"><a href="#es" class="headerlink" title="es"></a>es</h3><p>遇到 <code>es forbidden 12 index read-only</code></p>
+<p>原因是磁盘不够用了，当磁盘少于95%左右时，es会将索引置为只读。</p>
+<p>解决方案: 进入docker，然后执行: <code>curl -XPUT -H &quot;Content-Type: application/json&quot; http://elastic:123456@localhost:9200/_all/_settings -d &#39;{&quot;index.blocks.read_only_allow_delete&quot;: null}&#39;</code></p>
+<h3 id="绑定Centos7静态ip"><a href="#绑定Centos7静态ip" class="headerlink" title="绑定Centos7静态ip"></a>绑定Centos7静态ip</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd /etc/sysconfig/network-scripts &amp;&amp; ls // 可以看到有个ifcfg-ensxxx 的文件</span><br><span class="line">$ ip addr // 可以先查看到之前自己ip</span><br><span class="line">$ vim ifcfg-ensxxx // 替换掉 `IPADDR=xxx.xxx.xxx.xxx`</span><br><span class="line">$ systemctl restart network.service</span><br><span class="line">$ service network restart</span><br><span class="line">$ ip addr // 这时可以看到ip已修改</span><br></pre></td></tr></table></figure>
+<h3 id="黑苹果拷贝EFI-文件到EFI分区提示”磁盘空间不足，无法拷贝”"><a href="#黑苹果拷贝EFI-文件到EFI分区提示”磁盘空间不足，无法拷贝”" class="headerlink" title="黑苹果拷贝EFI 文件到EFI分区提示”磁盘空间不足，无法拷贝”"></a>黑苹果拷贝EFI 文件到EFI分区提示”磁盘空间不足，无法拷贝”</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">diskutil list</span><br><span class="line">newfs_msdos -v EFI /dev/disk1s1 // /dev/disk1s1 中的disk1s1 为list 里面的磁盘名称</span><br></pre></td></tr></table></figure>
+<h3 id="docker-Neo4j"><a href="#docker-Neo4j" class="headerlink" title="docker-Neo4j"></a>docker-Neo4j</h3><p>$cypher-shell</p>
+<p>进入neo4j</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
 
 
   <nav id="page-nav">
@@ -1047,30 +1025,6 @@ ON CREATE SET peter += {last: &quot;aker&quot;}
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2021/07/28/2020-07-28lesson/">2020-07-28lesson</a></h6>
-              <span>July 28, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/27/20200727lesson/">20200727lesson</a></h6>
-              <span>July 27, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
               <span>July 6, 2021</span>
             </div>
@@ -1085,6 +1039,30 @@ ON CREATE SET peter += {last: &quot;aker&quot;}
 
               <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
               <span>July 6, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
+              <span>June 16, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
+              <span>June 16, 2021</span>
             </div>
 
           </li>
@@ -1121,7 +1099,7 @@ ON CREATE SET peter += {last: &quot;aker&quot;}
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
