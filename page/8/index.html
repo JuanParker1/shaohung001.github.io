@@ -165,6 +165,122 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2019-3-27lesson" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/04/25/2019-3-27lesson/">2019-3-27lesson</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/04/25/2019-3-27lesson/" class="article-date">
+	  <time datetime="2019-04-24T23:40:25.000Z" itemprop="datePublished">April 25, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="connect-mongo-用户登录后杀死浏览器-用户还得重新登录-bug-解决过程"><a href="#connect-mongo-用户登录后杀死浏览器-用户还得重新登录-bug-解决过程" class="headerlink" title="connect-mongo 用户登录后杀死浏览器,用户还得重新登录 - bug 解决过程"></a>connect-mongo 用户登录后杀死浏览器,用户还得重新登录 - bug 解决过程</h3><p>表现为用户正常登录。cookie、session 被正常记录。把浏览器关闭又打开时，需要重新登录。</p>
+<p>猜测：</p>
+<ol>
+<li>cookie 没有记录</li>
+</ol>
+<p>不对，记录了。front 在<strong>SignIn</strong>时<code>Cookies.set(&#39;secret&#39;, userInfo)</code>。每次打开时都是有的。</p>
+<ol start="2">
+<li>session 没有记录</li>
+</ol>
+<p>流程对的。cookieParser、expressSession、passport.initialize、passport.session、passport.serilizeUser、passport.deserializeUser</p>
+<p>但是注意到mongo 的session 表里面，expires、originalMaxAge 等都为null,说明session 写进去了，但是设置session expire 方式不对：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">app.use(expressSession(&#123;</span><br><span class="line">    name:</span><br><span class="line">    secret</span><br><span class="line">    maxAge: expireTime</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">以上设置过期时间方法不对，可以使用下面两种方法之一：</span><br><span class="line"></span><br><span class="line">[1] 全部永久统一设置</span><br><span class="line">expressSession(&#123;</span><br><span class="line">    name:</span><br><span class="line">    secret:</span><br><span class="line">    cookie:</span><br><span class="line">        maxAge: expireTime //这是统一设置方式的正确方式</span><br><span class="line">&#125;)</span><br><span class="line">[2] 灵活设置session过期时间</span><br><span class="line">用户确认登录后，使用req.session.cookie.expire = expireTime</span><br></pre></td></tr></table></figure>
+<p>以上正确的解决了session 设置过期问题。</p>
+<p>然后接下来尝试登录操作。发现登录后，退出浏览器，重新打开浏览器并进入页面，发现又打开了登录页。</p>
+<p>难道问题还在？首先排除之前已经成功解决了cookie session 设置问题；是backend 有问题还是frontend 有问题？</p>
+<p>这时尝试使用浏览器打开某个没有界面的接口时，居然打开了，同时返回了用户的基本信息！说明后端的确没有问题，后端将cookie 认证过后的信息正确的返回了。</p>
+<p>后端校验没有问题，那么该问题就可能由frontend产生，frontend自己验证，自己处理了该route？</p>
+<p>尝试找了下源码，确实发现了其在route.beforeEach(SPA 第一次加载或者重刷新调用)方法中，自我检验了一番，但是却缺少验证信息，自己误判自己。</p>
+<blockquote>
+<p>从上面分析得到，全栈工程需要先各自分析问题由来和可能出处。当都有问题时就会很难判别，这时可以从一些不正常的地方打开突破口，一个个解决后，才能知道靠近真相。</p>
+</blockquote>
+<p>这也是我第一次跟着老大一起改第一个大bug。自己没能贡献太多帮助，测试过程方法不熟练、分析来由不清晰、尝试过程比较靠蒙。</p>
+<p>多多努力啊，努力才是回报老大苦心栽培！！</p>
+<h3 id="U盘格式为Fat32-最多只能4G-左右内容"><a href="#U盘格式为Fat32-最多只能4G-左右内容" class="headerlink" title="U盘格式为Fat32 最多只能4G 左右内容"></a>U盘格式为Fat32 最多只能4G 左右内容</h3><p>Mac 大文件总是复制不进U盘，是因为Fat32格式原因。但是格式为NTFS 格式时Mac 又识别不了。</p>
+<p>解决：取github 下载NTFS X；或者Mac 里面的NTFS 操作软件即可识别并进项curd 操作。</p>
+<h3 id="同局域网传输文件方法"><a href="#同局域网传输文件方法" class="headerlink" title="同局域网传输文件方法"></a>同局域网传输文件方法</h3><p>PC.A在相关文件夹使用Python 打开权限<code>python -m SimpleHTTPServer 8000</code></p>
+<p>意思是打开8000 端口。此时另一台打开浏览器，输入${PC.A.ip:8000}即可进入该文件夹。同时选取对应文件即可下载</p>
+<h3 id="terminal-zsh-翻墙"><a href="#terminal-zsh-翻墙" class="headerlink" title="terminal zsh 翻墙"></a>terminal zsh 翻墙</h3><pre><code>vim ~/.zshrc # 修改terminal 源文件
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias proxy=&apos;export all_proxy=socks5://127.0.0.1:$&#123;port&#125;&apos; # port 一般为1080；查看：- 偏好设置 - 高级 - 本地Socks5监听端口</span><br><span class="line">alias unproxy=&apos;unset all_proxy&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br><span class="line">curl cip.cc # 显示了国内地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxy</span><br><span class="line">curl cip.cc # 已翻墙的地址</span><br></pre></td></tr></table></figure>
+<pre><code>unproxy # 关闭翻墙
+</code></pre><p><a href="https://github.com/mrdulin/blog/issues/18" target="_blank" rel="noopener">参考</a></p>
+<h3 id="centos6增加Swap分区"><a href="#centos6增加Swap分区" class="headerlink" title="centos6增加Swap分区"></a>centos6增加Swap分区</h3><p>1.检查swap大小和硬盘空间</p>
+<pre><code>free -m
+</code></pre><p>2.添加交换文件</p>
+<pre><code>mkdir -p /opt/temp
+# 增加内存为2G
+dd if=/dev/zero of=/opt/temp/swap bs=1024 count=2048000
+</code></pre><p>3.创建交换空间</p>
+<pre><code>mkswap -f /opt/temp/swap
+</code></pre><p>4.启动新增加的2G交换空间</p>
+<pre><code>swapon /opt/temp/swap
+</code></pre><p>5.修改/etc/fstab 使新加的2G交换空间在系统重新启动后自动生效</p>
+<pre><code>echo &quot;/opt/temp/swap swap swap defaults 0 0&quot; &gt;&gt;/etc/fstab
+</code></pre><p>6.重新启动系统</p>
+<pre><code>reboot
+</code></pre><p><a href="https://blog.csdn.net/lym152898/article/details/77133260" target="_blank" rel="noopener">参考</a></p>
+<h3 id="Dockerfile-容器不能连接另一个容器的端口"><a href="#Dockerfile-容器不能连接另一个容器的端口" class="headerlink" title="Dockerfile 容器不能连接另一个容器的端口"></a>Dockerfile 容器不能连接另一个容器的端口</h3><p>错误原因是自身错误，情况：我以前就是写127.0.0.1 连接本地mongo、redis，但是我忘了我以前使用的是docker-compose</p>
+<p>我现在不想用docker-compose，操作是使用真实物理地址, 如192.168.1.2、server Ip，反正不能为127.0.0.1 即可。</p>
+<p>这样即可成功，仅仅只是这个错误.</p>
+<p>导致我一个大中午在：构建容器400多M、上传容器、运行-出错，反复。本地debug运行都是可以连接的。然后我本地使用容器，咦，果然连不上。</p>
+<h3 id="重新Certbot-auto"><a href="#重新Certbot-auto" class="headerlink" title="重新Certbot-auto"></a>重新Certbot-auto</h3><p>域名过期，重新搞了个免费的域名:gogal.ml <a href="freenom.com">官网</a><br>控制台等会还要用到，需要填写certbot token</p>
+<p>首先去<a href="https://certbot.eff.org/lets-encrypt" target="_blank" rel="noopener">certbot 官网</a>，我选择centos6-nginx 于是是这里-<a href="https://certbot.eff.org/lets-encrypt/centos6-nginx" target="_blank" rel="noopener">直达</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cd</span> ~/</span><br><span class="line"><span class="variable">$mkdir</span> download &amp;&amp; <span class="built_in">cd</span> download</span><br><span class="line"><span class="variable">$wget</span> https://dl.eff.org/certbot-auto</span><br><span class="line"><span class="variable">$sudo</span> mv certbot-auto /usr/<span class="built_in">local</span>/bin/certbot-auto</span><br><span class="line"><span class="variable">$sudo</span> chown root /usr/<span class="built_in">local</span>/bin/certbot-auto</span><br><span class="line"><span class="variable">$sudo</span> chmod 0755 /usr/<span class="built_in">local</span>/bin/certbot-auto</span><br><span class="line"></span><br><span class="line"><span class="variable">$pip</span> install certbot-nginx</span><br></pre></td></tr></table></figure>
+<p>到这里需要先前去nginx.conf 填写对应443 的server_name。 比如：server_name <a href="http://www.gogal.ml" target="_blank" rel="noopener">www.gogal.ml</a> gogal.ml;下面会用到</p>
+<p>$/usr/local/bin/certbot-auto –server <a href="https://acme-v02.api.letsencrypt.org/directory" target="_blank" rel="noopener">https://acme-v02.api.letsencrypt.org/directory</a> –manual –preferred-challenges dns  –installer nginx -d *.gogal.ml -d gogal.ml # gogal.ml 就是我的域名</p>
+<p>前几句都可以直接忽略，yes or enter</p>
+<p>直到出现这句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Please deploy a DNS TXT record under the name</span><br><span class="line">_acme-challenge.gogal.ml with the following value:</span><br><span class="line"></span><br><span class="line">EfurJLgnrwahc7g_6k7odGVXp6sffOruJaDceBdiAmU</span><br><span class="line"></span><br><span class="line">Before continuing, verify the record is deployed.</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br></pre></td></tr></table></figure>
+<p>这时将里面那个拷贝到freenom 控制台-managedns</p>
+<p>Add Records</p>
+<p>name 填 <strong>_ACME-CHALLENGE</strong><br>Target 填 <strong>${你自己得到的那个，比如EfurJLgnrwahc7g_6k7odGVXp6sffOruJaDceBdiAmU}</strong></p>
+<p>回到ssh 按下enter 键，之后还有几步都没那么关键了。</p>
+<p>这时你用postman 可以测试，之前的都是可用的了。</p>
+<p>这里提一点：一开始我碰到certbot 升级的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line"></span><br><span class="line">How would you like to authenticate with the ACME CA?</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">1: Nginx Web Server plugin (nginx)</span><br><span class="line">2: Spin up a temporary webserver (standalone)</span><br><span class="line">3: Place files in webroot directory (webroot)</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Select the appropriate number [1-3] then [enter] (press &apos;c&apos; to cancel): 1</span><br><span class="line">Plugins selected: Authenticator nginx, Installer None</span><br><span class="line">Obtaining a new certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge for gogal.ml</span><br><span class="line">Client with the currently selected authenticator does not support any combination of challenges that will satisfy the CA. You may need to use an authenticator plugin that can do challenges over DNS.</span><br><span class="line">Client with the currently selected authenticator does not support any combination of challenges that will satisfy the CA. You may need to use an authenticator plugin that can do challenges over DNS.</span><br></pre></td></tr></table></figure>
+<p>我就是直接前往官网，下载最新的certbot-auto 即解决了。</p>
+<h3 id="利用Vue-2-x-Templates-Legacy-脚手架搭建项目"><a href="#利用Vue-2-x-Templates-Legacy-脚手架搭建项目" class="headerlink" title="利用Vue 2.x Templates(Legacy) 脚手架搭建项目"></a>利用Vue 2.x Templates(Legacy) 脚手架搭建项目</h3><p><a href="https://cli.vuejs.org/guide/creating-a-project.html#vue-create" target="_blank" rel="noopener">Vue 官网</a></p>
+<pre><code>yarn global add @vue/cli-init
+
+vue init webpack &lt;my-project&gt;
+</code></pre><p>接下来就可以愉快的写了</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2019-2-19lesson" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -855,71 +971,6 @@ var themeMenus = {};
     
 
   
-    <article id="post-2018-11-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/09/2018-11-9lesson/">2018-11-9lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/11/09/2018-11-9lesson/" class="article-date">
-	  <time datetime="2018-11-09T15:35:34.000Z" itemprop="datePublished">November 9, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="上线React-Mobx-Antd-build-Nginx-经历"><a href="#上线React-Mobx-Antd-build-Nginx-经历" class="headerlink" title="上线React+Mobx+Antd + build + Nginx 经历"></a>上线React+Mobx+Antd + build + Nginx 经历</h1><p>首先非常开心，自己找遍解决方案，终于来到终点：<a href="http://lsgood.top" target="_blank" rel="noopener">http://lsgood.top</a> 我的第一个网页。<br>该网页由爬虫爬了一个二次元图片的网站，然后一个Typescript koa 后台提供数据，再由Reactjs 网页展现。</p>
-<p>首先遇到的第一个大山：centos 装mongodb </p>
-<p>先使用yum 安装mongodb，然后一直报”no package is avialable. nothing to do”, 我是mongodb 官网教程，建了一个.repo 来整的，然后又学会去redhat 的源找找看看。都在的，可以的呀。</p>
-<p>然后找到<code>$ getconf LONG_BIT</code>终于得知我的是32位。那就说明yum 的那些源都是x86 ，查看一番：果然。屁颠屁颠去看了有哪些32位mongodb 的我可以用。</p>
-<p>google 找到一个csdn 里面有个2.x 版本的，装上去果然可以启动，把我开心的呀。然后服务器用mongoose 2.x 版本及以下都不可用。一番寻找，找到<br><a href="https://blog.csdn.net/will5451/article/details/78642759" target="_blank" rel="noopener">CSDN centos用yum安装mongodb及 32位linux（centos）下mongoDB的安装</a>  的文章。采用wget 下载相应的版本。前往<a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">官网工具下载区</a> ，一开始也不明白哪个我真的可以用，最后终于找到排到最后一个的3.0x 版本的真的真的是32bit。</p>
-<p>快速放到服务器启动起来的时候，真的开心啊。</p>
-<p>然而一心以为后面React 网页yarn build 应该很简单，没想到又是一番挫折。</p>
-<p>既然数据好了，赶紧打包我的第一个React 应用。<code>yarn build</code> 很快！</p>
-<p>然后配置一下Nginx，把build 出来的文件拖到<code>/root/Work/web/girl</code> 目录下,Nginx 如下配置</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> www.lsgood.top lsgood.top;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> /girl/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /root/Work/web/;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先出来一个问题：由于不是放在Nginx 根目录，是<code>http://lsgood.top/girl</code> 这样的目录，导致内部css 资源、static 资源 找不到根路由，找的是<code>http://lsgood.top/xxxstaticxxx</code> 的目录资源，那就在package.json 加上一个field <code>homepage: &quot;.&quot;</code> 。</p>
-<p>这个解决之后出现一个花费我1.5 天寻找是React 内部问题，还是Nginx 没有配置好的问题：Nginx 配置路由(不同根目录)要么出现<code>Uncaught SyntaxError: Unexpected token &lt;</code> ；要么整个页面就是空白，同时查看<strong>右键 - 检查 - Sources</strong> 将我的React 程序目录源代码全部展示出来了。</p>
-<p>说明并没有启动我对应的index.html。我不明白为什么会出现这样，期间问了我以前同事，但还是没有答案（毕竟突然给他看，不明白里面所写，也忙，然后没有解出来）。</p>
-<p>然后1天过去后，我让现在后台帮忙，放到可以运行的网页那边看看。一开始怕他们麻烦，推荐他说，直接放文件名后面，就不用建立子域名。然后还是失败！</p>
-<p>这样我还是不知道是哪边的问题，我又又又google 找了下，有说不要放在<a href="http://host/girl/" target="_blank" rel="noopener">http://host/girl/</a> 子目录，放到Nginx根目录。我赶紧让后台帮忙再试一波！</p>
-<p>果然！成功，不过index 首页是OK，但是路由却进不去了。首页OK，路由有问题，说明React 应用没问题，Nginx 配置错误了，同时React 里面的路由也出错了。</p>
-<p>我又双叒叕google，找到这篇<a href="https://blog.csdn.net/Sophie_U/article/details/80006723" target="_blank" rel="noopener">关于react 在打包后：“找不到资源路径”的问题、部署到服务器二级目录 “打开为空白” 的问题</a> 这里说到一个很重点的信息：<strong>browserRouter/PUBLIC_URL/NGINX</strong> 这么几个重点词语。我还真用到了browserRouter， 问题也确实是<strong>访问时页面空白，没有报错</strong> 这种情况。</p>
-<p>那我就采用他的办法（花了一个下午加加班到晚上8点多）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1. React 在build 时:</span><br><span class="line">$ PUBLIC_URL=http://lsgood.top/ yarn build</span><br><span class="line">2. 将build 的子文件全部放到 /var/www/ 下面</span><br><span class="line">3. Nginx conf 配置：（参考 https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html）</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    server_name www.lsgood.top lsgood.top;</span><br><span class="line"></span><br><span class="line">    root /var/www;</span><br><span class="line">    index index.html index.htm;      </span><br><span class="line">    # Any route that doesn&apos;t have a file extension (e.g. /devices)</span><br><span class="line">    location ~ ^/favicon\.ico$ &#123;</span><br><span class="line">        root /var/www;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">        index index.html;</span><br><span class="line">        proxy_set_header   Host             $host;</span><br><span class="line">        proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header   X-Forwarded-Proto  $scheme;</span><br><span class="line">    &#125;</span><br><span class="line">    location @fallback &#123;</span><br><span class="line">        rewrite ^.*$ /index.html break;</span><br><span class="line">    &#125;</span><br><span class="line">    location /girlS/ &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000/girl.v1/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /popcircle/ &#123;</span><br><span class="line">        root /root/Work/game/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>完美！</p>
-<p>服务器也能运行、游戏也能运行、网页也成功运行了。</p>
-<p>这三天的努力，愁的我都长了个痘痘，至少解决问题都是自己解决的，又get 到一个技能。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -1048,6 +1099,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
+              <span>August 7, 2021</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
               <span>August 5, 2021</span>
             </div>
@@ -1102,18 +1165,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1126,7 +1177,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1136,7 +1187,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
+      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
     </div>
   </div>
 
@@ -1146,7 +1197,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
     </div>
   </div>
 
