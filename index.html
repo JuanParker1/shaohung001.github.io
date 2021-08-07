@@ -191,16 +191,16 @@ var themeMenus = {};
       
         <h1 id="制作cpp-dylib"><a href="#制作cpp-dylib" class="headerlink" title="制作cpp dylib"></a>制作cpp dylib</h1><p>Mac下的动态链接库格式是*.dylib，用xcode制作如下:</p>
 <p>Xcode -&gt; Create a new Xcode project(Command + Shift + N) -&gt; macOS -&gt; Framework &amp; Library -&gt; Library</p>
-<p><img src="./cppdylib1.jpg" alt="cpp dylib"></p>
+<p><img src="/css/images/210807/cppdylib1.jpg" alt="cpp dylib"></p>
 <p>填写创建表单，注意Framework - None(Plain C/C++ Library) / type - Dynamic</p>
-<p><img src="./cppdylib2.jpg" alt="cpp dylib2"></p>
+<p><img src="/css/images/210807/cppdylib2.jpg" alt="cpp dylib2"></p>
 <p>新增文件demo.h &amp;&amp; demo.cpp, 新增内容如图:</p>
-<p><img src="./cppdylib3.jpg" alt="cpp dylib3"></p>
+<p><img src="/css/images/210807/cppdylib3.jpg" alt="cpp dylib3"></p>
 <p>此时点击左上角运行，则  Products - libdemo.dylib 变成实体，不是红色，表明生成了。</p>
-<p><img src="./cppdylib4.jpg" alt="cpp dylib4"></p>
+<p><img src="/css/images/210807/cppdylib4.jpg" alt="cpp dylib4"></p>
 <p>拷贝.h文件 至目标项目 /include/demo.h, 拷贝 .dylib 至目标项目 /lib/libdemo.dylib 中。</p>
 <p>测试代码如图:</p>
-<p><img src="./cppdylib5.jpg" alt="cpp dylib5"></p>
+<p><img src="/css/images/210807/cppdylib5.jpg" alt="cpp dylib5"></p>
 <p>c++ main.cpp -I./include -L./lib -ldemo -o test 是编译期间，会认不到运行时动态库，需要加上 导出./lib 告诉程序运行的库(<a href="https://stackoverflow.com/a/47225188/6677202" target="_blank" rel="noopener">https://stackoverflow.com/a/47225188/6677202</a>)</p>
 <p>-ldemo 指有多少个文件都要写出来，否则还是识别不到哪个文件是要被链接的；-I -L 是对应的文件夹。</p>
 
