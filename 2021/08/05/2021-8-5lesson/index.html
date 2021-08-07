@@ -1,213 +1,214 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>2021-8-5lesson | aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="mac_opengl">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta name="description" content="Mac 安装Opengl库之前想着搞下编译原理，于是过了下BNF/AST，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。 跟着下篇文章的也是入门cpp+opengl游戏，研发机器装好opengl环境，就成功运行，这就对了嘛。 昨天给研发的机器和家里的机器装上两遍glfw、glew、glad等，踩的小坑记下。">
-<meta name="keywords" content="mac_opengl">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2021-8-5lesson">
-<meta property="og:url" content="https://shaohung001.github.io/2021/08/05/2021-8-5lesson/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:description" content="Mac 安装Opengl库之前想着搞下编译原理，于是过了下BNF/AST，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。 跟着下篇文章的也是入门cpp+opengl游戏，研发机器装好opengl环境，就成功运行，这就对了嘛。 昨天给研发的机器和家里的机器装上两遍glfw、glew、glad等，踩的小坑记下。">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/installglad1.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/installglad2.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/xcode1.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/xcode2.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/xcode3.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/xcode4.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/xcode5.jpg">
-<meta property="og:image" content="https://shaohung001.github.io/css/images/210805/xcode6.jpg">
-<meta property="og:updated_time" content="2021-08-05T02:30:24.586Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2021-8-5lesson">
-<meta name="twitter:description" content="Mac 安装Opengl库之前想着搞下编译原理，于是过了下BNF/AST，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。 跟着下篇文章的也是入门cpp+opengl游戏，研发机器装好opengl环境，就成功运行，这就对了嘛。 昨天给研发的机器和家里的机器装上两遍glfw、glew、glad等，踩的小坑记下。">
-<meta name="twitter:image" content="https://shaohung001.github.io/css/images/210805/installglad1.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>2021-8-5lesson | aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="mac_opengl">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>2021-8-5lesson</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">2021-8-5lesson</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-08-05T01:41:47.000Z" itemprop="datePublished" class="page-time">
+  2021-08-05
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-2021-8-5lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      2021-8-5lesson
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/08/05/2021-8-5lesson/" class="article-date">
-	  <time datetime="2021-08-05T01:41:47.000Z" itemprop="datePublished">August 5, 2021</time>
-	</a>
-
-      
-	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac-安装Opengl库"><a href="#Mac-安装Opengl库" class="headerlink" title="Mac 安装Opengl库"></a>Mac 安装Opengl库</h1><p>之前想着搞下<code>编译原理</code>，于是过了下<code>BNF</code>/<code>AST</code>，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。</p>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2021-8-5lesson" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">2021-8-5lesson</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-08-05 09:41:47" datetime="2021-08-05T01:41:47.000Z" itemprop="datePublished">2021-08-05</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="Mac-安装Opengl库"><a href="#Mac-安装Opengl库" class="headerlink" title="Mac 安装Opengl库"></a>Mac 安装Opengl库</h1><p>之前想着搞下<code>编译原理</code>，于是过了下<code>BNF</code>/<code>AST</code>，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。</p>
 <p>跟着下篇文章的也是入门cpp+opengl游戏，研发机器装好opengl环境，就成功运行，这就对了嘛。</p>
 <p>昨天给研发的机器和家里的机器装上两遍glfw、glew、glad等，踩的小坑记下。</p>
 <p>用brew安装都成功，用cmake安装，依然无法include，故本记录推荐brew 安装。</p>
@@ -229,211 +230,346 @@ var themeMenus = {};
 <li>glad安装:</li>
 </ol>
 <p><a href="https://glad.dav1d.de/" target="_blank" rel="noopener">glad在线安装</a>, Language选择C/C++, Specification选择OpenGL，API选择gl - Version4.5(&gt;Version 3.3)，Profile选择Core</p>
-<p><img src="/css/images/210805/installglad1.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/installglad1.jpg" title data-fancybox="images"><img src="/css/images/210805/installglad1.jpg" alt title class></a>
+                <p></p>
+            </figure>
 <p>左下角Options 勾选Generate a loader，然后右下角按钮[GENERATE]生成，然后下载新加载的页面的glad.zip.</p>
-<p><img src="/css/images/210805/installglad2.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/installglad2.jpg" title data-fancybox="images"><img src="/css/images/210805/installglad2.jpg" alt title class></a>
+                <p></p>
+            </figure>
 <ol start="3">
 <li><p>将解压glad.zip 中include 内的 KHR|glad 两个文件夹复制到 /usr/local/include 中.</p>
 </li>
 <li><p>新建Xcode C++的Command Line Tool项目，<code>command + ,</code> 进入设置页面，选择Locations - Custom Paths，添加如下图:</p>
 </li>
 </ol>
-<p><img src="/css/images/210805/xcode1.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/xcode1.jpg" title data-fancybox="images"><img src="/css/images/210805/xcode1.jpg" alt title class></a>
+                <p></p>
+            </figure>
 <ol start="5">
 <li>修改Header search Paths 和 Library Search Paths</li>
 </ol>
 <p>learnopgl - TARGETS - Build Settings</p>
-<p><img src="/css/images/210805/xcode2.jpg" alt></p>
-<p><img src="/css/images/210805/xcode3.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/xcode2.jpg" title data-fancybox="images"><img src="/css/images/210805/xcode2.jpg" alt title class></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/xcode3.jpg" title data-fancybox="images"><img src="/css/images/210805/xcode3.jpg" alt title class></a>
+                <p></p>
+            </figure>
 <ol start="6">
 <li>修改Xcode项目的Build Phases - Link Binary With Libraries</li>
 </ol>
-<p><img src="/css/images/210805/xcode4.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/xcode4.jpg" title data-fancybox="images"><img src="/css/images/210805/xcode4.jpg" alt title class></a>
+                <p></p>
+            </figure>
 <p><a href="https://www.jianshu.com/p/eedc41051bd9" target="_blank" rel="noopener">参考</a></p>
 <ol start="7">
 <li>添加glad.zip 解压后的src/glad.c 至learnopgl项目下:</li>
 </ol>
-<p><img src="/css/images/210805/xcode5.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/xcode5.jpg" title data-fancybox="images"><img src="/css/images/210805/xcode5.jpg" alt title class></a>
+                <p></p>
+            </figure>
 <h2 id="测试是否正常执行"><a href="#测试是否正常执行" class="headerlink" title="测试是否正常执行"></a>测试是否正常执行</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://github.com/JoeyDeVries/LearnOpenGL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow *window)</span></span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  glfwInit();</span><br><span class="line">  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __APPLE__</span></span><br><span class="line">  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, <span class="string">"LearnOpenGL"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">  <span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    glfwTerminate();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  glfwMakeContextCurrent(window);</span><br><span class="line">  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);</span><br><span class="line">  <span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (!glfwWindowShouldClose(window)) &#123;</span><br><span class="line">    processInput(window);</span><br><span class="line">    glfwSwapBuffers(window);</span><br><span class="line">    glfwPollEvents();</span><br><span class="line">  &#125;</span><br><span class="line">  glfwTerminate();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow *window)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)</span><br><span class="line">    glfwSetWindowShouldClose(window, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">  glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>出现大黑框就正确了:</p>
-<p><img src="/css/images/210805/xcode6.jpg" alt></p>
+<figure class="image-box">
+                <a rel="2021-8-5lesson" href="/css/images/210805/xcode6.jpg" title data-fancybox="images"><img src="/css/images/210805/xcode6.jpg" alt title class></a>
+                <p></p>
+            </figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-08-05T02:30:24.586Z" itemprop="dateUpdated">2021-08-05 10:30:24</time>
+</span><br>
 
-      
+
+        
+        转载注明出处，原文地址：<a href="/2021/08/05/2021-8-5lesson/" target="_blank" rel="external">https://shaohung001.github.io/2021/08/05/2021-8-5lesson/</a>
+        
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-opengl/">mac_opengl</a></li></ul>
-
-      
-        <div id="donation_div"></div>
-
-<script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/wechatPay.jpg?raw=true',
-  alipayImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/aliPay.jpg?raw=true'
-});
-</script>
-      
-            
-      
-        
-	<section id="comments" class="comment">
-	  <div id="disqus_thread">
-	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	  </div>
-	</section>
-
-	<script type="text/javascript">
-	var disqus_shortname = 'shaohung001';
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	</script>
-
-
-      
+    <footer>
+        <a href="https://shaohung001.github.io">
+            <img src="/img/avatar.jpg" alt="aKer">
+            aKer
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-opengl/">mac_opengl</a></li></ul>
+
+            <div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/2021/08/07/2021-08-07lesson/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2021-08-07lesson
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/08/05/2021-8-5lesson/&title=《2021-8-5lesson》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/08/05/2021-8-5lesson/&title=《2021-8-5lesson》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="prev">
+      <a href="/2021/08/07/2021-08-07lesson/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2021-08-07lesson</h4>
+      </a>
+    </div>
   
-    <a href="/2021/07/31/2021-7-31lesson/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2021-7-31lesson</div>
-    </a>
+
+  
+    <div class="next">
+      <a href="/2021/07/31/2021-7-31lesson/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2021-7-31lesson</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Mac-安装Opengl库"><span class="post-toc-number">1.</span> <span class="post-toc-text">Mac 安装Opengl库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装各库"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装各库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试是否正常执行"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">测试是否正常执行</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
 </article>
 
-<!-- Table of Contents -->
-
-  <aside id="sidebar">
-    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
-    <strong class="toc-title">Contents</strong>
-    
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac-安装Opengl库"><span class="nav-number">1.</span> <span class="nav-text">Mac 安装Opengl库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装各库"><span class="nav-number">1.1.</span> <span class="nav-text">安装各库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试是否正常执行"><span class="nav-number">1.2.</span> <span class="nav-text">测试是否正常执行</span></a></li></ol></li></ol>
-    
-    </div>
-  </aside>
-</section>
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
         
-      </div>
-      <footer id="footer" class="site-footer">
-  
+        <div class="reward-code">
+            <img id="rewardCode" src="/css/images/wecharPay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/css/images/wecharPay.jpg" data-alipay="/css/images/aliPay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/08/05/2021-8-5lesson/&title=《2021-8-5lesson》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/08/05/2021-8-5lesson/&title=《2021-8-5lesson》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aS27DMAxF0ex/0+60QGPlPtIpIOp6VDhOpOMBy49eL3xdv667T/8+uf5WusoDlwwZMrZlXMvr7pnO61hvnbyUN3uQIUPGAQwSRklwXL8Cwluve3tfhgwZMnBATAMruSNDhgwZNQZH1pJFGTJkyKgVsbWCNt3W12txGTJkbMhI22T/+fdX5hsyZMjYinGFF2/opyVua1cyZMgYzUhLTb719BBGrfSVIUPGOYx09Li+T3i1FeM0UYYMGSMYtTBK0ji+Vr/lJ0OGjDMZvJjkIbWWgKIRpgwZMg5goOKw0RqrpYb85cqQIeMcBv/RtE2W3g+aa/zMmgwZMrZl8B/lY8haCK5RbwcDMmTIGMRIy9e0AccHBoSB2m0yZMgYxyhOO0FYTAvUx5p3MmTIGM2oJXnrjfZPR/RfsQwZMuYx0gX48kGjH4Rg9N9DhgwZ4xhpGE2fJN/qtP9kyJAxlZGGURIE+2MD0oCTIUPGOYx++Zo20Z56WcHBCxkyZIxgpGlfGmqfSh8/rCVDhowDGGlBSxK1WggmofnNijJkyDiSUTtaUTsQxnnBgTAZMmSMYHRK03T+kCZ/QbCWIUPGaEbtnBVP13gSmQ4b0jAtQ4aM3Rlpi3+9uc54koPRaREZMmSMY/DAtwbwqWK/iP3QbpMhQ8bxjFpDv9bCQ78jQ4YMGeEgkwfWfuCWIUPGOQw+DCBBMD2QQYapMmTIOJlRO5LFB6I8THdGBTJkyBjK+AHdX7JQDqsd8wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -441,26 +577,6 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

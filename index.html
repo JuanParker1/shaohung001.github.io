@@ -1,1208 +1,974 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
-  </div>
-</header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <section id="main">
-  
-    <article id="post-2021-08-07lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class=" active">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/08/07/2021-08-07lesson/" class="article-date">
-	  <time datetime="2021-08-07T08:34:51.000Z" itemprop="datePublished">August 7, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="制作cpp-dylib"><a href="#制作cpp-dylib" class="headerlink" title="制作cpp dylib"></a>制作cpp dylib</h1><p>Mac下的动态链接库格式是*.dylib，用xcode制作如下:</p>
-<p>Xcode -&gt; Create a new Xcode project(Command + Shift + N) -&gt; macOS -&gt; Framework &amp; Library -&gt; Library</p>
-<p><img src="/css/images/210807/cppdylib1.jpg" alt="cpp dylib"></p>
-<p>填写创建表单，注意Framework - None(Plain C/C++ Library) / type - Dynamic</p>
-<p><img src="/css/images/210807/cppdylib2.jpg" alt="cpp dylib2"></p>
-<p>新增文件demo.h &amp;&amp; demo.cpp, 新增内容如图:</p>
-<p><img src="/css/images/210807/cppdylib3.jpg" alt="cpp dylib3"></p>
-<p>此时点击左上角运行，则  Products - libdemo.dylib 变成实体，不是红色，表明生成了。</p>
-<p><img src="/css/images/210807/cppdylib4.jpg" alt="cpp dylib4"></p>
-<p>拷贝.h文件 至目标项目 /include/demo.h, 拷贝 .dylib 至目标项目 /lib/libdemo.dylib 中。</p>
-<p>测试代码如图:</p>
-<p><img src="/css/images/210807/cppdylib5.jpg" alt="cpp dylib5"></p>
-<p>c++ main.cpp -I./include -L./lib -ldemo -o test 是编译期间，会认不到运行时动态库，需要加上 导出./lib 告诉程序运行的库(<a href="https://stackoverflow.com/a/47225188/6677202" target="_blank" rel="noopener">https://stackoverflow.com/a/47225188/6677202</a>)</p>
-<p>-ldemo 指有多少个文件都要写出来，否则还是识别不到哪个文件是要被链接的；-I -L 是对应的文件夹。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-8-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/08/05/2021-8-5lesson/" class="article-date">
-	  <time datetime="2021-08-05T01:41:47.000Z" itemprop="datePublished">August 5, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac-安装Opengl库"><a href="#Mac-安装Opengl库" class="headerlink" title="Mac 安装Opengl库"></a>Mac 安装Opengl库</h1><p>之前想着搞下<code>编译原理</code>，于是过了下<code>BNF</code>/<code>AST</code>，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。</p>
-<p>跟着下篇文章的也是入门cpp+opengl游戏，研发机器装好opengl环境，就成功运行，这就对了嘛。</p>
-<p>昨天给研发的机器和家里的机器装上两遍glfw、glew、glad等，踩的小坑记下。</p>
-<p>用brew安装都成功，用cmake安装，依然无法include，故本记录推荐brew 安装。</p>
-<p>环境: 10.13.6黑苹果，都有独显。</p>
-<ol>
-<li>brew报<code>No formulae found in taps</code>错误，方法是重新安装brew解决该问题:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/Homebrew/Library/Taps/homebrew/</span><br><span class="line">$ rm -rf homebrew-core</span><br><span class="line">$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>brew 安装glfw/glew 时报: <code>Missing dependencies for SOCKS support</code>错误，解决该问题:</p>
-<p> unset all_proxy &amp;&amp; unset ALL_PROXY</p>
-</li>
-</ol>
-<h2 id="安装各库"><a href="#安装各库" class="headerlink" title="安装各库"></a>安装各库</h2><ol>
-<li>安装glew/glfw3</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install glew</span><br><span class="line">$ brew install glfw3</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>glad安装:</li>
-</ol>
-<p><a href="https://glad.dav1d.de/" target="_blank" rel="noopener">glad在线安装</a>, Language选择C/C++, Specification选择OpenGL，API选择gl - Version4.5(&gt;Version 3.3)，Profile选择Core</p>
-<p><img src="/css/images/210805/installglad1.jpg" alt></p>
-<p>左下角Options 勾选Generate a loader，然后右下角按钮[GENERATE]生成，然后下载新加载的页面的glad.zip.</p>
-<p><img src="/css/images/210805/installglad2.jpg" alt></p>
-<ol start="3">
-<li><p>将解压glad.zip 中include 内的 KHR|glad 两个文件夹复制到 /usr/local/include 中.</p>
-</li>
-<li><p>新建Xcode C++的Command Line Tool项目，<code>command + ,</code> 进入设置页面，选择Locations - Custom Paths，添加如下图:</p>
-</li>
-</ol>
-<p><img src="/css/images/210805/xcode1.jpg" alt></p>
-<ol start="5">
-<li>修改Header search Paths 和 Library Search Paths</li>
-</ol>
-<p>learnopgl - TARGETS - Build Settings</p>
-<p><img src="/css/images/210805/xcode2.jpg" alt></p>
-<p><img src="/css/images/210805/xcode3.jpg" alt></p>
-<ol start="6">
-<li>修改Xcode项目的Build Phases - Link Binary With Libraries</li>
-</ol>
-<p><img src="/css/images/210805/xcode4.jpg" alt></p>
-<p><a href="https://www.jianshu.com/p/eedc41051bd9" target="_blank" rel="noopener">参考</a></p>
-<ol start="7">
-<li>添加glad.zip 解压后的src/glad.c 至learnopgl项目下:</li>
-</ol>
-<p><img src="/css/images/210805/xcode5.jpg" alt></p>
-<h2 id="测试是否正常执行"><a href="#测试是否正常执行" class="headerlink" title="测试是否正常执行"></a>测试是否正常执行</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://github.com/JoeyDeVries/LearnOpenGL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow *window)</span></span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  glfwInit();</span><br><span class="line">  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __APPLE__</span></span><br><span class="line">  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">  GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, <span class="string">"LearnOpenGL"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">  <span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    glfwTerminate();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  glfwMakeContextCurrent(window);</span><br><span class="line">  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);</span><br><span class="line">  <span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (!glfwWindowShouldClose(window)) &#123;</span><br><span class="line">    processInput(window);</span><br><span class="line">    glfwSwapBuffers(window);</span><br><span class="line">    glfwPollEvents();</span><br><span class="line">  &#125;</span><br><span class="line">  glfwTerminate();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow *window)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)</span><br><span class="line">    glfwSetWindowShouldClose(window, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">  glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>出现大黑框就正确了:</p>
-<p><img src="/css/images/210805/xcode6.jpg" alt></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-opengl/">mac_opengl</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-7-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/07/31/2021-7-31lesson/" class="article-date">
-	  <time datetime="2021-07-31T15:20:30.000Z" itemprop="datePublished">July 31, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="编译原理准备"><a href="#编译原理准备" class="headerlink" title="编译原理准备"></a>编译原理准备</h1><h2 id="BNF范式-巴恩斯范式"><a href="#BNF范式-巴恩斯范式" class="headerlink" title="BNF范式 - 巴恩斯范式"></a>BNF范式 - 巴恩斯范式</h2><ol>
-<li>BNF范式是一种用<strong>递归</strong>的思想来表述计算机语言符号集的定义规范</li>
-<li>法则:</li>
-</ol>
-<ul>
-<li>::= 表示定义；</li>
-<li>“”双引号里的内容表示字符；</li>
-<li>&lt;&gt;尖括号里的内容表示必选内容；</li>
-<li>|竖线两边的是可选内容，相当于or；</li>
-</ul>
-<p>BNF规定是推导规则(产生式)的集合，写为:</p>
-<p><code>&lt;符号&gt; ::= &lt;使用符号的表达式&gt;</code></p>
-<p>这里的<code>&lt;符号&gt;</code>是非终结符，而<code>表达式</code>由一个符号序列，或用指示选择的竖杠’|’ 分割的多个符号序列构成，每个符号序列整体都是左端的符号的一种可能的<code>替代</code>。从未在左端出现的符号叫做<code>终结符</code>。</p>
-<p><img src="/css/images/210731/bnf.png" alt="举例"></p>
-<p><a href="https://gaixin.blog.csdn.net/article/details/113929322" target="_blank" rel="noopener">参考</a></p>
-<h2 id="AST"><a href="#AST" class="headerlink" title="AST"></a>AST</h2><p>这里直接学习AST概念，不进行深入探讨。后边做编译原理的时候，会有涉及。内容的例子直接挪用参考文章的示例，参考文章使用其他工具部分不是本文涉及。后边会跟进学习cpp 编译原理的前端部分。</p>
-<h3 id="AST是什么"><a href="#AST是什么" class="headerlink" title="AST是什么"></a>AST是什么</h3><blockquote>
-<p>Abstract Syntax Tree，它是源代码结构的一种抽象表示。他一树状的形式表现编程语言的语法结构，树上的每个节点都表示源代码中的一种结构</p>
-</blockquote>
-<p>这里贴出参考中好用的转换工具: <a href="https://astexplorer.net/" target="_blank" rel="noopener">https://astexplorer.net/</a></p>
-<h3 id="入门AST"><a href="#入门AST" class="headerlink" title="入门AST"></a>入门AST</h3><p><img src="/css/images/210731/ast1.jpg" alt="1"></p>
-<p>可以看到对应的关系:</p>
-<ul>
-<li>var 是关键字(<code>keyword</code>)</li>
-<li>AST 是最小单元(<code>Identifier</code>)</li>
-<li>= 是Equal等号</li>
-<li>is tree 是一个字符串</li>
-<li>; 是Semicolon</li>
-</ul>
-<h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>词法分析 也称之为scanner，对每一行每个char 过滤一遍，分解每个词块。</p>
-<p>这块不多介绍，和下面语法分析一起进行。</p>
-<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>语法分析会将词法分析出来的token转化成有语法含义的抽象语法树结构，并加上类型描述。这步骤验证语法，词法分析仅是读取每个char，根据段落转化一个个token。</p>
-<h3 id="开搞例子"><a href="#开搞例子" class="headerlink" title="开搞例子"></a>开搞例子</h3><p>以下是直接抄原作者例子, 请直接看<a href="https://juejin.cn/post/6844904035271573511" target="_blank" rel="noopener">原作者链接</a></p>
-<h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><pre><code>const fn = a =&gt; a;
-</code></pre><p><img src="/css/images/210731/ast2.jpg" alt="2"></p>
-<h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><pre><code>const fn = a =&gt; {
-    const i = 1
-    return a + 1
-}
-</code></pre><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"type"</span>: <span class="string">"Program"</span>,</span><br><span class="line">  <span class="attr">"start"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"end"</span>: <span class="number">52</span>,</span><br><span class="line">  <span class="attr">"body"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"VariableDeclaration"</span>,</span><br><span class="line">      <span class="attr">"start"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">"end"</span>: <span class="number">52</span>,</span><br><span class="line">      <span class="attr">"declarations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"VariableDeclarator"</span>,</span><br><span class="line">          <span class="attr">"start"</span>: <span class="number">6</span>,</span><br><span class="line">          <span class="attr">"end"</span>: <span class="number">52</span>,</span><br><span class="line">          <span class="attr">"id"</span>: &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">            <span class="attr">"start"</span>: <span class="number">6</span>,</span><br><span class="line">            <span class="attr">"end"</span>: <span class="number">8</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"fn"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="attr">"init"</span>: &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"ArrowFunctionExpression"</span>,</span><br><span class="line">            <span class="attr">"start"</span>: <span class="number">11</span>,</span><br><span class="line">            <span class="attr">"end"</span>: <span class="number">52</span>,</span><br><span class="line">            <span class="attr">"id"</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">"expression"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"generator"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"async"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"params"</span>: [</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                <span class="attr">"start"</span>: <span class="number">11</span>,</span><br><span class="line">                <span class="attr">"end"</span>: <span class="number">12</span>,</span><br><span class="line">                <span class="attr">"name"</span>: <span class="string">"a"</span></span><br><span class="line">              &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"body"</span>: &#123;</span><br><span class="line">              <span class="attr">"type"</span>: <span class="string">"BlockStatement"</span>,</span><br><span class="line">              <span class="attr">"start"</span>: <span class="number">16</span>,</span><br><span class="line">              <span class="attr">"end"</span>: <span class="number">52</span>,</span><br><span class="line">              <span class="attr">"body"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"VariableDeclaration"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">21</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">32</span>,</span><br><span class="line">                  <span class="attr">"declarations"</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                      <span class="attr">"type"</span>: <span class="string">"VariableDeclarator"</span>,</span><br><span class="line">                      <span class="attr">"start"</span>: <span class="number">27</span>,</span><br><span class="line">                      <span class="attr">"end"</span>: <span class="number">32</span>,</span><br><span class="line">                      <span class="attr">"id"</span>: &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                        <span class="attr">"start"</span>: <span class="number">27</span>,</span><br><span class="line">                        <span class="attr">"end"</span>: <span class="number">28</span>,</span><br><span class="line">                        <span class="attr">"name"</span>: <span class="string">"i"</span></span><br><span class="line">                      &#125;,</span><br><span class="line">                      <span class="attr">"init"</span>: &#123;</span><br><span class="line">                        <span class="attr">"type"</span>: <span class="string">"Literal"</span>,</span><br><span class="line">                        <span class="attr">"start"</span>: <span class="number">31</span>,</span><br><span class="line">                        <span class="attr">"end"</span>: <span class="number">32</span>,</span><br><span class="line">                        <span class="attr">"value"</span>: <span class="number">1</span>,</span><br><span class="line">                        <span class="attr">"raw"</span>: <span class="string">"1"</span></span><br><span class="line">                      &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                  ],</span><br><span class="line">                  <span class="attr">"kind"</span>: <span class="string">"const"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"ReturnStatement"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">36</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">48</span>,</span><br><span class="line">                  <span class="attr">"argument"</span>: &#123;</span><br><span class="line">                    <span class="attr">"type"</span>: <span class="string">"BinaryExpression"</span>,</span><br><span class="line">                    <span class="attr">"start"</span>: <span class="number">43</span>,</span><br><span class="line">                    <span class="attr">"end"</span>: <span class="number">48</span>,</span><br><span class="line">                    <span class="attr">"left"</span>: &#123;</span><br><span class="line">                      <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                      <span class="attr">"start"</span>: <span class="number">43</span>,</span><br><span class="line">                      <span class="attr">"end"</span>: <span class="number">44</span>,</span><br><span class="line">                      <span class="attr">"name"</span>: <span class="string">"a"</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="attr">"operator"</span>: <span class="string">"+"</span>,</span><br><span class="line">                    <span class="attr">"right"</span>: &#123;</span><br><span class="line">                      <span class="attr">"type"</span>: <span class="string">"Literal"</span>,</span><br><span class="line">                      <span class="attr">"start"</span>: <span class="number">47</span>,</span><br><span class="line">                      <span class="attr">"end"</span>: <span class="number">48</span>,</span><br><span class="line">                      <span class="attr">"value"</span>: <span class="number">1</span>,</span><br><span class="line">                      <span class="attr">"raw"</span>: <span class="string">"1"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;</span><br><span class="line">              ]</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"kind"</span>: <span class="string">"const"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"sourceType"</span>: <span class="string">"module"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="例子3"><a href="#例子3" class="headerlink" title="例子3"></a>例子3</h4><pre><code>    function test() {
-  let a = 1
-  console.log(a)
-}
-</code></pre><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"type"</span>: <span class="string">"Program"</span>,</span><br><span class="line">  <span class="attr">"start"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"end"</span>: <span class="number">60</span>,</span><br><span class="line">  <span class="attr">"body"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"FunctionDeclaration"</span>,</span><br><span class="line">      <span class="attr">"start"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">"end"</span>: <span class="number">60</span>,</span><br><span class="line">      <span class="attr">"id"</span>: &#123;</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">        <span class="attr">"start"</span>: <span class="number">9</span>,</span><br><span class="line">        <span class="attr">"end"</span>: <span class="number">13</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"test"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"expression"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">"generator"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">"async"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">"params"</span>: [],</span><br><span class="line">      <span class="attr">"body"</span>: &#123;</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"BlockStatement"</span>,</span><br><span class="line">        <span class="attr">"start"</span>: <span class="number">16</span>,</span><br><span class="line">        <span class="attr">"end"</span>: <span class="number">60</span>,</span><br><span class="line">        <span class="attr">"body"</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"VariableDeclaration"</span>,</span><br><span class="line">            <span class="attr">"start"</span>: <span class="number">24</span>,</span><br><span class="line">            <span class="attr">"end"</span>: <span class="number">33</span>,</span><br><span class="line">            <span class="attr">"declarations"</span>: [</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"VariableDeclarator"</span>,</span><br><span class="line">                <span class="attr">"start"</span>: <span class="number">28</span>,</span><br><span class="line">                <span class="attr">"end"</span>: <span class="number">33</span>,</span><br><span class="line">                <span class="attr">"id"</span>: &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">28</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">29</span>,</span><br><span class="line">                  <span class="attr">"name"</span>: <span class="string">"a"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"init"</span>: &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"Literal"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">32</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">33</span>,</span><br><span class="line">                  <span class="attr">"value"</span>: <span class="number">1</span>,</span><br><span class="line">                  <span class="attr">"raw"</span>: <span class="string">"1"</span></span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"kind"</span>: <span class="string">"let"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"ExpressionStatement"</span>,</span><br><span class="line">            <span class="attr">"start"</span>: <span class="number">40</span>,</span><br><span class="line">            <span class="attr">"end"</span>: <span class="number">54</span>,</span><br><span class="line">            <span class="attr">"expression"</span>: &#123;</span><br><span class="line">              <span class="attr">"type"</span>: <span class="string">"CallExpression"</span>,</span><br><span class="line">              <span class="attr">"start"</span>: <span class="number">40</span>,</span><br><span class="line">              <span class="attr">"end"</span>: <span class="number">54</span>,</span><br><span class="line">              <span class="attr">"callee"</span>: &#123;</span><br><span class="line">                <span class="attr">"type"</span>: <span class="string">"MemberExpression"</span>,</span><br><span class="line">                <span class="attr">"start"</span>: <span class="number">40</span>,</span><br><span class="line">                <span class="attr">"end"</span>: <span class="number">51</span>,</span><br><span class="line">                <span class="attr">"object"</span>: &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">40</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">47</span>,</span><br><span class="line">                  <span class="attr">"name"</span>: <span class="string">"console"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"property"</span>: &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">48</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">51</span>,</span><br><span class="line">                  <span class="attr">"name"</span>: <span class="string">"log"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"computed"</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"optional"</span>: <span class="literal">false</span></span><br><span class="line">              &#125;,</span><br><span class="line">              <span class="attr">"arguments"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                  <span class="attr">"type"</span>: <span class="string">"Identifier"</span>,</span><br><span class="line">                  <span class="attr">"start"</span>: <span class="number">52</span>,</span><br><span class="line">                  <span class="attr">"end"</span>: <span class="number">53</span>,</span><br><span class="line">                  <span class="attr">"name"</span>: <span class="string">"a"</span></span><br><span class="line">                &#125;</span><br><span class="line">              ],</span><br><span class="line">              <span class="attr">"optional"</span>: <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"sourceType"</span>: <span class="string">"module"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://segmentfault.com/a/1190000023389980" target="_blank" rel="noopener">参考</a><br><a href="https://juejin.cn/post/6844904035271573511" target="_blank" rel="noopener">掘金文章参考</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-7-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/07/06/2021-7-5lesson/" class="article-date">
-	  <time datetime="2021-07-06T12:11:54.000Z" itemprop="datePublished">July 6, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="纯虚继承多态的问题"><a href="#纯虚继承多态的问题" class="headerlink" title="纯虚继承多态的问题"></a>纯虚继承多态的问题</h2><p>创建 worker.h<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="built_in">string</span> <span class="title">getDeptName</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> m_Id, m_DeptId;</span><br><span class="line">    <span class="built_in">string</span> m_Name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>创建普通员工类Employee.h 和.cpp 其继承于Worker<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Employee.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"worker.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Employee(<span class="keyword">int</span> id, <span class="built_in">string</span> name, <span class="keyword">int</span> dId);</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="built_in">string</span> <span class="title">getDeptName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Employee.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Employee.h"</span></span></span><br><span class="line">Employee::Employee(<span class="keyword">int</span> id, <span class="built_in">string</span> name, <span class="keyword">int</span> dId) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_Id = id;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_Name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_DeptId = dId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> Employee::showInfo() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"我是要展示的info"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">string</span> Employee::getDeptName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"职工"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此时运行使用多态方案，比如其他继承Worker 的类也想使用同样方法，然后delete 会出现内存泄漏bug:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Worker *worker = <span class="literal">NULL</span>;</span><br><span class="line">    worker = <span class="keyword">new</span> Employee(<span class="number">1</span>, <span class="string">"aker"</span>, <span class="number">1</span>);</span><br><span class="line">    worker.showInfo();</span><br><span class="line">    <span class="keyword">delete</span> worker; <span class="comment">// 这里就会报内存泄漏</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为什么？生成Employee地址空间，delete 自己的空间怎么会报错?</p>
-<p>我们这样理解: Worker *worker，worker 是纯虚指针，指向纯虚单独保存的空间，这里只有Worker。<code>delete worker</code>，虽然是打算释放Employee，但是纯虚里面不包括Employee 其他数据指针。直接delete 就会造成无法释放余下那部分数据。</p>
-<p>解决方法有两种<a href="https://blog.csdn.net/quicmous/article/details/100121382" target="_blank" rel="noopener">参考</a>:</p>
-<ol>
-<li>自己实现虚析构:</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~Employee() &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样释放就能直接找到自己的析构。</p>
-<ol start="2">
-<li>提供自己的delete 方法，自己释放自己:</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">delete</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span>:</span> <span class="keyword">public</span> Worker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> Employee::release() &#123;</span><br><span class="line">    <span class="keyword">delete</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">worker.release();</span><br></pre></td></tr></table></figure>
-<h2 id="cpp引用注意点"><a href="#cpp引用注意点" class="headerlink" title="cpp引用注意点"></a>cpp引用注意点</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相当于将aa指针也指向了a 的地址: &amp;a</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">int</span> * <span class="keyword">const</span> aa)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"result: "</span> &lt;&lt; *aa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// cpp 的引用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">int</span> &amp;aa)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"result: "</span> &lt;&lt; aa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">	func1(&amp;a);</span><br><span class="line">	func2(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="cpp深拷贝-浅拷贝"><a href="#cpp深拷贝-浅拷贝" class="headerlink" title="cpp深拷贝/浅拷贝"></a>cpp深拷贝/浅拷贝</h2><p>浅拷贝: 简单的赋值拷贝操作<br>深拷贝: 在堆区重新申请空间，进行拷贝操作</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Person() &#123;&#125;</span><br><span class="line">	Person(<span class="keyword">const</span> Person &amp;p) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"拷贝构造函数!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		m_age = p.m_age;</span><br><span class="line">		m_height = <span class="keyword">new</span> <span class="keyword">int</span>(*p.m_height);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">int</span> m_age;</span><br><span class="line">	<span class="keyword">int</span> *m_height;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Person p1;</span><br><span class="line">	<span class="function">Person <span class="title">p2</span><span class="params">(p1)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果不实现 <code>Person(const Person &amp;p)</code>那么就是浅拷贝，直接进行对象的赋值操作； 但是如果内部属性在堆区开辟，一定要提供拷贝构造函数，否则可能导致浅拷贝的重复释放堆区的问题(赋值了指针，p2-&gt;m_height 有两份指针，释放时就释放了两次!)!</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-7-6lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/07/06/2021-7-6lesson/" class="article-date">
-	  <time datetime="2021-07-06T12:09:53.000Z" itemprop="datePublished">July 6, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="es"><a href="#es" class="headerlink" title="es"></a>es</h1><h2 id="es-使用curl"><a href="#es-使用curl" class="headerlink" title="es 使用curl"></a>es 使用curl</h2><pre><code>$ alias curles=&apos;curl  -u elastic:elasticpassword&apos;
-$ curles -XPUT &quot;http://localhost:9200/movies/movie/1&quot; -d&apos;&apos;
-$ curles -X POST &quot;http://172.16.60.162:9200/_analyze&quot; -d &apos;{&quot;analyzer&quot;:&quot;standard&quot;, &quot;text&quot;:&quot;Like X 国庆放假的&quot;}&apos; -H &quot;Content-Type: application/json&quot;
-</code></pre><h2 id="为es-增加stopword-和词汇"><a href="#为es-增加stopword-和词汇" class="headerlink" title="为es 增加stopword 和词汇"></a>为es 增加stopword 和词汇</h2><h3 id="增加stopword-和词汇的操作"><a href="#增加stopword-和词汇的操作" class="headerlink" title="增加stopword 和词汇的操作"></a>增加stopword 和词汇的操作</h3><pre><code>$ docker cp ${dockerId}:/usr/share/elasticsearch/plugins/ik/config config
-// 支持往custom/mydic.dic 写入对应合并关键词、custom/ext_stopword.dic
-$ mkdir config/custom &amp;&amp; touch config/custom/mydict.dic &amp;&amp; touch config/custom/ext_stopword.dic
-$ docker cp config ${dockerId}:/usr/share/elasticsearch/plugins/ik // 拷贝配置文件回elastic
-$ docker restart ${dockerId} // 重启elastic
-</code></pre><h3 id="↑支持的plugins语法"><a href="#↑支持的plugins语法" class="headerlink" title="↑支持的plugins语法"></a>↑支持的plugins语法</h3><p>语法如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">新案件</span><br><span class="line">不要</span><br><span class="line">不可</span><br></pre></td></tr></table></figure></p>
-<h1 id="学习使用Neo4j"><a href="#学习使用Neo4j" class="headerlink" title="学习使用Neo4j"></a>学习使用Neo4j</h1><p>Neo4j 本身提供7474端口的及时UI操作服务。如: <a href="http://localhost:7474" target="_blank" rel="noopener">http://localhost:7474</a> 登录上即可。</p>
-<p>这里以nodejs 链接代码:</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> neo4j = <span class="built_in">require</span>(<span class="string">"neo4j-driver"</span>)</span><br><span class="line"><span class="keyword">let</span> session = <span class="literal">null</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params">conf:&#123;url:<span class="built_in">string</span>, username:<span class="built_in">string</span>, password:<span class="built_in">string</span>&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> driver = neo4j.v1.driver(conf.url, neo4j.v1.auth.basic(conf.username, conf.password))</span><br><span class="line">    session = driver.session(neo4j.v1.session.WRITE)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">executeCypher</span>(<span class="params">data:&#123;cql:<span class="built_in">string</span>&#125;</span>) </span>&#123;</span><br><span class="line">    session.run(data.cql, data).subscribe(&#123;</span><br><span class="line">        onNext:<span class="function">(<span class="params">record</span>)=&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"[neo4j.onNext] record:"</span>, record)</span><br><span class="line">        &#125;,</span><br><span class="line">        onCompleted: <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"[neo4j.onCompleted] ..."</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        onError: <span class="function">(<span class="params">err</span>)=&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"[neo4j.onError] err: "</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="cql语法"><a href="#cql语法" class="headerlink" title="cql语法"></a>cql语法</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><pre><code>$CREATE (m:Movie {title: &quot;The Matrix&quot;, released: 1990})
-$CREATE (m:Movie {title: &quot;Apollo 13&quot;, released: 2000})
-</code></pre><h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><pre><code>$match (m:Movie {title: &quot;The Matrix&quot;}) return m # match (m:Movie) where m.title = &quot;The Matrix&quot;
-</code></pre><h3 id="创建边"><a href="#创建边" class="headerlink" title="创建边"></a>创建边</h3><pre><code>// m0-r-&gt;m1
-$match (m0:Movie {title: &quot;The Matrix&quot;}) match (m1:Movie {title: &quot;Apollo 13&quot;}) \
-create (m0)-[r:ACTED_IN]-&gt;(m1) return m0, r, m1 # 每次只能创建一个方向
-// 在创建一个反向m0&lt;-r-m1
-$match (m0:Movie {title: &quot;The Matrix&quot;}) match (m1:Movie {title: &quot;Apollo 13&quot;}) \
-create (m0)&lt;-[r:ACTED_IN]-(m1) return m0, r, m1
-</code></pre><h3 id="删除边、node"><a href="#删除边、node" class="headerlink" title="删除边、node"></a>删除边、node</h3><pre><code>$match (m0:Movie {title: &quot;The Matrix&quot;}) match (m1:Movie {title: &quot;Apollo 13&quot;}) \
-optional match(m0)&lt;-[r0:ACTED_IN]-(m1) \
-optional match(m0)-[r1:ACTED_IN]-&gt;(m1) \
-DELETE r0, r1, m0 # 必须先删除所有边才可以删除node
-</code></pre><h3 id="STARTS-WITH-ENDS-WITH-CONTAINS"><a href="#STARTS-WITH-ENDS-WITH-CONTAINS" class="headerlink" title="STARTS WITH / ENDS WITH / CONTAINS"></a>STARTS WITH / ENDS WITH / CONTAINS</h3><pre><code>$where a.name STARTS WITH &apos;Ake&apos;
-$where a.name ENDS WITH &apos;ker&apos;
-$where a.name CONTAINS &apos;ke&apos;
-</code></pre><h3 id="EXISTS-属性检查"><a href="#EXISTS-属性检查" class="headerlink" title="EXISTS 属性检查"></a>EXISTS 属性检查</h3><pre><code>$match (m:Movie) where EXISTS(m.title)
-</code></pre><h3 id="NOT-取反"><a href="#NOT-取反" class="headerlink" title="NOT 取反"></a>NOT 取反</h3><pre><code>$where NOT m.title ends with &quot;ker&quot;
-</code></pre><h3 id="’regexp’-语法继承来自Java正则表达式"><a href="#’regexp’-语法继承来自Java正则表达式" class="headerlink" title="=~’regexp’ 语法继承来自Java正则表达式"></a>=~’regexp’ 语法继承来自Java正则表达式</h3><pre><code>$match (m:Movie) where m.title =~&apos;The Matr*&apos;
-</code></pre><h3 id="i-非大小写敏感"><a href="#i-非大小写敏感" class="headerlink" title="(?i) 非大小写敏感"></a>(?i) 非大小写敏感</h3><pre><code>$where n.name =~(?i)TOM.*&apos; return n
-</code></pre><h3 id="模式过滤"><a href="#模式过滤" class="headerlink" title="模式过滤"></a>模式过滤</h3><pre><code>$match (m0:Movie {title: &quot;The Matrix&quot;}), (m1:Movie) \
-where (m0)-[r:ACTED_IN]-(m1) return m0, m1
-相当于:
-$match (m0:Movie {title: &quot;The Matrix})-[r:ACTED_IN]-(m1:Movie) return m0, m1
-</code></pre><h3 id="关系类型过滤"><a href="#关系类型过滤" class="headerlink" title="关系类型过滤"></a>关系类型过滤</h3><pre><code>$match (n)-[r]-() where type(r)=~&apos;DIRE.*&apos; return n
-</code></pre><h3 id="IN运算符"><a href="#IN运算符" class="headerlink" title="IN运算符"></a>IN运算符</h3><pre><code>$match (m:Movie) where m.title IN [&quot;The Matrix&quot;, &quot;Apollo 13&quot;, &quot;the matrix&quot;]
-</code></pre><h3 id="OR-AND-IS-NULL-ORDER-BY"><a href="#OR-AND-IS-NULL-ORDER-BY" class="headerlink" title="OR/AND/IS NULL/ORDER BY"></a>OR/AND/IS NULL/ORDER BY</h3><pre><code>$match (m:Movie) where m.title = &quot;The Matrix&quot; OR m.title IS NULL return m ORDER BY m.title
-</code></pre><h3 id="DISTINCT-返回结果去掉重名"><a href="#DISTINCT-返回结果去掉重名" class="headerlink" title="DISTINCT 返回结果去掉重名"></a>DISTINCT 返回结果去掉重名</h3><pre><code>$match (m:Movie) return DISTINCT m.title
-</code></pre><h3 id="LIMIT-SKIP"><a href="#LIMIT-SKIP" class="headerlink" title="LIMIT / SKIP"></a>LIMIT / SKIP</h3><h3 id="FOREACH"><a href="#FOREACH" class="headerlink" title="FOREACH"></a>FOREACH</h3><pre><code>$match p=(m0:Movie {title: &quot;The Matrix&quot;})-[r:ACTED_IN]-(m1) FOREACH (n IN nodes(p) | set n.marked = true)
-</code></pre><h3 id="SIZE"><a href="#SIZE" class="headerlink" title="SIZE"></a>SIZE</h3><pre><code>$match p=(m0:Movie)-[r:ACTED_IN]-(m1:Movie) where m0.title=&quot;The Matrix&quot; return m0, SIZE(nodes(p))
-</code></pre><h3 id="COLLECT-将资源转为array"><a href="#COLLECT-将资源转为array" class="headerlink" title="COLLECT 将资源转为array"></a>COLLECT 将资源转为array</h3><h3 id="WITH-UNWIND"><a href="#WITH-UNWIND" class="headerlink" title="WITH / UNWIND"></a>WITH / UNWIND</h3><pre><code>$match (m:Movie) WITH COLLECT(m) as c UNWIND c as x return x
-</code></pre><h3 id="MERGE-CREATE-区别在于已存在"><a href="#MERGE-CREATE-区别在于已存在" class="headerlink" title="MERGE / CREATE 区别在于已存在"></a>MERGE / CREATE 区别在于已存在</h3><pre><code>$create (m:Movie {Id: 10}) create (m:Movie {Id: 10}) # 此时有两个Id=10 的movie
-$MERGE (m:Movie {Id: 20}) MERGE (m:Movie {Id: 20}) # 此时只会有一个Id=20 的movie
-</code></pre><h3 id="UNION-合并"><a href="#UNION-合并" class="headerlink" title="UNION 合并"></a>UNION 合并</h3><pre><code>// foreach 设置属性
-$match (cc:CreditCard) with collect(cc) as arr foreach(c in arr | set c.type = &quot;cc&quot;)
-// 合并CreditCard 和DebitCard 数据
-$match (cc:CreditCard) return cc.Id as Id, cc.name as name, cc.number as number order by cc.Id \
-union \
-match (dc:DebitCard) return dc.Id as Id, dc.name as name, dc.number as number order by dc.Id
-</code></pre><h3 id="ON-MERGE-CREATE-更新或者新建"><a href="#ON-MERGE-CREATE-更新或者新建" class="headerlink" title="ON MERGE / CREATE 更新或者新建"></a>ON MERGE / CREATE 更新或者新建</h3><pre><code>$MERGE (p:Person {name: &quot;Peter&quot;}) \
-ON MATCH SET peter += { hungry: true, position: &quot;GAO TOU&quot;}
-ON CREATE SET peter += {last: &quot;aker&quot;}
-</code></pre><p><a href="https://www.huaweicloud.com/articles/53b4cf274b3463273fd5b03d845163f9.html" target="_blank" rel="noopener">参考1</a><br><a href="https://blog.csdn.net/chengyuqiang/article/details/102563408" target="_blank" rel="noopener">merge参考</a><br><a href="https://www.w3cschool.cn/neo4j/neo4j_cql_union.html" target="_blank" rel="noopener">union参考</a><br><a href="https://stackoverflow.com/a/25179644/6677202" target="_blank" rel="noopener">on merge/create参考</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/neo4j/">neo4j</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-6-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/06/16/2021-6-16lesson/" class="article-date">
-	  <time datetime="2021-06-16T13:32:39.000Z" itemprop="datePublished">June 16, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="我的新目标cpp"><a href="#我的新目标cpp" class="headerlink" title="我的新目标cpp"></a>我的新目标cpp</h1><p>最近我的主要学习路线是C++. 我感到学go 之后还是有部分在web路上精疲力尽，我需要一个服务端的底层语言进行支撑。前年学go，去年写了两个gin 服务。本想今年年初好好深入学习，但是接手一个很大的平台服务，导致直到现在6.16号才终于稍稍缓和下来。</p>
-<p>我痛定思痛想知道自己真的想要什么。我是想继续web开发，api调用大法还是写轮子，搞定底层的。公司C++招聘看了下简历，都是半年C++能培养；而且需求量还是很大。一直说C++越久越香。</p>
-<p>我觉得C++估计能给我点答案；而go 当前让我感觉无法给我想要的那个答案。我知道那个答案，我只是想他自己能直接告诉我。</p>
-<p>当时觉得go 也有指针，也有引用，跟我以前的OC很类似。于是花了好多时间认真学着。但是感觉杂乱不堪，最多只是让我用另一种语言写后台。还是没有建树。。</p>
-<p>不是nodejs不行。而是nodejs 在最需要性能的时候，没人提供binding。一个大锤子加一个底层机械的组合。也许我自己可以给自己binding？所以我来了。</p>
-<hr>
-<p>今天刚好遇到个自己没理解清楚，问了个大佬突然明白的问题。</p>
-<p>这样编译没有问题，但是执行时报错: pvalue被释放了! 代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapAndStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">double</span>* pvalue = <span class="keyword">new</span> <span class="keyword">double</span>; <span class="comment">// pvalue 申请了堆空间</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">double</span> aa = <span class="number">29494.99</span>; <span class="comment">// aa申请了栈空间。</span></span><br><span class="line">  pvalue = &amp;aa; <span class="comment">// pvalue 获得了 aa 的地址(栈的地址) 此时可以认为pvalue 已经指向了栈，也就是*aa</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Value of pvalue : "</span> &lt;&lt; *pvalue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">delete</span> pvalue; <span class="comment">// 这时释放栈则报错: 栈是自动内存回收的；指针才可以delete</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-6-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/06/16/2021-6-11lesson/" class="article-date">
-	  <time datetime="2021-06-16T13:31:57.000Z" itemprop="datePublished">June 16, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="房子买后感"><a href="#房子买后感" class="headerlink" title="房子买后感"></a>房子买后感</h1><p>搬过来一周，工作日都是回来就直接躺下。里面有很多东西都要维修，很多东西要丢要收拾都忙没时间搞，先不管，房间里面也有点脏。老婆每天晚上就早早回家收拾，不知疲倦，我说三分钟热度猴，你别太累哦。别到时说哎呀好累啊，受不了啦。隔天老婆立马就躺床上不动，瞬间降温。</p>
-<p>其实也是怕老婆太累，周末搬家真的是来来回回的上下楼梯。腿都廋了。</p>
-<p>接下来的一段时间全身心投入到工作中，距离上里公司单向行程要多20分钟，不过周末来公司蹭空调还是一样有激情。</p>
-<p>家里硬装都是很OK的，那些设备有些就头疼了。空调不那么熟悉，差点卖了很老，但是还挺好用的老空调(三菱牌子)。床以为很小，直到很后来老爸来，买了卷尺才知道是1.9，于是就继续睡，买了席梦思就继续用了。灯泡，一个接一个坏，买房前看过没坏，后来怎么打斗不着。冰箱开门就臭死，扔给收电器的，不要钱，帮我把油烟机搬下去就好了。换了个马桶，坑距不会量，让物业大叔过来量，400坑距给他量程300，得，马桶屁股后面空的好大位置；等装马桶，没得用怎么办?去附近公园上，5星级厕所。接下来就是重头戏了: 洗衣机。</p>
-<p>这个洗衣机就是个爹，每次洗衣服就漏水，赶紧拿拖把拖。物业帮忙清理了下水道、理了下说没漏水；还是没解决。我自己试了方案，看不出漏水，主要精力在工作上。然后那几天回家还耍脾气(我再次说到她在就快买房子了，还买100多新的运动器械，很重，我搬得累死；她老get不到我累的点；让她去闲鱼买30多都很好用了，她还是get不到点；还说我老是说这件事，她知道不对了我还在说。那肯定的了，我搬我累啊，而且还花这些没用的钱；反正把她一顿骂)，吃饭时，洗衣服的时候大厅第一次漏水，骂了她几句，这又买，水都满起来还不赶紧整。赶紧把洗衣机关了，然后把下水道盖子掀起来下水，我赶紧把大厅的水给拖干净，她就在那看着，一动不动。然后我还好声好气让在床上趴着猴子在大厅看下洗衣机。我好久没放松下，进屋里打了会游戏，出来一看，脑子都炸了!水都把厨房淹了，比刚才淹得还厉害。一通大怒劈头盖脸又又又把老婆给骂了！又赶紧把洗衣机关了, 水下去慢。赶紧把大厅整一下，老婆还是一动不动，眼睛红红的，我还继续骂，大厅都淹了，幸好是瓷砖。要是水进到房间(幸好有点斜坡，感谢之前的硬装设计)，水泡了木头一下，就得腐烂房间木头地板。而且烂了一个，就得修一大片。到时候就装修费至少好几万来出。她就顾着自己生气就啥都怪我一样，啥都不管不顾。那几天把我气的，当时真想抽她个耳光，给她抽醒!</p>
-<p>这个问题也一直没有解决，然后在七月末，老爸带阿黄来上海啦。老爸一来，就捣鼓捣鼓，搞定了好多东西。阿黄吧，这货饭不自己吃，总想着喂，那能怎么办，父亲的责任，揍他。</p>
-<p>老爸看到了洗衣机不下水的原因: 脱水的时候，水太大，倒灌出来，哗哗的外冒，这回看清楚了。老爸把下水管锯掉大截，然后那胶水封住口子，是不漏水了。然后发现洗衣机无限重启某几个进程。打电话去官方来人修，第一次上门，整了下，修了个出水口，不漏了；但是程序还是错乱的，必须来人再修。第二次380多，官方调货，某个零件换了，然后这次后就再也他妈不用我管了。</p>
-<p>啊，心情愉快了，不用狠狠骂老婆了。当时该骂啊，水要是泡到木地板，腐烂了是不能住的，没救。就吩咐一个小事都做不好，那不骂，是要上天嘛!吵归吵，大不了晚上强奸她就好了嘛；要是平白房间内泡水，多花好几万，这她妈我得狠狠给她来几个打耳光。生气就生气，不要把钱当玩笑。好好努力搞了个家，下周阿黄就要来了，还漠不关心一样。那就不行了。我内心都还能想到和老婆努力争取，买下了这个小居，全靠努力和运气。刚买下来时候老婆多开心，看到现在老婆漠不关心，我内心就有多割裂: 她不喜欢这小宅子？怎么可以这样，我那么努力才争取下来的啊!全程所有资金都是我特么一分一分积攒，小份额她帮上。</p>
-<p>反正那几天她眼睛都哭肿了，怎么，老子说的不对啊，怎么不理我啊？干她!对女人，干就完事!这不，慢慢不就又好了嘛。女人这东西，不能惯，不骂她，她就站着瞪着你，一动不动。一动不动是王八。</p>
-<p>老爸和阿黄来的几天，刚好最热了。阿黄不熟悉，偶尔带下去溜溜，我带他去公园跑步，这货为了不输，跑的贼快的，两大圈都能hold住。不错，身体好，以后带他泡妹子就不会没力气了，丢人就不好了。周末多陪陪孩子，教了教阿黄写程序，得这货啥都不会，多多教吧: 多少+多少；abcd…；类型等等，然后他学的好累，然后问他来玩电脑，他说我不喜欢电脑，电脑不好玩。哦，顺便教他游戏lol，不过这货不会，看不懂，兴趣不大；然后隔了会，觉得画面漂亮，又会想打开电脑，看别人电脑那么炫，我的电脑又有密码进不去，进去了Mac OS 又只有工具，真捉急。屋子里待了老下午了，和老婆带他去迪卡龙溜溜。去了之后一开始阿黄很害羞，哇，这么好玩，我都不晓得玩哪个了；哇，我可以碰这些吗？没5分钟，这么跑跑，那里跳跳。把老婆打发走自己去快乐，我帮她带带阿黄。</p>
-<p>首先到处转，看到手表就要一个个带上去，带吧，怎么那么奇怪的呢？手表带着有用么？一直缠着要买，那我就走了。然后又去看了射箭？啥？这又要买？哪来的钱？自己赚！啥？滑板车？让服务员给开个玩会，反正我是不会买的。然后又带他去看轮滑，他看着别人自己也想进场地；这特么就是个老想花钱的货啊，不行，以后得治治。又往后带去骑自行车，免费的活动嘛，随便玩，就那小场地他能一直骑，啊，穷才能体会到快乐啊。带他去尿尿，他说没尿，被我拉去，他自己都笑了，尿了好多。然后我说等我会，爸爸也要尿尿，他不管你的，直接跑了。卧槽，我特么要是找不到就完了，这特么个蛋疼的猴，赶紧来回找。没想到跑回去玩自己车了，吓死我了，真有点心悸的感觉，一转眼特么自己就不见了，要是跑到人贩子那砍手砍脚，那我真是要后悔一辈子哦。这无法无天的样子，真特么像我，艹，体会得到老妈以前带我的辛苦了。给阿黄买几件衣服就回去了，他有个疼他的好妈妈，衣服直接扒了光光试穿。于是逛了那么久，就买几件衣服肥去了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-6-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/06/16/2021-6-10lesson/">2021-6-10lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/06/16/2021-6-10lesson/" class="article-date">
-	  <time datetime="2021-06-16T13:31:23.000Z" itemprop="datePublished">June 16, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="网迹【权限优化】"><a href="#网迹【权限优化】" class="headerlink" title="网迹【权限优化】"></a>网迹【权限优化】</h1><p>各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。</p>
-<h1 id="当前网迹权限长这样"><a href="#当前网迹权限长这样" class="headerlink" title="当前网迹权限长这样"></a>当前网迹权限长这样</h1><p>…</p>
-<h1 id="普及下权限"><a href="#普及下权限" class="headerlink" title="普及下权限"></a>普及下权限</h1><p>比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  code: "user",</span><br><span class="line">  name: "普通用户",</span><br><span class="line">  permissions: ["mod_collect"]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  code: "onlyEditor",</span><br><span class="line">  name: "上传者",</span><br><span class="line">  permissions: ["mod_collect", "mod_sysUser_edit", "mod_sysUser_del"]</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  code: "superman",</span><br><span class="line">  name: "超人",</span><br><span class="line">  permissions: ["mod_collect", "mod_sysUser", "mod_sysUser_edit", "mod_sysUser_del", "mod_sysRole"] // 没有采集修改权限</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对应接口如:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: "/collect",</span><br><span class="line">  method: "GET",</span><br><span class="line">  permission: "mod_collect"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这时很简单的方案就是直接判别数组内是否有该权限，有当然就能使用该接口啦。</p>
-<p>但是此时会发现一个问题，数组查找字符串，其实是一个很耗时的操作。数组<code>[&quot;mod_collect&quot;, &quot;mod_collect_edit&quot;].include(&quot;mod_collect&quot;)</code> 会先for 循环查找第一个字符串(mod_collect)，第一个字符串对比从第一个字符开始一个个比对。</p>
-<p>你会说，那也很快啊，CPU买买买，快快快。</p>
-<p>有这想法的人得自己深思了，这里的判别是作用在所有中间件，当然是尽可能快，能提高用户使用、设备使用。大多在中间件出现的数据，一定要尽可能的缓存或者优化。</p>
-<p>OK，那怎么解？我们都知道字符串判别是一个一个字符比较O(n)，如果是数字判别，则是类似于O(1)的时间复杂度。我们将现有的所有permission都转化为一个数字: Bitmap. 比如: <code>mod_collect: 1 &lt;&lt; 2 = 4; mod_collect_edit: 1 &lt;&lt; 3 = 8; mod_sysUser: 1 &lt;&lt; 4 = 16; mod_sysUser_edit: 1 &lt;&lt; 5 = 32; mod_sysUser_del: 1 &lt;&lt; 6 = 64; mod_sysRole: 1 &lt;&lt; 7 = 128; ...</code></p>
-<p>以上得到关联: user 有一个权限: [4]; onlyEditor有三个权限, 我们使用 <code>|</code>运算符给他串起来: <code>8 | 32 | 64 = 104</code>, 我们这时可以说 user用户的权限是4, onlyEditor用户的权限是104, superman超人的权限是244.</p>
-<p>我们将上述的数据量不大，基本不怎么变动的数据都内存缓存下来:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">roles: &#123;</span><br><span class="line">  "mod_collect": 4,</span><br><span class="line">  "mod_colelct_edit": 8,</span><br><span class="line">  "mod_sysUser": 16,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">permissions: &#123;</span><br><span class="line">  "user": 4,</span><br><span class="line">  "onlyEditor": 104,</span><br><span class="line">  "superman": 244</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此时如果接口进入中间件:</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假装我是中间件内部判别权限</span></span><br><span class="line"><span class="keyword">const</span> curRoutePermission = <span class="string">"mod_collect_edit"</span> <span class="comment">// 当前接口必须的权限</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPermission</span>(<span class="params">role:<span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> tPerm = permissions[role]</span><br><span class="line">  <span class="keyword">const</span> curRole = roles[curRoutePermission]</span><br><span class="line">  <span class="keyword">return</span> tPerm &amp; curRole <span class="comment">// `与`符能得到交集 -&gt; 这个用户是否有该接口的权限</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果是user判别需要<code>&quot;mod_collect_edit&quot;</code>接口 =&gt; 4 &amp; 8 = 0; onlyEditor =&gt; 104 &amp; 8 = 8, 说明是有权限的!</p>
-<blockquote>
-<p>使用位运算<code>&amp;</code>比较，如果 &gt; 0 则表明这是有权限的。</p>
-</blockquote>
-<p>以上是权限基础普及，下面开始进入权限升级部分: ↓↓↓</p>
-<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><h3 id="设定数据范围、权限及访问路由"><a href="#设定数据范围、权限及访问路由" class="headerlink" title="设定数据范围、权限及访问路由"></a>设定数据范围、权限及访问路由</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">enum DataScope &#123;</span><br><span class="line">  All = <span class="number">1</span>, <span class="comment">// 全局</span></span><br><span class="line">  ThisWithSubordinate = <span class="number">2</span>, <span class="comment">// 本单位及下属单位</span></span><br><span class="line">  This, <span class="comment">// 仅本单位</span></span><br><span class="line">  self <span class="comment">// 本人</span></span><br><span class="line">&#125;</span><br><span class="line">enum UrlMap &#123;</span><br><span class="line">  browseCollection = <span class="string">"/browse/collection"</span>, <span class="comment">// 采集管理</span></span><br><span class="line">  sysUser = <span class="string">"/sys/user"</span>,</span><br><span class="line">  sysRole = <span class="string">"/sys/role"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Urls = [</span><br><span class="line">  UrlMap.browseCollection,</span><br><span class="line">  UrlMap.sysUser,</span><br><span class="line">  UrlMap.sysRole</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> roleSchema = &#123;</span><br><span class="line">  name: <span class="built_in">String</span>, <span class="comment">// 用于记录角色名称，比如 `超人`</span></span><br><span class="line">  code: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">unique</span>: <span class="literal">true</span>&#125;, <span class="comment">// 用于声明角色编码，如superman/user/u001等代号</span></span><br><span class="line">  permissions: [&#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;], <span class="comment">// 该角色拥有的权限数组</span></span><br><span class="line">  urls: [&#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;], <span class="comment">// 该角色展示的页面数组</span></span><br><span class="line">  dataScope: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>, <span class="attr">enum</span>: DataScope&#125;, <span class="comment">// 数据范围声明</span></span><br><span class="line">  remark: <span class="built_in">String</span> <span class="comment">// 加个简介好记忆?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>角色表包含有数据权限dataScope，页面列表urls，权限列表permissions。</p>
-<p>数据范围定义数据获取等级。侧重点是支持中间件将该用户的数据权限，写到用户数据中:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将已构建的角色对应结构保存在内存中</span></span><br><span class="line">staticbuildInRoleMaps:IBuildInRoleMap</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">async</span> dataScopeMiddleware(req:Request, <span class="attr">res</span>:Response, <span class="attr">next</span>:NextFunction) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.hasPermission(<span class="string">"admin"</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.user.departmentNo) <span class="keyword">return</span> res.status(<span class="number">403</span>).send(<span class="string">"您没有设置组织机构"</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    req.user.dataScope = DataScope.All</span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> requserRole = Utils.getUserFirstRole(req.user)</span><br><span class="line">  <span class="keyword">if</span> (!_.includes([<span class="string">"anon"</span>], requserRole)) &#123;</span><br><span class="line">    <span class="keyword">const</span> theRole = Role.buildInRoleMaps[requserRole]</span><br><span class="line">    <span class="keyword">if</span> (!theRole) <span class="keyword">return</span> next(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"权限获取出错，请联系管理员"</span>))</span><br><span class="line">    req.user.dataScope = theRole.dataScope</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>将改变不大的数据存在内存中，可以很快速的进行获取数据。</p>
-</blockquote>
-<h3 id="数据范围设定-根据业务划分不同的接口"><a href="#数据范围设定-根据业务划分不同的接口" class="headerlink" title="数据范围设定(根据业务划分不同的接口)"></a>数据范围设定(根据业务划分不同的接口)</h3><p>下面是我所使用的获取数据过滤方式之一:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> dataScopeForCollect(user:&#123;<span class="attr">dataScope</span>:DataScope, <span class="attr">departmentNo</span>:string, <span class="attr">policeNo</span>:string&#125;) &#123;</span><br><span class="line">  <span class="keyword">let</span> cond:&#123;departmentNo?:string, code?:<span class="built_in">RegExp</span>, policeNo?:string&#125; = &#123;&#125;</span><br><span class="line">  <span class="keyword">if</span> (!_.isNumber(user.dataScope)) <span class="keyword">return</span> cond</span><br><span class="line">  <span class="keyword">if</span> (user.dataScope === DataScope.All) <span class="keyword">return</span> cond</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.ThisWithSubordinate) &#123;</span><br><span class="line">    cond.code = Utils.orgReg(user.departmentNo)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.This) &#123;</span><br><span class="line">    cond.departmentNo = user.departmentNo</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user.dataScope === DataScope.self) &#123;</span><br><span class="line">    cond.policeNo = user.policeNo</span><br><span class="line">    <span class="keyword">if</span> (user.departmentNo) cond.departmentNo = user.departmentNo</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cond</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>于是我很快就能知道对应的获取数据方案。</p>
-<h3 id="限制页面路由"><a href="#限制页面路由" class="headerlink" title="限制页面路由"></a>限制页面路由</h3><p>这方面由李豪同学来交流下。当初也是李豪同学提出来，我保存好，由他来约束这块的逻辑。点赞。</p>
-<h3 id="接口权限的组合"><a href="#接口权限的组合" class="headerlink" title="接口权限的组合"></a>接口权限的组合</h3><p>这块复用第一章节的逻辑。第一章节将静态的数据，在这里转化为可调节配置的权限组合。</p>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>Number 类型是32位的。使用Number 进行位运算，当角色超过32位时， <code>1 &lt;&lt; 32 = 0</code>.</p>
-<p>使用BigInt 可能突破这个限制: <code>BigInt(1) &lt;&lt; BigInt(x)</code>.当使用BigInt 作为json 传输时需要<code>将其转为字符串</code>，在Chrome67之后版本支持BigInt 类型。前段收到对应角色编码，将其转化为BigInt:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ BigInt(<span class="string">"17179869185"</span>)</span><br><span class="line">$ <span class="number">17179869185</span>n</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-5-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/05/31/2021-5-31lesson/" class="article-date">
-	  <time datetime="2021-05-31T02:13:57.000Z" itemprop="datePublished">May 31, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这段时间超级超级忙碌。</p>
-<p>首先是网迹市局需求和之前要改的徐汇权限优化，一开始设计是单接口权限优化，在后面完善功能下，我们为其设计了三个维度的权限设计: 数据作用域、页面权限、接口权限。</p>
-<p>市局需求比较急忙，在周一上午开会；下午有时需要开取综会；有时有其他服务的开会；自己组织开会等；其他地方找我；各种各样找我的等情况下，急急忙忙上线这款功能。大约耗时1个月。</p>
-<p>由于其中还有需要将iced代码翻译为typescript代码，着实是每天加班熬夜换来的成就。其中业务不熟悉，里面有几个模块走不通权限判别，多人、单人、多案件、单案件、上传数据包等有时走的判别还不一样。之前是iced的不理解其内涵情况下，最终自己重写了判别逻辑。不然感觉都要吐血：改一些不对，再改一些还是不对，继续改继续不对!真要吐血。</p>
-<p>另一个是房子过户、缴税、贷款申请等。由于这块业务比较大，内心也是放到超级第一的位置。</p>
-<p>再一个是想要能落户而去考试，软考中级。前一段时间在翻译代码过程，还不那么急忙，晚上可以抽空看看；后来太忙，晚上只有偶尔的时间赶紧学习。当时在想的就是，要是现在不用加班到11点，能赶紧看书多好。偶尔10点能到家，赶紧打开电脑学习。</p>
-<p>车牌也在拍当中，所以也是急急忙忙。</p>
-<p>5月也是超级超级忙碌啊。周末能用来加班的都用上，有时带上老婆去公司学习，路过公园还能转一圈，有时顺便就去打羽毛球，啊，累却又充实却又有所得。</p>
-<p>这篇就是胡言乱语文章，原因是好久好久没写博客了，今天也是抽空写下。</p>
-<h2 id="这是第二篇入住自己房子回顾"><a href="#这是第二篇入住自己房子回顾" class="headerlink" title="这是第二篇入住自己房子回顾"></a>这是第二篇入住自己房子回顾</h2><p>6月4号中午请示了下去自己房子交房。伟哥说别在意，不用请假了，这，只能多多加油，嗷嗷嗷。</p>
-<p>中午饭也不吃了，直接骑电驴过去，40分钟，大约摸清了之后要走的小路。到了之后顾问也在，然后等了一会各方人都到齐。我们先上楼查看。我和老婆前前后后到处转转，其实俺真看不出哪里不好。看各个物件: 能出水、能生火、电能通，OK。</p>
-<p>我们先和房东先签署一份交房补偿款，时间从6.5号开始，每天150，其实就是每个月4500进行补偿我们提前住进来。因为合同当时写确实是款清交房，公积金贷款和商贷贷款到齐才交房。没事，这房子这片租金没个6、7k也是下不来的，而且还是自己的住房。我在另一片租房也是3k，一室户，不如住过来，那个住起来不舒服。</p>
-<p>接下来也没别的，交钥匙，我们到物业处看能否物业过来。物业处置当天没得办理，自己来办理也OK的，带着产证过来就可以了，于是之后我自己过来办理就好了。物业费各方同意周二询问多少，前房东微信补齐后缴纳。</p>
-<p>然后我就回去上班了。上班重要嘛。</p>
-<p>周六的时候早上开始搬家，东西超级多，这个也不舍得那个也不舍得。我当时一个人看着那么多要下5楼，到时过去肯定也是上5楼，头大。这时一个扫地阿姨过来问是搬进来还是搬出去啊？我就问她帮忙搬东西，50块。我的天，居然同意了。我也出大力，搬了一趟有一趟。重的几乎都是我，或者和阿姨一起搬。搬到后面终于搬完，然后我问阿姨，明天要不要帮忙扫，当然扔垃圾啥的我来，我老婆也会帮忙打扫，200. 然后阿姨说好吧。(后来阿姨说搬下楼50好少的，我说是的，不过我也帮忙搬嘛，哈哈；然后她说打扫现在请人大概也是这价，我说是的，我也不懂)。于是中午的时候又不能走远，东西在下面，和老婆点了叫花鸡吃了下午看还有什么能收拾的赶紧叫车拉东西过去。今天出了多少汗，忘了，我的腿有多算，麻木了。</p>
-<p>叫车过来不加钱，货拉拉不鸟你，可能路程短，不想接单，唉，加个10块。叫了小货车，上车、下车，又是一阵忙活，看到还有那么大位置，赶紧上楼再拿多点东西，比如凳子之类的。<br>过去后，把东西放下来。哦对了，货拉拉要收额外上下货钱，60块，算了，那么多东西，60也是小钱。我的老哥来帮忙，嗷嗷，每次搬家我老哥都来帮忙，超级超级好同桌。不过最近他生病，只能我尽可能多搬，不过我手开始抖了。下午的时候也问了同事来帮忙，这时也到了。同事他正要学习被我喊过来，过来埋头就搬，也是超级感谢他，嘿嘿。</p>
-<p>上下上下搬了好多东西，女生帮忙带点东西就OK，我还把老婆多累一丢丢。我也是尽可能多搬，和我同事一起多搬，同桌身体还没恢复好，帮忙一些就很好了，嘿嘿。</p>
-<p>搬好之后已经6点了，没食材，没水(喝的水)，很乱，走，我们去附近南丰城的新白鹿吃。去那里吃，点多少，都不太贵。不过没考虑老哥不能吃辣(身体原因)，另外给他再来一些好吃的，反正这里点菜都不贵。</p>
-<p>吃完已经晚上9点了，送他们肥去，我们也赶紧回去收拾，去睡个觉了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-5-17lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/05/17/2021-5-17lesson/" class="article-date">
-	  <time datetime="2021-05-17T02:09:01.000Z" itemprop="datePublished">May 17, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="产证到手"><a href="#产证到手" class="headerlink" title="产证到手"></a>产证到手</h1><p>最近已拿到产证，历经2.18 ~ 5.13 这么长时间，产证到手，每一步都是大胆的尝试，甚至相信命运，敢拿着100+w 孤注一试，且听我细细回顾.</p>
-<p>2.18 过年假期快要结束刚要上班的时候，快速找房东上门看了下房子即交了30w定金。30w，我当时还在不确定我有没有买房资格(一个月一个月往上数，刚好60个月，但是我心里还是打鼓的)，但是考虑到再不上车，不好上了。过完年约dfy顾问和房东一起简单看完房子即找了家喝茶的地方签订简单约定及定金，两天后完整签署合同。</p>
-<p>接下来的每半个月交首付至房东账户，交完134w，已经来到3月24号，约了雷老师(房东哥哥, 代)办理网签。过程很顺利，办了网签，这个房子是无论如何都没法交易，然后不放心是否有买房资格的我(如果不满足则稍稍往后延续几天，下个月初能多查到新的一个月)。等了三天，然后再次前往交易中心的前台经理查询: 62个月满足资格。</p>
-<p>这时心终于落下来了，我是真有资格的，不然就真是60w赔付违约金了。</p>
-<p>接下来就是把合同证件复印件等发给银行贷款老师，等待了2周(中间少资料，补齐寄送过去)通知全部通过。</p>
-<p>这时时间来到5.6号，手上得到贷款文书(公积金100w，商贷140w)，这天下午过去办理过户。我和老婆两人早早就到了，等待各方人员到场。先填写资料，然后dfy交易员老师帮忙等待排号，我和雷老师沟通了下意愿: 现在也是在租房3k，租自己要住的房子，想提前住进去；当然，合同写着款清交房，我愿意来租还没走完流程的房子。雷老师后面也和房东商量同意我们的要求(遵守合同义务，我们也爽快，所以也相信我们，很顺利进行)。</p>
-<p>接下来就是在窗口确认资料、确认在场的人、再再次确认资料、签名、签名、交了160块钱(支付宝扫码)。然后将各种收据等收入统一包包管理。下午清了很久的假，去未来的房子转转会，然后就回到出租屋了。</p>
-<p>过户完后，得过5天缴税拿产证。手上只有刚好3.8w的我，其实内心还是起波澜的。缴税前一晚都还在担心会不会有其他税费，打电话到交易员老师那里问，比如房产税。心想同学居住证超过三年就不用交，不然得多1w多啊。</p>
-<p>缴税当天，早晨，小雨。我早早过来等雷老师，然后排号等。缴税的时候是刷卡，我把银行卡拿出来刷，咦，真只刷我3.78w 一个点的契税。然后我质疑工作人员，会不会弄错，不是还有一堆什么什么税吗？他说，都取消了。</p>
-<p>等了20分钟，在邻桌，工作人员喊名字领证。上面有产证，还有各种贷款证书等，还有外汇的证明单子(房东外汇使用)等。今天早上就这样结束了，很圆满。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房-产证/">买房, 产证</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
 </aside>
+
+    <main id="main">
         
-      </div>
-      <footer id="footer" class="site-footer">
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-08-07lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/08/07/2021-08-07lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a>
+    </h3>
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-08-07 16:34:51" datetime="2021-08-07T08:34:51.000Z" itemprop="datePublished">2021-08-07</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        制作cpp dylibMac下的动态链接库格式是*.dylib，用xcode制作如下:
+Xcode -&gt; Create a new Xcode project(Command + Shift + N) -&gt; macOS -&gt; Framework &amp; Library -&gt; Library
+
+                
+                cpp...
+    
+    <a href="/2021/08/07/2021-08-07lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-8-5lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/08/05/2021-8-5lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-08-05 09:41:47" datetime="2021-08-05T01:41:47.000Z" itemprop="datePublished">2021-08-05</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        Mac 安装Opengl库之前想着搞下编译原理，于是过了下BNF/AST，但是发现那篇文章对于初学cpp不友好，更重要，由于很多库还得下载，不晓得什么库缺失或者include路径不对，无法运行，遂暂时放弃一捏捏。
+跟着下篇文章的也是入门cpp+opengl游戏，研发机器装好opengl环境，就成功运行，这就对了嘛。
+昨天给研发的机器和家里的机器装上两遍glfw、glew、glad等，踩的小坑...
+    
+    <a href="/2021/08/05/2021-8-5lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-opengl/">mac_opengl</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-7-31lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/07/31/2021-7-31lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-07-31 23:20:30" datetime="2021-07-31T15:20:30.000Z" itemprop="datePublished">2021-07-31</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        编译原理准备BNF范式 - 巴恩斯范式
+BNF范式是一种用递归的思想来表述计算机语言符号集的定义规范
+法则:
+
+
+::= 表示定义；
+“”双引号里的内容表示字符；
+&lt;&gt;尖括号里的内容表示必选内容；
+|竖线两边的是可选内容，相当于or；
+
+BNF规定是推导规则(产生式)的集合，写为:
+&lt;符号&gt; ::= &lt;使用符号的表达式&gt;
+这里的&lt;符号&gt;是非终结...
+    
+    <a href="/2021/07/31/2021-7-31lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-7-5lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/07/06/2021-7-5lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-07-06 20:11:54" datetime="2021-07-06T12:11:54.000Z" itemprop="datePublished">2021-07-06</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        C++纯虚继承多态的问题创建 worker.h123456789101112#pragma once#include &lt;iostream&gt;#include &lt;string&gt;using namespace std;class Worker &#123;public:    virtual void showInfo() = 0;    virtual string ge...
+    
+    <a href="/2021/07/06/2021-7-5lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-7-6lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/07/06/2021-7-6lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-07-06 20:09:53" datetime="2021-07-06T12:09:53.000Z" itemprop="datePublished">2021-07-06</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        eses 使用curl$ alias curles=&apos;curl  -u elastic:elasticpassword&apos;
+$ curles -XPUT &quot;http://localhost:9200/movies/movie/1&quot; -d&apos;&apos;
+$ curles -X POST &quot;http://172.16.60.162:920...
+    
+    <a href="/2021/07/06/2021-7-6lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/neo4j/">neo4j</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-6-16lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/06/16/2021-6-16lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-06-16 21:32:39" datetime="2021-06-16T13:32:39.000Z" itemprop="datePublished">2021-06-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        我的新目标cpp最近我的主要学习路线是C++. 我感到学go 之后还是有部分在web路上精疲力尽，我需要一个服务端的底层语言进行支撑。前年学go，去年写了两个gin 服务。本想今年年初好好深入学习，但是接手一个很大的平台服务，导致直到现在6.16号才终于稍稍缓和下来。
+我痛定思痛想知道自己真的想要什么。我是想继续web开发，api调用大法还是写轮子，搞定底层的。公司C++招聘看了下简历，都是...
+    
+    <a href="/2021/06/16/2021-6-16lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-6-11lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/06/16/2021-6-11lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/06/16/2021-6-11lesson/">2021-6-11lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-06-16 21:31:57" datetime="2021-06-16T13:31:57.000Z" itemprop="datePublished">2021-06-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        房子买后感搬过来一周，工作日都是回来就直接躺下。里面有很多东西都要维修，很多东西要丢要收拾都忙没时间搞，先不管，房间里面也有点脏。老婆每天晚上就早早回家收拾，不知疲倦，我说三分钟热度猴，你别太累哦。别到时说哎呀好累啊，受不了啦。隔天老婆立马就躺床上不动，瞬间降温。
+其实也是怕老婆太累，周末搬家真的是来来回回的上下楼梯。腿都廋了。
+接下来的一段时间全身心投入到工作中，距离上里公司单向行程要多2...
+    
+    <a href="/2021/06/16/2021-6-11lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-6-10lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/06/16/2021-6-10lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/06/16/2021-6-10lesson/">2021-6-10lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-06-16 21:31:23" datetime="2021-06-16T13:31:23.000Z" itemprop="datePublished">2021-06-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        网迹【权限优化】各服务目前都有基于用户权限来限制接口的使用的功能。比如系统管理员处理系统的事务；厨师进厨房拿刀切菜烧菜；律师进事务所处理案件等。
+当前网迹权限长这样…
+普及下权限比如user(普通用户)、superman(超人)等角色，我们用以下模型来表示:
+123456789101112131415&#123;  code: "user",  name: "普通用户",  permissi...
+    
+    <a href="/2021/06/16/2021-6-10lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-5-31lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/05/31/2021-5-31lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/05/31/2021-5-31lesson/">2021-5-31lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-05-31 10:13:57" datetime="2021-05-31T02:13:57.000Z" itemprop="datePublished">2021-05-31</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        这段时间超级超级忙碌。
+首先是网迹市局需求和之前要改的徐汇权限优化，一开始设计是单接口权限优化，在后面完善功能下，我们为其设计了三个维度的权限设计: 数据作用域、页面权限、接口权限。
+市局需求比较急忙，在周一上午开会；下午有时需要开取综会；有时有其他服务的开会；自己组织开会等；其他地方找我；各种各样找我的等情况下，急急忙忙上线这款功能。大约耗时1个月。
+由于其中还有需要将iced代码翻译为t...
+    
+    <a href="/2021/05/31/2021-5-31lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-5-17lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/05/17/2021-5-17lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/05/17/2021-5-17lesson/">2021-5-17lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-05-17 10:09:01" datetime="2021-05-17T02:09:01.000Z" itemprop="datePublished">2021-05-17</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        产证到手最近已拿到产证，历经2.18 ~ 5.13 这么长时间，产证到手，每一步都是大胆的尝试，甚至相信命运，敢拿着100+w 孤注一试，且听我细细回顾.
+2.18 过年假期快要结束刚要上班的时候，快速找房东上门看了下房子即交了30w定金。30w，我当时还在不确定我有没有买房资格(一个月一个月往上数，刚好60个月，但是我心里还是打鼓的)，但是考虑到再不上车，不好上了。过完年约dfy顾问和房东...
+    
+    <a href="/2021/05/17/2021-5-17lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房-产证/">买房, 产证</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
+
+    </div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3awW7DIBAE0Pz/T6fXVqmcmcXQqHqcIsuB5wtil3k84vH8Nl6fX7+ZPLl54OLiLnOfl+OVlbyfr1vPiYuLe5DbTtdS8t9vbLi4uB/MTejXhxtcXNz/wW2PRNcz4+Lifj63XT558xq0vVbDxcXd1bu4oZhpC57b+ru4uLgj7nM0kkZJe8USrYuLi3uE2246bamzfkj65eNxcXGPcHNoslW1T4YRDVxc3M3cWQsjOcqstFqKjBguLu6t3FlBkocz1ouiH//CxcU9yL0retU2SuprV1xc3IPcJCpxPXVb3gyPO7i4uAe5RZ1UNkry/9YJMlxc3G3cHcGLWQzrtqAGLi7uMre9Rs0/pj0e3VCr4eLibuO2F64r1yr1sQkXF/cIdyUkkTQ48hjHMCeCi4u7gZtvQ7MI10rtFRU/uLi4G7grG1l7TTtryL65UMHFxd3AfZYjb4YmqYm2BYOLi3uG295dzqJXdzVbcXFxT3LXmx2z8MQw4omLi3uQ2wYv2lDXSvDrTa2Gi4v7p9z23NRui9G6uLi4H8bNJ509iTY+XFzcg9y8+MkXyzfH/LIWFxf3DDdvmM6OQdfzzA5PuLi427hf/DpN1GmINgoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1210,26 +976,6 @@ ON CREATE SET peter += {last: &quot;aker&quot;}
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

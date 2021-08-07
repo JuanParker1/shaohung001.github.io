@@ -1,1156 +1,937 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/page/2/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
-  </div>
-</header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <section id="main">
-  
-    <article id="post-2021-5-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/05/16/2021-5-16lesson/">2021-5-16lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/05/16/2021-5-16lesson/" class="article-date">
-	  <time datetime="2021-05-16T02:06:51.000Z" itemprop="datePublished">May 16, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="视频服务-点播及加密"><a href="#视频服务-点播及加密" class="headerlink" title="视频服务-点播及加密"></a>视频服务-点播及加密</h1><p><a href="https://github.com/gwuhaolin/blog/issues/10" target="_blank" rel="noopener">方案来源</a></p>
-<h2 id="网迹学习"><a href="#网迹学习" class="headerlink" title="网迹学习"></a>网迹学习</h2><h3 id="es"><a href="#es" class="headerlink" title="es"></a>es</h3><p>遇到 <code>es forbidden 12 index read-only</code></p>
-<p>原因是磁盘不够用了，当磁盘少于95%左右时，es会将索引置为只读。</p>
-<p>解决方案: 进入docker，然后执行: <code>curl -XPUT -H &quot;Content-Type: application/json&quot; http://elastic:123456@localhost:9200/_all/_settings -d &#39;{&quot;index.blocks.read_only_allow_delete&quot;: null}&#39;</code></p>
-<h3 id="绑定Centos7静态ip"><a href="#绑定Centos7静态ip" class="headerlink" title="绑定Centos7静态ip"></a>绑定Centos7静态ip</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd /etc/sysconfig/network-scripts &amp;&amp; ls // 可以看到有个ifcfg-ensxxx 的文件</span><br><span class="line">$ ip addr // 可以先查看到之前自己ip</span><br><span class="line">$ vim ifcfg-ensxxx // 替换掉 `IPADDR=xxx.xxx.xxx.xxx`</span><br><span class="line">$ systemctl restart network.service</span><br><span class="line">$ service network restart</span><br><span class="line">$ ip addr // 这时可以看到ip已修改</span><br></pre></td></tr></table></figure>
-<h3 id="黑苹果拷贝EFI-文件到EFI分区提示”磁盘空间不足，无法拷贝”"><a href="#黑苹果拷贝EFI-文件到EFI分区提示”磁盘空间不足，无法拷贝”" class="headerlink" title="黑苹果拷贝EFI 文件到EFI分区提示”磁盘空间不足，无法拷贝”"></a>黑苹果拷贝EFI 文件到EFI分区提示”磁盘空间不足，无法拷贝”</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">diskutil list</span><br><span class="line">newfs_msdos -v EFI /dev/disk1s1 // /dev/disk1s1 中的disk1s1 为list 里面的磁盘名称</span><br></pre></td></tr></table></figure>
-<h3 id="docker-Neo4j"><a href="#docker-Neo4j" class="headerlink" title="docker-Neo4j"></a>docker-Neo4j</h3><p>$cypher-shell</p>
-<p>进入neo4j</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-3-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/03/11/2021-3-11lesson/">2021-3-11lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/03/11/2021-3-11lesson/" class="article-date">
-	  <time datetime="2021-03-11T12:39:40.000Z" itemprop="datePublished">March 11, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="伟哥教你装vsphere"><a href="#伟哥教你装vsphere" class="headerlink" title="伟哥教你装vsphere"></a>伟哥教你装vsphere</h1><p>这几天公司研发部乔迁，距离很近，三楼到四楼。</p>
-<p>长话短说: 机房重新整理，所以测试环境也要整理。当前机器未到，于是伟哥喊上还在加班的同学学上一学，加班福利。</p>
-<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先是服务器要先装上Raid卡(2000+软妹币)，接下来往服务器上插入硬盘。</p>
-<p><img src="/css/images/11lesson/01.jpg" alt="1"></p>
-<p>硬盘顺序是左边从上到下0,1,2 然后到右边依次。本次是开头的0,1,2,3 SSD，其他机械盘和SSD 混装。</p>
-<p>系统进入后 CTRL+R 进入配置Raid界面。</p>
-<p>可以看到有<code>Unconfigured Physical Disks</code>，这时在根一栏按F2 进入Operations 选择组Raid模式。可以选 0 / 1 / 10 / 5/ 6 等，选好按Enter 就好了。</p>
-<p><img src="/css/images/11lesson/02.jpg" alt="2"></p>
-<p>如果发现少了块盘情况，按Ctrl + N 切tab 到 <code>PD Mgmt</code>界面，可能是那块盘被直接作为盘符使用了(Non-RAID, 可以选择<code>Convert to Raid Capable</code>)。</p>
-<p>组完Raid之后，磁盘就完了。</p>
-<p><img src="/css/images/11lesson/03.jpg" alt="3"></p>
-<p><img src="/css/images/11lesson/04.jpg" alt="4"></p>
-<hr>
-<blockquote>
-<p>插内存条这事需要自己上网找，并且伟哥说了，这个很重要，插不好，性能会很差!单颗CPU插法和多颗CPU插法也不一样!</p>
-</blockquote>
-<hr>
-<p>接下来装vsphere。vsphere 是专门做虚拟化的linux，把整个服务器资源统一安排。</p>
-<p>首先: 伟哥把USB 插上插口，然后Boot 那个USB，把他当做安装系统。然后就好了。</p>
-<p>装完之后需要注意把IP 固定。然后下方有个测试Ping 的功能。比如伟哥这里就测试ping 研发网段、网卡网段、114.114.114.114，然后其他都是界面操作了。</p>
-<p>欧了。</p>
-<p><img src="/css/images/11lesson/05.jpg" alt="5"></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-2-18new-year" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/02/18/2021-2-18new-year/" class="article-date">
-	  <time datetime="2021-02-18T07:02:55.000Z" itemprop="datePublished">February 18, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2021年定房日记"><a href="#2021年定房日记" class="headerlink" title="2021年定房日记"></a>2021年定房日记</h1><p>上海买房是个巨大的难题，我从2020年年初就开始很上心，彼时就已经开始看房。</p>
-<h2 id="开始看房，推进实施"><a href="#开始看房，推进实施" class="headerlink" title="开始看房，推进实施"></a>开始看房，推进实施</h2><p>当时贝壳网上看房，有个按钮【现场带看】试着点了下，然后一个中介就跑出来帮忙介绍。一开始我还是懵懵懂懂，因为我的社保还没到，没有房票。中介就鼓舞去看吧，看又不花钱。你这话说的，我这厚脸皮隔天就跑去了。当时还是2020年5月20号，疫情刚刚缓和下来。街上溜达的人都不多，不管了，冲冲冲，我这人就喜欢找事。</p>
-<p>先看了中介推荐的，后来自己也有喜欢的，并自己决定看哪些。一开始想着一房一厅，价格250封顶了。后来想着250蹭上去点270~280基本有南北两房，也挺香的了。当时看到有个房子310降价到279，极度喜欢(想着我要是买了，岂不是赚了)。当时回到家我就跟老妈打电话，很想要那个房子，不过此时距离我房票还有接近一年呢!(至少2021.3月才能看到社保缴纳)。房东肯定等不及的，我说，我定金40w这样,且不讲价呢？过两周，那个房子就被卖了，房东也是急着出手。不过那个房子南北，5楼顶楼，但是没有吃饭地方。</p>
-<p>当时喜欢那个小区，还特地和老婆，并叫上自己哥们去那个小区转了转(也伙同他，约了中介又看了那个小区几个房子)，都觉得是非常不错的。</p>
-<p>和老婆交心下来，她也是超级喜欢，而且当时那个价格对自己未来也是很好承受的。</p>
-<p>算了算了，我继续看看附近的。龙柏整个都看了一遍又一遍，然后又跑去浦东杨思看了，又跑到北新泾看了，最后跑到长宁古北看了。</p>
-<p>龙柏当时觉得很好的，但是下半年画风变了，龙柏四村三小区，房价一周一个样，打电话过去约，都是被卖了；其他小区都开始30~50的涨。</p>
-<p>不急，没用，俺还没房票呢；</p>
-<p>浦东先看了杨思，当时和老婆一起去看，下地铁附近，全是很老。90年代房子超级老，附近一片又一片等着拆迁的房子。当时还没接收一梯四户，然后浦东离七宝(公司距离)过远。但是当时看到&lt;源城景翠苑&gt;/&lt;翡翠上南&gt;超级超级喜欢。房龄新啊，谁不喜欢啊。当时有个源城景翠苑一楼动迁房，380，没有税费，毛坯装修，哇，超级喜欢。因为小区户型少，绝大部分都是57.x平，一楼装修下也超级好，所以当时也是超级喜欢。回去又和家人商量，跟老婆商量。多方下来，觉得价格还是超过预算，没想到一周内就出掉了。额，，，然后又关注同小区其他房源，看了一个5楼顶楼的，也不错，又卖了—-没钱没房票。</p>
-<p>其他都有装修，基本都是400(一楼)410(中间楼层)。到了8月到10月，410变成420，后来一直往上到了504，单价从7w2变成8w8了。我滴个天。</p>
-<p>浦东考虑不得了，没钱没资源，再多想法再多办法都没。</p>
-<p>后来跑北新泾附近看，当时绿城十二村有个2楼369售后公房超级超级喜欢，不过当时我还要挺久时间才有房票。回去后和家人又是一顿开会。老妈也是在多次的惊喜/担忧/失望中。我超级觉得喜欢，到时一家都能去上海，2楼老妈爬楼也不累。售后公房，能贷款也更多(没有增值税，只有一个点契税)。然后一直无法确定我们能筹到的钱，而且房东不愿意等这么久，于是下一周又卖掉了。当时觉得北新泾那片还是不错的，也多有用大房鸭/贝壳看。</p>
-<p>时间一点一滴过去，来到了12月，这时房价感觉都快压不住了。1月21号，政府出台政策封堵炒房漏洞，隔天就执行。</p>
-<p>当时刚好看到两个不错的房子，一个400 售后公房满五不唯一，一个380 售后公房满五唯一。都是很不错的，但是觉得拿不下来，为此我还特地去问了公司的帮助。因为今年下来，在公司努力得到肯定，伟哥说首付上面的帮助还是很乐意的。跟哥们聊了聊觉得加油，说不定就能拿下来。</p>
-<p>其中400周末用大房鸭试着看了，感觉超级超级满意，环境也是超级超级nice。当时当场就打电话给老妈，我顺便还说想卖了老婆的首饰，能顶一下就好，首饰也用不上，老妈听了咬咬牙说再拿出最后的5w，我有点不放心，别家里啥钱都没有了。但是其实我真的很需要，我想要拿下来。后来还是决定把老妈最后那些钱当作最后的税费来顶。</p>
-<h2 id="咬牙实施计划"><a href="#咬牙实施计划" class="headerlink" title="咬牙实施计划"></a>咬牙实施计划</h2><p>400那个需要公司的帮助，我在接下来的几天也问了伟哥想借20，伟哥帮我问了老板，帮我问了两次。但是后面都没有结果。没有回音。</p>
-<p>无奈。</p>
-<p>在2021年1月10号左右打电话给大学同学聊天，才知他已经买房，而且就在当时我临时驻场地(漕溪路地铁站附近)。晚上10点好了出发去他那里坐坐。他去年10月生娃，然后大概也是10月左右买下了安东小区的房子。价格合适，看了2次就在绿家定下了。他一直都没有断社保，我中间断过，不然我也早就能买了。他的首付款我感觉还行，然后就谈了谈生活工作的事，最后聊了聊买房看法。</p>
-<p>后来年会回来，也越来越接近过年，就先忙年末的忙事了。没事刷手机看到400那个又卖了。380那个我看了贝壳的VR，还不错，有些区域看不到，不好约看。</p>
-<p>周末打电话给舅舅们借钱，最后也只有满舅表示能出一些力。大舅办厂，下半年回款；小舅新买房；满舅尽量帮了2.</p>
-<p>我在大房鸭上约了好几套，嘉定的我就不去看了。觉得外环不合适，大华三路有个房源不卖了，400卖了。年底就是这样。380约了看，但是一直没机会，房客比较麻烦。网上一些房源360的感觉不错，但是始终无法看，房东不诚意卖或者根本就是虚假房源。</p>
-<p>时间往后移，来到放假第一天(我们公司放假比其他公司前后多一天)，早上起来，思前想后觉得还是要早点定下来。我直接找了大房鸭顾问打电话，咨询相关所需资质/自己需要准备的资源等。然后我又打电话给家里，给老婆发微信，一遍一遍过自己的资质。思来想去还是差最后10，这关键的10。</p>
-<h2 id="定房前"><a href="#定房前" class="headerlink" title="定房前"></a>定房前</h2><p>我拿起手机拨号给伟哥，跟他说了自己的困境。伟哥说了之前没有回音的原因，当时像拿下那个400的，所以当时想说20的话，不管是400还是380我都能稳操胜券。但是当时公司财务比较忙，20的话不好决定，如果是10肯定是没有问题，伟哥可以给我担保。如果是现在的话，会稍稍麻烦，不过伟哥可以稍后打电话。得到这个信息，我欣喜若狂，我马上回答，10就够，10就够。10我足够了。非常非常感谢公司这个大忙。后来和老板谈话也是说到，这次不上车，之后基本很难再有窗口让我上车了。</p>
-<p>去年基金我涨了20%，去年房价也涨了20%！但是我的基数才80；房价相当于做了杠杆，投资也好，自住也好，同时还涨了10~20%。如果拿下，光是贷款就让我吃足了社会主义的福利了！</p>
-<p>稍后马上打电话和dfy顾问联系，我同意房东不讲价，先看房，然后合适我们就定。下午得到答案是无法看房，因为房客年终觉得疫情-不方便。好吧好吧，下午等老婆下班，刚好过去附近转转。我和老婆在小区里面转了一圈，觉得还行，就先行回去了，等下次能看时再看。回去的路上，老婆看到周围的资源，也是非常满意。房子晚上住，要游玩啥的就下楼嘛。</p>
-<h2 id="定房中"><a href="#定房中" class="headerlink" title="定房中"></a>定房中</h2><p>这时进入过年，说初三有消息，我以为初三能看。初一初二都不好睡觉，还梦见未来好多钱要还呀。初三的时候洗漱好，洗好头发，说确定初七看房。好吧，坐下来打游戏吧。</p>
-<p>终于终于到了初七，晚上7点，dfy顾问和我都到门前，房东坐地铁也过来了，老婆也过来了。大家到小区凉亭坐着聊聊天。这里大概也能了解到双方的诚意，房东年前已经和其他客户签了定金了，但是1.21新政导致之前买家卖房给自己的下家无法接受不满五要交增值税的突然，于是房东也是同意退回定金。所以我们现在才有机会。</p>
-<p>坐了一会，租客东北小妹妹打车回来了。那我们就上去看看。刚入房子，感觉敞亮，开放式厨房够用，还可以摆放一个小桌子。厕所小小的，够用，有马桶也有洗澡的。两个向南的房间，不大不小，其中一个还有一个阳台。看的时候我和老婆在阳台偷偷说话，觉得怎么样？怎么决定？</p>
-<p>我觉得房东诚意卖，然后房子本身没有缺陷，同时没有贷款/抵押/租房清晰/税费/同住人/纠纷等情况。很理想的产权。我们里里外外看过后，跟房东一起下楼。在大门口，我们简单的聊了会，接下来我们怎么做决定。我作为家主，还是给出了我的意见: 我们一起前往附近的星巴克二楼交流，并签约。</p>
-<h3 id="定房中-1"><a href="#定房中-1" class="headerlink" title="定房中"></a>定房中</h3><p>我们先表明自己的诚意，我今晚希望能定下来，定金部分约定下来是30. 房东是同意的。然后接下来是谈什么时间网签，双方对于时间有没有异议。当时我不懂网签前，钱要陆续打到房东那，而且房东也不同意把钱打到中间资金托管。我当时也是很害怕，怕dfy顾问是假的，然后查看身份证手机和中介平台相同。查看了房东信息，房东是放弃中国籍，为澳大利亚籍，疫情来来往往，所以还是决定把所属中国最后一套房产卖了。房东哥哥是律师，也在dfy有交易经历。所以房东把一堆委托文件都准备好了(之前本来有定房的，所以文件也都很齐全)。</p>
-<p>沟通下来，从8点多交流，一直到11点多才结束。里面签署有定金合同，本来的打30，但是我银行卡有一部分打不出去，就先打了10.另外20约定给在后天正式合同给到。</p>
-<p>约定是今天30，月底30，下月中30，网签43，完成首付款35%。包括约定付款方式/付款周期/网签时间/总房价/互相接受约定/违约情况/承认房子属性等等。期间房东哥哥打电话过来补充一些条款。其中有一条:承诺房子满五唯一，承诺售后公房，但如果之后新的政策对这些属性有新规(比如1.21即日执行的新政中特殊规定)，导致的优惠或者多税费的协议都由下家承担。这条我觉得非常不合理，不过我过于想拿下，并且想着说提前做好网签，这样是不是能规避，这条不利不就对我无效。当时定房我就同意了。晚上回到家，没饭吃，然后到家后我就烫个面，配着快熟面的汤简简单单的吃饱睡觉。晚上还和老婆说说话，就睡着了。</p>
-<h3 id="签合同中"><a href="#签合同中" class="headerlink" title="签合同中"></a>签合同中</h3><p>2021.2.21下午6点签合同。位置在dfy位于上海火车站附近唯一签约点。我直接请了一个下午的假前往，中午顺便去趟徐汇解决个他们搞了好久没解决的问题。本来这个问题很难，可能要到下午三点，没想到我过去20分钟就搞定了。没办法，我也没事干，只能直接去现场附近转悠转悠了。直接徐汇一直往上，刚过完年交警都出来路口。到了之后直接上到dfy，那一层还有很多别的公司，我签约时间还没到，就在dfy外边附近一个凳子坐着等。下午4点左右老婆也到了，我拉着她下午吃个面，两人吃了40块，好贵，上海火车站，没办法。</p>
-<p>6点了，我和老婆进去，分配在一个桌子。等了一会，女房东到了，然后一个蒙着口罩的男的进来打招呼，过好一会我问您是？揭开口罩才知道是之前的dfy顾问。然后我们这里配有两个对接人。过了一会房东哥哥来了。房东哥哥和我坐在主位对位，打扮精细，律师职位很干练的打扮能对场面有更多胜算的吧。开始是讨论一些点，然后江律师到了，给我们解读。中间有不合理不理解的地方都及时询问。房东哥哥不时往里面填写补充。我经验少，看着合理就赶紧看下一条。律师也不断的读出条目，给我们解答。过程中间不断填写各种单子，由于房东要回去澳大利亚，于是今天还有就是签订买家贷款合同，到时使用该该款方案即可。于是就是一顿签签签。</p>
-<p>价格方面，老婆表示是否可以让一点，包括之前签定金时也问道。因为小客厅上方租客蒸馒头导致粉掉下来；阳台没有窗户保护；房东和房东哥哥都表示要到手378。也因为我们时要到2021年3月底才能办理网签，时间他们让步，价格我们也不好说什么了。</p>
-<p>合同方面解答基本都没问题，其中有个争议，就是之前签定房合同里的那条对我不利的条款。说到那个条款时，我就点头点头，我老婆一直桌底下摇摇我的手，提醒我，我也还一直多看看合同，就只是点点头。我请的律师说这条对于买家很不合理，是否可以有个上限。卖家就说好处坏处也都是买家享有，如果只是多个5w就不行，那不如合同就不签了。我还是傻傻的点头。我老婆说话了，也说不行，至少有个上限。房东看在场的多人都是这个意思，那上限多少？我思考着，这最多最多能搞到的另外，封顶是10.其实我也是很虚的，其实首付我还是很担心的。但是想着，政策不可能对我们这合法正规的人不利，于是就是还是硬着头皮。房东说行。合同打了三遍，双方确认无误后，在三份合同，每份右下角填上自己的姓，最后一张填写人名。一式三份。</p>
-<p>最后我们将剩下20定金打过去，房东填写另外一张定金收款给到我们。今天工作结束，和房东握了握手，表示艰难，不过双方都是诚意满满，所以都是在可控范围顺利进行。</p>
-<p>晚上回去，和老婆随便吃吃就结束了，啊，好累啊，啊，开始要把所拥有的数字打给对方了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-1-20videoService" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/02/18/2021-1-20videoService/" class="article-date">
-	  <time datetime="2021-02-18T07:01:38.000Z" itemprop="datePublished">February 18, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2021-1-15CompanyMeeting" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/02/18/2021-1-15CompanyMeeting/" class="article-date">
-	  <time datetime="2021-02-18T07:01:16.000Z" itemprop="datePublished">February 18, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2020年会"><a href="#2020年会" class="headerlink" title="2020年会"></a>2020年会</h1><p>我19年初来的公司，19年底因为疫情原因，木有举办，也是可惜。</p>
-<p>2020年末在动荡中，两年未见的各地公司同伴在年末齐聚本部。回来交流、活动、一齐出发年会。</p>
-<p>2021年年初，全国各地技术、销售回到上海本部。周一的时候在4楼开了一个技术和研发的讨论会，去了几个主要的技术。我到公司晚，赶紧塞两个包子，加个豆浆就去零时装修的4楼培训教室。里面技术都坐满了，在前排找了个位置坐下来。几个大佬先和大家介绍我们几个研发，主要负责模块，认好人，等会可以找到人对应吐槽。</p>
-<p>过程就是一些遇到的问题、疑难点、遇到的bug等；回答解决方案、当前正在处理和已经处理，有些不好修复等。感觉吐槽最多的还是，发布出去的器材质量不过关。技术、销售中午都是包饭的，我们就先去吃啦。<br>这么几天，都是培训，介绍公司一些产品、发票之类的。我们都参与不上，嘿嘿。</p>
-<p>时间来到2021年1月10号。今天是周日，我早早就赶到公司附近九亭一个网鱼网咖。二楼我们的同学都聚集好了，等着LOL开打。首先大家先剪刀石头布决出优胜可以首轮选在豪华房间打，没想到我战胜了其他5个队伍，进房间撸。这运气。<br>进来之后，等了很久他们终于开局。我拿ad烬。屏幕超级大，我改了设置、鼠标速度等，还是无法很好的补兵，鼠标飘的不行。得，第一局被杀爆了，蛋疼。</p>
-<p>第二局在外面打，这回我打辅助，感觉好多了，然后辅助石头人，全队第二伤害，拉第三好多伤害呢。看吧，也不是很菜，，嘎嘎。<br>第三局继续，不过这局对面好强，本来要赢了的，被我浪输了，我的坑坑火男辅助。<br>最后我们定位是第五名。唉，可惜可惜，，不过大家还好，都是玩玩，大家都是不熟悉，也不熟练。</p>
-<p>中午我有组织篮球比赛，饭都不吃了，直接去kc篮球公园。10几分钟小电驴。然后到了之后才几个人一起。确定好是内场，我们就先随便扔扔篮球。大概人到了13、4个的时候，我开始组织4:4:4 三个队比赛。有个1.9的是校队的被分走了，其他的也基本平衡。他们比赛的先打着。我顺便当个裁判。因为时间关系，基本也没什么判罚，直接跟着继续，就按照裁判的。然后里面有个胖胖的大哥说，都打手三次了，嘎嘎，不好意思了，，刚好也没看见。都6年没打球了，早就忘了精准了。</p>
-<p>感觉自己能摸把篮球，扔一扔，自己也能当做比赛了。然后一队毋庸置疑，文龙大佬超级壮身体，加上1.9米校队张哲，赢到了最后。我们这队输给他们，然后和另一组单独比了一场，赢了(队里几个同学扔球很准，扔到赢那种)。所以三个队伍比分也下来了。</p>
-<p>肚子实在是饿，买了些水，也不敢喝多，大冬天的。过了一会，早上打LOL比赛转场过来的剩下同学也来比赛篮球了(他们打完LOL集体吃午饭去了)，没办法，怕没比赛刚刚已经比完了。所以就招呼这群同学打打篮球了，不能冷场不是。</p>
-<p>下午的时候和大家打完就骑着我的小电驴回去了，下午回到出租屋，哇，好累啊。</p>
-<p>那几周刚好，很多去徐汇，怕如果有LOL决赛赶不上，下午我都会回来。到1月13号左右的时候，中午开始要比赛了。他们王者荣耀都是在公司休闲区比赛的，直接霸占老板办公室，各个地方都有他们团伙。我们直接在4楼没装修的那个培训教室背对背比赛，还有个大屏直播(吐槽下，关键时间就端，下面看比赛的比我们还紧张)。首先是2、3名打，然后是1、4名打，我们组就是第4名。</p>
-<p>我拿了个石头人辅助，你懂的，只要我混，不拖队友，俺队友就把第1名给打残了(第1名的本命英雄被ban了，玩脱了)。然后接着我们和后面赢的争第一，没办法，石头人被拿了，下路也运气不佳，一大堆兵，吃亏被打残了。然后这局我的机器人一点用没有: 对面莫甘娜+马尔扎哈。</p>
-<p>么得，得了个第二，抱大腿来的。可惜可惜。奖品是空气净化器，哈哈。</p>
-<p>1月15日，大早上大家还是要上个半天班。11点左右，我们就赶紧去食堂吃点东西，早上吃的晚，随便搞个混沌吧。11:30左右，大家集合，开始整理东西，上大巴出发前往江苏的黎里古镇。</p>
-<p>一个小时左右的车程，到了后，签到，东西放到入住房间。然后回到楼下来集合拍照留念。</p>
-<p>集合的时候没有个基点，龙哥呼喊1米8俱乐部过来集合。啊哈，有个基点，大家就知道怎么排列了。</p>
-<p>整个一个团队150~160人，很热闹。</p>
-<p>下午在二楼会议厅，首先是开场致词。各位大佬介绍各位，我和几个小哥们在后面就负责鼓掌，一个下午，手都拍红了。上面也是有我的照片，去年没来，今年是老员工的我，也算是半个萌新。然后是各个部门的成绩，继往开来。鉴定部门，技术部门，研发部门，财务部门，人事部门，各个致词，老板总结。新的一年，新的挑战。看到成长的一面，也要关注落后的痛点。</p>
-<p>期间休息，吃吃水果，面包，直到下午5、6点，然后在楼下拍照留念，因为二楼会议室转场为晚宴。我是和几个研发的同学有个小品，赶紧到我们房间排练排练。</p>
-<p>然后来了个全部一遍的小品彩排（就是在房间匆匆忙忙完成），然后就到6点入宴会了。下楼了，大家都就座了。我的座位靠前，和好几个大佬一桌。首先是几个主持人开场，介绍。</p>
-<p>第二个节目是鉴定部门女神们的现代舞蹈，看了我流口水，赶紧下面吃吃饭，和大佬们喝白酒，拍照。才喝几口都有点醉了。为什么直接第二个节目？额，第一个节目是那什么新年好，四个同学上面吆喝，笑场，好吧，快乐就对了。接下来还有单人唱，唱到一半停了，额，然后重来，冲啊，又断了，好吧，下一位好汉，不对不对，，下一位仙子: qian总千金。</p>
-<p>一袭红绣，青涩的脸庞还写着稚气未脱的羞涩，二八美好的年纪，在台上独舞，美，，，音乐的跳动，伴随轻盈的转身，动作不大，却灵巧的展现着男人眼中最纯的欣赏。我不敢拍照，睁大眼睛看着，怕破坏这少一格记忆就永远少一格回忆的瞬间。酒赶紧抿几口，猥琐的男人遇到这美好的【食物】，不禁真的会流口水吧。突然音乐氛围变动，成了现代舞蹈，仙子在场中去掉红绣，展现现代的舞蹈。</p>
-<p>现代舞蹈，女子所跳都会有韩国的口感，青涩的脸庞会缺少妩媚的妖娆，但是也会令人有一定的遐想: 未来定然是个美好女子!</p>
-<p>感觉我没有眨眼睛，不舍得。老子结过婚，老子也不舍得，那些伪君子的话在老子这站不住，要不抿几口酒，口水真就他么不争气留下来了！</p>
-<p>突然在舞蹈的一半，歌曲停了，我特么，导播在哪！？宴后问了导播（大千同学），他说她的视频真就那么长。这，伤心呐，痛心呐。</p>
-<p>接下来还有我的小品，效果还是不错的，大家也都是本事出演，毕竟我也是拉了我们的美女产品同学，我知道你们要我说道说道美女产品同学了。不可能，不会跟你们分享的！我曾经恨自己晚生百年，无法参与中国的风云际会，现在我又恨自己早生几年，要是这会遇到她们，我特么扑过去，我就是这么不要脸。但是，但是现在，现在家里也有可爱宝妈，爱不释手；这些也很好，唉，男人难做啊，难啊，啊！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</p>
-<p>接下来都是没那么给力的表演，我又怕忘了刚刚生动的身姿，喝酒。</p>
-<p>过程期间还有抽奖活动，我知道，我运气爆棚在时运，而不是这些上，不抱幻想。果然没我份，虽然预料到，但是还是小小伤感。</p>
-<p>也快结束了，找个机会和美女产品干一杯，说说话。才没说几句，得，组里的同学找到我说，顺顺同学酒喝多了，被扛上了房间，呕吐耍酒疯。我转身赶紧和人事说一声，俺也没遇到过，俺也一脸懵逼，先上去看看说。</p>
-<p>上来看到情况就是耍酒疯，嘴里”love you”啊，”爱你”啊之类的，，后来知道是他朋友圈分享的歌曲。感觉还行，不过完全没有思考本能，还呕吐，身子转来转去。不行，还是叫120吧，我没有这个经验，不过我们都不能承担如果是真的的不良后果。后来120来了，把他抬下去，到一半还吐。120车来了，闻着那味，加上晚上喝了两杯白酒，我自己也晕的差不多了。</p>
-<p>然后另外两个同学陪同过去(过去打了个醒酒针，就好了，然后挂个吊瓶到凌晨2、3点，另外两个同学也是精疲力尽了都)。</p>
-<p>我回头去酒会，他们正在玩，拍拍照。和龙哥聊聊天，说”包我身上，来年只要是你做的，给你卖个2、3套去，妥妥的”，哇哈，赶紧给龙哥鞠个躬，保证做好来。</p>
-<p>他们宴会就是第一场，接下来他们要去宵夜，第二场，我晕的不行，只能来年了来站了。帮忙拿点东西上楼，回到房间楼层，他们在玩狼人杀，我也进去搞起来。打到凌晨30分，我也受不了了，赶紧回去洗澡睡觉。</p>
-<p>第二天起床早晨还有个黎里古镇寻宝活动，可惜去了，成绩太小，木有奖励。中午吃个豪华午餐，然后差不多各个团队就回去了。</p>
-<p>这个年会很热闹，我2020努力，有一定的结果，比我以前的创业公司更有那么些期望，所以我想，我想更努力些，给真诚关心爱护我的人回报我的努力。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20210129-docker-aarch64v8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/01/29/20210129-docker-aarch64v8/" class="article-date">
-	  <time datetime="2021-01-29T08:28:14.000Z" itemprop="datePublished">January 29, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Docker服务运行在aarch64-服务器"><a href="#Docker服务运行在aarch64-服务器" class="headerlink" title="Docker服务运行在aarch64 服务器"></a>Docker服务运行在aarch64 服务器</h1><p>之前公司的服务都在x86架构服务器上，机缘下客户提供了一台华为云的aarch64 服务器。</p>
-<p>一开始我以为也就最多2小时全部搞完毕，没想到2小时环境都搭不起来，docker 都运行不了。两天才搞好。</p>
-<h2 id="安装yum-源"><a href="#安装yum-源" class="headerlink" title="安装yum 源"></a>安装yum 源</h2><p>首先试了下原本的源很慢很慢，<code>$ sudo yum update</code> 超级慢。</p>
-<p>故使用 <code>$ sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup &amp;&amp; sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</code></p>
-<p>发现<code>$ sudo yum makecache</code> 一直报404错误。</p>
-<p><code>$ arch # 或者uname -a</code> 看到aarch64.</p>
-<p>网上查是arm64 位版本。</p>
-<p>根据<a href="https://blog.csdn.net/smart9527_zc/article/details/84976097" target="_blank" rel="noopener">文章</a>，使用以下ali云源内容替换 <code>/etc/yum.repos.d/CentOS-Base.repo</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># CentOS-Base.repo</span><br><span class="line">#</span><br><span class="line"># The mirror system uses the connecting IP address of the client and the</span><br><span class="line"># update status of each mirror to pick mirrors that are updated to and</span><br><span class="line"># geographically close to the client.  You should use this for CentOS updates</span><br><span class="line"># unless you are manually picking other mirrors.</span><br><span class="line">#</span><br><span class="line"># If the mirrorlist= does not work for you, as a fall back you can try the</span><br><span class="line"># remarked out baseurl= line instead.</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">[base]</span><br><span class="line">name=CentOS-$releasever - Base</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/os/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#released updates</span><br><span class="line">[updates]</span><br><span class="line">name=CentOS-$releasever - Updates</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/updates/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#additional packages that may be useful</span><br><span class="line">[extras]</span><br><span class="line">name=CentOS-$releasever - Extras</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/extras/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">#additional packages that extend functionality of existing packages</span><br><span class="line">[centosplus]</span><br><span class="line">name=CentOS-$releasever - Plus</span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos-altarch/$releasever/centosplus/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></table></figure>
-<p>其他没有替换，接下来执行:</p>
-<p><code>sudo yum clean all &amp;&amp; sudo yum makecache sudo yum update</code> 速度很快。</p>
-<h2 id="安装Docker-Docker-compose"><a href="#安装Docker-Docker-compose" class="headerlink" title="安装Docker Docker-compose"></a>安装Docker Docker-compose</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"></span><br><span class="line">$ sudo yum-config-manager --add-repo https://download.docker.com/Linux/centos/docker-cce.repo</span><br><span class="line"></span><br><span class="line">$ sudo yum update</span><br><span class="line"></span><br><span class="line">$ sudo yum install docker-ce</span><br><span class="line"></span><br><span class="line">$ sudo usermod -aG docker <span class="variable">$&#123;USER_NAME&#125;</span> <span class="comment"># 加入docker到用户组</span></span><br><span class="line"></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker <span class="comment"># 添加docker到开机启动</span></span><br><span class="line"></span><br><span class="line">$ sudo docker run hello-world <span class="comment"># 验证安装</span></span><br></pre></td></tr></table></figure>
-<p>安装docker-compose:</p>
-<p><code>$ sudo yum install -y docker-compose</code></p>
-<h2 id="服务适配aarch64"><a href="#服务适配aarch64" class="headerlink" title="服务适配aarch64"></a>服务适配aarch64</h2><p>此时启动服务会报: <code>exec user process caused &quot;exec format error&quot;</code></p>
-<p>说明该服务镜像不支持aarch64架构。</p>
-<p>根据<a href="https://www.docker.com/blog/multi-arch-images/" target="_blank" rel="noopener">文章2</a>, 成功打了对应的包:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker 版本大于2.0以上</span></span><br><span class="line"><span class="comment">#勾选 Preference - Command Line - Enable experimental features</span></span><br><span class="line"></span><br><span class="line">$ docker buildx ls</span><br><span class="line">NAME/NODE    DRIVER/ENDPOINT             STATUS  PLATFORMS</span><br><span class="line">default      docker</span><br><span class="line">  default    default                     running linux/amd64, linux/arm64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们当前使用的是一个默认builder，我们创建一个新的builder 替换老的builder</span></span><br><span class="line">$ docker buildx create --name mybuilder</span><br><span class="line">mybuilder</span><br><span class="line"><span class="comment"># 使用该builder</span></span><br><span class="line">$ docker buildx use mybuilder</span><br><span class="line"><span class="comment"># --bootstrap 不是必须的，他形容了立即开启编译容器</span></span><br><span class="line">$ docker buildx inspect --bootstrap</span><br></pre></td></tr></table></figure>
-<p>此时根据之前的服务，再打一个arm64 的包:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建平台为arm64架构镜像并推送到package</span></span><br><span class="line">$ docker buildx build --platform linux/arm64 -t akerdi/onlyone:arm64-20210112 --push registry.akerdi.com/akerdi/onlyone .</span><br><span class="line"><span class="comment"># 查看镜像信息</span></span><br><span class="line">$ docker buildx imagetools inspect akerdi/onlyone:arm64-20210112</span><br><span class="line"><span class="comment"># 下载该镜像并运行</span></span><br><span class="line">$ docker run -p 7200:7200 --rm registry.akerdi.com/akerdi/onlyone:arm64-20210112</span><br><span class="line"><span class="comment"># 将该镜像保存</span></span><br><span class="line">$ docker save -o onlyone.tar registry.akerdi.com/akerdi/onlyone:arm64-20210112</span><br></pre></td></tr></table></figure>
-<p>我们也可以运行并查看是否是对应平台包:</p>
-<p><code>docker run --rm registry.akerdi.com/akerdi/onlyone:arm64-20210112 uname -m</code></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20210129-hackintosh" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/01/29/20210129-hackintosh/">20210129-hackintosh</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/01/29/20210129-hackintosh/" class="article-date">
-	  <time datetime="2021-01-29T08:23:42.000Z" itemprop="datePublished">January 29, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="升级Hackintosh"><a href="#升级Hackintosh" class="headerlink" title="升级Hackintosh"></a>升级Hackintosh</h1><p>跟着之前的教程 <a href="/2019/04/25/2019-3-25lesson">制作MacOS 启动盘</a>，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。</p>
-<p>如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。<br>A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300.</p>
-<p>还有一种选择是NVIDIA N卡，但是其支持的MacOS 系统最高支持到10.13.6.</p>
-<p>今天我们就来根据N卡来匹配硬件。</p>
-<p>当前支持以下系列配置版本，使用GTX1050ti，系统版本10.13.6(17G65)</p>
-<ol>
-<li>技嘉Z370 + i7-8700 + GTX1050ti</li>
-</ol>
-<p>新出的Z490同样满足</p>
-<p>配置清单:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">英特尔（Intel）酷睿四核I7-8700 CPU 技嘉Z370套装 |1 3249</span><br><span class="line"> https://item.jd.com/17208129343.html</span><br><span class="line">2. 内存</span><br><span class="line">金士顿(Kingston)骇客神条 Fury系列 DDR4 2400 8G 台式机内存 |2 399</span><br><span class="line">http://item.jd.com/2121097.html</span><br><span class="line">4 电源 美商海盗船（USCorsair）额定550W VS550 电源 |1 299</span><br><span class="line"> https://item.jd.com/840370.html</span><br><span class="line">5 机箱 酷冷至尊(CoolerMaster)毁灭者经典U3升级版 |1 229</span><br><span class="line">http://item.jd.com/123814.html</span><br><span class="line">6 键鼠 雷柏（Rapoo）V500械键盘，V19鼠标 |1 99+58</span><br><span class="line">http://item.jd.com/3086129.html，https://item.jd.com/8963957.html</span><br><span class="line">7 三星500G SSD M.2 接口固态硬盘 |1 579</span><br><span class="line">https://item.jd.com/7234518.html</span><br><span class="line">8 SSD 闪迪(SanDisk) 至尊高速系列-3D版 250G SATA6Gb/s接口 |1 349</span><br><span class="line">http://item.jd.com/1185238.html</span><br><span class="line">9 显示器 戴尔（DELL） SE2416H 23.8英寸微边框 HDMI高清接口 广视角IPS |2 849</span><br><span class="line">http://item.jd.com/1769180.html</span><br><span class="line">10 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br></pre></td></tr></table></figure>
-<p><a href="https://pan.baidu.com/s/1GNvsMwzTELwmJchOpv6slA" target="_blank" rel="noopener">EFI 提取码: 22ux</a></p>
-<ol start="2">
-<li>配置二: ASUS B365-PLUS + i7-8700 + GTX1050ti</li>
-</ol>
-<p>配置清单:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">ASUS PRIME B365-PLUS (300 Series 芯片组 Family(B365)) + I7-8700</span><br><span class="line">2. 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br><span class="line">3. 。。。其他配件和上边可以类似，</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>华硕 PRIME Z270-A (Z270芯片组) + I7-7700k + GTX1050ti</li>
-</ol>
-<p>配置清单:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CPU+主板</span><br><span class="line">ASUA PRIME Z270-A (Z270芯片组) + I7-7700k</span><br><span class="line">2. 显卡 影驰（Galaxy）GeForce GTX 1050 Ti 大将 4G 128Bit D5 台式机独立显卡 | 1 899</span><br><span class="line">https://item.jd.com/3472255.html</span><br><span class="line">3. 。。。其他配件和上边可以类似，</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果使用SATA硬盘，出现安装系统选择硬盘界面，没有识别SATA硬盘，需要再Bios - Adcanced - PCH Storage Configuration - SATA Mode Selection 中选择AHXI，否则无法识别SATA 硬盘</p>
-</blockquote>
-<p>当前EFI 支持集成显卡，但是只有HDMI口可用，也就是只有一个显示屏。多个显示屏，需要使用独立显卡+NVIDIA驱动。</p>
-<p><a href="https://pan.baidu.com/s/1L5Kyjpq8fdYj6wAwU4vKLg" target="_blank" rel="noopener">EFI 提取码: iyq9</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-20210129lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2021/01/29/20210129lesson/">20210129lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2021/01/29/20210129lesson/" class="article-date">
-	  <time datetime="2021-01-29T08:20:14.000Z" itemprop="datePublished">January 29, 2021</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="取综各产品研发分支开发"><a href="#取综各产品研发分支开发" class="headerlink" title="取综各产品研发分支开发"></a>取综各产品研发分支开发</h1><p>弘连各产品研发开发采用Git仓库管理。版本号取名规范等都是统一形式:</p>
-<p>${主版本号}.${子版本号}.${修正版本号}.${编译版本号}<br><code>Major_Version_Number.Minor_Version_Number.Revision_Number.Build_Number</code> 示例： <code>1.2.1.xxx 4.6.7.xxx 3.5.4.xxx</code></p>
-<p>现阶段分支管理没有好的秩序，各版本号发布随意，未有统一约定：</p>
-<ul>
-<li>完成某个新功能未设置tag，没有更清晰描述功能节点；</li>
-<li>开发某个新功能时，直接在原分支改，尔后才切换；</li>
-<li>当前分支修复某个功能的bug时，没有pick到原功能集(原功能有bug，只能升级，没有修复的更新版本)；</li>
-<li>dev分支管理松散</li>
-</ul>
-<h2 id="版本号约定"><a href="#版本号约定" class="headerlink" title="版本号约定"></a>版本号约定</h2><blockquote>
-<p><code>Major</code>: 具有相同名称但不同主版本号的程序集不可互换。例如，这适用于对产品的大量重写，这些重写使得无法实现向后兼容性。 \<br><code>Minor</code>: 如果两个程序集的名称和主版本号相同，而次版本号不同，这指示显著增强，但照顾到了向后兼容性。例如，这适用于产品的修正版或完全向后兼容的新版本。 \<br><code>Revision</code>: 名称、主版本号和次版本号都相同但修订号不同的程序集应是完全可互换的。这适用于修复以前发布的程序集中的安全漏洞。 \<br><code>Build</code>: 内部版本号的不同表示对相同源所作的重新编译。这适合于更改处理器、平台或编译器的情况。</p>
-</blockquote>
-<h2 id="版本号规则"><a href="#版本号规则" class="headerlink" title="版本号规则"></a>版本号规则</h2><blockquote>
-<p><code>主版本号修改</code>: 当功能模块有较大的变动，比如增加多个模块或者整体架构发生变化。此版本号由项目决定是否修改。 \<br><code>子版本号修改</code>: 当功能有一定的增加或变化，比如增加了对权限控制、增加自定义视图等功能。此版本号由项目决定是否修改。 \<br><code>阶段版本号修改</code>: 一般是 Bug 修复或是一些小的需求小的变动，要经常发布修订版，时间间隔不限，修复一个严重的bug即可发布一个修订版。此版本号由项目经理决定是否修改。 \<br><code>Build</code>: 用于记录和区分每次的[编译/代码录入]递增。</p>
-</blockquote>
-<h2 id="正确步骤"><a href="#正确步骤" class="headerlink" title="正确步骤"></a>正确步骤</h2><ul>
-<li><code>$git init</code> // 项目开始</li>
-<li><code>$git checkout -b dev</code> // 项目切到开发分支</li>
-<li>// dev分支，同组成员有pull，没有push权限；项目经理有pull/push 权限</li>
-<li>// 项目开始，fork项目，或者书写组内共识、开发文档等；</li>
-<li><code>$touch README.md &amp;&amp; git add . &amp;&amp; git commit -m &quot;doc 新增README&quot;</code> // commit 开头指明目的: fix feat chore doc style test refactor</li>
-<li><code>$git checkout -b dev-1.0</code> // 项目开始1.0（此时组内讨论开发迭代会）</li>
-<li><code>$git checkout -b dev-1.0.x</code> // 项目开始新功能开发，不断增加Revision/Build号: dev-1.0.x.xxx</li>
-<li><code>$git merge/rebase dev-1.0.x dev-1.0</code> // 合并开发分支至功能版本节点</li>
-<li><code>$git merge/rebase dev-1.0 dev</code> // 合并功能节点至开发节点</li>
-<li>// 开发下一个迭代</li>
-<li><code>$git checkout -b dev-1.1</code> // 项目开始1.1（此时组内讨论开发迭代会）</li>
-<li><code>$git checkout -b dev-1.1.0</code> // 项目开发新功能，不断增加build号: dev-1.1.x.xxx</li>
-<li><code>$echo &quot;new text&quot; &gt;&gt; new.txt</code> // 修改编辑</li>
-<li><code>$git add . &amp;&amp; git commit -m &quot;feat 修改new&quot;</code> // 新功能分支改了dev-1.0 的bug, 这时需要同步该修复</li>
-<li><code>$git checkout dev-1.0.x &amp;&amp; git cherry-pick ${修改commit}</code> // 使用cherry-pick 将修改commit 拿回到dev-1.0.x中，测试成功后，合并回dev-1.0中</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-11-29lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/11/29/2020-11-29lesson/" class="article-date">
-	  <time datetime="2020-11-29T08:10:46.000Z" itemprop="datePublished">November 29, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="20201129"><a href="#20201129" class="headerlink" title="20201129"></a>20201129</h1><h3 id="为linux-增加字体库"><a href="#为linux-增加字体库" class="headerlink" title="为linux 增加字体库"></a>为linux 增加字体库</h3><p>原因是<code>gotenberg</code>生成勘验文档的PDF 库缺少字体库。</p>
-<p><a href="https://github.com/thecodingmachine/gotenberg/issues/86" target="_blank" rel="noopener">原issue</a> 是要加open-sans, 但是我们要仿宋. 原issue做法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://httpredir.debian.org/debian/ unstable stretch main contrib non-free</span><br><span class="line">apt-get update &amp;&amp; apt-get install -y fonts-open-sans</span><br></pre></td></tr></table></figure>
-<p>或者<a href="https://www.gitmemory.com/issue/thecodingmachine/gotenberg/86/500960140" target="_blank" rel="noopener">做法二</a>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get install unzip</span><br><span class="line">wget https://fonts.google.com/download?family=Open%20Sans &gt; fonts.zip</span><br><span class="line">unzip ./fonts.zip</span><br><span class="line">mkdir /usr/share/fonts/opensans</span><br><span class="line">mv ./OpenSans-Light.ttf /usr/share/fonts/opensans/</span><br><span class="line">fc-cache -fv</span><br><span class="line">fc-list |grep opensans</span><br></pre></td></tr></table></figure>
-<p>但是，俺们要<code>仿宋</code>.</p>
-<p>做法，先去下个仿宋的字体包: simfang.ttf.</p>
-<p>技术人，github.com/search?q=simfang.ttf : <code>https://github.com/21wmd/ttf-simfang/blob/master/usr/share/fonts/truetype/sim/simfang.ttf</code></p>
-<p>下载好后:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 复制该字体到linux /usr/share/fonts/</span><br><span class="line">2. fc-cache /usr/share/fonts/</span><br><span class="line">3. fc-cache -fv</span><br><span class="line">4. fc-list |grep fang # /usr/share/fonts/simfang.ttf: FangSong,仿宋:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta</span><br></pre></td></tr></table></figure>
-<p>成功!</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-10-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/11/29/2020-10-31lesson/">2020-10-31lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/11/29/2020-10-31lesson/" class="article-date">
-	  <time datetime="2020-11-29T08:10:17.000Z" itemprop="datePublished">November 29, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="20201031团建"><a href="#20201031团建" class="headerlink" title="20201031团建"></a>20201031团建</h1><p>这次是整个研发部门50多人一起的活动，但是有些人有事来不了，所以最终来了40多人左右。</p>
-<p>前一天是周五，他们把我喊过去说我也来主持几个节目。在过完周会后，赶紧过去，和伟哥、春哥等过个场，明天不会急急忙忙。伟哥主持开场、拍照环节、附带一两个节目和颁奖，春哥也有数个，我也有数个。一一过一遍后，就先回住所。回住所时间还早，顺便把我的电瓶车电瓶换了，有个普通的，300多，还有个630的，于是我买的630的，经常跑，那买个贵点的吧。回头好好再看下我自己主导的那部分。</p>
-<p>第二天一早，我就从虹梅路开着小电驴冲向佘山公园附近的钓鱼的场所-广富林郊野公园店。我6点多起床，当时4点多醒了一次以为时间过了；7点多出发，8点半不到就来到了现场。我到的时候，同伴都没到，倒是发现钓鱼的顾客到了。看看他们钓鱼，了解了下等会烧烤活动位置，由于订餐人数变动，所以和老板说了变动。等了很久，慢慢才有人到。</p>
-<p>我在门口负责指导各位同学，基本人到齐了，就开始了活动。</p>
-<p>首先大家集合下，伟哥大佬做个开场，然后拍个合照。接下来大家做个破冰活动，将人划分出来，分成了4个队。穿上队服：红队、黄队、绿队、蓝队。各自取了队名、队口号，然后推举出队长，选了各自的队形动作。</p>
-<p>做完这次的分队活动，大家也了解更多，分好队，开始进行烧烤活动。4个队，但是我们有5个烤架。</p>
-<p>烧烤也是一个技术活，刚好我们小组有个烧烤好的，我也想试试，于是我也上去操弄一番。刚好有人会，上前操弄，还有人教简直太好。拿自己想要的食物，抹一层油。上下翻，给烤架扇一扇，然后好了之后大家吃的还是你的作品，不错不错。</p>
-<p>旁边俩小哥也在那操弄，烟雾弥漫。过去一看，居然在做暗黑食材。我滴个天，他们组没人烤，他俩优哉游哉烤的全是黑的。有的一面黑一面没熟。同时还很洋洋自得自己的杰作。组里同学吃的还很欢喜。好吧。不过这也是一个快乐吧。</p>
-<p>我吃着吃着，突然感觉咬到一个石子？？诶？？烧烤哪来石子，去旁边偷偷看下。一看，我去特么是我的蛀牙，好大一半片断裂了。开心的我瞬间跌倒谷底。回去继续吃的时候，就开始小心翼翼了。笑容也失去了很多。</p>
-<p>旁边空地也来了好大一团队，他们吃的可久了。我们的同学吃着吃着就不行了，跑去拍照的、打羽毛球的、下棋的、打手机游戏的、聊天的、还有一个人伤心的=&gt;我。</p>
-<p>吃完也要转移阵地了，我们转进对面的公园。对面就是公园的一个入口，中间却隔着大马路。我知道绕的话要好久好久，于是我就直接穿行马路了。然后部队那么大，不可能都穿行，于是我们还是老老实实先绕（我跟着），绕完之后，又绕回来。我滴个天，走的累死了。走了好长好长终于到了目的地，一个很大的空地。</p>
-<p>大家稍微休息了下，喘口气，接下来就要开始游戏活动了。</p>
-<p>第一个活动由于前一个主持不在，先跳过到了我所主持的活动: 萝卜蹲。各队沿着我围成正方形，以淘汰赛方式，叫错、没有蹲则失败。然后活动是以积分制，每个活动10、8、6、4.各个队伍经过一轮轮的淘汰，最终只剩下很少的人，我所在的黄队，由于只剩下几人后，有人沟通，剩下比赛的4人跟着听他们沟通，没听到轮到他们蹲，于是全队惜败。</p>
-<p>经过第一轮，大家蹲的都累了。稍稍歇息会，开始下一个。</p>
-<p>接下来是纸杯递水。休息中，发现器材道具，接水的桶，纸杯，诶，存水物件呢？？我赶紧想了个办法，把大可乐瓶和另一小瓶喝水瓶赶紧去厕所装满。赶紧赶紧跑回来。也就是我们的盛水量就这么多了。我还担心不够，最后也差不多刚好够了。</p>
-<p>我们这队经过深思熟虑，使用的战术是递水的时候，两人要头歪一些。商量好之后就要开始了。一开始我们进行还顺利，到后面也有点累，有时两人倒得有点漏掉了，有时要等后面的，因为后面部分比较慢。</p>
-<p>这活动完结的时候，我们信息还是很好的，虽然中间有慢一些些，不过速度还是很满意的。然后答案出来了，我们排第二，好吧，说明人家第一的更快。过去一看，我去我们另外三队都是小半桶，他们满满的，放不下了。取经之后，原来他们是叼着纸杯下面，完全是倒水的方案，接水的人蹲着，直接就是倒的过程。乖乖。</p>
-<p>下一个活动是拉住伙伴取空瓶子。每个同学都要取。可惜我们还是棋差一招。我们对人高，拿最远的可行，不过都有点重量。</p>
-<p>再下一个活动是二人三足。中间一个人绑住。我也尽量和同学适应。我们队又棋差一招，因为其中一对在回来过程，线断了。要是我，直接两人就蹦回来了，他们绑的过程，被超太多了。这个过程我们发现我们队里两女同学，超级超级厉害。她俩直接等于是半跑状态，而且契合很高。厉害厉害。</p>
-<p>最后最后也就是颁奖了。大家围成一个圈子，说说话。获奖感言，惜败感言。</p>
-<p>晚上我们在附近小农庄, 我骑着小电驴到了之后，顺便找了停下并充电。上菜吃吃喝喝起来。上次在淮南喝白酒，我最多就是头晕晕的，也毕竟干了1杯半的白酒。误以为我能喝。</p>
-<p>开场我就先白酒，毕竟啤酒涨肚。然后去别的桌喝的时候，白酒估计受不了，于是拿起个啤酒，先各个桌子喝一喝。2瓶下肚有点受不了了。接着跑到<code>真·劝酒大王·建新</code>桌，他那跑不了的一个个过。从伟哥开始，一半的时候，停下来休息，晕头转向。有一点点想吐，但是休息了会后感觉好多了。想着还有3、4个人，继续，接下来的两倍直接不行了。直接坐下来，不行了。头一直晕，但是能听见外部的声音。我喝晕过，小学2、3年级的时候在三伯父家喝晕过一次。不晓得为什么那天喝晕了，反正第二天头晕的不行，睡在沙发上，起来靠在花苑台阶上；第二次是高考酒会。那次心仪的菇凉在同桌，得班主任也在同桌，没办法，白酒喝起来，晕了。</p>
-<p>我周围劝酒声、交流声、笑声、碰杯、椅子挪动、杯杯盏盏、喧哗、搞笑、附和，此起彼伏。也许我就趴一会睡一下就好点？头晕一会，喝了些热水，好很多，不过又一波难受。6点多开始的聚会，8点大家也还在，9点还有很多人；10点多，只剩一些人；我还很难受，不过一直想休息一波还OK 的话能骑电驴回去。去上个厕所，不行了，直接就吐了。吐了好多。</p>
-<p>不过，确实，一直不愿意吐，吐了那瞬间不好受，不过接下来就好多了。整个人的酒精程度蛮高，最后回不去，只能附近找个小旅店了。伟哥、春哥(巨能喝)、mei阳同学 把俺架去旅馆。</p>
-<p>他们走后，我已经半点力气都没得。半夜起床好多次，喝水、尿尿、直到天亮好多了。</p>
-<p>7点多，想找点回去。下楼经过包子店，买了个包子垫垫肚子，顺便一个牛奶。旅店离昨天的饭店有3公里，走的第一公里有点受不了，晕晕的，走走停停。第二公里，有个上桥，马路逆向对面一个阿姨(40岁吧)，领着一些油盐物品跟我同一起跑线，她逆着走，同方向。我走几步就感觉晕，停一会会喘口气吧。她也走的累了，停一会会。我继续赶上她，她觉得被个弱不禁风的胖子超过于是不久也继续启动起来。</p>
-<p>那个桥有点高，我走着走着就晕，不行，越走越慢，走快身体起反应，开始晕。慢慢被阿姨拉开3、40米。我赶上两步，不行，慢下来。等下坡，阿姨更是轻松，我还是不能快，晕着呢，全身乏力。终于，被拉开100多米。</p>
-<p>得老子不跟你玩了，拐弯抄近道。以为阿姨也会走那条道，回头看，原来她继续前行，好吧，道不同，还为自己抄近道偷偷自喜。羞耻。</p>
-<p>第二公里好不容易走完，有点太阳，浑身乏力、几乎是拖着疲惫的身子走的。走的时候防止头晃动，上身、包括手抖不能动作太大，只有脚在移动。</p>
-<p>经过刚才高耸桥下面的通道，两辆好大的勾车，铁勾超大，得用绳子绑好几圈防止晃动。也就用眼球瞟了几眼，不能让脑袋斜着看，晕。</p>
-<p>经过一排老房子，走出来个老大叔，估计看我这样走路，甚是好奇。昂起头，眼睛斜视着，嘴角右下翘着，似乎在端详着不速之客的目的。直到我走过去他的小菜园才放弃的各种猜想–这人没有威胁。</p>
-<p>经过一个小水坝桥，看着下方水坝的小池塘，一只只鸭子嬉戏。除了被放血，被屠宰，也还是很自在的。边吃边拉，边走边拉，边游边拉。</p>
-<p>那我也想成为一只鸭子？那不行，没意思。也许是羡慕他们短暂的自由，人们故意给予的自由吧。这就好比理财里面的行为: 你想要人的利息，可对方却是要的你的本金啊。</p>
-<p>再往前，是一个什么什么徐汇还闵行什么什么活动中心，一个老太载着小孙女和门卫说着什么，看着双马尾的小女孩，挺可爱的。</p>
-<p>继续走着，我记得昨天我经过的，继续100米，终于终于到达目的地。开启手机导航，回去。</p>
-<p>这次，能把我喝吐，下次可要小心，得多学学乖，嘿嘿。</p>
-<p>一路上经过好长的路，幸好昨天接同学的充电宝充了会，上了熟悉的路后才没电，手机可靠。30公里。</p>
-<p>不过路上的风景不错。空气也还不错。经过外清平公路、泗泾、九亭、上漕宝路，才到漕河泾。</p>
-<p>啊，回来后，直接上床躺着，虽然大白天睡不着，看了看昨晚的拉胯的LOL世界赛。</p>
-<p>不怪苏宁，滔博没机会总决赛就是没进，苏宁输了就是输了，反正韩国有一次赢了罢了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/3/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
 </aside>
+
+    <main id="main">
         
-      </div>
-      <footer id="footer" class="site-footer">
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-5-16lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/05/16/2021-5-16lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/05/16/2021-5-16lesson/">2021-5-16lesson</a>
+    </h3>
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-05-16 10:06:51" datetime="2021-05-16T02:06:51.000Z" itemprop="datePublished">2021-05-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        视频服务-点播及加密方案来源
+网迹学习es遇到 es forbidden 12 index read-only
+原因是磁盘不够用了，当磁盘少于95%左右时，es会将索引置为只读。
+解决方案: 进入docker，然后执行: curl -XPUT -H &quot;Content-Type: application/json&quot; http://elastic:123456@localho...
+    
+    <a href="/2021/05/16/2021-5-16lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-3-11lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/03/11/2021-3-11lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/03/11/2021-3-11lesson/">2021-3-11lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-03-11 20:39:40" datetime="2021-03-11T12:39:40.000Z" itemprop="datePublished">2021-03-11</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        伟哥教你装vsphere这几天公司研发部乔迁，距离很近，三楼到四楼。
+长话短说: 机房重新整理，所以测试环境也要整理。当前机器未到，于是伟哥喊上还在加班的同学学上一学，加班福利。
+正题首先是服务器要先装上Raid卡(2000+软妹币)，接下来往服务器上插入硬盘。
+
+                
+                1
+            
+硬盘顺序是左边从上到下0,1,2...
+    
+    <a href="/2021/03/11/2021-3-11lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-2-18new-year" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/02/18/2021-2-18new-year/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/02/18/2021-2-18new-year/">2021-2-18new_year</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-02-18 15:02:55" datetime="2021-02-18T07:02:55.000Z" itemprop="datePublished">2021-02-18</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2021年定房日记上海买房是个巨大的难题，我从2020年年初就开始很上心，彼时就已经开始看房。
+开始看房，推进实施当时贝壳网上看房，有个按钮【现场带看】试着点了下，然后一个中介就跑出来帮忙介绍。一开始我还是懵懵懂懂，因为我的社保还没到，没有房票。中介就鼓舞去看吧，看又不花钱。你这话说的，我这厚脸皮隔天就跑去了。当时还是2020年5月20号，疫情刚刚缓和下来。街上溜达的人都不多，不管了，冲冲冲...
+    
+    <a href="/2021/02/18/2021-2-18new-year/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-1-20videoService" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/02/18/2021-1-20videoService/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/02/18/2021-1-20videoService/">2021-1-20videoService</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-02-18 15:01:38" datetime="2021-02-18T07:01:38.000Z" itemprop="datePublished">2021-02-18</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        
+    
+    <a href="/2021/02/18/2021-1-20videoService/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2021-1-15CompanyMeeting" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/02/18/2021-1-15CompanyMeeting/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/02/18/2021-1-15CompanyMeeting/">2021-1-15CompanyMeeting</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-02-18 15:01:16" datetime="2021-02-18T07:01:16.000Z" itemprop="datePublished">2021-02-18</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2020年会我19年初来的公司，19年底因为疫情原因，木有举办，也是可惜。
+2020年末在动荡中，两年未见的各地公司同伴在年末齐聚本部。回来交流、活动、一齐出发年会。
+2021年年初，全国各地技术、销售回到上海本部。周一的时候在4楼开了一个技术和研发的讨论会，去了几个主要的技术。我到公司晚，赶紧塞两个包子，加个豆浆就去零时装修的4楼培训教室。里面技术都坐满了，在前排找了个位置坐下来。几个大佬...
+    
+    <a href="/2021/02/18/2021-1-15CompanyMeeting/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-20210129-docker-aarch64v8" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/01/29/20210129-docker-aarch64v8/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/01/29/20210129-docker-aarch64v8/">20210129-docker-aarch64v8</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-01-29 16:28:14" datetime="2021-01-29T08:28:14.000Z" itemprop="datePublished">2021-01-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        Docker服务运行在aarch64 服务器之前公司的服务都在x86架构服务器上，机缘下客户提供了一台华为云的aarch64 服务器。
+一开始我以为也就最多2小时全部搞完毕，没想到2小时环境都搭不起来，docker 都运行不了。两天才搞好。
+安装yum 源首先试了下原本的源很慢很慢，$ sudo yum update 超级慢。
+故使用 $ sudo cp /etc/yum.repos.d/C...
+    
+    <a href="/2021/01/29/20210129-docker-aarch64v8/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-20210129-hackintosh" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/01/29/20210129-hackintosh/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/01/29/20210129-hackintosh/">20210129-hackintosh</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-01-29 16:23:42" datetime="2021-01-29T08:23:42.000Z" itemprop="datePublished">2021-01-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        升级Hackintosh跟着之前的教程 制作MacOS 启动盘，可以完成系统的安装。但是系统成功后会有一堆的硬件驱动问题，特别是显卡驱动；其他驱动都是比较容易解决的，或者不解决也能用，比如声卡没有，不影响。
+如果购买A卡，比如RX 580(2304 SP)超白金版才是免驱的。最近出现显卡卡荒，没得买。A卡能支持到10.15，但是价格却是比较贵的。之前价格平和，最便宜的也要1300.
+还有一种...
+    
+    <a href="/2021/01/29/20210129-hackintosh/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-20210129lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2021/01/29/20210129lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2021/01/29/20210129lesson/">20210129lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2021-01-29 16:20:14" datetime="2021-01-29T08:20:14.000Z" itemprop="datePublished">2021-01-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        取综各产品研发分支开发弘连各产品研发开发采用Git仓库管理。版本号取名规范等都是统一形式:
+${主版本号}.${子版本号}.${修正版本号}.${编译版本号}Major_Version_Number.Minor_Version_Number.Revision_Number.Build_Number 示例： 1.2.1.xxx 4.6.7.xxx 3.5.4.xxx
+现阶段分支管理没有好的秩序...
+    
+    <a href="/2021/01/29/20210129lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-11-29lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/11/29/2020-11-29lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/11/29/2020-11-29lesson/">2020-11-29lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-11-29 16:10:46" datetime="2020-11-29T08:10:46.000Z" itemprop="datePublished">2020-11-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        20201129为linux 增加字体库原因是gotenberg生成勘验文档的PDF 库缺少字体库。
+原issue 是要加open-sans, 但是我们要仿宋. 原issue做法:
+12deb http://httpredir.debian.org/debian/ unstable stretch main contrib non-freeapt-get update &amp;&amp; ...
+    
+    <a href="/2020/11/29/2020-11-29lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-10-31lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/11/29/2020-10-31lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/11/29/2020-10-31lesson/">2020-10-31lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-11-29 16:10:17" datetime="2020-11-29T08:10:17.000Z" itemprop="datePublished">2020-11-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        20201031团建这次是整个研发部门50多人一起的活动，但是有些人有事来不了，所以最终来了40多人左右。
+前一天是周五，他们把我喊过去说我也来主持几个节目。在过完周会后，赶紧过去，和伟哥、春哥等过个场，明天不会急急忙忙。伟哥主持开场、拍照环节、附带一两个节目和颁奖，春哥也有数个，我也有数个。一一过一遍后，就先回住所。回住所时间还早，顺便把我的电瓶车电瓶换了，有个普通的，300多，还有个63...
+    
+    <a href="/2020/11/29/2020-10-31lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    </div>
+</nav>
+
+    </div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/page/2/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/page/2/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aQW7DMAwEQP//0+4DCsdL0lKSdnQKAkMe+SBwKR1HPM5gJE/+nvNYMXBxccfcHiJ5ZTJndZG4uLg7uVcvu3pmsrx82bi4uN/Lvfrn9Wy4uLh/ifs6xtwUKPHnwMXF/QRuHlSiSYvLXpLVcHFxB9y8S7nu95L+Li4ubot7FkcSXarBpvB2XFzcLdx8Q+mFmaSIKb8XFxd3CzePIvONqVfJFL4NLi7umFstU6rFTXULiyoyXFzcxdwV7c5qeVRuoODi4i7m9lqZk22uenBS2HdxcXEf4j67DU0udRWyGi4u7mJuElQm7c5qU/XmY+Hi4m7k9o5A8qKkWtxczoCLi7uFm0eXvHDJ/3kg/ODi4i7j9i5ATI5Uey1aXFzcndzqa3qhKL/ScROQcHFxN3Lz5ki1oJlf0cDFxX0vdx5+elc08gIIFxd3Nfcsjvnhay/F4OLi7uTOmyPJJYzeFY1mwxQXF/chbn7w2Wt35lc6olYLLi7uRm41FPWOT6rhBxcX91u4+bFKL24d+WpwcXE/hjvfyKrZ6837Li7uP+ZWg0q+JeUt1yhu4eLibuGWt5L4CLZ3seOx/i4uLm6H+wPQ75CfO5XIvwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1158,26 +939,6 @@ var themeMenus = {};
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

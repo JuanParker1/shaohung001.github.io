@@ -1,1008 +1,942 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/page/15/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
-  </div>
-</header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <section id="main">
-  
-    <article id="post-这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/">这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/" class="article-date">
-	  <time datetime="2017-01-09T01:52:17.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-11-24 15:25:55)</p>
-<p>测试域名是有限制的,测试域名，其客户端配置：单 IP 每秒限制请求次数 10 次，大于 10 次 403 禁止 5 秒；限速：单 url 限速 8Mbps，下载到 10MB 之后，限速 1Mbps 带宽没有区别。<br>所以不建议将测试域名配置在生产环境上。<br>上面是需要更改为自定义融合CDN的原因。<br>接下来需要做的是，点开“融合CDN”-&gt;新增一个加速域名列表，其中一个填写你要做的二级域名，比如主域名为baidu.com，那么你可以写example.baidu.com,直接选确定。<br>审核12个小时以内（我的2个小时），出现在其“域名信息”一栏“填写CNAME”，此时复制“源站信息”的右边一串字符，将其复制到服务器(因为公司大陆备案过的域名在阿里云，那么就进入阿里云的服务器控制端)上的新增二级域名的地方。<br>按照<a href="https://support.qiniu.com/hc/kb/article/68977这个里面的这张图片" target="_blank" rel="noopener">https://support.qiniu.com/hc/kb/article/68977这个里面的这张图片</a><br><img src="http://s14.sinaimg.cn/mw690/003479W3zy76FqygSm1cd&amp;690" alt="图片1"><br>记录类型：就写CNAME<br>主机记录：比如我的example.baidu.com就写example即可<br>解析线路：为默认<br>记录值：填写七牛在“域名配置”-&gt;CNAME所属值：<br>别的其他都不用管，保存即可<br>接下来等待大概半小时，在“内容管理”随便一个您已经上传的文件，点击小眼睛，文件显示出来，那么就是正确的了，以后就可以使用这个链接了。<br>这里补充两点<br>1：你可以用站长工具测试某一个文件，看ping通花了多少毫秒，我对比了7牛的测试连接，44ms，而通过新的自定义的却很慢，达到280ms，提个工单，确实快了很多，88ms。<br>2：<a href="https://www.v2ex.com/t/292587这里有个文章讲了这么个事情，所以特么需要注意啦，我现在还在调整这个问题，看如何解决。" target="_blank" rel="noopener">https://www.v2ex.com/t/292587这里有个文章讲了这么个事情，所以特么需要注意啦，我现在还在调整这个问题，看如何解决。</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-16-11-18办理暂住证-过程-上海" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/16-11-18办理暂住证-过程-上海/">16-11-18办理暂住证_过程_上海</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/16-11-18办理暂住证-过程-上海/" class="article-date">
-	  <time datetime="2017-01-09T01:47:46.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-11-18 15:11:27)</p>
-<p>昨天去搞暂住证，我这里记录下过程，可以参考参考，毕竟这么累比的，当做吐槽加有意义的参考文案吧。<br>首先办理证件必须是周一至周五。当天还上班，中午特地骑到（闸北区工作的话，社保中心在沪太路延长中路附近）电动车去把超过6个月的社保单打印出来了。大概1点半，出发去问门卫处（小区在合阳小区），门卫告诉我去小区的居委会（合阳小区内的居委会，问一下就到了）；到了居委会，居委会说，我们这里办不了，这里一个工作人员也在附近的公安局（其实就在附近，很近，一定一定要保证电动车满电，说不定有其他用处）；好吧，我屁颠屁颠骑电动车到公安局（宜川路/白水路的公安局），取个号，到我了，该处为40多号，说往前走几步到51号左转，2点开始办公；我又屁颠屁颠去跑过去，似乎是户籍管理什么的办事处；好，进去，几个大叔在聊天，我点头弯腰说来办理暂住证，租赁客户，最里面的大叔说租赁的话，比较麻烦，这里办理不了，要前往这个地方（这里说几点，如果房子是你的，办就很快，还有就是前往你的亲戚的城市，办理亲属证明，也会非常快，我这属于最麻烦的，需要一堆的手续和文件，后面会一一道来）黄陵路/宜君路的街道事务中心；我赶紧出来，车子快没电了，赶紧去充电；这时，之前我打电话把房东喊过来（幸好遇到好房东的情况：我打电话让房东到公安局了，女房东到了公安局了，我又跑出来充电），说前往街道事务中心，于是她又开车前往街道事务中心；我先到地点，前台服务是一个胖大哥，问了是办暂住证，直接给我一个“综合服务”的号，我进去，问我需要的材料都对吗（我这里有我的身份证、工作合同、租赁合同原件、社保单（街道事务中心有机子可以取社保单）），然后等待房东来（记得，办这事，一定一定要房东来，房东那边需要准备的材料等会说明）；过没一会，房东来了，然后出示了有房产原件、身份证；然后说去12号台先填写申请，于是我们又跑过去12号，我这里需要准备的材料：有多少个人入住，我和我老婆的身份证+正反复印件、结婚证+复印件、工作合同的第二页和最后一页复印件、社保单、租赁合同+复印件、填写申请表如实填写，房东那边需要准备的材料：房东房产原件+房产原件复印件、房东身份证+复印件（如果房产有多人，必须有一个到场，没到场的需要填写委托书的文件，委托书文件格式，12号窗工作人员会给，你就到旁边写，内容有姓名、身份证，房产证有多少个人就写多少委托，签名写房东名字就可）。反正就是复印复印复印（期间我没带老婆的身份证、结婚证等，骑电动车回去，半路没电，用脚腾回去的，到家赶紧冲出来打车，到了目的地给钱，给他一张50块，司机说换一张，我说怎么了，他说这张是假的，我一看，我去，真是，我好久之前换的，之后一直手机支付没看那张50，后来用微信支付，接着去打印，特么零钱也用完了，那个大叔不肯给打印，真是没帮助的精神，不过是我，我可能也会有类似的作为就赶紧跑好远去取钱，还挺蛋疼的这次）。12号窗口办理，办理这个，如果多少个人写进去了，之后想更改就不能的了，所以确定好要写进去的人数和需要准备好的文件材料；12号窗口办理完会给你一张“信息填入”完的单子（这时房东的帮助已经完了，接下来就是自己的事情了），然后我们去“综合服务”窗口；我这里还需要提供租赁合同复印件、身份证复印件、社保单、“信息填入”文件的复印件，工作人员会给每一个敲一个章，我一一填入我的名字和时间（时间关系不大，如是说），老婆的部分由于本人未到场，必须她到场，不然办不了；这里说一下，这一办理过程是需要24小时生效时间，就是那张“信息填入”文件生效时间是在24小时之后，而且其左下角有个时间终止日期，超过也不能办，办理入住人必须都在场；诺，我又拿着我的文件屁颠屁颠回来了；<br>当时周四，我还是下周一带老婆一起过来好了。到时整好之后给大家一张截图，如若失败，没办法了，花钱办了，，文章里面需要的文件都写好了，也写好了过程步骤，幸好我的是有个好房东啊，，中间等了我接近50分钟，，我的天，，非常非常感谢房东，不管办不办的下来，好房东，，谢谢你，估计你看不见，不过我由衷感谢，，，<br>前两天11月22号，我拎着老婆孩子还去那个街道办事处。直接去“综合服务”办事点，把身份证+复印件、“信息填入”+复印件、社保单、合同原件+第二页和第四页的复印件准备好。他那边输入一些数据后知道我们第一次办，带我们到旁边拍了个照片，深色领子好。（中间原因一些原委，老婆合同原件没带，而且其复印件有文字涂改，需要在上面盖章，来来回回，而且那天下雨，车子堵得呀，花的钱又多-&gt;出租车，4点半街道办事处下班差点赶不及，直接下车跑了3个街道，气都快喘不过来了。）最后改签字的都签好，工作人员给了一张单子，说一个月后来这里领取办卡，也就是说，全部办好了，要办卡。出来办事，，真不是一般的累，来来回回整，而且需要的文件、流程都不熟悉，其中知道门道的，都是可以从中捞水了。一个月后去领卡了。另外，我问了，这不是暂住证，这是居住证，一年的居住证，嗷嗷嗷嗷。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="ios-watermark贴图模糊" class="article article-type-ios" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/watermark贴图模糊/">watermark贴图模糊</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/watermark贴图模糊/" class="article-date">
-	  <time datetime="2017-01-09T01:44:49.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-11-07 10:51:54)</p>
-<p>博客内容转至github，妈蛋，打个字，复制也不行，打字也不行，经常写了老半天，点提交，特么什么东西没了，幸好保存了，，，心塞过，，，地址<a href="https://github.com/shaohung001/One-person-project/tree/master" target="_blank" rel="noopener">https://github.com/shaohung001/One-person-project/tree/master</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-制作滤镜的贴图，rotate、scale、pull，以及实现过程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/制作滤镜的贴图，rotate、scale、pull，以及实现过程/">制作滤镜的贴图，rotate、scale、pull，以及实现过程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/制作滤镜的贴图，rotate、scale、pull，以及实现过程/" class="article-date">
-	  <time datetime="2017-01-09T01:43:35.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-10-17 16:43:22)</p>
-<p><a href="https://github.com/shaohung001/Tie-tu-ScaleRotateView.git" target="_blank" rel="noopener">https://github.com/shaohung001/Tie-tu-ScaleRotateView.git</a><br>代码里面有相关注释</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-最近iOSAPP打包Success但是没有包，上传不了" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/最近iOSAPP打包Success但是没有包，上传不了/">最近iOSAPP打包Success但是没有包，上传不了</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/最近iOSAPP打包Success但是没有包，上传不了/" class="article-date">
-	  <time datetime="2017-01-09T01:41:25.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-10-17 15:59:47)</p>
-<p>最近iOS APP打包Success 但是没有包 上传不了，如<br><a href="http://stackoverflow.com/questions/10715211/cannot-generate-ios-app-archive-in-xcode" target="_blank" rel="noopener">Cannot generate iOS App archive in xcode</a><br><a href="http://stackoverflow.com/questions/10715211/cannot-generate-ios-app-archive-in-xcode/31645306#31645306" target="_blank" rel="noopener">http://stackoverflow.com/questions/10715211/cannot-generate-ios-app-archive-in-xcode/31645306#31645306</a><br><img src="http://s7.sinaimg.cn/mw690/003479W3zy75GRaW8Wq76&amp;690" alt="图片1"></p>
-<p>项目这里参考了这篇博文解决了打包success但是没有包的问题：<br>【链接】新版本Xcode无法打包生成ipa的问题解决Cannotg<br><a href="http://blog.csdn.net/iunion/article/details/49886973" target="_blank" rel="noopener">http://blog.csdn.net/iunion/article/details/49886973</a></p>
-<p>希望能帮到大家。。。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-国庆放完假，重新找目标" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/国庆放完假，重新找目标/">国庆放完假，重新找目标</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/国庆放完假，重新找目标/" class="article-date">
-	  <time datetime="2017-01-09T01:38:27.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-10-10 13:30:14)<br>国庆，公司放了10天。把老婆孩子接过来住几天，孩子不好带，又送回去了，感觉还是挺累的，，，，<br>有时候总是会失去一会目标，就如目前，除了工作，回家之后就是打游戏，消遣，没有去年拼命的状态了。<br>原因是今年来来去去的，没有停歇，没有好好思考总结我要干什么，，，<br>每天晚上都在计划明天该干啥，然后当晚很晚睡，第二天要么很晚起，要么无精打采，，，这么累，于是又继续沉迷网络，，，<br>放下心来想了想为什么吃饭吃不香，睡觉睡不好，生活不自在，，，自己给自己了一个答案：<br>人不要太忙碌，要放慢脚步，稳步向前，，，脚踏实地，一步一脚印，，，<br>大都市的人会不由自主的失去目标，没有朋友在附近，没有好友搭起话，除了工作，老婆，孩子，，没别的了，，也就是这样，老婆孩子不在身边，，，前大半年我都过得浑浑噩噩，像极了猪，但人家猪还会早睡，我却总觉得，我不想睡，我还能消遣好一会，不能浪费啊，，，于是沉淀起来的疲惫，把我自己给迷糊了，，，<br>最近除了工作，要给自己下一些目标，让自己爱生活，，这样精神状态好起来，说不定对工作的热忱会更好，效率更高，发散思维能力越强，，，找找自己能持续作战的副业吧，，，找到一个自己也同样热衷的副业，其实是完美生活的一个调剂品，好好品尝，好好活着，，，，</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-RAC循环引用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/RAC循环引用/">RAC循环引用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/RAC循环引用/" class="article-date">
-	  <time datetime="2017-01-09T01:35:39.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-27 16:35:49)</p>
-<p>最近项目到某个节点，我在解决一些问题的时候，记录一下：</p>
-<ol>
-<li>RAC 在引用的时候会忽略一点，如<br><code>@weakify(self);
-@weakify(cell);
-[[[cell.clearButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(UIButton *x) {
-if ([self_weak_.selectedNumArray containsObject:asset]) {
-[self_weak_.selectedNumArray removeObject:asset];
-cell_weak_.numButton.selected = NO;
-[self_weak_.collectionView reloadData];
-}else{
-if (self_weak_.addMorePicture) {
-if (self_weak_.selectedNumArray.count==self_weak_.maxPictureCanAdd) {
-LxDBAnyVar(self_weak_.selectedNumArray);
-LxDBAnyVar(self_weak_.maxPictureCanAdd);
-[SHUIHelper showAlertMessage:[NSString stringWithFormat:@&quot;您最多可添加%ld张哦&quot;,self_weak_.maxPictureCanAdd]];
-}else{
-[self_weak_.selectedNumArray addObject:asset];
-cell_weak_.numButton.selected = YES;
-[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
-}
-}else{
-if (self_weak_.selectedNumArray.count==6) {
-[SHUIHelper showAlertMessage:@&quot;选取最多6张&quot;];
-}else{
-[self_weak_.selectedNumArray addObject:asset];
-cell_weak_.numButton.selected = YES;
-[cell_weak_.numButton setTitle:[NSString stringWithFormat:@&quot;%ld&quot;,(unsigned long)self_weak_.selectedNumArray.count] forState:UIControlStateNormal];
-}
-}
-}
-cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
-}];</code><br>上面这里的cell，自己对自己进行了循环引用，原因就是：这一段如果写在该Cell class里面，那么block里面的cell，其实在自身类里面也叫self，于是也需要进行weak处理。<br>这里会出现这样的错误，就是因为写得太快了，然后有时候会想不出来，可以慢慢思考。</li>
-<li>Realm 的RLMArray 如果添加某一个元素，但其已经存在数据库中，那么做法是先使用<code>[RLMObject objectForPrimaryKey：@“keyID”]</code>找出该元素添加进去，即可<blockquote>
-<p>Just want to add a comment for future users of Realm. I think TiM means[ objectForPrimaryKey:…]. I literally typed [RLMObject objectForPrimaryKey:…] and got a crash about “RLMObject” is not persisted in Realm database</p>
-</blockquote>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-MleaksFinder手动导入framework" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/MleaksFinder手动导入framework/">MleaksFinder手动导入framework</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/MleaksFinder手动导入framework/" class="article-date">
-	  <time datetime="2017-01-09T01:23:27.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-19 18:24:20)<br>由于前段时间cocoapods有个issue，导致我的第三方工程都得手动导入，今天抽出时间把MleaksFinder这款很好的监测内存泄漏的工具用手动导入方式写出来。</p>
-<ul>
-<li><p>先去下两个zip：</p>
-<ul>
-<li><a href="https://github.com/Zepo/MLeaksFinder" target="_blank" rel="noopener">https://github.com/Zepo/MLeaksFinder</a></li>
-<li><a href="https://github.com/facebook/FBRetainCycleDetector" target="_blank" rel="noopener">https://github.com/facebook/FBRetainCycleDetector</a></li>
-</ul>
-</li>
-<li><p>直接将</p>
-<ul>
-<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74Yms7wiQd8&amp;690" alt="导入工程，记得点选1、2、4选项" title="导入工程，记得点选1、2、4选项"></li>
-<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74YmyHZy038&amp;690" alt="导入工程，记得点选1、2、4选项" title="导入工程，记得点选1、2、4选项"></li>
-</ul>
-</li>
-<li>将下载下来的FBRetainCycleDetector-master直接复制到根目录文件<ul>
-<li><img src="http://s3.sinaimg.cn/mw690/003479W3zy74YmO5Xpg42&amp;690" alt="将下载下来的FBRetainCycleDetector-master直接复制到根目录文件" title="将下载下来的FBRetainCycleDetector-master直接复制到根目录文件"></li>
-</ul>
-</li>
-<li>如图操作：<ul>
-<li><img src="http://s9.sinaimg.cn/mw690/003479W3zy74YoNFBAk28&amp;690" alt="第四步如图操作"></li>
-<li>同时将FBRetainCycleDetector.xcodeproj-》Targets-》Deployment Info的Deployment Target 改为手机适用的，不然会运行起来说target版本不对</li>
-</ul>
-</li>
-<li>加入framework<ul>
-<li><img src="http://s1.sinaimg.cn/mw690/003479W3zy74YnTj7gI20&amp;690" alt="加入framework"></li>
-</ul>
-</li>
-<li><em>至此，不需要添加代码，你就可以使用啦。我先记录，慢慢来开发他的使用啦</em></li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-RN了SecRandomCopyBytes-ignoring-return-value" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/">RN了SecRandomCopyBytes_ignoring_return_value</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/" class="article-date">
-	  <time datetime="2017-01-09T01:19:16.000Z" itemprop="datePublished">January 9, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-19 10:16:43)</p>
-<p>大早上的起来，在XCode8，iOS10环境中，就看见RN编译不起来，报SecRandomCopyBytes ignoring return value这样的错。在RCTWebSocket 的SecRandomCopyBytes函数编译不过去，有3种方法，自行实测一种，很方便的一种（1）<br>1：<a href="https://github.com/facebook/react-native/issues/8584中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8584中</a><br><img src="http://s3.sinaimg.cn/mw690/003479W3zy74Zv5sPiG22&amp;690" alt="图片1"><br>双击Library里面的RCTWebSocket进入上图界面，将“3”中的两个删除即可<br>2、3：<a href="https://github.com/facebook/react-native/issues/8108中" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/8108中</a><br>mskalra所述和antoor所述，针对不同问题的解决方案</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-展示大图出现卡顿" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/01/08/展示大图出现卡顿/">展示大图出现卡顿</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/08/展示大图出现卡顿/" class="article-date">
-	  <time datetime="2017-01-08T15:08:27.000Z" itemprop="datePublished">January 8, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>发表于(2016-09-18 12:06:12)</p>
-<p>这里拿iOS里边代码做考究：<br>图片页面，我之前不是说会很卡吗？？如果用户拿去很大的图片的话，我这里之前的处理是压缩<br><img src="http://s10.sinaimg.cn/mw690/003479W3zy74WlkrbAZ69&amp;690" alt="图片1"><br>这里压缩是把相同临近像素融合，减小像素密度，，但是卡顿原因不是这个，，其实是—》<br>这样理解，就是我有一张比如一个墙壁大的图片，相框只有200*200，于是照片要放进去就比较麻烦，但是我减小照片大小，<br><img src="http://s6.sinaimg.cn/mw690/003479W3zy74WlmwDU975&amp;690" alt="图片2"><br>这样图片不大，放进相框就好放啦，，，1000是系数，可以自行比例系数哦</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/14/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/16/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
 </aside>
+
+    <main id="main">
         
-      </div>
-      <footer id="footer" class="site-footer">
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/">这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历</a>
+    </h3>
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:52:17" datetime="2017-01-09T01:52:17.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-11-24 15:25:55)
+测试域名是有限制的,测试域名，其客户端配置：单 IP 每秒限制请求次数 10 次，大于 10 次 403 禁止 5 秒；限速：单 url 限速 8Mbps，下载到 10MB 之后，限速 1Mbps 带宽没有区别。所以不建议将测试域名配置在生产环境上。上面是需要更改为自定义融合CDN的原因。接下来需要做的是，点开“融合CDN”-&gt;新增一个...
+    
+    <a href="/2017/01/09/这里讲述一个7牛存放图片服务的更改为自定义融合CDN的经历/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-16-11-18办理暂住证-过程-上海" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/16-11-18办理暂住证-过程-上海/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/16-11-18办理暂住证-过程-上海/">16-11-18办理暂住证_过程_上海</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:47:46" datetime="2017-01-09T01:47:46.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-11-18 15:11:27)
+昨天去搞暂住证，我这里记录下过程，可以参考参考，毕竟这么累比的，当做吐槽加有意义的参考文案吧。首先办理证件必须是周一至周五。当天还上班，中午特地骑到（闸北区工作的话，社保中心在沪太路延长中路附近）电动车去把超过6个月的社保单打印出来了。大概1点半，出发去问门卫处（小区在合阳小区），门卫告诉我去小区的居委会（合阳小区内的居委会，问一下就到了）；...
+    
+    <a href="/2017/01/09/16-11-18办理暂住证-过程-上海/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="ios-watermark贴图模糊" class="article-card article-type-ios" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/watermark贴图模糊/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/watermark贴图模糊/">watermark贴图模糊</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:44:49" datetime="2017-01-09T01:44:49.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-11-07 10:51:54)
+博客内容转至github，妈蛋，打个字，复制也不行，打字也不行，经常写了老半天，点提交，特么什么东西没了，幸好保存了，，，心塞过，，，地址https://github.com/shaohung001/One-person-project/tree/master
+
+    
+    <a href="/2017/01/09/watermark贴图模糊/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-制作滤镜的贴图，rotate、scale、pull，以及实现过程" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/制作滤镜的贴图，rotate、scale、pull，以及实现过程/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/制作滤镜的贴图，rotate、scale、pull，以及实现过程/">制作滤镜的贴图，rotate、scale、pull，以及实现过程</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:43:35" datetime="2017-01-09T01:43:35.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-10-17 16:43:22)
+https://github.com/shaohung001/Tie-tu-ScaleRotateView.git代码里面有相关注释
+
+    
+    <a href="/2017/01/09/制作滤镜的贴图，rotate、scale、pull，以及实现过程/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-最近iOSAPP打包Success但是没有包，上传不了" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/最近iOSAPP打包Success但是没有包，上传不了/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/最近iOSAPP打包Success但是没有包，上传不了/">最近iOSAPP打包Success但是没有包，上传不了</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:41:25" datetime="2017-01-09T01:41:25.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-10-17 15:59:47)
+最近iOS APP打包Success 但是没有包 上传不了，如Cannot generate iOS App archive in xcodehttp://stackoverflow.com/questions/10715211/cannot-generate-ios-app-archive-in-xcode/31645306#3164530...
+    
+    <a href="/2017/01/09/最近iOSAPP打包Success但是没有包，上传不了/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-国庆放完假，重新找目标" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/国庆放完假，重新找目标/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/国庆放完假，重新找目标/">国庆放完假，重新找目标</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:38:27" datetime="2017-01-09T01:38:27.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-10-10 13:30:14)国庆，公司放了10天。把老婆孩子接过来住几天，孩子不好带，又送回去了，感觉还是挺累的，，，，有时候总是会失去一会目标，就如目前，除了工作，回家之后就是打游戏，消遣，没有去年拼命的状态了。原因是今年来来去去的，没有停歇，没有好好思考总结我要干什么，，，每天晚上都在计划明天该干啥，然后当晚很晚睡，第二天要么很晚起，要么无精打采，，，这么累，于是又继...
+    
+    <a href="/2017/01/09/国庆放完假，重新找目标/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-RAC循环引用" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/RAC循环引用/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/RAC循环引用/">RAC循环引用</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:35:39" datetime="2017-01-09T01:35:39.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-09-27 16:35:49)
+最近项目到某个节点，我在解决一些问题的时候，记录一下：
+
+RAC 在引用的时候会忽略一点，如@weakify(self);
+@weakify(cell);
+[[[cell.clearButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac...
+    
+    <a href="/2017/01/09/RAC循环引用/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-MleaksFinder手动导入framework" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/MleaksFinder手动导入framework/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/MleaksFinder手动导入framework/">MleaksFinder手动导入framework</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:23:27" datetime="2017-01-09T01:23:27.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-09-19 18:24:20)由于前段时间cocoapods有个issue，导致我的第三方工程都得手动导入，今天抽出时间把MleaksFinder这款很好的监测内存泄漏的工具用手动导入方式写出来。
+
+先去下两个zip：
+
+https://github.com/Zepo/MLeaksFinder
+https://github.com/facebook/FBRetainCycl...
+    
+    <a href="/2017/01/09/MleaksFinder手动导入framework/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-RN了SecRandomCopyBytes-ignoring-return-value" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/">RN了SecRandomCopyBytes_ignoring_return_value</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:19:16" datetime="2017-01-09T01:19:16.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-09-19 10:16:43)
+大早上的起来，在XCode8，iOS10环境中，就看见RN编译不起来，报SecRandomCopyBytes ignoring return value这样的错。在RCTWebSocket 的SecRandomCopyBytes函数编译不过去，有3种方法，自行实测一种，很方便的一种（1）1：https://github.com/faceboo...
+    
+    <a href="/2017/01/09/RN了SecRandomCopyBytes-ignoring-return-value/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-展示大图出现卡顿" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/08/展示大图出现卡顿/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/08/展示大图出现卡顿/">展示大图出现卡顿</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-08 23:08:27" datetime="2017-01-08T15:08:27.000Z" itemprop="datePublished">2017-01-08</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-09-18 12:06:12)
+这里拿iOS里边代码做考究：图片页面，我之前不是说会很卡吗？？如果用户拿去很大的图片的话，我这里之前的处理是压缩
+                
+                图片1
+            这里压缩是把相同临近像素融合，减小像素密度，，但是卡顿原因不是这个，，其实是—》这样理解，就是我有一张比如一个墙壁大的图片，相框只有...
+    
+    <a href="/2017/01/08/展示大图出现卡顿/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
+    </div>
+</nav>
+
+    </div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/page/15/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/page/15/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzUlEQVR42u3aS27DMAwFwNz/0u62QGv3kZSUoBitsnDs4YbgR69XfK5v5/mZn8/f/ff5baODi4s75l6P5+6ZO2Ly/jy8X96Ji4t7kJskpvz3XfpL6H/YcHFxP5Lbe/IOjYuL+/+4eaqaB4mLi3uemzQ/+YikVyot7tVwcXEH3LWfnDRLi+e7uLi4Le5VPPMwRl/HxcU9ws0TynOTkyxWe+ULLi7uee4kPSXrk14bU05huLi4G7i9wWUvGSUFU1SR4eLibuZWU1ISRh5YoX3CxcU9yJ1cnHoGzRcnUd7FxcVdyu1djOgNRKqprdAy4eLibuBOrlbML2OVUyQuLu5m7uTK1OTKRb50iXo1XFzcDdyk+Ulao7y4qY5dcHFxT3KrlLygyQudauuFi4t7hltdkKy6VFEtiXBxcd/FrZYg1cFHXjzdpjNcXNyD3GgwMV6yVgOOPoaLi7uUexXP5ArXst0vLi7uZu5kjVq9ltGb1jSDwcXFHXOrySv5nbc01SBxcXFPcvNEU16IDpqfaL6Li4v7Mdzq3jNvt155NLi4uB/DnQ9Vq73XKJHh4uIOuHmj0rtOUQ04WrLi4uJu45ZTyXjtmifB0XwXFxe3w/0CXDuaeWGfaKEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1010,26 +944,6 @@ cell_weak_.grayLayerView.hidden = !cell_weak_.numButton.selected;
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

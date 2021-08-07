@@ -1,201 +1,214 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>2018-5-9lesson | aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta name="description" content="2018/04/23 Clang Attributes 黑魔法小记http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super objc_subclassing_restricted objc_requires_super objc_boxable constructor/desctructor objc_runt">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2018-5-9lesson">
-<meta property="og:url" content="https://shaohung001.github.io/2018/05/20/2018-5-9lesson/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:description" content="2018/04/23 Clang Attributes 黑魔法小记http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super objc_subclassing_restricted objc_requires_super objc_boxable constructor/desctructor objc_runt">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-14T14:14:06.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018-5-9lesson">
-<meta name="twitter:description" content="2018/04/23 Clang Attributes 黑魔法小记http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super objc_subclassing_restricted objc_requires_super objc_boxable constructor/desctructor objc_runt">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>2018-5-9lesson | aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>2018-5-9lesson</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">2018-5-9lesson</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-20T03:25:52.000Z" itemprop="datePublished" class="page-time">
+  2018-05-20
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-2018-5-9lesson" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      2018-5-9lesson
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/20/2018-5-9lesson/" class="article-date">
-	  <time datetime="2018-05-20T03:25:52.000Z" itemprop="datePublished">May 20, 2018</time>
-	</a>
-
-      
-	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018/04/23</p>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2018-5-9lesson" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">2018-5-9lesson</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-20 11:25:52" datetime="2018-05-20T03:25:52.000Z" itemprop="datePublished">2018-05-20</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>2018/04/23</p>
 <h3 id="Clang-Attributes-黑魔法小记"><a href="#Clang-Attributes-黑魔法小记" class="headerlink" title="Clang Attributes 黑魔法小记"></a>Clang Attributes 黑魔法小记</h3><p><a href="http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super" target="_blank" rel="noopener">http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super</a></p>
 <p>objc_subclassing_restricted</p>
 <p>objc_requires_super</p>
@@ -211,179 +224,292 @@ var themeMenus = {};
 </blockquote>
 <p>能让则让，小弟这么拼命给你干活，你就拿到我源码就“你要介意的话，我们下一版代码会重新写”；我的意思很简单，商业利益失败，朋友还要交的，c哥接下来一句“包括涂色的布局ui也不要用我的设计，既然在意就说清楚，大家都有知识产权对吧”，直接挑明了朋友都没得做。那算了，说明我的意义就这么大，就是那个有静态库的源码的价值。<br>行行行，你是项目负责人，全是你的成就。我啥都没有起到作用，毕竟代码书写被你改了嘛。<br>后来的几天，我全力工作，优化那个涂色项目。接下来其实我完全可以就这么卖了“drop”源码，或者开源了，反正对我意义不大，我的能力不是只有drop。得了芝麻“有静态库的源码”丢了西瓜。<br>之前这么崇拜你的我，也算清醒。我觉得我不太吃亏。对我来说，重要的是涂色项目，一个完整生态，商品和商店，而且可以量产。<br>其实回顾来说，我觉得做人真不必如此，你的钱是我10倍多，我连午饭都要去很远很远的食堂，晚饭省钱饿着回家吃的我，都不舍得花钱，有孩子要养，最近又有买房需求，再说，涂色素材技术本应回交公司，我当时还特意解决了c哥公司很多重大崩溃技术，我觉得您真不必如此。<br>最后一次尊重。您高升就好。“drop”我会留下自己开发，不然对你们公司肯定是致命的，毕竟全公司都花时间搞那个了，我公开出去，或者自己搞个差不多的，我的功能肯定比你多，开发比你快、稳定，然后就跟着你的ISO，蹭你们热量，你们会白做的！<br>接下来我继续加油，避开他以前的设计范畴，一些以前我也参与的设计我就不必客气，这不全是你的功劳，不全是你的成就。都是一起探讨出来的，当时我的努力，我身后要保护的人，都提醒我，该客气时客气，该凶时就该认真对待了！<br>之前去他们公司，看他们的代码，确实，一个成功的产品，开发的人还是很重要的。代码规范，模块划分。我猜想，c哥现在公司应该开不久，或者说开不大。<br>前几天开了些文章，他国对中国封锁核弹、氢弹技术，中国克服困难做出来了；他国对中国封锁航天技术，中国又突出重围。我想我也正需要这股拼劲。这几天硬着头皮，老婆小小的学了把一个方便设计的软件，我自己搞了搞ps，把开源的声音、字体、图片等都找全；<br>给自己软件做东西，你会发现，你总是这个做简单点，那个可以省略就省略吧。于是做的总是自己都不满意。回头想想，你给公司做的时候你会这样么？你肯定是硬着头皮也要搞出来，能搞出来的就搞得更好那种。<br>你要的是，把做公司的那种态度用到写自己的上面，同时，规划好时间，集中精力攻破难关。<br>这次学到的东西也很多很多，同时也警醒自己，有些事情一定要思考思考在思考，一定不能出大错。这次错误，算是损失，但是很能忍。<br>毕竟也学了那么多，同时还长进了这么多。<br>应该应该的，小弟就该吃糠，小弟家人就是垃圾，不应该有这么多思想，不应该要求这么多。<br>timestamp: 2018/5/9 田小新</p>
 
-      
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-11-14T14:14:06.000Z" itemprop="dateUpdated">2018-11-14 22:14:06</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/05/20/2018-5-9lesson/" target="_blank" rel="external">https://shaohung001.github.io/2018/05/20/2018-5-9lesson/</a>
+        
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-        <div id="donation_div"></div>
-
-<script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/wechatPay.jpg?raw=true',
-  alipayImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/aliPay.jpg?raw=true'
-});
-</script>
-      
-            
-      
-        
-	<section id="comments" class="comment">
-	  <div id="disqus_thread">
-	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	  </div>
-	</section>
-
-	<script type="text/javascript">
-	var disqus_shortname = 'shaohung001';
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	</script>
-
-
-      
+    <footer>
+        <a href="https://shaohung001.github.io">
+            <img src="/img/avatar.jpg" alt="aKer">
+            aKer
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/2018/07/21/2018-6-28lesson/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2018/6/28lesson
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2018/05/20/2018-5-9lesson/&title=《2018-5-9lesson》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2018/05/20/2018-5-9lesson/&title=《2018-5-9lesson》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="prev">
+      <a href="/2018/07/21/2018-6-28lesson/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2018/6/28lesson</h4>
+      </a>
+    </div>
   
-    <a href="/2018/04/22/2018-04-22lesson/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2018-04-22lesson</div>
-    </a>
+
+  
+    <div class="next">
+      <a href="/2018/04/22/2018-04-22lesson/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2018-04-22lesson</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Clang-Attributes-黑魔法小记"><span class="post-toc-number">1.</span> <span class="post-toc-text">Clang Attributes 黑魔法小记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mac-启动服务配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">Mac 启动服务配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2018-05-07交涉"><span class="post-toc-number">3.</span> <span class="post-toc-text">2018/05/07交涉</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
 </article>
 
-<!-- Table of Contents -->
-
-  <aside id="sidebar">
-    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
-    <strong class="toc-title">Contents</strong>
-    
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clang-Attributes-黑魔法小记"><span class="nav-number">1.</span> <span class="nav-text">Clang Attributes 黑魔法小记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac-启动服务配置"><span class="nav-number">2.</span> <span class="nav-text">Mac 启动服务配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-07交涉"><span class="nav-number">3.</span> <span class="nav-text">2018/05/07交涉</span></a></li></ol>
-    
-    </div>
-  </aside>
-</section>
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
         
-      </div>
-      <footer id="footer" class="site-footer">
-  
+        <div class="reward-code">
+            <img id="rewardCode" src="/css/images/wecharPay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/css/images/wecharPay.jpg" data-alipay="/css/images/aliPay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2018/05/20/2018-5-9lesson/&title=《2018-5-9lesson》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2018/05/20/2018-5-9lesson/&title=《2018-5-9lesson》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3aO27EMAwFQN//0ps68Np4T1oXlsZVkPVHo4KgSB5HfH1O1/nXqzvP95+fOj97PHFhYGC8lvG5vX67T8nSk035shIMDIwNGPefvH91sqz7r9x/K9kODAwMjPvl3i8l5yXvwcDAwGgDbovPk0UMDAyMsUPs2IE2X9Z9CP7ZWRwDA+OFjJmlPP33I/0NDAyMVzE+5ZWndEkYbZugl6vCwMBYmtEeNZO0rG1Gzhx9MTAw9mG0rcd8OGxszCJ5tvBhYGAsx2jL9+24arI1UyU/DAyM5RjtA3nzsk0o22GLf79iYGBswGiTsLFyWJsa5qEZAwNjB8ZYUhgVv4IBi7Ee5ZF/HgMD4+WMGdLYIFfbDGhLeBgYGOsx2kXk7YF8uXmwjsptGBgYyzEG24Rloa0dtpgq3mFgYCzHyNuN84E4D6P1FmNgYCzNyFOuPL2rk7myJXD5NgwMjKUZbZBtQ+fYNiUhGwMDYwfGWLE+ORk/kXQWwxYYGBgLMWbak0ksz4fM8v8UVUMMDIyFGMly25A6tkFtC+HLWRwDA2NLRpu0zYfgvJCHgYGxG6MNmmONgXoGpK0XYmBgLMcYK36N9R/y1DMfHcPAwNiBMZOitQfdPLzOtEIxMDBWZbRL/PzoGmuOXgZfDAyMDRht4JtJEFtYhMTAwMAYSubmRy6KQywGBgZGOTSWB9b2nqKFiYGBsRwjbwYk1buE1wZrDAyMnRn50bENxL8atsjZGBgYyzH+ALAD0T9kk1VAAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -391,26 +517,6 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

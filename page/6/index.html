@@ -1,1202 +1,983 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/page/6/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
-        
-          <section id="main">
-  
-    <article id="post-2019-9-4lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/04/2019-9-4lesson/">2019-9-4lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/04/2019-9-4lesson/" class="article-date">
-	  <time datetime="2019-09-04T04:14:26.000Z" itemprop="datePublished">September 4, 2019</time>
-	</a>
-
-      
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mac使用Parallels-增加CentOS7"><a href="#Mac使用Parallels-增加CentOS7" class="headerlink" title="Mac使用Parallels 增加CentOS7"></a><strong>Mac使用Parallels 增加CentOS7</strong></h1><p>CentOS7 肯定是用OpenSSH 链接的。</p>
-<pre><code>yum list installed | grep openssh-server
-</code></pre><p>如果未显示openssh-server 已经安装，那么输入<code>yum install openssh-server</code> 安装。</p>
-<pre><code>cd /etc/ssh
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2019-9-4lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/09/04/2019-9-4lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/04/2019-9-4lesson/">2019-9-4lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-04 12:14:26" datetime="2019-09-04T04:14:26.000Z" itemprop="datePublished">2019-09-04</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        Mac使用Parallels 增加CentOS7CentOS7 肯定是用OpenSSH 链接的。
+yum list installed | grep openssh-server
+如果未显示openssh-server 已经安装，那么输入yum install openssh-server 安装。
+cd /etc/ssh
 sudo vim sshd_config
-</code></pre><p>修改以下几项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line"></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">PasswordAuthentication yes</span><br></pre></td></tr></table></figure>
-<p>保存文件、退出</p>
-<pre><code>systemctl restart sshd
-
-netstat -lnp | grep 22 # 查看到22 端口已经打开
-</code></pre><p>这时Mac 要链接先要找到Ipv4 地址，两种方法：</p>
-<ol>
-<li>ip addr 可以看到有localhost/127.0.0.1/某一个ip 地址</li>
-<li>去设置的netword 里面看Ipv4 地址</li>
-</ol>
-<p>然后Mac 先ping 该ip，如果通畅那就说明ok 啦。</p>
-<p>此时有个问题：Parallels帮我们创建的账号，默认名为Parallels, 于是我又屁颠屁颠去【设置】【用户】里面把名字改了。</p>
-<p>Mac 下<code>ssh root@ip -p 22</code> 发现一直弹<strong>Permission denied, please try again.</strong></p>
-<p>不可能啊，就是这个密码。不理解的我试了好多次，只能google 了。</p>
-<p><a href="https://askubuntu.com/questions/497895/permission-denied-for-rootlocalhost-for-ssh-connection" target="_blank" rel="noopener">StackExchange</a>前面答案都没帮上忙。我看到改密码：<code>sudo passwd</code></p>
-<p>于是我改了下密码，Mac试着登录，终于可以登入了。估计这是CentOS7 的bug 吧。反正我登上了。我不管了。</p>
-
-      
+修改以下几项：
+123456...
+    
+    <a href="/2019/09/04/2019-9-4lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/parallels/">parallels</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
 </article>
 
-<!-- Table of Contents -->
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/parallels/">parallels</a></li></ul>
 
-    
+</div>
 
-  
-    <article id="post-2019-9-3obs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-9-3obs" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/03/2019-9-3obs/">2019-9-3obs</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/09/03/2019-9-3obs/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/03/2019-9-3obs/" class="article-date">
-	  <time datetime="2019-09-03T04:11:58.000Z" itemprop="datePublished">September 3, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h1><p><a href="https://obsproject.com/download" target="_blank" rel="noopener">OBS 下载</a></p>
-<p>来源处添加【媒体源】-【新建】选择好本地文件时，顺便点选【循环】(方便测试)-【确定】</p>
-<p>然后点击OBS 的【设置】-【推流】服务一栏选择【自定义】-【服务器】:rtmp://104.230.236.234/live/live 【串流秘钥】填:111(填111 为test)</p>
-<p>这里说一点，【串流秘钥】在那片教程中没有说明，也就是<em>111</em> 在之后rtmp 流或者flv 流的后面的basename 位置，最后一定要加上111，如播放rtmp://104.230.236.234/live/live/111 或者<a href="http://104.230.236.234/live/live/111.flv" target="_blank" rel="noopener">http://104.230.236.234/live/live/111.flv</a></p>
-<p>不然流推上去了，客户端就一直报错，找不到拉不到流啊。</p>
-<p>接着OBS 按下【开始推流】，那就是推送到已开启的SRS 流了。</p>
-<h4 id="SRS"><a href="#SRS" class="headerlink" title="SRS"></a>SRS</h4><p><code>docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</code></p>
-<p>用容器美滋滋。同时，<code>/dockerVolume/SRS/conf/docker.conf</code> 是本地文件映射到容器的对应文件。该文件拷贝自:<code>srs/trunk/conf/http.flv.live.conf</code></p>
-<p>这时可以在浏览器测试: <code>http://104.230.236.234:8808/live/live.flv</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">max_connections     1000;</span><br><span class="line">daemon              off;</span><br><span class="line">srs_log_tank        console;</span><br><span class="line">http_server &#123;</span><br><span class="line">    enabled         on;</span><br><span class="line">    listen          8080;</span><br><span class="line">    dir             ./objs/nginx/html;</span><br><span class="line">&#125;</span><br><span class="line">vhost __defaultVhost__ &#123;</span><br><span class="line">    http_remux &#123;</span><br><span class="line">        enabled     on;</span><br><span class="line">        mount       [vhost]/[app]/[stream].flv;</span><br><span class="line">        hstrs       on;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obs/">obs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/srs/">srs</a></li></ul>
 
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/03/2019-9-3obs/">2019-9-3obs</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-03 12:11:58" datetime="2019-09-03T04:11:58.000Z" itemprop="datePublished">2019-09-03</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        OBSOBS 下载
+来源处添加【媒体源】-【新建】选择好本地文件时，顺便点选【循环】(方便测试)-【确定】
+然后点击OBS 的【设置】-【推流】服务一栏选择【自定义】-【服务器】:rtmp://104.230.236.234/live/live 【串流秘钥】填:111(填111 为test)
+这里说一点，【串流秘钥】在那片教程中没有说明，也就是111 在之后rtmp 流或者flv 流的后面的...
+    
+    <a href="/2019/09/03/2019-9-3obs/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obs/">obs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/srs/">srs</a></li></ul>
 
-    
+</div>
 
-  
-    <article id="post-2019-9-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-9-2lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/02/2019-9-2lesson/">2019-9-2lesson</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/09/02/2019-9-2lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/02/2019-9-2lesson/" class="article-date">
-	  <time datetime="2019-09-02T04:11:25.000Z" itemprop="datePublished">September 2, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近连续一个多月的主要工作"><a href="#最近连续一个多月的主要工作" class="headerlink" title="最近连续一个多月的主要工作"></a><strong>最近连续一个多月的主要工作</strong></h1><p>最近连续一个多月主要分为三个工作：</p>
-<ol>
-<li>工作为主，完成公司盈利产品的迭代。这不仅学，还要学好。</li>
-<li>这几个月想完成去年未完成的游戏，不过游戏有点大，不可太急躁。</li>
-<li>完成视频播放功能。</li>
-</ol>
-<p>第一个工作还是努力前行，我的试用期是6个月，这个月过后就满啦。难得接受个这么长的试用期，努力就是了。从一无所知，非常迷迷糊糊，懵懵懂懂的状态跌跌撞撞过来，期间没有太多人帮助(只有伟哥和学弟喜顺)，现在能更准确找到问题、解决问题、顺便优化代码。美滋滋。</p>
-<p>最近突然想起，我海贼王追的那么累(更得好慢)，最近我都转而潜心看文章，如三国类解说、明朝时代的解说。(明朝那么热闹，唐朝肯定也是潮起潮落。心之向往那跌宕的岁月。不过对历史的向往，也万没有身体要去感同身受的打算，那不是我这种渣逼能活着的岁月。)突然记得似乎火影忍者我还没看完，最后几集漏了，找不到网站看。</p>
-<p>前几天开始了锻炼，想想以前的光辉岁月，不甘心只是蹲在凳子上消磨。翻开看了下bilibili的爆燃视频，夜凯一jio 踢残斑，想起以前课上趴着桌子偷偷看火影。锻炼我要干，看视频我也要干的。</p>
-<p>我要做个视频网站！</p>
-<p>我平常用流量看文章等，每个月最多1G不到(测试app 等用掉的)，平常都是500M。但是我觉得5G时代早晚来临，视频、音频、图片等都会大行其道。我不觉得我用得上，但我的客户们肯定万分期待。最近我试了试nginx-rtmp-module，先品尝了下视频播放的操作。接着我用SRS 也能转播直播。</p>
-<p>同时我最近刚搞的rancher，想想，是否服务能放进去呢? 这1个多月的周末就在这其中煎熬度过。不过答案也终于找到了。</p>
-<p>答案是理解了rancher 的k8s(k3s) 的能力，以目前我的知识、能力范畴，我能很好的使用服务的编排、无限扩容能力、合理调度。</p>
-<p>那么答案就在这，SRS、VVVVVV等都是服务功能。VVVVVV 本来就是单个机器代理，还要怎么调度？SRS要调度，其本身已经支持(go-sharp)。<br>也就是说，我之前就是在钻牛角尖。不过钻的作用是，让我深切快速的理解了k8s(k3s) 的作用是什么，不然我要看好久的专业书。</p>
-<p>不在当前规划上的知识，先不花太多精力。能动手就不看那么细致了。</p>
-<p>周末突然的领悟自己确实在大钻特钻牛角尖。</p>
-<p>现在说说我的环境和做法。</p>
-<p>大致跟着这篇教程下来的:<a href="https://juejin.im/post/5ad7ce3ff265da505e41ff03" target="_blank" rel="noopener">https://juejin.im/post/5ad7ce3ff265da505e41ff03</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: CentOS7 x86_64</span><br><span class="line">SRS: docker run --name srs -v /dockerVolume/SRS/conf/docker.conf:/srs/conf/docker.conf -p 8808:8080 -p 1985:1985 -p 1935:1935 ossrs/srs:3.0</span><br><span class="line">客户端-推流端: OBS</span><br><span class="line">客户端-播放端: VLC / 教程里面的live demo</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
+
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/02/2019-9-2lesson/">2019-9-2lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-02 12:11:25" datetime="2019-09-02T04:11:25.000Z" itemprop="datePublished">2019-09-02</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        最近连续一个多月的主要工作最近连续一个多月主要分为三个工作：
+
+工作为主，完成公司盈利产品的迭代。这不仅学，还要学好。
+这几个月想完成去年未完成的游戏，不过游戏有点大，不可太急躁。
+完成视频播放功能。
+
+第一个工作还是努力前行，我的试用期是6个月，这个月过后就满啦。难得接受个这么长的试用期，努力就是了。从一无所知，非常迷迷糊糊，懵懵懂懂的状态跌跌撞撞过来，期间没有太多人帮助(只有伟哥和学弟喜...
+    
+    <a href="/2019/09/02/2019-9-2lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
 
-    
-
-  
-    <article id="post-2019-9-1make-wordTemplate" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-9-1make-wordTemplate" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/09/01/2019-9-1make-wordTemplate/">2019-9-1make_wordTemplate</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/09/01/2019-9-1make-wordTemplate/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/09/01/2019-9-1make-wordTemplate/" class="article-date">
-	  <time datetime="2019-09-01T04:08:05.000Z" itemprop="datePublished">September 1, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Microsoft-word-的document-xml-模板生成word-template-docx-过程"><a href="#Microsoft-word-的document-xml-模板生成word-template-docx-过程" class="headerlink" title="Microsoft word 的document.xml 模板生成word-template.docx 过程"></a><strong>Microsoft word 的document.xml 模板生成word-template.docx 过程</strong></h1><p>需求：生成一个模板word-template.docx ，在nodejs 中匹配对应的模板code，最终生成需求.docx</p>
-<p>工具：office word、code IDE。</p>
-<ol>
-<li>首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以<code>____</code>代替之。作用是等会生成最终模板的地方，很容易找到。</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate1.jpg" alt="生成word.docx"></p>
-<ol start="2">
-<li><p>将word.docx 解压成文件夹template</p>
-<p> mac/linux$unzip -o word.docx -d template</p>
-<p> windows$”windows unzip 解决工具路径” -o “word.docx 路径” -d “template 路径”</p>
-</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate2.jpg" alt="生成word 的template 目录"></p>
-<ol start="3">
-<li>template 目录大致介绍</li>
-</ol>
-<p><img src="/css/images/generate_wordTemplate3.jpg" alt="template 目录"></p>
-<p>重要的目录在框中。</p>
-<pre><code>[Content_Types.xml] 是用来描述内部使用的格式说明。
 
-word/document.xml 核心文件，修改的描述就在这。
-
-word/_rels/document.xml.rels 是描述资源文件的relationShip
-
-word/media/ 用来放图片
-</code></pre><p><strong>接下来就是修改成我们的最终模板</strong></p>
-<ol start="4">
-<li>修改word/document.xml</li>
-</ol>
-<p>替换模板code 格式我们使用lodash.template —&gt; <strong><code>&lt;%= templateCode %&gt;</code></strong></p>
-<p><img src="/css/images/generate_wordTemplate4.jpg" alt="修改document.xml"></p>
-<p>如果是插入jpeg 图片(png/jpg 都可以), 我们可以如下:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">w:p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">w:r</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">w:color</span> <span class="attr">w:val</span>=<span class="string">"00FF00"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:rPr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">w:pict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">id</span>=<span class="string">"_x0000_i1025&lt;%- index %&gt;"</span> <span class="attr">o:spt</span>=<span class="string">"75"</span> <span class="attr">type</span>=<span class="string">"#_x0000_t75"</span> <span class="attr">style</span>=<span class="string">"height:&lt;%- item.height %&gt;pt;width:&lt;%- item.width %&gt;pt;"</span> <span class="attr">filled</span>=<span class="string">"f"</span> <span class="attr">o:preferrelative</span>=<span class="string">"t"</span> <span class="attr">stroked</span>=<span class="string">"f"</span> <span class="attr">coordsize</span>=<span class="string">"21600, 21600"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:path</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">focussize</span>=<span class="string">"0,0"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">on</span>=<span class="string">"f"</span> <span class="attr">joinstyle</span>=<span class="string">"miter"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v:imagedata</span> <span class="attr">r:id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">o:title</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">o:lock</span> <span class="attr">v:ext</span>=<span class="string">"edit"</span> <span class="attr">aspectratio</span>=<span class="string">"f"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:wrap</span> <span class="attr">type</span>=<span class="string">"none"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">w:10:anchorlock</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">w:pict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">w:r</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">%</span> &#125;);%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">w:p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样便可循环插入多张图片啦。</p>
-<ol start="5">
-<li>修改word/_rels/document.xml.rels</li>
-</ol>
-<p>这里是用来指定植入的资源(图片)关系。</p>
-<p>我们只需在原本存在<code>&lt;Relationships xmls=&quot;...xxx&quot;&gt;</code>一行下增加新增的rId 资源链接：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Relationships</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.openxmlformats.org/package/2006/relationships"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">_.forEach</span>(<span class="attr">images</span>, <span class="attr">function</span>(<span class="attr">item</span>, <span class="attr">index</span>) &#123; %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"&lt;%- item.rid %&gt;"</span> <span class="attr">Type</span>=<span class="string">"http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"</span> <span class="attr">Target</span>=<span class="string">"media/image&lt;%- index %&gt;.jpeg"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%</span> &#125;); %&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Relationship</span> <span class="attr">Id</span>=<span class="string">"rId8"</span> <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="/css/images/generate_wordTemplate5.jpg" alt="document.xml.rels"></p>
-<p>同时找到这里最大的Id，如<code>Id=&quot;rId16&quot;</code>, 之后用到。</p>
-<ol start="6">
-<li>修改[Content_Types].xml 增加使用资源ext</li>
-</ol>
-<p>这里使用jpeg 图片后缀名，增加一行:<code>&lt;Default Extension=&quot;jpeg&quot; ContentType=&quot;image/jpeg&quot;/&gt;</code></p>
-<p><img src="/css/images/generate_wordTemplate6.jpg" alt="Content_Types"></p>
-<p>如果没有增加该行(或者上面提到的rId 填错)，出现问题特点是: WPS能正常打开；office word 提示<strong>无法打开Open XML xxx 因为内容存在问题或者文件名可能包含无效字符</strong> <strong>文件已损坏，无法打开。</strong></p>
-<p>点击了“确定”，接着又提示<strong>xxx.docx 中发现无法读取的内容。是否要恢复此文档的内容？如果您信任此文档的来源，请单击“是”</strong>，点了“是”之后又能正常浏览。</p>
-<ol start="6">
-<li>word/media 文件夹</li>
-</ol>
-<p>该文件夹是图片移进来后，<code>rId ++</code>。把图片信息保存到word/document.xml 的同时，将资源链接写进word/_rels/document.xml.rels</p>
-<ol start="7">
-<li>压缩 成word-template.docx 模板文件</li>
-</ol>
-<p><code>zip ../word-template.docx -r .</code></p>
-<p>将word 文件夹下的所有文件使用zip 压缩。名称指定为word-template.docx 模板即打包完毕。</p>
-<p><img src="/css/images/generate_wordTemplate7.jpg" alt="word-template.docx"></p>
-<p>至此word-template 模板生成完毕。</p>
-<blockquote>
-<p>!!!ATTENTION \<br>制作最好用Windows 操作系统。如果使用Mac OS 制作，一定要将制作好的文件拖到Windows 虚拟机查看是否多出文件, 如 <code>.DS_Store</code> 文件</p>
-</blockquote>
-<blockquote>
-<p>上述情况会导致WPS 能正常打开，微软的word 总是提示失败超级bug</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/01/2019-9-1make-wordTemplate/">2019-9-1make_wordTemplate</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-01 12:08:05" datetime="2019-09-01T04:08:05.000Z" itemprop="datePublished">2019-09-01</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        Microsoft word 的document.xml 模板生成word-template.docx 过程需求：生成一个模板word-template.docx ，在nodejs 中匹配对应的模板code，最终生成需求.docx
+工具：office word、code IDE。
+
+首先在word 中修改好我们要的样式。在对应要修改模板文字 的地方，以____代替之。作用是等会生成最终模板的...
+    
+    <a href="/2019/09/01/2019-9-1make-wordTemplate/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
 
-    
-
-  
-    <article id="post-2019-8-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-8-9lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/08/09/2019-8-9lesson/">2019-8-9lesson</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/08/09/2019-8-9lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/08/09/2019-8-9lesson/" class="article-date">
-	  <time datetime="2019-08-09T04:07:21.000Z" itemprop="datePublished">August 9, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="git-push-origin-branch-出现error"><a href="#git-push-origin-branch-出现error" class="headerlink" title="git push origin branch 出现error"></a><strong>git push origin branch 出现error</strong></h1><p>git push origin V4 报错:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">To gitlab.xxx.git</span><br><span class="line">! [rejected]    branch -&gt; branch (non-fast-forward)</span><br><span class="line">error: failed to push some refs to <span class="string">'gitlab.xxx.git'</span></span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br></pre></td></tr></table></figure>
-<p>这里表明你的点是behind。</p>
-<p>那就 git pull, 但是报错:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">There is no tracking information <span class="keyword">for</span> the current branch.</span><br><span class="line">Please specify <span class="built_in">which</span> branch you want to merge with.</span><br><span class="line">See git-pull(1) <span class="keyword">for</span> details.</span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<p>git pull === git fetch + git merge</p>
-<p>这里的意思是要你指明remote 和branch: <code>git pull origin V4</code></p>
-<p>如果要将合并的点rebase 掉，<code>git pull --rebase origin V4</code></p>
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/09/2019-8-9lesson/">2019-8-9lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-09 12:07:21" datetime="2019-08-09T04:07:21.000Z" itemprop="datePublished">2019-08-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        git push origin branch 出现errorgit push origin V4 报错:
+1234To gitlab.xxx.git! [rejected]    branch -&gt; branch (non-fast-forward)error: failed to push some refs to 'gitlab.xxx.git'hint: Updates were...
+    
+    <a href="/2019/08/09/2019-8-9lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 
-    
+</div>
 
-  
-    <article id="post-2019-8-8lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-8-8lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/08/08/2019-8-8lesson/">2019-8-8lesson</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/08/08/2019-8-8lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/08/08/2019-8-8lesson/" class="article-date">
-	  <time datetime="2019-08-08T04:06:31.000Z" itemprop="datePublished">August 8, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><p>如何快速进步，突破学习新的知识、技术。</p>
-<p>我的方法，一句话概括：在自己规划的道路上，不怕试错，勇敢试错。出问题了，多方思考，解决问题。</p>
-<p>下面是废话：blablabla</p>
-<p>大学时期，我和我的几个小伙伴不知道学什么、方向不知道会走向何处。我们都是穷人过来，肯定不会说真的堕落。但是就因为穷人，眼界比他人要小一点，导致有时我们能做的, 能接触的就更局限了。</p>
-<p>我和我同学大一大二上课还是会稍微努力，不过课后没有进展，导致挂科无数。下课一起打游戏，当时LOL 还不风靡，玩的CF，下午打篮球。那时候篮球能力是真强，不像现在肚子都是肉。后来大二就更是会翘课进网吧，因为在课上我们都在睡觉，真的在睡觉。</p>
-<p>为什么，因为大学里面，老师教你的，都是如果拿着锤子，找钉子。</p>
-<p>整天拿着锤子，反复推敲，仔细研磨，整个大学四年，我发现我们还没动手过去找一个真实的钉子。也许你会说，那些题目，那些作业，不就是你的钉子么？我觉得年轻的人们，都会当局者迷。也许我们现在看来，那些都是非常有用，在现在都是必不可少，甚至悔不当初。但是当局者迷，每人境遇都是不同，我当初就觉得，未来我不一定用得上，数学题算来算去，最后你填写答案:1，正确率基本都是70%。为什么我为了70%能填对答案的问题，需要绕来绕去，反复抚摸锤子，恨不得拿舌头狂舔。</p>
-<p>四年，老师们一上课就是教研，但是不会告诉今年这堂课在实际场景，比如xxx会碰到。ok，很难想象？那我们来真实模拟这个钉子！也许这次上课导致上课的拖延、甚至为了模拟这个钉子花了4节课、6节课。大家跟着老师一路走来，经验、处事、遇到问题时的攻坚，到最终见到钉子，此时resolve。</p>
-<p>我觉得我爱上这种遇到苦难，解决苦难的过程。如现在种种这般。然后学校不同意，老师不愿意，教学任务啊老铁。学生只能学到皮毛，大学生啊！！！</p>
-<p>当然现在不是说以前怎么怎么的，什么我现在这么菜要怪老师，什么要怪体制，没有没有。吐槽下而已。</p>
-<p>above，我都想说明，钉子和锤子的关系、的前后顺序。</p>
-<p>曾经我学到一个新技术，想找一个地方去实践。我找我前CTO。他告诉这个技术人要理清的步骤：先有钉子，然后找到锤子解决这钉子。</p>
-<p>最近我多次使用docker 之后，就觉得好用是好用，但是没有管理，觉得不自在。宕机了？断网了？这个机子断了？企业服务断了？</p>
-<p>如果我未来会要扛起一面大旗，我就需前提做好准备，做好狂风暴雨的突袭！所以我考虑了下docker-swarm，但是感觉那里不对，不是很密西。</p>
-<p>我搞了搞k8s, 然后我的两只小鸡都全部瘫了。在翻看相关文档，提到k3s。是针对我的小鸡仔们的。</p>
-<p>我搞了k3s，但是遇到问题：我有个非容器服务，通过nginx 转子域名的443 端口。但是k3s 装上去后，nginx 服务端口立马全部失效了。</p>
-<p>怎么描述：nginx 的80监听端口被k3s 强行取走。虽然netstat -lnp |grep 80 还是nginx 的，但access.log 没有反应。我不知道怎么应对。</p>
-<p>对于这个我想要两种方法：</p>
-<ol>
-<li><p>k3s 的服务，我使用编译的nginx 要什么端口，nginx 我转给你，都转给你，但是你别抢80服务；</p>
-</li>
-<li><p>k3s 你把能暴露端口的方法告知我一下，不然我搞不了本机端口啊。</p>
-</li>
-</ol>
-<p>当时我不知道Ingress，毕竟强行学习的嘛。试了好多种方案不行，没来得及看相关文章。当时想问伟哥，不过他太忙，我就问问一个同事，他以前做运维的(他看起来比我岁数小的样子，原来比我大，孩子都6岁啦，哈哈，以后可以多交流)。他给我一些帮助，也让我多看书，把里面的原理整清楚，以后遇到问题、排查也懂。不过我觉得，我当前只是想完成集群的搭建、应该解决集群搭建问题，而不是找一大本书完全明白。</p>
-<p>这就像拿一把超级大锤(我看完书了，不就等于超级大锤), 完成我短期要求：搭建起起来，这个小钉子需求。从成本、效率上看都是过犹之。</p>
-<p>我昨晚想着，通篇看书这事，先拖后吧。等之后有人懂了，可以乘机偷学。</p>
-<p>那么先完成docker-swarm。但是同样出现一些小坑，刚接触，没办法立即查出来，解出来。</p>
-<p>于是我今天早上东问问西问问，得知k3s 为了完成内部pod 端口upstream 要求，集成了nginx。同时，开开关关nginx 带来损耗，此时Ingress 作为自动编排规则。我试了下，哎，虽然外部VVVVVV 要导出规则，还没整上(估计还是Ingress 有关操作)，那么先完成其他需求了再说。</p>
-<p>至此，钉子(docker 服务集群化需求)一经出现，我找了相应的锤子(最终找到k3s)解决了需求。</p>
-<p>钉子的产生，还是源于自身大胆的去尝试。</p>
-<p>这次的钉子需要虚拟机或者vps，该vps 还是能尽情折腾，坏了就坏了。</p>
-<p>综上，尽情的产生钉子，要不怕难，然后使用身边的资源，多方思考找到锤子解决。</p>
-<p>这兴趣产生的难，在解决后确实让我很开怀。</p>
-<h1 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h1><p>得道者多助，拾到者捐助。</p>
-<p>在新的环境怕被人说能力不强，是饭桶，于是我就努力喝水，这样他们最多称我为水桶，而不是饭桶了。</p>
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/08/2019-8-8lesson/">2019-8-8lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-08 12:06:31" datetime="2019-08-08T04:06:31.000Z" itemprop="datePublished">2019-08-08</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        杂谈如何快速进步，突破学习新的知识、技术。
+我的方法，一句话概括：在自己规划的道路上，不怕试错，勇敢试错。出问题了，多方思考，解决问题。
+下面是废话：blablabla
+大学时期，我和我的几个小伙伴不知道学什么、方向不知道会走向何处。我们都是穷人过来，肯定不会说真的堕落。但是就因为穷人，眼界比他人要小一点，导致有时我们能做的, 能接触的就更局限了。
+我和我同学大一大二上课还是会稍微努力，不过...
+    
+    <a href="/2019/08/08/2019-8-8lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
 
-    
-
-  
-    <article id="post-2019-8-5lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-8-5lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/08/05/2019-8-5lesson/">2019-8-5lesson</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/08/05/2019-8-5lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/08/05/2019-8-5lesson/" class="article-date">
-	  <time datetime="2019-08-05T04:06:09.000Z" itemprop="datePublished">August 5, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>人的一生并不是只有工作，就像我，我的两生、多生 都得用来工作</p>
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/05/2019-8-5lesson/">2019-8-5lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-05 12:06:09" datetime="2019-08-05T04:06:09.000Z" itemprop="datePublished">2019-08-05</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        人的一生并不是只有工作，就像我，我的两生、多生 都得用来工作
+
+    
+    <a href="/2019/08/05/2019-8-5lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
 
-    
-
-  
-    <article id="post-2019-8-1lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-8-1lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/08/01/2019-8-1lesson/">2019-8-1lesson</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/08/01/2019-8-1lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/08/01/2019-8-1lesson/" class="article-date">
-	  <time datetime="2019-08-01T04:05:37.000Z" itemprop="datePublished">August 1, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="k3s"><a href="#k3s" class="headerlink" title="k3s"></a>k3s</h1><p>最近花了点时间做服务器集群工作尝试。原因是，单就docker，如果服务器不尝试集群，那么对于高可用、高并发，都将是梦，永远都有瓶颈。</p>
-<p>我认识的运维和他人认知的运维不一样。</p>
-<p>我觉得真正的开发、运维，是让你在最有限的工具、环境里面，做出最大可用的效益。</p>
-<p>我用rancher k8s 一上来就吃掉了所有cpu、内存，那我们就啥也搞不了了。当时卡的受不了，直接换成k3s。</p>
-<p>我的两只小鸡配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">67.x.x.x</span><br><span class="line">CPU: 1</span><br><span class="line">RAM: 256M (你没看错, 于是我加点交换区2G, 但是他是CN2 直连， 搬瓦工)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">104.x.x.x</span><br><span class="line">CPU: 1</span><br><span class="line">RAM: 1G (加交换区2G，网络稍慢些， hostwind)</span><br></pre></td></tr></table></figure>
-<p>以上就是我的两只炮灰小鸡啦。</p>
-<p>之后会对k3s 部署进行说明。</p>
-<p>当前k3s 部署会将nginx 端口替换。暂时对这个了解不清。解决了之后回来完成这个主题。</p>
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k3s/">k3s</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/01/2019-8-1lesson/">2019-8-1lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-01 12:05:37" datetime="2019-08-01T04:05:37.000Z" itemprop="datePublished">2019-08-01</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        k3s最近花了点时间做服务器集群工作尝试。原因是，单就docker，如果服务器不尝试集群，那么对于高可用、高并发，都将是梦，永远都有瓶颈。
+我认识的运维和他人认知的运维不一样。
+我觉得真正的开发、运维，是让你在最有限的工具、环境里面，做出最大可用的效益。
+我用rancher k8s 一上来就吃掉了所有cpu、内存，那我们就啥也搞不了了。当时卡的受不了，直接换成k3s。
+我的两只小鸡配置：
+1...
+    
+    <a href="/2019/08/01/2019-8-1lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k3s/">k3s</a></li></ul>
 
-    
+</div>
 
-  
-    <article id="post-2019-7-23lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-7-23lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/23/2019-7-23lesson/">2019-7-23lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/07/23/2019-7-23lesson/" class="article-date">
-	  <time datetime="2019-07-23T04:04:50.000Z" itemprop="datePublished">July 23, 2019</time>
-	</a>
-
-      
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/07/23/2019-7-23lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="记录设置Centos7-Nginx-制作一个简单的点播服务"><a href="#记录设置Centos7-Nginx-制作一个简单的点播服务" class="headerlink" title="记录设置Centos7 Nginx 制作一个简单的点播服务"></a><strong>记录设置Centos7 Nginx 制作一个简单的点播服务</strong></h2><p>起因：当前nginx 版本是1.17.1, 想增加nginx-rtmp-module,找不到configure 文件，所以打算降版本。</p>
-<pre><code>删除CentOS 上的Nginx
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/23/2019-7-23lesson/">2019-7-23lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-23 12:04:50" datetime="2019-07-23T04:04:50.000Z" itemprop="datePublished">2019-07-23</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        记录设置Centos7 Nginx 制作一个简单的点播服务起因：当前nginx 版本是1.17.1, 想增加nginx-rtmp-module,找不到configure 文件，所以打算降版本。
+删除CentOS 上的Nginx
 systemctl nginx stop
 删除Nginx 的自动启动
 centos6:语法
 chkconfig nginx off
 centos7:语法
-systemctl disable nginx.service
-
-从源头删除nginx
-rm -rf /usr/sbin/nginx
-rm -rf /etc/nginx
-rm -rf /etc/init.d/nginx
-
-在使用yum 清理
-yum remove nginx
-
-下载nginx-rtmp-module
-cd /root/download
-git clone https://github.com/arut/nginx-rtmp-module.git
-wget http://nginx.org/download/nginx-1.10.3.tar.gz
-tar -zxvf nginx-1.10.3.tar.gz
-cd nginx-1.10.3
-
-设置并install
-./configure --add-module=${刚下载的路径}/nginx-rtmp-module --with-http_ssl_module
-make &amp;&amp; make install
-</code></pre><p>此时nginx 已经在 <code>/usr/local/nginx</code></p>
-<pre><code>设置source:
-vim /etc/profile.d/nginx.sh
-</code></pre><p>添加一下内容</p>
-<pre><code>export NGINX_HOME=/usr/local/nginx
-export PATH=$NGINX_HOME/sbin:$PATH
-</code></pre><p>保存后使配置生效:</p>
-<pre><code>source /etc/profile
-</code></pre><p>测试一下：<code>nginx -V</code> 输出了:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nginx version: nginx/1.10.3</span><br><span class="line">built by gcc 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC)</span><br><span class="line">built with OpenSSL 1.0.2k-fips  26 Jan 2017</span><br><span class="line">TLS SNI support enabled</span><br><span class="line">configure arguments: --add-module=/root/download/nginx-rtmp-module/ --with-http_ssl_module</span><br></pre></td></tr></table></figure>
-<p>使其在Centos7 systemctl 可以使用</p>
-<pre><code>vim /usr/lib/systemd/system/nginx.service
-</code></pre><p>输入文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx - high performance web server</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>设置开机自启动: <code>systemctl enable nginx.service</code></p>
-<p>查看所有服务: <code>systemctl list-units --type=service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;</span><br><span class="line">  server &#123;</span><br><span class="line">    listen 1935;</span><br><span class="line">    chunk_size 4096;</span><br><span class="line"></span><br><span class="line">    application vod &#123;</span><br><span class="line">      play /opt/video/vod;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后就可以使用: rtmp://ip/vod/1.mp4 点击查看啦</p>
-<p><a href="https://segmentfault.com/a/1190000009723940" target="_blank" rel="noopener">参考1</a><br><a href="https://www.jianshu.com/p/a210eab31f45" target="_blank" rel="noopener">参考2</a></p>
-<h2 id="Nginx-http-flv-module"><a href="#Nginx-http-flv-module" class="headerlink" title="Nginx-http-flv-module"></a><strong>Nginx-http-flv-module</strong></h2><p>昨天玩了Nginx-rtmp-module，但是指定路径是: rtmp://ip/vod/1.mp4 需要使用ip。这样就很low 了，简直拿不出去手(直接使用ip 还是挺不自由的)</p>
-<p>当前我的ip 都是挂在Cloudflare 上。</p>
-<p>那是不是可以: rtmp://<a href="http://www.baidu.com:1935/vod/1.mp4" target="_blank" rel="noopener">www.baidu.com:1935/vod/1.mp4</a> -&gt; rtmp://<a href="http://www.baidu.com:80/vod/1.mp4" target="_blank" rel="noopener">www.baidu.com:80/vod/1.mp4</a> 这样呢？？</p>
-<p><a href="https://github.com/arut/nginx-rtmp-module/issues/1180" target="_blank" rel="noopener">参考1</a><br><a href="https://github.com/winshining/nginx-http-flv-module" target="_blank" rel="noopener">参考2</a><br><a href="https://segmentfault.com/a/1190000016043297" target="_blank" rel="noopener">参考3</a></p>
-
-      
+system...
+    
+    <a href="/2019/07/23/2019-7-23lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
 </article>
 
-<!-- Table of Contents -->
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a></li></ul>
 
-    
+</div>
 
-  
-    <article id="post-2019-7-22lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+
+            </li>
         
+            <li class="post-list-item fade">
+                <article id="post-2019-7-22lesson" class="article-card article-type-post" itemprop="blogPost">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/07/22/2019-7-22lesson/">2019-7-22lesson</a>
-    </h1>
-  
-
-      </header>
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2019/07/22/2019-7-22lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
     
-    <div class="article-meta">
-      
-	Posted on <a href="/2019/07/22/2019-7-22lesson/" class="article-date">
-	  <time datetime="2019-07-22T04:03:53.000Z" itemprop="datePublished">July 22, 2019</time>
-	</a>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="tinytiny"><a href="#tinytiny" class="headerlink" title="tinytiny"></a>tinytiny</h1><p>7.20 号将tinytiny 完成，做成一个节点，接下来就是做游戏赚钱了。</p>
-<p>之前的作品我觉得都挺好，应该能赚钱，但是一个人抽不出手，也许真的只能做游戏了吧。</p>
-<h3 id="auth-ahuang-ml"><a href="#auth-ahuang-ml" class="headerlink" title="auth.ahuang.ml"></a>auth.ahuang.ml</h3><p>auth.ahuang.ml 这个是用作用户中心、授权其他产品权限、授权其他产品获得相关用户信息。</p>
-<h3 id="diary-ahuang-ml"><a href="#diary-ahuang-ml" class="headerlink" title="diary.ahuang.ml"></a>diary.ahuang.ml</h3><p>diary.ahuang.ml 基础用户没什么功能、vip1有一些功能、vip2功能比较多，sexy，所以vip2 不能推广。</p>
-<h3 id="www-ahuang-ml"><a href="#www-ahuang-ml" class="headerlink" title="www.ahuang.ml"></a><a href="http://www.ahuang.ml" target="_blank" rel="noopener">www.ahuang.ml</a></h3><p><a href="http://www.ahuang.ml" target="_blank" rel="noopener">www.ahuang.ml</a> 其实也是budget.ahuang.ml 是做《iOS/葩皮记账》 的后台、tinytiny 的后台。</p>
-<p>葩皮记账是一款根据git 原理，将用户记账多端登录功能的轻松实现，能保证用户在游客登录、正常登录等使用情景的优化。</p>
-<h3 id="tinytiny-1"><a href="#tinytiny-1" class="headerlink" title="tinytiny"></a>tinytiny</h3><p>tinytiny 使用的是tinypng 的API，其默认每个邮箱每月500个免费使用额度。当时我的思考是：</p>
-<p>如果集合20个邮箱，那就有10000个使用额度，只要保证key 合理调度、任务配置、用户使用额度检查、回滚等配合操作，就能保证任务的合理性。</p>
-<p>依靠以上的思路，所以有了这款小产品，当前还不完善。</p>
-<h3 id="总结和计划要做的事"><a href="#总结和计划要做的事" class="headerlink" title="总结和计划要做的事"></a><strong>总结和计划要做的事</strong></h3><p>网页产品</p>
-<ul>
-<li><p>[] 增加埋点</p>
-</li>
-<li><p>[] 增加google 广告</p>
-</li>
-</ul>
-<p>auth.ahuang.ml</p>
-<ul>
-<li><p>[] 用户oauth 进入register 增加callback: 用户register 完返回到oauth 界面</p>
-</li>
-<li><p>[] 用户进入home 界面时刷新用户资料、或者增加用户资料页刷新用户资料</p>
-</li>
-<li><p>[] tinytiny 产品的下载页</p>
-</li>
-</ul>
-<p>diary.ahuang.ml</p>
-<ul>
-<li>[] 增加段子、搞笑 类别</li>
-</ul>
-<p>budget.ahuang.ml</p>
-<ul>
-<li><p>[] 用户压缩记住上次选择路径</p>
-</li>
-<li><p>[] 增加选项：用户压缩直接覆盖源资源、同时领指定一个文件夹存放用户的源资源</p>
-</li>
-</ul>
-<p>tinytiny electron-app</p>
-<ul>
-<li><p>[] concurentlly start task (current: serially)</p>
-</li>
-<li><p>[] remember user last select path</p>
-</li>
-<li><p>[] user check out whether PROGRAM “cover source (together with a new directory)” or “a new directory name ‘tiny’(COMPLETE)”</p>
-</li>
-</ul>
-<p>如果可以，我想在android 搞一个小小的程序。作用是识别用户的来电，监听电话号码和腾讯手机管家的不良通讯录(或者自己制定一个)，匹配之后，自动播放用户自己的广告，这样便能对那些天天找你“来买房啊”、“来买车啊”、“其他乱七八糟业务” 造成回击。</p>
 
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
   
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/22/2019-7-22lesson/">2019-7-22lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-22 12:03:53" datetime="2019-07-22T04:03:53.000Z" itemprop="datePublished">2019-07-22</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        tinytiny7.20 号将tinytiny 完成，做成一个节点，接下来就是做游戏赚钱了。
+之前的作品我觉得都挺好，应该能赚钱，但是一个人抽不出手，也许真的只能做游戏了吧。
+auth.ahuang.mlauth.ahuang.ml 这个是用作用户中心、授权其他产品权限、授权其他产品获得相关用户信息。
+diary.ahuang.mldiary.ahuang.ml 基础用户没什么功能、vip1...
+    
+    <a href="/2019/07/22/2019-7-22lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
 </article>
 
-<!-- Table of Contents -->
 
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/7/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
     </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
+</nav>
 
     </div>
-  </div>
 
-
-  
+    </main>
+    <footer class="footer ">
     
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
+    <div class="top">
         
-          <li class="clearfix">
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
 
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
-        
-      </ul>
     </div>
-  </div>
-
-  
     
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/page/6/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/page/6/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3aO27EMAwFQN//0k67QCDjkfqsE4yqhQtptAVBUryueN0f6/PL6Pdo/d7z2rFwcXGnuckBoyN7O89cEhcX9yR3dNjz1vNhLjfg4uK+mfv8Jd8NFxf3v3Kfvz+nRLi4uO/nzhcqVdb2Wg0XF3eCmzc49v3e0t/FxcVtce/iyhOjPH0pnI6Li3uEmweUJO3Im6p5+oKLi/s2bv7g2guFzb8GFxf3CDdPU3ojGjm9eVVcXNyl3PzpNN86SlN6DRdcXNyD3Cq6mvrMPJwMuzi4uLjbuEmx0StpeqMbhVoNFxd3G3dtSOo91iajG8OXH1xc3A3cPJDlwxPJVavtFVxc3JPctQFovoiKajVcXNzN3JlRiaRMSi5fLZxwcXFPcquDEdViJklroj1xcXEPcvPGaC+0zYxo4OLifovbG4xYFeYKOQwuLu5m7l1c+QE5q/AYg4uLe4Sbr2qLJC+HZnbAxcXdx80LnvyBJC9pyu1aXFzcg9xq8VNNa3rFDy4u7l/h9lqieblVmATBxcV9Jbd3sWrttSyQ4eLiFrm9h9VmmhI/veDi4n6L2zs+b7Am4WxLfxcXF7fD/QF2hZp5jiKFbQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1204,26 +985,6 @@ export PATH=$NGINX_HOME/sbin:$PATH
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

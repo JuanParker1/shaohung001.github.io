@@ -1,212 +1,214 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>使用charles下载appstore历史版本 | aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="Charles https iTunes 下载历史版本">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta name="description" content="今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。 申明几点charles可以使用手机代理来查看http或者https内容。但是到了App Store去下载时，点击下去，始终出现  https://p33-buy.itunes.appl">
-<meta name="keywords" content="Charles https iTunes 下载历史版本">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用charles下载appStore历史版本">
-<meta property="og:url" content="https://shaohung001.github.io/2017/01/17/使用charles下载appStore历史版本/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:description" content="今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。 申明几点charles可以使用手机代理来查看http或者https内容。但是到了App Store去下载时，点击下去，始终出现  https://p33-buy.itunes.appl">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_02.png">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_03.png">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_05.png">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_06.png">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_07.png">
-<meta property="og:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_08.png">
-<meta property="og:updated_time" content="2017-01-17T05:33:38.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用charles下载appStore历史版本">
-<meta name="twitter:description" content="今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。 申明几点charles可以使用手机代理来查看http或者https内容。但是到了App Store去下载时，点击下去，始终出现  https://p33-buy.itunes.appl">
-<meta name="twitter:image" content="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>使用charles下载appStore历史版本 | aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Charles https iTunes 下载历史版本">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>使用charles下载appStore历史版本</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">使用charles下载appStore历史版本</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-17T03:47:12.000Z" itemprop="datePublished" class="page-time">
+  2017-01-17
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-使用charles下载appStore历史版本" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      使用charles下载appStore历史版本
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/01/17/使用charles下载appStore历史版本/" class="article-date">
-	  <time datetime="2017-01-17T03:47:12.000Z" itemprop="datePublished">January 17, 2017</time>
-	</a>
-
-      
-	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。</p>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-使用charles下载appStore历史版本" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">使用charles下载appStore历史版本</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-17 11:47:12" datetime="2017-01-17T03:47:12.000Z" itemprop="datePublished">2017-01-17</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>今早想看秒拍最早版本长啥样，于是就看看教程捣鼓捣鼓。说实话，网上的教程都是东一个西一个，缺少章节，重要位置往往遗漏。我这里自己写一个完整一些的，也算是记录，完全给菜鸟看，因为我也是菜鸟，连我特么都搞定了，你怕个鸟。</p>
 <h3 id="申明几点"><a href="#申明几点" class="headerlink" title="申明几点"></a>申明几点</h3><p>charles可以使用手机代理来查看http或者https内容。但是到了App Store去下载时，点击下去，始终出现</p>
 <blockquote>
 <p><a href="https://p33-buy.itunes.apple.com" target="_blank" rel="noopener">https://p33-buy.itunes.apple.com</a> SSLHandshake: Remote host closed connection during handshake</p>
@@ -220,13 +222,25 @@ var themeMenus = {};
 <ul>
 <li>下载https证书<a href="https://www.charlesproxy.com/assets/legacy-ssl/ssl.zip" target="_blank" rel="noopener">https://www.charlesproxy.com/assets/legacy-ssl/ssl.zip</a></li>
 <li>解压之后,双击该证书。</li>
-<li>前往钥匙串，搜索charles，然后就出现<img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png" alt="该证书不被信任" title="不被信任不正常嘛"></li>
-<li>双击该证书，同时点击第一项，使其<em>始终信任</em><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_02.png" alt="该证书选为始终信任" title="始终信任"></li>
+<li>前往钥匙串，搜索charles，然后就出现<figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png" title="不被信任不正常嘛" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_01.png" alt="该证书不被信任" title="不被信任不正常嘛" class></a>
+                <p>不被信任不正常嘛</p>
+            </figure></li>
+<li>双击该证书，同时点击第一项，使其<em>始终信任</em><figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_02.png" title="始终信任" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_02.png" alt="该证书选为始终信任" title="始终信任" class></a>
+                <p>始终信任</p>
+            </figure></li>
 <li>左上角关闭，同时要求输入mac电脑密码。<h4 id="因为我们在电脑上搞，那么我们要将代理设到电脑上。"><a href="#因为我们在电脑上搞，那么我们要将代理设到电脑上。" class="headerlink" title="因为我们在电脑上搞，那么我们要将代理设到电脑上。"></a>因为我们在电脑上搞，那么我们要将代理设到电脑上。</h4></li>
-<li>打开网络设置偏好-&gt;高级-&gt;代理-&gt;将http和https都设置为127.0.0.1 port:8888 <img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_03.png" alt="代理设置" title="按照步骤"></li>
+<li>打开网络设置偏好-&gt;高级-&gt;代理-&gt;将http和https都设置为127.0.0.1 port:8888 <figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_03.png" title="按照步骤" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_03.png" alt="代理设置" title="按照步骤" class></a>
+                <p>按照步骤</p>
+            </figure></li>
 <li>完了之后选择“应用”<h4 id="这里开始搞charles"><a href="#这里开始搞charles" class="headerlink" title="这里开始搞charles"></a>这里开始搞charles</h4></li>
 <li>打开charles，我这个版本的ssl proxy设置在 proxy下边的#SSL Proxying settings#里边，点击他进入，同时按图中设置 <a href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_04.png" title="按照步骤" target="_blank" rel="noopener">proxy设置</a><h4 id="这时打开iTunes和charles"><a href="#这时打开iTunes和charles" class="headerlink" title="这时打开iTunes和charles"></a>这时打开iTunes和charles</h4></li>
-<li>在charles startRecording的时候，在iTunes-&gt;应用-&gt;App Store里面搜索“秒拍”<br>可以看到图中解释 <img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_05.png" alt="charles内容解释" title="按照步骤"><br>往下翻看到<br>key&gt;softwareVersionBundleId<br><string>com.yixia.iphone</string><br><key>softwareVersionExternalIdentifier</key><integer>820135955</integer><br><key>softwareVersionExternalIdentifiers</key><br><array><br><integer>4981074</integer><br><integer>5394180</integer><br><integer>6879271</integer><br><integer>7521689</integer><br><integer>7688644</integer><br><integer>7941305</integer><br><integer>8166440</integer><br><integer>9007047</integer><br><integer>9411091</integer><br><integer>9872854</integer><br><integer>10633066</integer><br><integer>15892678</integer><br><integer>15974682</integer><br><integer>16060211</integer><br><integer>16091930</integer><br><integer>16504676</integer><br><integer>17263812</integer><br><integer>59592659</integer><br><integer>81073287</integer><br><integer>139932634</integer><br><integer>192742647</integer><br><integer>220962670</integer><br><integer>294852730</integer><br><integer>305732696</integer><br><integer>329852736</integer><br><integer>398862656</integer><br><integer>468142680</integer><br><integer>513982646</integer><br><integer>572242779</integer><br><integer>589372761</integer><br><integer>641902654</integer><br><integer>652212932</integer><br><integer>655043181</integer><br><integer>662912853</integer><br><integer>701362692</integer><br><integer>709942656</integer><br><integer>770264233</integer><br><integer>811423848</integer><br><integer>811487803</integer><br><integer>811635729</integer><br><integer>811781222</integer><br><integer>812037027</integer><br><integer>812232597</integer><br><integer>812328295</integer><br><integer>812440942</integer><br><integer>812536145</integer><br><integer>812563006</integer><br><integer>812597840</integer><br><integer>812675604</integer><br><integer>812763862</integer><br><integer>812874619</integer><br><integer>812980000</integer><br><integer>813078957</integer><br><integer>813307221</integer><br><integer>813588175</integer><br><integer>813621742</integer><br><integer>813630679</integer><br><integer>814108034</integer><br><integer>814127199</integer><br><integer>814228608</integer><br><integer>814261627</integer><br><integer>814370408</integer><br><integer>814372706</integer><br><integer>814567037</integer><br><integer>814567882</integer><br><integer>814592662</integer><br><integer>814800494</integer><br><integer>814875099</integer><br><integer>815021644</integer><br><integer>815023592</integer><br><integer>815055555</integer><br><integer>815350442</integer><br><integer>815358012</integer><br><integer>815393500</integer><br><integer>815457608</integer><br><integer>815607029</integer><br><integer>815608372</integer><br><integer>815615057</integer><br><integer>815654426</integer><br><integer>816131497</integer><br><integer>816162845</integer><br><integer>816749956</integer><br><integer>816873466</integer><br><integer>816998702</integer><br><integer>817114988</integer><br><integer>817301959</integer><br><integer>818053825</integer><br><integer>818219564</integer><br><integer>818406305</integer><br><integer>818614237</integer><br><integer>818735711</integer><br><integer>818784109</integer><br><integer>818961748</integer><br><integer>819270136</integer><br><integer>819601281</integer><br><integer>820135955</integer><br></array><br><key>vendorId</key><br><integer>1754660</integer><br><key>drmVersionNumber</key><br><integer>0</integer>
+<li>在charles startRecording的时候，在iTunes-&gt;应用-&gt;App Store里面搜索“秒拍”<br>可以看到图中解释 <figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_05.png" title="按照步骤" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_05.png" alt="charles内容解释" title="按照步骤" class></a>
+                <p>按照步骤</p>
+            </figure><br>往下翻看到<br>key&gt;softwareVersionBundleId<br><string>com.yixia.iphone</string><br><key>softwareVersionExternalIdentifier</key><integer>820135955</integer><br><key>softwareVersionExternalIdentifiers</key><br><array><br><integer>4981074</integer><br><integer>5394180</integer><br><integer>6879271</integer><br><integer>7521689</integer><br><integer>7688644</integer><br><integer>7941305</integer><br><integer>8166440</integer><br><integer>9007047</integer><br><integer>9411091</integer><br><integer>9872854</integer><br><integer>10633066</integer><br><integer>15892678</integer><br><integer>15974682</integer><br><integer>16060211</integer><br><integer>16091930</integer><br><integer>16504676</integer><br><integer>17263812</integer><br><integer>59592659</integer><br><integer>81073287</integer><br><integer>139932634</integer><br><integer>192742647</integer><br><integer>220962670</integer><br><integer>294852730</integer><br><integer>305732696</integer><br><integer>329852736</integer><br><integer>398862656</integer><br><integer>468142680</integer><br><integer>513982646</integer><br><integer>572242779</integer><br><integer>589372761</integer><br><integer>641902654</integer><br><integer>652212932</integer><br><integer>655043181</integer><br><integer>662912853</integer><br><integer>701362692</integer><br><integer>709942656</integer><br><integer>770264233</integer><br><integer>811423848</integer><br><integer>811487803</integer><br><integer>811635729</integer><br><integer>811781222</integer><br><integer>812037027</integer><br><integer>812232597</integer><br><integer>812328295</integer><br><integer>812440942</integer><br><integer>812536145</integer><br><integer>812563006</integer><br><integer>812597840</integer><br><integer>812675604</integer><br><integer>812763862</integer><br><integer>812874619</integer><br><integer>812980000</integer><br><integer>813078957</integer><br><integer>813307221</integer><br><integer>813588175</integer><br><integer>813621742</integer><br><integer>813630679</integer><br><integer>814108034</integer><br><integer>814127199</integer><br><integer>814228608</integer><br><integer>814261627</integer><br><integer>814370408</integer><br><integer>814372706</integer><br><integer>814567037</integer><br><integer>814567882</integer><br><integer>814592662</integer><br><integer>814800494</integer><br><integer>814875099</integer><br><integer>815021644</integer><br><integer>815023592</integer><br><integer>815055555</integer><br><integer>815350442</integer><br><integer>815358012</integer><br><integer>815393500</integer><br><integer>815457608</integer><br><integer>815607029</integer><br><integer>815608372</integer><br><integer>815615057</integer><br><integer>815654426</integer><br><integer>816131497</integer><br><integer>816162845</integer><br><integer>816749956</integer><br><integer>816873466</integer><br><integer>816998702</integer><br><integer>817114988</integer><br><integer>817301959</integer><br><integer>818053825</integer><br><integer>818219564</integer><br><integer>818406305</integer><br><integer>818614237</integer><br><integer>818735711</integer><br><integer>818784109</integer><br><integer>818961748</integer><br><integer>819270136</integer><br><integer>819601281</integer><br><integer>820135955</integer><br></array><br><key>vendorId</key><br><integer>1754660</integer><br><key>drmVersionNumber</key><br><integer>0</integer>
 
 </li>
 </ul>
@@ -236,190 +250,312 @@ var themeMenus = {};
 <p><array> </array></p>
 <p><integer>4981074</integer></p>
 <h1 id="进入重点啦！！！"><a href="#进入重点啦！！！" class="headerlink" title="进入重点啦！！！"></a>进入重点啦！！！</h1><ul>
-<li>删掉刚才的秒拍，给charles的那条链接点选这两个勾！！！breakpoint会让程序停在一开始的将要开始地方(这里就可以更改里面的参数，让其下载4981074历史版本)<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_06.png" alt="charles勾选内容" title="两个都勾上"></li>
+<li>删掉刚才的秒拍，给charles的那条链接点选这两个勾！！！breakpoint会让程序停在一开始的将要开始地方(这里就可以更改里面的参数，让其下载4981074历史版本)<figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_06.png" title="两个都勾上" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_06.png" alt="charles勾选内容" title="两个都勾上" class></a>
+                <p>两个都勾上</p>
+            </figure></li>
 <li>关掉charles,iTunes不要关闭</li>
 <li>打开charles,选上proxy-&gt;MAC OS X proxy</li>
-<li>到将要下载秒拍的那个地方,点击获取，charles breakpoint到这张图<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_07.png" alt="将要下载的内容换成“呱拍”,不要在意这个"></li>
-<li>根据下图，修改里面的参数<br><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_08.png" alt="根据步骤操作"><br>当版本号修改过后，即可点击下面的按钮“excuse”，可能要点击2次，观察iTunes下载是否开始，当要结束时，似乎还要点击一次“excuse”，最后反正就是下载成功了。<br>我这里使用iTool安装，你也可以直接用iTunes安装，个人爱好。到这里，你就可以随意搞你要的各个app版本啦。</li>
+<li>到将要下载秒拍的那个地方,点击获取，charles breakpoint到这张图<figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_07.png" title="将要下载的内容换成“呱拍”,不要在意这个" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_07.png" alt="将要下载的内容换成“呱拍”,不要在意这个" title class></a>
+                <p>将要下载的内容换成“呱拍”,不要在意这个</p>
+            </figure></li>
+<li>根据下图，修改里面的参数<figure class="image-box">
+                <a rel="使用charles下载appStore历史版本" href="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_08.png" title="根据步骤操作" data-fancybox="images"><img src="http://7xjcms.com1.z0.glb.clouddn.com/blog_installoldapps_08.png" alt="根据步骤操作" title class></a>
+                <p>根据步骤操作</p>
+            </figure>
+当版本号修改过后，即可点击下面的按钮“excuse”，可能要点击2次，观察iTunes下载是否开始，当要结束时，似乎还要点击一次“excuse”，最后反正就是下载成功了。<br>我这里使用iTool安装，你也可以直接用iTunes安装，个人爱好。到这里，你就可以随意搞你要的各个app版本啦。</li>
 </ul>
 <p>附我参考的文章<br><a href="http://www.cocoachina.com/ios/20161214/18351.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20161214/18351.html</a></p>
 
-      
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-01-17T05:33:38.000Z" itemprop="dateUpdated">2017-01-17 13:33:38</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2017/01/17/使用charles下载appStore历史版本/" target="_blank" rel="external">https://shaohung001.github.io/2017/01/17/使用charles下载appStore历史版本/</a>
+        
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a></li></ul>
-
-      
-        <div id="donation_div"></div>
-
-<script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/wechatPay.jpg?raw=true',
-  alipayImage: 'https://github.com/shaohung001/shaohung001.github.io/blob/master/css/images/aliPay.jpg?raw=true'
-});
-</script>
-      
-            
-      
-        
-	<section id="comments" class="comment">
-	  <div id="disqus_thread">
-	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	  </div>
-	</section>
-
-	<script type="text/javascript">
-	var disqus_shortname = 'shaohung001';
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	</script>
-
-
-      
+    <footer>
+        <a href="https://shaohung001.github.io">
+            <img src="/img/avatar.jpg" alt="aKer">
+            aKer
+        </a>
     </footer>
-  </div>
-  
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a></li></ul>
+
+            <div class="page-share-wrap">
     
-<nav id="article-nav">
-  
-    <a href="/2017/01/18/最近做项目要用到的库/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          最近做项目要用到的库
-        
-      </div>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2017/01/17/使用charles下载appStore历史版本/&title=《使用charles下载appStore历史版本》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2017/01/17/使用charles下载appStore历史版本/&title=《使用charles下载appStore历史版本》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="prev">
+      <a href="/2017/01/18/最近做项目要用到的库/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">最近做项目要用到的库</h4>
+      </a>
+    </div>
   
-    <a href="/2017/01/12/20170112meetbug/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">20170112meetbug</div>
-    </a>
+
+  
+    <div class="next">
+      <a href="/2017/01/12/20170112meetbug/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">20170112meetbug</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#申明几点"><span class="post-toc-number">1.</span> <span class="post-toc-text">申明几点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入正题"><span class="post-toc-number">2.</span> <span class="post-toc-text">进入正题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#因为我们在电脑上搞，那么我们要将代理设到电脑上。"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">因为我们在电脑上搞，那么我们要将代理设到电脑上。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#这里开始搞charles"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">这里开始搞charles</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#这时打开iTunes和charles"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">这时打开iTunes和charles</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#进入重点啦！！！"><span class="post-toc-number"></span> <span class="post-toc-text">进入重点啦！！！</span></a>
+            </li></nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
 </article>
 
-<!-- Table of Contents -->
-
-  <aside id="sidebar">
-    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
-    <strong class="toc-title">Contents</strong>
-    
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#申明几点"><span class="nav-number">1.</span> <span class="nav-text">申明几点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入正题"><span class="nav-number">2.</span> <span class="nav-text">进入正题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#因为我们在电脑上搞，那么我们要将代理设到电脑上。"><span class="nav-number">2.1.</span> <span class="nav-text">因为我们在电脑上搞，那么我们要将代理设到电脑上。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这里开始搞charles"><span class="nav-number">2.2.</span> <span class="nav-text">这里开始搞charles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这时打开iTunes和charles"><span class="nav-number">2.3.</span> <span class="nav-text">这时打开iTunes和charles</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#进入重点啦！！！"><span class="nav-number"></span> <span class="nav-text">进入重点啦！！！</span></a>
-    
-    </li></div>
-  </aside>
-</section>
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
         
-      </div>
-      <footer id="footer" class="site-footer">
-  
+        <div class="reward-code">
+            <img id="rewardCode" src="/css/images/wecharPay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/css/images/wecharPay.jpg" data-alipay="/css/images/aliPay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2017/01/17/使用charles下载appStore历史版本/&title=《使用charles下载appStore历史版本》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2017/01/17/使用charles下载appStore历史版本/&title=《使用charles下载appStore历史版本》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3ay24cMQwEwP3/n3auCRaZdJPS2gFqTgt4HiodJLqp1yu+vn67kr9+vV3Pd7bvOXzh4eHhLYaeDOv5zvc3v/9+vvN5bPmY8fDw8G7zZoNrl/VkiX//6/N28g8LHh4e3o/hJeVyUuu2U4OHh4f3P/K+yqt98+xOPDw8vM/z2oX4FGC/CR3LWvDw8PAmOUBR/n7v7yv9PTw8PLx1V33fDHte4jcxcTQGPDw8vAu8fMHdNK6SWHZ2fzROPDw8vKO85GPtUt5OU9IGyyOJP57Cw8PD+yDvecneD7QtkYchBR4eHt4F3ibAbSdrHzc8f2UV9eLh4eHFvHxZnwW4edyQT1YRlODh4eF9nLcJC9qn2iA42kjw8PDwLvPyRlcbqralcNtm++sb8PDw8C7w8qU5j1ZnhXL+bNtUw8PDw/sMr27Sr4vy2WYQtevw8PDwLvDaD5/aKtpJnE06Hh4e3lleG6EWheyhA1vtVL5aAB4eHl7JO7VA54z9Qav8zXh4eHj3eG0DLG9u5ZtNG1LkkS4eHh7eDV4bFuwL7nYDmIUgeHh4eLd5+fbw/Jn8/tnQ86/g4eHh3ePNhjKbmhkmf9urnQM8PDy8kjcLavMgII96W1j0FB4eHt4F3qYplUSxs9i3jSeKTQIPDw/vEK89xpSX2vuoYhb4RnsIHh4e3iFe23aaLfdJIJLfE0W3eHh4eNd47SD2LatZdFtMDR4eHt5R3qyczQPcNoTNQ+QoDsbDw8O7wGsX3GQobWi7P7KwKd/x8PDwZrz9Qau62xZP2YFjDXh4eHjXePvG2KyFttqvkgIaDw8P7wfw8m0gKa/ziCFv2uHh4eH9NN5sEZ8Fr21ggYeHh/dJXns8NC+O8wNbybfathkeHh7eDd7+H/720EC+uLfR8PDCw8PDS3m/ALZIac7TLs+tAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -427,26 +563,6 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

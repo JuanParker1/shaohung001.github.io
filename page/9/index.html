@@ -1,1471 +1,949 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/page/9/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
-  </div>
-</header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <section id="main">
-  
-    <article id="post-2018-11-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/09/2018-11-9lesson/">2018-11-9lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/11/09/2018-11-9lesson/" class="article-date">
-	  <time datetime="2018-11-09T15:35:34.000Z" itemprop="datePublished">November 9, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="上线React-Mobx-Antd-build-Nginx-经历"><a href="#上线React-Mobx-Antd-build-Nginx-经历" class="headerlink" title="上线React+Mobx+Antd + build + Nginx 经历"></a>上线React+Mobx+Antd + build + Nginx 经历</h1><p>首先非常开心，自己找遍解决方案，终于来到终点：<a href="http://lsgood.top" target="_blank" rel="noopener">http://lsgood.top</a> 我的第一个网页。<br>该网页由爬虫爬了一个二次元图片的网站，然后一个Typescript koa 后台提供数据，再由Reactjs 网页展现。</p>
-<p>首先遇到的第一个大山：centos 装mongodb </p>
-<p>先使用yum 安装mongodb，然后一直报”no package is avialable. nothing to do”, 我是mongodb 官网教程，建了一个.repo 来整的，然后又学会去redhat 的源找找看看。都在的，可以的呀。</p>
-<p>然后找到<code>$ getconf LONG_BIT</code>终于得知我的是32位。那就说明yum 的那些源都是x86 ，查看一番：果然。屁颠屁颠去看了有哪些32位mongodb 的我可以用。</p>
-<p>google 找到一个csdn 里面有个2.x 版本的，装上去果然可以启动，把我开心的呀。然后服务器用mongoose 2.x 版本及以下都不可用。一番寻找，找到<br><a href="https://blog.csdn.net/will5451/article/details/78642759" target="_blank" rel="noopener">CSDN centos用yum安装mongodb及 32位linux（centos）下mongoDB的安装</a>  的文章。采用wget 下载相应的版本。前往<a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">官网工具下载区</a> ，一开始也不明白哪个我真的可以用，最后终于找到排到最后一个的3.0x 版本的真的真的是32bit。</p>
-<p>快速放到服务器启动起来的时候，真的开心啊。</p>
-<p>然而一心以为后面React 网页yarn build 应该很简单，没想到又是一番挫折。</p>
-<p>既然数据好了，赶紧打包我的第一个React 应用。<code>yarn build</code> 很快！</p>
-<p>然后配置一下Nginx，把build 出来的文件拖到<code>/root/Work/web/girl</code> 目录下,Nginx 如下配置</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> www.lsgood.top lsgood.top;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> /girl/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /root/Work/web/;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先出来一个问题：由于不是放在Nginx 根目录，是<code>http://lsgood.top/girl</code> 这样的目录，导致内部css 资源、static 资源 找不到根路由，找的是<code>http://lsgood.top/xxxstaticxxx</code> 的目录资源，那就在package.json 加上一个field <code>homepage: &quot;.&quot;</code> 。</p>
-<p>这个解决之后出现一个花费我1.5 天寻找是React 内部问题，还是Nginx 没有配置好的问题：Nginx 配置路由(不同根目录)要么出现<code>Uncaught SyntaxError: Unexpected token &lt;</code> ；要么整个页面就是空白，同时查看<strong>右键 - 检查 - Sources</strong> 将我的React 程序目录源代码全部展示出来了。</p>
-<p>说明并没有启动我对应的index.html。我不明白为什么会出现这样，期间问了我以前同事，但还是没有答案（毕竟突然给他看，不明白里面所写，也忙，然后没有解出来）。</p>
-<p>然后1天过去后，我让现在后台帮忙，放到可以运行的网页那边看看。一开始怕他们麻烦，推荐他说，直接放文件名后面，就不用建立子域名。然后还是失败！</p>
-<p>这样我还是不知道是哪边的问题，我又又又google 找了下，有说不要放在<a href="http://host/girl/" target="_blank" rel="noopener">http://host/girl/</a> 子目录，放到Nginx根目录。我赶紧让后台帮忙再试一波！</p>
-<p>果然！成功，不过index 首页是OK，但是路由却进不去了。首页OK，路由有问题，说明React 应用没问题，Nginx 配置错误了，同时React 里面的路由也出错了。</p>
-<p>我又双叒叕google，找到这篇<a href="https://blog.csdn.net/Sophie_U/article/details/80006723" target="_blank" rel="noopener">关于react 在打包后：“找不到资源路径”的问题、部署到服务器二级目录 “打开为空白” 的问题</a> 这里说到一个很重点的信息：<strong>browserRouter/PUBLIC_URL/NGINX</strong> 这么几个重点词语。我还真用到了browserRouter， 问题也确实是<strong>访问时页面空白，没有报错</strong> 这种情况。</p>
-<p>那我就采用他的办法（花了一个下午加加班到晚上8点多）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1. React 在build 时:</span><br><span class="line">$ PUBLIC_URL=http://lsgood.top/ yarn build</span><br><span class="line">2. 将build 的子文件全部放到 /var/www/ 下面</span><br><span class="line">3. Nginx conf 配置：（参考 https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html）</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    server_name www.lsgood.top lsgood.top;</span><br><span class="line"></span><br><span class="line">    root /var/www;</span><br><span class="line">    index index.html index.htm;      </span><br><span class="line">    # Any route that doesn&apos;t have a file extension (e.g. /devices)</span><br><span class="line">    location ~ ^/favicon\.ico$ &#123;</span><br><span class="line">        root /var/www;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">        index index.html;</span><br><span class="line">        proxy_set_header   Host             $host;</span><br><span class="line">        proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header   X-Forwarded-Proto  $scheme;</span><br><span class="line">    &#125;</span><br><span class="line">    location @fallback &#123;</span><br><span class="line">        rewrite ^.*$ /index.html break;</span><br><span class="line">    &#125;</span><br><span class="line">    location /girlS/ &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8000/girl.v1/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /popcircle/ &#123;</span><br><span class="line">        root /root/Work/game/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>完美！</p>
-<p>服务器也能运行、游戏也能运行、网页也成功运行了。</p>
-<p>这三天的努力，愁的我都长了个痘痘，至少解决问题都是自己解决的，又get 到一个技能。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-10-31lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/31/2018-10-31lesson/">2018-10-31lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/10/31/2018-10-31lesson/" class="article-date">
-	  <time datetime="2018-10-31T13:19:09.000Z" itemprop="datePublished">October 31, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="记录最近干了啥玩意"><a href="#记录最近干了啥玩意" class="headerlink" title="记录最近干了啥玩意"></a>记录最近干了啥玩意</h3><p>进的公司人事、开发都给我特别的说明：比较有时间做自己的事，不会特别特别的忙。好吧，都这么说，真的真的希望不会特别忙，正和我意了。公司不忙，不代表我会慢下自己的脚步。</p>
-<p>进公司，前两天，哟，也是用黑苹果开发-&gt;我喜欢。和要离职的开发交接了相关文件，然后他继续用公司电脑，然后我？？？我没电脑，哎我去。。。中午赶忙请假回住所拿自己电脑了。进去后第一件事就是改一个推送消息+应用内消息，读了读里面的代码，写的不是很好，不好不好。。。<br>接下来一直都很闲，就把React 一套生态链学完了：React+Mobx+antd+scss。</p>
-<p>React 语法不难，难在于React、整个生态体系。</p>
-<p>我抄写了<a href="https://github.com/Juliiii/React-Cnode" target="_blank" rel="noopener">React-Cnode</a> 三遍，终于有所感悟。这个难点在于：1. 版本需要对应，否则里面属性有更改；2. mobx 有decorator 模式；3. scss、svg-sprite-loader 在webpack.config.dev 里面有需要配置的地方；4. antd 需要加装babel-plugin-import 的一个插件。</p>
-<p>学完了React 的web 软件开发，我获得的技能点有：</p>
-<blockquote>
-<p>OpenGL ES<br>iOS<br>白鹭<br>React<br>爬虫<br>Nodejs Server</p>
-</blockquote>
-<p>技能点满了没有？点满了没有？？？</p>
-<p>学完了React 等于是走完软件前端全部基础技能。内心也没有多大的触动。没有想象中的激动，没有想象中的学完后会刺激、放松之类的，反正很平静。我觉得还缺少一味良药：将技术化为金钱。</p>
-<p>粗人！动不动就钱钱钱。。。</p>
-<p>氮素，因为真的没有自由支配的资金，所以才张嘴闭嘴谈到钱。哪天我比那些说我庸俗的人更有钱的时候，角色就会对换，体验就不一样了。</p>
-<p>接下来的一星期，还是等待下个版本的设计，于是我动手爬了一个二次元网站的数据、图片。看着数据、图片一个一个收入囊中，体验是非常佳的。使用MongoDB 保存也是极度简单。接着写了一个Typescript koa 的server，之后就可以撸一个web 页面展示展示啦。</p>
-<p>其中遇到一个大问题：公司过手用着的黑苹果在设置当中被我改了个名字，随后管理员丢失了。管理员就这样丢失了？？What？？悲催的事就是这么来的：不能装软件、不能拿到sudo 权限，反正就只能简单用一用，别的啥都干不了。</p>
-<p>这么悲催，硬着头皮买了个U盘，重录入mac osx。</p>
-<blockquote>
-<p>CPU: i7<br>主板: 技嘉(啥型号，不知道)<br>显卡: 英伟达GTX750Ti</p>
-</blockquote>
-<p>要求：mac 开发只要能运行显卡驱动就好了，要求简单。</p>
-<p>首先找了很多教程，这个教程看的很直白：<a href="https://github.com/enify/blog/issues/2" target="_blank" rel="noopener">https://github.com/enify/blog/issues/2</a> 非常感谢这位大哥</p>
-<p>U盘制作挺快的，在windows 上将&gt; 8G的U盘按照上面网址大哥给的工具“DiskGenius” 格式化、转换分区表类型为GUID格式（当时我那显示是另一个条目名称，但是位置还是在那个位置）；</p>
-<p>去黑苹果论坛找到一个叫做<strong>macOS … With Clover</strong> 的系统镜像在淘宝“黑苹果论坛代下”，价格5毛，然后百度云盘下载太慢，淘宝买了6.9元一个月百度云盘。</p>
-<p>使用另一个软件：“TransMac” 找到U盘 选择“Format Disk for Mac”，然后选择“Restore with Disk Image” 选项，选择<strong>macOS … With Clover</strong> 系统镜像。然后就是等待将U盘设置为该系统的启动盘。</p>
-<p>设置EFI 文件夹里面的config为对应自己配置的config。我这里是i7 就选择其中的6代、7代那个config</p>
-<p>在BIOS 中设置U盘启动项，进入后第一个苹果标志Enter 进入，会进到写MAC 界面。选择<strong>磁工具盘</strong>，<strong>抹掉数据</strong>抹掉左上角OS X 的硬盘，然后退出回到之前界面，选择<strong>安装 macOS</strong> 中间会重启，然后记得选择第二个苹果标志（现在是安装到硬盘，第一个是U盘）。直到进入五国之类的。</p>
-<p>进入之后要做的两件事：<strong>固化Clover</strong>、<strong>英伟达显卡驱动</strong></p>
-<p>显卡驱动参考<a href="https://www.jianshu.com/p/becfe67a90bf" target="_blank" rel="noopener">简书</a><br><a href="https://www.insanelymac.com/forum/topic/324195-nvidia-web-driver-updates-for-macos-high-sierra-update-08302018/" target="_blank" rel="noopener">NVIDIA Web Driver</a>下载下来的找不到GTX750Ti.</p>
-<p>然后找到<a href="https://blog.csdn.net/longyc2010/article/details/51531288" target="_blank" rel="noopener">文章</a><br>在clover 里面找到有加<string>slide=0 dart=0 darkwake=1 nvda_drv=1 kext-dev-mode=1</string>clover  这么几个的打钩，然后重启就有了。<br>第一次安装，顺利。</p>
-<p>就这样点亮了黑苹果技能树！</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-10-17lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/29/2018-10-17lesson/">2018-10-17lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/10/29/2018-10-17lesson/" class="article-date">
-	  <time datetime="2018-10-29T14:50:41.000Z" itemprop="datePublished">October 29, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2018-10-17"><a href="#2018-10-17" class="headerlink" title="2018-10-17"></a>2018-10-17</h1><p>之前找工作，赶在了10月15号前入职（10月9号到岗），这样社保没有断，也算解决了尴尬的处境。</p>
-<p>国庆节放假，前三天认真学习，打打游戏。后面几天，突然老婆发神经，对，发神经，搞的不愉快，在倒数2天傍晚离开老婆自己一个人去跑步散心。于是那天晚上老婆又爬身上求我原谅。我看重原则，家人什么都是对的，但是原则不能错。后来怎么样，那只能原谅呗，嘎嘎。</p>
-<p>10月放假完第一天，有2个面试和傍晚的前往之前的复试（商谈工资）；</p>
-<p>早上去离不远一家搞智能硬件互联的公司，直接就给offer，但是离自己心里预期低；</p>
-<p>下午一家在七宝名叫<a href="小二郎">xx</a> 的一个婴幼儿教育的公司。约我去面试的女的面容姣好（去的时候刚好上楼遇见），保养很好，很美（无他不好的见解）。然后一个老头面试（说话结巴），先让我自我简介。我就巴拉巴拉说了自己的简况。然后他就问一个问题“数据结构”。是的，这个是我们系主任教的课，我听的特他妈认真。但是离校那么久，早还给老师了，而且当时也没学好，毕竟光听，没有真正实践的地方，没办法没办法。然后他就抓着这个点，说来面试的太差。哎哟，握草，现在面试iOS不仅要算法，还要数据结构很好？而且工资给的还非常低（8~15k，相对要做的领域，是非常低的，而且公司给的肯定就只有12k）？然后我就开始怼他，反正我又不是找不到工作的人。这种老头子能力肯定也是不咋地，要求却蛮多，脑子又不灵光，话都说不流利。肯定是忽悠公司花高价请自己来，说自己算法多好多好，实际一点产出都没有的人。现在互联网跟他的年龄早已不相仿。我敢断言：这个公司又会像以前我经历过的一些公司一样，不同的是，现在这个公司资金比我以前的要雄厚（毕竟我以前公司都比较穷，这个似乎会大一些），但是这种老古董定然给他败光！</p>
-<p>现在我又要屁颠屁颠灰溜溜滚蛋咯。</p>
-<p>回去到家再写了写东西，傍晚去复试。公司之前做线下运动的，线下有一定的资源，转线上。工资没有多高，社保又快到了，看老板眼神，跟着干吧，希望能带我脱离苦海吧。</p>
-<p>于是，又一次找工作历程经历完了。<br>有苦有乐，苦更多吧。更加让我续满动力实践自己的server！！！</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-9-27lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/27/2018-9-27lesson/">2018-9-27lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/09/27/2018-9-27lesson/" class="article-date">
-	  <time datetime="2018-09-27T05:14:06.000Z" itemprop="datePublished">September 27, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最近是面试期么"><a href="#最近是面试期么" class="headerlink" title="最近是面试期么"></a>最近是面试期么</h1><h2 id="内心一定要淡定"><a href="#内心一定要淡定" class="headerlink" title="内心一定要淡定"></a>内心一定要淡定</h2><h3 id="记录下最近面试问到的一些问题"><a href="#记录下最近面试问到的一些问题" class="headerlink" title="记录下最近面试问到的一些问题"></a>记录下最近面试问到的一些问题</h3><p>之前从粉粉离开时，也没想到这是一个多事之秋。去了一家动漫IP 的公司，人没去之前老板已经有意决定停下互联网业务的，结果其中一个合伙人说再试一波，于是我以为其是想做事，就进去当小白鼠了。进去之后改版页面完，没目的没计划了。做了一个egret ”消消乐“的微信小游戏，学了该学的OpenGLES，然后中秋之前跟我说部门解散，，，</p>
-<p>大哥，这才三个月啊。</p>
-<p>所以说是一个多事之秋吧。</p>
-<p>好吧，出来面试吧。</p>
-<p>现在是9月份，面试第一个公司：”第一弹“，我个人觉得面试过程还好，然后说不合适。好吧，不合适就不合适吧，可惜了，距离我挺近的，比较看重距离。</p>
-<p>面试题里面有个题目：[1, … 100] 内 不等随机大小无序数，求最大的数和第二大的数。</p>
-<p>这个我做的时候直接是冒泡排序。但是有两层for 循环，效率不好，下面会给出最佳答案。</p>
-<p>第二家说想做一个短视频、即时通讯、webRTC 这一类产品。我不看好，不能跟，而且离得有点远，开发员工才几个人，工资也很低。大哥，做这类的工资不可能才15k 啊，，，做成个半成品，全是SDK 的，我不愿意把青春花在简单组合各类SDK上面，做完到时发现不赚钱，老板说解散，到时我又屁颠屁颠要出来找工作，何必。后来，之前面试的小哥打电话过来问意愿，那边那个老板也打电话过来问意愿，只能拒绝。没有投靠的意义，看的出来老板只是想试试水。</p>
-<p>第三家在之前我就有去面试的地方：徐汇慧谷创业中心。这家是做 AI提供用户数据给出用户穿衣服方案的公司。在找iOS 开发。先来个小胖哥，上来就说我看了你的博客了，还挺好，直接让技术经理来考你。这小胖哥有意思，人好。然后技术大哥来了就问技术的事，不与iOS 相关的，先问TCP协议（我没看面试题之类的（最近在搞网页）答得不好），然后出了两个题目：</p>
-<ol>
-<li>数组array[1~n] 随机大小无序，求从大到小第k个数。解法：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nums[n] = [<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> (int i=<span class="number">0</span>;i&lt;array.count;i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> element = array[i];</span><br><span class="line">    <span class="keyword">if</span> (nums[element]) &#123;<span class="comment">//如果有值</span></span><br><span class="line">        nums[element] = nums[element] ++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nums[element] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这个时候从n 到 1 如果内部是&gt;1 的都是有值的，&gt;2那就是有两个值. 于是第k 个值也能得出。</span></span><br></pre></td></tr></table></figure>
-<p>这正是“第一弹”笔试的比较好的答案吧。</p>
-<ol start="2">
-<li>有一个圆盘时钟，从00:00:00 ~ 24:00:00 过程有多少次秒针、分针、时针是全部重叠的。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="number">360</span>°/<span class="number">60</span> * n; <span class="comment">//秒针一圈第n秒时在什么角度</span></span><br><span class="line"><span class="keyword">let</span> m = <span class="number">360</span>°/(<span class="number">60</span>*<span class="number">60</span>) * n; <span class="comment">//分针一圈第n秒时在什么角度</span></span><br><span class="line"><span class="keyword">let</span> h = <span class="number">360</span>°/(<span class="number">12</span>*<span class="number">60</span>*<span class="number">60</span>) * n; <span class="comment">//时针一圈第n秒时在什么角度</span></span><br><span class="line"><span class="keyword">for</span> (int n=<span class="number">0</span>; n&lt;<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>; n++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s / <span class="number">360</span>° == m / <span class="number">360</span>° == h / <span class="number">360</span>°) &#123;<span class="comment">//除以360° 是让其点化为单位角度</span></span><br><span class="line">        <span class="comment">// 这就是相遇的点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这两个挺考智商的。但是我的脑子不好，我的学习都是不断的抄写他人知识，融合这些知识，所以直接回答纯粹的算法题我答的不好。比如第1题我还是使用冒泡排序，嘿嘿。当时甚至于冒泡排序还写错了。比较紧张吧：因为先回答了圆盘时钟的问题，却一直没解出来，导致思绪乱了，后面答第一个问题也更乱了。</p>
-<p>下面是借口，借口：</p>
-<p>一直学习，没顾上看面试题，没顾上看看算法题。面试完确实对我心里有点打击：我就是做个iOS，现在还需要算法了？iOS没有算法啊，苹果都给你优化过了，你写再好，比得过人家一个api？但是话说来，算法才是程序的灵魂，没有灵魂，写再多api 也不是程序。</p>
-<p>我的观点是，面试的时候遇到了什么不清晰的地方，就好好记录下来。平常学必要的，不要全都学，现在那么多知识点，哪里学的完。这没什么好狡辩，尽力无悔即可。</p>
-<p>唉，换工作比较麻烦，我早自知。但是我相信，现在困惑、困难，“树挪死，人挪活”，艰难刻苦总会过去的吧（目前还在艰难困苦中）。学到、实践到就是没白费过。</p>
-<h4 id="今天2018-9-26-两个面试。"><a href="#今天2018-9-26-两个面试。" class="headerlink" title="今天2018.9.26 两个面试。"></a>今天2018.9.26 两个面试。</h4><p>上午的面试面着面着，快一小时了，才知道他们要招员工到张江去上班的，唉，我看你是10k~15k过来试着面试面试，没想到你比我还皮，这个比较浪费时间，，算了心平气和滚蛋了，嘎嘎。</p>
-<p>下午离得稍微有点远，叫”Ratta” 雷塔的一个公司。我觉得功能方向稍微有点不太合适，也是试试去面试吧。</p>
-<p>先笔试：考跟之前算法一样的东西（现在全部公司的笔试题都一样了？）。答题吧。</p>
-<p>里面还有一个是跟我的APP“哈皮涂色”很类似的同步数据、展示数据的题目。<br>面试的是写c、c++ 的大哥。这人对基本数据比较了解。说一个数据{x:x,y:y,color:color} 这样一个int 数据元素要占用多少位？我肯定不知道啊，我就说bytes 是4字节，多少位我不知道。他说32位（int 是32位，NSInteger 是64，问这个干嘛哟，这个是读取速度，不是储存大小，我感觉这个大哥不是很靠谱，个人感觉）。然后他想问的如何压缩可以将数据不会存储那么大。我一时间哪能那么快想出来啊，能想出来答出来，那我肯定之前做过了，碰到过了，不然我答什么呀。</p>
-<p>之后就是问随意的问题。</p>
-<p>其中给他看了我的“哈皮涂色”，估计他有点懵逼了：这是他们公司的主营功能。他们有个硬件进行绘画，我直接就是手机上直接画。他们有点想知道核心功能，我才不告诉他们嘞，要知道？得花钱。</p>
-<p>然后问了一些技术上的问题，他也做了些功课：</p>
-<ol>
-<li>堆和栈的区别(还别说，没看面试题，我也都快忘光了，随便解答) 。</li>
-</ol>
-<blockquote>
-<p>一个由c/C++编译的程序占用的内存分为以下几个部分：</p>
-<ul>
-<li>栈区（stack）— 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。</li>
-<li>堆区（heap） — 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。</li>
-<li>全局区（静态区）（static）—，全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域，未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。程序结束后由系统释放。</li>
-<li>文字常量区 —常量字符串就是放在这里的。程序结束后由系统释放。</li>
-<li>程序代码区—存放函数体的二进制代码。</li>
-</ul>
-</blockquote>
-<ol start="2">
-<li>反射机制（从没用过~查询得知，其实就是使用字符动态查找创建类、方法，方便网络和客户端交互。反正我没这么用，多不安全啊。）</li>
-<li>https（我说上家公司没处理过，不过之前公司处理过，iOS 这里只需在网络那里配置下就好了，如果要双向验证，那就在iOS本地增加配置一个公钥，额，他还不信，害我跑回来看教程，没错啊，客户端要处理的真的很少。服务端也不多，nodejs 之前的我看过相关的教程，就增加配置个证书文件嘛）</li>
-</ol>
-<p><a href="https://www.jianshu.com/p/6b561705de06" target="_blank" rel="noopener">参考网址</a></p>
-<p>单向验证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//在你封装的网络工具类请求前初始化时增加以下代码</span><br><span class="line">AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];</span><br><span class="line">//设置证书模式，AFSSLPinningModeNone，代表前端包内不验证</span><br><span class="line">//在单向认证时，前端不放证书，服务器去验证</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];</span><br><span class="line">// 如果是需要服务端验证证书，需要设置为YES</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">//validatesDomainName 是否需要验证域名，默认为YES；</span><br><span class="line">securityPolicy.validatesDomainName = NO;</span><br><span class="line">//设置验证模式</span><br><span class="line">manager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
-<p>双向验证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//在你封装的网络工具类请求前初始化时增加以下代</span><br><span class="line">AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];</span><br><span class="line">//设置验证证书，该模式下许愿把证书打包进项目里，进行验证</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];</span><br><span class="line">//证书的路径</span><br><span class="line">NSString *cerPath = [[NSBundle mainBundle] pathForResource:@&quot;xxx&quot; ofType:@&quot;.cer&quot;];</span><br><span class="line">NSData *dataSou = [NSData dataWithContentsOfFile:cerPath];</span><br><span class="line">NSSet *set = [NSSet setWithObjects:dataSou, nil];</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">securityPolicy.validatesDomainName = YES;</span><br><span class="line">[securityPolicy setPinnedCertificates:set];</span><br><span class="line">//将验证方式赋值给管理者</span><br><span class="line">manager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
-<p>HTTPS 处理过程是在“[应用层] - <strong>[SSL/TLS]</strong> - [TCP] - [IP]”之间。HTTP 的TCP 握手是三次，但是HTTPS 握手需要更多次，因为这里使用非对称加密、对称加密等加密手段对数据进行保护。</p>
-<p>首先先理解加解密数据性能，非对称加密RSA 性能需要CPU 计算，寻找素数，耗时相对大，优点就是公钥可以公布，但是如果仅做一次，互相之间传递secretKey 就是非常好的；对称加密AES 速度快，但是需要互相之间都保存有secretKey。</p>
-<p>HTTPS 使用到的加密算法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">非对称加密算法：RSA，DSA/DSS </span><br><span class="line">对称加密算法：AES，RC4，3DES </span><br><span class="line">HASH算法：MD5，SHA1，SHA256</span><br></pre></td></tr></table></figure>
-<p>最简单的理解或者说模拟出一个HTTPS 一次传输过程要处理的事（只讲算法之间要干的事，更多请阅读下面参考链接讲解的过程）：</p>
-<ul>
-<li><p>客户端一开始和服务端使用公钥加密这次要使用的secretKey。因为大家都没有私钥，所以也不怕被截取。</p>
-</li>
-<li><p>服务器保存此次对应的人和对应的secretKey，同时可以使用AES 对从客户端收到了secretKey 的回应，加密的密钥就是secretKey。</p>
-</li>
-</ul>
-<p>服务端使用RSA 使用secretKey 私钥加密数据给客户端。</p>
-<p>客户端使用该secretKey 来给数据进行AES 加密。</p>
-<p>这样就完成加解密的过程了。</p>
-<p>上面的过程比较简单化，HTTPS 还做了很多，不过我只理解简单的，然后把他写下来。</p>
-<p>可以参考<a href="http://www.cnblogs.com/Yfling/p/6670495.html" target="_blank" rel="noopener">HTTPS加密原理</a></p>
-<h3 id="继续看面试题"><a href="#继续看面试题" class="headerlink" title="继续看面试题"></a>继续看面试题</h3><p>1:SEL Method</p>
-<p>SEL 方法编号：<br>SEL methodId = @selector(func1);<br>执行SEL:<br>[self performSelector:methodId withObject:nil];<br>IMP 获得和使用:<br>IMP methodPoint = [self methodForSelctor:methodId];<br>调用：methodPoint();<br>IMP objectMethodPoint = [object methodFor:@selector(message)]<br>调用：theResult = objectMethodPoint(anObject, aSelector);</p>
-<p>2:<br>反射机制<br>系统Foundation 下有这几个反射API</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FOUNDATION_EXPORT NSString *NSSTringFromSelector(SEL aSelector);</span><br><span class="line">FOUNDATION_EXPORT SEL NSSelectorFromString(NSString *aSelectorName);</span><br><span class="line">FOUNDATION_EXPORT NSString *NSStringFromClass(Class aClass);</span><br><span class="line">FOUNDATION_EXPORT Class __nullable NSClassFromString(NSString *aClassName);</span><br><span class="line">FOUNDATION_EXPORT NSString *NSStringFromProtocol(Protocol *proto) NS_AVAILABLE(10_5, 2_0);</span><br><span class="line">FOUNDATION_EXPORT Protocol * __nullable NSProtocolFromString(NSString *namestr) NSAVAIABLE(10_5, 2_0);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isKindOfClass:(Class)aClass;</span><br><span class="line">- (BOOL)isMemberOfClass:(Class)aClass;</span><br><span class="line">- (BOOL)conformsToProtocol:(Protocol *)aProtocol;</span><br><span class="line">- (BOOL)respondsToSelector:(SEL)aSelector;</span><br></pre></td></tr></table></figure>
-<p>3:NSDictionary</p>
-<p>iOS 的NSDictionary 是使用hash表来实现key value 的键值映射和存储的。于Typescript 一样，键都是转为string 类型查找。<br>根据这篇文章<a href="https://www.jianshu.com/p/915356e280fc" target="_blank" rel="noopener">参考</a> 能更深入了解NSDictionary 实现思路。</p>
-<p>首先NSArray 是没有hash 表来映射快速查找方法。时间复杂度就是o(n),数据长度。NSDictionary 在setObject 时提前判别对象hash 值是否已经存在。判别分两步：Step1：== 运算符判别对象指针是否相等；Step2:判别是否是同一类型；Step3:判别内在属性是否相等</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isEqual:(id)object &#123;</span><br><span class="line">    if (self == object) &#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    if (![object isKinkOfClass:[Person class]]) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return [self isEqualToPerson:(Person *)object];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isEqualToPerson:(Person *)person &#123;</span><br><span class="line">    if (!person) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BOOL haveEqualNames = (!self.name &amp;&amp; !person.name) || (self.name isEqualToString:person.name);</span><br><span class="line">    BOOL haveEqualbirthday = (!self.birthday &amp;&amp; !person.birthday) || (self.birthday isEqualToDate:person.birthday);</span><br><span class="line"></span><br><span class="line">    return haveEqualNames &amp;&amp; haveEqualBirthdays;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上部分可以采用RunTime 寻找属性判别。</p>
-<p>Hash Table 查找成员过程：Step1：通过hash值直接找到目标位置；Step2：如果目标位置上有多个相同hash值成员，再按照数组方式查找。</p>
-<p>Hash 调用时间：对象被添加至NSSet、设置NSDictionary 的key 时调用。</p>
-<p>正确重置Person 的hash 方式实现：</p>
-<p>大神Mattt Thompson在Equality中给出的结论就是</p>
-<blockquote>
-<p>In reality, a simple XOR over the hash values of critical properties is sufficient 99% of the time(对关键属性的hash值进行位或运算作为hash值)</p>
-</blockquote>
-<p>正确返回重置hash</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (NSUInter)hash &#123;</span><br><span class="line">    return [self.name hash] ^ [self.birthday hash];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4:Block</p>
-<p>Block本质就是对象，因为本身就有指针。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv) &#123;</span><br><span class="line">    void (^block)() = ^&#123;</span><br><span class="line">        printf(&apos;hello world&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    block();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用clang 指令<br><code>clang -rewrite-objc main.m</code> 得到一个cpp 文件。<br>定义完block，创建了一个函数，在创建结构体时，同时把函数指针也传进去了。之后就可以拿出来使用了。</p>
-<p>5：线程间通讯<a href="https://www.jianshu.com/p/f9f3952a4a74" target="_blank" rel="noopener">参考网址</a></p>
-<p>1) NSThread</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)thread &#123;</span><br><span class="line">    NSString *imageUrlString;</span><br><span class="line">    [self performSelectorInBackground:@selector(loadImage:) withObject:imageUrlString];</span><br><span class="line">&#125;</span><br><span class="line">- (void)loadImage:(NSString *)imageUrlString &#123;</span><br><span class="line">    NSData *imageData = [NSData dataWithContentURL:[NSUrl urlWithString:imageUrlString]];</span><br><span class="line">    [self performSelectorOnMainThread:@selector(updateUI:) withObject:imageData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2) GCD</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)gcd &#123;</span><br><span class="line">    NSString *imageUrlString;</span><br><span class="line">    __Weak typeof(self) weakSelf = self;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        NSData *imageData = [NSData dataWithContentURL:[NSUrl urlWithString:imageUrlString]];</span><br><span class="line">        dispatch_async(dispatch_get_main_queue, ^&#123;</span><br><span class="line">            weakSelf.imageView.image = [UIImage imageWithData:imageData];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3) NSOperation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (void)operation &#123;</span><br><span class="line">    __weak typeof(self) weakSelf = self;</span><br><span class="line">    DownLoadOperation *downLoadOp = [DownLoadOperation new];</span><br><span class="line">    downLoadOp.imageUrlString = xxx;</span><br><span class="line">    downLoadOp.finishedBlock = ^(UIImage *image) &#123;</span><br><span class="line">        [[NSOperationQueue mainQueue] addOperationWithBlock:^&#123;</span><br><span class="line">            weakSelf.imageView.image = image;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;;</span><br><span class="line">    NSOperationQueue *concurrentQueue = [NSOperationQueue new];</span><br><span class="line">    [concurrentQueue addOperation:downLoadOp];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@interface DownloadOperation : NSOperation</span><br><span class="line">@property (nonatomic, copy) NSString *imageUrlString;</span><br><span class="line">@property (nonatomic, copy) FinishedBlock finishedBlock;</span><br><span class="line">@end</span><br><span class="line">@implementation DownloadOperation</span><br><span class="line">- (void)main &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        NSData *imageData = [NSData dataWithContentURL:[NSUrl urlWithString:self.imageUrlString]];</span><br><span class="line">        if (self.finishedBlock)</span><br><span class="line">            self.finishedBlock([UIImage imageWithData:imageData]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p>4) 加密算法</p>
-<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434501504929883d11d84a1541c6907eefd792c0da51000" target="_blank" rel="noopener">廖雪峰-node-crypto</a></p>
-<p>MD5和SHA1</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="keyword">const</span> hash = crypto.createHash(<span class="string">'md5'</span>);<span class="comment">//crypto.createHash('sha1');/sha256/sha512</span></span><br><span class="line">hash.update(<span class="string">'Hello, world'</span>);</span><br><span class="line">hash.update(<span class="string">'hello, nodejs'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(hash.digest(<span class="string">'hex'</span>));</span><br></pre></td></tr></table></figure>
-<p>Hmac 可以把Hmac理解为用随机数“增强”的哈希算法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="keyword">const</span> hmac = crypto.createHmac(<span class="string">'sha256'</span>, <span class="string">'your secret-key'</span>);</span><br><span class="line">hmac.update(<span class="string">'Hello, world'</span>);</span><br><span class="line">hmac.update(<span class="string">'Hello, nodejs'</span>);</span><br><span class="line">hmac.digest(<span class="string">'hex'</span>);</span><br></pre></td></tr></table></figure>
-<p>AES 对称加密算法，加解密都用同一个密钥</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aesEncrypt</span>(<span class="params">data, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> cipher = crypto.createCipher(<span class="string">'aes192'</span>, key);</span><br><span class="line">    <span class="keyword">let</span> crypted = cipher.update(data, <span class="string">'utf8'</span>, <span class="string">'hex'</span>);</span><br><span class="line">    crypted += cipher.final(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> crypted;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aesDecrypt</span>(<span class="params">encrypted, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> decipher = crypto.createDecipher(<span class="string">'aes192'</span>, key);</span><br><span class="line">    <span class="keyword">let</span> decrypted = decipher.update(encrypted, <span class="string">'hex'</span>, <span class="string">'utf8'</span>);</span><br><span class="line">    decrypted += decipher.final(<span class="string">'utf8'</span>);</span><br><span class="line">    <span class="keyword">return</span> decrypted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> data = <span class="string">'Hello, this is a secret message!'</span>;</span><br><span class="line"><span class="keyword">let</span> key = <span class="string">'Password'</span>;</span><br><span class="line"><span class="keyword">let</span> encrypted = aesEncrypted(data, key);</span><br><span class="line"><span class="keyword">let</span> decrypted = aesDecrypted(encrypted, key);</span><br></pre></td></tr></table></figure>
-<p>RSA 加解密，非对称加密</p>
-<p>首先得到对应的公钥和私钥</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>),</span><br><span class="line">    crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadKey</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fs.readFileSync(file, <span class="string">'utf8'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> prvKey = loadKey(<span class="string">'./rsa-prv.pem'</span>),</span><br><span class="line">    pubKey = loadKey(<span class="string">'./rsa-pub.pem'</span>),</span><br><span class="line">    message = <span class="string">'Hello, world'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> enc_by_prv = crypto.privateEncrypt(prvKey, Buffer.from(message, <span class="string">'utf8'</span>));</span><br><span class="line"><span class="comment">//enc_by_prv.toString('hex');</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dec_by_pub = crypto.publicDecrypt(pubKey, enc_by_prv);</span><br><span class="line"><span class="comment">//dec_by_pub.toString('utf8');</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//然后还可以反过来对称加密</span></span><br></pre></td></tr></table></figure>
-<p>5) category 里添加属性</p>
-<p>category 它是在<strong>运行期编译</strong>的时候加上的，编译完成后对象内存已经确定，不能添加“_”的成员变量。</p>
-<p>runtime 能添加对象的原因是因为：关联对象由AssociationsManager 管理，AssociationManager 里面是一个静态AssociationsHashMap 来存储所有的关联对象的。所以直接保存新的关联对象kv键值对即能添加成功。</p>
-<p>6) autoreleasepool</p>
-<p>autoreleasepool本质上就是一个指针堆栈</p>
-<p>@autoreleasepool{} 其实是实现了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void *poolToken = objc_autoreleasePoolPush();</span><br><span class="line">objc_autoreleasePoolPop(poolToken);</span><br></pre></td></tr></table></figure>
-<p>7) KVC KVO深入研究</p>
-<p><a href="https://www.jianshu.com/p/37a92141077e" target="_blank" rel="noopener">参考博客</a></p>
-<p>KVC 运用isa-swizzling 类型混合指针机制。</p>
-<p>[site setValue:@”sitename” forKey:@”name”]; -&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SEL sel = sel_get_uid(&quot;setValue:forKey:&quot;);</span><br><span class="line">IMP method = objc_msg_lookup(site-&gt;isa, sel);</span><br><span class="line">method(site, sel, @&quot;sitename&quot;, @&quot;name&quot;);</span><br></pre></td></tr></table></figure>
-<p>KVC实现分三步.Step1:根据方法名找到运行方法所需要的环境参数；Step2:从自己isa指针结合参数找到具体方法实现接口；Step3:直接查找得来具体方法实现。</p>
-<p>KVO在这篇文章能很好的解释<a href="https://www.jianshu.com/p/d657ad764aaa" target="_blank" rel="noopener">博客</a></p>
-<p>KVO后续。。。</p>
-<h3 id="系统默认注册5个Mode"><a href="#系统默认注册5个Mode" class="headerlink" title="系统默认注册5个Mode:"></a>系统默认注册5个Mode:</h3><ol>
-<li>kCFRunLoopDefaultMode:App 默认Mode，主线程。</li>
-<li>UITrackingRunLoopMode:界面跟踪Mode，ScrollView 追踪触摸滑动，保证界面滑动时不受其他Mode 影响。</li>
-<li>UIInitializationRunLoopMode:在刚启动App时进入的第一个Mode, 启动完成后就不在使用。</li>
-<li>GSEventReceiveRunLoopMode:接受系统时间内部Mode,通常用不到。</li>
-<li>kCFRunLoopCommonModes</li>
-</ol>
-<p>–</p>
-<p>NSTimer 对象以NSDefaultRunLoopMode(kCFRunLoopDefaultMode) 添加到主运行循环后，滑动scrollView NSTimer 却不动了？</p>
-<blockquote>
-<p>NSTimer 是在defaultRunLoop 调用消息的，当我们滑动scrollview 的时候, NSDefaultRunLoopMode 模式自动切换成UITrackingRunLoopMode 下。所以NSTimer 需要在NSRunLoopCommonMode</p>
-</blockquote>
-<h3 id="RunTime-添加类、方法、实例变量"><a href="#RunTime-添加类、方法、实例变量" class="headerlink" title="RunTime 添加类、方法、实例变量"></a>RunTime 添加类、方法、实例变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class myClass = objc_allocateClassPair([NSObject class], &quot;Person&quot;, 0);</span><br><span class="line"></span><br><span class="line">class_addMethod 其中types参数为&quot;i@:@“，按顺序分别表示：具体类型可参照[官方文档](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html)i </span><br><span class="line">返回值类型int，若是v则表示void@ 参数id(self): SEL(_cmd)@ id(str)</span><br><span class="line">  V@:表示返回值是void 带有SEL参数 （An object (whether statically typed or typed id)</span><br><span class="line"></span><br><span class="line">class_addMethod(myClass, @selector(addMethodForMyClass:), (IMP)addMethodForMyClass, &quot;V@:&quot;);</span><br><span class="line"></span><br><span class="line">BOOL isSuccess = class_addIvar(myClass, &quot;name&quot;, sizeof(NSString *), 0, &quot;@&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="探讨atomic-一定是线程安全么"><a href="#探讨atomic-一定是线程安全么" class="headerlink" title="探讨atomic 一定是线程安全么"></a>探讨atomic 一定是线程安全么</h3><p>atomic 是在getter 和setter 存取方法的线程保证原子性，并不能保证整个对象的存取动作是线程安全的。</p>
-<p>在不同线程中写、读同一个对象，虽然写、读过程是原子性，但是由于等待之后，得到被修改的对象，还是：最终结果属于不可预测。</p>
-<p>要保证存、读可预测，可使用下面几个api锁住存取动作，保证线程安全、可预测：</p>
-<p>NSLock/NSLockLock/@synchronized(obj){}/pthread_mutex_t/OSSPinLock</p>
-<p>其中性能比较:</p>
-<p>OSSPinLock &gt; pthread_mutex_t &gt; NSLockLock &gt; NSLock &gt; @synchronized</p>
-<h3 id="读YY作者提的几点优化TableView-效率"><a href="#读YY作者提的几点优化TableView-效率" class="headerlink" title="读YY作者提的几点优化TableView 效率"></a>读YY作者提的几点优化TableView 效率</h3><p>对于GPU 等待显示器在一次VSync 时间内，CPU 或者GPU 没有完成内容提交，则那一帧就会被丢弃，等待下一次VSync 再显示，而这时显示器就保留了之前的内容不变，这就是界面卡顿的原因。</p>
-<p>CPU 应该优化处理的几个点：</p>
-<ol>
-<li>对象创建</li>
-<li>对象调整：frame、bounds 会对CALayer 绘制、创建动画等有比较大开销</li>
-<li>对象销毁，可以用一个小Tip：把对象捕获到block 中，然后扔到后台队列去销毁：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSArray *tmp = self.array;</span><br><span class="line">self.array = nil;</span><br><span class="line">dispatch_async(queue, ^&#123;</span><br><span class="line">    [tmp class];</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>布局计算</li>
-<li>Autolayout（复杂试图尽量使用其他如ComponentKit、AsyncDisplayKit 代替）</li>
-<li>文本计算（尽量缓存）</li>
-<li>文本渲染</li>
-<li>图片解码</li>
-<li>图像绘制（CoreGraphic 是线程安全的，可以放到后台进行绘制）</li>
-</ol>
-<h3 id="最近在搞React-Mobx-这一套"><a href="#最近在搞React-Mobx-这一套" class="headerlink" title="最近在搞React + Mobx 这一套"></a>最近在搞React + Mobx 这一套</h3><p>我已经确定使用这套组合了。因为直接使用vue 感觉没有成就感。React 函数式 + 初学Mobx 的便利(redux 实在是太繁琐了，很多例子很被他绕晕了，真的真的放弃，虽然已经有点入门redux 了；)</p>
-<p>html首先碰到</p>
-<p>第一个问题:<code>Warning: A component is changing an uncontrolled input of type checkbox</code></p>
-<p>原因是我的(input:checkbox) 在checkd时出现传递了undefined 进去，需要判别一下:<code>(this.props.todo.finished === null ||this.props.todo.finished === undefined) ? false : this.props.todo.finished</code></p>
-<p>第二个问题:<code>Warning: Each child in an array or iterator should have a unique &quot;key&quot;</code></p>
-<p>原因是在组件内部如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;for(...)&#123;&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>有for循环，那么需要给里面的子控件加上key={aString} 的参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &#123;this.props.todolist.todos.map(todo =&gt; (</span><br><span class="line">        &lt;TodoView todo=&#123;todo&#125; key=&#123;todo.id.toString()&#125;&gt;&lt;/TodoView&gt;</span><br><span class="line">    ))&#125;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-9-16lesson-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/16/2018-9-16lesson-md/">2018-9-16lesson.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/09/16/2018-9-16lesson-md/" class="article-date">
-	  <time datetime="2018-09-16T04:20:03.000Z" itemprop="datePublished">September 16, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2018-8-27"><a href="#2018-8-27" class="headerlink" title="2018/8/27"></a>2018/8/27</h2><p>typedef CF_ENUM(uint32_t, CGImageAlphaInfo) {</p>
-<pre><code>kCGImageAlphaNone,               /* For example, RGB. */
-
-kCGImageAlphaPremultipliedLast,  /* For example, premultiplied RGBA */
-
-kCGImageAlphaPremultipliedFirst, /* For example, premultiplied ARGB */
-
-kCGImageAlphaLast,               /* For example, non-premultiplied RGBA */
-
-kCGImageAlphaFirst,              /* For example, non-premultiplied ARGB */
-
-kCGImageAlphaNoneSkipLast,       /* For example, RBGX. */
-
-kCGImageAlphaNoneSkipFirst,      /* For example, XRGB. */
-
-kCGImageAlphaOnly                /* No color data, alpha data only */
-</code></pre><p>};</p>
-<h2 id="重写OpenGL-纹理篇出错原因"><a href="#重写OpenGL-纹理篇出错原因" class="headerlink" title="重写OpenGL 纹理篇出错原因"></a>重写OpenGL 纹理篇出错原因</h2><ol>
-<li>glDrawxx 函数是必要的，把东西呈现上去的</li>
-<li>纹理贴上去，很糊（<code>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);</code>可以解决纹理模糊问题），有颗粒点，不晓得为啥。</li>
-<li>纹理的图片索引定点，没有完全弄懂。</li>
-</ol>
-<p>###<br>离开“粉粉”二个月了，来谈谈周身变化。</p>
-<ol>
-<li>找了个离得比较近的公司，上下班骑车更快到啦。</li>
-<li>早上9点出发上班。路上买包子，一路吃过去，吃饭正常后，精神状态等都好多了，记忆力现在强多了。</li>
-<li>晚上相对回住所吃饭就早多了。太舒服了好吧。终于不用吃完饭，一看，哦，10点半了。写东西的么得了，现在吃完饭，楼下逛一圈还能有时间写、学东西。棒！</li>
-<li>空闲时间增加，不会那么那么那么的忙累、紧迫。因为“粉粉”给一个功能都是临界时间，然后拼命写，发现中间有逻辑漏洞，或者涉及其他，于是其实相对的给的时间是一个完整开发时间的70%。根本不够，严重不够！<br>也由于空闲时间多了，我把OpenGL 终于入门了。小公司同时由于没有产品定位等，目前去做游戏去了，iOS 放一旁。不要太好，我就喜欢学新的东西。哈哈</li>
-<li>周末都是双休了，学知识、去办事情、不亦乐乎啊。</li>
-<li>以前是工作压力大，现在是赚钱压力大，想方法自己赚钱的压力。所以，出了“粉粉”，心里开心。已经没有太多要问的，在里面该学的也拼命学够了。<br>开森！</li>
-</ol>
-<h3 id="pod-install-失败"><a href="#pod-install-失败" class="headerlink" title="pod install 失败"></a>pod install 失败</h3><p>弹出#-bash: /usr/local/bin/pod: /usr/local/opt/ruby/bin/ruby: bad interpreter: No such file or directory#<br>查到<a href="https://www.jianshu.com/p/e4a70c40bfea" target="_blank" rel="noopener">https://www.jianshu.com/p/e4a70c40bfea</a><br>先尝试<br><code>$ brew link --overwrite cocoapods</code><br>我这里提示#Error: No such keg: /usr/local/Cellar/cocoapods#</p>
-<p>于是直接执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">brew reinstall cocoapods</span><br><span class="line"></span><br><span class="line">brew install ruby</span><br><span class="line"></span><br><span class="line">brew link --overwrite cocoapods</span><br><span class="line">``` </span><br><span class="line">完美解决问题</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 价值</span><br><span class="line">之前一直在想，什么能保值？</span><br><span class="line">什么才是有价值的？</span><br><span class="line">RMB？美元？黄金？车子、房子、实物、食物？</span><br><span class="line">RMB 会贬值，如果货币超发，政府和人民抢钱，最后就会和津巴布韦币一样；反正RMB 价值话语权不在自己手上，我不认同；</span><br><span class="line">中国那么多富二代、官二代，一个个拽得一批，我想，我要比王思聪有钱，我说话能“喷喷喷”他一脸、“滋滋滋”格力一姐一脸。有什么好嘚瑟的，最多不赚你钱，凶个奶子。</span><br><span class="line">不跟他们一般见识，百年人生而已，活好自己的，不用比较。他们会斥责下属，说明很看重身份、排名、地位、权力。自己有余粮，活得潇洒，心是红的，眼睛黑的，何必跟这些眼睛变红了，心就变黑了的人计较，继续。</span><br><span class="line">美元？同样，美国也想抢其他国家的钱。货币只是一种等值替换，跟RMB 好那么一丢丢，毕竟他相对信誉体系稳定；</span><br><span class="line">但是，货币不如实物，毕竟人这一生就只有短短百年，如果是“龙哥”这类就更要珍惜，活在社会只有短短10数年，其他都在监狱度过，然后就躺下了。</span><br><span class="line">所以，让自己这一生过的舒坦，那就实物：有车有房、有实物、有食物。我觉得我会那么知足点。</span><br><span class="line">但是，有没有更好的，实物等都是会消耗的，没有前景，所以也不是我想探讨的，我这里直接给出答案：</span><br><span class="line">女人、技术。</span><br><span class="line">就是这两个玩意s，复数。</span><br><span class="line">集合多几个女人，多个技术，持续不断赚钱，才是能保值的。</span><br><span class="line">人多，力量大，自己女人，还有什么不可信任（不过女人多几个后，信任度肯定会降低，毕竟是女人这种生物，爱的不均与，不患寡而患不均嘛）。</span><br><span class="line">技术去学习，各种学习，不必全都创新、研发，只需将他人技术学会，和自己的技能点融合，运用，产出。</span><br><span class="line"></span><br><span class="line">最近也一直感受到，其实技术赚钱，这事是可以做到的，但是要持续耕耘，不断推陈出新。反正只要你在领域付出、思考，就能有收获（不要钻牛角尖，大家不是傻子）。</span><br><span class="line">所以接下来大家懂了吧，什么才是将财富聚集、保存实力的方法了吧：多聚集信任之人（最好是女人，毕竟女人好玩嘛），然后深入技术，去运用，去产出。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Cannot find module &apos;webpack&apos;</span><br><span class="line">在安装完webpack 之后，出现标题提示，使用`npm link webpack`</span><br><span class="line"></span><br><span class="line">## glTexParameteri方法说明</span><br><span class="line"></span><br><span class="line">设置纹理循环模式、设置纹理过滤模式</span><br><span class="line"></span><br><span class="line">https://blog.csdn.net/d04421024/article/details/5089641</span><br><span class="line"></span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLEAMP);</span><br><span class="line">GLTEXTURE_2D:操作2D 纹理；GL_TEXTURE_WRAP_S:S方向上的贴图模式;GL_CLAMP:将纹理坐标限制在0.0~1.0范围内，超过作拉伸填充</span><br><span class="line"></span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);</span><br><span class="line"></span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br><span class="line">GL_TEXTURE_MAG_FILTER:放大过滤；GL_LINEAR：线性过滤，使用距离当前渲染像素中心最近的4个像素加权平均值；</span><br><span class="line"></span><br><span class="line">glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);</span><br><span class="line">GL_TEXTURE_MIN_FILTER:缩小过滤；GL_LINEAR_MIPMAP_NEAREST：使用GL_NEAREST 对最接近当前多边形的解析度的两个层级贴图进行采样，然后用这两个值进行线性插值。</span><br><span class="line"></span><br><span class="line">## glTexImage2D</span><br><span class="line"></span><br><span class="line">加载图像数据并上传纹理</span><br><span class="line"></span><br><span class="line">https://blog.csdn.net/jeffasd/article/details/78135588</span><br><span class="line"></span><br><span class="line">glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)</span><br><span class="line"></span><br><span class="line">target: 指定活动纹理单元的目标纹理。GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 或GL_TEXTURE_CUBE_MAP_NEGATIVE_Z。</span><br><span class="line"></span><br><span class="line">level: 指定详细程度编号。级别0是基本图像级别。级别n是第n个缩略图缩小图像。</span><br><span class="line"></span><br><span class="line">internalformat: 指定纹理的内部格式。必须是下列符号常量之一：GL_ALPHA, GL_LUMINANCE, GL_LUMINANCE_ALPHA, GL_RGB, GL_RGBA.</span><br><span class="line"></span><br><span class="line">width, height</span><br><span class="line"></span><br><span class="line">border: 指定边框宽度。必须为0.</span><br><span class="line"></span><br><span class="line">format: 指定纹理数据格式。必须匹配internalformat。 下面符号被接受: GL_ALPHA, GL_RGB, GL_RGBZ, GL_LUMINANCE, GL_LUMINANCE_ALPHA.</span><br><span class="line"></span><br><span class="line">type: 指定纹理数据的数据类型。下面的符号值被接受: GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_5_5_5_1.</span><br><span class="line"></span><br><span class="line">data: 指向内存中图像数据的指针。</span><br><span class="line"></span><br><span class="line">## glActiveTexture(GLenum texUnit)</span><br><span class="line"></span><br><span class="line">https://www.douban.com/note/627332677/</span><br><span class="line"></span><br><span class="line">该函数选择一个纹理单元，线面的纹理函数将作用于该纹理单元上，参数为符号常量GL_TEXTUREi.</span><br><span class="line">Active 应该理解为选择(Select)某纹理单元(Texture Unit)，即表示后续的glEnable(GL_TEXTURE_2D) 和glBindTexture(GL_TEXTURE_2D, texture)作用域此所选的纹理单元。</span><br></pre></td></tr></table></figure></p>
-<p>void glActiveTexture(GLenum textureUnit) {<br>    currentTextureUnit = textureUnit - GL_TEXTURE0;<br>}</p>
-<p>void glBindTexture(GLenum textureTarget, GLuint textureObject) {<br>    TextureUnit *texUnit = &amp;textureUnits[currentTextureUnit];<br>    switch(textureTarget) {<br>        case GL_TEXTURE_1D: texUnit-&gt;targetTexture1D = textureObject; break;<br>        case GL_TEXTURE_2D: texUnit-&gt;targetTexture1D = textureObject; break;<br>        case GL_TEXTURE_3D: texUnit-&gt;targetTexture1D = textureObject; break;<br>        case GL_TEXTURE_CUBEMAP: texUnit-&gt;targetTextureCube = textureObject; break;<br>    }<br>}<br><code>`</code></p>
-<h2 id="回顾最近学习OpenGLES-学习参考路线"><a href="#回顾最近学习OpenGLES-学习参考路线" class="headerlink" title="回顾最近学习OpenGLES 学习参考路线"></a>回顾最近学习OpenGLES 学习参考路线</h2><p>一个合适自己的学习路线比什么什么讲师什么什么高级书都重要一万倍，如果找到了对应的路，将对带给自己事半功倍的效果。<br>我直接说出根据哪个博客，那些系列，之后再讲这些博客能得到什么。</p>
-<ol>
-<li><a href="https://www.jianshu.com/u/a309d4c4dc47" target="_blank" rel="noopener">简书-清墨</a></li>
-<li><a href="https://zhuanlan.zhihu.com/zangqilong" target="_blank" rel="noopener">知乎-叶孤城的iOS杂货铺</a></li>
-<li><a href="https://www.jianshu.com/u/815d10a4bdce" target="_blank" rel="noopener">简书-落影</a></li>
-</ol>
-<p>以上是按顺序学习。</p>
-<p>清墨的博文教学很简单易懂，这个大哥应该去当老师。很细心，能把他全部学完，就能做个3D 的场景了。他最后一个提问：为什么图片模糊，线段有棱角？<br>解答是:</p>
-<ol>
-<li><code>glTexParamiv</code> 的 <code>gl_Texture2D_Mag_Filter</code>、<code>gl_Texture2D_Min_Filter</code> 设置为<code>gl_clamp_to_edge</code>，这样线段就不会有棱角;</li>
-<li>将<code>self.view.contentFactor</code> 设置为<code>[UIScreen mainSceen].scale</code>, 同时设置各个要放大的地方为相应倍数，这样图片就不会模糊。</li>
-</ol>
-<p>iOS 码农介的吴彦祖在知乎开了新的ID：叶孤城。名号多，但是写的也是非常好。同时期待他能写出更多好文章，小弟很受用，非常非常感谢。<br>他的<strong>从0打造一个GPUImage</strong>从(1)~(6.2)学完就能做一个pipeline 滤镜。</p>
-<p>提醒一点，必须先学完清墨的博文，叶孤城估计太忙，中间一小部分没有完全讲透一些语句的作用，会很疑惑。</p>
-<p>落影的文章很全，先学习OpenGLES 文集，不要学太深(目前要用的知识学完就好)，然后看GPUIMage 文集。对落影大哥的文集点评一下，他的文集很全，但是注释的关键地方都少，代码关键地方注解还不够。有些很迷糊。</p>
-<p>可以理解为升级版学习。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-8-3lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/25/2018-8-3lesson/">2018-8-3lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/25/2018-8-3lesson/" class="article-date">
-	  <time datetime="2018-08-25T06:50:29.000Z" itemprop="datePublished">August 25, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-8-3"><a href="#2018-8-3" class="headerlink" title="2018/8/3"></a>2018/8/3</h3><h3 id="TS-使用enum-出现-ts-Operator-‘-’-cannot-be-applied-to-types"><a href="#TS-使用enum-出现-ts-Operator-‘-’-cannot-be-applied-to-types" class="headerlink" title="TS 使用enum 出现[ts] Operator ‘==’ cannot be applied to types"></a>TS 使用enum 出现[ts] Operator ‘==’ cannot be applied to types</h3><p><code>[ts] Operator &#39;==&#39; cannot be applied to types &#39;CheckCleanStep.Idle | CheckCleanStep.Input&#39; and &#39;CheckCleanStep.Check&#39;.</code><br>Typescript 出现和这个issue <a href="https://github.com/Microsoft/TypeScript/issues/15835" target="_blank" rel="noopener">https://github.com/Microsoft/TypeScript/issues/15835</a> 一样。<br>目前解决方法是，在判别的时候，强制判别类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ((checkStep as CheckCleanStep) == CheckCleanStep.Check) &#123;</span><br><span class="line">    //do stuff</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="周末写Typescript-游戏有感"><a href="#周末写Typescript-游戏有感" class="headerlink" title="周末写Typescript 游戏有感"></a>周末写Typescript 游戏有感</h3><ol>
-<li><p>egret TypeScript 游戏在lib 选项，是es5，于是在要用到Map、Set 时，需要给其添加上<strong>es6</strong> 才能使用。<br>由于在最终打包时，只能打为es5，尴尬的一幕出现了：Map 在’for of’ 语句 提示，在es5 中，不能使用literial，没有这玩意(该为es6 新增对象)一样。<br>使用’for in’ 出现的问题是该loop 不会进入。<br>还有一种备选办法是：Array.from(map.keys()/map.values())<br>这样在每次都需要创建新的Array。<br>最终我的处理是map.forEach((value, key) =&gt; {})</p>
-</li>
-<li><p>之前写法是Object =&gt; {} 保存数据格式。简直太js，于是全部改为对象处理。啊，啊，，爽。</p>
-</li>
-<li>需要注意的是Map、Set 在需要正确使用set、add、get、size、delete等。千万千万别<code>map[key] = value;</code>变成使用{} 对象方法了。</li>
-<li>egret 中exml 的元件是在this 对象中。</li>
-<li>游戏的好不好玩并不是功能。体现在对游戏的难度分级和结果回馈。<br>难度分级就是由简单到复杂，由平缓到陡峭。<br>结果肯定明了：分数不能低的难看啊，怎么的，玩个200多分、300分，心里爽啊。20分就难看啦。</li>
-<li>断点修改，好用，for 循环的断点，太好用，简直。</li>
-<li>逻辑、玩法多打注释。毕竟游戏跟需求是天生姻缘。</li>
-<li>合理的建立对象。合理的摆放对象坐标。</li>
-<li>对象初始化。如果知道对象初始化为null，数组初始化个数，则在申明时就给其定义规则。</li>
-<li>egret.Sound 这个类，不能被继承！我继承就报错，之后接触多了再看原因。</li>
-<li>声音播放有个大坑。初始化完我就播放，老是会播放惜败，似乎要延时播放才可以。<br>其 示例- 声音播放 教程，是初始化完成、界面显示完成后，用户点击播放，那么微信、QQ、网页、模拟器都是播放正常的。<br>但是修改成mp3 加载完成立即播放，就也是QQ、模拟器能播放，其他都不能播放了。</li>
-</ol>
-<h3 id="nginx-出现permission-delay"><a href="#nginx-出现permission-delay" class="headerlink" title="nginx 出现permission delay"></a>nginx 出现permission delay</h3><ol>
-<li>原因是控制该nginx 的能力为nobody，权限不够。<br>改为<code>user root;</code>能暂时解决该问题。但是安全性不够。</li>
-<li>设置egret 游戏服务器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">        &#123;</span><br><span class="line">                listen 80;</span><br><span class="line">                server_name www.lsgood.top lsgood.top;</span><br><span class="line">                root /root/Work/web/;</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>web 目录下是popcirle 的文件夹游戏<br>web/popcircle/index.html<br>所以最终游戏目录为：<a href="http://lsgood.top/popcircle/index.html" target="_blank" rel="noopener">http://lsgood.top/popcircle/index.html</a></p>
-<h3 id="egret-打包小游戏的坑"><a href="#egret-打包小游戏的坑" class="headerlink" title="egret 打包小游戏的坑"></a>egret 打包小游戏的坑</h3><ol>
-<li>打包显示index.html “data-scale-mode” 的模式”showAll” 错误，改成”fixedWidth”</li>
-<li>做小游戏，申请wxAppid，在微信选择面板一定要选择游戏，不然会出现提示”app.json”找不到，因为此时换成了”game.json”</li>
-<li><strong>VM4477:1 gameThirdScriptError ReferenceError: Boom is not defined</strong><br>出现的问题是:egret - scripts - wxgame - wxgame.ts 里面”async onFile(file: plugins.File) {“ 方法最后一句<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (filename == &apos;main.js&apos;) &#123;</span><br><span class="line">        content += &quot;;window.Main = Main;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">file.contents = new Buffer(content);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (filename == &apos;main.js&apos;) &#123;</span><br><span class="line">        content += &quot;;window.Main = Main;&quot;;</span><br><span class="line">        [&quot;Circle&quot;,  &quot;GameData&quot;,</span><br><span class="line">        &quot;GameOverLayer&quot;, &quot;GameScene&quot;, &quot;Kill&quot;].forEach(v =&gt; &#123;</span><br><span class="line">                content += `window.$&#123;v&#125;=$&#123;v&#125;;`</span><br><span class="line">        &#125;); </span><br><span class="line">        &#125;</span><br><span class="line">file.contents = new Buffer(content);</span><br></pre></td></tr></table></figure></p>
-<p>添加的为你要加入的新的类名。空的不要添加！</p>
-<ol start="4">
-<li>玩的时候闪屏:index.html 的”data-frame-rate” 改为60桢(之前的是30)</li>
-<li>调用第三方库，小程序找不到，比如particle<br>解决方法：在egret - scripts - wxgame - wxgame.ts 里面”async onFile(file: plugins.File) {“ 方法<br>对应增加一句,如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (filename == &quot;libs/modules/particle/particle.js&quot; || filename == &quot;libs/modules/particle/particle.min.js&quot;) &#123;</span><br><span class="line">        content += &quot;;window.particle = particle;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>表示链接新的库</p>
-<ol start="6">
-<li>egret 粒子系统内存问题<br><a href="https://xmanyou.com/egretde-li-zi-xi-tong-nei-cun-xie-lou/" target="_blank" rel="noopener">https://xmanyou.com/egretde-li-zi-xi-tong-nei-cun-xie-lou/</a><br>参考的这篇。先删掉再说，嘿嘿。<br>在要离开页面的地方：this.particleSys.close(true);</li>
-<li>openDataContext 是公共域，开放权限的地方。其他都为主域。<br>公共域只允许进数据。platform.js 通过<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const openDataContext = wx.getOpenDataContext();</span><br><span class="line">openDataContext.postMessage(data);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>把data 传进去,然后openDataContext.index.js 接受：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addOpenDataContextListener () &#123;</span><br><span class="line">        wx.onMessage((data) =&gt; &#123;</span><br><span class="line">                if (data.command == &apos;open&apos;) &#123;&#125;</span><br><span class="line">                else if (data.command == &apos;loadRes&apos;) &#123;&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后里面去拿数据、展示页面等。<br>openDataContext 只有postMessage、onMessage、shareCanvas 三个可以和外部交互的功能。<br>所以另起一个Promise function 走不通；<br>往postMessage 传入callback 也是不行的：postMessage 只接受基础变量，其他的会被过滤。</p>
-<p>这时 <code>wx.getFriendCloudStorage</code> 这个方法只允许在公共域处理拿数据、处理数据、展示数据！<br>同时记住：get 回来的数据最后一层是string 哟。</p>
-<p><code>wx.setUserCloudStorage</code> 可以在各个地方获取。<br>我直接写在platform.js 下另起一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">setWxStorage(dataStr) &#123;</span><br><span class="line">        return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">                wx.setUserCloudStorage(&#123;</span><br><span class="line">                        KVDataList: [&#123; key: &quot;score&quot;, value: dataStr &#125;],</span><br><span class="line">                        success: res =&gt; &#123;</span><br><span class="line">                                resolve(res);</span><br><span class="line">                        &#125;,</span><br><span class="line">                        fail: res =&gt; &#123;</span><br><span class="line">                                reject(res);</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注意，value 一定要是str就可以了。</p>
-<ol start="8">
-<li>头像没有显示出来。不知道为啥。当你选择下一页的时候居然又出来了。先这样吧。</li>
-<li>自己最高分方案是使用本地缓存，然后判别是否有更高分进行setUserCloudStorage。</li>
-<li>由于openDataContext权限问题，那么好友分数排序就只能从getFriendCloudStorage 数据之后进行json 对象化，转换数据格式、然后排序。<br>排序使用js 的Array.prototype.sort((n1, n2) =&gt; {}) 高阶函数排序。</li>
-<li>当前判别是否是wxgame 还是h5，使用platform.openDataContext == null。</li>
-</ol>
-<h3 id="记录微信小游戏打包过程。"><a href="#记录微信小游戏打包过程。" class="headerlink" title="记录微信小游戏打包过程。"></a>记录微信小游戏打包过程。</h3><p>个人微信账号，只需填写两个资料：1游戏自审自查报告；2计算机软件著作权登记证书。<br>游戏自审自查这里采用一个jpg，申明微信小游戏在一开始添加了“健康安全提示语”，且截图小游戏加载页面；其他包括授权、公司名称等；同时还有公司的对此发行软件责任等。<br>计算机著作权登记证书 是去软件著作权中心申请（plz，去那边申请太慢。如果小游戏还比较小，可以先网上找个著作权ps 凑和，不然要等很久）。</p>
-<p>公司账号需要填写4个资料等，很麻烦。这个资料没找齐，没搞。</p>
-<p>游戏创作完成后，直接点击顶部的上传，即可上传测试文件。在微信公众号:<a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a> 登录之后 - 开发管理 - 开发版本 里面会有最新的开发包。在下拉选项卡中“发布测试” 可以发布一个包含填写的测试人员们内部测试的包。如果点击“提交审核”则直接发布release。接下来就是填写信息然后发布啦。<br>流量主，这个功能有个门槛，需要用户达到1000个以上才可以申请。</p>
-<h3 id="看raywenderlich-网站文章英语对高考英语失利有感"><a href="#看raywenderlich-网站文章英语对高考英语失利有感" class="headerlink" title="看raywenderlich 网站文章英语对高考英语失利有感"></a>看raywenderlich 网站文章英语对高考英语失利有感</h3><p>高考一直有个遗憾，前三科手感超出我的预期。英语是最后一科，而我也是班里英语前三，第一位置偶尔也能轮换位置的人，在最后却发挥失常。<br>有几个原因，其中一个与今天“有感” 有关联。</p>
-<ol>
-<li>前三科太轻松，超过了我的预期，特别是我最不熟练的数学、理综。<br>心存侥幸（我的运气一直是爆表的，感觉和住在庵堂旁边有关系），心里稍稍在高考第二天下午放松。</li>
-<li>那天中午也由于太高兴，自己内心有估算的，于是玩起2011年火热的iPod 街霸游戏。<br>我确实还是没有长大啊，内心的开心，总得释放，不能与他人语（成绩还要1个月后出来，要低调），那就释放玩游戏；心想“下午正是我最拿手的英语，简单”。</li>
-<li>我一直贯彻“李阳英语”理念，一直拼命的读，没事看看文章。特点是平时的交流都能顺利，我觉得基本能和外国人日常交流。<br>虽然脑袋中午放松，成绩也不能低到哪里去，所以出弱势问题，可能：<br>贯彻的“李阳英语”理念也有一个弊端，那就是对高考学术型的英语不一样。<br>高考学术型，听力比模拟考时正式，听得时候平常心里是不翻译，而是直接内心模拟出场景，高考时，心里紧张（外加中午没休息好），硬是内心一句一句翻译却跟不上读速了；<br>笔试部分也由于听力失利（自己感受的出来，蒙的比例比以前多多了），感觉有一点点困顿，不太在状态；心里有点后悔中午没休息好；<br>总的来说，有得有失，到现在内心也已翻不出大波浪，时过境迁。要是我更多分，我还会想现在这样么？或许会有那么点不一样吧，也许吧。</li>
-</ol>
-<h3 id="掌握知识点的表现"><a href="#掌握知识点的表现" class="headerlink" title="掌握知识点的表现"></a>掌握知识点的表现</h3><p>当你能描述出那个知识点，同时将他比喻出来。比如面向过程和面向对象，你就可以这样比喻：同样是煮一杯咖啡，面向过程是讲步骤过程化，每个步骤要干什么，满足什么条件，于是就出来了什么咖啡；面向对象的不同点是，关注的是拆解元素，比如承装的被子，煮咖啡机器，水元素，model 这一很重要的概念。<br>所以我也能大致确认，大部分的知识点，可以使用我们日常一些元素，环境描述，那么你就真正得到了该知识。</p>
-<h3 id="微信分享时，背景声音在回来后没有再播放"><a href="#微信分享时，背景声音在回来后没有再播放" class="headerlink" title="微信分享时，背景声音在回来后没有再播放"></a>微信分享时，背景声音在回来后没有再播放</h3><p>找到wxgame 全局搜索<code>var innerAudioContext = wx.createInnerAudioContext();</code><br>找到了weapp-adapter.js 下856行，<br>然后下面添加这两句即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wx.onShow(function () &#123;</span><br><span class="line">        innerAudioContext.play();</span><br><span class="line">&#125;);</span><br><span class="line">wx.onAudioInterruptionEnd(function () &#123;</span><br><span class="line">        innerAudioContext.play();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值-三个可以和外部交互的功能。"><a href="#这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值-三个可以和外部交互的功能。" class="headerlink" title="这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值+ 三个可以和外部交互的功能。"></a>这几天终于把微信排行榜的问题搞好啦。非常给力。接下来就是微信分享，别人点击后得到相应礼品、物品值+ 三个可以和外部交互的功能。</h3><h3 id="这两天看OpenGL-遇到的等等数学知识思考大学为什么没学会，或者说没学-盘点下"><a href="#这两天看OpenGL-遇到的等等数学知识思考大学为什么没学会，或者说没学-盘点下" class="headerlink" title="这两天看OpenGL 遇到的等等数学知识思考大学为什么没学会，或者说没学 盘点下"></a>这两天看OpenGL 遇到的等等数学知识思考大学为什么没学会，或者说没学 盘点下</h3><p>遇到的有欧拉角 四元数、笛卡尔坐标、齐次方程组、万向节；<br>这么些需要建模，知道大概，然后将其映射到目前工业、图形学重要应用的知识，居然在大学只是书里画了个图，黑板上一直写，快考试的时候说会考，仅此而已？<br>为什么不是老师们代码建模，把形状形态，大致描绘出来？中间会出一些问题，带着问题思考，生动形象点？难道还如授课的教授们当年学习般，只有靠“拼命学”才能“突出重围”么？<br>教授年纪都比较大，但是前缘的技术也是需要接触的。让更生动的计算机科学和数学结合，让更多人参与到知识的海洋中，而不是一些死记硬背，目的只是“拼命学”“突出重围”的一小部分人得到知识的一小部分；<br>大部分人都可以参与，可以互相讨论。更多人参与才能带动领域的增强，讨论才能出点子，才能出一些人想不到的思绪。<br>然而并没用。<br>如今离开大学，我又重新看这些晦涩难懂的知识。能稍稍理解，如果要进一步理解呢？那就是直接将他们画出来，运用起来。</p>
-<h3 id="小游戏登录解密"><a href="#小游戏登录解密" class="headerlink" title="小游戏登录解密"></a>小游戏登录解密</h3><p>首先准备小游戏的appid 和appsecret。之后会用到<br>用户wx.login 的时候得到code；<br>用户wx.getUserInfo 的时候得到a = {encryptedData:xxx, iv:xxx, userInfo:xxx};<br>a 里面的userInfo 数据不完善，没有用户ID。其他更多信息。通过去微信服务器得到一个session_key可以解开。<br>在这个目录里面有该资料：<br>code 就是登陆时候返回的code。APPID 为小游戏APPID。SECRET 为小游戏的密钥。<br><code>https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code</code><br>会返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//正常返回的JSON数据包</span><br><span class="line">&#123;</span><br><span class="line">  	&quot;openid&quot;: &quot;OPENID&quot;,</span><br><span class="line">  	&quot;session_key&quot;: &quot;SESSIONKEY&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后通过hmac_sha256解密得到数据信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">signature = hmac_sha256( post_data, session_key )</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-7-23lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/02/2018-7-23lesson/">2018-7-23lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/02/2018-7-23lesson/" class="article-date">
-	  <time datetime="2018-08-02T13:48:43.000Z" itemprop="datePublished">August 2, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-7-23"><a href="#2018-7-23" class="headerlink" title="2018/7/23"></a>2018/7/23</h3><p>今天又发布了Colox 的第二版本，感悟到其中一些思想。<br>要做好一个完整，商用的产品，需要经过：</p>
-<ol>
-<li>核心功能研发</li>
-<li>整体方向，回款（产品售卖、广告营收、产品获利、周边发展等）</li>
-<li>UI 整体视觉</li>
-<li>上线</li>
-<li>开发营收</li>
-<li>产品推广、改进</li>
-</ol>
-<p>这几个阶段我觉得是个人开发很好的流程，而且一经决定一定要坚持下去。<br>我好几次都把产品开发拖的很长。原因有几个：</p>
-<ol>
-<li>我在学习后台（当时有这么好的学习资源）</li>
-<li>后台差不多了，也使用当时的语言js 学习游戏开发（也是刚好有这资源）</li>
-<li>一直的学习，心却是有点累。</li>
-</ol>
-<p>所以有时在家里搞着搞着，才搞了一个功能，或者某些小功能就退却，打游戏到了深夜。<br>之前在粉粉，每天下班回来晚，已经是半条命；现在新的公司终于终于能抽出空了呀！而且目前还在开发阶段，也不会特别特别紧，所以整体感觉都好了很多。<br>目前把产品推进，“哈皮涂色” 进入到了开发营收。我觉得可以有这几个点营收：</p>
-<ol>
-<li>设置页面给一个二维码，是“鼓励开发哥哥，让他快马加鞭做出更好的产品”</li>
-<li>横幅广告、激励性广告营收</li>
-<li>内购该产品</li>
-</ol>
-<h3 id="CollectionView-里面layer-frame-frame"><a href="#CollectionView-里面layer-frame-frame" class="headerlink" title="CollectionView 里面layer.frame = frame"></a>CollectionView 里面layer.frame = frame</h3><p><a href="http://adad184.com/2015/11/10/disable-uicollectionview-implicit-animation/" target="_blank" rel="noopener">http://adad184.com/2015/11/10/disable-uicollectionview-implicit-animation/</a><br>UICollectionView.reloadData 时会做隐式动画。<br>可以使用以下三种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//方法一</span><br><span class="line">[UIView performWithoutAnimation:^&#123;</span><br><span class="line"></span><br><span class="line">    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">//方法二</span><br><span class="line">[UIView animateWithDuration:0 animations:^&#123;</span><br><span class="line">    [collectionView performBatchUpdates:^&#123;</span><br><span class="line">        [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;];</span><br><span class="line">    </span><br><span class="line">//方法三</span><br><span class="line">[UIView setAnimationsEnabled:NO];</span><br><span class="line">[self.trackPanel performBatchUpdates:^&#123;</span><br><span class="line">    [collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];</span><br><span class="line">&#125; completion:^(BOOL finished) &#123;</span><br><span class="line">    [UIView setAnimationsEnabled:YES];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
-<p>但是我要做的是一个gradientLayer 的布局(单元格形状不一样，布局是一样的)，不得已。<br>于是这句话拯救了我，不然我就要用一张图片解决我问题了，问题是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如果你的cell中还包含有CALayer的动画 比如这样</span><br><span class="line">- (void)layoutSubviews</span><br><span class="line">&#123;</span><br><span class="line">    [super layoutSubviews];</span><br><span class="line">    </span><br><span class="line">    self.frameLayer.frame = self.frameView.bounds;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>解决方法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[CATransaction begin];</span><br><span class="line">[CATransaction setDisableActions:YES];</span><br><span class="line">self.frameLayer.frame = self.frameView.bounds;</span><br><span class="line">[CATransaction commit];</span><br></pre></td></tr></table></figure></p>
-<h3 id="LaunchScreen-storyboard-动态设置版本号"><a href="#LaunchScreen-storyboard-动态设置版本号" class="headerlink" title="LaunchScreen.storyboard 动态设置版本号"></a>LaunchScreen.storyboard 动态设置版本号</h3><p><a href="https://www.jianshu.com/p/5253f671436b" target="_blank" rel="noopener">https://www.jianshu.com/p/5253f671436b</a><br>哈哈，连header 都是拿的原作者的。<br>小弟这里记录记录。</p>
-<ol>
-<li>选中LaunchScreen.storyboard 的label，为该label 的Show the Identity inspector(XCode 最右边栏从左到右边：文本、问好、xx -&gt; 就是这玩意啦),在Document - Label 填入”APP_VERSION”.</li>
-<li>点击Project - Target - Build Phases - “New Run Script Phase”</li>
-<li>给新创建的”Run Script” 改名为 “Update Launch Version”, 同时展开它</li>
-<li>在Shell 后面输入 <code>/bin/bash</code>，然后在下面输入脚本语句写入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">versionNumber=$(/usr/libexec/PlistBuddy -c &quot;Print :CFBundleShortVersionString&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;)</span><br><span class="line">sed -i bak -e &quot;/userLabel=\&quot;APP_VERSION\&quot;/s/text=\&quot;[^\&quot;]*\&quot;/text=\&quot;v $versionNumber\&quot;/&quot; $PROJECT_DIR/XXT/resource/Base.lproj/LaunchScreen.storyboard</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>以上script 注意3个点:</p>
-<ol>
-<li><code>$PROJECT_DIR/XXT/resource/Base.lproj/LaunchScreen.storyboard</code><br><code>XXT</code>是工程target 名。</li>
-<li><code>/resource/</code> 是对应LaunchScreen 位置(ps 我改过他的位置了)</li>
-<li><code>sed</code> 前面有折行。如果运行正确，效果没出来的，给<code>sed</code> 前面折行</li>
-</ol>
-<p>至此以后就不用那么麻烦了。</p>
-<h3 id="记录一次iOS-上传release-包出现”ITMS-90037”，debug-正常"><a href="#记录一次iOS-上传release-包出现”ITMS-90037”，debug-正常" class="headerlink" title="记录一次iOS 上传release 包出现”ITMS-90037”，debug 正常"></a>记录一次iOS 上传release 包出现”ITMS-90037”，debug 正常</h3><ol>
-<li>debug 非常正常。打包到fir.im 里面OK。</li>
-<li>上传testfly 的时候，总是出现<code>ERROR ITMS-90037: &quot;This bundle is invalid. The Info.plist file is missing or could not be parsed. Please check it for embedded control characters.&quot;</code><br>查google，大部分说<blockquote>
-<p>问题描述：这个包是无效的。Info。plist文件丢失或不能被解析。请检查plist的字符。<br>问题解决：info.plist 里面有一个非法字符，用终端打开这个文件查看一下，可能会有中文的字符或其他不能识别的字符。</p>
-</blockquote>
-</li>
-</ol>
-<p>但是我大眼瞪小眼还是没看出来。<br>从另一个角度：APP 之前可以上传；中间重大改版，里面用到了AliyunvideoPlayer 我觉得有问题。<br>然后我看到这篇文章：<a href="https://www.jianshu.com/p/f62c7767e16b" target="_blank" rel="noopener">https://www.jianshu.com/p/f62c7767e16b</a><br>里面链接到这篇<a href="https://blog.csdn.net/q_littlestone/article/details/51000112" target="_blank" rel="noopener">https://blog.csdn.net/q_littlestone/article/details/51000112</a> 里面的这篇：<a href="http://ios.jobbole.com/84323/" target="_blank" rel="noopener">http://ios.jobbole.com/84323/</a><br>终于找到了最终问题，并说明了原因：<br>里面有第三方framework。其framework 里面的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bundle version</span><br><span class="line">Bundle identifier</span><br><span class="line">Bundle versions string, short</span><br></pre></td></tr></table></figure></p>
-<p>没有和项目自己的对应。如果你自己还有bundle，里面取名不要使用<strong>Info.plist</strong> 或者<strong>info.plist</strong><br>处理办法：</p>
-<ol>
-<li>改变自己bundle 里面的Info.plist / info.plist</li>
-<li>讲第三方的Info.plist 里面的 “Bundle version/Bundle identifier/Bundle versions string, short” 改为和主Info.plist 内容一致。<br>最终终于通过了。<br>我的天，我花了快1天半呀。<br>需要不断尝试，同时看是否能上传成功，同时也要和以前对比。<br>打包、上传。半条命。</li>
-</ol>
-<h3 id="记录一次Xcode-release-下打包CFBundleVersion-1"><a href="#记录一次Xcode-release-下打包CFBundleVersion-1" class="headerlink" title="记录一次Xcode release 下打包CFBundleVersion +1"></a>记录一次Xcode release 下打包CFBundleVersion +1</h3><p>打包增加CFBundleVersion 需要另外考虑一件事：几个同事之间打包，build 号可能会污染。可以使用时间或者git 上传次数。<br>当前使用的是自动+1 操作。<br>首先</p>
-<ol>
-<li>在Build Phases 里面增加一个Run script.</li>
-<li>修改下名字，比如：AutoIncreaseBuildVersion</li>
-<li>把其拖到第一个下面</li>
-<li>增加script 如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">// 判断是哪个configuration</span><br><span class="line">// Release Debug 或者只自定义的配置</span><br><span class="line">if [ &quot;Release&quot; != &quot;$&#123;CONFIGURATION&#125;&quot; ]</span><br><span class="line">// 如果是Release做哪些事情</span><br><span class="line">then</span><br><span class="line">// 如果不是Release做哪些事情</span><br><span class="line">    exit 0 退出 不执行下面的代码</span><br><span class="line">fi</span><br><span class="line">buildNumber=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleVersion&quot; &quot;$INFOPLIST_FILE&quot;)</span><br><span class="line">buildNumber=$(($buildNumber + 1))</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion $buildNumber&quot; &quot;$INFOPLIST_FILE&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>上面的exit 0 可以注释也可以加上。效果就是其他CONFIGURATION 不会执行下面动作</p>
-<p><strong>跟随时间变化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">buildNumber=$(date +%Y%m%d%H%M%S)</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion $buildNumber&quot; &quot;$INFOPLIST_FILE&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>获取info.plist信息 CFBundleVersion 可以更改为想获取的信息的名字</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">buildNumber=$(/usr/libexec/PlistBuddy -c &quot;Print :CFBundleVersion&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;)  </span><br><span class="line">shortVersion=$(/usr/libexec/PlistBuddy -c &quot;Print :CFBundleShortVersionString&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;)  </span><br><span class="line">buildNumber=`date +&quot;%m%d&quot;`  </span><br><span class="line">buildNumber=&quot;$shortVersion.$buildNumber&quot;  </span><br><span class="line"></span><br><span class="line">// 设置info.plist</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion $buildNumber&quot; &quot;$&#123;PROJECT_DIR&#125;/$&#123;INFOPLIST_FILE&#125;&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>修改项目显示名称为版本号（适用于不同版本号装到一个机器里面，便于区分是哪个版本）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash</span><br><span class="line">if [ &quot;Release&quot; != &quot;$&#123;CONFIGURATION&#125;&quot; ]; then</span><br><span class="line"></span><br><span class="line">DisplayName=$(/usr/libexec/PlistBuddy -c &quot;Print CFBundleShortVersionString&quot; &quot;$INFOPLIST_FILE&quot;)</span><br><span class="line">DisplayName=&quot;ep$&#123;DisplayName&#125;-I&quot;</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleDisplayName $DisplayName&quot; &quot;$INFOPLIST_FILE&quot;</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line"></span><br><span class="line">DisplayName=&quot;真正的项目名称&quot;</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set :CFBundleDisplayName $DisplayName&quot; &quot;$INFOPLIST_FILE&quot;</span><br><span class="line"></span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
-<h3 id="记录一次使用Egret-wing-调试出现"><a href="#记录一次使用Egret-wing-调试出现" class="headerlink" title="记录一次使用Egret wing 调试出现"></a>记录一次使用Egret wing 调试出现</h3><p>“No such module: atom_renderer_v8_util”<br>崩溃到这一句”return process.binding(<code>atom_${process.type}_${name}</code>)”</p>
-<p>然后换成debug 用chrome 可以用几次，但是用出错。<br>明明没有代码错误，把代码拷到另一个工程，又能运行。<br>最终解决：把翻墙关了。<br>网上也有一些解决方案，但都没有说到点，心里还嘀咕怎么可能跟我shadowSocks 有关。<br>后来确实没有再出现了。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-6-28lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/07/21/2018-6-28lesson/">2018/6/28lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/07/21/2018-6-28lesson/" class="article-date">
-	  <time datetime="2018-07-21T01:28:37.000Z" itemprop="datePublished">July 21, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="2018-6-28"><a href="#2018-6-28" class="headerlink" title="2018/6/28"></a>2018/6/28</h3><p>记录一下这几天的事<br>之前从粉粉离职，原因有很多很多方面导致我在这大热天毅然决然的选择离开.</p>
-<ol>
-<li>工资从未提升，哪怕变动或者变少都行，表示公司有一定考核.<br>2.周末采取单双休，双休的时候感觉太幸福了；单休的时候，周日等于没有休息，等于连上12天班。饥饿策略。</li>
-<li>项目采用快速迭代策略，2周一版本，代码质量要管控、逻辑要管控、需求没有明确特别是需求不明确，做到一定才发现有些有冲突，或者有些和另外东西结合了，或者导致另外东西也要变动，然而时间也是被一并算进迭代版本里面。正如最后要走时，旭哥和我开玩笑的说‘在外面公司好点，因为他们不懂代码，粉粉技术懂，所以就会很紧，以后你就会舒服啦’。是的，他们懂代码他们也为我尽量宽松了些，但是细节可能在做到的时候才会碰到。</li>
-<li>公司感受不到我的存在位置，我就是个码农？这不是我想要的。</li>
-</ol>
-<p>进粉粉目的如同我刚上大学就知道自己绝不会考研一样：‘我是来学技术的’。学完如果公司还有我存在的意义，那么我会选择留下来，以上总总都没有。</p>
-<p>后来和根根（前粉粉安卓组成员）聊天时，他说的也正是我明了的：<strong>粉粉 是不是觉得 举步维艰</strong> 、<strong>陷入泥潭一样？</strong></p>
-<p>所以我预算的最好的时间就是学完，前端学完，后端学完，溜了溜了。<br>期间面试了有十数家公司。</p>
-<p>有+我才3个开发的公司，产品基本等于设想的。</p>
-<p>有要做区块链 的公司（好多家都想蹭这个热度）</p>
-<p>有做广告SDK 的（当时去到该处，我先看他们代码，告诉他们这要做什么，对我来说有什么理解、难处等等）</p>
-<p>有做心理学社交的，我当时先让他电话面试，别他们觉得不合适，我就可以不用过去了</p>
-<p>也有做公司产品+外包的</p>
-<p>我拒绝了几个（3、4个，六月份找工作确实不好找）</p>
-<p>我被拒绝了2次一个做医疗社交的，看他开价12 - 19，，又看到他们内部技术，我的天，那就意思意思17左吧，，真没漫天要价。一个做看小说的，似乎有个产品叫“漫画”似乎要很牛逼的，，我特么不写着我自己期望的嘛，你特么喊我过来，问的问题我以为什么鬼。搞得很牛逼的样子，反正不用理这个。继续自己的学习发展，确实很都比的人）</p>
-<p>得到4、5个offer。最后来到一个也是做社交的小公司。正好可以把从粉粉学到的运用上去。</p>
-<p>老实说，当时看到他们的代码，有种熟悉又不熟悉的味道。代码规范、格式，这里不存在的。创建者是个php 的小哥（即将离开），能力不咋滴（产品逻辑、规范、Wiki、流程都不知道）还拽的250似得。我也懒得和这种性格有缺陷的人多聊一会，问documents 有没有？不存在的，全部是3、4年前写的种使用字典；服务端也别想有documents。反正一团糟。哈哈。反正所有东西都是3、4年前那一套。</p>
-<p>那我就慢慢来好了，我不急，急不来，自己好好规划规划就可以了。</p>
-<p>来到这个公司，有几个特点。</p>
-<p>优点：公司有自己目前主营业务。新来了个小哥php 、规范等和自己有共同语言，产品负责人和c 哥很像。多年产品人，设计，游戏设计。新来的那个小哥也做白鹭游戏，这个是我想要的。之后可能也会分配做些游戏。老板似乎是宁波人，公司方面也有和宁波政府合作。这个和我也有点想去宁波发展发展有点好处。额，还可以还可以。</p>
-<p>缺点：确实没有粉粉明面上的热闹，进来之后感觉我有点无足轻重。技术垃圾到极点（目前都走光了，剩下产品大哥-长得有点像‘无所谓’的杨坤，和php 小哥）。老板性格、说话有点像干辉，哈哈。老板一点都不懂技术，但是比较会被技术说的云里雾里，然后似懂非懂。老板管理上不咋滴的。</p>
-<p>好吧，吐槽吐槽就到这里了。不多说，溜了溜了。</p>
-<h3 id="UICollectionView-addSubviews-UIView-内部有autolayout-CollectionView-视觉出bug"><a href="#UICollectionView-addSubviews-UIView-内部有autolayout-CollectionView-视觉出bug" class="headerlink" title="UICollectionView addSubviews UIView 内部有autolayout CollectionView 视觉出bug"></a>UICollectionView addSubviews UIView 内部有autolayout CollectionView 视觉出bug</h3><p>错误确定为：<br>CollectionView addSubviews 里面不能存在内部有约束的UIView。<br>否则其直接导致CollectionView 内部结构、内部约束直接紊乱。<br>其上的新增detailInfoview 有两种方法可以处理<br>1：如同当前新建view 处理，内部全部为frame 布局。目前来看似乎还不错<br>2：在CollectionViewLayout 上多流出来一个layoutAttributes，给第一个，然后frame 由代理DataSource 从controller 得到。这样等于得到一个特定cell</p>
-<h3 id="Xcode-插件还能用"><a href="#Xcode-插件还能用" class="headerlink" title="Xcode 插件还能用"></a>Xcode 插件还能用</h3><p>curl -fsSL <a href="https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh" target="_blank" rel="noopener">https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh</a> | sh<br>但是提示 <strong>xcrun: error: unable to find utility “xcodebuild”, not a developer tool or in PATH</strong></p>
-<p><a href="https://www.jianshu.com/p/ff1d99fe1d17" target="_blank" rel="noopener">https://www.jianshu.com/p/ff1d99fe1d17</a></p>
-<p>opened Xcode.<br>Preferences<br>Locations<br>Selected the Command Lin Tools: (选择xcode版本)</p>
-<p>-&gt; <strong>Alcatraz successfully installed!!1!🍻  Please restart your Xcode (9.4).</strong></p>
-<p>然后解决Xcode 8 之后不能使用Alcatraz</p>
-<p><a href="https://www.jianshu.com/p/0b541f145a1a" target="_blank" rel="noopener">https://www.jianshu.com/p/0b541f145a1a</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install update_xcode_plugins</span><br><span class="line">$ update_xcode_plugins</span><br><span class="line">$ update_xcode_plugins --unsign</span><br></pre></td></tr></table></figure>
-<p><strong>Choose which Xcode you would like to unsign (use arrows): Xcode (9.1) [Signed]: /Applications/Xcode.app</strong><br><code>$ Y</code></p>
-<p>似乎出现了Xcode 关闭之后，再打开，PackageManager 不见了。<br>解决请参考：</p>
-<p><a href="https://www.jianshu.com/p/a9448154c09e" target="_blank" rel="noopener">https://www.jianshu.com/p/a9448154c09e</a></p>
-<p>之后确实都出来了，不知是否这个原因</p>
-<h3 id="iOS-转场动画"><a href="#iOS-转场动画" class="headerlink" title="iOS 转场动画"></a>iOS 转场动画</h3><p>很久没有做转场动画了。这里把遇到的坑填一填。</p>
-<h3 id="如果程序中改变了某个空间的transform-不要使用frame；视觉bug-是其会变成CGRectZero"><a href="#如果程序中改变了某个空间的transform-不要使用frame；视觉bug-是其会变成CGRectZero" class="headerlink" title="如果程序中改变了某个空间的transform 不要使用frame；视觉bug 是其会变成CGRectZero"></a>如果程序中改变了某个空间的transform 不要使用frame；视觉bug 是其会变成CGRectZero</h3><p><a href="https://www.jianshu.com/p/9dfd337e8266" target="_blank" rel="noopener">https://www.jianshu.com/p/9dfd337e8266</a><br>应该使用bounds+center</p>
-<h3 id="iOS-某个VC-rotation-还有statusBar-状态"><a href="#iOS-某个VC-rotation-还有statusBar-状态" class="headerlink" title="iOS 某个VC rotation 还有statusBar 状态"></a>iOS 某个VC rotation 还有statusBar 状态</h3><p>//<a href="http://www.jianshu.com/p/4196d7cf95f4" target="_blank" rel="noopener">http://www.jianshu.com/p/4196d7cf95f4</a><br>BaseNavigationViewController:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*顶部状态栏 接下来会调用该viewController 的</span><br><span class="line">- (BOOL)prefersStatusBarHidden &#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">- (UIStatusBarStyle)preferredStatusBarStyle &#123;</span><br><span class="line">    return UIStatusBarStyleLightContent;</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">-(UIViewController *)childViewControllerForStatusBarStyle&#123;</span><br><span class="line">    return self.topViewController;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>程序默认为<strong>UIInterfaceOrientationMaskPortrait</strong><br>那么在BaseNavigationViewControlelr<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-(UIInterfaceOrientationMask)supportedInterfaceOrientations&#123;</span><br><span class="line">    return UIInterfaceOrientationMaskPortrait;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在需要的ViewController加入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)shouldAutorotate &#123;</span><br><span class="line">    return !self.isLocked;</span><br><span class="line">&#125;</span><br><span class="line">//这个比较重要。这里告诉了system 当前到底支持哪些种旋转方式</span><br><span class="line">- (UIInterfaceOrientationMask)supportedInterfaceOrientations &#123;</span><br><span class="line">    if (self.isLocked) &#123;</span><br><span class="line">        return UIInterfaceOrientationMaskPortrait;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return UIInterfaceOrientationMaskPortrait|</span><br><span class="line">            UIInterfaceOrientationMaskLandscapeLeft|</span><br><span class="line">            UIInterfaceOrientationMaskLandscapeRight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation</span><br><span class="line">&#123;</span><br><span class="line">    if (self.isLocked) &#123;</span><br><span class="line">        return toInterfaceOrientation = UIInterfaceOrientationPortrait;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上即可在相关view 里面控制rotate。</p>
-<h3 id="最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了"><a href="#最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了" class="headerlink" title="最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了"></a>最近老婆看电视剧太多又说不看了，我想到的是，又一个新的轮回开始了</h3><p>2018/7/9<br>她说看太多不想看了。那我们来预测一下接下来她会怎么做，然后每天记录她当天的态度。</p>
-<p>什么是新的轮回？那就是，难受，不看电视剧，所以连同什么综艺节目（跑男、唱歌的、宝宝剧场）都不会看。当然，对于黄妈肯定是一开始很义正言辞的。<br>于是最近的3天到5天（最长5天，不可能超过5天，这也要考虑进去周末休息日）她一天比一天难受。很想看，但是又还记得刚说过的话。<br>下一个阶段是工作回来太累了，回到家不知道干什么，毕竟工作属于需要静下心来的；于是她就花点时间做菜，做好吃的。这阶段属于过渡期，这几天饭菜之类的都会可口一些吧。<br>当然过渡期不能称为阶段，因为这很短，大约2天~3天。期间还会有不应期，菜饭做好吃好，不想写东西，又睡不着，此时还不能看任何视频，这就难受了。于是就趴在床上看淘宝。<br>腐女嘛，不是看视频就是看淘宝，看淘宝还不买的那种，因为她知道她没钱。我要是店主，我肯定不开淘宝店了。页面统计数据挺好看的，就是没人买-&gt;都是她这种小妮子光看不买系列。<br>下一个阶段就是有些忘记之前说过的话啦，没全忘记那种。在一起吃饭时，她会嘿嘿嘿的偷笑，拿出iPad，怼到我面前，就像是我们一起看，看综艺节目（当前还不敢看电视剧的）。看着看着，然后又趴到床上看淘宝。<br>接下来的2~3天左右就会发现她捧着iPad在床上看看综艺节目演变成偷偷看韩剧，这时回头看她，她是带着耳机的，时不时偷笑；说她的时候，她就会不好意思，然后又继续看，有时也会放下。此时她的睡眠也不会熬夜。<br>其实这阶段还属于偷偷看。不敢光明正大看，也不能不看，估计不看的话，会，会，会坏掉的。<br>再接下来，有两个阶段，可以合并为一个。<br>先是吃饭的时候看韩剧，一起看一起看（说实话，那些逗逼韩剧那么多人看，我都想转行拍片了，没技术没含量没思想）。然后就是，自己一个人在后面，边吃零食、边看电视剧啦。<br>快乐的一个人看电视剧，手边总有吃的。因为没有吃的，她会把吃的扒拉过来放在身边，没吃嗑一点。</p>
-<p>实际：<br>第1~3天（7月9号为第1天）：<br>第1天：<br>第1天晚上回去，一菜一汤。然后屁颠屁颠坐下来看看weex。由于立马不看电视剧，接口看了下QQ，点开了QQ空间，里面看了好一会视频。看到我喝酒，怕被我打，赶紧不看了。<br>接着又看了会weex，手机上开发者页面，这么小屏幕，肯定看不下去，于是东搞搞西搞搞，这晚就过去了。<br>比较关键的是，她自己不能看视频，还不让我打游戏，，，这神逻辑。我又没说我不打游戏。我打游戏休闲娱乐，她居然也不让我看。哈哈。<br>第2天：<br>第2天晚上回去，进门就看到她开始看综艺节目啦。看来之前多次轮循，现在比较明目张胆了。我一说之后，马上收起来，屁颠屁颠去拿饭吃了。<br>今天晚上她身体不舒服，搞七搞八，视频又不能看，于是吃完饭差不多9点多了，就自己睡着了。<br>第3天：<br>第3天晚上回去，你懂得，饭也没煮，一开门就看到她在那看电视剧了。<br>嘿，这个转换的快啊。她赶紧收起来，然后不好意思屁颠屁颠去给我热粥。我吃饭时，让她做code review。那个脾气倔的，嘴巴都嘟起来，一直抠脚。我的天，不过是聊聊天而已，说实话，心里有点晦气-&gt;什么鬼。<br>然后她跑上床，又开始看起来了。我说了三次她才停下来，厉害厉害。</p>
-<p>第3天之后我就不必再写了，这人没救了。丢阿黄一个人在家，自己整天整夜看电视剧，沉迷的很。<br>最近工作也是不顺，整天还这么沉迷，“还一点点没看完，就快看完了”。<br>整天说，不准再打这么多游戏了；多写东西，别老打游戏；还撇着嘴，埋怨我整天打游戏。<br>我的天，我都很少打游戏好吧。<br>我打游戏有准则，她看视频都是没有限度的。她视电视剧犹如猛兽，所以老是说不看了，然而还是沉迷不止。<br>我觉得游戏是休闲，是比赛，我不觉得打游戏如何堕落。<br>她这简直是找抽。</p>
-<h3 id="申明init-入口"><a href="#申明init-入口" class="headerlink" title="申明init 入口"></a>申明init 入口</h3><p>申明initWithURL:(id)xx 入口有两种方法。<br>1: initWithURL:(id)xx NS_DESIGNATED_INITIALIZER;使用宏提示其为为设计入口。<br>这时会出现：<br><!--https://blog.csdn.net/zcube/article/details/51657417--><br>如果用了NS_DESIGNATED_INITIALIZER，那么警告中出现init还是initWithNibName或是其它，取决于你的继承的父类类型：</p>
-<p>UIViewController</p>
-<p>Method override for the designated initializer of the superclass ‘-initWithNibName:bundle:’ not found<br>Method override for the designated initializer of the superclass ‘-initWithCoder:’ not found<br>UIView</p>
-<p>Method override for the designated initializer of the superclass ‘-initWithFrame:’ not found<br>Method override for the designated initializer of the superclass ‘-initWithCoder:’ not found<br>NSObject</p>
-<p>Method override for the designated initializer of the superclass ‘-init’ not found</p>
-<p>那么就实现比如UIView 的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (instanceType)initWithFrame:(CGRect)frame &#123;return [self initWithURL:nil];&#125;</span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)aDecoder &#123;return [self initWithURL:nil];&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2: 把其他的入口设置为NS_UNAVAILABLE</p>
-<h3 id="这几天上传两个APP-收到2-1-拒绝大礼包"><a href="#这几天上传两个APP-收到2-1-拒绝大礼包" class="headerlink" title="这几天上传两个APP 收到2.1 拒绝大礼包"></a>这几天上传两个APP 收到2.1 拒绝大礼包</h3><ol>
-<li>首先是我写的一个房产计算器的项目。<br>一开始是因为在标题里面有<strong>免费</strong>的字样，去掉之后就出来2.1 大礼包了。<br>2.1 礼包说我这可能有隐藏功能、有贷款方面东西。</li>
-</ol>
-<p>我回复邮件说，我这绝对没有隐藏功能，也没有贷款方面的东西。因为觉得世面上的不好用、广告太多等，所以做了个这个功能。这个功能也是自主研发的，不是市面上的抄袭品。</p>
-<ol start="2">
-<li>还有一个涂色的项目。<br>上来直接就是2.1 大礼包。<br>我猜测原因是我展示页面出现<strong>免费</strong>字样，引导了用户。还有就是可能有隐藏功能。</li>
-</ol>
-<p>目前这两个项目我都做了广告，所以也不具备广告功能。我回复涂色项目的，我们没有隐藏功能，免费是因为素材时设计师们的心血，但是为了分享这份灵感，所以使用免费，但是绝没有付费，更不用说，除苹果外的第三方付费了。<br>免费同时也因为市面上其他APP 都是要付费的，我们就专打免费策略。最后，我们删除了展示页面的那张带有<strong>免费</strong>字样的图片。 </p>
-<p>最后再说一句：如果是原数据被拒绝，同时你认为不必要上传新的二进制，你就直接回复该邮件。<br>然后静静等待，不需要点击#提交以供审核#。如果点了，那么相当于重新审核，可能会等待7~8天。<br>相关帖子：<a href="http://www.cocoachina.com/bbs/read.php?tid-298671-page-1.html" target="_blank" rel="noopener">http://www.cocoachina.com/bbs/read.php?tid-298671-page-1.html</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-5-9lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/20/2018-5-9lesson/">2018-5-9lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/20/2018-5-9lesson/" class="article-date">
-	  <time datetime="2018-05-20T03:25:52.000Z" itemprop="datePublished">May 20, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018/04/23</p>
-<h3 id="Clang-Attributes-黑魔法小记"><a href="#Clang-Attributes-黑魔法小记" class="headerlink" title="Clang Attributes 黑魔法小记"></a>Clang Attributes 黑魔法小记</h3><p><a href="http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super" target="_blank" rel="noopener">http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super</a></p>
-<p>objc_subclassing_restricted</p>
-<p>objc_requires_super</p>
-<p>objc_boxable</p>
-<p>constructor/desctructor</p>
-<p>objc_runtime_name</p>
-<h3 id="Mac-启动服务配置"><a href="#Mac-启动服务配置" class="headerlink" title="Mac 启动服务配置"></a>Mac 启动服务配置</h3><p>redis<br>start: redis-server /usr/local/etc/redis.conf<br>stop:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps axu|grep redis  ## 查找redis-server的PID</span><br><span class="line">kill -9 PID</span><br></pre></td></tr></table></figure>
-<p>mysql<br>start<br>mysql-server start</p>
-<h3 id="2018-05-07交涉"><a href="#2018-05-07交涉" class="headerlink" title="2018/05/07交涉"></a>2018/05/07交涉</h3><p>2017年2月来到粉粉，一开始一直学习进阶姿态。当时c哥来了不久，要成立一个海外团队。当时的人选是LPD(我猜的，毕竟我刚来不太久5月，而LPD 刚好在那个时候选择了回家发展)，后来大师、我、c哥去小会议室说明了计划，任务。<br>我在6、7月份的时候开始和c哥合作，为了合作更愉快，c哥甚至于搬到我位置边。那个时候我只想着更好的处理，学习，进阶，发展。是的，那个时候和他合作的一款绘图，简直让我开心不已，我和他不断交谈，不断完善。后来正要开始一款记账软件的时候，老板也已经没有耐心：没有产品思维，没有变现途径，当断则断的砍掉了该业务。当时我iOS、一个安卓、一个实习编辑(他的口头禅：原来是你小子，把皇君给我的好吃都给吃了回扣了)、c哥就此分开。实习编辑直接辞职；c哥也还想挽回一些结果，但还是回天乏力，于是也选择了离开；我和安卓又回到了之前的岗位了(好奇，我们居然不开掉了？虽然工资一年来没有变化，但是实力绝对学够了，幸好当时没离开，学到就是值);<br>c哥离开前给了我份设计稿，一种MetaBall 的设计记账软件。当时我花了九牛二虎之力，万分努力打磨出来。核心物件出来了，我们又继续打磨产品，打磨整个工程。一开始上线是在c哥账号，叫”Drop”， 后改名叫”小池记账”，再后来改名叫”小泉记账”；<br>真正的问题开始在2018年1月左右。<br>c哥打算喊我去他们公司开发。我心里思考是，如果我去了，按照c哥性格，我估计工资高不到哪去，肯定说什么创业啦，不要在意这么多啦，好好完成功能等等等；学的东西肯定也是不够的。<br>于是c哥说，能把源码给到他们。他的承诺是3个月10w 量，给我3w(我和他一人一半，算是6w)；我不看重这个，这个不是买断，也不是完全合作，我源码一给，相当于我没有任何有利地位了。最终做法：我同意3个月给他尝试，源码给他(核心效果代码做静态库处理，就这他还想要源码，说他们员工很轴，估计当时他就像独吞全部成果吧)，2500给我(相当于5000两人，我做事公平)；<br>我们当时有一款矢量图软件，我有“商店”，但是素材商品快速制作在于c哥手，直到2018年5月终于得到该技术，也就是2018年5月5日周六我前往他们公司，然后c哥终于回忆起来制作历程交付与我(其实教程我之前有一份不完整的，要提交给公司的，但是谁也看不懂，做不出来)。同时作为回馈，我给他们公司员工做一下技术指导，指导过程发现，他们公司的其他好几款其他APP，比如“Uki”，还有其他APP的核心代码都从我那份拷贝得来。这是技术流失。<br>然后如标题，2018年5月7号周一，我与c哥交涉“drop”下一步合作事宜，这天离当时已经有4月多之久(当时的考虑就是还没得到制作画画素材技术，不谈论该话题)；<br>当时我问这个话题的时候，他以为我要3w 的承诺；我说我知道没有10w 的量，但是3个月已过，接下来怎么继续合作；他还说接下来10w 日货，还是承诺2w；兄得，如果把所以权，都给你，就跟我没什么事一样了，拿到我所有源码就这么为所欲为么？那要这么说，我来替你运营，日活10个人，我给你1千万；那些没有意义的承诺。<br>我的字典里一直有句话：</p>
-<blockquote>
-<p>不要跟比自己境况差的人，讨价还价<br>更不要跟比自己有钱的人，抢着买单</p>
-</blockquote>
-<p>能让则让，小弟这么拼命给你干活，你就拿到我源码就“你要介意的话，我们下一版代码会重新写”；我的意思很简单，商业利益失败，朋友还要交的，c哥接下来一句“包括涂色的布局ui也不要用我的设计，既然在意就说清楚，大家都有知识产权对吧”，直接挑明了朋友都没得做。那算了，说明我的意义就这么大，就是那个有静态库的源码的价值。<br>行行行，你是项目负责人，全是你的成就。我啥都没有起到作用，毕竟代码书写被你改了嘛。<br>后来的几天，我全力工作，优化那个涂色项目。接下来其实我完全可以就这么卖了“drop”源码，或者开源了，反正对我意义不大，我的能力不是只有drop。得了芝麻“有静态库的源码”丢了西瓜。<br>之前这么崇拜你的我，也算清醒。我觉得我不太吃亏。对我来说，重要的是涂色项目，一个完整生态，商品和商店，而且可以量产。<br>其实回顾来说，我觉得做人真不必如此，你的钱是我10倍多，我连午饭都要去很远很远的食堂，晚饭省钱饿着回家吃的我，都不舍得花钱，有孩子要养，最近又有买房需求，再说，涂色素材技术本应回交公司，我当时还特意解决了c哥公司很多重大崩溃技术，我觉得您真不必如此。<br>最后一次尊重。您高升就好。“drop”我会留下自己开发，不然对你们公司肯定是致命的，毕竟全公司都花时间搞那个了，我公开出去，或者自己搞个差不多的，我的功能肯定比你多，开发比你快、稳定，然后就跟着你的ISO，蹭你们热量，你们会白做的！<br>接下来我继续加油，避开他以前的设计范畴，一些以前我也参与的设计我就不必客气，这不全是你的功劳，不全是你的成就。都是一起探讨出来的，当时我的努力，我身后要保护的人，都提醒我，该客气时客气，该凶时就该认真对待了！<br>之前去他们公司，看他们的代码，确实，一个成功的产品，开发的人还是很重要的。代码规范，模块划分。我猜想，c哥现在公司应该开不久，或者说开不大。<br>前几天开了些文章，他国对中国封锁核弹、氢弹技术，中国克服困难做出来了；他国对中国封锁航天技术，中国又突出重围。我想我也正需要这股拼劲。这几天硬着头皮，老婆小小的学了把一个方便设计的软件，我自己搞了搞ps，把开源的声音、字体、图片等都找全；<br>给自己软件做东西，你会发现，你总是这个做简单点，那个可以省略就省略吧。于是做的总是自己都不满意。回头想想，你给公司做的时候你会这样么？你肯定是硬着头皮也要搞出来，能搞出来的就搞得更好那种。<br>你要的是，把做公司的那种态度用到写自己的上面，同时，规划好时间，集中精力攻破难关。<br>这次学到的东西也很多很多，同时也警醒自己，有些事情一定要思考思考在思考，一定不能出大错。这次错误，算是损失，但是很能忍。<br>毕竟也学了那么多，同时还长进了这么多。<br>应该应该的，小弟就该吃糠，小弟家人就是垃圾，不应该有这么多思想，不应该要求这么多。<br>timestamp: 2018/5/9 田小新</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2018-04-22lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/04/22/2018-04-22lesson/">2018-04-22lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/04/22/2018-04-22lesson/" class="article-date">
-	  <time datetime="2018-04-22T14:51:41.000Z" itemprop="datePublished">April 22, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018/03/14</p>
-<h3 id="公司引入零食架，却得”破损率”一说"><a href="#公司引入零食架，却得”破损率”一说" class="headerlink" title="公司引入零食架，却得”破损率”一说"></a>公司引入零食架，却得”破损率”一说</h3><p>听到#破损率#这事情，这种说法，我不能接受。<br>作为企业员工，我不觉得该事件缘由仅因为该无由头的数据，然后单方面说退出，然后就过去了。<br>我坐在公司，我作为公司一份子，和大家相处，我不觉得#破损率# === #物品丢盗#!!!<br>或许#破埙率#没有直接了当说明其 === #物品丢盗#，但是各位同事心中其实已经对其隐喻画上等号。</p>
-<ol>
-<li>“破损率”由总量和当前剩余量以及所得量(金额 以下称“所得金”)有关。</li>
-<li>总量由该公司清点，当前剩余量也由该公司清点</li>
-<li>所得金数据也由该公司清点。</li>
-</ol>
-<p>商品购买模式：<br>购买者在商品架直接挑选；<br>微信网页内购买，选中相应商品、数量。付款。</p>
-<p>购买操作复杂，且可能多操作和误操作等无法模拟数据对等情况。<br>对于用户而言，如果卖方没能提供舒适操作，而且没有更多措施防止其己身损失，我想这不是用户的错，这是人的错，或者是，该种买卖信用机制是有问题的。<br>这种将一切信任丢给用户，如果该企业勘察数据到一定量就提出“破损率” 超过xxx，然后退出、无其他正确发言。我觉得一开始就应该提出有这种“商业模式”，或者称“全靠用户信用交易模式”。即使“破损率”接受范围为99%，我觉得该破损情况都有可能变为100%。<br>中间有太多的突破和漏洞:</p>
-<ol>
-<li>该企业下单，指定数量、种类、时间等到相应公司；</li>
-<li>相关商品从仓库到达指定销售架；</li>
-<li>商品从开始卖，隔数天就有人抽查；</li>
-<li>清点“破损率”</li>
-</ol>
-<p>以上的2、3、4点都有可能有问题。<br>“三方”：买方、物品运送过程、清点过程人员以及购买页面的操作方。</p>
-<p>对于一个无法真正确定是否购买，购买流程是否是闭环，那么就会出现其他流程可以做手脚的机会。因为即使做手脚也可能说“破损率”。<br>那么多的疑点，却全由“破损率”，也即我所在公司内部员工心中已有的定义#物品丢盗# 承担。我没有说是否引进这种便捷小零食商架带来的更多的便利，但带来的负面影响却对公司内部营造的团结、互助、信任带来损害。</p>
-<p>综上所述，我不能接受“破损率”一说。</p>
-<h3 id="coreData中integer16-integer32-integer64的区别"><a href="#coreData中integer16-integer32-integer64的区别" class="headerlink" title="coreData中integer16,integer32,integer64的区别"></a>coreData中integer16,integer32,integer64的区别</h3><p>摘抄自: <a href="http://blog.csdn.net/juyufeng_huazhu/article/details/50239699" target="_blank" rel="noopener">http://blog.csdn.net/juyufeng_huazhu/article/details/50239699</a><br>Integer 16 can have minimum value of -32,768 to 32,767<br>Integer 32 can have minimum value of -2,147,483,648 to 2,147,483,647<br>Integer 64 can have minimum value of -very large to very large</p>
-<h3 id="在viewDidLoad处理完的200ms-如果获取得到数据-那么用户将会无感空白过程"><a href="#在viewDidLoad处理完的200ms-如果获取得到数据-那么用户将会无感空白过程" class="headerlink" title="在viewDidLoad处理完的200ms 如果获取得到数据 那么用户将会无感空白过程"></a>在viewDidLoad处理完的200ms 如果获取得到数据 那么用户将会无感空白过程</h3><h3 id="MAC-查看端口占用"><a href="#MAC-查看端口占用" class="headerlink" title="MAC 查看端口占用"></a>MAC 查看端口占用</h3><p>命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -i tcp:port （list open files）</span><br><span class="line">KILL port</span><br></pre></td></tr></table></figure>
-<p>（port替换成端口号，比如6379）可以查看该端口被什么程序占用，并显示PID，方便KILL</p>
-<h3 id="React-CSS-布局"><a href="#React-CSS-布局" class="headerlink" title="React CSS 布局"></a>React CSS 布局</h3><p>父容器的style 需要使用flex 魔盒布局时，是要添加display: flex<br>原因是其默认是display: block<br>最终如 :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.row1 &#123;</span><br><span class="line">    padding: 30px;</span><br><span class="line">    /* align-content: space-around; */</span><br><span class="line">    flex-direction: row;</span><br><span class="line">    background-color: blue;</span><br><span class="line">    #display: flex#</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="运行麒麟子工程代码"><a href="#运行麒麟子工程代码" class="headerlink" title="运行麒麟子工程代码"></a>运行麒麟子工程代码</h3><p>server 有个start_all_mac.sh 的python 脚本，直接开三个terminal 运行各个句子, 注意点：启动顺序是:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node ./hall_server/app.js ../configs_mac.js</span><br><span class="line">node ./account_server/app.js ../configs_mac.js</span><br><span class="line">node ./game_server/app.js ../configs_mac.js</span><br></pre></td></tr></table></figure>
-<p>先开启hall 然后account, 然后game, 不然报错;<br>client 使用scenes：start.scene; 当前CocoaCreator v：1.8; 在运行时出现loadResource 方法找不到：直接注释，直接进入loadScene；<br>浏览器比如： localhost:5876?account=xxx;<br>置顶不同的account 即可debug 测试</p>
-<h3 id="pod-更新出错。重点是brew-link-libyaml"><a href="#pod-更新出错。重点是brew-link-libyaml" class="headerlink" title="pod 更新出错。重点是brew link libyaml"></a>pod 更新出错。重点是brew link libyaml</h3><p><a href="https://stackoverflow.com/questions/9434002/how-to-solve-ruby-installation-is-missing-psych-error" target="_blank" rel="noopener">https://stackoverflow.com/questions/9434002/how-to-solve-ruby-installation-is-missing-psych-error</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew doctor</span><br><span class="line">$ brew link libyaml</span><br></pre></td></tr></table></figure>
-<h3 id="cocoapod-更新极其缓慢，翻墙还是慢"><a href="#cocoapod-更新极其缓慢，翻墙还是慢" class="headerlink" title="cocoapod 更新极其缓慢，翻墙还是慢"></a>cocoapod 更新极其缓慢，翻墙还是慢</h3><p>翻墙可以连接外网了，但是还是很慢。按理不会的，但是原因却在于：翻墙时，浏览器proxy 地址改过，但是terminal 却没有改动，相当于没有翻墙。<br><a href="http://lovean.net/?id=185" target="_blank" rel="noopener">http://lovean.net/?id=185</a><br>使用#export  ALL_PROXY=socks5://127.0.0.1:1080# 将所有proxy 改为该端口，这是翻墙，就非常快了。<br>使用#curl -i <a href="http://ip.cn#" target="_blank" rel="noopener">http://ip.cn#</a> 可以查看当前外网地址看是否翻墙成功</p>
-<h3 id="同源策略、跨域解决方案"><a href="#同源策略、跨域解决方案" class="headerlink" title="同源策略、跨域解决方案"></a>同源策略、跨域解决方案</h3><p><a href="https://www.cnblogs.com/rockmadman/p/6836834.html" target="_blank" rel="noopener">https://www.cnblogs.com/rockmadman/p/6836834.html</a></p>
-<h3 id="自己的centos-操作"><a href="#自己的centos-操作" class="headerlink" title="自己的centos 操作"></a>自己的centos 操作</h3><p>查看redis在哪个processID<br>ps -ef |grep redis</p>
-<p>redis<br>/etc/redis-4.09<br>配置：redis.conf<br>    daemonize no<br>protected-mode yes<br>启动和关闭：<br>                /src<br>                    ./redis-server ../redis.conf     启动redis<br>                    ./redis-cli shutdown        关闭redis</p>
-<p>mysql开启<br>service mysqld start</p>
-<p>git download nvm<br>nvm conf 配置:<br>vim ~/.bashrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#nvm</span><br><span class="line">export NVM_DIR=&quot;/root/GIT/nvm/&quot;</span><br><span class="line">source &quot;$NVM_DIR/nvm.sh&quot;</span><br></pre></td></tr></table></figure></p>
-<p>保存之后<br>source ~/.bashrc（修改也需要重启）<br>PATH 和 source ./<br>nvm use 8.11.1<br>这样就可以使用8.11.1 版本的node<br>node -v<br>npm -v</p>
-<p>terminal<br>查找某个文件<br>whereis nginx</p>
-<p>cd nginx<br>配置<br>$vim conf/nginx.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 末尾括号外面加上下面这一行</span><br><span class="line">include ./vhost/*.conf;</span><br></pre></td></tr></table></figure></p>
-<p>创建vhost/<a href="http://www.lsgood.top.conf" target="_blank" rel="noopener">www.lsgood.top.conf</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">	server</span><br><span class="line">	&#123;</span><br><span class="line">		listen 80;	//通用80端口</span><br><span class="line">		server_name lsgood.top;</span><br><span class="line">		root /root/Blog;	//声明目录</span><br><span class="line">		index index.html;	//html 目录</span><br><span class="line">		location / &#123;	//这个很重要</span><br><span class="line">			proxy_set_header Host $host;</span><br><span class="line">		proxy_set_header x-real-ip $remote_addr;</span><br><span class="line">		proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;</span><br><span class="line">		proxy_pass http://127.0.0.1:3000/;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后./nginx/sbin/nginx -t</p>
-<p>启动nginx :<br>[root nginx] $./sbin/nginx<br>[root nginx] $./sbin/nginx -c ./conf/nginx.conf<br>reload stop nginx :<br>[root nginx] $./sbin/nginx -s reload/stop</p>
-<p>查看启动服务<br>netstat -nltp<br>查看所有进程<br>ps -ef<br>ps -ef |grep mysql/redis/node/nginx</p>
-<p>修改host<br>vim /etc/hosts<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 lsgood.top</span><br></pre></td></tr></table></figure></p>
-<p>然后ping lsgood.top</p>
-<p>curl <a href="http://lsgood.top" target="_blank" rel="noopener">http://lsgood.top</a><br>curl 127.0.0.1:3000</p>
-<p>腾讯解析域名网站<br>DNSPOD</p>
-<p>ll == ls -l<br>ls -a</p>
-<p>填写nginx.conf<br>参照多个域名同时对应多个路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#最下面添加如</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">	a.lsgood.top</span><br><span class="line">	location / &#123;</span><br><span class="line">		127.0.0.1:3000</span><br><span class="line">	&#125;</span><br><span class="line">	location /other0/ &#123;</span><br><span class="line">		127.0.0.1:3001</span><br><span class="line">	&#125;</span><br><span class="line">	location /other1/ &#123;</span><br><span class="line">		127.0.0.1:3002</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">	b.lsgood.top</span><br><span class="line">	location / &#123;</span><br><span class="line">		127.0.0.1:7000</span><br><span class="line">	&#125;</span><br><span class="line">	location /other0/ &#123;</span><br><span class="line">		127.0.0.1:7001</span><br><span class="line">	&#125;</span><br><span class="line">	location /other1/ &#123;</span><br><span class="line">		127.0.0.1:7002</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>阿里云域名购买<br>/域名-解析<br>    /添加解析<br>        /主机记录选填 “*” 子域名前缀<br>        /记录值填写自己的主机IP, 如176.122.191.87</p>
-<h3 id="我的服务器操作"><a href="#我的服务器操作" class="headerlink" title="我的服务器操作"></a>我的服务器操作</h3><pre><code>·    后台更换    完成
-·    首页每次需要下载素材bug  完成
-•    tabbar 栏目图片更换    完成
-·    banner
-·    section 栏目 完成50%    完成
-</code></pre><p>查看redis在哪个processID<br>ps -ef |grep redis</p>
-<p>redis<br>/etc/redis-4.09<br>配置：redis.conf<br>    daemonize no<br>protected-mode yes<br>启动和关闭：<br>                /src<br>                    ./redis-server ../redis.conf     启动redis<br>                    ./redis-cli shutdown        关闭redis</p>
-<p>mysql开启<br>service mysqld start</p>
-<p>git download nvm<br>nvm conf 配置:<br>vim ./.bashrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#nvm</span><br><span class="line">export NVM_DIR=&quot;/root/GIT/nvm/&quot;</span><br><span class="line">source &quot;$NVM_DIR/nvm.sh&quot;</span><br></pre></td></tr></table></figure></p>
-<p>保存之后<br>source ~/.bashrc（修改也需要重启）<br>PATH 和 source ./<br>nvm use 8.11.1<br>这样就可以使用8.11.1 版本的node<br>node -v<br>npm -v</p>
-<p>terminal<br>查找某个文件<br>whereis nginx</p>
-<p>cd nginx<br>配置<br>$vim conf/nginx.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 末尾括号外面加上下面这一行</span><br><span class="line">include ./vhost/*.conf;</span><br></pre></td></tr></table></figure></p>
-<p>创建vhost/<a href="http://www.lsgood.top.conf" target="_blank" rel="noopener">www.lsgood.top.conf</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">server&#123;</span><br><span class="line">	listen 80;	//通用80端口</span><br><span class="line">	server_name lsgood.top;</span><br><span class="line">	root /root/Blog;	//声明目录</span><br><span class="line">	index index.html;	//html 目录</span><br><span class="line">	location / &#123;	//这个很重要</span><br><span class="line">		proxy_set_header Host $host;</span><br><span class="line">      proxy_set_header x-real-ip $remote_addr;</span><br><span class="line">      proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;</span><br><span class="line">      proxy_pass http://127.0.0.1:3000/;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后./nginx/sbin/nginx -t</p>
-<p>启动nginx/sbin/nginx</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/8/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/10/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
 </aside>
+
+    <main id="main">
         
-      </div>
-      <footer id="footer" class="site-footer">
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-11-9lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/11/09/2018-11-9lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/11/09/2018-11-9lesson/">2018-11-9lesson</a>
+    </h3>
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-11-09 23:35:34" datetime="2018-11-09T15:35:34.000Z" itemprop="datePublished">2018-11-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        上线React+Mobx+Antd + build + Nginx 经历首先非常开心，自己找遍解决方案，终于来到终点：http://lsgood.top 我的第一个网页。该网页由爬虫爬了一个二次元图片的网站，然后一个Typescript koa 后台提供数据，再由Reactjs 网页展现。
+首先遇到的第一个大山：centos 装mongodb 
+先使用yum 安装mongodb，然后一直报”...
+    
+    <a href="/2018/11/09/2018-11-9lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-10-31lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/10/31/2018-10-31lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/10/31/2018-10-31lesson/">2018-10-31lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-10-31 21:19:09" datetime="2018-10-31T13:19:09.000Z" itemprop="datePublished">2018-10-31</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        记录最近干了啥玩意进的公司人事、开发都给我特别的说明：比较有时间做自己的事，不会特别特别的忙。好吧，都这么说，真的真的希望不会特别忙，正和我意了。公司不忙，不代表我会慢下自己的脚步。
+进公司，前两天，哟，也是用黑苹果开发-&gt;我喜欢。和要离职的开发交接了相关文件，然后他继续用公司电脑，然后我？？？我没电脑，哎我去。。。中午赶忙请假回住所拿自己电脑了。进去后第一件事就是改一个推送消息+应用...
+    
+    <a href="/2018/10/31/2018-10-31lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-10-17lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/10/29/2018-10-17lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/10/29/2018-10-17lesson/">2018-10-17lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-10-29 22:50:41" datetime="2018-10-29T14:50:41.000Z" itemprop="datePublished">2018-10-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018-10-17之前找工作，赶在了10月15号前入职（10月9号到岗），这样社保没有断，也算解决了尴尬的处境。
+国庆节放假，前三天认真学习，打打游戏。后面几天，突然老婆发神经，对，发神经，搞的不愉快，在倒数2天傍晚离开老婆自己一个人去跑步散心。于是那天晚上老婆又爬身上求我原谅。我看重原则，家人什么都是对的，但是原则不能错。后来怎么样，那只能原谅呗，嘎嘎。
+10月放假完第一天，有2个面试和...
+    
+    <a href="/2018/10/29/2018-10-17lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-9-27lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/09/27/2018-9-27lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/09/27/2018-9-27lesson/">2018-9-27lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-09-27 13:14:06" datetime="2018-09-27T05:14:06.000Z" itemprop="datePublished">2018-09-27</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        最近是面试期么内心一定要淡定记录下最近面试问到的一些问题之前从粉粉离开时，也没想到这是一个多事之秋。去了一家动漫IP 的公司，人没去之前老板已经有意决定停下互联网业务的，结果其中一个合伙人说再试一波，于是我以为其是想做事，就进去当小白鼠了。进去之后改版页面完，没目的没计划了。做了一个egret ”消消乐“的微信小游戏，学了该学的OpenGLES，然后中秋之前跟我说部门解散，，，
+大哥，这才三...
+    
+    <a href="/2018/09/27/2018-9-27lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-9-16lesson-md" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/09/16/2018-9-16lesson-md/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/09/16/2018-9-16lesson-md/">2018-9-16lesson.md</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-09-16 12:20:03" datetime="2018-09-16T04:20:03.000Z" itemprop="datePublished">2018-09-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018/8/27typedef CF_ENUM(uint32_t, CGImageAlphaInfo) {
+kCGImageAlphaNone,               /* For example, RGB. */
+
+kCGImageAlphaPremultipliedLast,  /* For example, premultiplied RGBA */
+
+kCGImageAlph...
+    
+    <a href="/2018/09/16/2018-9-16lesson-md/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-8-3lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/08/25/2018-8-3lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/25/2018-8-3lesson/">2018-8-3lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-25 14:50:29" datetime="2018-08-25T06:50:29.000Z" itemprop="datePublished">2018-08-25</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018/8/3TS 使用enum 出现[ts] Operator ‘==’ cannot be applied to types[ts] Operator &#39;==&#39; cannot be applied to types &#39;CheckCleanStep.Idle | CheckCleanStep.Input&#39; and &#39;CheckCleanStep.C...
+    
+    <a href="/2018/08/25/2018-8-3lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-7-23lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/08/02/2018-7-23lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/02/2018-7-23lesson/">2018-7-23lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-02 21:48:43" datetime="2018-08-02T13:48:43.000Z" itemprop="datePublished">2018-08-02</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018/7/23今天又发布了Colox 的第二版本，感悟到其中一些思想。要做好一个完整，商用的产品，需要经过：
+
+核心功能研发
+整体方向，回款（产品售卖、广告营收、产品获利、周边发展等）
+UI 整体视觉
+上线
+开发营收
+产品推广、改进
+
+这几个阶段我觉得是个人开发很好的流程，而且一经决定一定要坚持下去。我好几次都把产品开发拖的很长。原因有几个：
+
+我在学习后台（当时有这么好的学习资源）
+后...
+    
+    <a href="/2018/08/02/2018-7-23lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-6-28lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/07/21/2018-6-28lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/21/2018-6-28lesson/">2018/6/28lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-21 09:28:37" datetime="2018-07-21T01:28:37.000Z" itemprop="datePublished">2018-07-21</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018/6/28记录一下这几天的事之前从粉粉离职，原因有很多很多方面导致我在这大热天毅然决然的选择离开.
+
+工资从未提升，哪怕变动或者变少都行，表示公司有一定考核.2.周末采取单双休，双休的时候感觉太幸福了；单休的时候，周日等于没有休息，等于连上12天班。饥饿策略。
+项目采用快速迭代策略，2周一版本，代码质量要管控、逻辑要管控、需求没有明确特别是需求不明确，做到一定才发现有些有冲突，或者有...
+    
+    <a href="/2018/07/21/2018-6-28lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-5-9lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/05/20/2018-5-9lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/20/2018-5-9lesson/">2018-5-9lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-20 11:25:52" datetime="2018-05-20T03:25:52.000Z" itemprop="datePublished">2018-05-20</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018/04/23
+Clang Attributes 黑魔法小记http://blog.sunnyxx.com/2016/05/14/clang-attributes/#objc_requires_super
+objc_subclassing_restricted
+objc_requires_super
+objc_boxable
+constructor/desctructor
+objc_r...
+    
+    <a href="/2018/05/20/2018-5-9lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2018-04-22lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2018/04/22/2018-04-22lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/22/2018-04-22lesson/">2018-04-22lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-22 22:51:41" datetime="2018-04-22T14:51:41.000Z" itemprop="datePublished">2018-04-22</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2018/03/14
+公司引入零食架，却得”破损率”一说听到#破损率#这事情，这种说法，我不能接受。作为企业员工，我不觉得该事件缘由仅因为该无由头的数据，然后单方面说退出，然后就过去了。我坐在公司，我作为公司一份子，和大家相处，我不觉得#破损率# === #物品丢盗#!!!或许#破埙率#没有直接了当说明其 === #物品丢盗#，但是各位同事心中其实已经对其隐喻画上等号。
+
+“破损率”由总量和...
+    
+    <a href="/2018/04/22/2018-04-22lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
+    </div>
+</nav>
+
+    </div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/page/9/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/page/9/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aQY7DIAwF0N7/0pltpU7JNwYmGj1WVZSE1ywsY/v1itf1tj6vjK9/3vN+52vHwsXFbXOTDb5dSTYev7P6J3FxcU9yv22T4MahKg9/YwMuLu6TuQl6fD8uLu5/5c6h++/HxcU9yU0OP9XN8lRpy1kNFxe3wc2rlPt+b6nv4uLiTnGv4ho/NXewKeyOi4t7hJsHlCTtSNDV9AUXF/c53PxYMhmMOp8GFxf3OLdT4kxarUkoLKQ4uLi4G7j5BnmYi9KUuYILLi7uQW6yQXX8YlXj5JdAhouLe5BbPbTMhaf82SgXw8XF3cCdC1KdRum4qLqgYIqLi7uB2y99JolOq02Li4t7hLu2jdpv0kTJEC4u7mZutZyRD1gkiU714ISLi/sE7ipoktZEByRcXNyD3Gq5c64wOjeigYuL+1fcPEHphKfkzTf34OLibuZexZUjclbhA+Hi4h7hVpujnUGKcvmjGP5wcXHXcvvBq9pSTUY6bqbJcHFxj3CrgaY/ljE5vIWLi/tIbofeGfnCxcV9Prd6fuoUQRYEMlxc3CluflCZa6jkLdib0ImLi3uEWw4ljUQnGrBYVd/FxcWd4f4AE/NI5/H2QBsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1473,26 +951,6 @@ kCGImageAlphaOnly                /* No color data, alpha data only */
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

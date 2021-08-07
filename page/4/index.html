@@ -1,1178 +1,960 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/page/4/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
-  </div>
-</header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <section id="main">
-  
-    <article id="post-2020-6-15lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/06/15/2020-6-15lesson/">2020-6-15lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/06/15/2020-6-15lesson/" class="article-date">
-	  <time datetime="2020-06-15T04:29:17.000Z" itemprop="datePublished">June 15, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="gitlab-ci-frontend-打包-出错"><a href="#gitlab-ci-frontend-打包-出错" class="headerlink" title="gitlab-ci frontend 打包 出错"></a>gitlab-ci frontend 打包 出错</h1><p>原因是frontend 安装: <code>npm install --production</code> 仅安装了dependence 库，需要去掉 –production</p>
-<p>本地打包没问题，gitlab-ci 出现该情况，基本能断定就是安装库缺少打包库的问题</p>
-<h1 id="记录本次安装VVVVVV-遇到的问题"><a href="#记录本次安装VVVVVV-遇到的问题" class="headerlink" title="记录本次安装VVVVVV 遇到的问题"></a>记录本次安装VVVVVV 遇到的问题</h1><h2 id="使用-Nginx-acme-sh-制作证书"><a href="#使用-Nginx-acme-sh-制作证书" class="headerlink" title="使用 Nginx + acme.sh 制作证书"></a>使用 Nginx + acme.sh 制作证书</h2><p>首先cloudflare 取消橘色云朵，采用直连方式(这样letsencrypt 才能请求过来)</p>
-<p>Nginx 采用原生模块(不要使用docker 的nginx，有各种坑点，下面会描述此次遇到的坑)</p>
-<p><a href="https://qizhanming.com/blog/2018/08/06/how-to-install-nginx-on-centos-7" target="_blank" rel="noopener">Nginx 遇到坑，安装参考了:</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 设置系统时间为上海时间</span><br><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock</span><br><span class="line"># 添加源</span><br><span class="line">sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line"># 展开源</span><br><span class="line">sudo yum repolist</span><br><span class="line">sudo yum install nginx</span><br><span class="line">sudo systemctl enable nginx</span><br><span class="line">sudo systemctl start nginx</span><br><span class="line"># 打开防火墙端口</span><br><span class="line"># 默认 CentOS7 使用的防火墙 firewalld 是关闭 http 服务的（打开 80 端口）</span><br><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=http</span><br><span class="line">sudo firewall-cmd --reload</span><br><span class="line"># 查看防火墙打开的所有服务</span><br><span class="line">sudo firewall-cmd --list-service # ssh dhcpv6-client http</span><br><span class="line"># 需要指出的是 CentOS 7 的 SELinux，使用反向代理需要打开网络访问权限</span><br><span class="line">sudo setsebool -P httpd_can_network_connect on</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conf.d/VVVVVV.conf</span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name wpn.example.com;</span><br><span class="line">  root /home/wwwroot/sCalc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ssl.sh</span><br><span class="line">alias acme.sh=/.acme.sh/acme.sh</span><br><span class="line"># 链接letsencrypted 识别域名和生成证书</span><br><span class="line">acme.sh --issue -d wpn.example.com -w /home/wwwroot/sCalc --nginx</span><br><span class="line"># 生成nginx 使用的key 和crt</span><br><span class="line">acme.sh --install-cert -d wpn.example.com --key-file /VVVVVV.key --fullchain-file /VVVVVV.crt</span><br><span class="line"># 拷贝目标文件</span><br><span class="line">cp /VVVVVV* /etc/VVVVVV/</span><br></pre></td></tr></table></figure>
-<p>此时 <code>systemctl restart VVVVVV</code>, 在点击cloudflare 橙云代理CDN 即可正确链接了。</p>
-<h2 id="复盘遇到的问题"><a href="#复盘遇到的问题" class="headerlink" title="复盘遇到的问题"></a>复盘遇到的问题</h2><p>上周搞的时候用的docker-nginx，当时用的ipv6，然后一直报404 letsencrypt 链接不进来，于是上周将服务器重新建立了。</p>
-<p>这周还是遇到这个问题，于是想了好久，哦，原来nginx 的容器，我只映射了本地的conf.d 目录，没有把 /home/wwwroot/sCalc 目录映射进去(-v /home/wwwroot/sCalc:/home/wwwroot/sCalc, 替换进去后，又发现没有把 /etc/VVVVVV/<em>.crt </em>.key 映射进去)，难怪一直404.</p>
-<p>docker-nginx一直没有使用这个版本，一时没想过来。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-29lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/29/2020-5-29lesson/" class="article-date">
-	  <time datetime="2020-05-29T02:17:46.000Z" itemprop="datePublished">May 29, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用docker-golang-执行本地golang-服务"><a href="#使用docker-golang-执行本地golang-服务" class="headerlink" title="使用docker/golang 执行本地golang 服务"></a>使用docker/golang 执行本地golang 服务</h1><pre><code>cd $工作目录
-
-docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo -p 14500:8080 golang
-</code></pre><h1 id="弄懂-Nginx-location"><a href="#弄懂-Nginx-location" class="headerlink" title="弄懂 Nginx location"></a>弄懂 Nginx location</h1><h2 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h2><p>之前服务器已使用有a.ahuang.ml 域名的A服务，仅提供后台api 接口；然后再做B服务时，由于理念很接近，还得使用a.ahuang.ml 的子域名，所以规划好location 就很重要。</p>
-<h2 id="我的本地解决测试方案"><a href="#我的本地解决测试方案" class="headerlink" title="我的本地解决测试方案"></a>我的本地解决测试方案</h2><p>当前给出我改好的location 样式：</p>
-<ol>
-<li>首先设定好本地的test 域名 DNS 转向本地:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/host</span><br><span class="line">输入 127.0.0.1 test.ahuang.ml</span><br><span class="line">vim ~/conf/ahuang.conf</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>书写~/conf/ahuang.conf</li>
-</ol>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">~/conf/ahuang.conf</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span> test.ahuang.ml;</span><br><span class="line">  <span class="attribute">client_max_body_size</span> <span class="number">500M</span>;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">800</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="regexp">~ ^/(api|evidence/)</span> &#123;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">900</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>执行启动nginx</li>
-</ol>
-<p><code>docker run --rm -p 127.0.0.1:8888:80 --name mynginx -v $PWD/conf:/etc/nginx/conf.d nginx</code></p>
-<ol start="4">
-<li><p>测试</p>
-<p> curl <a href="http://test.ahuang.ml:8888/api" target="_blank" rel="noopener">http://test.ahuang.ml:8888/api</a> # 返回900<br> curl <a href="http://test.ahuang.ml:8888/evidence/xx" target="_blank" rel="noopener">http://test.ahuang.ml:8888/evidence/xx</a> # 返回900<br> curl <a href="http://test.ahuang.ml:888/abc" target="_blank" rel="noopener">http://test.ahuang.ml:888/abc</a> # 返回800</p>
-</li>
-</ol>
-<h2 id="读参考文章注意点"><a href="#读参考文章注意点" class="headerlink" title="读参考文章注意点"></a>读参考文章注意点</h2><p><a href="https://juejin.im/post/5ce5e1f65188254159084141" target="_blank" rel="noopener">完全参考掘金文章</a></p>
-<p>推荐直接参考原文章</p>
-<h3 id="location修饰符类型"><a href="#location修饰符类型" class="headerlink" title="location修饰符类型"></a><strong>location修饰符类型</strong></h3><p>location 支持的语法 <code>location [=|~|~*|^~|@] pattern { ... }</code></p>
-<h4 id="「-」-修饰符-要求路径完全匹配"><a href="#「-」-修饰符-要求路径完全匹配" class="headerlink" title="「=」 修饰符: 要求路径完全匹配"></a><strong>「=」 修饰符: 要求路径完全匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location = /abcd &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/ABCD</code> <strong>可能会匹配</strong>，也可能不匹配，取决于操作系统的文件系统是否大小写敏感(case-sensitive)。ps: MAC 默认是大小写不敏感的。</p>
-</li>
-<li><p><code>http://website.com/abcd?param1*param2</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
-</li>
-</ul>
-<h4 id="「-」-修饰符-区分大小写的正则匹配"><a href="#「-」-修饰符-区分大小写的正则匹配" class="headerlink" title="「~」 修饰符: 区分大小写的正则匹配"></a><strong>「~」 修饰符: 区分大小写的正则匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~ ^/abcd$ &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>^/abcd$</code> 这个正则表达式标识字符串必须以 <code>/</code>开始，以<code>$</code>结束，中介必须是<code>abcd</code></p>
-<ul>
-<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/ABCD</code> <strong>不匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcd?param1&amp;param2</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
-</li>
-</ul>
-<h4 id="「-」-修饰符-不区分大小写的正则匹配"><a href="#「-」-修饰符-不区分大小写的正则匹配" class="headerlink" title="「~*」 修饰符: 不区分大小写的正则匹配"></a><strong>「~*」 修饰符: 不区分大小写的正则匹配</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~* ^/abcd$ &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>http://website.com/abcd</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/ABCD</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcd?param1&amp;param2</code> <strong>匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcd/</code> <strong>不匹配</strong></p>
-</li>
-<li><p><code>http://website.com/abcde</code> <strong>不匹配</strong></p>
-</li>
-</ul>
-<h4 id="「-」-修饰符-前缀匹配"><a href="#「-」-修饰符-前缀匹配" class="headerlink" title="「^~」 修饰符: 前缀匹配"></a><strong>「^~」 修饰符: 前缀匹配</strong></h4><p>如果该location 是最佳的匹配，那么对于匹配这个location 的字符串，该修饰符不再进行正则表达式的检测。注意，这不是一个正则表达式匹配，他的目的是优先于正则表达式的匹配</p>
-<h3 id="路径查找顺序及优先级"><a href="#路径查找顺序及优先级" class="headerlink" title="路径查找顺序及优先级"></a><strong>路径查找顺序及优先级</strong></h3><p>当有多条location 规则时，nginx 有一套比较复杂的规则，优先级如下:</p>
-<ul>
-<li><p>精确匹配 <code>=</code></p>
-</li>
-<li><p>前缀匹配 <code>^~</code> 立刻停止后续的正则搜索</p>
-</li>
-<li><p>按文件中顺序的正则匹配 ~ 或 ~*</p>
-</li>
-<li><p>匹配不带任何修饰的前缀匹配</p>
-</li>
-</ul>
-<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a><strong>案例分析</strong></h3><p><a href="https://juejin.im/post/5ce5e1f65188254159084141" target="_blank" rel="noopener">原文章</a>的案例分析非常的给人容易学习</p>
-<h4 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a><strong>案例1</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 701; # 用这样的方式，可以方便的知道请求到了哪里</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702; # 用这样的方式，可以方便的知道请求到了哪里</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I  website.com:8080/document</span><br><span class="line">HTTP/1.1 702</span><br></pre></td></tr></table></figure>
-<p>按照上述的规则，第二个会有更高的优先级</p>
-<h4 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a><strong>案例2</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /document &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I  website.com:8080/document</span><br></pre></td></tr></table></figure>
-<p>第二个匹配了正则表达式，优先级高于第一个普通前缀匹配</p>
-<h4 id="案例3"><a href="#案例3" class="headerlink" title="案例3"></a><strong>案例3</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ^~ /doc &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~* ^/document$ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl http://website.com/document</span><br><span class="line">HTTP/1.1 701</span><br></pre></td></tr></table></figure>
-<p>第一个前缀匹配^~命中以后不会再搜寻正则匹配，所以会第一个命中</p>
-<h4 id="案例4"><a href="#案例4" class="headerlink" title="案例4"></a><strong>案例4</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /docu &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 701，</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location /doc &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">  location /docu &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 依然返回 HTTP/1.1 701</span><br></pre></td></tr></table></figure>
-<p>前缀匹配下，返回最长匹配的 location，与 location 所在位置顺序无关</p>
-<h4 id="案例5"><a href="#案例5" class="headerlink" title="案例5"></a><strong>案例5</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name website.com;</span><br><span class="line">  location ~ ^/doc[a-z]+ &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~ ^/docu[a-z]+ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 701</span><br></pre></td></tr></table></figure>
-<p>把顺序换一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 8080;</span><br><span class="line">	server_name website.com;</span><br><span class="line">  location ~ ^/docu[a-z]+ &#123;</span><br><span class="line">    return 702;</span><br><span class="line">  &#125;</span><br><span class="line">  location ~ ^/doc[a-z]+ &#123;</span><br><span class="line">    return 701;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">curl -I website.com:8080/document 返回 HTTP/1.1 702</span><br></pre></td></tr></table></figure>
-<p>正则匹配是使用文件中的顺序，找到返回</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-golang/">docker golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-23kanfang" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/26/2020-5-23kanfang/" class="article-date">
-	  <time datetime="2020-05-26T06:28:40.000Z" itemprop="datePublished">May 26, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2020-5-23-中介约看房经历"><a href="#2020-5-23-中介约看房经历" class="headerlink" title="2020/5/23 中介约看房经历"></a>2020/5/23 中介约看房经历</h1><p>之前办理积分时，和人事与一个财务同事去社保办事，财务同事帮我推荐了一个炒房团的。说我们公司之前有个同事前两年从他手上交易过一个房子。我觉得这样有个参考性，就像我之前学车，有参考就会顺利很多。加了那个人微信后，本来约定周五去同他学习点知识，没想到周三丫头住院去不了了。老婆出院后，晚上回到家，看龙柏那附近的房子，有几个感觉还不错的，右上角有个按钮说线上带看房子，哦，居然联通了链家的房产经纪人。于是就跟他聊了聊，也说自己社保还未满。不过倒是可以多转转多学学。 同时约定周末都是可以去看看房子的。</p>
-<p>周六早上起床玩了会游戏，然后和老妈联通视频，说了说自己的一些打算，老妈也帮我问了问她的姐妹，我的阿姨们，打算明年买房的时候不够跟她们借点，提前打声招呼。然后时间也快到2:30，赶紧出门去龙柏附近那个中介那。这一下午，就是两辆电驴在一直奔走。</p>
-<p>先是去看了网上看到的两房改三房的六楼，其实还不错，不过，我自己掂量着的一楼六楼都不考虑。不过，来了就看看。</p>
-<p>中介帮我找了十款二手房，价格都在300w左右，龙柏那好多动迁房，300w都是挺宽敞58、59、60平这样。</p>
-<p>先看了龙柏七村。有六楼的，太高；二楼的，专做来卖的，价格挺高的；四楼(之前网上就有看到户型什么的都不错)，一梯四户，最靠小区里面，两个缺陷吧；一楼，户型很奇葩，但是挺大，反正一楼不会要就对了。</p>
-<p>再看了龙柏四村，路就很宽敞、干净。看了六楼一个老大爷，进去刺鼻尿骚味，一只博美在房间趴着，很安静。房子装修好也没事，但是户型是前面一个大房间，后面一个小房间，采光估计会差一点，中间倒是有个小天井，有点光线。另一个六楼是一个大哥，俩女儿在睡觉。他们打算置换，中间厅很大，俩房间朝南，房子还是挺干净的，一梯四户的楼梯口那一户；还有一个一楼的，完全空关多年，很黑暗，老旧。反正买来必须装修把。卖点是一个大院子。</p>
-<p>再看了龙柏三村，紫藤路。六楼的，正在出租，租房妹子加班回来开门，我们进去转了转。虽然是装修多年，但是干净，整洁，等于是拎包入住都很舒适的装修。</p>
-<p>以上看了都是有各种奇葩：厅超级大、或者房子位置不那么靠中、顶天立地、房型采光、集体产权其他人也有比例、满二、满五、唯五不唯一等。</p>
-<p>这几个小区都是围绕之前我租的小区（龙柏龙兴苑）附近，都是动迁房。感觉一个天一个地呀，哈哈。</p>
-<p>和中介聊了聊，毕竟价格在那摆着，人家面价比较大嘛。然后我心里觉得有没有那种不那么面积大、然后两房的（一年前还想着一房一个大厅，大厅可以隔出来睡人即可那种，飘了飘了，现在低配要两房了）。我之前就想问能不能看看龙柏附近小区叫做《虹梅花苑》的，中介就拿出手机帮我看了看，说这款279的不错，原价320，房东说想腾房票，挂了44天降了几次。可以可以，中介能看到更多信息，然后联系那边中介(跨区域了)，然后出发前往。</p>
-<p>那个小区在虹桥路上，10多分钟到那附近，找了一圈原来入口是一个大拱门-王子公寓-虹桥路2222弄，是一个多合一统一入口。进来很干净，清幽，附近是长宁区别墅群，很多有钱人、明星等；一路上都是老外。龙柏那边欧美面孔有一些，更多的是台湾、韩国等面孔；虹桥路这里更多的是欧美面孔。欧美一家子、欧美大姑凉、欧美小子。找这个过程多绕了一圈，还看到一个家庭人在小区内烧烤，可以，我也憧憬着。</p>
-<p>进来这，是一个帅小伙中介，他说这个房子是顶楼，不过总高是五楼，不过楼顶是有三角隔热层，防热、防水。当前房子空关一年了，都有一些灰层，这都不是事。小区是一梯两户。最后一层时，由于这间空关，楼道就都是另一个房子堆放的物资，不过如果新房有人入住，他们肯定收起来的。五楼也不高，再高一层，不行，绝对不行。然后进去一看。</p>
-<p>哇，真是我理想的。价格合适，房间也合适，没有厅没关系，别的都一应俱全。小区靠近高架，但是前面隔了一排房子，灰层不会那么多，声音也不大。窗一关很安静。进门左侧是厨房，还挺大，比我现在租的整洁。进门正对面是次卧，有一个大窗，面积也合适。之前我看的龙柏几个房子，那都床头床尾直接就满了，侧面离门不到一米，太窄，不小心的话会着火的，而且只能睡觉。这个侧卧就很合适。没有厅，吃饭就围着厨房吃，那个冰箱比较占位置，买个大的冰箱当桌子？？进门右转就是过道，然后过道比较窄，而且房东还放着一个大木柜，去了大木柜，过道就稍稍正常了。过道中间是洗浴厕所，这还有个小窗子呢，厕所里面有窗子，不要太好哦，厕所空间也大，合理。过道长度大概2、3米就到主卧了。主卧有个大衣柜，奶白色，这直接就省了一笔钱。没有阳台，主卧显得比较大，装修整套都是间接，干净。主卧向南正对高架。前面也说了，不吵，这还是很好的，反正高架11点，我都是12点才睡。</p>
-<p>这真的是当前我心中很中意的。毕竟自己也才第一天看嘛。楼下就和中介在这个小区转了转，简直就是把之前中介介绍的那些个按在地板摩擦，狠狠摩擦那种，不对，是死死摩擦，毫不留情死死摩擦。小区中间是运动员，很多人在这聊聊天。</p>
-<p>然后出来大门，小区入口大拱门这，我和中介聊了聊。中介估计之前也不好卖，感觉有点伤感，没过来这里看，真不知道手上房源差的感觉，难怪不好卖(我自己臆测的)。我这里也问了问自己之后有哪些买房前准备工作。也说了刚刚那套房超级中意。聊了好一会，就先回来了，离住处很近。</p>
-<p>回到住处就问中介，能否帮我问问房东能否等8个月我社保到期来买呢？我可以押金4、50，同时房价不讲价。</p>
-<p>然后晚上和老妈也说了说自己今天看房，还挺中意。</p>
-<p>夜晚也看了看相关注意点。该房、该小区属于售后公房，好好的看看各种小心点。反正随缘吧，中介那不能急。不过房类型、小区估计比较中意《虹梅花苑》，明年基本能定在那个小区。</p>
-<p>好了，今天又过完了，爬楼梯爬爬爬。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/看房/">看房</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-13" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/26/2020-5-13/">2020-5-13</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/26/2020-5-13/" class="article-date">
-	  <time datetime="2020-05-26T06:28:22.000Z" itemprop="datePublished">May 26, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2020-5-13-猴头菇说肚子痛要去医院"><a href="#2020-5-13-猴头菇说肚子痛要去医院" class="headerlink" title="2020/5/13 猴头菇说肚子痛要去医院"></a>2020/5/13 猴头菇说肚子痛要去医院</h1><p>2020/5/13 中午接近两点，正忙着，猴头菇发微信说要去医院，肚子很痛。我一听，她都这么提了，说明肯定就是不舒服，赶紧让她打车离她很近的八院，我赶紧过来。她说中午吃完饭，肚子就有点不舒服，躺在公司的一个沙发，到现在还是很痛，等我过去带她。我说，痛就赶紧打车去医院，她说等我过来，她不懂路。那行，我赶快过去。</p>
-<p>我发个请假邮件，跟伟哥说声老婆生病去医院，赶紧就跑过去，半路想起来忘带丫头身份证(办居住证积分时，留在公司)，跟丫头说自己打车过去医院，我回去拿她身份证。一来一回，真担心车子跑没电不走了。</p>
-<p>赶到医院，丫头肚子痛，伴有一点发烧，先在新冠病毒检查点(这时间点必须检查)。来回检查，猴头菇肚子大大的，鼓鼓的。我过去陪她，她连坐着都很痛，还得来回检查。新冠检查还得500多，丫头没医保，全部自己出钱。发烧检查完毕说可以去妇科看。这时间点，最好别生病。</p>
-<p>这时候去妇科看，妇科医生阿姨帮忙赶紧的在4:30 检查完(超过就不检查了)，然后去办理住院手续。办理住院手续的时候，丫头站也不是坐也不是，反正就是痛的不行了。期间要办理好了，我拿错我的医保，拖了点时间，然后换成丫头的，丫头的不能用，又得转账押金5000，这中间，丫头肚子更痛了，付费窗口蹲下都痛，嘴唇都白了。</p>
-<p>赶紧到住院部，丫头都快走不动了。上来后，丫头在29床躺了会，然后被叫到一个小屋子穿刺看到血很多。我在屋外一直听到猴头菇的惨叫。然后医生用针筒吸出了血，得知卵巢破裂，出血没有愈合。得，刚才还走来走去，更特么病重。</p>
-<p>然后我被叫去签家属委托做手术的风险书。心里担心啊。然后下午7点左右，丫头被推上车子，担心她一直没吃东西，会不会血糖低，又测了下说行。她去了五楼做手术了。</p>
-<p>三个多小时一直待病房等，心里焦急啊。旁边是一个老奶奶，还没做手术，她的小儿子来服侍。她的小儿子-大叔，就跟我说，别担心，一会就好了。我说，嗯，是的，一会就好了，低头看知乎，其实担心死了，但是我毫无办法，只能转移注意力。</p>
-<p>中间我还吃了大叔给的几块饼干，喝了杯水，然后晚上10点，丫头才终于做好手术，我都又饿咯，别说猴头仔了。手术车推上来的时候，我把丫头抱下床，她冷的发抖，嘴唇毫无血色，冷的两条腿一直抖。就像活鱼跳到岸上那样，抖得蹦跶那样。放到床上赶紧盖上被子、我把好几件衣服盖上，好让猴子暖和点。过了会她才好些。这时候她还禁食禁水，挂着吊瓶，尿袋。我就喊吊瓶没水了、给她倒尿。忙里忙外。给她楼下去买了个小碗，等醒了可以喝水。吊瓶挂到凌晨2点，我都大黑眼圈了。那个大叔也一直玩手机麻将到2点才睡。他带了个躺椅，我啥都没有，但如果躺椅也是睡不着的，我就趴着床下边，大约5点起来喂水。然后说喂她喝无糖葛粉。今天又是挂吊瓶，早上挂到下午2点多，去附近买了混沌，和丫头一人一碗混沌，吃完赶紧去公司了。晚上赶紧去医院，路上刚好买了白稀饭。今天晚上比较好的是，我去住的地方拿了丫头的瑜伽垫，哇，休息好了，第二天果然精神多了。第二天一早，赶紧去转转，有去附近买到个白稀饭，美滋滋，丫头的改善早饭有着落了，路是远了点，不敢用自己的电瓶车，别到时没电，骑的哈罗单车，真特么难骑。中午一直挂瓶到下午2点多，给她买了个午餐、准备好水，丫头吃了后，赶紧的去公司写点东西。自己也没吃啥，路上买了个黄山鸭腿菜饭（不用等，现成的，快，等红灯时买，绿灯还没灭就又可以过）。到了公司，大家都在干活，饿的不行，把饭吃了，鸭腿来不及吃，晚上去医院。我把公司的晚餐也带来，鸭腿也带来，公司晚餐吃了，鸭腿放那没吃。晚上睡到一半，说隔壁床来人，我瑜伽垫没地方，于是半夜就跑到走道上的床位躺了会，那灯光亮的呀，闪瞎我的狗眼，于是又睡得不是很好。隔天早上隔壁床来了一菇凉，子宫外孕做手术。她照看的人一个都木有，我给她抱床上，菇凉都是可怜的娃呀。她也是冷，没猴头菇抖的那么厉害。给她穿上自己带的一个袜子，脚暖和了，就不那么冷了，把身上外套也给她盖上。她男朋友来了，我的使命也就到了。当天中午猴头挂完吊瓶，我跑回住所休息了会，打了个游戏，美滋滋，不过肯定是睡不着，躺着看了看手机视频，差不多了就赶紧去医院。今天晚上有个好处，就是我又整了个位置放瑜伽垫睡，而且还看到有一个闲置的医院被子，刚好垫着，美滋滋。</p>
-<p>一连好多天照看猴子，工作日下午就去上班，非工作日下午就会跑回住所休息休息，，嘎嘎。</p>
-<p>终于到丫头出院那天中午，中午跟伟哥说了声，赶紧去给丫头结账出院，带回家。由于丫头心疼打车钱、一个人坐车一个人骑车麻烦，就坚持做我的电驴。心疼啊。路上中午还有交警，还得让丫头下来走一段路。回到家，稍微收拾收拾，赶紧就去公司了。</p>
-<p>啊，好累。啊，老婆还在，真好。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-12shebao" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/24/2020-5-12shebao/" class="article-date">
-	  <time datetime="2020-05-24T10:13:19.000Z" itemprop="datePublished">May 24, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="上海社保断缴引发的经历"><a href="#上海社保断缴引发的经历" class="headerlink" title="上海社保断缴引发的经历"></a>上海社保断缴引发的经历</h1><p>刚来上海，外地来的多少都会有公司倒闭、部门人员压缩(狼狈被裁)等等因素导致换工作。换工作时，前公司没整好、后公司没法填补，自己不懂，没有社保补上，于是出现社保断缴补缴回去、断缴但没有补缴回去的情况。</p>
-<p>我就有2次这个经历: 第一份工作被裁(2014年经融危机)，断了之后待在出租屋3个月努力做进一步学习，导致断了3个月(那时真不懂这件事)；第二次是老板没钱，过完年解散，但是最后两个月居然没交(全公司都没交)。</p>
-<p>明年可能有机会买房，现在看看我明年能真正有房票。</p>
-<p>前一天去人才服务中心办理居住证积分，进展顺利，心情格外的好。然后隔天周日来公司，看了看房知识，看到一些网络的文章，各种断章取义的错误知识分享给你，然而当时我一头雾水，心里担心受怕，看到了说，必须连续5年，中间一点断缴都不行，如果你断了却没有补回去，是不能买房的。</p>
-<p>那一刻感觉我懵了。我刚来上海努力等待2年，至少有房票有盼头吧，然而17年上海新政变成要等待5年，然后现在说我白忙活。明年2021年春天将要到5年的，却得从16年开始算起(第二次断缴时间)，也就是2022年春天才有房票。这一颗真的毫无斗志。</p>
-<p>我东问问、西问问，公司人事也不是很清楚；网络有说连续5年，有说累计5年；众说风云，就是不见房产交易所有什么公告。那几天一直在网络查，知乎问。各种各样信息。我自己也在知乎问了一个，强调必须近期有实操人回答，没想到来了个知识普及的回答，逗比。</p>
-<p>那几日天天都是想着这事，睡都睡不好觉。谁特么知道我再等两年，上海是什么样？刚需再等两年我也就应该滚回家了。真的受够租房了。</p>
-<p>第二次去人才服务中心时(前几天就想着这事，觉没睡好，黑眼圈前去办理业务)，我们先去社保中心，同去办理居住证积分的伙伴他老公也是有断缴社保，但是他补缴回去了，已经可以买房了。，跟我不一样，我的是断缴，但是没有补缴回去。人事就说，要不你直接社保办理查询。我拿号后，社保工作人员也不知道，对了一遍我的社保缴纳情况。我又晕头转向的出来了。她们问如何，工作人员有说什么不？我回答很迷糊，得不到我想知道的切确信息。</p>
-<p>她们说，要不你直接去房产交易中心问，问哪里都不如直接问交易中心。</p>
-<p>我一听，那行，反正等会也去那附近办事，地址就是拉取个人所得税完税证明的水清路159号二楼位置。我骑着哈喽单车10几分钟就到了。</p>
-<p>先是在一楼问了一个大哥，他再三强调可以买，我这个是正常的。后来他有人询问事情，他上了楼上。我觉得既然来了，顺便再次再次再次一次性询问交易中心咨询人员，于是就到了二楼拿咨询单问真实工作人员。</p>
-<p>在外边等了会，然后暂停服务窗口的工作人员来了，问“你来咨询吗”，然后俺就很客气的说来询问相关的东西。我顺便开着手机录音，怕我自己听错了。一再强调我的特殊情况，是断缴，她说63个月内有60个月正常缴交，就能交易。这也就是说，社保是按<strong>累计63个月满60个月正常缴纳社保</strong>而不是<em>连续63个月满60个月</em>。断缴补缴、断缴没补缴是一样的，都可能买房。</p>
-<p>政策的东西就是这样，公告没有，全靠猜。语言说的又迷糊，累计和连续两个字，是相差十万八千里的。</p>
-<p>从交易中心走到人才服务中心路上，感觉完全不一样。感觉之前努力不是白费，也痛恨那些无良信息发布者。之前大中午，迷迷糊糊的，路上却走得越来越有劲。把相关信息发给老婆，告诉她，我们还是有机会的。给老妈打电话，告诉她，我没有努力白费，之前看到网络上的信息都是无良信息发布者，到房产交易中心咨询正确信息是，我有资格买房的。</p>
-<p>啊，那天太阳很大，不过天真的很蓝。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房资格/">买房资格</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-12jifen" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/24/2020-5-12jifen/" class="article-date">
-	  <time datetime="2020-05-24T08:51:10.000Z" itemprop="datePublished">May 24, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="上海申请居住证积分经历"><a href="#上海申请居住证积分经历" class="headerlink" title="上海申请居住证积分经历"></a>上海申请居住证积分经历</h1><p>这次去办理居住证积分，总结下历程（当前材料已提交，正在等待审核，审核期是2个月）</p>
-<h2 id="为什么要办理居住证积分"><a href="#为什么要办理居住证积分" class="headerlink" title="为什么要办理居住证积分"></a>为什么要办理居住证积分</h2><p>刚来上海，一直都是租房时，能住就好了。租房的价格也不便宜，租房的权益，包括孩子上学权、办理居住证、各种证权都是难以享受到的。没办法，寄人篱下，房东绝对不会理你这个没钱的外地租客。</p>
-<p>我前两年遇到一个很好的房东，当时我要办理居住证，通过中介，她也是帮我跑动。当时为孩子和老婆办理时，来回跑，让房东等待，过意不去。不过幸好房东的帮助，办理好了。上海政策是，只要是本科以上，一年内缴纳6个月正常社保，其会自动续签(居住证都是一年一签)。</p>
-<p>有了居住证后，买电瓶车，自己就可以上牌，当时还给哥们电瓶车也上牌。后来2019年我又买一辆电瓶车时，这时政策不用居住证，拿身份证就可以办理时，人多的呀，排了两条街。我是早上6点去排队，硬是等到快下午，饿了个半死。</p>
-<p>居住证好处，不止这点，上面是举个例子，这是特权吧。不过现在拿身份证就可以办理。</p>
-<p>居住证另一个好处，就是孩子可以在上海上学。但是不能中考、不能高考。我查阅或者询问周围人，得到的答案是，其实学校不会招纳这些人，因为你都不能中考、不能高考，你来这里上学干嘛，占用教育资源？当然，如果要上学，那就送到郊区一些称为”菜小”的学校去。</p>
-<p>这时候，居住证积分的作用就是，虽然你不是上海户口，但是你能享受上海户口的相关权益：孩子能在上海中高考等(我列举不来)。当然了，能把上海户口办理下来，简直就是最好的了。</p>
-<h2 id="办理历程"><a href="#办理历程" class="headerlink" title="办理历程"></a>办理历程</h2><p>之前一直犹豫是不是现在去办理相关的事情，因为来公司到现在差不多刚好一年，恩，应该问起来时机刚刚好。</p>
-<p>2020/4/20 早上10:00 直接大胆的问人事。人事回的很及时，先让我网上核对下分数，我在<a href="http://www.shxnedu.com/jifen.html" target="_blank" rel="noopener">模拟积分</a> 模拟出来是够的。然后人事让我<a href="http://sh.bendibao.com/zffw/2014710/110532.shtm" target="_blank" rel="noopener">准备好材料</a> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 单位人事专员介绍信、身份证、公司相关材料 // 人事会携带好的</span><br><span class="line">2. 持证人有效期内&lt;上海市居住证&gt; // 记得去街道办公室刷新一下，前后页打印好</span><br><span class="line">3. 持证人有效身份证件 // 前后页打印好</span><br><span class="line">4. 孩子要享受积分政策(这不必须的嘛，管上), 出生医学证明原件、复印件</span><br><span class="line">5. 妻子要享受积分政策(这不是很好嘛，管上)，(1). 妻子身份证原件、复印件 (2). 结婚证原件、复印件 (3). 户口本页面原件、复印件 // 三个都要带齐</span><br><span class="line">6. 户口本原件、复印件，每个人都复印，*每个人都复印*，**每个人都复印** // 人才管理窗口会给你整理好的，全都打印</span><br><span class="line">7. 一年期及以上有效合同，快到期的话，需要续签，同时给他每页复印</span><br><span class="line">8. 个人所得税完税证明 // 我去的上海市闵行区水清路159号3层打印</span><br><span class="line">9. 社保缴交证明</span><br></pre></td></tr></table></figure>
-<p>公司部分材料公司会准备好，我这里就不赘述；</p>
-<p>同时人事在公司开好账户，我登上<a href="http://jzzjf.rsj.sh.gov.cn/jzzjf/" target="_blank" rel="noopener">积分网站</a>登上个人账户，填写相关信息。</p>
-<p>填写信息注意点:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">第一页:</span><br><span class="line">政治面貌: 其他</span><br><span class="line">居住证有效日期: 你的居住证有效日期</span><br><span class="line">户籍所在地地址: 填写户口本上一致的</span><br><span class="line">在沪居住地址: 你的居住证写着的</span><br><span class="line">毕业时间: 你的毕业证书一致</span><br><span class="line">聘用(劳动)合同签订日期、起始日期、终止日期: 合同里一致</span><br><span class="line">在沪缴纳社会保险期限(月): 你的社保单一致</span><br><span class="line">-------------------------------------------------</span><br><span class="line">第二页:</span><br><span class="line">个人简历，从什么时候上大学、大学终止，一直到现在</span><br><span class="line">-------------------------------------------------</span><br><span class="line">第三页:</span><br><span class="line">境内人员--填写家庭情况:</span><br><span class="line">填写妻子的信息:</span><br><span class="line">是否需享受积分相关待遇: 填是</span><br><span class="line">户籍地: 户口本一致</span><br><span class="line">填写子女情况:</span><br><span class="line">是否需享受积分相关待遇: 填是</span><br><span class="line">户籍地: 户口本一致</span><br></pre></td></tr></table></figure>
-<p>上述材料准备妥当后，等了两周人事忙完事，就和另一个同事一起去水清路388号的上海市闵行区人才服务中心。</p>
-<p>到该处后，我们去附近准备好相关材料准备(个税完税证明、打印相关文件)，然后返回人才服务中心。</p>
-<p>当前就是确认相关材料是否齐全、填写材料是否有误，有误的话及时改正，旁边就有两台联网机器。</p>
-<p>那个是假期补班，人比较少。我们那个窗口一个可爱的妹子(戴着口罩，肯定也可爱)超级有耐心，我的材料有错，错了立马改，改了又帮我再重新检查，重复三次。我要是有钱，我肯定经常跑来和她聊天，小姑凉，你有男朋友不啊，可以和我阿黄认识下呗，我阿黄和可爱的。</p>
-<p>当前无法办理有另一个原因是，当前学籍学历不是在这里进行办理的。而是准备好材料，发送到一个邮箱，工作人员会人工帮你审核。材料：毕业证书扫描件、学士学位证书扫描件、学历学位证书、学信网电子注册备案表、学信网在线验证报告、学位网认证报告、身份证复印件正反面全都要发过来。教育背景核实邮件发送格式: <code>某某公司-某某人（教育背景合适）-共几人</code></p>
-<p><img src="/css/images/jifen_joy.jpeg" alt="办理趣事"></p>
-<p><img src="/css/images/jifen_certificate_check.png" alt="全都要"></p>
-<p>当前完成回来后，晚上我便去重新整理缺失的申请材料、扫描相关证书等。然后发送邮件到指定邮箱。材料缺失的话，对方会告知，然后赶紧补上。<a href="http://www.cdgdc.edu.cn/" target="_blank" rel="noopener">学位网认证报告</a>这个比较慢，会需要等待好多天，你可以提交加急，并告知你加急是为什么。我当时加急后，第二天对方就帮我办好了。</p>
-<p>然后2020/5/12 那天又前往办理好相关材料递交。</p>
-<p>以上基本等通知就好了，反正我正在等通知ing…</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/居住证积分/">居住证积分</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-12lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/11/2020-5-12lesson/" class="article-date">
-	  <time datetime="2020-05-11T12:30:43.000Z" itemprop="datePublished">May 11, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用github-travis-自动化打包"><a href="#使用github-travis-自动化打包" class="headerlink" title="使用github + travis 自动化打包"></a>使用github + travis 自动化打包</h1><h1 id="使用gitlab-gitlab-ci-自动化测试、覆盖、打包"><a href="#使用gitlab-gitlab-ci-自动化测试、覆盖、打包" class="headerlink" title="使用gitlab + gitlab-ci 自动化测试、覆盖、打包"></a>使用gitlab + gitlab-ci 自动化测试、覆盖、打包</h1>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-5-11lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/05/11/2020-5-11lesson/" class="article-date">
-	  <time datetime="2020-05-11T12:25:36.000Z" itemprop="datePublished">May 11, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Use-github-package-publish-docker"><a href="#Use-github-package-publish-docker" class="headerlink" title="Use github package publish docker"></a>Use github package publish docker</h1><p>gitlab.com 网络特别慢，经常 docker push 各种失败.</p>
-<p>考虑到github.com 全部免费了，故接下来都转战github 了。(自建是不可能自建的，没有机器)</p>
-<p>使用github token 登录(密码登录即将被废弃, 且push、pull 等操作都没有权限)</p>
-<ol>
-<li><p>Go to your GitHub account -&gt; Settings -&gt; Developer Settings -&gt; Personal access tokens -&gt; generate new token</p>
-</li>
-<li><p>Note 选项写上一个标签</p>
-</li>
-<li><p>勾选 write:packages/read:packages, 然后保存</p>
-</li>
-<li><p>复制得到的token</p>
-</li>
-</ol>
-<p>docker login docker.pkg.github.com</p>
-<p>User: 你的用户名(比如shaohung001)</p>
-<p>Password: 第4步得到的token</p>
-<h1 id="node-升级package-的库版本"><a href="#node-升级package-的库版本" class="headerlink" title="node 升级package 的库版本"></a>node 升级package 的库版本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br><span class="line">ncu -u</span><br></pre></td></tr></table></figure>
-<h1 id="Mac-删除node-使用nvm-管理node"><a href="#Mac-删除node-使用nvm-管理node" class="headerlink" title="Mac 删除node, 使用nvm 管理node"></a>Mac 删除node, 使用nvm 管理node</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</span><br><span class="line">sudo rm -rf /usr/local/include/node /Users/$USER/.npm</span><br><span class="line">sudo rm /usr/local/bin/node</span><br><span class="line">sudo rm /usr/local/share/man/man1/node.1</span><br><span class="line">sudo rm /usr/local/lib/dtrace/node.d</span><br></pre></td></tr></table></figure>
-<p>下载nvm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br><span class="line">或者</span><br><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash</span><br></pre></td></tr></table></figure>
-<p>然后在 ~/.bash_profile ~/.zshrc 中加入如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</span><br><span class="line">[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This loads nvm bash_completion</span><br></pre></td></tr></table></figure>
-<pre><code>source ~/.bash_profile &amp;&amp; source ~/.zshrc
-</code></pre><p>重开一个terminal 就可以用看到 nvm 命令了</p>
-<h1 id="简单探索nodejs-不同第三方库dependence-相同库不同版本"><a href="#简单探索nodejs-不同第三方库dependence-相同库不同版本" class="headerlink" title="简单探索nodejs 不同第三方库dependence 相同库不同版本"></a>简单探索nodejs 不同第三方库dependence 相同库不同版本</h1><p>今天使用puppeteer 和express 时发现，这两个dependence 包含有同一个库: mime。但是express 依赖mime 1.6.4 版本；puppeteer 依赖 2.x 版本；</p>
-<p>我们到node_modules 子目录看到第三方库规划: node_modules/mime 是1.6.4，也就是express 依赖的；我们找到puppeteer 下，其提前依赖库本地的mime 2.x 的。</p>
-<p>这样，puppeteer 在内部中，require 的是其自身node_modules/mime；express 自身没有node_modules 于是就往上找，也找到对应mime；</p>
-<p>以上各自依赖相同库，不同版本，便不会冲突了</p>
-<h1 id="mocha-test-时不通过"><a href="#mocha-test-时不通过" class="headerlink" title="mocha test 时不通过"></a>mocha test 时不通过</h1><p>使用mocha test不通过，报错信息:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;before all&quot; hook for &quot;GET /VERSION&quot;:</span><br><span class="line">Error: Timeout of 8000ms exceeded. For async tests and hooks, ensure &quot;done()&quot; is called; if returning a Promise, ensure it resolves. (/builds/xxxxxx/xxxxxx/backend/test/api.test.ts)</span><br></pre></td></tr></table></figure>
-<p>说明报错报错信息来源于 beforeAll 方法，且说没有使用done 告知.</p>
-<p>原方法：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>明显是有done 这个操作的，难道throw error 导致没有进入done 了？？那我加个try catch 吧:</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.beforeAll(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        app.startup(&#123;testing: <span class="literal">true</span>&#125;, <span class="function">(<span class="params">_server: Express.Application</span>) =&gt;</span> &#123;</span><br><span class="line">        server = _server</span><br><span class="line">        done()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        done(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><del>然后gitlab-ci 看到编译正常通过了, 但是没有进catch, 因为进了catch 我接下来拿不到server， 但之后又正常，说明只是说，要有try catch 确保有done 回馈即可!</del></p>
-<p>以上. node -v : <code>v10.20.1</code></p>
-<p>这里更新下：</p>
-<p>上面有时可以有时失败，说明不是最终原因. 以下是最终原因</p>
-<p>最终的原因是gitlab-ci cpu、memory 太低，运行太慢，导致获取到server 太慢，无法得到done，做法是<code>mocha -t 240000</code> 设置4分钟.</p>
-<p>这个原因也是没有预料到，没想到是机器配置比较低的原因。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-4-16lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/04/16/2020-4-16lesson/" class="article-date">
-	  <time datetime="2020-04-16T12:38:16.000Z" itemprop="datePublished">April 16, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes.</p>
-<p>I dreamed of age grow up , and I worried about that !</p>
-<p>I never ever thinking about the troublesome before this period !</p>
-<p>Last five year, I fight for gain more power from technology , dreaming of arriving  to the top, money or any other comes to me.</p>
-<p>But, I didn’t had a rest last five year, nothing got but age and bit of knowledge of IT.</p>
-<p>It really  disappointed !</p>
-<p>I made a determination last  year , skills which  I  handled is much enough to made something I  ever determined to do.</p>
-<p>Last two months, I made out a website “阿黄小说”, reading novel site. Attending to try a test of earning money or even little acknowledge of setting up  a big site , but I lost my mind again.</p>
-<p>I made a discussion  with little shuai, I talked about my confuse of my career. Company didn’t raise salary since I entered last year.</p>
-<p>Am I not worth of raising by my work ? I had grow much more I had done . I continue of leaning deeply of my work , or I have a test to make some games ?</p>
-<p>I survey the game area no long ago, situation is serious recently , new come will very difficult to make effort .</p>
-<p>During discussion , I realized that the company I stay , I always treat myself a passenger . I join the car, car drive me some years distance , I get off when Company contract arrived.</p>
-<p>I never become a partner with any organization before . Am I make mistake ?</p>
-<p>I realized that I made a wrong plan all life before . Money I  lack of it , because  I will buy a house the close two year , but after that ? I employed by some one else again ? Not my career grow , but only stare at the salary I should get just now ?</p>
-<p>I made a determination of a more energy pay for myself career. Have a try to something different from before .</p>
-<p>Another plan is to have a plan of learning deep in my IT field , and if possible to examine some useful  certificates !!! It’s never too late to do your decision !</p>
-<p>When learning deep arrived some stage , I will have a try to make some games 😁…</p>
-<p>Finally , I remember  my fate again , I know where to go , and I will not confuse again .</p>
-<p>I am always young !!! My heart  will goes on !</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2020-4-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2020/04/16/2020-4-13lesson/" class="article-date">
-	  <time datetime="2020-04-16T12:37:06.000Z" itemprop="datePublished">April 16, 2020</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue-cli-3-0"><a href="#vue-cli-3-0" class="headerlink" title="vue cli 3.0"></a>vue cli 3.0</h1><p>package.json 中的script:dev 命令: vue-cli-service serve 其实类似于<code>npx vue-cli-service serve</code> === <code>node ./node_modules/.bin/vue-cli-service serve</code></p>
-<h1 id="unzip-exe-在某一客户机报错"><a href="#unzip-exe-在某一客户机报错" class="headerlink" title="unzip.exe 在某一客户机报错"></a>unzip.exe 在某一客户机报错</h1><p>程序里使用到zip.exe unzip.exe bin 程序，正常使用很久了。</p>
-<p>然而今天出现<code>Archive: xxx error: zipfile probably corrupt (segmentation violation)</code></p>
-<p>关于windows 使用unzip.exe bin 程序，当前版本: UnZip 5.52 of 28 February 2005, by Info-ZIP.  Maintained by C. Spieler.</p>
-<p>从搜索列表中, 发现很多都指向网址: <a href="ftp://ftp.info-zip.org/pub/infozip/win32/" target="_blank" rel="noopener">ftp://ftp.info-zip.org/pub/infozip/win32/</a></p>
-<p>从里面可以直接下到5.52 bin 执行文件(其和当前程序使用版本相同，于是继续找).</p>
-<p>继续找到下载: <a href="https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe" target="_blank" rel="noopener">https://astuteinternet.dl.sourceforge.net/project/gnuwin32/unzip/5.51-1/unzip-5.51-1.exe</a> 下载下来是个安装程序。</p>
-<p>安装到windows 上后，找到:</p>
-<p><img src="/css/images/unzipexeerror.jpg" alt="/bin/unzip.exe"></p>
-<p>直接替换，当前确实解决该问题。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/5/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
 </aside>
+
+    <main id="main">
         
-      </div>
-      <footer id="footer" class="site-footer">
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-6-15lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/06/15/2020-6-15lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/06/15/2020-6-15lesson/">2020-6-15lesson</a>
+    </h3>
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-06-15 12:29:17" datetime="2020-06-15T04:29:17.000Z" itemprop="datePublished">2020-06-15</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        gitlab-ci frontend 打包 出错原因是frontend 安装: npm install --production 仅安装了dependence 库，需要去掉 –production
+本地打包没问题，gitlab-ci 出现该情况，基本能断定就是安装库缺少打包库的问题
+记录本次安装VVVVVV 遇到的问题使用 Nginx + acme.sh 制作证书首先cloudflare 取...
+    
+    <a href="/2020/06/15/2020-6-15lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-29lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/29/2020-5-29lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-29 10:17:46" datetime="2020-05-29T02:17:46.000Z" itemprop="datePublished">2020-05-29</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        使用docker/golang 执行本地golang 服务cd $工作目录
+
+docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo -p 14500:8080 golang
+弄懂 Nginx location我遇到的问题之前服务器已使用有a.ahuang.ml 域名的A服务，仅提供后台...
+    
+    <a href="/2020/05/29/2020-5-29lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-golang/">docker golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-23kanfang" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/26/2020-5-23kanfang/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-26 14:28:40" datetime="2020-05-26T06:28:40.000Z" itemprop="datePublished">2020-05-26</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2020/5/23 中介约看房经历之前办理积分时，和人事与一个财务同事去社保办事，财务同事帮我推荐了一个炒房团的。说我们公司之前有个同事前两年从他手上交易过一个房子。我觉得这样有个参考性，就像我之前学车，有参考就会顺利很多。加了那个人微信后，本来约定周五去同他学习点知识，没想到周三丫头住院去不了了。老婆出院后，晚上回到家，看龙柏那附近的房子，有几个感觉还不错的，右上角有个按钮说线上带看房子，...
+    
+    <a href="/2020/05/26/2020-5-23kanfang/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/看房/">看房</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-13" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/26/2020-5-13/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/26/2020-5-13/">2020-5-13</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-26 14:28:22" datetime="2020-05-26T06:28:22.000Z" itemprop="datePublished">2020-05-26</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        2020/5/13 猴头菇说肚子痛要去医院2020/5/13 中午接近两点，正忙着，猴头菇发微信说要去医院，肚子很痛。我一听，她都这么提了，说明肯定就是不舒服，赶紧让她打车离她很近的八院，我赶紧过来。她说中午吃完饭，肚子就有点不舒服，躺在公司的一个沙发，到现在还是很痛，等我过去带她。我说，痛就赶紧打车去医院，她说等我过来，她不懂路。那行，我赶快过去。
+我发个请假邮件，跟伟哥说声老婆生病去医院...
+    
+    <a href="/2020/05/26/2020-5-13/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-12shebao" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/24/2020-5-12shebao/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-24 18:13:19" datetime="2020-05-24T10:13:19.000Z" itemprop="datePublished">2020-05-24</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        上海社保断缴引发的经历刚来上海，外地来的多少都会有公司倒闭、部门人员压缩(狼狈被裁)等等因素导致换工作。换工作时，前公司没整好、后公司没法填补，自己不懂，没有社保补上，于是出现社保断缴补缴回去、断缴但没有补缴回去的情况。
+我就有2次这个经历: 第一份工作被裁(2014年经融危机)，断了之后待在出租屋3个月努力做进一步学习，导致断了3个月(那时真不懂这件事)；第二次是老板没钱，过完年解散，但是...
+    
+    <a href="/2020/05/24/2020-5-12shebao/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房资格/">买房资格</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-12jifen" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/24/2020-5-12jifen/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-24 16:51:10" datetime="2020-05-24T08:51:10.000Z" itemprop="datePublished">2020-05-24</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        上海申请居住证积分经历这次去办理居住证积分，总结下历程（当前材料已提交，正在等待审核，审核期是2个月）
+为什么要办理居住证积分刚来上海，一直都是租房时，能住就好了。租房的价格也不便宜，租房的权益，包括孩子上学权、办理居住证、各种证权都是难以享受到的。没办法，寄人篱下，房东绝对不会理你这个没钱的外地租客。
+我前两年遇到一个很好的房东，当时我要办理居住证，通过中介，她也是帮我跑动。当时为孩子和老...
+    
+    <a href="/2020/05/24/2020-5-12jifen/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/居住证积分/">居住证积分</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-12lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/11/2020-5-12lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-11 20:30:43" datetime="2020-05-11T12:30:43.000Z" itemprop="datePublished">2020-05-11</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        使用github + travis 自动化打包使用gitlab + gitlab-ci 自动化测试、覆盖、打包
+    
+    <a href="/2020/05/11/2020-5-12lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-5-11lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/11/2020-5-11lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-11 20:25:36" datetime="2020-05-11T12:25:36.000Z" itemprop="datePublished">2020-05-11</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        Use github package publish dockergitlab.com 网络特别慢，经常 docker push 各种失败.
+考虑到github.com 全部免费了，故接下来都转战github 了。(自建是不可能自建的，没有机器)
+使用github token 登录(密码登录即将被废弃, 且push、pull 等操作都没有权限)
+
+Go to your GitHub acco...
+    
+    <a href="/2020/05/11/2020-5-11lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-4-16lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/04/16/2020-4-16lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/04/16/2020-4-16lesson/">2020-4-16lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-04-16 20:38:16" datetime="2020-04-16T12:38:16.000Z" itemprop="datePublished">2020-04-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        It seems like I lose my fate some time ago , I dreamed a lot in the period , losing in a big dark hole where I count’t open my eyes.
+I dreamed of age grow up , and I worried about that !
+I never ev...
+    
+    <a href="/2020/04/16/2020-4-16lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2020-4-13lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/04/16/2020-4-13lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/04/16/2020-4-13lesson/">2020-4-13lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-04-16 20:37:06" datetime="2020-04-16T12:37:06.000Z" itemprop="datePublished">2020-04-16</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        vue cli 3.0package.json 中的script:dev 命令: vue-cli-service serve 其实类似于npx vue-cli-service serve === node ./node_modules/.bin/vue-cli-service serve
+unzip.exe 在某一客户机报错程序里使用到zip.exe unzip.exe bin 程序，正常使...
+    
+    <a href="/2020/04/16/2020-4-13lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    </div>
+</nav>
+
+    </div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/page/4/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/page/4/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvUlEQVR42u3aQW7EIBAEwP3/pzcPiLC7wSBrVZyilQ3lHFrMwOcTj++/kT85eut6nqWBi4u7zE0WGP1yvXAyZ/uRuLi4J7mjxfLQyee5pt/MiYuL+0rudcy1aFxc3N/mzpVJuLi4b+bmhcro3Za1vVbDxcVd4OZdyn1/b+nv4uLiTnG/5UiWnAvBaHVcXNwj3LYZ2m5lkk1MvS4uLu4RbhJJD4fR+lUPXFzc49x845JfwFr/eFxc3JPc9ahaaarWDRRcXNwj3DzIVi5VrIcgLi7uGe71Q/uuVrTRefMaLi7uo9wWdB1bc4e1yWcP+7u4uLgbuHPHqG2p025uhjPg4uIe5M4VOW3w5fSbIMPFxd3Mba8+tCGVbHTawgkXF/cMtz3MWDkyaTdVUa2Gi4t7nJuj20sbcx+Di4t7krsSVXk8JTusm2dwcXE3c7/laNsZeXFVNz5wcXG3cdvD0RaXlEMrM+Di4u7j5uGVb3fykqYOSlxc3IPc9ROY+kbY3OUtXFzcV3KTpmp7oFJXbLi4uK/ntkHW1l4PBxkuLm7MzQuV5Jf2YLX4R+Di4h7htlEyh86PYx/r7+Li4s5w/wDM9uIx2L+V+AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1180,26 +962,6 @@ docker run --rm -it --name go-http-demo -v $PWD:/go/src/example.com/go-http-demo
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>

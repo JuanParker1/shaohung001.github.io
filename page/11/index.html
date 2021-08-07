@@ -1,1007 +1,922 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
-  
-  <title>aKer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <meta name="google-site-verification" content="4ibqBFKTH9pzNJzZlbE3r1AaiwTFg4sNw9KZ5oQL9c4">
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="aKer">
-<meta property="og:url" content="https://shaohung001.github.io/page/11/index.html">
-<meta property="og:site_name" content="aKer">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aKer">
-  
-    <link rel="alternate" href="/atom.xml" title="aKer" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/hiero.css">
-  <link rel="stylesheet" href="/css/glyphs.css">
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/my.css">
-  <!-- Google Adsense -->
-  
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7054334687711145",
-          enable_page_level_ads: true
-      });
-  </script>
-  
+    <meta charset="utf-8">
+    
+    
+    <title>aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
-</html>
-<script>
-var themeMenus = {};
-
-  themeMenus["/"] = "Home"; 
-
-  themeMenus["/archives"] = "Archives"; 
-
-  themeMenus["/categories"] = "Categories"; 
-
-  themeMenus["/tags"] = "Tags"; 
-
-  themeMenus["/about"] = "About"; 
-
-</script>
 
 
-  <body>
+<body>
+    <div id="loading" class="active"></div>
 
-
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
             
-              <a href="/" title="aKer" rel="home"> aKer </a>
+              <span>7</span>
             
-          </h1>
-
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
           
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
-
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-
+        </ul>
+        
       </div>
-  </div>
-</header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt src>
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
-
-      <div id="content" class="outer">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <section id="main">
-  
-    <article id="post-2017-3-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/2017-3-13lesson/">2017/3/13lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/2017-3-13lesson/" class="article-date">
-	  <time datetime="2017-03-13T12:45:24.000Z" itemprop="datePublished">March 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//创建标准的变换矩阵</span><br><span class="line">CGAffineTransform CGAffineTransformIdentity;</span><br><span class="line">//手动创建变换矩阵</span><br><span class="line">CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);</span><br><span class="line">//创建平移变换</span><br><span class="line">CGAffineTransform CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty);</span><br><span class="line">//创建缩放变换</span><br><span class="line">CGAffineTransform CGAffineTransformMakeScale(CGFloat sx, CGFloat sy);</span><br><span class="line">//创建旋转变换</span><br><span class="line">CGAffineTransform CGAffineTransformMakeRotation(CGFloat angle);</span><br><span class="line">//判断某个变化是否是来自标准矩阵的变换</span><br><span class="line">bool CGAffineTransformIsIdentity(CGAffineTransform t);</span><br><span class="line">//对某个变换矩阵进行平移变换</span><br><span class="line">CGAffineTransform CGAffineTransformTranslate(CGAffineTransform t, CGFloat tx, CGFloat ty);</span><br><span class="line">//对某个变换矩阵进行缩放变换</span><br><span class="line">CGAffineTransform CGAffineTransformScale(CGAffineTransform t, CGFloat sx, CGFloat sy);</span><br><span class="line">//对某个变换矩阵进行旋转变换</span><br><span class="line">CGAffineTransform CGAffineTransformRotate(CGAffineTransform t, CGFloat angle);</span><br><span class="line">//对某个变换矩阵进行翻转变换</span><br><span class="line">CGAffineTransform CGAffineTransformInvert(CGAffineTransform t);</span><br><span class="line">//对两个变换矩阵进行计算</span><br><span class="line">CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2);</span><br><span class="line">//比较两个变换矩阵是否相同</span><br><span class="line">bool CGAffineTransformEqualToTransform(CGAffineTransform t1, CGAffineTransform t2);</span><br><span class="line">//获取应用变换后某点的坐标</span><br><span class="line">CGPoint CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t);</span><br><span class="line">//获取应用变换后某个区域的尺寸</span><br><span class="line">CGSize CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t);</span><br><span class="line">//获取应用变换后某个区域的位置和尺寸</span><br><span class="line">CGRect CGRectApplyAffineTransform(CGRect rect, CGAffineTransform t);</span><br></pre></td></tr></table></figure>
-<p>记录一下矩阵变换含义</p>
-<p>昨天做了下图片PhotoKit取图片，使用PHImageManager 同步获取200*200某张图片直接在cellForItem里面，性能还是不错的。估计得判断GIF，只能在用户点击之后，才能使用方法验证其属性。继续往下做吧。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">2xx  成功  </span><br><span class="line">200  正常；请求已完成。  </span><br><span class="line">201  正常；紧接 POST 命令。  </span><br><span class="line">202  正常；已接受用于处理，但处理尚未完成。  </span><br><span class="line">203  正常；部分信息 — 返回的信息只是一部分。  </span><br><span class="line">204  正常；无响应 — 已接收请求，但不存在要回送的信息。  </span><br><span class="line">3xx  重定向  </span><br><span class="line">301  已移动 — 请求的数据具有新的位置且更改是永久的。  </span><br><span class="line">302  已找到 — 请求的数据临时具有不同 URI。  </span><br><span class="line">303  请参阅其它 — 可在另一 URI 下找到对请求的响应，且应使用 GET 方法检索此响应。  </span><br><span class="line">304  未修改 — 未按预期修改文档。  </span><br><span class="line">305  使用代理 — 必须通过位置字段中提供的代理来访问请求的资源。  </span><br><span class="line">306  未使用 — 不再使用；保留此代码以便将来使用。  </span><br><span class="line">4xx  客户机中出现的错误  </span><br><span class="line">400  错误请求 — 请求中有语法问题，或不能满足请求。  </span><br><span class="line">401  未授权 — 未授权客户机访问数据。  </span><br><span class="line">402  需要付款 — 表示计费系统已有效。  </span><br><span class="line">403  禁止 — 即使有授权也不需要访问。  </span><br><span class="line">404  找不到 — 服务器找不到给定的资源；文档不存在。  </span><br><span class="line">407  代理认证请求 — 客户机首先必须使用代理认证自身。  </span><br><span class="line">415  介质类型不受支持 — 服务器拒绝服务请求，因为不支持请求实体的格式。  </span><br><span class="line">5xx  服务器中出现的错误  </span><br><span class="line">500  内部错误 — 因为意外情况，服务器不能完成请求。  </span><br><span class="line">501  未执行 — 服务器不支持请求的工具。  </span><br><span class="line">502  错误网关 — 服务器接收到来自上游服务器的无效响应。  </span><br><span class="line">503  无法获得服务 — 由于临时过载或维护，服务器无法处理请求。</span><br></pre></td></tr></table></figure>
-<p>遇到一个问题，就是字符里面出现\r\n、\r、\n、\t等特殊字符，做法是将其replace成\r\n、\r、\n、\t、，没有其他做法了，，特殊的是，\r\n需要最先被替换</p>
-<p>//    一列数：-1,2,3,10,15,26…n，写一个方法计算第n个数的值</p>
-<blockquote>
-</blockquote>
-<p>答案：<br>3-&gt;1<br>7-&gt;5<br>11-&gt;?<br>?应该是9<br>然后接下去是<br>隔下去数是加15</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BOOL needDescount = NO;</span><br><span class="line">int increaseCount = 4;</span><br><span class="line">int totalNum = -1;</span><br><span class="line">while (true) &#123;</span><br><span class="line">if (needDescount) &#123;</span><br><span class="line">increaseCount -=2;</span><br><span class="line">needDescount = YES;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">increaseCount +=4;</span><br><span class="line">needDescount = NO;</span><br><span class="line">&#125;</span><br><span class="line">totalNum +=increaseCount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IOS－－ UIView中的坐标转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 将像素point由point所在视图转换到目标视图view中，返回在目标视图view中的像素值</span><br><span class="line">- (CGPoint)convertPoint:(CGPoint)point toView:(UIView *)view;</span><br><span class="line">// 将像素point从view中转换到当前视图中，返回在当前视图中的像素值</span><br><span class="line">- (CGPoint)convertPoint:(CGPoint)point fromView:(UIView *)view;</span><br><span class="line"></span><br><span class="line">// 将rect由rect所在视图转换到目标视图view中，返回在目标视图view中的rect</span><br><span class="line">- (CGRect)convertRect:(CGRect)rect toView:(UIView *)view;</span><br><span class="line">// 将rect从view中转换到当前视图中，返回在当前视图中的rect</span><br><span class="line">- (CGRect)convertRect:(CGRect)rect fromView:(UIView *)view;</span><br><span class="line"></span><br><span class="line">例把UITableViewCell中的subview(btn)的frame转换到 controllerA中</span><br><span class="line"></span><br><span class="line">// controllerA 中有一个UITableView, UITableView里有多行UITableVieCell，cell上放有一个button</span><br><span class="line">// 在controllerA中实现:</span><br><span class="line">CGRect rc = [cell convertRect:cell.btn.frame toView:self.view];</span><br><span class="line">或</span><br><span class="line">CGRect rc = [self.view convertRect:cell.btn.frame fromView:cell];</span><br><span class="line">// 此rc为btn在controllerA中的rect</span><br><span class="line"></span><br><span class="line">或当已知btn时：</span><br><span class="line">CGRect rc = [btn.superview convertRect:btn.frame toView:self.view];</span><br><span class="line">或</span><br><span class="line">CGRect rc = [self.view convertRect:btn.frame fromView:btn.superview];</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-3-3lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/03/2017-3-3lesson/">2017/3/3lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/03/2017-3-3lesson/" class="article-date">
-	  <time datetime="2017-03-03T14:12:42.000Z" itemprop="datePublished">March 3, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这几天打算使用Bundle管理SVG文件，给项目加上Theme功能。<br>SVG使用，使用的是SVGKit，使用Bundle需要稍微注意写法<br>比如使用寻找Path，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;AnimalTheme&quot; ofType:@&quot;bundle&quot;];</span><br><span class="line">NSString *ciweiFilePath = [path stringByAppendingPathComponent:@&quot;刺猬.svg&quot;];</span><br><span class="line">SVGKImage *ciweiImage = [SVGKImage imageWithContentsOfFile:ciweiFilePath];</span><br><span class="line">ciweiImage.size = CGSizeMake(30, 30);</span><br><span class="line">ciweiImage.UIImage</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SVGKImage im = [SVGKImage imageNamed:&quot;myImage&quot;];</span><br><span class="line">CGSize originalSize = im.size; // this defaults to the SVG&apos;s internal size</span><br><span class="line">float half = 1.0 / 2.0f;</span><br><span class="line">im.size = CGSizeApplyAffineTransform( im.size, CGAffineTransformMakeScale( half, half ));</span><br><span class="line">SVGKImageView* iv = [[SVGKFastImageView alloc] initWithSVGKImage: im];</span><br><span class="line">[self.view addSubview: iv];</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SVGKImage im = [SVGKImage imageNamed:&quot;myImage&quot;];</span><br><span class="line">im.scale = 0.5f; // NB: this will BE REJECTED if your SVG is non-infinite;</span><br><span class="line">SVGKImageView* iv = [[SVGKFastImageView alloc] initWithSVGKImage: im];</span><br><span class="line">[self.view addSubview: iv];</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-3-2lxlesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/02/2017-3-2lxlesson/">2017/3/2lxlesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/02/2017-3-2lxlesson/" class="article-date">
-	  <time datetime="2017-03-02T15:47:26.000Z" itemprop="datePublished">March 2, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="强引用，tableview嵌套"><a href="#强引用，tableview嵌套" class="headerlink" title="强引用，tableview嵌套"></a>强引用，tableview嵌套</h3><ul>
-<li>今天写“仿写墨迹天气app”的时候把用到的tableview单独拿出来创建tableviewcontroller单独管理，本来是这样想的，但是在把tableview贴到首页上的时候出现tableview没有显示完全而嵌套在tableview上的小tableview滑动消失，点击小tableview整个tableview消失的问题，后来经过老公的一番审查之后发现问题出在内存泄漏上，东西被提前释放掉了。具体是这样的，我要把tableviewcontroller上的tableview贴在首页上，但是LXHomeTableViewC *homeTVC = [[LXHomeTableViewC alloc]init];<br>self.a = homeTVC; 这里是强引用，拉住不能提前释放<br>homeTVC.view.frame = CGRectMake(0, 60, SelfSize.width, SelfSize.height-60);<br>[self.view addSubview:homeTVC.view];  这里我拉住了homeTVC。view，如果没有self.a = homeTVC;的话homeTVC就会被提前释放，载体释放了，那么载体上的东西就不可能有用了</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-3-2lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/02/2017-3-2lesson/">2017/3/2lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/02/2017-3-2lesson/" class="article-date">
-	  <time datetime="2017-03-02T14:14:16.000Z" itemprop="datePublished">March 2, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="记录这几天的发现或者想到了的东西，哈哈"><a href="#记录这几天的发现或者想到了的东西，哈哈" class="headerlink" title="记录这几天的发现或者想到了的东西，哈哈"></a>记录这几天的发现或者想到了的东西，哈哈</h3><ul>
-<li>关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”]; </li>
-<li>缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache</li>
-<li>collection需要使用<code>self.collectionNode performBatchUpdates:^</code></li>
-<li>如果<code>-(BOOL)shouldBatchFetchForCollectionNode:(ASCollectionNode *)collectionNode</code>为YES，但是不再获取数据，那么就是你没有给上次Batch确认completeBatch</li>
-<li>这里处理了一次collectionNode的获取数据和返回数据的完整逻辑，可以参照，实战demo</li>
-<li>Theme能力由发通知会更好，毕竟如果有缓存，单元格没法刷新，还是需要发通知更改背景颜色、某些图片等，可以一步步更改</li>
-<li>主流方向可以往可爱等线路发展</li>
-<li>小玩意之类往往能点亮用户好奇心，比如“粉粉日记”的首页台灯、不同时间的首页动物、不同时段，该动物、背景会替换，让动物动起来等；每晚开放的树洞功能等</li>
-<li>会员能力很重要，要让他们感到与众不同，代价每次都是一点点就很正确</li>
-<li>首页采用多屏处理，展示不同格局东西。</li>
-<li>首页是很能体现APP动机的地方。如果是微博类，首页就是Feed分类；如果是淘宝类，首页就是商品分类；如果是QQ、微信，首页就是你的聊天列表类；如果是游戏、地图等，首页就是你该展示的地方；“粉粉”这里首页就是展示萌创意、手账的地方，那么他走的主路线就该是这方面功能。</li>
-<li>APP功能太全有时候会成为累赘，可以参考“花瓣”、“Facebook”的分离法，将不同业务分出去，将主功能留下。比如“Facebook”的Message功能就会让你跳出去到另一个App。</li>
-<li>粒度这个东西有时候要考虑清楚，有时候深一点使用组件化，有时候直接写有他的好处</li>
-<li>说一个今天遇到的缓存能力ASDK，当我刷新，我将dataSource的数据都删光了，然后没写好，没有reloadData全部，而是insert数据到当前单元格，下面数据仍然在，ASDK的缓存能力确实太厉害了，然而反观“粉粉”里面的缓存，其实他做的就是将基本数据缓存起来，等还要再cellForItemAtIndexPath的时候，他还是会更新当前的单元格。所以严格意义上说，“粉粉”里面之前的缓存方案，仅是对数据的再次缓存得到快速获取，而不是前缘科技里面的Feed页面写法。</li>
-<li>从前一个公司到现在的粉粉日记领悟到一个思想：前一个公司很在意功能上的全，比如我们要有自己的图片选取工具、纯文字发布能力的特立独行、视频这块大块头的实现类似“美拍”的全逻辑。由于人员的不够，我在竭尽全力下初窥视频骨架，但是公司在一次次的冲击市场下都没有反响中放弃了。其中原因是大骨头很难啃，其他东西没抓住，人员配置不够；粉粉公司反其道，一步一步走，走的路也更早，探索出了抓住青少年人群的美少女“萌”。粉粉到现在才开始有了拍摄视频的能力，而且仅仅只有拍摄这一步，目前还是内测；粉粉每走一步都测试、保证再保证没有问题才将功能加上去。粉粉的选取图片能力还有滤镜能力，目前走到了这么一个地步：使用其他公司的SDK：在功能左下角还有某某SDK的字样。里面框架也是挺卡的，我拿了个iPod5的测试机，FPS有时直接到0了，有些页面写的，连复用都没有；比如图片这块，我们使用qiniu作为图片保存地址，他们使用的UPYun是腾讯的，目前还属于内测阶段，而且他们居然没有看文档，不知道可以图片地址后面拼接image的后缀，让服务器帮忙更改图片属性功能。可以这么说，内容、市场、人员、测试、流程，粉粉都比“呱拍”走的很远，但是一些功能上的，确实“呱拍”使用的前缘功能，要比粉粉走太远：当我已经要试试FaceDetect功能的时候，粉粉才在有拍摄功能。。。</li>
-<li>最近练手了一个自定义CollectionLayout，联系之前看的OpenGL ES 的皮毛，类比到ASDK和autoLayout中布局说明，终于理解了一个原理：程序是死的，目前我接触到的都是死的，他需要人说明，包括每个pixel需要展示什么颜色定义，需要opacity多少，每个点需要人告诉程序。比如手机、电脑在某一快需要展示蓝色，布局定义等都会转化为绝对坐标，绝对坐标再转化为在底层GPU需要的布局信息，GPU在将每一层需要的颜色重叠起来，看需要输出到屏幕的是什么，才最终呈现出来</li>
-<li>如果要判别一个公司的团队实力，可以在看市场竞争能力，我想到作为在iOS技能求职者一个新方法：下一个该公司的APP—&gt;使用iPhone4s看其表现能力，iPhone6不能作为功能测试机，不过可以作为布局测试机！！！</li>
-<li>今天改了下host，进入公司的FTP服务器，改host需要vim的权限，于是我使用sudo vim +“对应文件夹Path” 写完后按左上角esc键盘按键，然后输入<em>:wq</em>意思是write and quit</li>
-<li>今天下午搞了下git branch，之前使用都是小心翼翼，不太懂整，他们搞过来搞过去，嗯哼，还不太给力ing</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-2-20lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/20/2017-2-20lesson/">2017/2/20lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/20/2017-2-20lesson/" class="article-date">
-	  <time datetime="2017-02-20T14:18:31.000Z" itemprop="datePublished">February 20, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天第一次去粉粉日记报到，记录下流程。<br>这几天是大风大雪天，最后一次寒潮，连着2周晚睡晚起，而且还是没有开空调裸睡，，，嘴里一直念叨着<em>我是要做大事之人</em>才哆嗦着起来，，，<br>本来打算今早去体检，怕来回来不及，小电驴也没充电，赶紧吃了俩小面包就出发了。<br>到公司后人事先给我安排到桌子前，没想到公司都用Mac mini，嘿嘿，很久没用啦，开发效率估计要打折，，哈哈<br>我先捣鼓下开启主机，然后写入职表。过了一会，公司每天的早会，我看他们全围成一圈报告，有一定好处，有规划知道做什么是很重要的事。接着我继续下载我可能要用到的软件呀、下homebrew、cocoapods啊；常用软件：蓝灯、Chrome、微信、Reveal等等常用的；设置下电脑，看看PhotoKit（最近要开始gif图片等研究）等。<br>公司里面“粉粉日记”成员蛮多的，才知道粉粉是从2013年的项目到现在，过了一会，他们把代码发过来我先看着了。里面项目有几点想说的，包确实很大，比环球高尔夫还大，但是资源管理很有条例（我自己处理的话尽量用IconFont管理图片资源吧），用的一些技术我没去掌握的有那么几个：JSBridge、Mantal、CoreData、Archive、以及一些其他一些以前没去接触过的。<br>JSBridge以前没有实验对象；Mantal以前觉得对model有入侵；CoreData觉得一些啥啥问题等；Archive没试验对象；之后可以看看哪里有没有契机接触使用等了，，，<br>11点多的时候在钉钉里面和大家大哥招呼，大家群里立马热闹起来了，互开着玩笑。<br>中午一下就来了，和iOS几个一起吃午饭，还不知道这附近怎么吃，跟着他们吃就好了。他们人挺热情的，那么多人在办公室，大家工作有讨论，有去开会，挺热闹；大家吃饭，我们几个在一个厅里吃饭，也是来来回回大家玩闹。<br>下午的时候，我先看了很久的代码。过没一会还要填一些规章、录个指纹啥的，然后人事小妹带我跟大家都走一遍认识认识。我估计记不清，只能记大概范围的工作区，还有去<strong>可萌记账</strong>组走一下，大概知道销售、商务、iOS开发、后台开发、安卓开发、网页开发、UI组、插画组等的位置。也去转了财务、经理处。<br>回来继续看代码，他们安排了一个小任务。<br>这个小任务是本来别的地方有的，我给写到新的地方，不是太难。我考虑的比较多，以为其图片是从外部传递进去控制的，没想到是内部写好，这样估计没法再重新用的；不过另一层也会考虑到不能过度封装，也会带来一些隐患。我也能看到这项目有些没设计好的地方，毕竟项目大了，有些没能全盘思考，总体设计方案很值得我学习，细节方面值得我学习注意规避。<br>有些设计我粗略看了下还没看全。<br>textView的inputView、accessInputView原来是用来代替keyboardPad的，环球高尔夫看到过，没留意，现在清楚了。<br>将代码直接拖到sourceTree建立branch，新建一个branch给代码添分支，这些我居然以前没去搞过，一直花时间写/学新东西，现在有的补上了，，，<br>下午的时候主要就是改那个需求，改成和另一个完全一样，还差和后台人对接数据。到最后7点多了也确实饿了，给上级发了个今天任务完成邮件后先回来吃饭了。发每日任务有个好处，上级对下面的管控，知道过程、进程如何。我看到他们有写一句话的，不过我记录修改习惯早就养成，修改哪里，细节等都会列举，如果有技术手段处理过程、试验过程也会记录，习惯，让我不这么写我也会在便签记下，哈哈。<br>晚上回来，总要学点啥，或者写点啥吧，我问了下parse中<code>I have a mainPostTable and three other tables,three other tables owns mainPostTable&#39;s objectId, how can i count from other three table??</code>这样怎么处理，等待他们回答结果。然后测试数据include “user”这个pointer，哇哈，返回数据了，那就好啦，，哈哈，，首页就差问他们的那个问题啦。<br>等会看看文章，就早点睡了，面对明天新的任务，毕竟给我的任务肯定会越来越重，赶紧在公司的时候多看代码，不然做的效率在不知道相应代码位置的话会吃亏的。<br>再多说一句，加入“粉粉”组有好处，比如知道他们怎么运营，我这里看到的数据最直观；也有坏处，我的一身本事，不能乱显身手，哈哈哈，不要乱加代码嘛，是吧，尽量和原作者手法一致；私下多写自己代码，不然有些自己的东西会忘却的哦，加油2017，，，</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-2-18lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/18/2017-2-18lesson/">2017/2/18lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/18/2017-2-18lesson/" class="article-date">
-	  <time datetime="2017-02-18T07:53:32.000Z" itemprop="datePublished">February 18, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为近期离职的原因，生活有点乱，主要就是本来习惯的节奏变化，自己感觉拼不上，倒不是因为离职带来的主要影响。<br>离职这几天有时候晚上会思考我要走什么样的路，有时候晚上玩游戏，玩着玩着就太晚，晚？那也不行嘞，写东西还是要写，于是又变成熬夜，最近2周基本是1点、1点半左右睡。<br>本来我已经拿到一个公司A的offer，那边同学也盛情邀请，但是有几点考虑。第一是我感觉不到那个方向所能带来的前进，第二是做的跟我以前做的有点杂很相似；主要是能有公司B的一个对比。<br>我觉得我是时候往上突破了。这几年沉淀下来的能力也差不多可以破开另一个点了。<br>公司Aoffer拿到的那天下午，我刚好答应公司B隔天去面试。我在接到去公司B邀请面试的电话，心里对公司A评价也很好。有些人可能会觉得我公司A已经有offer不怕没饭吃了，随便去就好了，又不是就你们一家。有时候年轻的气盛不是叫“年轻气盛”，有时候却会成了“自以为是”。我在心里重复给自己鼓气，你是要做大事的人，机会是给有准备的人，给沉心静气，给贤者。<br>我觉得我会爬上顶端，所以我给自己定义都是求职者，虚心求学求职者，公司和求职者双向共赢的姿态。<br>去公司B面试的时候比较正规，毕竟是走的比较前缘。<br>面试的是一个大哥，我一开始介绍自己、项目，他说问几个吧。1：http，我就说计算机硬件课程里面知道的什么3次握手4次挥手，socket在底层利用比如路由头、什么头什么头拼接成数据在物理链传输；2：post协议，我就说比如请求头这块，body体这块，跟get请求大概区别，也说了我以前利用charles请求iTunes的https请求中利用其excuse更改传输数据内容下载不同版本app；3：json转model，他问往上扩展，这个我不知道他想我能给他说什么，那我就往上扩展，说该不该在json转为dic之后需要转为model这个，于是blablabla，后来他说不是想问这个，比如MJExtension，json转为dic之后，找个一个个key值，然后给他赋上–&gt;这么说我终于知道他想问的什么，那我就说使用runTime遍历出来property列表，然后在json中某一属性对应数据，使用kvo给property列表赋值即可；4、5<br>我可真不会紧张，只是不知道他表达的我应该回答哪某一领域，我觉得都是工作几年了，应该不会那么简单的吧，我一直以为是探讨些东西吧。<br>后来我跟这个大哥说了，我这有个offer，可能需要在下午3点前给个回复，求职是相互沟通的过程，如果您们对我不是很满意，那么请直接拒绝我，我都懂，毕竟双向选择啦，不然这里我不敢拖，另一边也不能拖答复延时，诚信为主。他说等会，他把CTO喊来了，CTO又跟我聊了很久。跟CTO聊天，也算是给我后面做的决定定了基础。不是说工资高就去，而是奔着职业规划，我心中路线而去，进这个公司哪个能带给我前进的步伐和台阶。<br>后来面试结束要离开了，他说他们会尽快，2、3点前给我回复。<br>我出门在地铁上公司B前台就打电话过来，给定工资结构说明和工作时间、安排事项等。offer是这样，前台这里口头说好，然后需要我接下来的背景调查，然后写单子审批，然后offer才发到我这里。<br>那天下午回到住所，我跟公司A人事说了决定，邮件回复公司Aoffer邮件。然后等待公司B的一些背景调查配合。公司B基本问一些为什么之前离开公司啦，说了试用期情况啦，然后公司B前台打电话给我之前老板人事们。offer直到隔天下午还没发过来，我也是时不时就看一下邮箱，没有定下来，心确实有点不在焉状态，毕竟另一个offer推掉，如果这个说offer不发了，那我又得继续投简历咯，比较麻烦。<br>大概在隔天晚些时候，offer终于发过来，确定好了。我也没停歇，继续搞我自己的事，我该写的东西还是要写，是吧，嘿嘿，停不下来。<br>今天周六，本来要去体检，早上写东西忘记还在煮粥，粥都煮成饭了，下午去医院看到没人-&gt;我去的时间太晚了，只能回来继续写写文章、写写东西啦。<br>明天计划是处理图文混排和骑车去新公司看看，毕竟不是很远，6km左右，我要坐地铁还要2站转乘1站，还不如看看我的小电驴能不能撑到，不能的话，考虑换一个小电驴^.^。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-ASTextNode图文" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/14/ASTextNode图文/">ASTextNode图文</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/14/ASTextNode图文/" class="article-date">
-	  <time datetime="2017-02-14T12:38:43.000Z" itemprop="datePublished">February 14, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>过段时间，写一个关于ASTextNode的图文混排的demo<br>这里才参考一个博客：<br><a href="http://blog.csdn.net/pjk1129/article/details/45559647" target="_blank" rel="noopener">http://blog.csdn.net/pjk1129/article/details/45559647</a><br><a href="http://tutuge.me/2015/04/21/resizable-nstextattachment/" target="_blank" rel="noopener">http://tutuge.me/2015/04/21/resizable-nstextattachment/</a><br>到时讲讲如何实现包括插入image，解析image成string；使用正则将string的标记改为image插入到ASTextNode<br>时间定为这周周末吧</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-2-14lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/14/2017-2-14lesson/">2017/2/14lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/14/2017-2-14lesson/" class="article-date">
-	  <time datetime="2017-02-14T07:20:34.000Z" itemprop="datePublished">February 14, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这几天正好离职，离职对于我来说更大的是机遇，更好的确定自己的方向。<br>以前的知识都是积累，就如学校里面学习，你要学线代、微积分、几何、数据结构等等，你还要有专项的如Visual-C、汇编、jave等等工作中可能会用到的语种。但是最后你要确定好自己的方向。<br>你不可能什么都学会，不同的人创建的语法都有自己的特点，什么都学，什么都是皮毛，这是我的观点，没办法，中国人，除了工作，你还要生活啊。。。<br>找工作对我来说，最大的挑战就是-&gt;<code>晕车挑战</code>，有几回头确实很晕，但都还能忍。<br>离职能让你重新审视这个行业,同时去面试的偏重自己的热爱方向，面试的时候比如今天碰到比我厉害，走的比我远的大哥，我不多问几个问题，我不就白去了。所以也可以刚好审视自己以前的研究成果的熟悉度和错误地方。<br>先说前两天去面试的一家：<br>某个资产行业公司，他想做一个类<code>K线PK</code>的即时对战app，团队还没有组件。我这里给他主推一些方案。你需要即时对战，那么对信息的更改，便需要很高，于是推荐<code>Parse</code>服务器、<code>Firebase</code>、<code>自己花钱雇人搭建服务器</code>.K线原型的话，UIKit也能实现，我这方面可以私下花个时间学习写一个，毕竟没搞过，私下自己搞搞也是有点意思。之后可能我自己就会去实现一个可以对战的小游戏，个人兴趣爱好，决心继续发展就不能浪费时间。<br>这个老板比较对生意上在意，我去的时候问的一直都是觉得以前的工作做到位，却前景不看好，我觉得这个大哥估计数学方面或者金融方面浸淫很深，我缺少的就是这方面知识和操作。我从小就没被往这方面培养，肯定不行，算了，人各有道，有机会再说往上爬的事，哈哈。</p>
-<hr>
-<p>昨天去面试的一家是一个做共享自行车🚲类的，一样，和前两天的要做1个小时车过去，我小脑袋晕车晕呀晕呀，摇呀摇呀，回来的时候都是浑浑噩噩的。<br>去到那里，里面感觉还有一点点油漆未干那种味道，办公地点很大，人10来个。反正我来就是来玩的，我哪可能干这行。<br>跟里面大哥聊了会，说了我能带来什么技术，我知道他做后台，我说的很多他也都不懂，他说的一些跟蓝牙某些技术，我1年前搞过BlueTooth这块的peerTalk，继续研究也没啥，看看资料一个个攻克也有可能搞得好，但是现在<strong>ofo</strong>、<strong>摩拜</strong>、<strong>小鸣</strong>等占据了很大市场，算了，我直接说<code>我可能不太适合，我对音视频这块比较热衷，浪费您的时间，打扰了</code>，双方都很客气，知道都不适合，只能算打扰。</p>
-<hr>
-<p>今天去面试的一家叫初生科技的一家公司，他的产品<code>热拉</code>在春节的时候跻身免费榜前十，做的是挺不错的。我有点心动，心动的不是其除去功能的其他原因。我想更了解音视频这块，他们是做的比较好的了。首先我先自我介绍，这东西说来说去就说到我们最近做的<code>呱拍</code>APP，里面使用的技术点、里面负责模块等。<br>大哥对细节比较在意，细节是能体现很多方面的能力。我觉得做东西，就要把他当情人，每天都是热爱，每天都是把情人打扮的更美。<br>这里我们沟通了很多，我记录几天我以前做APP的时候想到不敢确定的一些事情。</p>
-<ul>
-<li>我查阅一些资料，觉得我多个页面都是用到了GPUImage，也就是说context对很多页面都有一些buffer没有清除，他的建议的是在关键页面使用GPUImage，我的拍摄页面需要改掉，单纯给需要添加filter或者MV页面使用GPUImage。</li>
-<li>MV效果中，他的一个说法让我解开MV的真正面纱，使用playItem，先让movieFile process，然后在相应时间play或者seekToTime，跟我想的一模一样。</li>
-<li>关于切换滤镜可能会卡顿，这点和我想的一样，不是那些问题，估计是其他一些什么东西的原因吧，切换某一些filter的时候会有那么点卡顿。</li>
-<li>效果滤镜里边，他说其中有一些可以实现比如detect事件，这个我知道有，不太会用；有一些是效果滤镜，比如画面移动、波纹滤镜等，这个我当时还真没找到。这个就是我比较差的一个地方了，网上资料甚少啊，我当时也没时间处理，光找demo就能花去很多时间。</li>
-<li>关于询问音频打包问题，最终我的操作原来是对的，他们的操作是GPUImage 处理出来视频，然后使用AVFoundation再处理出来视频。没办法，视频、音频只能两个地方分别打包，毕竟GPUImage干的事就是处理AVMediaType的事情。</li>
-<li>我也提出一些观点，在处理每一帧出来的framebuffer中，可以使用CIDetector或者OpenCV的观测点。OpenCV确实没接触，我需要去搞搞的事情啊。</li>
-<li>在学习方向，他给的说3个建议</li>
-</ul>
-<ul>
-<li>第一，demo使用到场景中。这个当然了，硬着头皮上！！！</li>
-<li>第二，做压力测试。比如他提到聊天方面，在一万条数据面前，保存和未保存，读写保护等的情况。我之前没这么做过，这个倒是我真正要学习的，这个或许是我要进入的下一个阶段。其实就是某些场景，耐不耐用的体现。不再是小打小闹啦</li>
-<li>第三，将做出来的东西在github开源，接受大家的考验。这点我赞同，，，，，，一半，哈哈，，，这个是在第二个建议之后的事啦。我现在也有将写出来的项目拿出来，不过都是我的一些测试类的，等到第二个建议实现，才会到达第三个层面吧</li>
-</ul>
-<hr>
-<p>总的来说，离职是件好事，趁着这个时间，好好沉淀，好好实现之前一直想自己做的东西，努力花时间，不要再颓废，每天定时定量完成！！！</p>
-<hr>
-<p>因为离职，有些东西要去规划，要学的可能更知道哪个方向，这里确定好最近要学的东西吧。</p>
-<ul>
-<li>APP中，使用IGListKit进行归类Setting_Module</li>
-<li>使用FxForms填写个人信息表单。</li>
-<li>LiveQuary</li>
-<li>在ASTextNode使用NSAttachment</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-2-13lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/13/2017-2-13lesson/">2017/2/13lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/13/2017-2-13lesson/" class="article-date">
-	  <time datetime="2017-02-13T08:58:42.000Z" itemprop="datePublished">February 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>练习了一个UI试图，嘿嘿，挺好玩的。<a href="http://www.jianshu.com/p/a7f5cab17395" target="_blank" rel="noopener">http://www.jianshu.com/p/a7f5cab17395</a><br>大概长这样<img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/03/runfinal.gif" alt><br>有兴趣的可以去试试，有时间我看能不能改成代码形式，嘿嘿。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-2017-2-10lesson" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/02/10/2017-2-10lesson/">2017/2/10lesson</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/02/10/2017-2-10lesson/" class="article-date">
-	  <time datetime="2017-02-10T15:43:18.000Z" itemprop="datePublished">February 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>parse-server出现<code>[Error]: schema mismatch for feedPost.pageInfo; expected String but got Pointer&lt;pageInfo&gt; (Code: 111, Version: 1.14.2)</code><br>保存不进去。<br>原理是因为server在我们创建类的时候，为类保存了一个总纲类似的table<em>_SCHEMA</em>,我之前创建feedPost table的时候，总纲给pageInfo定义为string，这时候改成Pointer，那么需要做的要么是删除table<em>_SCHEMA</em>，要么更改里面某一条collection里的pageInfo类型啦。</p>
-<hr>
-<p>NSString中提取单词 enumerateSubstringsInRange NSCharacterSet CFStringTokenizerRef<br>看了这篇网址给的说明<a href="http://blog.csdn.net/god_chong/article/details/49589499" target="_blank" rel="noopener">http://blog.csdn.net/god_chong/article/details/49589499</a></p>
-<h4 id="function1"><a href="#function1" class="headerlink" title="function1:"></a>function1:</h4><p>NSString <em>popo = @”Lorem __ ! @ () “” ipsum “” dolar ?~  </em> # $  % ^ &amp; &lt; &gt;{}\ |;:sit  amet.”;<br>[popo enumerateSubstringsInRange:NSMakeRange(0, popo.length) options:NSStringEnumerationByWords usingBlock:^(NSString <em> _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOLBOOL </em> _Nonnull stop) {<br>    NSLog(@”substring     :%@”,substring);<br>    NSLog(@”substringRange:%lu,length:%lu”,(unsigned long)substringRange.location,substringRange.length);<br>    NSLog(@”enclosingRange:%lu,length:%lu \n\n”,(unsigned long)enclosingRange.location,enclosingRange.length);<br>}];<br>打印如下：<br>2015-11-02 17:22:07.244 AFNetWorkingDemo[8620:300513] substring     :Lorem<br>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] substringRange:0,length:5<br>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] enclosingRange:0,length:6   </p>
-<p>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] substring     :__<br>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] substringRange:6,length:2<br>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] enclosingRange:6,length:11   </p>
-<p>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] substring     :ipsum<br>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] substringRange:17,length:5<br>2015-11-02 17:22:07.245 AFNetWorkingDemo[8620:300513] enclosingRange:17,length:7   </p>
-<p>2015-11-02 17:22:07.246 AFNetWorkingDemo[8620:300513] substring     :dolar<br>2015-11-02 17:22:07.246 AFNetWorkingDemo[8620:300513] substringRange:24,length:5<br>2015-11-02 17:22:07.246 AFNetWorkingDemo[8620:300513] enclosingRange:24,length:33   </p>
-<p>2015-11-02 17:22:07.246 AFNetWorkingDemo[8620:300513] substring     :sit<br>2015-11-02 17:22:07.246 AFNetWorkingDemo[8620:300513] substringRange:57,length:3<br>2015-11-02 17:22:07.273 AFNetWorkingDemo[8620:300513] enclosingRange:57,length:5   </p>
-<p>2015-11-02 17:22:07.273 AFNetWorkingDemo[8620:300513] substring     :amet<br>2015-11-02 17:22:07.273 AFNetWorkingDemo[8620:300513] substringRange:62,length:4<br>2015-11-02 17:22:07.273 AFNetWorkingDemo[8620:300513] enclosingRange:62,length:5</p>
-<h4 id="function2"><a href="#function2" class="headerlink" title="function2:"></a>function2:</h4><p>CFStringRef string1 = (__bridge CFStringRef)([NSString stringWithFormat:@”Lorem    ipsum dolar   sit  amet.”]); // Get string from somewhere<br>    CFLocaleRef locale = CFLocaleCopyCurrent();<br>CFStringTokenizerRef tokenizer =<br>CFStringTokenizerCreate(<br>                        kCFAllocatorDefault<br>                        , string1<br>                        , CFRangeMake(0, CFStringGetLength(string1))<br>                        , kCFStringTokenizerUnitWord<br>                        , locale);<br>CFStringTokenizerTokenType tokenType = kCFStringTokenizerTokenNone;<br>unsigned tokensFound = 0;<br>while(kCFStringTokenizerTokenNone !=<br>    (tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer))) {<br>    CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);<br>    CFStringRef tokenValue =<br>    CFStringCreateWithSubstring(<br>                                kCFAllocatorDefault<br>                                , string1<br>                                , tokenRange);<br>    // Do something with the token<br>    NSLog(@”tokenValue:%@”,tokenValue);<br>    NSLog(@”tokenRange:%ld,%ld”,tokenRange.location,tokenRange.length);<br>    CFShow(tokenValue);<br>    CFRelease(tokenValue);<br>    ++tokensFound;<br>}<br>// Clean up<br>CFRelease(tokenizer);<br>CFRelease(locale);<br>打印如下：<br>2015-11-02 17:22:07.276 AFNetWorkingDemo[8620:300513] string:Lorem ipsum dolar sit amet.<br>2015-11-02 17:22:07.276 AFNetWorkingDemo[8620:300513] sss:Loremipsumdolarsitamet.<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenValue:Lorem<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenRange:0,5<br>Lorem<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenValue:ipsum<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenRange:9,5<br>ipsum<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenValue:dolar<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenRange:15,5<br>dolar<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenValue:sit<br>2015-11-02 17:22:07.277 AFNetWorkingDemo[8620:300513] tokenRange:23,3<br>sit<br>2015-11-02 17:22:07.278 AFNetWorkingDemo[8620:300513] tokenValue:amet<br>2015-11-02 17:22:07.278 AFNetWorkingDemo[8620:300513] tokenRange:28,4<br>amet</p>
-<h4 id="function3："><a href="#function3：" class="headerlink" title="function3："></a>function3：</h4><p>NSString <em>string = @”Lorem    ipsum dolar   sit  amet.”;<br>string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];<br>NSArray </em>components = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];<br>NSLog(@”%@”,components);<br>components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@”self &lt;&gt; ‘’”]];<br>NSLog(@”%@”,components);<br>string = [components componentsJoinedByString:@” “];<br>NSLog(@”string:%@”,string);<br>打印如下：<br>2015-11-02 17:22:07.275 AFNetWorkingDemo[8620:300513] (<br>    Lorem,<br>    “”,<br>    “”,<br>    “”,<br>    ipsum,<br>    dolar,<br>    “”,<br>    “”,<br>    sit,<br>    “”,<br>    “amet.”<br>)<br>2015-11-02 17:22:07.275 AFNetWorkingDemo[8620:300513] (<br>    Lorem,<br>    ipsum,<br>    dolar,<br>    sit,<br>    “amet.”<br>)<br>2015-11-02 17:22:07.276 AFNetWorkingDemo[8620:300513] string:Lorem ipsum dolar sit amet.   </p>
-<hr>
-<p>摘抄自大神可可的笔记<a href="https://zhuanlan.zhihu.com/p/20669823?refer=cocoanotes" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20669823?refer=cocoanotes</a><br>想要把 UITableView 的 header 全都换成同一个效果，不用做任何 Subclassing，也不用做任何 Swizzling，直接 Appearance 搞定：<br><code>[[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextColor:[UIColor redColor]];</code></p>
-<hr>
-<p>想要短信 app 里面那种元素之间相互挤压的物理效果，使用 UIDynamicAnimator 就可以了，这里有一个很不错的范例：<a href="https://github.com/AshFurrow/ASHSpringyCollectionView" target="_blank" rel="noopener">GitHub - ashfurrow/ASHSpringyCollectionView</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/10/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/12/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/shaohung001" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/07/2021-08-07lesson/">2021-08-07lesson</a></h6>
-              <span>August 7, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/08/05/2021-8-5lesson/">2021-8-5lesson</a></h6>
-              <span>August 5, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/31/2021-7-31lesson/">2021-7-31lesson</a></h6>
-              <span>July 31, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-5lesson/">2021-7-5lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/07/06/2021-7-6lesson/">2021-7-6lesson</a></h6>
-              <span>July 6, 2021</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2021/06/16/2021-6-16lesson/">2021-6-16lesson</a></h6>
-              <span>June 16, 2021</span>
-            </div>
-
-          </li>
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020过年/">2020过年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Charles-https-iTunes-下载历史版本/">Charles https iTunes 下载历史版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GPUimage/">GPUimage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTX750/">GTX750</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VVVVVV/">VVVVVV</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/acme/">acme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awaitCall/">awaitCall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitbucket-ios/">bitbucket  ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cocoapods/">cocoapods</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp-dylib/">cpp dylib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-golang/">docker golang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goland-mod-爆红/">goland mod 爆红</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hackintoshell/">hackintoshell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iced2ts/">iced2ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-it-dylib-nosuchfileordirectory/">ios it dylib(nosuchfileordirectory)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios7/">ios7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k3s/">k3s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-opengl/">mac_opengl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neo4j/">neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-http-flv-module/">nginx-http-flv-module</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/obs/">obs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parallels/">parallels</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/src-nginx-flv/">src nginx-flv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/srs/">srs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房-产证/">买房, 产证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/买房资格/">买房资格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/居住证积分/">居住证积分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/看房/">看房</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科目三/">科目三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑残/">脑残</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2020过年/" style="font-size: 10px;">2020过年</a> <a href="/tags/Charles-https-iTunes-下载历史版本/" style="font-size: 10px;">Charles https iTunes 下载历史版本</a> <a href="/tags/GPUimage/" style="font-size: 10px;">GPUimage</a> <a href="/tags/GTX750/" style="font-size: 10px;">GTX750</a> <a href="/tags/IT/" style="font-size: 15px;">IT</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/VVVVVV/" style="font-size: 20px;">VVVVVV</a> <a href="/tags/acme/" style="font-size: 10px;">acme</a> <a href="/tags/awaitCall/" style="font-size: 10px;">awaitCall</a> <a href="/tags/bitbucket-ios/" style="font-size: 10px;">bitbucket  ios</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cocoapods/" style="font-size: 10px;">cocoapods</a> <a href="/tags/cpp-dylib/" style="font-size: 10px;">cpp dylib</a> <a href="/tags/docker-golang/" style="font-size: 10px;">docker golang</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/goland-mod-爆红/" style="font-size: 10px;">goland mod 爆红</a> <a href="/tags/hackintoshell/" style="font-size: 10px;">hackintoshell</a> <a href="/tags/iced2ts/" style="font-size: 20px;">iced2ts</a> <a href="/tags/ios-it-dylib-nosuchfileordirectory/" style="font-size: 10px;">ios it dylib(nosuchfileordirectory)</a> <a href="/tags/ios7/" style="font-size: 10px;">ios7</a> <a href="/tags/k3s/" style="font-size: 10px;">k3s</a> <a href="/tags/mac-opengl/" style="font-size: 10px;">mac_opengl</a> <a href="/tags/neo4j/" style="font-size: 10px;">neo4j</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nginx-http-flv-module/" style="font-size: 10px;">nginx-http-flv-module</a> <a href="/tags/obs/" style="font-size: 10px;">obs</a> <a href="/tags/parallels/" style="font-size: 10px;">parallels</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/reactivecocoa/" style="font-size: 10px;">reactivecocoa</a> <a href="/tags/src-nginx-flv/" style="font-size: 10px;">src nginx-flv</a> <a href="/tags/srs/" style="font-size: 10px;">srs</a> <a href="/tags/买房-产证/" style="font-size: 10px;">买房, 产证</a> <a href="/tags/买房资格/" style="font-size: 10px;">买房资格</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/居住证积分/" style="font-size: 10px;">居住证积分</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/猴头菇生病/" style="font-size: 10px;">猴头菇生病</a> <a href="/tags/看房/" style="font-size: 10px;">看房</a> <a href="/tags/科目三/" style="font-size: 10px;">科目三</a> <a href="/tags/脑残/" style="font-size: 10px;">脑残</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">68</span></li></ul>
-    </div>
-  </div>
-
-
-  
 </aside>
+
+    <main id="main">
         
-      </div>
-      <footer id="footer" class="site-footer">
+    <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>aKer</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">aKer</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-3-13lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/03/13/2017-3-13lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/13/2017-3-13lesson/">2017/3/13lesson</a>
+    </h3>
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2021 aKer All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-13 20:45:24" datetime="2017-03-13T12:45:24.000Z" itemprop="datePublished">2017-03-13</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        123456789101112131415161718192021222324252627282930//创建标准的变换矩阵CGAffineTransform CGAffineTransformIdentity;//手动创建变换矩阵CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat ...
+    
+    <a href="/2017/03/13/2017-3-13lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-3-3lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/03/03/2017-3-3lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/03/2017-3-3lesson/">2017/3/3lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-03 22:12:42" datetime="2017-03-03T14:12:42.000Z" itemprop="datePublished">2017-03-03</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        这几天打算使用Bundle管理SVG文件，给项目加上Theme功能。SVG使用，使用的是SVGKit，使用Bundle需要稍微注意写法比如使用寻找Path，12345NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;AnimalTheme&quot; ofType:@&quot;bundle&quot;];NSStr...
+    
+    <a href="/2017/03/03/2017-3-3lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-3-2lxlesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/03/02/2017-3-2lxlesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/02/2017-3-2lxlesson/">2017/3/2lxlesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-02 23:47:26" datetime="2017-03-02T15:47:26.000Z" itemprop="datePublished">2017-03-02</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        强引用，tableview嵌套
+今天写“仿写墨迹天气app”的时候把用到的tableview单独拿出来创建tableviewcontroller单独管理，本来是这样想的，但是在把tableview贴到首页上的时候出现tableview没有显示完全而嵌套在tableview上的小tableview滑动消失，点击小tableview整个tableview消失的问题，后来经过老公的一番审查之后发现...
+    
+    <a href="/2017/03/02/2017-3-2lxlesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-3-2lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/03/02/2017-3-2lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/02/2017-3-2lesson/">2017/3/2lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-02 22:14:16" datetime="2017-03-02T14:14:16.000Z" itemprop="datePublished">2017-03-02</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        记录这几天的发现或者想到了的东西，哈哈
+关于retweeded的数据结构获取，是否可以使用 [quary include@”retweeded”]; [quary include@“retweeded.user”]; 
+缓存策略，使用一进去拿缓存，在判别skip数，为0则将这次数据保存替换之前的cache
+collection需要使用self.collectionNode performBa...
+    
+    <a href="/2017/03/02/2017-3-2lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-2-20lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/02/20/2017-2-20lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/20/2017-2-20lesson/">2017/2/20lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-20 22:18:31" datetime="2017-02-20T14:18:31.000Z" itemprop="datePublished">2017-02-20</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        今天第一次去粉粉日记报到，记录下流程。这几天是大风大雪天，最后一次寒潮，连着2周晚睡晚起，而且还是没有开空调裸睡，，，嘴里一直念叨着我是要做大事之人才哆嗦着起来，，，本来打算今早去体检，怕来回来不及，小电驴也没充电，赶紧吃了俩小面包就出发了。到公司后人事先给我安排到桌子前，没想到公司都用Mac mini，嘿嘿，很久没用啦，开发效率估计要打折，，哈哈我先捣鼓下开启主机，然后写入职表。过了一会，...
+    
+    <a href="/2017/02/20/2017-2-20lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-2-18lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/02/18/2017-2-18lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/18/2017-2-18lesson/">2017/2/18lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-18 15:53:32" datetime="2017-02-18T07:53:32.000Z" itemprop="datePublished">2017-02-18</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        因为近期离职的原因，生活有点乱，主要就是本来习惯的节奏变化，自己感觉拼不上，倒不是因为离职带来的主要影响。离职这几天有时候晚上会思考我要走什么样的路，有时候晚上玩游戏，玩着玩着就太晚，晚？那也不行嘞，写东西还是要写，于是又变成熬夜，最近2周基本是1点、1点半左右睡。本来我已经拿到一个公司A的offer，那边同学也盛情邀请，但是有几点考虑。第一是我感觉不到那个方向所能带来的前进，第二是做的跟我...
+    
+    <a href="/2017/02/18/2017-2-18lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-ASTextNode图文" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/02/14/ASTextNode图文/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/14/ASTextNode图文/">ASTextNode图文</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-14 20:38:43" datetime="2017-02-14T12:38:43.000Z" itemprop="datePublished">2017-02-14</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        过段时间，写一个关于ASTextNode的图文混排的demo这里才参考一个博客：http://blog.csdn.net/pjk1129/article/details/45559647http://tutuge.me/2015/04/21/resizable-nstextattachment/到时讲讲如何实现包括插入image，解析image成string；使用正则将string的标记改为...
+    
+    <a href="/2017/02/14/ASTextNode图文/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-2-14lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/02/14/2017-2-14lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/14/2017-2-14lesson/">2017/2/14lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-14 15:20:34" datetime="2017-02-14T07:20:34.000Z" itemprop="datePublished">2017-02-14</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        这几天正好离职，离职对于我来说更大的是机遇，更好的确定自己的方向。以前的知识都是积累，就如学校里面学习，你要学线代、微积分、几何、数据结构等等，你还要有专项的如Visual-C、汇编、jave等等工作中可能会用到的语种。但是最后你要确定好自己的方向。你不可能什么都学会，不同的人创建的语法都有自己的特点，什么都学，什么都是皮毛，这是我的观点，没办法，中国人，除了工作，你还要生活啊。。。找工作对...
+    
+    <a href="/2017/02/14/2017-2-14lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-2-13lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/02/13/2017-2-13lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/13/2017-2-13lesson/">2017/2/13lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-13 16:58:42" datetime="2017-02-13T08:58:42.000Z" itemprop="datePublished">2017-02-13</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        练习了一个UI试图，嘿嘿，挺好玩的。http://www.jianshu.com/p/a7f5cab17395大概长这样
+                
+                
+            有兴趣的可以去试试，有时间我看能不能改成代码形式，嘿嘿。
+
+    
+    <a href="/2017/02/13/2017-2-13lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-2017-2-10lesson" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/02/10/2017-2-10lesson/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/10/2017-2-10lesson/">2017/2/10lesson</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-10 23:43:18" datetime="2017-02-10T15:43:18.000Z" itemprop="datePublished">2017-02-10</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        parse-server出现[Error]: schema mismatch for feedPost.pageInfo; expected String but got Pointer&lt;pageInfo&gt; (Code: 111, Version: 1.14.2)保存不进去。原理是因为server在我们创建类的时候，为类保存了一个总纲类似的table_SCHEMA,我之前创建fe...
+    
+    <a href="/2017/02/10/2017-2-10lesson/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
+    </div>
+</nav>
+
+    </div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
             </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
 </footer>
 
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-<!-- min height -->
 
-<script>
-    var contentdiv = document.getElementById("content");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/page/11/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/page/11/&title=aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB1UlEQVR42u3aS27DMAxF0ex/0+60gGv1PlJUguBqVDSOfJQBwY9eL7yuX2v9n/un9yfvz29ecuXKbXOv5Xp6Zr0D+ZQc748jyZUr9yD3KWJ0tubHJga5cuV+Mnf9Xb6bXLlyv4+7/tZjgtL+OeTKlXuSS4of3vLgqdJgrSZXrtwGl3cp5/4e6e/KlSu3xL3C9VS61Fjx2+XKlXuEywNK2h4lrdL0vXLlyj3DJY0PXq7sKmNQCJMrV+4Y958IF17S6gTBVi9Hrly5A9zayITTCTEon+TKlTvMTRsfJLnhlPhql1y5co9w904o0mMUL3DIlSv3Tdx16KkVNnzPOJDJlSt3gJsGNd5OrSU3QdtFrly5A1wetngIS8uhuFaTK1fuMLd/WXP9GrInf6NcuXJPcnkYii9JhNe2UIEkV67ct3I7F7ZIU7V2GLly5Z7k8vBUS3TSkBfkXHLlyt3KrY1XeaMkTXpetSxJrly5W7lpcyQNVWlAjIescuXKHeP2hyLpuIW0Y4qJjly5crdy00CTDkRrxc9jIJMrV+5HcmutjbTE2hbI5MqVO8zlJc2uJkgrkMmVK7fB5YUKT034YJXsIFeu3JPcNJTwQQsft4z0d+XKlVvh/gCH8AEvHPu1vgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-<!-- Custome JS -->
-<script src="/js/my.js"></script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
     
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
 
+
+
+    <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
         var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
+        for (i=0; i < all.length; i += 1) {
             all[i].SourceElement().parentNode.className += ' has-jax';
         }
     });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -1009,26 +924,6 @@ var themeMenus = {};
 
 
 
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1278024876&web_id=1278024876" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/src/click.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    
+</body>
 </html>
