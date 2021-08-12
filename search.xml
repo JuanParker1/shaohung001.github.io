@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>2021-08-12lesson</title>
+      <link href="/2021/08/12/2021-08-12lesson/"/>
+      <url>/2021/08/12/2021-08-12lesson/</url>
+      
+        <content type="html"><![CDATA[<h1 id="初步联系redis"><a href="#初步联系redis" class="headerlink" title="初步联系redis"></a>初步联系redis</h1><p>redis 包含数据类型: string list set zset(sort set), 另有事务、发布订阅等，这篇是自己简单练习数据类型总结</p><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><pre><code>set key1 v1get key1mset key2 v2 key3 v3keys *exists key1del key2expire key3 20ttl key3persist key3</code></pre><h2 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h2><pre><code>hmset user:1000 username aker age 16 job ithget user:1000 usernamehmget user:1000 username age jobhgetall user:1000hset user:1000 job chifanhset user:1000 home shhvals user:1000hdel user:1000 job [field2...]</code></pre><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><pre><code>sadd set1 1 2 3 4 5smembers set1srem set1 1 4sadd set2 1 3 4 5 1 3sdiff set1 set2sinter set1 set2sunion set1 set2</code></pre><h2 id="zset"><a href="#zset" class="headerlink" title="zset"></a>zset</h2><pre><code>zadd zkey0 1 redis 2 mongo  5 mysql 6 tidb 6 mariadbzrange zkey0 0 -1 [withscores]zcard zkey0zincrby zkey0 2 redis</code></pre><h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><pre><code>rpush list1 Arpush list1 Blpush list1 top1lrange list1 0 -1lrange list1 1 2lrange list1 -3 -1rpop list1lpop list1llen list1lindex list1lrem list1 -1 A</code></pre><p><a href="https://www.jianshu.com/p/2f93bb771469" target="_blank" rel="noopener">参考</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2021-08-07lesson</title>
       <link href="/2021/08/07/2021-08-07lesson/"/>
       <url>/2021/08/07/2021-08-07lesson/</url>
