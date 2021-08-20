@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>2020-07-28lesson | aKer</title>
+    <title>CMakeLists入门 | aKer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iced2ts">
+    <meta name="keywords" content="cmake, cmakelists">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.4">
@@ -146,7 +146,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>2020-07-28lesson</span>
+            <span>CMakeLists入门</span>
             
         </div>
         
@@ -159,11 +159,11 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">2020-07-28lesson</h1>
+        <h1 class="title">CMakeLists入门</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-07-28T03:23:13.000Z" itemprop="datePublished" class="page-time">
-  2020-07-28
+                <time datetime="2021-08-20T02:08:29.000Z" itemprop="datePublished" class="page-time">
+  2021-08-20
 </time>
 
 
@@ -190,11 +190,11 @@
 
 
 <div class="container body-wrap">
-    <article id="post-2020-07-28lesson" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-CMakeLists入门" class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">2020-07-28lesson</h1>
+        <h1 class="post-card-title">CMakeLists入门</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-07-28 11:23:13" datetime="2020-07-28T03:23:13.000Z" itemprop="datePublished">2020-07-28</time>
+            <time class="post-time" title="2021-08-20 10:08:29" datetime="2021-08-20T02:08:29.000Z" itemprop="datePublished">2021-08-20</time>
 
             
 
@@ -208,19 +208,14 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="iced2ts-断点调试"><a href="#iced2ts-断点调试" class="headerlink" title="iced2ts 断点调试"></a>iced2ts 断点调试</h1><p>上一讲说到iced2ts 平滑升级，但是如果是从静态类型过来，方便的IDE 对断点调试可是优化得很，vscode没有他，我不能活。</p>
-<p>开始活，整活:</p>
-<p>在项目根目录创建</p>
-<p>.vscode文件夹, 并且添加文件：launch.example.json</p>
-<p>内容为:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"configurations"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"Launch"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"node"</span>,</span><br><span class="line">      <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"$&#123;workspaceRoot&#125;/app.js"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"runtimeExecutable"</span>: <span class="string">"npm"</span>,</span><br><span class="line">      <span class="attr">"runtimeArgs"</span>: [</span><br><span class="line">          <span class="string">"run"</span>,</span><br><span class="line">          <span class="string">"dev"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"sourceMaps"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceRoot&#125;"</span>,</span><br><span class="line">      <span class="attr">"console"</span>: <span class="string">"integratedTerminal"</span>,</span><br><span class="line">      <span class="attr">"internalConsoleOptions"</span>: <span class="string">"neverOpen"</span>,</span><br><span class="line">      <span class="attr">"env"</span>: &#123;</span><br><span class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"dev"</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"protocol"</span>: <span class="string">"inspector"</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>重点是<code>runtimeArgs</code> 和 <code>cwd</code>路径。如果项目结构深，需要调整cwd深度。runtimeArgs可以调整运行项目的script。</p>
-<p>给出我使用的dev(如果是windows，则是 <code>node dev:win</code>): <code>nodemon --watch &#39;**/*.ts&#39; --ignore &#39;**/*.test.*&#39; --exec &#39;TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true ts-node --files -r tsconfig-paths/register&#39; app.ts</code></p>
-<p>此时bash <code>$ cp .vscode/launch.example.json .vscode/launch.json</code></p>
-<p>在.gitignore 中添加忽略信息:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.vscode/launch.json</span><br><span class="line">!.vscode/</span><br></pre></td></tr></table></figure>
-<p>怎么用?</p>
-<p>使用手上任意一根手指按向F5 的按钮即可！</p>
+            <h1 id="cmake入门"><a href="#cmake入门" class="headerlink" title="cmake入门"></a>cmake入门</h1><p>我的学习背景: 使用xcode开发OpenGL，在链完教程中的路径之后，项目可以学习起来了，但是链接过程不知道原因。<br>之前的学习刚好有打包动态、静态库，链接过程清晰。但是这会却不明了。</p>
+<p>打算自己做cmake链接，以下是做记录:</p>
+<p>当前环境:</p>
+<p>brew 安装glew、glfw，需要使用CMake进行库的链接。</p>
+<p>直接开始代码上的讲解:</p>
+<h2 id="链接库制作"><a href="#链接库制作" class="headerlink" title="链接库制作"></a>链接库制作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 将当前所有文件名列为数组保存</span><br><span class="line">aux_source_directory(. DIR_LIB_SRCS)</span><br><span class="line"># 指明制作library</span><br><span class="line">add_library(MathFunctions $&#123;DIR_LIB_SRCS&#125;)</span><br><span class="line"># 当执行make install时，执行下面操作</span><br><span class="line"># 保存头文件至includes；保存lib文件至 /usr/local/lib</span><br><span class="line">install(TARGETS MathFunctions DESTINATIONS lib)</span><br><span class="line">install(FILES MathFunctions DESTINATIONS includes)</span><br></pre></td></tr></table></figure>
+<h2 id="主库制作"><a href="#主库制作" class="headerlink" title="主库制作"></a>主库制作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># CMake最低版本要求</span><br><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"># 项目信息</span><br><span class="line">project(Learngl)</span><br><span class="line"># 设置环境变量 set(key value)</span><br><span class="line">set(Learngl_VERSION_MAJOR 1)</span><br><span class="line">set(Learngl_VERSION_MINOR 0)</span><br><span class="line"># 查看是否有有环境变量，否则初始设置为ON</span><br><span class="line">option(USE_MUMATH &quot;use provided math implementation&quot; ON)</span><br><span class="line"># 将当前所有环境变量等进行configfile，将config.h.in 转为config.h</span><br><span class="line"># $&#123;PROJECT_SOURCE_DIR&#125; 指项目中源文件</span><br><span class="line"># $&#123;PROJECT_BINARY_DIR&#125; 指项目中目标生成文件</span><br><span class="line">configure_file(</span><br><span class="line">  &quot;$&#123;PROJECT_SOURCE_DIR&#125;/config.h.in&quot;</span><br><span class="line">  &quot;$&#123;PROJECT_BINARY_DIR&#125;/config.h&quot;</span><br><span class="line">)</span><br><span class="line">if (NOT HAVE_POW)</span><br><span class="line">  # 引入头文件搜索路径</span><br><span class="line">  include_directories(&quot;$&#123;PROJECT_SOURCE_DIR&#125;/math&quot;)</span><br><span class="line">  # 加入该子模块，显示执行子模块CMakeLists.txt</span><br><span class="line">  add_subdirectory(math)</span><br><span class="line">  set(EXTRA_LIBS $&#123;EXTRA_LIBS&#125; MathFunctions)</span><br><span class="line">endif (NOT HAVE_POW)</span><br><span class="line"></span><br><span class="line"># 将当前所有项目文件(.* 文件) 转入</span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"># 生成执行文件Learngl，文件为$&#123;DIR_SRCS&#125;内容</span><br><span class="line">add_executable(Learngl $&#123;DIR_SRCS&#125;)</span><br><span class="line">target_link_libraries(Learngl $&#123;EXTRA_LIBS&#125;)</span><br><span class="line"># 导入glfw lib</span><br><span class="line"># 链接lib路径</span><br><span class="line">link_directories(&quot;/usr/local/Cellar/glfw/3.3.4/lib&quot;)</span><br><span class="line"># 使用lib/libglfw.[dylib|a]文件</span><br><span class="line">target_link_libraries(Learngl glfw)</span><br><span class="line"></span><br><span class="line"># 生成macro，macro($&#123;名称&#125; $&#123;参数1&#125; $&#123;参数2&#125; $&#123;参数3&#125;)</span><br><span class="line">macro (do_test arg1 arg2 result)</span><br><span class="line">  # add_test 是执行测试用例，make test执行</span><br><span class="line">  add_test(test_$&#123;arg1&#125;_$&#123;arg2&#125; Learngl $&#123;arg1&#125; $&#123;arg2&#125;)</span><br><span class="line">  # 设置单元测试用例的判别，使用正则来判断是否符合相应数据</span><br><span class="line">  set_tests_properties(test_$&#123;arg1&#125;_$&#123;arg2&#125; PROPERTIES PASS_REGULAR_EXPRESSION $&#123;result&#125;)</span><br><span class="line">endmacro (do_test)</span><br><span class="line"></span><br><span class="line"># 测试执行单元测试用例(也可以直接add_test 使用)</span><br><span class="line">do_test(5 2 &quot;is 25&quot;)</span><br><span class="line">do_test(10 5 &quot;is 100000&quot;)</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/ybqjymy/p/13409050.html" target="_blank" rel="noopener">参考</a><br><a href="https://github.com/wzpan/cmake-demo" target="_blank" rel="noopener">示例demo</a></p>
 
         </div>
         
@@ -228,12 +223,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-08-05T04:18:54.021Z" itemprop="dateUpdated">2021-08-05 12:18:54</time>
+    Last updated: <time datetime="2021-08-20T03:29:58.331Z" itemprop="dateUpdated">2021-08-20 11:29:58</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2020/07/28/2020-07-28lesson/" target="_blank" rel="external">https://shaohung001.github.io/2020/07/28/2020-07-28lesson/</a>
+        转载注明出处，原文地址：<a href="/2021/08/20/CMakeLists入门/" target="_blank" rel="external">https://shaohung001.github.io/2021/08/20/CMakeLists入门/</a>
         
     </div>
     <footer>
@@ -253,7 +248,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iced2ts/">iced2ts</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmake-cmakelists/">cmake, cmakelists</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -262,7 +257,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2020/07/28/2020-07-28lesson/&title=《2020-07-28lesson》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/08/20/CMakeLists入门/&title=《CMakeLists入门》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -274,7 +269,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2020/07/28/2020-07-28lesson/&title=《2020-07-28lesson》 — aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/08/20/CMakeLists入门/&title=《CMakeLists入门》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -297,21 +292,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2020/08/25/2020-7-13lesson/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">2020-7-13lesson</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2020/07/27/20200727lesson/" id="post-next" class="post-nav-link">
+      <a href="/2021/08/12/2021-08-12lesson/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">20200727lesson</h4>
+        <h4 class="title">2021-08-12lesson</h4>
       </a>
     </div>
   
@@ -323,7 +311,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#iced2ts-断点调试"><span class="post-toc-number">1.</span> <span class="post-toc-text">iced2ts 断点调试</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cmake入门"><span class="post-toc-number">1.</span> <span class="post-toc-text">cmake入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链接库制作"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">链接库制作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主库制作"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">主库制作</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </div></div></aside>
@@ -419,7 +407,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2020/07/28/2020-07-28lesson/&title=《2020-07-28lesson》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/08/20/CMakeLists入门/&title=《CMakeLists入门》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -431,7 +419,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2020/07/28/2020-07-28lesson/&title=《2020-07-28lesson》 — aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/08/20/CMakeLists入门/&title=《CMakeLists入门》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -443,7 +431,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aMXaEMAwFQO5/adImj433S4YCe1zlbcjaQ6HIko4jXudl/f58/OT1mWSX44mFgYHxWsY5XPcebsy+vprkbBgYGPsw/ts+f2Z8rPE3jBnJvhgYGBjVZ/KUcQzGwMDAmGfMwMZgDAwMjF4oTDZOYPnRH7mLY2BgvJBxVxh94udH+hsYGBivYpzFNVP0zwNl+VQYGBhLM/IAlx8lD6kzARcDA2M3RvUa2WtDzjQ7C8kiBgbGooxqiS1vQOaBslfy+/B/AwMDYzlGrxDWGxHrJXzRXhgYGBszZhLEPFwmDcsvrwYDA2MDRq/of1c6WO1Rln+NgYGxECMPdjPNyyQcJ0XAP59gYGAszaiOO+Rf10s6e+0KDAyMHRjVUNvLyvJhi2bxDgMDY1FGrzGZ/1UvHCcth6OasWJgYCzBqA5DVMfL8jCap4kf+hsYGBjLMWaGJGaC8sy1FgMDYzdGkpblKWAvxczbEuWZEQwMjCUY1WttNbHrXUrz1mnzdo6BgfFCRm8YIj9irzyXD3xgYGDsw0juu3eF3S9Rv5WSYmBg7MDIr47V8Yv8EluFYWBg7MA4i6saZGfGL/IXh4GBsTYjX/lFt9fIrA6NVcM0BgbG2xnVclsefKvtyd6oBwYGxj6MPPAlpbd8dGzmEltoDGBgYGzGyAHVJ3sFPgwMDIxem/OuwbJCMxUDA2MDRrWUlm9QDb7NoI+BgbE0I7869kps+Tcku081NTEwMN7H+AGUt3+thIZFxwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aS27DMAwFwNz/0u62QOHkkXQKSBqtgiCxNF4Q/Oj1itf1a/39/u6Xd/9K/vv6xsLAwFiWcb1d1cMlz0++z8+GgYFxDuN9QEy2r4bmfK8kWGNgYGD0AmUefJN9MTAwMKqPSwBJOL57QRgYGBi9IjYPiHlSWC10H6jFMTAwFmTkLbP///yV+QYGBsZSjKu4egPOXuFaOBUGBsbWjKdSt16Tbp5uYmBgnMOYbN9roiWhtloGY2Bg7MrIE8H86L0EsdfyizJcDAyMxRn59slViTxNzBO+5ggTAwNjO0a1yExC8KRMrYZmDAyMvRmTArI6NpiH1w9BFgMDY2vGfGw5KVwnjbbCJBYDA2NZRq8GrG6fA3oDUQwMjBMY1VDby8p6Af2xKhwDA2NxRnLxq1pe9tLK8hgAAwPjMMao4RUnjnnzrlf0YmBg7MfolaB5GtcL6OVXhoGBcQxj0mirHnrSEby9bIGBgbEpIylEk8JyErgfy20xMDCOYUwGipOBZRLuP+yFgYFxDKPX9O8doro+PAcDA+MARj56zPGTMjgfP2BgYOzNuIqrWnZWSb2rGBgYGHszqmlZtaHWO9x8eICBgbEfIw+ySRE7TwSTXzYHAxgYGIszqu2tauisjhPKSAwMDIxBwE2O2HtNo4CLgYGxNaM6aJw05vLUEwMD4wRGtZX/VIs/L1YxMDBOZlTDaHX8WQiaxQthGBgYBzB+AASr0T8YDOCdAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
