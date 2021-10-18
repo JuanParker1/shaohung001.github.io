@@ -4,6 +4,51 @@
   
     
     <entry>
+      <title>elastic_bool</title>
+      <link href="/2021/10/18/elastic-bool/"/>
+      <url>/2021/10/18/elastic-bool/</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用bool检索"><a href="#使用bool检索" class="headerlink" title="使用bool检索"></a>使用bool检索</h1><p>目标: 要搜索ACCOUNT_ID 和 FRIEND_ID 互相调换的请求，并且至少满足一个</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  query: &#123;</span><br><span class="line">    bool: &#123;</span><br><span class="line">      // 使用must可以声明这个必须走</span><br><span class="line">      must: [</span><br><span class="line">        bool: &#123;</span><br><span class="line">          // 这个可以用于判别下面的判别仅走一个</span><br><span class="line">          should: [</span><br><span class="line">            // 内部的must 可以集合两个term(term 可以做出不匹配而绝对相等，否则使用match匹配)</span><br><span class="line">            &#123; bool: &#123; must: [&#123; term: &#123; ACCOUNT_ID: option.ACCOUNT_ID&#125;&#125;, &#123; term: &#123;FRIEND_ID: option.FRIEND_ID &#125; &#125;]&#125;&#125;,</span><br><span class="line">            &#123; bool: &#123; must: [&#123; term: &#123; ACCOUNT_ID: option.FRIEND_ID&#125;&#125;, &#123; term: &#123;FRIEND_ID: option.ACCOUNT_ID &#125; &#125;]&#125;&#125;</span><br><span class="line">          ],</span><br><span class="line">          minimum_should_match: 1 // 声明至少走一个</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/combining-filters.html" target="_blank" rel="noopener">参考1</a></p><p><a href="https://stackoverflow.com/questions/40573981/multiple-should-queries-with-must-query" target="_blank" rel="noopener">参考2</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> es </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2021-10-7</title>
+      <link href="/2021/10/07/2021-10-7/"/>
+      <url>/2021/10/07/2021-10-7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="空闲随想"><a href="#空闲随想" class="headerlink" title="空闲随想"></a>空闲随想</h1><p>时隔一个多月没有写作，当下正在编译，闲时写一写。</p><p>最近cpp的opengl学习到一小半，公司中nodejs开发一直无法找到合适(价廉人美聪明肯学)，遂技术栈打算换Java。不碰Java已经6年了，把廖雪峰老师教程翻了翻，顺便又过了遍SQL教程，之后可能换数据库，早做打算。</p><p>当然，cpp后台肯定最好，我正打算呢，但是研发价格蹭就上去了。cpp还是自己花时间学习吧。</p><p>当前Java 问了大学同学，高中同桌(Android), 当前开搞了Springboot终于有点样子了。</p><p>同学问咋nodejs回来Java。答曰: 公司做web开发，Java还是为王。主要原因还是因为nodejs做后端的人招不到，火候太次。无奈。这样校招、社招都好招。</p><p>打铁还需自身硬，于是花了2星期晚间时间，老婆睡着了，趴在床上手机放地上看，匆匆过了廖雪峰老师的Java文章。之后直接上手开搞。</p><p>当前就还剩下和原有程序的合并的尝试了，没办法，再怎么的也需要修复坑。当前项目技术难题: Iced + Typescript + Java + elasticsearch + mongo + redis + neo4j…</p><hr><p>国庆七天快过了， 大学同学交流，感觉时间过的匆忙，最近看IT从业人员年龄，大厂都是29~30出头。岁数网上的同学去哪了？不得而知，但自己肯定是有压力的，满不在乎的背后是更努力和勤奋去应对而已，哈哈。毕竟不是生活在普通农村了。</p><p>国庆由于太阳热，来公司三天，家里米西Java和打游戏，算是顺利吧，当前确实花在学习的时间比之前少了丢丢，要回头了，说不定明年5月阿黄要上小学就开始要忙碌咯。</p><p>拼命吧, c and cpp can save you…</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>interviewRequired</title>
+      <link href="/2021/09/03/interviewRequired/"/>
+      <url>/2021/09/03/interviewRequired/</url>
+      
+        <content type="html"><![CDATA[<p><del>昨天去客户单位排查问题，忽然想到工作人员素质问题，对比社招的面试。</del></p><p><del>gwy考试、事业编都有个特色，有严格的筛选，比如思想上的统一，至少本科以上，多轮严格面试，使用一年等。进入后大家都是高质量，竞争更加激烈也会有带来其他问题，这里不谈。主要是想说社招中的面试。</del></p><p><del>普通公司社招面试都是比较简单的，人感觉好用就进公司实习、试用。但是如果能加强这块，增大面试难度、学校筛选，对素质的考核等，都会让公司的等级越来越强。有时会说，人好用，无法考量素质、学校筛选等，工资拿不出太多，先用着。相对的高素质、高能力等，难招，只能安排一些这类作为中层。</del></p><p>好好组织语言，大中午没想明白。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CMakeLists入门</title>
       <link href="/2021/08/20/CMakeLists%E5%85%A5%E9%97%A8/"/>
       <url>/2021/08/20/CMakeLists%E5%85%A5%E9%97%A8/</url>
