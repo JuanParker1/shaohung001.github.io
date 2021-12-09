@@ -325,7 +325,138 @@ int sum_array(int n, int m, int a[n][m]);
 int sum = sum_array(a, 4);
 
 int sum = sum_array((int []){2, 3, 4, 5}, 4);
-</code></pre><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><h1 id="深度参考"><a href="#深度参考" class="headerlink" title="深度参考"></a>深度参考</h1><p><a href="https://www.wangdoc.com/clang" target="_blank" rel="noopener">阮一峰clang</a></p>
+</code></pre><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>C语言没有单独的字符串类型。字符串即字符数组。</p>
+<p>  char *word = { ‘H’, ‘e’, ‘l’, ‘l’, ‘o’, ‘\0’ }; // char word[] = “Hello”;</p>
+<p>字符末尾必须添加<code>\0</code>(ANSII NULL) 表示字符结束，这样只要发现<code>\0</code>，那么就知道字符串结束了。</p>
+<p>  char localString[10];</p>
+<p>上面示例声明了一个10个字符的字符数组。由于必须留一个位置给<code>\0</code>,所以最多只能容纳9个字符的字符串。</p>
+<h4 id="字符串的声明"><a href="#字符串的声明" class="headerlink" title="字符串的声明"></a>字符串的声明</h4><p>  char s[50] = “hello”; // s长度，其余为 \0</p>
+<p>字符数组的长度，不能小于字符串的实际长度:</p>
+<p>  char s[5] = “hello”;</p>
+<p>上面示例中，字符串数组<code>s</code>的长度是5，小于字符串”hello”的实际长度6。</p>
+<p>编译时不报错，实际只会有5个字符写入到内存中，再长也是只有5个字符。</p>
+<p>  char s[5] = “hello!”;</p>
+<p>此时编译器会Warning，并且会继续往后打印，直到出现<code>\0</code>.</p>
+<p>原因是编译期间，代码识别为5的长度，后面也只会申请5个单位长度的字符数组大小。</p>
+<p>有趣的是，char s[5] 在申请完内存空间后，会单独再申请一个int 为<code>5</code>的内存空间。</p>
+<pre><code>char* s = &quot;Hello, world&quot;;
+s[0] = &apos;z&apos;; // 错误
+
+char* s1 = &quot;Hello, world&quot;;
+s[0] = &apos;z&apos;; // 成功
+</code></pre><blockquote>
+<p>指针声明的数组，系统会将字符串的字面量保存在内存的常量区，这个区是不允许用户修改的。声明为数组时，编译器会给数组单独分配一段内存，字符串字面量会被编译器解释成字符数组，逐个字符写入到这段新分配的内存中，这段内存是允许修改的。</p>
+</blockquote>
+<h4 id="字符串修改"><a href="#字符串修改" class="headerlink" title="字符串修改"></a>字符串修改</h4><pre><code>char* s = &quot;Hello&quot;;
+s = &quot;World&quot;; // 正确，指针指向不同内存地址肯定可以
+
+char s[] = &quot;hello&quot;;
+s = &quot;world&quot;; // 报错
+</code></pre><p>指针指向另一块内存空间，这个好理解，肯定OK。但是数组的<code>=</code>相当于赋值，C语言规定，数组变量是一个不可修改的左值，即不能用赋值运算符为他重新赋值。</p>
+<p>正确赋值方式:</p>
+<pre><code>char s[10];
+strcpy(s, &quot;abc&quot;);
+</code></pre><h4 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a>strlen</h4><p>注意strlen 和sizeof 是两个不同的概念:</p>
+<pre><code>char s[50] = &quot;hello&quot;;
+printf(&quot;%d\n&quot;, strlen(s)); // 5
+printf(&quot;%d\n&quot;, sizeof(s)); // 50
+</code></pre><h4 id="strcpy"><a href="#strcpy" class="headerlink" title="strcpy"></a>strcpy</h4><p><code>char* (*strcpy)(char dest[], const char source[]);</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">strcpy</span><span class="params">(<span class="keyword">char</span>* dest, <span class="keyword">const</span> <span class="keyword">char</span>* src)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (*dest++ = *source++);</span><br><span class="line">	<span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> str[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(str, <span class="string">"hello, world"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="strncpy"><a href="#strncpy" class="headerlink" title="strncpy"></a>strncpy</h4><p><code>char* (*strncpy)(char*dest, char* src, size_t n);</code></p>
+<h4 id="strcat"><a href="#strcat" class="headerlink" title="strcat"></a>strcat</h4><p><code>char* (*strcat)(char* s1, const char* s2);</code></p>
+<h4 id="strncat"><a href="#strncat" class="headerlink" title="strncat"></a>strncat</h4><p><code>char* (*strncat)(char* dest, const char*src, size_t n);</code></p>
+<pre><code>strncat(str1, str2, sizeof(str1) - strlen(str1) - 1); // 平常用法
+</code></pre><p>n 代表str1 最大还可拼接单位: str1 内存空间 - str1 已占用长度 -1 就是后面还可拼接长度。(-1 代表 <code>\0</code>: strlen 不算<code>\0</code>)</p>
+<h4 id="strcmp"><a href="#strcmp" class="headerlink" title="strcmp"></a>strcmp</h4><p><code>int (*strcmp)(const char* s1, const char* s2);</code></p>
+<h4 id="strncmp"><a href="#strncmp" class="headerlink" title="strncmp"></a>strncmp</h4><p><code>int (*strncmp)(const char* s1, const char* s2, size_t n);</code></p>
+<pre><code>char s1[12] = &quot;hello world&quot;;
+char s2[12] = &quot;hello C&quot;;
+int status = strncmp(s1, s2, 5); // 0 相同
+</code></pre><h4 id="sprintf-snprintf"><a href="#sprintf-snprintf" class="headerlink" title="sprintf, snprintf"></a>sprintf, snprintf</h4><p><code>int (*sprintf)(char* s, const char* format, ...);</code></p>
+<pre><code>char first[6] = &quot;hello&quot;;
+char last[6] = &quot;world&quot;;
+char s[40];
+sprintf(s, &quot;%s %s&quot;, first, last); // s = hello world
+</code></pre><p><code>int (*snprintf)(char* s, size_t n, const char* format, ...);</code></p>
+<pre><code>snprintf(s, 4, &quot;%s %s&quot;, &quot;hello&quot;, &quot;world&quot;); // hel
+</code></pre><h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><p>栈: 系统管理的内存，存放在栈上；堆heap: 用户手动创建，用户手动管理。</p>
+<h4 id="void-指针"><a href="#void-指针" class="headerlink" title="void 指针"></a>void 指针</h4><pre><code>int x = 10;
+void* p = &amp;x;
+int* q = p;
+</code></pre><h4 id="malloc"><a href="#malloc" class="headerlink" title="malloc"></a>malloc</h4><p><code>void* (*malloc)(size_t size)</code></p>
+<p><code>malloc</code>函数用于分配内存，该函数向系统要求一段内存，系统就在”堆”里面分配一段连续的内存块。原型定义在头文件<code>stdlib.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span>* a = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*<span class="number">50</span>);</span><br><span class="line">	<span class="built_in">puts</span>(a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"111----%p\n"</span>, a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"111====%s\n"</span>, a);</span><br><span class="line">	<span class="built_in">strcpy</span>(a, <span class="string">"我喜欢小钮"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"222----%p\n"</span>, a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"222====%s\n"</span>, a);</span><br><span class="line">	<span class="keyword">char</span> arr[] = <span class="string">"我喜欢小可爱"</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">		a[i] = arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"333----%p\n"</span>, a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"333====%s\n"</span>, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>数组char<em> a 不能被直接 `</em>a = “新的数组”`, 应该采用上面两种方式来内存写入。</p>
+</blockquote>
+<blockquote>
+<p>C语言也因此规定，数组变量是一个不可修改的左值，即不能用赋值运算符为它重新赋值。</p>
+</blockquote>
+<h4 id="free"><a href="#free" class="headerlink" title="free"></a>free</h4><p><code>void (*free)(void* block)</code></p>
+<p><code>free</code>用于释放<code>malloc</code>函数分配的内存，将这块内存还给系统以便重新使用，否则这个内存块会一直占用到程序运行结束。</p>
+<pre><code>int* p = (int*)malloc(sizeof(int));
+*p = 12;
+free(p);
+</code></pre><h4 id="calloc"><a href="#calloc" class="headerlink" title="calloc"></a>calloc</h4><p><code>void* (*calloc)(size_t n, size_t size)</code></p>
+<p><code>calloc</code>函数的作用与<code>malloc</code>相似，也是分配内存块。</p>
+<blockquote>
+<p>区别亮点</p>
+</blockquote>
+<ol>
+<li><code>calloc</code>接受两个参数，第一个参数是某种数据类型的值的数量，第二个是该数据类型的单位字节长度。</li>
+<li><p><code>calloc</code>会将所分配的内存全部初始化为<code>0</code>。<code>malloc</code>不会对内存进行初始化，如果想要改为<code>0</code>值，则额外调用<code>memset()</code>函数。</p>
+<pre><code>int* p = calloc(10, sizeof(int));
+// 等同于
+int* p = malloc(sizeof(int)*10);
+memset(p, 0, sizeof(int)*10);
+</code></pre></li>
+</ol>
+<p><code>calloc</code>分配的内存块，也要使用<code>free</code>释放。</p>
+<h4 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h4><p><code>void* (*realloc)(void* block, size_t size)</code></p>
+<p><code>realloc</code>函数用于修改已经分配的内存块的大小，放大或者缩小，返回一个指向新的内存块的指针。如果分配不成功，返回NULL。</p>
+<pre><code>int* b;
+b = malloc(sizeof(int)*10);
+b = realloc(b, sizeof(int)*2000);
+</code></pre><h4 id="restrict说明符"><a href="#restrict说明符" class="headerlink" title="restrict说明符"></a>restrict说明符</h4><blockquote>
+<p>声明指针变量时，可以使用<code>restrict</code>说明符，告诉编译器该块内存区域只有当前指针一种访问方式，其他指针不能读写该块内存。这种指针成为”受限指针”(restrict pointer)。</p>
+</blockquote>
+<pre><code>int* restrict p;
+p = malloc(sizeof(int));
+</code></pre><h4 id="memcpy"><a href="#memcpy" class="headerlink" title="memcpy"></a>memcpy</h4><p><code>void* (*memcpy)(void* restrict dest, void* restrict source, size_t n)</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s[] = <span class="string">"Goats!"</span>;</span><br><span class="line">	<span class="keyword">char</span> t[<span class="number">100</span>];</span><br><span class="line">	<span class="built_in">memcpy</span>(t, s, <span class="keyword">sizeof</span>(s)); <span class="comment">// 拷贝7个字节，包括终止符</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>memcpy</code>可以取代<code>strcpy</code> 进行字符串拷贝，而且是更好的方法，不仅更安全，速度也更快，它不检查字符串尾部的<code>\0</code>字符。</p>
+</blockquote>
+<pre><code>char* s = &quot;hello world&quot;;
+size_t len = strlen(s) + 1;
+char* c = malloc(len);
+
+if (c) {
+    // strcpy 写法
+    strcpy(c, s);
+    // memcpy 写法
+    memcpy(c, s, len);
+}
+</code></pre><blockquote>
+<p>使用void指针，也可以自定义一个复制内存的函数:</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">my_memcpy</span><span class="params">(<span class="keyword">void</span>* dest, <span class="keyword">void</span>* src, <span class="keyword">int</span> byte_count)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (byte_count--) &#123;</span><br><span class="line">		*dest++ = *src++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="memmove"><a href="#memmove" class="headerlink" title="memmove"></a>memmove</h4><p><code>void* (*memmove)(void* dest, void* source, size_t n)</code></p>
+<blockquote>
+<p><code>memmove</code>函数用于将一段内存数据复制到另一段内存。它跟<code>memcpy</code>主要区别是，它允许目标区域与原区域有重叠。如果重叠，原区域内容会被更改。</p>
+</blockquote>
+<pre><code>int a[100];
+memmove(&amp;a[0], &amp;a[1], 99*sizeof(int));
+</code></pre><p>另一个例子:</p>
+<pre><code>char x[] = &quot;Home Sweet Home&quot;;
+// 输出Sweet Home Home
+printf(&quot;%s\n&quot;, (char*) memmove(x, &amp;x[5], 10));
+</code></pre><h4 id="memcpy-1"><a href="#memcpy-1" class="headerlink" title="memcpy"></a>memcpy</h4><p><code>int (*memcmp)(const void* s1, const void* s2, size_t n)</code></p>
+<pre><code>char* s1 = &quot;abc&quot;;
+char* s2 = &quot;acd&quot;;
+int r = memcmp(s1, s2, 3);
+</code></pre><h3 id="struct-结构"><a href="#struct-结构" class="headerlink" title="struct 结构"></a>struct 结构</h3><h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><h1 id="完全参考"><a href="#完全参考" class="headerlink" title="完全参考"></a>完全参考</h1><p><strong>请直接跳转阮老师博文</strong></p>
+<p><a href="https://www.wangdoc.com/clang" target="_blank" rel="noopener">阮一峰clang</a></p>
 
         </div>
         
@@ -333,7 +464,7 @@ int sum = sum_array((int []){2, 3, 4, 5}, 4);
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2021-12-01T05:26:03.384Z" itemprop="dateUpdated">2021-12-01 13:26:03</time>
+    Last updated: <time datetime="2021-12-09T02:35:35.383Z" itemprop="dateUpdated">2021-12-09 10:35:35</time>
 </span><br>
 
 
@@ -419,7 +550,7 @@ int sum = sum_array((int []){2, 3, 4, 5}, 4);
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C-简短过一遍"><span class="post-toc-number">1.</span> <span class="post-toc-text">C 简短过一遍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-语言编译"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">C 语言编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类型"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">字符类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指针"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">指针</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针-1"><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text">指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指向指针的指针"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text">指向指针的指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#取出指针对应空间值"><span class="post-toc-number">1.2.2.3.</span> <span class="post-toc-text">取出指针对应空间值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#amp-运算符"><span class="post-toc-number">1.2.2.4.</span> <span class="post-toc-text">&amp;运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针变量的初始化"><span class="post-toc-number">1.2.2.5.</span> <span class="post-toc-text">指针变量的初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针的运算"><span class="post-toc-number">1.2.2.6.</span> <span class="post-toc-text">指针的运算</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数指针"><span class="post-toc-number">1.2.3.1.</span> <span class="post-toc-text">函数指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#extern-说明符"><span class="post-toc-number">1.2.3.2.</span> <span class="post-toc-text">extern 说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#static-说明符"><span class="post-toc-number">1.2.3.3.</span> <span class="post-toc-text">static 说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#const-说明符"><span class="post-toc-number">1.2.3.4.</span> <span class="post-toc-text">const 说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可变参数"><span class="post-toc-number">1.2.3.5.</span> <span class="post-toc-text">可变参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组长度"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">数组长度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多维数组"><span class="post-toc-number">1.2.4.2.</span> <span class="post-toc-text">多维数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组的地址"><span class="post-toc-number">1.2.4.3.</span> <span class="post-toc-text">数组的地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#已声明数组不可修改"><span class="post-toc-number">1.2.4.4.</span> <span class="post-toc-text">已声明数组不可修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组指针的加减法"><span class="post-toc-number">1.2.4.5.</span> <span class="post-toc-text">数组指针的加减法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组的复制"><span class="post-toc-number">1.2.4.6.</span> <span class="post-toc-text">数组的复制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数参数数组"><span class="post-toc-number">1.2.4.7.</span> <span class="post-toc-text">函数参数数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变长数组作为参数"><span class="post-toc-number">1.2.4.8.</span> <span class="post-toc-text">变长数组作为参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组字面量作为参数"><span class="post-toc-number">1.2.4.9.</span> <span class="post-toc-text">数组字面量作为参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更多"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">更多</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#深度参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">深度参考</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C-简短过一遍"><span class="post-toc-number">1.</span> <span class="post-toc-text">C 简短过一遍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-语言编译"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">C 语言编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类型"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">字符类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指针"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">指针</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针-1"><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text">指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指向指针的指针"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text">指向指针的指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#取出指针对应空间值"><span class="post-toc-number">1.2.2.3.</span> <span class="post-toc-text">取出指针对应空间值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#amp-运算符"><span class="post-toc-number">1.2.2.4.</span> <span class="post-toc-text">&amp;运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针变量的初始化"><span class="post-toc-number">1.2.2.5.</span> <span class="post-toc-text">指针变量的初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针的运算"><span class="post-toc-number">1.2.2.6.</span> <span class="post-toc-text">指针的运算</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数指针"><span class="post-toc-number">1.2.3.1.</span> <span class="post-toc-text">函数指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#extern-说明符"><span class="post-toc-number">1.2.3.2.</span> <span class="post-toc-text">extern 说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#static-说明符"><span class="post-toc-number">1.2.3.3.</span> <span class="post-toc-text">static 说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#const-说明符"><span class="post-toc-number">1.2.3.4.</span> <span class="post-toc-text">const 说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可变参数"><span class="post-toc-number">1.2.3.5.</span> <span class="post-toc-text">可变参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组长度"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">数组长度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多维数组"><span class="post-toc-number">1.2.4.2.</span> <span class="post-toc-text">多维数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组的地址"><span class="post-toc-number">1.2.4.3.</span> <span class="post-toc-text">数组的地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#已声明数组不可修改"><span class="post-toc-number">1.2.4.4.</span> <span class="post-toc-text">已声明数组不可修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组指针的加减法"><span class="post-toc-number">1.2.4.5.</span> <span class="post-toc-text">数组指针的加减法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组的复制"><span class="post-toc-number">1.2.4.6.</span> <span class="post-toc-text">数组的复制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数参数数组"><span class="post-toc-number">1.2.4.7.</span> <span class="post-toc-text">函数参数数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变长数组作为参数"><span class="post-toc-number">1.2.4.8.</span> <span class="post-toc-text">变长数组作为参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组字面量作为参数"><span class="post-toc-number">1.2.4.9.</span> <span class="post-toc-text">数组字面量作为参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">字符串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串的声明"><span class="post-toc-number">1.2.5.1.</span> <span class="post-toc-text">字符串的声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串修改"><span class="post-toc-number">1.2.5.2.</span> <span class="post-toc-text">字符串修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strlen"><span class="post-toc-number">1.2.5.3.</span> <span class="post-toc-text">strlen</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strcpy"><span class="post-toc-number">1.2.5.4.</span> <span class="post-toc-text">strcpy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strncpy"><span class="post-toc-number">1.2.5.5.</span> <span class="post-toc-text">strncpy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strcat"><span class="post-toc-number">1.2.5.6.</span> <span class="post-toc-text">strcat</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strncat"><span class="post-toc-number">1.2.5.7.</span> <span class="post-toc-text">strncat</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strcmp"><span class="post-toc-number">1.2.5.8.</span> <span class="post-toc-text">strcmp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strncmp"><span class="post-toc-number">1.2.5.9.</span> <span class="post-toc-text">strncmp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sprintf-snprintf"><span class="post-toc-number">1.2.5.10.</span> <span class="post-toc-text">sprintf, snprintf</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">内存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#void-指针"><span class="post-toc-number">1.2.6.1.</span> <span class="post-toc-text">void 指针</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#malloc"><span class="post-toc-number">1.2.6.2.</span> <span class="post-toc-text">malloc</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#free"><span class="post-toc-number">1.2.6.3.</span> <span class="post-toc-text">free</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#calloc"><span class="post-toc-number">1.2.6.4.</span> <span class="post-toc-text">calloc</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#realloc"><span class="post-toc-number">1.2.6.5.</span> <span class="post-toc-text">realloc</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#restrict说明符"><span class="post-toc-number">1.2.6.6.</span> <span class="post-toc-text">restrict说明符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#memcpy"><span class="post-toc-number">1.2.6.7.</span> <span class="post-toc-text">memcpy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#memmove"><span class="post-toc-number">1.2.6.8.</span> <span class="post-toc-text">memmove</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#memcpy-1"><span class="post-toc-number">1.2.6.9.</span> <span class="post-toc-text">memcpy</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#struct-结构"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">struct 结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更多"><span class="post-toc-number">1.2.8.</span> <span class="post-toc-text">更多</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#完全参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">完全参考</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </div></div></aside>
