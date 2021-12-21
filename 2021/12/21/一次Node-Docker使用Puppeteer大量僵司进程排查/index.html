@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>一次Node_Docker使用Puppeteer大量僵司进程排查 | aKer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="debian, puppeteer, node">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class>
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">aKer</h5>
+          <a href="mailto:767838865@qq.com" title="767838865@qq.com" class="mail">
+            
+              <span>7</span>
+            
+              <span>6</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>8</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>5</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/shaohung001" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class>
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class>
+              <a href="/custom">
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>一次Node_Docker使用Puppeteer大量僵司进程排查</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">一次Node_Docker使用Puppeteer大量僵司进程排查</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-12-21T09:37:44.000Z" itemprop="datePublished" class="page-time">
+  2021-12-21
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-一次Node-Docker使用Puppeteer大量僵司进程排查" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">一次Node_Docker使用Puppeteer大量僵司进程排查</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-12-21 17:37:44" datetime="2021-12-21T09:37:44.000Z" itemprop="datePublished">2021-12-21</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>原因是之前上线一个由Nodejs，使用原镜像debian 打包，添加puppeteer作为业务需求的服务。该服务使用量不是很大，但是经常会出现cpu特别大，并且内存一直无法释放问题。</p>
+<p>一直未有时间专门处理这个业务bug，这会想起，给他解决掉，同时也发现该非常好的Blog。想着一次解决，能免于用户的不满回馈。</p>
+<h2 id="错误展现"><a href="#错误展现" class="headerlink" title="错误展现"></a>错误展现</h2><p>也正出现如参考Blog出现的，<code>$ps -ef</code> 会展示:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root xx 1 0 <span class="variable">$&#123;time&#125;</span> [chrome] &lt;defunct&gt;</span><br><span class="line">root xx 1 0 <span class="variable">$&#123;time&#125;</span> [chrome] &lt;defunct&gt;</span><br><span class="line">root xx 1 0 <span class="variable">$&#123;time&#125;</span> [chrome] &lt;defunct&gt;</span><br></pre></td></tr></table></figure>
+<p><code>&lt;defunct&gt;</code>正是表明该子进程挂了，但是父进程没有为子进程做回收动作。<code>子进程退出后绝大部分资源已经被释放可供其他进程使用，但是内核的进程表中没有槽位释放。</code></p>
+<h3 id="进程与fork"><a href="#进程与fork" class="headerlink" title="进程与fork"></a>进程与fork</h3><p><code>fork()</code>(孵化、衍生)，作用是生成一个新的进程，父子进程都从fork处继续执行。</p>
+<blockquote>
+<p>子进程是父进程的副本，子进程拥有父进程数据空间、堆、栈的复制副本，fork采用了copy-on-write技术，fork操作几乎瞬间可以完成。只有在子进程修改了相应的区域才会进行真正的拷贝。</p>
+</blockquote>
+<h3 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h3><blockquote>
+<p>一个父进程已经终止的进程被称为孤儿进程(orphan process)。没人管的孤儿进程会被进程ID为1的进程接管。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"before fork, pid=%d\n"</span>, getpid());</span><br><span class="line">  <span class="keyword">pid_t</span> childPid;</span><br><span class="line">  <span class="keyword">switch</span> (childPid = fork()) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">-1</span>: &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"fork error, %d\n"</span>, getpid());</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"in child process, pid=%d\n"</span>, getpid());</span><br><span class="line">      sleep(<span class="number">100000</span>); 子进程sleep 不退出</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span>: &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"in parent process, pid=%d\n child pid=%d\n"</span>, getpid(), childPid);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译运行上面代码: <code>$gcc fork_demo.c -o fork_demo; ./fork_demo</code></p>
+<p>输出结果如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">before fork, pid=21629</span><br><span class="line">in parent process, pid=21629, child pid=21630</span><br><span class="line">in child process, pid=21630</span><br></pre></td></tr></table></figure>
+<p>使用<code>ps -ef | grep &quot;216&quot;</code>查看进程信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root         1     0  0 12月12 ?      00:00:53 /usr/lib/systemd/systemd --system --deserialize 21</span><br><span class="line">ya       21630     1  0 19:26 pts/8    00:00:00 ./fork_demo</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以看到此时孤儿子进程21630的父ID已经变为了顶层的ID为1的进程。</p>
+</blockquote>
+<p>以上正是我当前遇到的，我就到此说明完整问题了。</p>
+<h3 id="PID-为-1-的进程"><a href="#PID-为-1-的进程" class="headerlink" title="PID 为 1 的进程"></a>PID 为 1 的进程</h3><blockquote>
+<p>Linux中内核初始化以后会启动系统的第一个进程，PID为1，也可以称之为init进程或者根(ROOT)进程。</p>
+</blockquote>
+<p>init进程有下面这几个功能:</p>
+<ul>
+<li>如果一个进程的父进程退出来，那么这个init进程便会接管这个孤儿进程。</li>
+<li>如果一个进程的父进程未执行wait/waitpid就退出了，init进程会接管子进程并自动调用wait方法，从而保证系统中的僵司进程可以被移除。</li>
+<li>传递信号给子进程</li>
+</ul>
+<h3 id="为什么Nodejs不适合做Docker镜像中PID为1的进程"><a href="#为什么Nodejs不适合做Docker镜像中PID为1的进程" class="headerlink" title="为什么Nodejs不适合做Docker镜像中PID为1的进程"></a>为什么Nodejs不适合做Docker镜像中PID为1的进程</h3><blockquote>
+<p>在Nodejs的官方最佳实践里有写到”Node.js was not designed to run as PID 1 which leads to unexpected behaviour when running inside of Docker.”</p>
+</blockquote>
+<figure class="image-box">
+                <a rel="一次Node_Docker使用Puppeteer大量僵司进程排查" href="/css/images/node_docker_puppeteer01.png" title="p0" data-fancybox="images"><img src="/css/images/node_docker_puppeteer01.png" alt="p0" title class></a>
+                <p>p0</p>
+            </figure>
+<h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><h4 id="解决方式二-使用专门的init进程"><a href="#解决方式二-使用专门的init进程" class="headerlink" title="解决方式二: 使用专门的init进程"></a>解决方式二: 使用专门的init进程</h4><p>直接使用解决方式二</p>
+<blockquote>
+<p>Nodejs提供了两种方案，第一种是使用docker官方的轻量级init系统，如下所示</p>
+</blockquote>
+<p><code>docker run -it --init your_docker_image_id</code></p>
+<p>或者docker-compose.yml version: “2.2” (使用2.2版本，其支持init)</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  web:</span></span><br><span class="line"><span class="attr">    init:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>即可正确支持。</p>
+<p>最终效果:</p>
+<figure class="image-box">
+                <a rel="一次Node_Docker使用Puppeteer大量僵司进程排查" href="/css/images/node_docker_puppeteer02.jpg" title="p1" data-fancybox="images"><img src="/css/images/node_docker_puppeteer02.jpg" alt="p1" title class></a>
+                <p>p1</p>
+            </figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>重点是: pid为1的不为Nodejs，因为Nodejs没有去wait/waitpid 管理子进程状态.那么在Docker启动中，使用init进程接管pid，由init去handle没人管理的僵司进程，这时便能解决本次问题。</p>
+<hr>
+<p>上面解释、注解90%为原Blog内容，本机自己实操基本雷同，但是不如Blog老师的卷，于是抄袭老师卷，请看到的直接前往Blog老师地址:</p>
+<p><a href="https://blog.51cto.com/u_14621228/2462108" target="_blank" rel="noopener">完全参考Blog - 一次 Docker 容器内大量僵尸进程排查分析</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-12-21T12:44:48.016Z" itemprop="dateUpdated">2021-12-21 20:44:48</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/" target="_blank" rel="external">https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/</a>
+        
+    </div>
+    <footer>
+        <a href="https://shaohung001.github.io">
+            <img src="/img/avatar.jpg" alt="aKer">
+            aKer
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/debian-puppeteer-node/">debian, puppeteer, node</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/12/16/learnjava/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">learnjava</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#缘由"><span class="post-toc-number">1.</span> <span class="post-toc-text">缘由</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#错误展现"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">错误展现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程与fork"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">进程与fork</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#孤儿进程"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">孤儿进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PID-为-1-的进程"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">PID 为 1 的进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么Nodejs不适合做Docker镜像中PID为1的进程"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">为什么Nodejs不适合做Docker镜像中PID为1的进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决方式"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">解决方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决方式二-使用专门的init进程"><span class="post-toc-number">1.1.5.1.</span> <span class="post-toc-text">解决方式二: 使用专门的init进程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结论"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">结论</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/css/images/wechatPay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/css/images/wechatPay.jpg" data-alipay="/css/images/aliPay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/shaohung001" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                aKer &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADK0lEQVR42u3ay24bQQwEQP3/TytATgEiWd2cTeCla0+CHrtT4wPN5jwe8fX8fb17/ec1+/7fnya/fXefyy5sbGzsm7CT2329xHcPTjaiXVuyTdHWYGNjY69jJ4tuH/D1cpNnXbWh2NjY2Nh5+5EUj+SddpuwsbGxsWcFrP1mskE5EhsbGxv73zUVeRszu1vexlyQpWFjY2N/e/b5oPf7vP6v821sbGzsb8B+ltf5oDc/4pPfv1ZgY2NjL2K3YX0bGF0V9598/+1KsLGxsVew21gn347kt+0985bjw2+xsbGx17HzIpGPe9tw6vxgUPEsbGxs7EXstvFoh7LtdrQHg06iK2xsbOx97LyctCWnPR6Ub1m70djY2Nhb2Xk5aeOnpLQk4f55mBUFUtjY2Ng3ZLfj0tnYdVZyZk+JtgwbGxt7NXt2RLKNh/LNbVuRaKOxsbGxF7HzYe21I+FrAXljg42Njb2V3Yb4M+RsI04GFXlAho2NjX1f9kmoNBsPzEYRJ0PfF59iY2Njr2Pn4VFbls6bhNnQ4sOwARsbG3s1uy1pbSORH815lleeGmFjY2NvZV/bhCQtRPLNosHI/zzY2NjYi9j5P/2zYz159NO2GbP2Jjq4g42NjX0rdh7fz4KeZAR7cmQnKW/FVAQbGxv7tuzzhmRW2M4BeYvyIUvDxsbGvi27bRLase5sm+ouatTqYGNjY+9gJ03CSeiTNzlt2HR0bAgbGxt7NftkKe3VjnhnhQ0bGxv7J7DzmCZ/QHIIMgp9jovli0+xsbGxV7PzqCg/mtk2Hu2YuV0nNjY29ib2LLjJeXl5y7f1EVzRVAQbGxt7BfuEkbQZbTB0dKQyP9yJjY2NvY7djktPFp0XyOT9x+zCxsbGXsduR7Oz7+TIWcxUbA02Njb2Ivas1OUPmzUh+eYmT5nFUtjY2Nj3YucFaVb2ZuBZCFUMobGxsbHXsWeHbGZB1azlaBuMD/fExsbG/pHsq6L85A7X9lgv3sfGxsb+wey25Mw2dDaKKPIzbGxs7HXs2eC2XcpJqJSUqOJPhY2Njb2IPQto2thodv+E1B4VwsbGxl7E/gUjAoMGAhiz7gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
