@@ -190,7 +190,7 @@
 
 
 <div class="container body-wrap">
-    <article id="post-一次Node-Docker使用Puppeteer大量僵司进程排查" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-2021一次Node-Docker使用Puppeteer大量僵司进程排查" class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">一次Node_Docker使用Puppeteer大量僵司进程排查</h1>
         <div class="post-meta">
@@ -208,8 +208,8 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>原因是之前上线一个由Nodejs，使用原镜像debian 打包，添加puppeteer作为业务需求的服务。该服务使用量不是很大，但是经常会出现cpu特别大，并且内存一直无法释放问题。</p>
-<p>一直未有时间专门处理这个业务bug，这会想起，给他解决掉，同时也发现该非常好的Blog。想着一次解决，能免于用户的不满回馈。</p>
+            <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>原因是之前上线一个由Nodejs，使用原镜像使用debian打包，添加nodejs/puppeteer作为业务需求的服务。该服务使用量不是很大，但是经常会出现cpu特别大，并且内存一直无法释放问题。之前的操作就是时不时重启下。</p>
+<p>一直没有时间专门处理这个业务bug，这会想起，给他解决掉，同时也发现该非常好的Blog。想着一次解决，能免于用户的不满回馈。</p>
 <h2 id="错误展现"><a href="#错误展现" class="headerlink" title="错误展现"></a>错误展现</h2><p>也正出现如参考Blog出现的，<code>$ps -ef</code> 会展示:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root xx 1 0 <span class="variable">$&#123;time&#125;</span> [chrome] &lt;defunct&gt;</span><br><span class="line">root xx 1 0 <span class="variable">$&#123;time&#125;</span> [chrome] &lt;defunct&gt;</span><br><span class="line">root xx 1 0 <span class="variable">$&#123;time&#125;</span> [chrome] &lt;defunct&gt;</span><br></pre></td></tr></table></figure>
 <p><code>&lt;defunct&gt;</code>正是表明该子进程挂了，但是父进程没有为子进程做回收动作。<code>子进程退出后绝大部分资源已经被释放可供其他进程使用，但是内核的进程表中没有槽位释放。</code></p>
@@ -218,7 +218,7 @@
 <p>子进程是父进程的副本，子进程拥有父进程数据空间、堆、栈的复制副本，fork采用了copy-on-write技术，fork操作几乎瞬间可以完成。只有在子进程修改了相应的区域才会进行真正的拷贝。</p>
 </blockquote>
 <h3 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h3><blockquote>
-<p>一个父进程已经终止的进程被称为孤儿进程(orphan process)。没人管的孤儿进程会被进程ID为1的进程接管。</p>
+<p>一个父进程已经终止，开启的子进程还活着的进程被称为孤儿进程(orphan process)。没人管的孤儿进程会被进程PID为1的进程接管。</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"before fork, pid=%d\n"</span>, getpid());</span><br><span class="line">  <span class="keyword">pid_t</span> childPid;</span><br><span class="line">  <span class="keyword">switch</span> (childPid = fork()) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">-1</span>: &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"fork error, %d\n"</span>, getpid());</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"in child process, pid=%d\n"</span>, getpid());</span><br><span class="line">      sleep(<span class="number">100000</span>); 子进程sleep 不退出</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span>: &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"in parent process, pid=%d\n child pid=%d\n"</span>, getpid(), childPid);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译运行上面代码: <code>$gcc fork_demo.c -o fork_demo; ./fork_demo</code></p>
@@ -227,9 +227,9 @@
 <p>使用<code>ps -ef | grep &quot;216&quot;</code>查看进程信息:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root         1     0  0 12月12 ?      00:00:53 /usr/lib/systemd/systemd --system --deserialize 21</span><br><span class="line">ya       21630     1  0 19:26 pts/8    00:00:00 ./fork_demo</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>可以看到此时孤儿子进程21630的父ID已经变为了顶层的ID为1的进程。</p>
+<p>可以看到此时孤儿子进程21630的父PPID已经变为了顶层的PID为1的进程。</p>
 </blockquote>
-<p>以上正是我当前遇到的，我就到此说明完整问题了。</p>
+<p>以上正是我当前遇到的，我就到此说明完整问题了。此处重点，会由PID 为1的进程接管。</p>
 <h3 id="PID-为-1-的进程"><a href="#PID-为-1-的进程" class="headerlink" title="PID 为 1 的进程"></a>PID 为 1 的进程</h3><blockquote>
 <p>Linux中内核初始化以后会启动系统的第一个进程，PID为1，也可以称之为init进程或者根(ROOT)进程。</p>
 </blockquote>
@@ -259,7 +259,8 @@
                 <a rel="一次Node_Docker使用Puppeteer大量僵司进程排查" href="/css/images/node_docker_puppeteer02.jpg" title="p1" data-fancybox="images"><img src="/css/images/node_docker_puppeteer02.jpg" alt="p1" title class></a>
                 <p>p1</p>
             </figure>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>重点是: pid为1的不为Nodejs，因为Nodejs没有去wait/waitpid 管理子进程状态.那么在Docker启动中，使用init进程接管pid，由init去handle没人管理的僵司进程，这时便能解决本次问题。</p>
+<p>另一种是使用tini程序启动，由tini进程去fork出新进程。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>pid为1的不能为Nodejs，因为Nodejs没有去wait/waitpid 管理子进程状态.那么在Docker启动中，使用init进程接管pid，由init去handle没人管理的僵司进程，这时便能解决本次问题。</p>
 <hr>
 <p>上面解释、注解90%为原Blog内容，本机自己实操基本雷同，但是不如Blog老师的卷，于是抄袭老师卷，请看到的直接前往Blog老师地址:</p>
 <p><a href="https://blog.51cto.com/u_14621228/2462108" target="_blank" rel="noopener">完全参考Blog - 一次 Docker 容器内大量僵尸进程排查分析</a></p>
@@ -270,12 +271,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-12-21T12:44:48.016Z" itemprop="dateUpdated">2021-12-21 20:44:48</time>
+    Last updated: <time datetime="2021-12-22T02:12:21.992Z" itemprop="dateUpdated">2021-12-22 10:12:21</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/" target="_blank" rel="external">https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/</a>
+        转载注明出处，原文地址：<a href="/2021/12/21/2021一次Node-Docker使用Puppeteer大量僵司进程排查/" target="_blank" rel="external">https://shaohung001.github.io/2021/12/21/2021一次Node-Docker使用Puppeteer大量僵司进程排查/</a>
         
     </div>
     <footer>
@@ -304,7 +305,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/12/21/2021一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -316,7 +317,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/12/21/2021一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -344,7 +345,7 @@
 
   
     <div class="next">
-      <a href="/2021/12/16/learnjava/" id="post-next" class="post-nav-link">
+      <a href="/2021/12/16/2021learnjava/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">learnjava</h4>
       </a>
@@ -454,7 +455,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/12/21/2021一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -466,7 +467,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/12/21/一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/12/21/2021一次Node-Docker使用Puppeteer大量僵司进程排查/&title=《一次Node_Docker使用Puppeteer大量僵司进程排查》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -478,7 +479,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADK0lEQVR42u3ay24bQQwEQP3/TytATgEiWd2cTeCla0+CHrtT4wPN5jwe8fX8fb17/ec1+/7fnya/fXefyy5sbGzsm7CT2329xHcPTjaiXVuyTdHWYGNjY69jJ4tuH/D1cpNnXbWh2NjY2Nh5+5EUj+SddpuwsbGxsWcFrP1mskE5EhsbGxv73zUVeRszu1vexlyQpWFjY2N/e/b5oPf7vP6v821sbGzsb8B+ltf5oDc/4pPfv1ZgY2NjL2K3YX0bGF0V9598/+1KsLGxsVew21gn347kt+0985bjw2+xsbGx17HzIpGPe9tw6vxgUPEsbGxs7EXstvFoh7LtdrQHg06iK2xsbOx97LyctCWnPR6Ub1m70djY2Nhb2Xk5aeOnpLQk4f55mBUFUtjY2Ng3ZLfj0tnYdVZyZk+JtgwbGxt7NXt2RLKNh/LNbVuRaKOxsbGxF7HzYe21I+FrAXljg42Njb2V3Yb4M+RsI04GFXlAho2NjX1f9kmoNBsPzEYRJ0PfF59iY2Njr2Pn4VFbls6bhNnQ4sOwARsbG3s1uy1pbSORH815lleeGmFjY2NvZV/bhCQtRPLNosHI/zzY2NjYi9j5P/2zYz159NO2GbP2Jjq4g42NjX0rdh7fz4KeZAR7cmQnKW/FVAQbGxv7tuzzhmRW2M4BeYvyIUvDxsbGvi27bRLase5sm+ouatTqYGNjY+9gJ03CSeiTNzlt2HR0bAgbGxt7NftkKe3VjnhnhQ0bGxv7J7DzmCZ/QHIIMgp9jovli0+xsbGxV7PzqCg/mtk2Hu2YuV0nNjY29ib2LLjJeXl5y7f1EVzRVAQbGxt7BfuEkbQZbTB0dKQyP9yJjY2NvY7djktPFp0XyOT9x+zCxsbGXsduR7Oz7+TIWcxUbA02Njb2Ivas1OUPmzUh+eYmT5nFUtjY2Nj3YucFaVb2ZuBZCFUMobGxsbHXsWeHbGZB1azlaBuMD/fExsbG/pHsq6L85A7X9lgv3sfGxsb+wey25Mw2dDaKKPIzbGxs7HXs2eC2XcpJqJSUqOJPhY2Njb2IPQto2thodv+E1B4VwsbGxl7E/gUjAoMGAhiz7gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNElEQVR42u3aQW7jQAwEwPz/097rAoGVblIBrEnpFMSyNDU5MGTP11d8vf67rj/9fue7b33/9PvP1+9Nnr+6sLGxsR/Cfl1e79jJFry78/qeZD3Xz0m+i42NjX0eOy8tSeGZLa4tS+0fAxsbGxu7bU6ui1P7m/xTbGxsbOx23JM3M3kbs2lFsLGxsf8mu130bMDUlrd9qHDDLA0bGxv749l5Kvr5P/9Kvo2NjY39wexZUzErIXcNsJJPf1BgY2NjH8TeR6qzAHjTMNwVCWNjY2Ofwc5Lwj6yLQb35eiq3iBsbGzsg9j5F9qi1QYA1wtKtqDdbmxsbOwz2ElpyV+WT+PzMpkPlYotwMbGxj6OnYz18zK2uXLqrABHu4KNjY39WHZSPPJQdjYYyrdytjZsbGzs89hty7EZKrX4PFqeNTzY2NjYZ7Db17dNSDt+mjUhbUHFxsbGPondxrd3Bbe3JdKLIoqNjY19KjsH3NVy5O+ahc0/TNSwsbGxj2C3X54dfJzFDJv7o9KIjY2N/XD2pmFoM9O8vWlLWtF+7PskbGxs7I9k58VgVqI2RzCTCKEueNjY2NiHsvNF58OmYVcUbO5qsIWNjY19HDsvXZuR013HMTchwduhEjY2NvbD2e3j2nYiKVT589sSeNsuYmNjY38kuz2+s5mxt01FHiTfMLTCxsbGfjj7rsM6swg5Hzm17UdUvbGxsbGPYM/CgKQxmB33mf0xZu0KNjY29hnstoTkvPYQT1vA2gNG2NjY2OexZ8vNj84kLc0+AGgjDWxsbOyT2Jt/9GfR72xDN+DiwsbGxn4sO791v8Q2NsjD4LqAYWNjYx/HHv77Xoa4m+M4+ZOjM0rY2NjYx7Fnh2A2Me1mGDRbJzY2NvZ57Fd51Tu6OHyTb0Tb6mBjY2OfxJ61Fu0L7h335xHyrDxjY2NjP5Gdj3LywGB/+GbWrhRNCzY2NvZx7Lbw5KFCHgDkW98Gxm8LGDY2NvafZM8GT/nI6ffGW6sCho2NjX0Qux0GtUVuM5wqomVsbGzs49jtkce8vLWjn+TJbZlcxQPY2NjYH8/ehLWzYdMmVMjD5nzLsLGxsR/L/gdCXl3JJQjIVwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

@@ -190,7 +190,7 @@
 
 
 <div class="container body-wrap">
-    <article id="post-211106北京紧急项目" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-20211106北京紧急项目" class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">211106北京紧急项目</h1>
         <div class="post-meta">
@@ -208,16 +208,17 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h1 id="北京项目紧急上线"><a href="#北京项目紧急上线" class="headerlink" title="北京项目紧急上线"></a>北京项目紧急上线</h1><p>21.10月，北京合作甲方想要在12号之前上线，于是分派借调手下两个同学，给已分出去的另一个经理以开发人手。刚开始两位同学在公司内帮助处理，但是很多环境等都得现场，现场没有氛围和特殊环境等，于是两位同学(前端大四实习，脑子不错；后端是前端转nodes的脑子稍稍不好用的熟悉6个月的新手)一开始不愿去北京，后面为了项目还是欣然前往。</p>
-<p>起初我觉得应该差不多，改一改，东西并不多。但是另一个经理想要自己的实现方案；我沟通过，最好以我的方法继续往下，这样能少走弯路，他没理会，算了，项目给到他，以他的方案决定。但是最后12号到了，再加1周，到了20号了，还是没好，客户那边也是急着。</p>
+            <h1 id="北京项目紧急上线"><a href="#北京项目紧急上线" class="headerlink" title="北京项目紧急上线"></a>北京项目紧急上线</h1><p>21.10月，北京合作甲方想要在12号之前上线，于是分派借调手下两个同学，给已分出去的另一个经理以开发人手。刚开始两位同学在公司内帮助处理，但是很多环境等都得在现场，公司没有氛围和特殊环境等，于是两位同学(前端大四实习，脑子不错；后端是前端转nodes的脑子稍稍不好用的熟悉6个月的新手)刚开始不愿去北京，后面为了项目还是欣然前往。</p>
+<p>起初我觉得应该不难，改一改，东西并不多。但是另一个经理想要自己的实现方案；我沟通过，以我的方法继续往下，这样能少走弯路，他没理会，算了，项目给到他，以他的方案决定。但是最后12号到了，再加1周，到了20号了，还是没好，客户那边也是急着。</p>
 <h2 id="个人成果"><a href="#个人成果" class="headerlink" title="个人成果"></a>个人成果</h2><p>我在10.26号出发，花了9天时间处理完，这里进行一个记录，有意思的经历。</p>
-<p>刚开始出发，目标是争取在3天处理完主要功能。之后剩下东西看还差多少，我处理完网络拓扑就可以走了，但是毕竟都来了，还是争取给整完。</p>
-<h2 id="项目难度"><a href="#项目难度" class="headerlink" title="项目难度"></a>项目难度</h2><p>功能是uni app 做界面端，然后采用安卓离线打包；用户使用第三方jar包在安卓转换登录后，实现用户真实登录。后端是nodejs。用户使用功能都是完成的。</p>
-<p>仅仅是这样，还是极其简单的，关键是网络拓扑、和第三方合作、操作开发环境等。</p>
-<p>跟安卓通信的后台（后面称之为”密集网”），甲方爸爸手上拿着安卓，但是无法在电脑端使用浏览器网页登录管理界面处理结果数据。需要由另一个安全的网络后台（后面称之为”安全网”）来提供电脑端浏览器服务。密集网和安全网之间的通信不是直连，而是由另一个厂商提供转接口(GET/POST接口)，同时提供文件摆渡服务(ftp服务，摆渡方案，所以不是及时的，延时有20s之久)。</p>
-<p>之前的经理领着同学去的时候，方法全是骚操作: 安卓所有请求(rest api)转为GET+POST，就为了应对中间商的接口。安卓请求完密集网后台，然后相同操作再操作到中间商的请求，请求体还不一样，极为不便。后台之前的rest api接口也是全部改为GET+POST。骚操作啊，很多都不能运行，数据不对，新创建数据库id都不对应等等情况。10月8号他们三打电话过来说(之前也是一直打电话过来援助，这段时间我也超级忙-全国性比赛软件支持，天天很晚才能回去，家住的还很远，电瓶车40分钟)，说10.12号，客户必须能用上。</p>
+<p>刚开始出发，目标是争取在3天处理完主要功能。之后剩下东西看还差多少，我3天处理完网络拓扑就可以走了，但是毕竟都来了，还是争取把剩下的整完。</p>
+<h2 id="项目难度"><a href="#项目难度" class="headerlink" title="项目难度"></a>项目难度</h2><p>功能是uni app 做界面端，然后采用安卓离线打包；用户使用第三方jar包在安卓转换登录后，实现用户真实登录。后端是nodejs。用户使用功能都是完成的(Bug不必理会)。</p>
+<p>仅仅是以上这样，看起来是极其简单的，然而关键是网络拓扑、和第三方合作、操作开发环境等，并且两个网段还在不同地点，来回都不便!</p>
+<p>跟安卓通信的后台（后面称之为”密集网”），甲方爸爸手上拿着安卓，但是无法在电脑端使用浏览器网页登录管理界面处理结果数据。需要由另一个安全的网络后台（后面称之为”安全网”）来提供电脑端浏览后台服务。密集网和安全网之间的通信不是直连，而是由另一个厂商提供转接口(GET/POST接口)，同时提供文件摆渡服务(ftp服务，摆渡方案，所以不是及时的，延时有20s之久)。</p>
+<p>之前的经理领着同学去的时候，方法全是骚操作: 安卓所有请求(rest api)转为GET+POST，就为了应对中间商的接口。安卓请求完密集网后台，然后相同操作再发送到对接的中间商的请求，请求体还不一样，极为不便。后台之前的rest api接口也是全部改为GET+POST。骚操作啊，很多都不能运行，数据不对，新创建数据库id都不对应等等情况。</p>
+<p>10月8号他们三打电话过来说(之前也是一直打电话过来援助，这段时间我也超级忙-全国性比赛软件支持，天天很晚才能回去，家住的还很远，电瓶车40分钟)，说10.12号，客户必须能用上。</p>
 <p>经理已经领着同学过去两三周，一点进展都没有。刚开始他们过去，住汉庭；现在他们待太久没有进展，舍不得跑去住简约宾馆；好惨。</p>
-<p>10.24 我对接完了全国比赛的软件支持，周一开会，还是觉得我过去整好来。整个公司，伟哥他不能去，他更重要；其他组员没找到一个能顶的，只能我上了。出差肯定累的，但是扔两个同学搞不定回不来更麻烦，算了，出发吧。出发前，代码回退到他们刚碰到代码前的状态(相当于他们一两周干的所有都是错的)，服务器调通来(他们10.12号前调了3、4天不能调通的，我电话远程协助30分钟搞完)。</p>
+<p>10.24 我对接完了全国比赛的软件支持，周一开会，还是觉得我过去整好来。整个公司，伟哥他不能去，他更重要；其他组员没找到一个能顶这种玩意，只能我上了。出差肯定累的，但是扔两个同学搞不定回不来更麻烦，算了，出发吧。出发前，代码回退到他们刚碰到代码前的状态(相当于他们一两周干的所有都是错的)，服务器调通来(他们10.12号前调了3、4天不能调通的，我电话远程协助30分钟搞完)。</p>
 <p>周二上午出发，这周刚好北京出现疫情，我捅鼻子的核酸只能顶2天，当天就去掉1天了。下午聚个会，总结下当前状态，下午我的核酸能用，他们不行，赶紧附近做了。我先上去摸摸东西，包括申请电脑，找对接人，申请开电脑。摸了摸相关网络环境，调了相关请求感受了下。下午晚些喊前端同学上来一起搞搞。大致了解相关东西，今天就这么多了。</p>
 <p>当前我们3个人(那个经理刚开始待了3天多就离开了)，只有两台电脑，公司没有太多空闲电脑了，反正我待的这一边有电脑，另一个网络配一个电脑。无线网络？没有，都用流量吧。特殊的测试安卓手机？只有一个，在密集网。</p>
 <blockquote>
@@ -239,12 +240,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-11-08T11:57:42.937Z" itemprop="dateUpdated">2021-11-08 19:57:42</time>
+    Last updated: <time datetime="2021-12-22T02:02:56.862Z" itemprop="dateUpdated">2021-12-22 10:02:56</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2021/11/08/211106北京紧急项目/" target="_blank" rel="external">https://shaohung001.github.io/2021/11/08/211106北京紧急项目/</a>
+        转载注明出处，原文地址：<a href="/2021/11/08/20211106北京紧急项目/" target="_blank" rel="external">https://shaohung001.github.io/2021/11/08/20211106北京紧急项目/</a>
         
     </div>
     <footer>
@@ -271,7 +272,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/11/08/211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/11/08/20211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -283,7 +284,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/11/08/211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/11/08/20211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -309,7 +310,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2021/11/30/learnc/" id="post-prev" class="post-nav-link">
+      <a href="/2021/11/30/2021learnc/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">learnc</h4>
       </a>
@@ -428,7 +429,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/11/08/211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2021/11/08/20211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -440,7 +441,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/11/08/211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2021/11/08/20211106北京紧急项目/&title=《211106北京紧急项目》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -452,7 +453,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQU4DMQwF0Ln/pUFihwrTbztuQXqzqtrQ+mURB9vXFT8fX8/968f1j091zePKa+PBw8PDa4V+/2O/vZN/moeb/3q0QXh4eHhrvCQZJLz747u6cUlyemLBw8PDeyuvl0jyNfdR4eHh4f1fXh5cEmL1Io6Hh4f3d3jJId4rJcw36EW1Fjw8PLyYd6oB9srXb+jv4eHh4QXHa6+IkBz9vVZZOVo8PDy8BV4eRH4C51fw/P0kksJ/DHh4eHgDXu9Yn5Rxe+MC1ZGFb3kPDw8P7ygvH4RKSqvzlHC2vIuHh4e3wZt8Ub6mVyaubuUP7+Ph4eGt8aqNrnwgoHeZnqeWqzq3hYeHhxfzquBJENUreK/88aR+i4eHhzfmnTpw87GA3lBCMx48PDy8l/CSVJG38KuHey+GJ2VcPDw8vGVecjRvNMCq6ST6BwAPDw9vjVct5uZh5YXdXsqJZsrw8PDwjvImF+Wcfb+mNzSQxImHh4e3wes1parX7mR3e9fowkwZHh4e3iFeYVGcZ3qjWnmCSQYd8PDw8PZ4vRGoPIj8Ap1sTbkojIeHh7fAO1ClGFyXJ99THjXAw8PDW+OdPaAnbbPqNfrJ9uHh4eEd4k3a9qcO+iQBNAcR8PDw8BZ41UGBnJePtCYJYD5Ei4eHh3eKV73s9hpa+TU935pkYAsPDw9vm9cbtJo/yffnn169ncDDw8OLedVFvYP+1K+M1uPh4eEd4n0Un7ytVV2Tt8oKw1t4eHh4C7zqxTf54zwl9MoN1U3Bw8PD2+BVG13VYsFky5odvLybh4eHhzfgTUoPvetvXjjuJTA8PDy8v8BLApoXdiepBQ8PD+9/8apJJUkAk9ErPDw8vG1eXoyYlAzy9lWvIXegjIuHh4fXn2VqtrWqzzzlzGPAw8PDi1d+Ajw2DQEl9yjTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQXLbQAwEQP3/084DYtIzAFeWq5qnlCIut3Ug4MG+XvH1dXHdfzO59/918m8+duHh4eE9tPX7LW4+v9rD/efJT/bNOnh4eHjHePnSyV15YUjuTfZz+TkeHh7eB/Pydrn931WBwcPDw/sAXvKivw8Okkb81woDHh4eXsxrw9bN1tv189Xw8PDw3sPLN/05/z4y38PDw8NbT9WTl/jsF91EG8Vu8fDw8A7w8i0myFl4kRy6yttlPDw8vPfwZh3pffTQFoDkufk6eHh4eOd4s1fwvo1uo97hQS48PDy8A7z9qOl+6fw7eVucPAsPDw/vHK8dt+dhRDufyp9VFCo8PDy8A7xZXJs8fhZhzMLi4ggXHh4e3qO89kXfDqXyDZ0oM3h4eHhP8fLQIW9tnzosNQsvvjlThoeHh3eAlzfK7fC+3XT7zR/uwsPDwzvAa0dfsxZ8VhLakVsURuDh4eGtebPBUh6/toUnZ0dHE/Dw8PAO8PJYYfZCb5vgtl0ehr94eHh4C17epO7x7bGtvGhdroOHh4f3Rt5s0/l2Z8i2wODh4eGd4LWDq4SXby7ZdFIkfviLAQ8PD+8Y76mXeNIWt4B2wIaHh4f3Ht7sWFUbEMxCh2EzjYeHh/dG3qbJnkUS+/b68i48PDy8Y7zNqD4fVs1KSPsjRm48PDy8Na/9Iz//pP0JktC2QOLh4eEd4+XN7uuhaxPdFuMxPDw8vEd5X+W1T0fbIGNWqC7PlOHh4eGtee1LvF2iPZQwG3StYHh4eHgj3n7pTZzxVHBcDMDw8PDwHuLNotXkoMC+hLRhbpFS4+Hh4f0qrx2n5UUlfy4eHh7e3+UlRWIfDUeFBA8PD+8YL7l5f5w0H1/NBmCrGBcPDw/v0XNT+Su+DXZngcUDMz08PDy8Ce8flMn5PgENYKUAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
