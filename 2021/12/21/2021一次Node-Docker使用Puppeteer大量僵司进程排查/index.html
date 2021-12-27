@@ -260,6 +260,11 @@
                 <p>p1</p>
             </figure>
 <p>另一种是使用tini程序启动，由tini进程去fork出新进程。</p>
+<p>在Dockerfile中增加替换Entry入口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ENV TINI_VERSION v0.19.0</span><br><span class="line">ADD https://github.com/krallin/tini/releases/download/$&#123;TINI_VERSION&#125;/tini /tini</span><br><span class="line">RUN chmod +x /tini</span><br><span class="line">ENTRYPOINT [&quot;/tini&quot;, &quot;--&quot;]</span><br></pre></td></tr></table></figure></p>
+<p>仅是入口修改，tini 进程会接管启动传入的程序，这样顶层Pid 1 就不会为Nodejs</p>
+<p>这样就如: <code>/tini -- node app.js</code>，首先生成tini 为pid=1的启动项，tini 运行后面的入参为fork 后的程序执行，比如可以调用<code>execvp(&quot;node&quot;, &quot;node app.js&quot;)</code></p>
+<p>(debian中便捷方案:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y tini</span><br><span class="line">ENTRYPOINT [&quot;/usr/bin/tini&quot;, &quot;--&quot;]</span><br></pre></td></tr></table></figure></p>
+<p>), 效果一样</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>pid为1的不能为Nodejs，因为Nodejs没有去wait/waitpid 管理子进程状态.那么在Docker启动中，使用init进程接管pid，由init去handle没人管理的僵司进程，这时便能解决本次问题。</p>
 <hr>
 <p>上面解释、注解90%为原Blog内容，本机自己实操基本雷同，但是不如Blog老师的卷，于是抄袭老师卷，请看到的直接前往Blog老师地址:</p>
@@ -271,7 +276,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-12-22T02:12:21.992Z" itemprop="dateUpdated">2021-12-22 10:12:21</time>
+    Last updated: <time datetime="2021-12-26T06:47:17.170Z" itemprop="dateUpdated">2021-12-26 14:47:17</time>
 </span><br>
 
 
@@ -340,7 +345,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/12/26/20211226makeshell/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">20211226makeshell</h4>
+      </a>
+    </div>
   
 
   
