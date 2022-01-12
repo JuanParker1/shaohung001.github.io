@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Archives: 2020/5 | aKer</title>
+    <title>20220112lispy | aKer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="lispy, 编译原理">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.4">
@@ -15,7 +15,7 @@
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	false,
+            reward:	true,
             lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
             v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
             g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
@@ -120,7 +120,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class>
               <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
@@ -146,7 +146,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Archives</span>
+            <span>20220112lispy</span>
             
         </div>
         
@@ -156,18 +156,19 @@
         
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Archives</h1>
+        <h1 class="title">20220112lispy</h1>
         <h5 class="subtitle">
             
+                <time datetime="2022-01-12T02:33:56.000Z" itemprop="datePublished" class="page-time">
+  2022-01-12
+</time>
+
+
+            
         </h5>
-        
-        <div class="remind">
-            <p>总计文章( <span>195</span> )篇，约( <span>465.9K</span> )字</p>
-            <p>Keep moving😎!!!</p>
-        </div>
         
     </div>
     
@@ -187,211 +188,164 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-                <h3 class="archive-separator">May, 2020</h3>
-                <div class="waterfall">
+
+<div class="container body-wrap">
+    <article id="post-20220112lispy" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">20220112lispy</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-01-12 10:33:56" datetime="2022-01-12T02:33:56.000Z" itemprop="datePublished">2022-01-12</time>
+
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-29 10:17:46" datetime="2020-05-29T02:17:46.000Z" itemprop="datePublished">2020-05-29</time>
-
-      
 
 
-    </div>
-    
+            
+
+            
 
 
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/29/2020-5-29lesson/">2020-5-29lesson</a>
-    </h3>
-  
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><p>之前学过输入语法转AST，AST转换另一种语法格式。这其实是自然语言组织能力，比如中文转成英文来说。</p>
+<p>语言是表达能力，计算机操作需要在表达能力上，实现语法格式并能操作运行。</p>
+<p>当前篇幅用于描述学习文章: <code>BuildYourOwnLisp</code> 过程中遇到的点，过程。这个系列会出多个文章描述，会对应到学习文章对应的章节。</p>
+<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p><code>BuildYourOwnLisp</code> 这篇文章在目前我学习入门c 里面是相当之精妙的，各种用法都是灵活运用，前提还是需要c 语言基础的，基础部分看<a href="2021/11/30/2021learnc/">learnc</a>。</p>
+<p>基础入门之后，就可以在这篇文章带领下学学c 的深入使用，并且可以感受到编译原理的基础。</p>
+<p>里面用到<code>mpc</code>的库，这个库是剥离AST表达式的点，然后直接学习真实的制作一门小型语言。<code>mpc</code>后期我会再出一篇文章，并且以此修改自己的程序以支持。</p>
+<p>之前在豆瓣上看到有人评论说到该篇文章精髓都在mpc 里面，其实是不对的，这是两个阶段，两个层面。</p>
+<p>好了，不多说了，直接进入正式环节。</p>
+<h2 id="获得输入"><a href="#获得输入" class="headerlink" title="获得输入"></a>获得输入</h2><p>…</p>
 
-
-
-    
-    <div class="post-footer">
+        </div>
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-golang/">docker golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2022-01-12T02:50:40.402Z" itemprop="dateUpdated">2022-01-12 10:50:40</time>
+</span><br>
 
+
+        
+        转载注明出处，原文地址：<a href="/2022/01/12/20220112lispy/" target="_blank" rel="external">https://shaohung001.github.io/2022/01/12/20220112lispy/</a>
+        
     </div>
-    
-  </article>
+    <footer>
+        <a href="https://shaohung001.github.io">
+            <img src="/img/avatar.jpg" alt="aKer">
+            aKer
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
 </div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-26 14:28:40" datetime="2020-05-26T06:28:40.000Z" itemprop="datePublished">2020-05-26</time>
 
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lispy-编译原理/">lispy, 编译原理</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/26/2020-5-23kanfang/">2020-5-23kanfang</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/看房/">看房</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-26 14:28:22" datetime="2020-05-26T06:28:22.000Z" itemprop="datePublished">2020-05-26</time>
-
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2022/01/12/20220112lispy/&title=《20220112lispy》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
       
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/26/2020-5-13/">2020-5-13</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/猴头菇生病/">猴头菇生病</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-24 18:13:19" datetime="2020-05-24T10:13:19.000Z" itemprop="datePublished">2020-05-24</time>
-
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
       
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/24/2020-5-12shebao/">2020-5-12shebao</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/买房资格/">买房资格</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-24 16:51:10" datetime="2020-05-24T08:51:10.000Z" itemprop="datePublished">2020-05-24</time>
-
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2022/01/12/20220112lispy/&title=《20220112lispy》 — aKer&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
       
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/24/2020-5-12jifen/">2020-5-12jifen</a>
-    </h3>
-  
+    </ul>
+ </div>
 
 
 
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/居住证积分/">居住证积分</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
+
+        </div>
         
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-11 20:30:43" datetime="2020-05-11T12:30:43.000Z" itemprop="datePublished">2020-05-11</time>
-
-      
+            
 
 
+        
     </div>
     
-
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
 
   
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/11/2020-5-12lesson/">2020-5-12lesson</a>
+    <div class="next">
+      <a href="/2022/01/11/20220111c-debug/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">20220111c_debug</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">编译原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开篇"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">开篇</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获得输入"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">获得输入</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
     </h3>
-  
-
-
-
-    
-  </article>
-</div>
+    <div class="reward-content">
         
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2020-05-11 20:25:36" datetime="2020-05-11T12:25:36.000Z" itemprop="datePublished">2020-05-11</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2020/05/11/2020-5-11lesson/">2020-5-11lesson</a>
-    </h3>
-  
-
-
-
-    
-  </article>
-</div>
+        <div class="reward-code">
+            <img id="rewardCode" src="/css/images/wechatPay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/css/images/wechatPay.jpg" data-alipay="/css/images/aliPay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
         
     </div>
+</div>
+
     
+
 </div>
 
     </main>
@@ -454,7 +408,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/archives/2020/05/&title=aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://shaohung001.github.io/2022/01/12/20220112lispy/&title=《20220112lispy》 — aKer&pic=https://shaohung001.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -466,7 +420,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/archives/2020/05/&title=aKer&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://shaohung001.github.io/2022/01/12/20220112lispy/&title=《20220112lispy》 — aKer&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -478,7 +432,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQXLCQAwEQP7/6eQBCWRGglR53T5RZON1+yAkrR6P+Pp6cr3+68+V+S6PT1wYGBiXZSTbP9tgtub1o+cvCAMD426MZxFss30SRvP7/PHMGBgYGGUi2CaRCQkDAwOjZWxqzGQlBgYGxqyIzR/udcGZr/9ILY6BgXFBRh4u///zR843MDAwLsXYFKLt5zwprJ8KAwPjaEYe4Dap3uyooC6JMTAwDmUkpWlbpubU2bjGL99gYGDchrFPB/chezZShoGBcQfGbDxitnHe1CvugIGBcTRjf9NNu639PgncGBgYpzJm46R5wM0T0FlaiYGBcTYjD3k5pm3Mtc24P4pYDAyM4xj5EFjejEteRzuK0aaPGBgYJzH2B5N5Gdy+iPzZMDAwzmbk//CuFLBdWSSFGBgYRzNmR4bt8WdeDA+HwzAwMA5l5I22TYj8xIhGkeFiYGBcnLEfwMoDaPuakkOLKM/FwMA4iNGGv1lzvy1Hcx4GBsbZjM3B5GxNPnCW7IKBgXFPRnuj2chX29Rb9f8wMDAOYuTUtgRdlaN5ow0DA+M4xld55SeiefLXtupWvxgYGBgXZGxStHamY1aatjtiYGCcypgF2Tx879cUkyMYGBhHMzaDFPvHaovYX+6GgYGBUQbczTdJE7CYa8PAwLglY7ble5PFt/1uYGBgXIqRFLF5c39WHs+GPDAwMO7AmI04tLBkUGO2EgMD42jGN22Y0T8EhLlyAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3aO3LCQBAFQO5/aZxShRHvzaJAq97IZWNJrWCY3+MRn+fLef3N+18/ndldfnwwMDAuy0hu3zLer5//V/6CMDAw7sb4FMFWbn98/fwFHT8bBgYGxqfPPONz/Lh5WMfAwMCYMdoas/0kBgYGRlvE5g+3cp3Ta3EMDIwLMlaC4Nk/nzLfwMDAuBTjWZ7jQWMSNNsGXPRUGBgYWzPyAHeckOVjg3aoUDwPBgbGDRjHYbQtIPP2XBvKiwQRAwNjI8ZsPSIJxHma2Lb8ouUwDAyMrRltMtemibPSNwrBGBgYmzJm7bPjK8wK0SQN/dJuw8DA2I4xGy6ujARmpemXBBQDA2Nrxiw4zpLF2TCgGIViYGBsysgTvjxpy5O/2XD0n//CwMC4AWO2tpUXt/U3QPxai4iOgYFxWUYe8n5wm9GLGO6MYGBgbMdozyxZbNfOZlfDwMDYj5E3yPIlrZXB5HD8iYGBcQNGO6RsVyXyz+RrZBgYGPdh5KtaeTm6XnD+ILfFwMDYjpEHu5Xg2y5e1CsaGBgYN2OspIDFjUcNvqILiIGBsR2jXb+Y4Wcjz6gxh4GBsSlj1vxqh5FJ2J29ykf7DYCBgXFBxvqCxaxN1pJ+1trDwMC4LOOMQjRPGWdDymIwgIGBsREjr3rb1G1ltaJAYmBgYCykfXmAXln7wMDAwFipifPm3WyMioGBcR/GbBjQJoX5Czqx3YaBgXFBRrvi0IbaJGi21xkONTEwMK7H+AO207JQakbAdwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

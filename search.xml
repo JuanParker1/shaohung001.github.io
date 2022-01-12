@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>20220112lispy</title>
+      <link href="/2022/01/12/20220112lispy/"/>
+      <url>/2022/01/12/20220112lispy/</url>
+      
+        <content type="html"><![CDATA[<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><p>之前学过输入语法转AST，AST转换另一种语法格式。这其实是自然语言组织能力，比如中文转成英文来说。</p><p>语言是表达能力，计算机操作需要在表达能力上，实现语法格式并能操作运行。</p><p>当前篇幅用于描述学习文章: <code>BuildYourOwnLisp</code> 过程中遇到的点，过程。这个系列会出多个文章描述，会对应到学习文章对应的章节。</p><h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p><code>BuildYourOwnLisp</code> 这篇文章在目前我学习入门c 里面是相当之精妙的，各种用法都是灵活运用，前提还是需要c 语言基础的，基础部分看<a href="2021/11/30/2021learnc/">learnc</a>。</p><p>基础入门之后，就可以在这篇文章带领下学学c 的深入使用，并且可以感受到编译原理的基础。</p><p>里面用到<code>mpc</code>的库，这个库是剥离AST表达式的点，然后直接学习真实的制作一门小型语言。<code>mpc</code>后期我会再出一篇文章，并且以此修改自己的程序以支持。</p><p>之前在豆瓣上看到有人评论说到该篇文章精髓都在mpc 里面，其实是不对的，这是两个阶段，两个层面。</p><p>好了，不多说了，直接进入正式环节。</p><h2 id="获得输入"><a href="#获得输入" class="headerlink" title="获得输入"></a>获得输入</h2><p>…</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> lispy, 编译原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>20220111c_debug</title>
       <link href="/2022/01/11/20220111c-debug/"/>
       <url>/2022/01/11/20220111c-debug/</url>
