@@ -189,6 +189,73 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
+                <article id="post-RAC循环引用" class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2017/01/09/RAC循环引用/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/09/RAC循环引用/">RAC循环引用</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2017-01-09 09:35:39" datetime="2017-01-09T01:35:39.000Z" itemprop="datePublished">2017-01-09</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        发表于(2016-09-27 16:35:49)
+最近项目到某个节点，我在解决一些问题的时候，记录一下：
+
+RAC 在引用的时候会忽略一点，如@weakify(self);
+@weakify(cell);
+[[[cell.clearButton rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac...
+    
+    <a href="/2017/01/09/RAC循环引用/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reactivecocoa/">reactivecocoa</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
                 <article id="post-MleaksFinder手动导入framework" class="article-card article-type-post" itemprop="blogPost">
   
         
@@ -197,7 +264,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
     
 
 
@@ -258,7 +325,7 @@ https://github.com/facebook/FBRetainCycl...
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
     
 
 
@@ -315,7 +382,7 @@ https://github.com/facebook/FBRetainCycl...
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
     
 
 
@@ -375,7 +442,7 @@ https://github.com/facebook/FBRetainCycl...
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
     
 
 
@@ -431,7 +498,7 @@ https://github.com/facebook/FBRetainCycl...
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
     
 
 
@@ -489,7 +556,7 @@ https://github.com/facebook/FBRetainCycl...
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
     
 
 
@@ -547,7 +614,7 @@ http://c.biancheng.net/cpp/html/2526.htmlc语言的一个圆心角计算
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
     
 
 
@@ -604,7 +671,7 @@ http://c.biancheng.net/cpp/html/2526.htmlc语言的一个圆心角计算
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
     
 
 
@@ -669,7 +736,7 @@ GPUImage的网上教程，在建立方面，“头文件搜索路径: project’
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
     
 
 
@@ -709,64 +776,6 @@ GPUImage的网上教程，在建立方面，“头文件搜索路径: project’
 这几天的问题出现在，当时后台的底层构架他们没法改，在请求头将sign给服务器的同时，在parameter传送过程也需要将sign（数据库钥匙）以及用户账号密码等也在此中。这时出现的一个问题，在charles截取数据，sign、密码等都是明文，这是很恐怖的：服务器钥匙串、密码等都是暴露在人前。你说你去银行，这时你的账号、密码以及银行最重要的钥匙...
     
     <a href="/2017/01/08/昨天尝试了rsa加密的问题/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-swift的xib在模拟器显示正常，真机不显示" class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/">swift的xib在模拟器显示正常，真机不显示</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2017-01-08 22:57:11" datetime="2017-01-08T14:57:11.000Z" itemprop="datePublished">2017-01-08</time>
-
-        
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        发表于(2016-06-13 11:34:52)
-这个完美解决了swift会不加载xib的问题~~xib都OK，模拟器可以显示，但是真机却没有显示的解决方案，原因就是swift不默认加载xib，强制让他加上就好了http://my.oschina.net/227/blog/470553这个是转帖嘿嘿，谢谢大哥啦
-import UIKitclass FormController: UIView...
-    
-    <a href="/2017/01/08/swift的xib在模拟器显示正常，真机不显示/" class="post-more waves-effect waves-button">
         more
     </a>
     </div>

@@ -221,6 +221,9 @@
 <p>然后附以launch.json:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">  <span class="attr">"configurations"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"(lldb) Attach"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">      <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="attr">"args"</span>: [],</span><br><span class="line">      <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">"program"</span>: <span class="string">"$&#123;fileDirname&#125;/ss"</span>,</span><br><span class="line">      <span class="attr">"cwd"</span>: <span class="string">"$&#123;fileDirname&#125;"</span>,</span><br><span class="line">      <span class="attr">"environment"</span>: [],</span><br><span class="line">      <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"MIMode"</span>: <span class="string">"lldb"</span>,</span><br><span class="line">      <span class="attr">"setupCommands"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"description"</span>: <span class="string">"为gdb启用整起打印"</span>,</span><br><span class="line">          <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">          <span class="attr">"ignoreFailres"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上mac就能初步享受断点开发了。操作繁琐一些，先使用再看看。</p>
+<blockquote>
+<p>更新vscode 的cpp插件出现<code>Unable to start debugging. LLDB exited unexpectedly with exit code 134 (0x86).</code>报错。原始是cpp插件不是正式版，点击切换为正式发行版即正常。</p>
+</blockquote>
 
         </div>
         
@@ -228,7 +231,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-01-18T05:04:46.128Z" itemprop="dateUpdated">2022-01-18 13:04:46</time>
+    Last updated: <time datetime="2022-01-22T09:31:35.996Z" itemprop="dateUpdated">2022-01-22 17:31:35</time>
 </span><br>
 
 
