@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>20220122paihupai</title>
+      <link href="/2022/01/25/20220122paihupai/"/>
+      <url>/2022/01/25/20220122paihupai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="20200122拍到沪牌啦"><a href="#20200122拍到沪牌啦" class="headerlink" title="20200122拍到沪牌啦"></a>20200122拍到沪牌啦</h1><p>周六早早到公司加班，这周其实一直有看闲鱼卖车的。12点左右觉得差不多就出来了吧，就上app上看了下，小心翼翼。但是看到的界面和往常不一样，居然真中了，我第一时间还是不敢相信，确认了下，激动地喊出来了。</p><p>我上个月本来想9999套餐，最终觉得牙齿花太多，改成5500的六个月，居然省下来了。想想不能急，赶紧挨个打电话过去。先给老婆打电话，这货也开心，不过也觉得好多钱要花了。然后打电话给老妈，跟家人说，老妈说给我们香火祝愿，等会要回去还愿，告诉观音中了。老妈说9w大家凑一凑，直接还掉，不要贷款了。过了一会，我还是决定贷款，因为年终奖还没发，车牌钱，这周就要拿出来，算了，选6个月的。有打电话给推荐拍牌的哥们，店铺赔给他好多钱，还没中，我倒是中了，哈哈。打电话给同桌，嘿嘿，改天一起去找找二手车。</p><h2 id="走贷款"><a href="#走贷款" class="headerlink" title="走贷款"></a>走贷款</h2><p>直接在app上找，因为我还算凑得出钱，就选的中国银行6个月。过没一会，别的银行打电话过来，我以为是中国银行，无情拒绝，毕竟不是app推荐，不太放心。</p><p>周末中国银行打电话说在住处附近不远办理，周一上午赶紧和老婆和上司说了晚会到，办理下东西。到了那里二楼，我签字，丫头签字，拍照，又把丫头卖了一遍。搞好两人赶紧回公司，啊，挺冷的，电瓶车。</p><p>周二早上就说通过了贷款，当前就等统一打款后去领额度啦，哈哈。</p><h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>这几天想了想，每天至少30，有点多，我估计在还款有点难受(车牌、房子首付借款、房贷)。之后生病一定小心，不然就没钱了。</p><p>在闲鱼发了下说把拍照租出去，得，被举报。我用的词还被人抄了，一模一样，我写错字人家都懒得改，这样人家都没被举报，我去。</p><p>但是最近想想，车牌不就是配车的嘛，有机会去淘些二手车，开一段时间，然后再卖掉，再换，哈哈。</p><p>最近先去小区排队，不然放车临时的好贵。</p><p>明年好好赚钱咯，赶紧把欠贷还掉，给家人多攒点钱，安安稳稳了，现在。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hupai </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>20220124brew_install</title>
+      <link href="/2022/01/24/20220124brew-install/"/>
+      <url>/2022/01/24/20220124brew-install/</url>
+      
+        <content type="html"><![CDATA[<h1 id="brew-install-问题集锦"><a href="#brew-install-问题集锦" class="headerlink" title="brew install 问题集锦"></a>brew install 问题集锦</h1><p>20220124 使用brew安装ffmpeg, 由于黑苹果brew 很久没更新，导致很多包很能下，特此记录.</p><h2 id="证书过期"><a href="#证书过期" class="headerlink" title="证书过期"></a>证书过期</h2><p>首先遇到证书过期问题:</p><p>原因是本地openssl 有两个库。当时使用curl 忽略https 证书问题下载了<a href="mailto:openssl@1.0" target="_blank" rel="noopener">openssl@1.0</a>(<code>HOMEBREW_CURLRC=1 brew install openssl@1.0</code>), 然后使用软链接(<code>ln -sfn /usr/local/opt/openssl@1.0 /usr/local/opt/openssl</code>)挂钩。</p><p>后由于太麻烦，还是使用的ffmpeg</p><pre><code>echo &quot;--insecure&quot; &gt; ~/.curlrc &amp;&amp; HOMEBREW_CURLRC=1 &amp;&amp; export HOMEBREW_CURLRC 将配置写入调用brew 时: HOMEBREW_CURLRC=1 brew install ffmpeg</code></pre><h2 id="其中isl库下载地址无了"><a href="#其中isl库下载地址无了" class="headerlink" title="其中isl库下载地址无了!"></a>其中isl库下载地址无了!</h2><p>下载地址无了，我先找到另一个下载点，配置并make install 了(tar -jxvf isl-0.24.tar.xz &amp;&amp; cd isl-0.24 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install)，但是我重新install ffmpeg 还是会卡在那.</p><p>使用brew edit isl，修改里面的url 为目标地址，这样就能够识别了。记得对比下sha 256(<code>shasum -a 256 ${filepath}</code>)</p><h2 id="git-库下载报错"><a href="#git-库下载报错" class="headerlink" title="git 库下载报错"></a>git 库下载报错</h2><p><code>Cloning into SSL certificate problem: certificate has expired</code></p><p>解决方法: <code>git config --global http.sslVerify false</code>， 关闭部分ssh校验</p><h2 id="其他库下载出现网络断掉问题"><a href="#其他库下载出现网络断掉问题" class="headerlink" title="其他库下载出现网络断掉问题"></a>其他库下载出现网络断掉问题</h2><p>单独下载对应的库，下次下载时，会略过该库。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> brew_install </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>20220119hr</title>
       <link href="/2022/01/19/20220119hr/"/>
       <url>/2022/01/19/20220119hr/</url>
