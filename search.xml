@@ -8,7 +8,7 @@
       <link href="/2022/02/11/20220208gccbuild/"/>
       <url>/2022/02/11/20220208gccbuild/</url>
       
-        <content type="html"><![CDATA[<p>第一次gcc windows 打包。以为超级难，一直使用 -static，但是报一堆错误。最终使用加入dll 动态包打包的。</p><p>首先我开发时使用 <code>gcc *.c -lcurl -o app</code> 在Cgywin 是能正常打包使用的。新哥教我双击要能使用，那么就使用 <code>everything</code> 一个个找出里面的需要的文件，而且在新哥那边嫖来了公司统一打包环境，好处就是随着公司统一第三方版本升级，和我当前使用的差不太多。</p><p>打包成功后在本地出现app.exe, 双击或者 cmd 中执行是失败的, 得在对应的编译环境下才能正常。</p><p>接着请教春哥，新哥可能太久不记得怎么操作了。春哥当晚很晚给我把动态库找齐，放在一起执行。我自己操作了下也成功，满意的回家了。</p><p>这里写个插曲: 春哥给我整好后，我把app.exe 拖到桌面，双击，唉，春哥，运行不起来啊(他已经回去了)。春哥想了又想，我给他截了个图，他看到了他的那些可爱的动态库去哪了。诶，这货双击执行还需要那些个玩意嘛。哦，明白了，经常下载exe安装包，里面就有这些，我自己试下，哦，soga，真有意思。</p><p>这是该app, 好用着呢: <a href="https://github.com/shaohung001/postftp" target="_blank" rel="noopener">https://github.com/shaohung001/postftp</a></p>]]></content>
+        <content type="html"><![CDATA[<p>第一次gcc windows 打包。以为超级难，使用 -static，但是报一堆错误。</p><p>最终使用加入dll 动态包打包的。</p><hr><p>首先我开发时使用 <code>gcc *.c -lcurl -o app</code> 在Cgywin 是能正常执行使用的。新哥教我双击要能使用，那么就使用 <code>everything</code> 一个个找出里面的需要的库文件，而且在新哥那边嫖来了公司统一打包环境，好处就是随着公司统一第三方版本升级，和我当前使用的差不太多。</p><p>新哥指导下打包成功后在本地出现app.exe, 但是双击或者 cmd 中执行是失败的, 说明库文件没找对。新哥可能太久不记得怎么操作了，不行了，得麻烦春哥了。</p><p>接着请教春哥，春哥当晚很晚给我把动态库找齐，放在一起执行。我自己操作了下也成功，满意的回家了。</p><p>这里写个插曲: 春哥给我整好后，我把app.exe 拖到桌面，双击，唉，春哥，运行不起来啊(他已经回去了)。春哥想了又想，我给他截了个图，他看到了他的那些可爱的动态库去哪了。诶，这货双击执行还需要那些个玩意嘛。哦，明白了，经常下载exe安装包，里面就有这些，我自己试下，哦，soga，真有意思。</p><p>这是该app, 好用着呢: <a href="https://github.com/shaohung001/postftp" target="_blank" rel="noopener">https://github.com/shaohung001/postftp</a></p>]]></content>
       
       
       
