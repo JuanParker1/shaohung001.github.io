@@ -229,7 +229,7 @@ $ docker restart ${dockerId} // 重启elastic
 <li>设置熔断驱逐数据；</li>
 </ol>
 <p>这里记录2中设置熔断驱逐数据:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">docker-compose.yml</span><br><span class="line">services:</span><br><span class="line">  elasticsearch:</span><br><span class="line">    volumes:</span><br><span class="line">      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span><br><span class="line"></span><br><span class="line">elasticsearch.yml</span><br><span class="line">cluster.name: &quot;docker-cluster&quot;</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">xpack.security.enabled: true</span><br><span class="line">indices.breaker.total.use_real_memory: false</span><br><span class="line">indices.breaker.total.limit: 60%</span><br><span class="line">indices.fielddata.cache.size: 45%</span><br><span class="line">indices.requests.cache.size: 20%</span><br><span class="line">indices.breaker.fielddata.limit: 35%</span><br><span class="line">indices.breaker.request.limit: 50%</span><br><span class="line">network.breaker.inflight_requests.limit: 50%</span><br><span class="line">indices.breaker.accounting.limit: 50%</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker-compose.yml</span><br><span class="line">services:</span><br><span class="line">  elasticsearch:</span><br><span class="line">    volumes:</span><br><span class="line">      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span><br><span class="line"></span><br><span class="line">elasticsearch.yml</span><br><span class="line">cluster.name: &quot;docker-cluster&quot;</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">indices.breaker.total.use_real_memory: false</span><br><span class="line">indices.breaker.total.limit: 60%</span><br><span class="line">indices.fielddata.cache.size: 45%</span><br><span class="line">indices.requests.cache.size: 20%</span><br><span class="line">indices.breaker.fielddata.limit: 35%</span><br><span class="line">indices.breaker.request.limit: 50%</span><br><span class="line">network.breaker.inflight_requests.limit: 50%</span><br><span class="line">indices.breaker.accounting.limit: 50%</span><br></pre></td></tr></table></figure>
 <p><a href="https://blog.csdn.net/weixin_42715225/article/details/113258998" target="_blank" rel="noopener">参考文档1</a></p>
 <p><a href="https://segmentfault.com/a/1190000022568882" target="_blank" rel="noopener">参考文档2</a></p>
 <h3 id="Data-too-large解决记录"><a href="#Data-too-large解决记录" class="headerlink" title="Data too large解决记录"></a><code>Data too large</code>解决记录</h3><p><code>Data too large</code> / <code>429 Too Many Requests</code> 这个问题由来已久。之前考虑是关闭某些年份数据，但是仍然会报那个问题。</p>
@@ -246,6 +246,16 @@ $ docker restart ${dockerId} // 重启elastic
 <li>indices.breaker.request.limit限制查询的其他部分需要用的内存大小。indices.breaker.total.limit限制总(fieldData+其他部分)大小。</li>
 <li>创建mapping时，可以设置fielddata format控制缓存数据格式。</li>
 </ul>
+<p>ES需要高速内存读取，首要达到硬件内存通过集群扩容大于数据大小。此时体现在数据快速读取，大量人员内存操作的场景。<em>如果是人员人数不多，非必要大量数据高速存取场景，则可通过ES熔断机制驱逐旧数据，达到存取平衡。</em></p>
+<p>故，非超大型查询场景是可以不采用集群方案(超大型集群调节熔断配置)，单节点可以满足配置中熔断数据(根据<code>ES_JAVA_OPTS</code> 比例值)。</p>
+<p>此处描述配置作用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cluster.name                            集群名称</span><br><span class="line">network.host                            网络配置</span><br><span class="line">network.breaker.inflight_requests.limit 请求中熔断器</span><br><span class="line">indices.fielddata.cache.size            类型为text进行sort/aggs时加载fielddata到内存</span><br><span class="line">indices.requests.cache.size             shard request cache热点请求cache</span><br><span class="line">indices.memory.index_buffer_size        索引操作大小(default:10%)</span><br><span class="line">indices.breaker.total.use_real_memory   可以更加精准的分析内存状况，避免 OOM</span><br><span class="line">indices.breaker.total.limit             配置总内存大小</span><br><span class="line">indices.breaker.fielddata.limit         field 内存数据加载大小</span><br><span class="line">indices.breaker.request.limit           防止单个请求内存溢出</span><br><span class="line">indices.breaker.accounting.limit        已请求完的请求所占用内存占比</span><br></pre></td></tr></table></figure>
+<p>查看是否配置成功及查询现有配置:</p>
+<pre><code>alias escurl=&apos;curl --user ${esuser}:${espass}&apos;
+escurl -XGET &quot;http://${eshost}:9200/_nodes/_all/settings?pretty&quot;
+</code></pre><blockquote>
+<p>参考说明 <a href="https://blog.csdn.net/u013200380/article/details/109285118" target="_blank" rel="noopener">https://blog.csdn.net/u013200380/article/details/109285118</a></p>
+</blockquote>
 
         </div>
         
@@ -253,7 +263,7 @@ $ docker restart ${dockerId} // 重启elastic
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-03-28T07:25:25.518Z" itemprop="dateUpdated">2022-03-28 15:25:25</time>
+    Last updated: <time datetime="2022-03-30T06:32:41.517Z" itemprop="dateUpdated">2022-03-30 14:32:41</time>
 </span><br>
 
 
@@ -322,7 +332,14 @@ $ docker restart ${dockerId} // 重启elastic
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/04/20/20220420lesson/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">20220420lesson</h4>
+      </a>
+    </div>
   
 
   
